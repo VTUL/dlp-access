@@ -1,4 +1,6 @@
 import React from 'react';
+import './NavBar.css';
+
 import {
     BrowserRouter as Router,
     Route,
@@ -6,13 +8,18 @@ import {
 import { Link } from 'react-router-dom';
 
 const NavBar = () => (
-    <nav>
+    <nav id="menu-main">
         <ul>
             <li>
                 <Link to="/">Home</Link>
+            </li>
+            <li>
                 <Link to="/about">About</Link>
-                <Link to="/terms">Permission Page</Link>
+            </li>
+            <li>
                 <Link to="/collections">EXPLORE COLLECTIONS</Link>
+            </li>
+            <li>
                 <Link to="/items">BROWSE ITEMS</Link>
             </li>
         </ul>
