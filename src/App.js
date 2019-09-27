@@ -8,7 +8,6 @@ import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import CollectionsPage from './pages/CollectionsPage';
 import ItemsPage from './pages/ItemsPage';
-import NavBar from './NavBar';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +15,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <NavBar />
           <div id="content-wrapper" class="container" role="main">
             <Switch>
               <Route path="/" component={HomePage} exact/>
