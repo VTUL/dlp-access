@@ -1,0 +1,25 @@
+.carousel.slide {
+  width: 800px;
+  height: 490px;
+
+  margin: 0 auto;
+}
+.carousel-item {
+  height: 490px;
+  overflow: hidden;
+}
+.carousel-item img {
+  width: 100%;
+}
+.carousel-caption {
+  bottom: 0 !important;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  padding: 15px;
+}
+.carousel-caption,
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}

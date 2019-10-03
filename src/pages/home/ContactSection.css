@@ -1,0 +1,16 @@
+.contact-section {
+  margin: 0;
+  padding: 10px;
+  background-color: var(--hokieMaroon);
+  font-family: "Acherus", sans-serif;
+}
+.contact-iawa {
+  font-size: 2em;
+}
+.navbar-text {
+  color: white;
+  margin-right: 40px;
+}
+.navbar-text p {
+  margin-bottom: 0;
+}
