@@ -225,3 +225,121 @@ export const listArchives = `query ListArchives(
   }
 }
 `;
+export const collectionByIdentifier = `query CollectionByIdentifier(
+  $identifier: String
+  $sortDirection: ModelSortDirection
+  $filter: ModelCollectionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  collectionByIdentifier(
+    identifier: $identifier
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      title
+      identifier
+      description
+      creator
+      source
+      circa
+      start_date
+      end_date
+      subject
+      location
+      rights_statement
+      language
+      bibliographic_citation
+      rights_holder
+      custom_key
+      collection_category
+      visibility
+      thumbnail_path
+      parent_collection
+      create_date
+      modified_date
+      archives {
+        nextToken
+      }
+    }
+    nextToken
+  }
+}
+`;
+export const archiveByIdentifier = `query ArchiveByIdentifier(
+  $identifier: String
+  $sortDirection: ModelSortDirection
+  $filter: ModelArchiveFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  archiveByIdentifier(
+    identifier: $identifier
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      title
+      identifier
+      description
+      tags
+      creator
+      source
+      circa
+      start_date
+      end_date
+      rights_statement
+      language
+      resource_type
+      belongs_to
+      location
+      medium
+      bibliographic_citation
+      rights_holder
+      format
+      related_url
+      contributor
+      custom_key
+      parent_collection
+      item_category
+      visibility
+      thumbnail_path
+      manifest_url
+      create_date
+      modified_date
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+      }
+    }
+    nextToken
+  }
+}
+`;
