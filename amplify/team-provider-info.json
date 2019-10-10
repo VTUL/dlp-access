@@ -34,17 +34,5 @@
             "StackName": "iawav2-dev-20190924133010",
             "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-dev-20190924133010/f5e20b20-def0-11e9-b5fb-0a545e22b5be"
         }
-    },
-    "local": {
-        "awscloudformation": {
-            "AuthRoleName": "iawav2-local-20191002161022-authRole",
-            "UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-local-20191002161022-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-local-20191002161022-authRole",
-            "Region": "us-west-2",
-            "DeploymentBucketName": "iawav2-local-20191002161022-deployment",
-            "UnauthRoleName": "iawav2-local-20191002161022-unauthRole",
-            "StackName": "iawav2-local-20191002161022",
-            "StackId": "arn:aws:cloudformation:us-west-2:909117335741:stack/iawav2-local-20191002161022/aa305770-e550-11e9-966d-06e1bfa6e222"
-        }
     }
 }
