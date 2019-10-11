@@ -4,8 +4,8 @@ import "./ContactSection.css";
 
 const ContactSection = () => (
   <>
-    <div className="row contact-section">
-      <div className="container-fluid">
+    <div className="navbar navbar-inverse contact-section">
+      <div className="container">
         <div class="navbar-text">
           <h3 className="contact-iawa">CONTACT IAWA</h3>
           <p>

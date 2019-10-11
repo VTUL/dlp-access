@@ -1,6 +1,5 @@
 import React from "react";
 import FeaturedCarousel from "./home/FeaturedCarousel";
-import ContactSection from "./home/ContactSection";
 
 import "./HomePage.css";
 
@@ -14,7 +13,6 @@ const HomePage = () => (
         Architecture and Urban Studies and the University Libraries at Virginia
         Tech
       </div>
-      <ContactSection />
     </div>
   </>
 );

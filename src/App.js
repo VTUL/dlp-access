@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import CollectionsPage from "./pages/CollectionsPage";
 import ItemsPage from "./pages/ItemsPage";
+import ContactSection from "./shared/ContactSection";
 import "./App.css";
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
               <Route path="/items" component={ItemsPage} />
             </Switch>
           </div>
+          <ContactSection />
         </div>
       </Router>
     );
