@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 
-const GetCollection = `query getCollection($id: ID!) {
-    getCollection(id: $id) {
+const GetCollection = `query SearchArchives($noid: String!) {
+  searchArchives(filter: { custom_key: { eq: $noid }}) {
+    items {
       id
       title
       thumbnail_path
     }
   }
-  `;
+}`;
 
 class CollectionsPage extends Component {
   render() {
@@ -31,15 +32,15 @@ class CollectionsPage extends Component {
       <div>
         <Connect
           query={graphqlOperation(GetCollection, {
-            id: "1c5216df-ad4b-4ddb-9299-5692c986f7e3"
+            noid: "ark:/53696/hj91pm5w"
           })}
         >
-          {({ data: { getCollection }, loading, errors }) => {
+          {({ data: { searchArchives }, loading, errors }) => {
             if (!(errors === undefined || errors.length === 0))
               return <h3>Error</h3>;
-            if (loading || !getCollection) return <h3>Loading...</h3>;
-            console.log(getCollection);
-            return <ListView collection={getCollection} />;
+            if (loading || !searchArchives) return <h3>Loading...</h3>;
+            console.log(searchArchives);
+            return <ListView collection={searchArchives.items[0]} />;
           }}
         </Connect>
       </div>

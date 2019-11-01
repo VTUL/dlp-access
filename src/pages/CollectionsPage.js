@@ -26,8 +26,8 @@ class CollectionsPage extends Component {
           query={graphqlOperation(queries.searchCollections, {
             filter: {
               visibility: { eq: true },
-              parent_collection: {
-                exists: false
+              title: {
+                matchPhrase: "Rudoff"
               }
             },
             limit: 3

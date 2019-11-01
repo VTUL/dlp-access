@@ -1,50 +1,50 @@
 {
-    "master": {
-        "awscloudformation": {
-            "AuthRoleName": "iawav2-master-20190906094323-authRole",
-            "UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-master-20190906094323-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-master-20190906094323-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "iawav2-master-20190906094323-deployment",
-            "UnauthRoleName": "iawav2-master-20190906094323-unauthRole",
-            "StackName": "iawav2-master-20190906094323",
-            "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-master-20190906094323/4bacd100-d0ac-11e9-9df0-0e23fbf2c85e"
-        }
-    },
-    "pprd": {
-        "awscloudformation": {
-            "AuthRoleName": "iawav2-pprd-20190924135243-authRole",
-            "UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-pprd-20190924135243-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-pprd-20190924135243-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "iawav2-pprd-20190924135243-deployment",
-            "UnauthRoleName": "iawav2-pprd-20190924135243-unauthRole",
-            "StackName": "iawav2-pprd-20190924135243",
-            "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-pprd-20190924135243/1c258c00-def4-11e9-a430-0a1b7b252ffe"
-        }
-    },
-    "dev": {
-        "awscloudformation": {
-            "AuthRoleName": "iawav2-dev-20191016134756-authRole",
-            "UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-dev-20191016134756-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-dev-20191016134756-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "iawav2-dev-20191016134756-deployment",
-            "UnauthRoleName": "iawav2-dev-20191016134756-unauthRole",
-            "StackName": "iawav2-dev-20191016134756",
-            "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-dev-20191016134756/15f379a0-f03d-11e9-885f-121fa677fe9a"
-        }
-    },
-    "searchnew": {
-        "awscloudformation": {
-            "AuthRoleName": "amplify-iawav2-searchnew-131236-authRole",
-            "UnauthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-searchnew-131236-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-searchnew-131236-authRole",
-            "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-iawav2-searchnew-131236-deployment",
-            "UnauthRoleName": "amplify-iawav2-searchnew-131236-unauthRole",
-            "StackName": "amplify-iawav2-searchnew-131236",
-            "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/amplify-iawav2-searchnew-131236/2356f6e0-f9a6-11e9-8deb-0e27f3a268d6"
-        }
-    }
+	"master": {
+		"awscloudformation": {
+			"AuthRoleName": "iawav2-master-20190906094323-authRole",
+			"UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-master-20190906094323-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-master-20190906094323-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "iawav2-master-20190906094323-deployment",
+			"UnauthRoleName": "iawav2-master-20190906094323-unauthRole",
+			"StackName": "iawav2-master-20190906094323",
+			"StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-master-20190906094323/4bacd100-d0ac-11e9-9df0-0e23fbf2c85e"
+		}
+	},
+	"pprd": {
+		"awscloudformation": {
+			"AuthRoleName": "iawav2-pprd-20190924135243-authRole",
+			"UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-pprd-20190924135243-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-pprd-20190924135243-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "iawav2-pprd-20190924135243-deployment",
+			"UnauthRoleName": "iawav2-pprd-20190924135243-unauthRole",
+			"StackName": "iawav2-pprd-20190924135243",
+			"StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-pprd-20190924135243/1c258c00-def4-11e9-a430-0a1b7b252ffe"
+		}
+	},
+	"dev": {
+		"awscloudformation": {
+			"AuthRoleName": "iawav2-dev-20191016134756-authRole",
+			"UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-dev-20191016134756-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-dev-20191016134756-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "iawav2-dev-20191016134756-deployment",
+			"UnauthRoleName": "iawav2-dev-20191016134756-unauthRole",
+			"StackName": "iawav2-dev-20191016134756",
+			"StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-dev-20191016134756/15f379a0-f03d-11e9-885f-121fa677fe9a"
+		}
+	},
+	"searchnew": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-iawav2-searchnew-131236-authRole",
+			"UnauthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-searchnew-131236-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-searchnew-131236-authRole",
+			"Region": "us-east-1",
+			"DeploymentBucketName": "amplify-iawav2-searchnew-131236-deployment",
+			"UnauthRoleName": "amplify-iawav2-searchnew-131236-unauthRole",
+			"StackName": "amplify-iawav2-searchnew-131236",
+			"StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/amplify-iawav2-searchnew-131236/2356f6e0-f9a6-11e9-8deb-0e27f3a268d6"
+		}
+	}
 }
