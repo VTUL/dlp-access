@@ -6,7 +6,7 @@ const ContactSection = () => (
   <>
     <div className="navbar navbar-inverse contact-section">
       <div className="container">
-        <div class="navbar-text">
+        <div className="navbar-text">
           <h3 className="contact-iawa">CONTACT IAWA</h3>
           <p>
             IAWA Archivist [<a href="mailto:specref@vt.edu">specref@vt.edu</a>],
@@ -17,7 +17,7 @@ const ContactSection = () => (
           <p>Blacksburg, VA 24061</p>
           <p>(540)231-6308</p>
         </div>
-        <div class="navbar-text">
+        <div className="navbar-text">
           <h3>&nbsp;</h3>
           <p>
             Board Chair [<a href="mailto:ddunay@vt.edu">ddunay@vt.edu</a>], IAWA

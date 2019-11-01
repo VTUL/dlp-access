@@ -1,4 +1,5 @@
 #mirador_viewer {
-  height: 1100px;
-  width: 100%
+  height: 700px;
+  width: 100%;
+  position: relative;
 }

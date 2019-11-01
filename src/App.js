@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import CollectionsPage from "./pages/CollectionsPage";
 import ItemsPage from "./pages/ItemsPage";
+import ItemPage from "./pages/ItemPage";
 import ContactSection from "./shared/ContactSection";
 import "./App.css";
 
@@ -18,6 +19,13 @@ class App extends Component {
               <Route path="/about" component={AboutPage} />
               <Route path="/collections" component={CollectionsPage} />
               <Route path="/items" component={ItemsPage} />
+              <Route
+                exact
+                path="/item/:customKey"
+                render={props => (
+                  <ItemPage customKey={props.match.params.customKey} />
+                )}
+              />
             </Switch>
           </div>
           <ContactSection />
