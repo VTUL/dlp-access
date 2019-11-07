@@ -4,8 +4,6 @@ import { Connect } from "aws-amplify-react";
 import Viewer from "../Viewer";
 import Table from "../Table";
 
-import * as queries from "../graphql/queries";
-
 const GetArchive = `query searchArchive($customKey: String) {
     searchArchives(filter: {
         custom_key: {
@@ -108,6 +106,8 @@ class ItemPage extends Component {
                     ? " - " + item["end_date"]
                     : "";
                   item_values = circa_date + item["start_date"] + end_date;
+                } else if (key_name === "Custom key") {
+                  key_name = "NOID";
                 }
                 attributeList.push({
                   name: key_name,
@@ -127,7 +127,6 @@ class ItemPage extends Component {
               </div>
               <p>{item.description}</p>
               <div className="row">
-                <h3>Metadata</h3>
                 <div id="metadata_table" className="col-sm-12">
                   <Table rows={attributeList} />
                 </div>

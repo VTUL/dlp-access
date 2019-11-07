@@ -1,11 +1,14 @@
 import React from "react";
 import "./Table.css";
+import ReactHtmlParser from "react-html-parser";
 
 const Row = ({ name, values }) => {
   const ListValue = ({ values }) => (
     <ul>
       {values.map((value, i) => (
-        <li key={i}>{value} </li>
+        <li key={i}>
+          {value.includes("<a href=") ? ReactHtmlParser(value) : value}{" "}
+        </li>
       ))}
     </ul>
   );
