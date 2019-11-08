@@ -7,7 +7,7 @@ const Row = ({ name, values }) => {
     <ul>
       {values.map((value, i) => (
         <li key={i}>
-          {value.includes("<a href=") ? ReactHtmlParser(value) : value}{" "}
+          {value.includes("<a href=") ? ReactHtmlParser(value) : value}
         </li>
       ))}
     </ul>

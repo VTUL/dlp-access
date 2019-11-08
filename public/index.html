@@ -388,7 +388,7 @@
   $.ajax({
 	  url: "uaMenu.json"
   }).done(function(data){
-	$("#uaRender").html($.templates("#uaMenu").render(data));
+    if ($.template) $("#uaRender").html($.templates("#uaMenu").render(data));
   })
 
 
