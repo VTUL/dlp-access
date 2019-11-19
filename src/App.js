@@ -6,6 +6,7 @@ import CollectionsPage from "./pages/CollectionsPage";
 import ItemsPage from "./pages/ItemsPage";
 import ItemPage from "./pages/ItemPage";
 import ContactSection from "./shared/ContactSection";
+import SearchPage from "./pages/SearchPage";
 import "./App.css";
 
 class App extends Component {
@@ -19,13 +20,8 @@ class App extends Component {
               <Route path="/about" component={AboutPage} />
               <Route path="/collections" component={CollectionsPage} />
               <Route path="/items" component={ItemsPage} />
-              <Route
-                exact
-                path="/item/:customKey"
-                render={props => (
-                  <ItemPage customKey={props.match.params.customKey} />
-                )}
-              />
+              <Route path="/item/:customKey" component={ItemPage} />
+              <Route path="/search" component={SearchPage} />
             </Switch>
           </div>
           <ContactSection />

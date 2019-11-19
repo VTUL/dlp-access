@@ -1,0 +1,32 @@
+#metadata_table th,
+#metadata_table td {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #666;
+}
+
+#metadata_table {
+  margin-bottom: 30px;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  z-index: 900;
+  background-color: #f8f8f8;
+  border-color: #e7e7e7;
+}
+
+.search-result-wrapper {
+  border-bottom: 1px dashed #ccc;
+  margin-bottom: 30px;
+  padding-bottom: 0;
+}

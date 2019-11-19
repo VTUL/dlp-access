@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
-
 import * as queries from "../graphql/queries";
 
 class CollectionsPage extends Component {

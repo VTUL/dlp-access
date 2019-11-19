@@ -5,11 +5,18 @@ import * as queries from "../graphql/queries";
 import SearchBar from "../components/SearchBar";
 import SearchTable from "../components/SearchTable";
 
-class ItemsPage extends Component {
+class SearchPage extends Component {
   render() {
+    const searchQuery = new URLSearchParams(this.props.location.search);
     return (
       <Connect
         query={graphqlOperation(queries.searchArchives, {
+          filter: {
+            visibility: { eq: true },
+            [searchQuery.get("search_field")]: {
+              matchPhrase: searchQuery.get("q")
+            }
+          },
           sort: {
             field: "identifier",
             direction: "asc"
@@ -21,7 +28,6 @@ class ItemsPage extends Component {
           if (!(errors === undefined || errors.length === 0))
             return <h3>Error</h3>;
           if (loading || !searchArchives) return <h3>Loading...</h3>;
-
           return (
             <div>
               <nav className="navbar container-fluid">
@@ -56,5 +62,4 @@ class ItemsPage extends Component {
     );
   }
 }
-
-export default ItemsPage;
+export default SearchPage;

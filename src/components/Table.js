@@ -1,5 +1,5 @@
 import React from "react";
-import "./Table.css";
+import "../styles/Table.css";
 import ReactHtmlParser from "react-html-parser";
 
 const Row = ({ name, values }) => {
