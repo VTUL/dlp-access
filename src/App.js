@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
+import TermsPage from "./pages/TermsPage";
 import CollectionsPage from "./pages/CollectionsPage";
 import ItemsPage from "./pages/ItemsPage";
 import ItemPage from "./pages/ItemPage";
@@ -18,6 +19,7 @@ class App extends Component {
             <Switch>
               <Route path="/" component={HomePage} exact />
               <Route path="/about" component={AboutPage} />
+              <Route path="/terms" component={TermsPage} />
               <Route path="/collections" component={CollectionsPage} />
               <Route path="/items" component={ItemsPage} />
               <Route path="/item/:customKey" component={ItemPage} />
