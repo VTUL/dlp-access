@@ -3,22 +3,11 @@ import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import * as queries from "../graphql/queries";
 
-class CollectionsPage extends Component {
-  render() {
-    const ListView = ({ collections }) => (
-      <div>
-        <h3>Collections List</h3>
-        <ul>
-          {collections.map(collection => (
-            <li key={collection.id}>
-              <img src={collection.thumbnail_path} alt={collection.title} />
-              {collection.title}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
+import CollectionsListPage from "./CollectionsListPage";
 
+class CollectionsListLoader extends Component {
+
+  render() {
     return (
       <div>
         <Connect
@@ -29,14 +18,20 @@ class CollectionsPage extends Component {
                 exists: false
               }
             },
-            limit: 3
+            limit: 10000
           })}
         >
           {({ data: { searchCollections }, loading, errors }) => {
             if (!(errors === undefined || errors.length === 0))
               return <h3>Error</h3>;
             if (loading || !searchCollections) return <h3>Loading...</h3>;
-            return <ListView collections={searchCollections.items} />;
+            return (
+              <CollectionsListPage
+                collections={searchCollections.items}
+                page={this.props.page}
+                limit={this.props.limit}
+              />
+            );
           }}
         </Connect>
       </div>
@@ -44,4 +39,4 @@ class CollectionsPage extends Component {
   }
 }
 
-export default CollectionsPage;
+export default CollectionsListLoader;

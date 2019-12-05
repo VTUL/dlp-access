@@ -26,7 +26,7 @@ brew install yarn
 ## Running the tests
 * End-to-end testing framework [Cypress.io](https://www.cypress.io/)
   * Start local server using ```npm start```
-  * Launch the Cypress app ```yarn run cypress open```
+  * Launch the Cypress app ```node_modules/.bin/cypress open```
 
 ## Documents
 * [Development workflow](https://aws-amplify.github.io/docs/cli-toolchain/quickstart#concepts-1)

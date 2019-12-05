@@ -1,0 +1,73 @@
+div.nav-row {
+  background-color: var(--light-gray);
+  padding: 10px 15px;
+}
+div.nav-row a,
+div.nav-row a:visited {
+  color: var(--link-blue);
+}
+h1.collection-title {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 35px;
+  font-weight: 400;
+  display: block;
+}
+div.post-heading {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--light-gray);
+}
+span.item-count:after,
+span.creator:after {
+  content: "\00a0\00a0•\00a0\00a0";
+}
+.description {
+  padding: 15px 0 25px 0;
+}
+.details-section-header {
+  width: 100%;
+  border-bottom: 1px solid var(--light-gray);
+}
+.details-section-header h2 {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+div.details-section-content table tr .collection-detail-key {
+  width: 150px;
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+div.details-section-content table tr .collection-detail-value {
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px;
+  text-align: left;
+  vertical-align: middle;
+}
+div.details-section-content table tr {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+div.collection-items-list {
+  margin-top: 50px;
+}
+
+div.collection-items-list table tbody tr:nth-child(odd) {
+  background-color: var(--light-gray);
+}
+
+div.collection-items-list table tbody tr td.item-image img {
+  width: 100px;
+}
+div.collection-items-list table thead tr th,
+div.collection-items-list table tbody tr td.item-info {
+  padding: 0 15px;
+}
+div.collection-items-list table tbody tr td.item-info div.item-link-wrapper {
+  font-weight: 700;
+}
+div.collection-items-list table tbody tr td.item-info a,
+div.collection-items-list table tbody tr td.item-info a:visited {
+  color: var(--link-blue);
+}
