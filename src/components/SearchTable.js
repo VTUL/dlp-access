@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { arkLinkFormatted } from "../shared/TextFormatTools";
 import "../styles/Table.css";
 import ReactHtmlParser from "react-html-parser";
 
@@ -9,19 +10,31 @@ const DateValue = archive => {
   return circa_date + archive["start_date"] + end_date;
 };
 
+const MultiValueAttr = (label, value) => {
+  if (Array.isArray(value)) {
+    return (
+      <tr>
+        <th>{label}:</th>
+        <td>{value.join(" and ")}</td>
+      </tr>
+    );
+  } else {
+    return "";
+  }
+};
 const SearchTable = ({ archive }) => {
   return (
     <div className="row search-result-wrapper">
       <h4>
-        <Link to={`/item/${archive.custom_key.slice(11)}`}>
+        <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
           {archive.title}
-        </Link>
+        </NavLink>
       </h4>
 
       <div className="col-md-4 col-sm-4">
-        <Link to={`/item/${archive.custom_key.slice(11)}`}>
+        <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
           <img src={archive.thumbnail_path} alt={archive.title} />
-        </Link>
+        </NavLink>
       </div>
       <div className="col-md-8 col-sm-8">
         <table>
@@ -29,23 +42,17 @@ const SearchTable = ({ archive }) => {
             <tr>
               <th>Identifier:</th>
               <td>
-                <Link to={`/item/${archive.custom_key.slice(11)}`}>
+                <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
                   {archive.identifier}
-                </Link>
+                </NavLink>
               </td>
             </tr>
             <tr>
-              <th>Date</th>
+              <th>Date:</th>
               <td>{DateValue(archive)}</td>
             </tr>
-            <tr>
-              <th>Type:</th>
-              <td>{archive.resource_type.join(" and ")}</td>
-            </tr>
-            <tr>
-              <th>Medium:</th>
-              <td>{archive.medium.join(" and ")}</td>
-            </tr>
+            {MultiValueAttr("Type", archive.resource_type)}
+            {MultiValueAttr("Medium", archive.medium)}
             <tr>
               <th>Source:</th>
               <td>
@@ -54,18 +61,9 @@ const SearchTable = ({ archive }) => {
                 ))}
               </td>
             </tr>
-            <tr>
-              <th>Belongs to:</th>
-              <td>{archive.belongs_to.join(" and ")}</td>
-            </tr>
-            <tr>
-              <th>Tags</th>
-              <td>{archive.tags.join(" and ")}</td>
-            </tr>
-            <tr>
-              <th>Creator</th>
-              <td>{archive.creator.join(" and ")}</td>
-            </tr>
+            {MultiValueAttr("Belongs to", archive.belongs_to)}
+            {MultiValueAttr("Tags", archive.tags)}
+            {MultiValueAttr("Creator", archive.creator)}
           </tbody>
         </table>
       </div>
