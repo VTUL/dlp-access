@@ -64,6 +64,15 @@ const keyArray = [
 ];
 
 class ItemPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchField: "title",
+      q: "",
+      view: "List"
+    };
+  }
+
   render() {
     return (
       <Connect
@@ -95,7 +104,7 @@ class ItemPage extends Component {
 
           return (
             <div>
-              <SearchBar />
+              <SearchBar view={this.state.view} />
               <h3>{item.title}</h3>
               <div className="row">
                 <div className="col-sm-12">

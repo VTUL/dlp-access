@@ -1,7 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { arkLinkFormatted } from "../shared/TextFormatTools";
-import "../styles/Table.css";
+import ItemThumbnail from "../components/ItemThumbnail";
+import "../css/SearchResult.css";
 import ReactHtmlParser from "react-html-parser";
 
 const DateValue = archive => {
@@ -22,7 +23,8 @@ const MultiValueAttr = (label, value) => {
     return "";
   }
 };
-const SearchTable = ({ archive }) => {
+
+const ListView = ({ archive }) => {
   return (
     <div className="row search-result-wrapper">
       <h4>
@@ -32,9 +34,7 @@ const SearchTable = ({ archive }) => {
       </h4>
 
       <div className="col-md-4 col-sm-4">
-        <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
-          <img src={archive.thumbnail_path} alt={archive.title} />
-        </NavLink>
+        <ItemThumbnail archive={archive} />
       </div>
       <div className="col-md-8 col-sm-8">
         <table>
@@ -71,4 +71,4 @@ const SearchTable = ({ archive }) => {
   );
 };
 
-export default SearchTable;
+export default ListView;

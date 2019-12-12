@@ -14,6 +14,13 @@ import SearchPage from "./pages/SearchPage";
 import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      view: "List"
+    };
+  }
+
   render() {
     return (
       <Router>
@@ -36,7 +43,10 @@ class App extends Component {
                   />
                 )}
               />
-              <Route path="/items" component={ItemsPage} />
+              <Route
+                path="/items"
+                render={props => <ItemsPage view={this.state.view} />}
+              />
               <Route path="/item/:customKey" component={ItemPage} />
               <Route path="/search" component={SearchPage} />
             </Switch>

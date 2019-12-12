@@ -1,12 +1,7 @@
-#metadata_table th,
-#metadata_table td {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #666;
-}
-
-#metadata_table {
-  margin-bottom: 30px;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 .navbar {
@@ -29,4 +24,29 @@
   border-bottom: 1px dashed #ccc;
   margin-bottom: 30px;
   padding-bottom: 0;
+}
+
+.gallery {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
+}
+
+.document {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-bottom: 1px dotted #ddd;
+  border-bottom: none;
+  flex: 1;
+  min-width: 250px;
+  min-height: 250px;
+  -webkit-flex: 1 0 250px;
+}
+
+.glyphicon-list:before {
+  content: "\e056";
+}
+
+.view-icon-gallery:before {
+  content: "\e011";
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/Viewer.css";
+import "../css/Viewer.css";
 
 class Viewer extends Component {
   get miradorConfig() {

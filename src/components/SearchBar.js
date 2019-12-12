@@ -6,16 +6,15 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
     this.submit = this.submit.bind(this);
-    const defaultSearchField = "title";
     this.state = {
-      search_field: defaultSearchField,
+      search_field: "title",
       q: ""
     };
   }
 
   handleChange(field, event) {
     this.setState({
-      search_field: field || this.state.defaultSearchField,
+      search_field: field,
       q: event.target.value
     });
   }
@@ -31,11 +30,16 @@ class SearchBar extends Component {
     const queryValue = parsedObject.q;
     try {
       if (queryValue === "") {
-        this.props.history.push("/items");
+        this.props.history.push({
+          pathname: "/items"
+        });
       } else {
         this.props.history.push({
           pathname: "/search",
-          search: `?${qs.stringify(parsedObject)}`
+          search: `?${qs.stringify(parsedObject)}`,
+          state: {
+            view: this.props.view
+          }
         });
       }
     } catch (err) {
