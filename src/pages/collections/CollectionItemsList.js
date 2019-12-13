@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { arkLinkFormatted } from "../shared/TextFormatTools";
+import { arkLinkFormatted } from "../../shared/TextFormatTools";
 
-import "../css/CollectionsShowPage.css";
+import "../../css/CollectionsShowPage.css";
 
 class CollectionItemsList extends Component {
   render() {
@@ -10,7 +10,6 @@ class CollectionItemsList extends Component {
     if (this.props.items.length) {
       retVal = (
         <div className="collection-items-list">
-          <h3>Works ({this.props.items.length})</h3>
           <table>
             <thead>
               <tr>

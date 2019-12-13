@@ -1,36 +1,49 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { Button } from "semantic-ui-react";
 
 import "../css/CollectionsListPage.css";
 
 class Pagination extends Component {
-  numberOfPages() {
-    return Math.ceil(this.props.collections.length / this.props.limit);
+  lowerBound() {
+    return this.props.page * this.props.limit + 1;
   }
 
-  listItems() {
-    const numPages = this.numberOfPages();
-    if (numPages <= 1) {
-      return <li></li>;
-    } else {
-      let items = [];
-      for (var i = 0; i < numPages; i++) {
-        items.push(
-          <li key={i + 1}>
-            <NavLink to={`/collections/${i + 1}/${this.props.limit}`}>
-              {i + 1}
-            </NavLink>
-          </li>
-        );
-      }
-      return items;
-    }
+  upperBound() {
+    const lower = this.lowerBound();
+    const num = lower + this.props.numResults - 1;
+    return num != lower ? `- ${num}` : "";
   }
 
   render() {
+    console.log(this.props);
+    const Displaying = () => {
+      return (
+        <div>
+          Displaying {this.lowerBound()} {this.upperBound()} of{" "}
+          {this.props.total}
+        </div>
+      );
+    };
+    const Previous = () => {
+      if (this.props.page > 0) {
+        return <Button onClick={this.props.previousPage}>Previous page</Button>;
+      } else {
+        return <div></div>;
+      }
+    };
+    const Next = () => {
+      if (this.props.page < this.props.totalPages - 1) {
+        return <Button onClick={this.props.nextPage}>Next page</Button>;
+      } else {
+        return <div></div>;
+      }
+    };
+
     return (
       <div id="pagination-list-wrapper">
-        <ul>{this.listItems()}</ul>
+        <Displaying />
+        <Previous />
+        <Next />
       </div>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-import "../css/CollectionsShowPage.css";
+import "../../css/CollectionsShowPage.css";
 
 import SubCollectionsList from "./SubCollectionsList.js";
 import CollectionItemsLoader from "./CollectionItemsLoader.js";

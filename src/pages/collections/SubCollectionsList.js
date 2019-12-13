@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-import "../css/CollectionsShowPage.css";
-import { arkLinkFormatted } from "../shared/TextFormatTools";
+import "../../css/CollectionsShowPage.css";
+import { arkLinkFormatted } from "../../shared/TextFormatTools";
 
 class SubCollectionsList extends Component {
   subCollectionsContent(items) {

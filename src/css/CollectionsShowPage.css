@@ -49,7 +49,7 @@ div.details-section-content table tr {
   border-bottom: 1px solid var(--light-gray);
 }
 
-div.collection-items-list {
+div.collection-items-list-wrapper {
   margin-top: 50px;
 }
 

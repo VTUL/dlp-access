@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import TermsPage from "./pages/TermsPage";
-import CollectionsListLoader from "./pages/CollectionsListLoader";
-import CollectionsShowLoader from "./pages/CollectionsShowLoader";
+import CollectionsListLoader from "./pages/collections/CollectionsListLoader";
+import CollectionsShowLoader from "./pages/collections/CollectionsShowLoader";
 
 import ItemsPage from "./pages/ItemsPage";
 import ItemPage from "./pages/ItemPage";
@@ -15,9 +15,6 @@ import "./App.css";
 
 class App extends Component {
   render() {
-    const defaultPageNumber = 1;
-    const defaultResultsNumber = 10;
-
     return (
       <Router>
         <div>
@@ -27,13 +24,9 @@ class App extends Component {
               <Route path="/about" exact component={AboutPage} />
               <Route path="/terms" component={TermsPage} />
               <Route
-                path="/collections/:page?/:limit?"
-                render={props => (
-                  <CollectionsListLoader
-                    page={props.match.params.page || defaultPageNumber}
-                    limit={props.match.params.limit || defaultResultsNumber}
-                  />
-                )}
+                path="/collections"
+                exact
+                component={CollectionsListLoader}
               />
               <Route
                 path="/collection/:customKey"

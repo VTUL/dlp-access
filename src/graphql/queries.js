@@ -266,6 +266,7 @@ export const collectionByIdentifier = `query CollectionByIdentifier(
         nextToken
       }
     }
+    total
     nextToken
   }
 }
@@ -382,6 +383,7 @@ export const searchCollections = `query SearchCollections(
         nextToken
       }
     }
+    total
     nextToken
   }
 }
