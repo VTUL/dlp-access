@@ -1,38 +1,38 @@
 {
-	"master": {
-		"awscloudformation": {
-			"AuthRoleName": "iawav2-master-20190906094323-authRole",
-			"UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-master-20190906094323-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-master-20190906094323-authRole",
-			"Region": "us-east-1",
-			"DeploymentBucketName": "iawav2-master-20190906094323-deployment",
-			"UnauthRoleName": "iawav2-master-20190906094323-unauthRole",
-			"StackName": "iawav2-master-20190906094323",
-			"StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-master-20190906094323/4bacd100-d0ac-11e9-9df0-0e23fbf2c85e"
-		}
-	},
-	"pprd": {
-		"awscloudformation": {
-			"AuthRoleName": "iawav2-pprd-20190924135243-authRole",
-			"UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-pprd-20190924135243-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-pprd-20190924135243-authRole",
-			"Region": "us-east-1",
-			"DeploymentBucketName": "iawav2-pprd-20190924135243-deployment",
-			"UnauthRoleName": "iawav2-pprd-20190924135243-unauthRole",
-			"StackName": "iawav2-pprd-20190924135243",
-			"StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-pprd-20190924135243/1c258c00-def4-11e9-a430-0a1b7b252ffe"
-		}
-	},
-	"devupdate": {
-		"awscloudformation": {
-			"AuthRoleName": "amplify-iawav2-devupdate-80911-authRole",
-			"UnauthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-devupdate-80911-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-devupdate-80911-authRole",
-			"Region": "us-east-1",
-			"DeploymentBucketName": "amplify-iawav2-devupdate-80911-deployment",
-			"UnauthRoleName": "amplify-iawav2-devupdate-80911-unauthRole",
-			"StackName": "amplify-iawav2-devupdate-80911",
-			"StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/amplify-iawav2-devupdate-80911/6db4dbd0-1760-11ea-9dc4-12cb3b0f9c64"
-		}
-	}
+    "master": {
+        "awscloudformation": {
+            "AuthRoleName": "iawav2-master-20190906094323-authRole",
+            "UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-master-20190906094323-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-master-20190906094323-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "iawav2-master-20190906094323-deployment",
+            "UnauthRoleName": "iawav2-master-20190906094323-unauthRole",
+            "StackName": "iawav2-master-20190906094323",
+            "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-master-20190906094323/4bacd100-d0ac-11e9-9df0-0e23fbf2c85e"
+        }
+    },
+    "pprd": {
+        "awscloudformation": {
+            "AuthRoleName": "iawav2-pprd-20190924135243-authRole",
+            "UnauthRoleArn": "arn:aws:iam::909117335741:role/iawav2-pprd-20190924135243-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::909117335741:role/iawav2-pprd-20190924135243-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "iawav2-pprd-20190924135243-deployment",
+            "UnauthRoleName": "iawav2-pprd-20190924135243-unauthRole",
+            "StackName": "iawav2-pprd-20190924135243",
+            "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/iawav2-pprd-20190924135243/1c258c00-def4-11e9-a430-0a1b7b252ffe"
+        }
+    },
+    "devupdate": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-iawav2-devupdate-80911-authRole",
+            "UnauthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-devupdate-80911-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-devupdate-80911-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-iawav2-devupdate-80911-deployment",
+            "UnauthRoleName": "amplify-iawav2-devupdate-80911-unauthRole",
+            "StackName": "amplify-iawav2-devupdate-80911",
+            "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/amplify-iawav2-devupdate-80911/6db4dbd0-1760-11ea-9dc4-12cb3b0f9c64"
+        }
+    }
 }
