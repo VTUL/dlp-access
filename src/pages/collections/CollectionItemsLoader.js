@@ -104,7 +104,7 @@ class CollectionItemsLoader extends Component {
     if (this.state.items !== null) {
       return (
         <div className="collection-items-list-wrapper">
-          <h3>Works ({this.state.items.length})</h3>
+          <h3>Works ({this.state.total})</h3>
           <ResultsNumberDropdown setLimit={this.setLimit.bind(this)} />
           <CollectionItemsList
             items={this.state.items}

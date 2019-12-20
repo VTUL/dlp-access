@@ -15,7 +15,6 @@ class Pagination extends Component {
   }
 
   render() {
-    console.log(this.props);
     const Displaying = () => {
       return (
         <div>
