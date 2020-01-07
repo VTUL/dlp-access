@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { arkLinkFormatted } from "../../shared/TextFormatTools";
-import "../../css/CollectionsListPage.css";
+import "../../css/ListPages.css";
 
 class CollectionsList extends Component {
   descFormatted(collection) {

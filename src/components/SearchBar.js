@@ -26,22 +26,24 @@ class SearchBar extends Component {
   };
 
   async submit() {
+    const pathname = "/" + this.props.dataType;
     const parsedObject = this.state;
     const queryValue = parsedObject.q;
     try {
       if (queryValue === "") {
         this.props.history.push({
-          pathname: "/items"
+          pathname: pathname
         });
       } else {
         this.props.history.push({
-          pathname: "/search",
+          pathname: pathname,
           search: `?${qs.stringify(parsedObject)}`,
           state: {
             view: this.props.view
           }
         });
       }
+      this.props.setPage(0);
     } catch (err) {
       console.error(err);
     }

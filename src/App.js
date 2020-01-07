@@ -6,10 +6,9 @@ import TermsPage from "./pages/TermsPage";
 import CollectionsListLoader from "./pages/collections/CollectionsListLoader";
 import CollectionsShowLoader from "./pages/collections/CollectionsShowLoader";
 
-import ItemsPage from "./pages/ItemsPage";
+import ItemsListLoader from "./pages/items/ItemsListLoader";
 import ItemPage from "./pages/ItemPage";
 import ContactSection from "./shared/ContactSection";
-import SearchPage from "./pages/SearchPage";
 
 import "./App.css";
 
@@ -44,11 +43,11 @@ class App extends Component {
                 )}
               />
               <Route
+                exact
                 path="/items"
-                render={props => <ItemsPage view={this.state.view} />}
+                render={props => <ItemsListLoader view={this.state.view} />}
               />
               <Route path="/item/:customKey" component={ItemPage} />
-              <Route path="/search" component={SearchPage} />
             </Switch>
           </div>
           <ContactSection />

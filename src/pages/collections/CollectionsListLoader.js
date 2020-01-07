@@ -43,7 +43,8 @@ class CollectionsListLoader extends Component {
   setLimit(event, result) {
     this.setState(
       {
-        limit: parseInt(result.value)
+        limit: parseInt(result.value),
+        page: 0
       },
       function() {
         this.loadCollections();

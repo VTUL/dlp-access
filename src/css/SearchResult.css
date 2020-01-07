@@ -23,7 +23,10 @@
 .search-result-wrapper {
   border-bottom: 1px dashed #ccc;
   margin-bottom: 30px;
-  padding-bottom: 0;
+  padding-bottom: 30px;
+}
+.title-wrapper {
+  margin-bottom: 20px;
 }
 
 .gallery {

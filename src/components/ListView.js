@@ -27,12 +27,13 @@ const MultiValueAttr = (label, value) => {
 const ListView = ({ archive }) => {
   return (
     <div className="row search-result-wrapper">
-      <h4>
-        <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
-          {archive.title}
-        </NavLink>
-      </h4>
-
+      <div className="col-sm-12 title-wrapper">
+        <h4>
+          <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
+            {archive.title}
+          </NavLink>
+        </h4>
+      </div>
       <div className="col-md-4 col-sm-4">
         <ItemThumbnail archive={archive} />
       </div>

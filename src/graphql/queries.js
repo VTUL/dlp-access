@@ -455,6 +455,7 @@ export const searchArchives = `query SearchArchives(
         modified_date
       }
     }
+    total
     nextToken
   }
 }

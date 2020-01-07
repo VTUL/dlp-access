@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import CollectionsList from "./CollectionsList";
 import ResultsNumberDropdown from "../../shared/ResultsNumberDropdown";
 import Pagination from "../../shared/Pagination";
-import "../../css/CollectionsListPage.css";
+import "../../css/ListPages.css";
 
 class CollectionsListPage extends Component {
   render() {
     return (
       <div>
-        <h3>Collections List</h3>
+        <h3 className="list-type">Collections</h3>
         <ResultsNumberDropdown setLimit={this.props.setLimit} />
         <ul>
           <CollectionsList collections={this.props.collections} />
