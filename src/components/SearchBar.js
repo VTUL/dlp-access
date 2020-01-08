@@ -45,8 +45,9 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="input-group">
         <input
+          className="form-control"
           type="text"
           placeholder="Search Items"
           onChange={event => {
@@ -54,7 +55,9 @@ class SearchBar extends Component {
           }}
           onKeyPress={this.onKeyPress}
         />
-        <button onClick={this.submit}>GO</button>
+        <button className="btn btn-primary" onClick={this.submit}>
+          GO
+        </button>
       </div>
     );
   }

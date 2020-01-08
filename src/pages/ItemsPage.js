@@ -25,7 +25,7 @@ class ItemsPage extends Component {
           return (
             <div>
               <nav className="navbar container-fluid">
-                <div className="row full-width">
+                <div className="row fullwidth">
                   <div className="col-sm-6 col-md-8 col-lg-9">
                     <SearchBar />
                   </div>
