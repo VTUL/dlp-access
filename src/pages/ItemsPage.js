@@ -24,13 +24,7 @@ class ItemsPage extends Component {
 
           return (
             <div>
-              <nav className="navbar container-fluid">
-                <div className="row fullwidth">
-                  <div className="col-sm-6 col-md-8 col-lg-9">
-                    <SearchBar />
-                  </div>
-                </div>
-              </nav>
+              <SearchBar />
               <div className="container">
                 <div class="row">
                   <div id="sidebar" className="col-md-3 col-sm-4">
