@@ -34,11 +34,11 @@ const ListView = ({ archive }) => {
           </NavLink>
         </h4>
       </div>
-      <div className="col-md-4 col-sm-4">
+      <div className="col-md-4 col-sm-4 my-auto">
         <ItemThumbnail archive={archive} />
       </div>
       <div className="col-md-8 col-sm-8">
-        <table>
+        <table className="table">
           <tbody>
             <tr>
               <th>Identifier:</th>
@@ -58,7 +58,9 @@ const ListView = ({ archive }) => {
               <th>Source:</th>
               <td>
                 {archive.source.map((value, i) => (
-                  <li key={i}>{ReactHtmlParser(value)}</li>
+                  <li className="list-unstyled" key={i}>
+                    {ReactHtmlParser(value)}
+                  </li>
                 ))}
               </td>
             </tr>

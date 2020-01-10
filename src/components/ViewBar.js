@@ -19,8 +19,8 @@ class ViewBar extends Component {
 
   render() {
     return (
-      <div>
-        <div className="btn-group mr-2" aria-label="View Options">
+      <div className="text-right">
+        <div className="btn-group pt-1 mr-2" aria-label="View Options">
           <button
             className="btn btn-outline-light"
             data-toggle="tooltip"
