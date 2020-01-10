@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
-import Viewer from "../components/Viewer";
-import Table from "../components/Table";
-import SearchBar from "../components/SearchBar";
-import SetAttrArray from "../components/SetAttrArray";
+import Viewer from "../../components/Viewer";
+import Table from "../../components/Table";
+import SearchBar from "../../components/SearchBar";
+import SetAttrArray from "../../components/SetAttrArray";
 
 const GetArchive = `query searchArchive($customKey: String) {
   searchArchives(filter: {

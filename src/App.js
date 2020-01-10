@@ -7,7 +7,7 @@ import CollectionsListLoader from "./pages/collections/CollectionsListLoader";
 import CollectionsShowLoader from "./pages/collections/CollectionsShowLoader";
 
 import ItemsListLoader from "./pages/items/ItemsListLoader";
-import ItemPage from "./pages/ItemPage";
+import ItemPage from "./pages/items/ItemPage";
 import ContactSection from "./shared/ContactSection";
 
 import "./App.css";
