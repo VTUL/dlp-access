@@ -1,13 +1,8 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-
 import "../../css/CollectionsShowPage.css";
-
 import SubCollectionsList from "./SubCollectionsList.js";
 import CollectionItemsLoader from "./CollectionItemsLoader.js";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
-
-// import * as queries from "../graphql/queries";
 
 class CollectionsShowPage extends Component {
   creatorDates(props) {

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import Viewer from "../../components/Viewer";
-import Table from "../../components/Table";
+import { Table } from "../../components/Table";
 import SearchBar from "../../components/SearchBar";
-import SetAttrArray from "../../components/SetAttrArray";
+import { SetAttrArray } from "../../components/SetAttrArray";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 
 const GetArchive = `query searchArchive($customKey: String) {
@@ -64,15 +64,23 @@ const keyArray = [
   "tags"
 ];
 
-class ItemPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchField: "title",
-      q: "",
-      view: "List"
-    };
-  }
+class ArchivePage extends Component {
+  state = {
+    page: 0,
+    dataType: "archive",
+    searchField: "title",
+    view: "List"
+  };
+
+  updateFormState = (name, val) => {
+    this.setState({
+      [name]: val
+    });
+  };
+
+  setPage = page => {
+    this.setState({ page: page });
+  };
 
   render() {
     return (
@@ -105,7 +113,13 @@ class ItemPage extends Component {
 
           return (
             <div>
-              <SearchBar view={this.state.view} />
+              <SearchBar
+                dataType={this.state.dataType}
+                view={this.state.view}
+                searchField={this.state.searchField}
+                setPage={this.setPage}
+                updateFormState={this.updateFormState}
+              />
               <div className="breadcrumbs-wrapper">
                 <Breadcrumbs dataType={"Items"} record={item} />
               </div>
@@ -129,4 +143,4 @@ class ItemPage extends Component {
   }
 }
 
-export default ItemPage;
+export default ArchivePage;

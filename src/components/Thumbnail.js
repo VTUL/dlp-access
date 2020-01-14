@@ -2,16 +2,14 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { arkLinkFormatted } from "../shared/TextFormatTools";
 
-const ItemThumbnail = ({ archive }) => {
+export const Thumbnail = ({ item, dataType }) => {
   return (
-    <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
+    <NavLink to={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}>
       <img
         className="img-fluid mx-auto d-block"
-        src={archive.thumbnail_path}
-        alt={archive.title}
+        src={item.thumbnail_path}
+        alt={item.title}
       />
     </NavLink>
   );
 };
-
-export default ItemThumbnail;

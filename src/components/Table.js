@@ -3,24 +3,31 @@ import "../css/Table.css";
 import ReactHtmlParser from "react-html-parser";
 
 const Row = ({ name, values }) => {
+  const HTMLParsedValue = value =>
+    value.includes("<a href=") ? ReactHtmlParser(value) : value;
+
   const ListValue = ({ values }) => (
     <ul>
       {values.map((value, i) => (
-        <li key={i}>
-          {value.includes("<a href=") ? ReactHtmlParser(value) : value}
-        </li>
+        <li key={i}>{HTMLParsedValue(value)}</li>
       ))}
     </ul>
   );
   return (
     <tr>
       <th>{name}</th>
-      <td>{Array.isArray(values) ? <ListValue values={values} /> : values}</td>
+      <td>
+        {Array.isArray(values) ? (
+          <ListValue values={values} />
+        ) : (
+          HTMLParsedValue(values)
+        )}
+      </td>
     </tr>
   );
 };
 
-const Table = ({ rows }) => {
+export const Table = ({ rows }) => {
   return (
     <table>
       <thead>
@@ -37,5 +44,3 @@ const Table = ({ rows }) => {
     </table>
   );
 };
-
-export default Table;

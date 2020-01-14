@@ -16,9 +16,10 @@ class Pagination extends Component {
 
   render() {
     const Displaying = () => {
+      let textBefore = this.props.isSearch ? "Search Results:" : "Displaying";
       return (
         <div>
-          Displaying {this.lowerBound()} {this.upperBound()} of{" "}
+          {textBefore} {this.lowerBound()} {this.upperBound()} of{" "}
           {this.props.total}
         </div>
       );
@@ -38,13 +39,21 @@ class Pagination extends Component {
       }
     };
 
-    return (
-      <div id="pagination-list-wrapper">
-        <Displaying />
-        <Previous />
-        <Next />
-      </div>
-    );
+    if (this.props.atBottom) {
+      return (
+        <div id="pagination-list-wrapper">
+          <Displaying />
+          <Previous />
+          <Next />
+        </div>
+      );
+    } else {
+      return (
+        <div id="pagination-list-wrapper">
+          <Displaying />
+        </div>
+      );
+    }
   }
 }
 

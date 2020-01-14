@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { arkLinkFormatted } from "../shared/TextFormatTools";
-import ItemThumbnail from "../components/ItemThumbnail";
-import "../css/SearchResult.css";
+import { arkLinkFormatted } from "../../shared/TextFormatTools";
+import { Thumbnail } from "../../components/Thumbnail";
+import "../../css/SearchResult.css";
 import ReactHtmlParser from "react-html-parser";
 
 const DateValue = archive => {
@@ -24,18 +24,18 @@ const MultiValueAttr = (label, value) => {
   }
 };
 
-const ListView = ({ archive }) => {
+export const ArchiveListView = ({ archive }) => {
   return (
     <div className="row search-result-wrapper">
       <div className="col-sm-12 title-wrapper">
         <h4>
-          <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
+          <NavLink to={`/archive/${arkLinkFormatted(archive.custom_key)}`}>
             {archive.title}
           </NavLink>
         </h4>
       </div>
       <div className="col-md-4 col-sm-4 my-auto">
-        <ItemThumbnail archive={archive} />
+        <Thumbnail item={archive} dataType="archive" />
       </div>
       <div className="col-md-8 col-sm-8">
         <table className="table">
@@ -43,7 +43,9 @@ const ListView = ({ archive }) => {
             <tr>
               <th>Identifier:</th>
               <td>
-                <NavLink to={`/item/${arkLinkFormatted(archive.custom_key)}`}>
+                <NavLink
+                  to={`/archive/${arkLinkFormatted(archive.custom_key)}`}
+                >
                   {archive.identifier}
                 </NavLink>
               </td>
@@ -73,5 +75,3 @@ const ListView = ({ archive }) => {
     </div>
   );
 };
-
-export default ListView;

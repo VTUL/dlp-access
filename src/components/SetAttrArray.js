@@ -1,4 +1,4 @@
-const SetAttrArray = (keyArr, itemObj) => {
+export const SetAttrArray = (keyArr, itemObj) => {
   const keyArray = keyArr;
 
   var attributeArray = [];
@@ -16,7 +16,8 @@ const SetAttrArray = (keyArr, itemObj) => {
           let end_date = itemObj["end_date"] ? " - " + itemObj["end_date"] : "";
           item_values = circa_date + itemObj["start_date"] + end_date;
         } else if (key_name === "Custom key") {
-          key_name = "NOID";
+          key_name = "Permanent Link";
+          item_values = `<a href="http://idn.lib.vt.edu/${item_values}">idn.lib.vt.edu/${item_values}</a>`;
         }
         attributeArray.push({
           name: key_name,
@@ -27,5 +28,3 @@ const SetAttrArray = (keyArr, itemObj) => {
   }
   return attributeArray;
 };
-
-export default SetAttrArray;
