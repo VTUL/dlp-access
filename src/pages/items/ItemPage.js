@@ -5,6 +5,7 @@ import Viewer from "../../components/Viewer";
 import Table from "../../components/Table";
 import SearchBar from "../../components/SearchBar";
 import SetAttrArray from "../../components/SetAttrArray";
+import Breadcrumbs from "../../components/Breadcrumbs.js";
 
 const GetArchive = `query searchArchive($customKey: String) {
   searchArchives(filter: {
@@ -105,6 +106,9 @@ class ItemPage extends Component {
           return (
             <div>
               <SearchBar view={this.state.view} />
+              <div className="breadcrumbs-wrapper">
+                <Breadcrumbs dataType={"Items"} record={item} />
+              </div>
               <h3>{item.title}</h3>
               <div className="row">
                 <div className="col-sm-12">

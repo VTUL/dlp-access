@@ -1,0 +1,30 @@
+.breadcrumbs-wrapper {
+  position: relative;
+  display: block;
+  background-color: var(--light-gray);
+  padding: 5px 10px;
+  overflow-y: hidden;
+}
+.breadcrumbs-wrapper ul {
+  margin-left: 15px;
+  list-style-type: disc;
+}
+
+.breadcrumbs-wrapper ul li {
+  position: relative;
+  display: block;
+  float: left;
+  margin-left: 15px;
+}
+
+.breadcrumbs-wrapper ul li:before {
+  content: "> ";
+}
+
+.breadcrumbs-wrapper ul li:first-child {
+  margin-left: 0;
+}
+
+.breadcrumbs-wrapper ul li:first-child:before {
+  content: "";
+}

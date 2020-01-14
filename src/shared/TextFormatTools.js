@@ -1,3 +1,3 @@
-export function arkLinkFormatted(custom_key) {
-  return custom_key.replace("ark:/53696/", "");
+export function arkLinkFormatted(customKey) {
+  return customKey.replace("ark:/53696/", "");
 }
