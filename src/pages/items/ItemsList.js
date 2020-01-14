@@ -1,16 +1,16 @@
 import React from "react";
-import ListView from "../components/ListView";
-import GalleryView from "../components/GalleryView";
-import MasonryView from "../components/MasonryView";
+import { ListView } from "./ListView";
+import { GalleryView } from "./GalleryView";
+import { MasonryView } from "./MasonryView";
 
-const Items = props => {
+export const ItemsList = ({ items = [], view = "List" }) => {
   return (
     <div className="search-results">
       <div className="row justify-content-center">
-        {props.items.map(item => {
-          if (props.view === "Gallery") {
+        {items.map(item => {
+          if (view === "Gallery") {
             return <GalleryView archive={item} key={item.id} />;
-          } else if (props.view === "Masonry") {
+          } else if (view === "Masonry") {
             return <MasonryView archive={item} key={item.id} />;
           } else {
             return <ListView archive={item} key={item.id} />;
@@ -20,5 +20,3 @@ const Items = props => {
     </div>
   );
 };
-
-export default Items;

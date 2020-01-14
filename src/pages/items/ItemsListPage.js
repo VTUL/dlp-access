@@ -3,29 +3,35 @@ import ResultsNumberDropdown from "../../shared/ResultsNumberDropdown";
 import Pagination from "../../shared/Pagination";
 import SearchBar from "../../components/SearchBar";
 import ViewBar from "../../components/ViewBar";
-import Items from "../../components/Items";
+import { ItemsList } from "./ItemsList";
 
 import "../../css/ListPages.css";
 
 class ItemsListPage extends Component {
-  constructor(props) {
-    super(props);
-    this.updateFormState = this.updateFormState.bind(this);
-    this.state = {
-      view: props.view
-    };
-  }
+  state = {
+    view: "List",
+    dataType: "items",
+    searchField: "title",
+    q: ""
+  };
 
-  updateFormState(name, val) {
+  updateFormState = (name, val) => {
     this.setState({
       [name]: val
     });
-  }
+  };
 
   render() {
     return (
       <div>
-        <SearchBar dataType="items" view={this.state.view} setPage={this.props.setPage} />
+        <SearchBar
+          dataType={this.state.dataType}
+          view={this.state.view}
+          searchField={this.state.searchField}
+          setPage={this.props.setPage}
+          updateFormState={this.updateFormState}
+        />
+        <h3 className="list-type">Items</h3>
         <ResultsNumberDropdown setLimit={this.props.setLimit} />
         <div className="container">
           <div className="row">
@@ -39,10 +45,7 @@ class ItemsListPage extends Component {
                   updateFormState={this.updateFormState}
                 />
               </div>
-              <Items
-                items={this.props.items}
-                view={this.state.view}
-              />
+              <ItemsList items={this.props.items} view={this.state.view} />
             </div>
           </div>
           <Pagination

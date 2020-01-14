@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import Viewer from "../../components/Viewer";
-import Table from "../../components/Table";
-import SearchBar from "../../components/SearchBar";
-import SetAttrArray from "../../components/SetAttrArray";
+import { Table } from "../../components/Table";
+import { SetAttrArray } from "../../components/SetAttrArray";
 
 const GetArchive = `query searchArchive($customKey: String) {
   searchArchives(filter: {
@@ -64,15 +63,6 @@ const keyArray = [
 ];
 
 class ItemPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchField: "title",
-      q: "",
-      view: "List"
-    };
-  }
-
   render() {
     return (
       <Connect
@@ -104,7 +94,6 @@ class ItemPage extends Component {
 
           return (
             <div>
-              <SearchBar view={this.state.view} />
               <h3>{item.title}</h3>
               <div className="row">
                 <div className="col-sm-12">

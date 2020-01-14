@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../../graphql/queries";
 
@@ -53,14 +54,27 @@ class CollectionsListLoader extends Component {
   }
 
   async loadCollections() {
+    const searchQuery = new URLSearchParams(this.props.location.search);
+    let filter = {
+      visibility: { eq: true },
+      parent_collection: {
+        exists: false
+      }
+    };
+    if (
+      searchQuery.get("q") !== null &&
+      searchQuery.get("search_field") !== null
+    ) {
+      filter = {
+        ...filter,
+        [searchQuery.get("search_field")]: {
+          matchPhrase: searchQuery.get("q")
+        }
+      };
+    }
     const collections = await API.graphql(
       graphqlOperation(queries.searchCollections, {
-        filter: {
-          visibility: { eq: true },
-          parent_collection: {
-            exists: false
-          }
-        },
+        filter: filter,
         limit: this.state.limit,
         nextToken: this.state.nextTokens[this.state.page]
       })
@@ -76,6 +90,22 @@ class CollectionsListLoader extends Component {
         collections.data.searchCollections.total / this.state.limit
       )
     });
+  }
+
+  componentWillMount() {
+    this.unlisten = this.props.history.listen((location, action) => {
+      console.log("route change");
+    });
+  }
+
+  componentWillUnmount() {
+    this.unlisten();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.loadCollections();
+    }
   }
 
   componentDidMount() {
@@ -104,4 +134,4 @@ class CollectionsListLoader extends Component {
   }
 }
 
-export default CollectionsListLoader;
+export default withRouter(CollectionsListLoader);

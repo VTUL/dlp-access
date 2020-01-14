@@ -20,7 +20,7 @@ const Row = ({ name, values }) => {
   );
 };
 
-const Table = ({ rows }) => {
+export const Table = ({ rows }) => {
   return (
     <table>
       <thead>
@@ -37,5 +37,3 @@ const Table = ({ rows }) => {
     </table>
   );
 };
-
-export default Table;

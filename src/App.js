@@ -13,13 +13,6 @@ import ContactSection from "./shared/ContactSection";
 import "./App.css";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      view: "List"
-    };
-  }
-
   render() {
     return (
       <Router>
@@ -45,7 +38,7 @@ class App extends Component {
               <Route
                 exact
                 path="/items"
-                render={props => <ItemsListLoader view={this.state.view} />}
+                render={props => <ItemsListLoader />}
               />
               <Route path="/item/:customKey" component={ItemPage} />
             </Switch>

@@ -4,18 +4,13 @@ import { faThList, faTh, faImages } from "@fortawesome/free-solid-svg-icons";
 import "../css/SearchResult.css";
 
 class ViewBar extends Component {
-  constructor(props) {
-    super(props);
-    this.updateView = this.updateView.bind(this);
-    this.state = {
-      q: props.q,
-      view: props.view
-    };
-  }
+  state = {
+    view: this.props.view
+  };
 
-  updateView(view_type) {
-    this.props.updateFormState("view", view_type);
-  }
+  updateView = viewType => {
+    this.props.updateFormState("view", viewType);
+  };
 
   render() {
     return (

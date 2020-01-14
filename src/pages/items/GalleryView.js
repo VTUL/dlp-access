@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { arkLinkFormatted } from "../shared/TextFormatTools";
-import ItemThumbnail from "../components/ItemThumbnail";
-import "../css/SearchResult.css";
+import { arkLinkFormatted } from "../../shared/TextFormatTools";
+import { ItemThumbnail } from "./ItemThumbnail";
+import "../../css/SearchResult.css";
 
-const GalleryView = ({ archive }) => {
+export const GalleryView = ({ archive }) => {
   return (
     <div className="document col-12 col-sm-6 col-md-4 col-lg-3">
       <div className="card text-center">
@@ -20,5 +20,3 @@ const GalleryView = ({ archive }) => {
     </div>
   );
 };
-
-export default GalleryView;

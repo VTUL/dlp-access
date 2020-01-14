@@ -65,20 +65,16 @@ class ItemsListLoader extends Component {
 
   async loadItems() {
     const searchQuery = new URLSearchParams(this.props.location.search);
-    let filter = {};
+    let filter = { visibility: { eq: true } };
     if (
       searchQuery.get("q") !== null &&
       searchQuery.get("search_field") !== null
     ) {
       filter = {
-        visibility: { eq: true },
+        ...filter,
         [searchQuery.get("search_field")]: {
           matchPhrase: searchQuery.get("q")
         }
-      };
-    } else {
-      filter = {
-        visibility: { eq: true }
       };
     }
     const items = await API.graphql(
@@ -125,7 +121,6 @@ class ItemsListLoader extends Component {
       return (
         <div>
           <ItemsListPage
-            view={this.props.view} 
             items={this.state.items}
             total={this.state.total}
             page={this.state.page}

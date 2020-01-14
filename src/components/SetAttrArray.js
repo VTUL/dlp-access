@@ -1,4 +1,4 @@
-const SetAttrArray = (keyArr, itemObj) => {
+export const SetAttrArray = (keyArr, itemObj) => {
   const keyArray = keyArr;
 
   var attributeArray = [];
@@ -27,5 +27,3 @@ const SetAttrArray = (keyArr, itemObj) => {
   }
   return attributeArray;
 };
-
-export default SetAttrArray;

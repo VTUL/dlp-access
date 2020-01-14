@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { arkLinkFormatted } from "../shared/TextFormatTools";
-import ItemThumbnail from "../components/ItemThumbnail";
-import "../css/SearchResult.css";
+import { arkLinkFormatted } from "../../shared/TextFormatTools";
+import { ItemThumbnail } from "./ItemThumbnail";
+import "../../css/SearchResult.css";
 import ReactHtmlParser from "react-html-parser";
 
 const DateValue = archive => {
@@ -24,7 +24,7 @@ const MultiValueAttr = (label, value) => {
   }
 };
 
-const ListView = ({ archive }) => {
+export const ListView = ({ archive }) => {
   return (
     <div className="row search-result-wrapper">
       <div className="col-sm-12 title-wrapper">
@@ -73,5 +73,3 @@ const ListView = ({ archive }) => {
     </div>
   );
 };
-
-export default ListView;
