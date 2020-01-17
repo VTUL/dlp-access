@@ -68,14 +68,6 @@ class Breadcrumbs extends Component {
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            className="breadcrumb-link"
-            to={"/" + this.props.dataType.toLowerCase()}
-          >
-            {"All " + this.props.dataType}
-          </NavLink>
-        </li>
         {this.state.links.reverse().map(link => (
           <li key={arkLinkFormatted(link.custom_key)}>
             <NavLink className="breadcrumb-link" to={link.url}>
