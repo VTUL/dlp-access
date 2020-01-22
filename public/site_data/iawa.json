@@ -1,0 +1,26 @@
+{
+  "siteId": "iawa",
+  "siteName": "International Archive of Women in Architecture",
+  "siteNavLinks": [
+    {
+      "text": "Home",
+      "url": "/"
+    },
+    {
+      "text": "About",
+      "url": "/about"
+    },
+    {
+      "text": "Permission Page",
+      "url": "/terms"
+    },
+    {
+      "text": "Browse Collections",
+      "url": "/collections"
+    },
+    {
+      "text": "Search Items",
+      "url": "/search"
+    }
+  ]
+}
