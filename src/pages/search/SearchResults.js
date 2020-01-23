@@ -33,19 +33,23 @@ class SearchResults extends Component {
           setPage={this.props.setPage}
           updateFormState={this.props.updateFormState}
         />
-        <ItemsPaginationDisplay atBottom={false} />
-        <ResultsNumberDropdown setLimit={this.props.setLimit} />
         <div className="container">
           <div className="row">
             <div id="sidebar" className="col-md-3 col-sm-4">
               {/* <h2>Limit your search</h2> */}
             </div>
             <div id="content" className="col-md-9 col-sm-8">
-              <div>
-                <ViewBar
-                  view={this.props.view}
-                  updateFormState={this.props.updateFormState}
-                />
+              <div className="navbar navbar-light justify-content-between">
+                <div className="navbar-text text-dark">
+                  <ItemsPaginationDisplay atBottom={false} />
+                </div>
+                <div className="form-inline">
+                  <ResultsNumberDropdown setLimit={this.props.setLimit} />
+                  <ViewBar
+                    view={this.props.view}
+                    updateFormState={this.props.updateFormState}
+                  />
+                </div>
               </div>
               <ItemsList
                 items={this.props.items}

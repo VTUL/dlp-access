@@ -41,7 +41,7 @@ class Pagination extends Component {
 
     if (this.props.atBottom) {
       return (
-        <div id="pagination-list-wrapper">
+        <div>
           <Displaying />
           <Previous />
           <Next />
@@ -49,7 +49,7 @@ class Pagination extends Component {
       );
     } else {
       return (
-        <div id="pagination-list-wrapper">
+        <div>
           <Displaying />
         </div>
       );

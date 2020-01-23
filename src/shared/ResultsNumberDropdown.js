@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 
 import "semantic-ui-css/semantic.min.css";
-import "../css/ResultsNumberDropdown.css";
 
 class ResultsNumberDropdown extends Component {
   constructor(props) {
@@ -43,7 +42,7 @@ class ResultsNumberDropdown extends Component {
     ];
     const placeholder = "Show Results: " + this.state.selectedLimit;
     return (
-      <div className="dropdown-wrapper">
+      <div className="btn-group mr-2">
         <Dropdown
           placeholder={placeholder}
           compact
