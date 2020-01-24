@@ -33,7 +33,9 @@ export const CollectionListView = ({ collection }) => {
     <div className="row search-result-wrapper">
       <div className="col-sm-12 title-wrapper">
         <h4>
-          <NavLink to={`/item/${arkLinkFormatted(collection.custom_key)}`}>
+          <NavLink
+            to={`/collection/${arkLinkFormatted(collection.custom_key)}`}
+          >
             {collection.title}
           </NavLink>
         </h4>

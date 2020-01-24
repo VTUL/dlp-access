@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { Thumbnail } from "../../components/Thumbnail";
 import { arkLinkFormatted } from "../../shared/TextFormatTools";
 import "../../css/ListPages.css";
 
@@ -31,7 +32,7 @@ class CollectionsList extends Component {
               </NavLink>
             </h4>
             <span className="collection-img">
-              <img src={collection.thumbnail_path} alt={collection.title} />
+              <Thumbnail item={collection} dataType="collection" />
             </span>
             <div className="collection-details">
               <div className="collection-detail">

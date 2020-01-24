@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
+import { Thumbnail } from "../../components/Thumbnail";
 import { arkLinkFormatted } from "../../shared/TextFormatTools";
 
 import "../../css/CollectionsShowPage.css";
@@ -21,12 +22,12 @@ class CollectionItemsList extends Component {
               {this.props.items.map(item => (
                 <tr key={item.custom_key}>
                   <td className="item-image">
-                    <img src={item.thumbnail_path} alt={item.title} />
+                    <Thumbnail item={item} dataType="archive" />
                   </td>
                   <td className="item-info">
                     <div className="item-link-wrapper">
                       <NavLink
-                        to={`/item/${arkLinkFormatted(item.custom_key)}`}
+                        to={`/archive/${arkLinkFormatted(item.custom_key)}`}
                       >
                         {item.title}
                       </NavLink>
@@ -34,7 +35,7 @@ class CollectionItemsList extends Component {
                     <div className="collection-link-wrapper">
                       Identifier:{" "}
                       <NavLink
-                        to={`/item/${arkLinkFormatted(item.custom_key)}`}
+                        to={`/archive/${arkLinkFormatted(item.custom_key)}`}
                       >
                         {item.identifier}
                       </NavLink>
