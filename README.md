@@ -1,6 +1,5 @@
 # IAWA version 2
 
-
 ## Design
 * Data Model
   * [Collection & Archive data schema](docs/data_model.md)
