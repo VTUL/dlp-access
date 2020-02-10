@@ -40,48 +40,37 @@ class App extends Component {
     return siteName;
   }
 
-  componentDidMount() {
-    const siteName = this.getSiteName();
-    if (siteName !== null) {
-      this.fetchSiteDetails(siteName);
-    }
-  }
-
   render() {
-    if (this.state.siteDetails !== null) {
-      return (
-        <Router>
-          <Header siteDetails={this.state.siteDetails} />
-          <main style={{ minHeight: "500px", padding: "1em 1em 0 1em" }}>
-            <div id="content-wrapper" className="container" role="main">
-              <Switch>
-                <Route path="/" exact component={HomePage} />
-                <Route path="/about" exact component={AboutPage} />
-                <Route path="/terms" component={TermsPage} />
-                <Route
-                  path="/collections"
-                  exact
-                  component={CollectionsListLoader}
-                />
-                <Route
-                  path="/collection/:customKey"
-                  render={props => (
-                    <CollectionsShowLoader
-                      customKey={props.match.params.customKey}
-                    />
-                  )}
-                />
-                <Route path="/search" exact component={SearchLoader} />
-                <Route path="/archive/:customKey" component={ArchivePage} />
-              </Switch>
-            </div>
-            <ContactSection />
-          </main>
-        </Router>
-      );
-    } else {
-      return <div>Waiting for data...</div>;
-    }
+    return (
+      <Router>
+        <Header siteDetails={this.state.siteDetails} />
+        <main style={{ minHeight: "500px", padding: "1em 1em 0 1em" }}>
+          <div id="content-wrapper" className="container" role="main">
+            <Switch>
+              <Route path="/" exact component={HomePage} />
+              <Route path="/about" exact component={AboutPage} />
+              <Route path="/terms" component={TermsPage} />
+              <Route
+                path="/collections"
+                exact
+                component={CollectionsListLoader}
+              />
+              <Route
+                path="/collection/:customKey"
+                render={props => (
+                  <CollectionsShowLoader
+                    customKey={props.match.params.customKey}
+                  />
+                )}
+              />
+              <Route path="/search" exact component={SearchLoader} />
+              <Route path="/archive/:customKey" component={ArchivePage} />
+            </Switch>
+          </div>
+          <ContactSection />
+        </main>
+      </Router>
+    );
   }
 }
 

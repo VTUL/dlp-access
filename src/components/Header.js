@@ -218,7 +218,7 @@ class Header extends Component {
               </a>
             </div>
             <div id="iawa-home-link-wrapper">
-              <a href="/">{this.props.siteDetails.siteName}</a>
+              <a href="/">{"International Archive of Women in Architecture"}</a>
             </div>
             {/*
               <!-- ///////////////////////////////////////////// -->
@@ -271,9 +271,7 @@ class Header extends Component {
                   </li>
                 </ol>
 
-                <SiteNavigationLinks
-                  siteNavLinks={this.props.siteDetails.siteNavLinks}
-                />
+                <SiteNavigationLinks />
 
                 <ul className="vt-actions-nav" role="menu" aria-label="Actions">
                   <li className="vt-common-item">
