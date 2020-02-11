@@ -1,221 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createCollection = `mutation CreateCollection($input: CreateCollectionInput!) {
-  createCollection(input: $input) {
-    id
-    title
-    identifier
-    description
-    creator
-    source
-    circa
-    start_date
-    end_date
-    subject
-    location
-    rights_statement
-    language
-    bibliographic_citation
-    rights_holder
-    custom_key
-    collection_category
-    visibility
-    thumbnail_path
-    parent_collection
-    create_date
-    modified_date
-    archives {
-      items {
-        id
-        title
-        identifier
-        description
-        tags
-        creator
-        source
-        circa
-        start_date
-        end_date
-        rights_statement
-        language
-        resource_type
-        belongs_to
-        location
-        medium
-        bibliographic_citation
-        rights_holder
-        format
-        related_url
-        contributor
-        custom_key
-        parent_collection
-        item_category
-        visibility
-        thumbnail_path
-        manifest_url
-        create_date
-        modified_date
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const updateCollection = `mutation UpdateCollection($input: UpdateCollectionInput!) {
-  updateCollection(input: $input) {
-    id
-    title
-    identifier
-    description
-    creator
-    source
-    circa
-    start_date
-    end_date
-    subject
-    location
-    rights_statement
-    language
-    bibliographic_citation
-    rights_holder
-    custom_key
-    collection_category
-    visibility
-    thumbnail_path
-    parent_collection
-    create_date
-    modified_date
-    archives {
-      items {
-        id
-        title
-        identifier
-        description
-        tags
-        creator
-        source
-        circa
-        start_date
-        end_date
-        rights_statement
-        language
-        resource_type
-        belongs_to
-        location
-        medium
-        bibliographic_citation
-        rights_holder
-        format
-        related_url
-        contributor
-        custom_key
-        parent_collection
-        item_category
-        visibility
-        thumbnail_path
-        manifest_url
-        create_date
-        modified_date
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const deleteCollection = `mutation DeleteCollection($input: DeleteCollectionInput!) {
-  deleteCollection(input: $input) {
-    id
-    title
-    identifier
-    description
-    creator
-    source
-    circa
-    start_date
-    end_date
-    subject
-    location
-    rights_statement
-    language
-    bibliographic_citation
-    rights_holder
-    custom_key
-    collection_category
-    visibility
-    thumbnail_path
-    parent_collection
-    create_date
-    modified_date
-    archives {
-      items {
-        id
-        title
-        identifier
-        description
-        tags
-        creator
-        source
-        circa
-        start_date
-        end_date
-        rights_statement
-        language
-        resource_type
-        belongs_to
-        location
-        medium
-        bibliographic_citation
-        rights_holder
-        format
-        related_url
-        contributor
-        custom_key
-        parent_collection
-        item_category
-        visibility
-        thumbnail_path
-        manifest_url
-        create_date
-        modified_date
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const createArchive = `mutation CreateArchive($input: CreateArchiveInput!) {
-  createArchive(input: $input) {
-    id
-    title
-    identifier
-    description
-    tags
-    creator
-    source
-    circa
-    start_date
-    end_date
-    rights_statement
-    language
-    resource_type
-    belongs_to
-    location
-    medium
-    bibliographic_citation
-    rights_holder
-    format
-    related_url
-    contributor
-    custom_key
-    parent_collection
-    item_category
-    visibility
-    thumbnail_path
-    manifest_url
-    create_date
-    modified_date
-    collection {
+export const createCollection = /* GraphQL */ `
+  mutation CreateCollection($input: CreateCollectionInput!) {
+    createCollection(input: $input) {
       id
       title
       identifier
@@ -239,44 +27,45 @@ export const createArchive = `mutation CreateArchive($input: CreateArchiveInput!
       create_date
       modified_date
       archives {
+        items {
+          id
+          title
+          identifier
+          description
+          tags
+          creator
+          source
+          circa
+          start_date
+          end_date
+          rights_statement
+          language
+          resource_type
+          belongs_to
+          location
+          medium
+          bibliographic_citation
+          rights_holder
+          format
+          related_url
+          contributor
+          custom_key
+          parent_collection
+          item_category
+          visibility
+          thumbnail_path
+          manifest_url
+          create_date
+          modified_date
+        }
         nextToken
       }
     }
   }
-}
 `;
-export const updateArchive = `mutation UpdateArchive($input: UpdateArchiveInput!) {
-  updateArchive(input: $input) {
-    id
-    title
-    identifier
-    description
-    tags
-    creator
-    source
-    circa
-    start_date
-    end_date
-    rights_statement
-    language
-    resource_type
-    belongs_to
-    location
-    medium
-    bibliographic_citation
-    rights_holder
-    format
-    related_url
-    contributor
-    custom_key
-    parent_collection
-    item_category
-    visibility
-    thumbnail_path
-    manifest_url
-    create_date
-    modified_date
-    collection {
+export const updateCollection = /* GraphQL */ `
+  mutation UpdateCollection($input: UpdateCollectionInput!) {
+    updateCollection(input: $input) {
       id
       title
       identifier
@@ -300,44 +89,45 @@ export const updateArchive = `mutation UpdateArchive($input: UpdateArchiveInput!
       create_date
       modified_date
       archives {
+        items {
+          id
+          title
+          identifier
+          description
+          tags
+          creator
+          source
+          circa
+          start_date
+          end_date
+          rights_statement
+          language
+          resource_type
+          belongs_to
+          location
+          medium
+          bibliographic_citation
+          rights_holder
+          format
+          related_url
+          contributor
+          custom_key
+          parent_collection
+          item_category
+          visibility
+          thumbnail_path
+          manifest_url
+          create_date
+          modified_date
+        }
         nextToken
       }
     }
   }
-}
 `;
-export const deleteArchive = `mutation DeleteArchive($input: DeleteArchiveInput!) {
-  deleteArchive(input: $input) {
-    id
-    title
-    identifier
-    description
-    tags
-    creator
-    source
-    circa
-    start_date
-    end_date
-    rights_statement
-    language
-    resource_type
-    belongs_to
-    location
-    medium
-    bibliographic_citation
-    rights_holder
-    format
-    related_url
-    contributor
-    custom_key
-    parent_collection
-    item_category
-    visibility
-    thumbnail_path
-    manifest_url
-    create_date
-    modified_date
-    collection {
+export const deleteCollection = /* GraphQL */ `
+  mutation DeleteCollection($input: DeleteCollectionInput!) {
+    deleteCollection(input: $input) {
       id
       title
       identifier
@@ -361,9 +151,225 @@ export const deleteArchive = `mutation DeleteArchive($input: DeleteArchiveInput!
       create_date
       modified_date
       archives {
+        items {
+          id
+          title
+          identifier
+          description
+          tags
+          creator
+          source
+          circa
+          start_date
+          end_date
+          rights_statement
+          language
+          resource_type
+          belongs_to
+          location
+          medium
+          bibliographic_citation
+          rights_holder
+          format
+          related_url
+          contributor
+          custom_key
+          parent_collection
+          item_category
+          visibility
+          thumbnail_path
+          manifest_url
+          create_date
+          modified_date
+        }
         nextToken
       }
     }
   }
-}
+`;
+export const createArchive = /* GraphQL */ `
+  mutation CreateArchive($input: CreateArchiveInput!) {
+    createArchive(input: $input) {
+      id
+      title
+      identifier
+      description
+      tags
+      creator
+      source
+      circa
+      start_date
+      end_date
+      rights_statement
+      language
+      resource_type
+      belongs_to
+      location
+      medium
+      bibliographic_citation
+      rights_holder
+      format
+      related_url
+      contributor
+      custom_key
+      parent_collection
+      item_category
+      visibility
+      thumbnail_path
+      manifest_url
+      create_date
+      modified_date
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        archives {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const updateArchive = /* GraphQL */ `
+  mutation UpdateArchive($input: UpdateArchiveInput!) {
+    updateArchive(input: $input) {
+      id
+      title
+      identifier
+      description
+      tags
+      creator
+      source
+      circa
+      start_date
+      end_date
+      rights_statement
+      language
+      resource_type
+      belongs_to
+      location
+      medium
+      bibliographic_citation
+      rights_holder
+      format
+      related_url
+      contributor
+      custom_key
+      parent_collection
+      item_category
+      visibility
+      thumbnail_path
+      manifest_url
+      create_date
+      modified_date
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        archives {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const deleteArchive = /* GraphQL */ `
+  mutation DeleteArchive($input: DeleteArchiveInput!) {
+    deleteArchive(input: $input) {
+      id
+      title
+      identifier
+      description
+      tags
+      creator
+      source
+      circa
+      start_date
+      end_date
+      rights_statement
+      language
+      resource_type
+      belongs_to
+      location
+      medium
+      bibliographic_citation
+      rights_holder
+      format
+      related_url
+      contributor
+      custom_key
+      parent_collection
+      item_category
+      visibility
+      thumbnail_path
+      manifest_url
+      create_date
+      modified_date
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        archives {
+          nextToken
+        }
+      }
+    }
+  }
 `;

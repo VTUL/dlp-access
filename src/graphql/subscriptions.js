@@ -1,221 +1,9 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateCollection = `subscription OnCreateCollection {
-  onCreateCollection {
-    id
-    title
-    identifier
-    description
-    creator
-    source
-    circa
-    start_date
-    end_date
-    subject
-    location
-    rights_statement
-    language
-    bibliographic_citation
-    rights_holder
-    custom_key
-    collection_category
-    visibility
-    thumbnail_path
-    parent_collection
-    create_date
-    modified_date
-    archives {
-      items {
-        id
-        title
-        identifier
-        description
-        tags
-        creator
-        source
-        circa
-        start_date
-        end_date
-        rights_statement
-        language
-        resource_type
-        belongs_to
-        location
-        medium
-        bibliographic_citation
-        rights_holder
-        format
-        related_url
-        contributor
-        custom_key
-        parent_collection
-        item_category
-        visibility
-        thumbnail_path
-        manifest_url
-        create_date
-        modified_date
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onUpdateCollection = `subscription OnUpdateCollection {
-  onUpdateCollection {
-    id
-    title
-    identifier
-    description
-    creator
-    source
-    circa
-    start_date
-    end_date
-    subject
-    location
-    rights_statement
-    language
-    bibliographic_citation
-    rights_holder
-    custom_key
-    collection_category
-    visibility
-    thumbnail_path
-    parent_collection
-    create_date
-    modified_date
-    archives {
-      items {
-        id
-        title
-        identifier
-        description
-        tags
-        creator
-        source
-        circa
-        start_date
-        end_date
-        rights_statement
-        language
-        resource_type
-        belongs_to
-        location
-        medium
-        bibliographic_citation
-        rights_holder
-        format
-        related_url
-        contributor
-        custom_key
-        parent_collection
-        item_category
-        visibility
-        thumbnail_path
-        manifest_url
-        create_date
-        modified_date
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onDeleteCollection = `subscription OnDeleteCollection {
-  onDeleteCollection {
-    id
-    title
-    identifier
-    description
-    creator
-    source
-    circa
-    start_date
-    end_date
-    subject
-    location
-    rights_statement
-    language
-    bibliographic_citation
-    rights_holder
-    custom_key
-    collection_category
-    visibility
-    thumbnail_path
-    parent_collection
-    create_date
-    modified_date
-    archives {
-      items {
-        id
-        title
-        identifier
-        description
-        tags
-        creator
-        source
-        circa
-        start_date
-        end_date
-        rights_statement
-        language
-        resource_type
-        belongs_to
-        location
-        medium
-        bibliographic_citation
-        rights_holder
-        format
-        related_url
-        contributor
-        custom_key
-        parent_collection
-        item_category
-        visibility
-        thumbnail_path
-        manifest_url
-        create_date
-        modified_date
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const onCreateArchive = `subscription OnCreateArchive {
-  onCreateArchive {
-    id
-    title
-    identifier
-    description
-    tags
-    creator
-    source
-    circa
-    start_date
-    end_date
-    rights_statement
-    language
-    resource_type
-    belongs_to
-    location
-    medium
-    bibliographic_citation
-    rights_holder
-    format
-    related_url
-    contributor
-    custom_key
-    parent_collection
-    item_category
-    visibility
-    thumbnail_path
-    manifest_url
-    create_date
-    modified_date
-    collection {
+export const onCreateCollection = /* GraphQL */ `
+  subscription OnCreateCollection {
+    onCreateCollection {
       id
       title
       identifier
@@ -239,44 +27,45 @@ export const onCreateArchive = `subscription OnCreateArchive {
       create_date
       modified_date
       archives {
+        items {
+          id
+          title
+          identifier
+          description
+          tags
+          creator
+          source
+          circa
+          start_date
+          end_date
+          rights_statement
+          language
+          resource_type
+          belongs_to
+          location
+          medium
+          bibliographic_citation
+          rights_holder
+          format
+          related_url
+          contributor
+          custom_key
+          parent_collection
+          item_category
+          visibility
+          thumbnail_path
+          manifest_url
+          create_date
+          modified_date
+        }
         nextToken
       }
     }
   }
-}
 `;
-export const onUpdateArchive = `subscription OnUpdateArchive {
-  onUpdateArchive {
-    id
-    title
-    identifier
-    description
-    tags
-    creator
-    source
-    circa
-    start_date
-    end_date
-    rights_statement
-    language
-    resource_type
-    belongs_to
-    location
-    medium
-    bibliographic_citation
-    rights_holder
-    format
-    related_url
-    contributor
-    custom_key
-    parent_collection
-    item_category
-    visibility
-    thumbnail_path
-    manifest_url
-    create_date
-    modified_date
-    collection {
+export const onUpdateCollection = /* GraphQL */ `
+  subscription OnUpdateCollection {
+    onUpdateCollection {
       id
       title
       identifier
@@ -300,44 +89,45 @@ export const onUpdateArchive = `subscription OnUpdateArchive {
       create_date
       modified_date
       archives {
+        items {
+          id
+          title
+          identifier
+          description
+          tags
+          creator
+          source
+          circa
+          start_date
+          end_date
+          rights_statement
+          language
+          resource_type
+          belongs_to
+          location
+          medium
+          bibliographic_citation
+          rights_holder
+          format
+          related_url
+          contributor
+          custom_key
+          parent_collection
+          item_category
+          visibility
+          thumbnail_path
+          manifest_url
+          create_date
+          modified_date
+        }
         nextToken
       }
     }
   }
-}
 `;
-export const onDeleteArchive = `subscription OnDeleteArchive {
-  onDeleteArchive {
-    id
-    title
-    identifier
-    description
-    tags
-    creator
-    source
-    circa
-    start_date
-    end_date
-    rights_statement
-    language
-    resource_type
-    belongs_to
-    location
-    medium
-    bibliographic_citation
-    rights_holder
-    format
-    related_url
-    contributor
-    custom_key
-    parent_collection
-    item_category
-    visibility
-    thumbnail_path
-    manifest_url
-    create_date
-    modified_date
-    collection {
+export const onDeleteCollection = /* GraphQL */ `
+  subscription OnDeleteCollection {
+    onDeleteCollection {
       id
       title
       identifier
@@ -361,9 +151,225 @@ export const onDeleteArchive = `subscription OnDeleteArchive {
       create_date
       modified_date
       archives {
+        items {
+          id
+          title
+          identifier
+          description
+          tags
+          creator
+          source
+          circa
+          start_date
+          end_date
+          rights_statement
+          language
+          resource_type
+          belongs_to
+          location
+          medium
+          bibliographic_citation
+          rights_holder
+          format
+          related_url
+          contributor
+          custom_key
+          parent_collection
+          item_category
+          visibility
+          thumbnail_path
+          manifest_url
+          create_date
+          modified_date
+        }
         nextToken
       }
     }
   }
-}
+`;
+export const onCreateArchive = /* GraphQL */ `
+  subscription OnCreateArchive {
+    onCreateArchive {
+      id
+      title
+      identifier
+      description
+      tags
+      creator
+      source
+      circa
+      start_date
+      end_date
+      rights_statement
+      language
+      resource_type
+      belongs_to
+      location
+      medium
+      bibliographic_citation
+      rights_holder
+      format
+      related_url
+      contributor
+      custom_key
+      parent_collection
+      item_category
+      visibility
+      thumbnail_path
+      manifest_url
+      create_date
+      modified_date
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        archives {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const onUpdateArchive = /* GraphQL */ `
+  subscription OnUpdateArchive {
+    onUpdateArchive {
+      id
+      title
+      identifier
+      description
+      tags
+      creator
+      source
+      circa
+      start_date
+      end_date
+      rights_statement
+      language
+      resource_type
+      belongs_to
+      location
+      medium
+      bibliographic_citation
+      rights_holder
+      format
+      related_url
+      contributor
+      custom_key
+      parent_collection
+      item_category
+      visibility
+      thumbnail_path
+      manifest_url
+      create_date
+      modified_date
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        archives {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const onDeleteArchive = /* GraphQL */ `
+  subscription OnDeleteArchive {
+    onDeleteArchive {
+      id
+      title
+      identifier
+      description
+      tags
+      creator
+      source
+      circa
+      start_date
+      end_date
+      rights_statement
+      language
+      resource_type
+      belongs_to
+      location
+      medium
+      bibliographic_citation
+      rights_holder
+      format
+      related_url
+      contributor
+      custom_key
+      parent_collection
+      item_category
+      visibility
+      thumbnail_path
+      manifest_url
+      create_date
+      modified_date
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        archives {
+          nextToken
+        }
+      }
+    }
+  }
 `;
