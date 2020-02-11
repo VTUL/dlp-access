@@ -3,7 +3,7 @@ import ResultsNumberDropdown from "../../shared/ResultsNumberDropdown";
 import Pagination from "../../shared/Pagination";
 import SearchBar from "../../components/SearchBar";
 import ViewBar from "../../components/ViewBar";
-import { ItemsList } from "./ItemsList";
+import ItemsList from "./ItemsList";
 
 import "../../css/ListPages.css";
 

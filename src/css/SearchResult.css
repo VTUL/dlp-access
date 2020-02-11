@@ -53,3 +53,16 @@
 .view-icon-gallery:before {
   content: "\e011";
 }
+
+.masonry {
+  padding-top: 6px;
+  flex: 1;
+  min-width: 250px;
+  height: auto;
+  -webkit-flex: 1 0 250px;
+}
+
+.card-columns {
+  display: inline-block;
+  column-width: 250px;
+}
