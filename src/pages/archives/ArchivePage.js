@@ -121,7 +121,7 @@ class ArchivePage extends Component {
                 updateFormState={this.updateFormState}
               />
               <div className="breadcrumbs-wrapper">
-                <Breadcrumbs dataType={"Items"} record={item} />
+                <Breadcrumbs dataType={"Archives"} record={item} />
               </div>
               <h3>{item.title}</h3>
               <div className="row">

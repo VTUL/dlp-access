@@ -61,6 +61,7 @@ class Breadcrumbs extends Component {
   }
 
   render() {
+    const linksCopy = this.state.links.slice();
     return (
       <ul>
         <li>
@@ -68,7 +69,7 @@ class Breadcrumbs extends Component {
             Home
           </NavLink>
         </li>
-        {this.state.links.reverse().map(link => (
+        {linksCopy.reverse().map(link => (
           <li key={arkLinkFormatted(link.custom_key)}>
             <NavLink className="breadcrumb-link" to={link.url}>
               {link.title}
