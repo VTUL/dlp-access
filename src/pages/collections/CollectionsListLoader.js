@@ -56,10 +56,9 @@ class CollectionsListLoader extends Component {
     const collections = await API.graphql(
       graphqlOperation(queries.searchCollections, {
         filter: {
+          collection_category: { eq: process.env.REACT_APP_REP_TYPE },
           visibility: { eq: true },
-          parent_collection: {
-            exists: false
-          }
+          parent_collection: { exists: false }
         },
         limit: this.state.limit,
         nextToken: this.state.nextTokens[this.state.page]

@@ -74,12 +74,15 @@ class SearchLoader extends Component {
 
   async loadItems() {
     const searchQuery = new URLSearchParams(this.props.location.search);
-    let archiveFilter = { visibility: { eq: true } };
+    const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+    let archiveFilter = {
+      item_category: { eq: REP_TYPE },
+      visibility: { eq: true }
+    };
     let collectionFilter = {
+      collection_category: { eq: REP_TYPE },
       visibility: { eq: true },
-      parent_collection: {
-        exists: false
-      }
+      parent_collection: { exists: false }
     };
     if (
       searchQuery.get("search_field") !== null &&
