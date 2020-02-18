@@ -6,6 +6,7 @@ import { Table } from "../../components/Table";
 import SearchBar from "../../components/SearchBar";
 import { SetAttrArray } from "../../components/SetAttrArray";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
+import SiteTitle from "../../components/SiteTitle";
 
 const GetArchive = `query searchArchive($customKey: String) {
   searchArchives(filter: {
@@ -86,7 +87,7 @@ class ArchivePage extends Component {
     return (
       <Connect
         query={graphqlOperation(GetArchive, {
-          customKey: `ark:/53696/${this.props.match.params.customKey}`
+          customKey: `ark:/53696/${this.props.customKey}`
         })}
       >
         {({ data: { searchArchives }, loading, errors }) => {
@@ -113,6 +114,10 @@ class ArchivePage extends Component {
 
           return (
             <div>
+              <SiteTitle
+                siteTitle={this.props.siteDetails.siteTitle}
+                pageTitle={item.title}
+              />
               <SearchBar
                 dataType={this.state.dataType}
                 view={this.state.view}

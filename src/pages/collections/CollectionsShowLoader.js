@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
+import SiteTitle from "../../components/SiteTitle";
 
 import SubCollectionsLoader from "./SubCollectionsLoader";
 
@@ -91,7 +92,15 @@ class CollectionsShowLoader extends Component {
             return <h3>Error</h3>;
           if (loading || !searchCollections) return <h3>Loading...</h3>;
           const collection = searchCollections.items[0];
-          return <SubCollectionsLoader collection={collection} />;
+          return (
+            <>
+              <SiteTitle
+                siteTitle={this.props.siteDetails.siteTitle}
+                pageTitle={collection.title}
+              />
+              <SubCollectionsLoader collection={collection} />
+            </>
+          );
         }}
       </Connect>
     );

@@ -218,7 +218,7 @@ class Header extends Component {
               </a>
             </div>
             <div id="iawa-home-link-wrapper">
-              <a href="/">{"International Archive of Women in Architecture"}</a>
+              <a href="/">{this.props.siteDetails.siteName}</a>
             </div>
             {/*
               <!-- ///////////////////////////////////////////// -->

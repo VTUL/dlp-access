@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../../graphql/queries";
+import SiteTitle from "../../components/SiteTitle";
 
 import SearchResults from "./SearchResults";
 
@@ -181,6 +182,10 @@ class SearchLoader extends Component {
     if (this.state.items !== null) {
       return (
         <div>
+          <SiteTitle
+            siteTitle={this.props.siteDetails.siteTitle}
+            pageTitle="Search"
+          />
           <SearchResults
             items={this.state.items}
             total={this.state.total}

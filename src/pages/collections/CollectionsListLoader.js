@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../../graphql/queries";
+import SiteTitle from "../../components/SiteTitle";
 
 import CollectionsListPage from "./CollectionsListPage";
 
@@ -85,6 +86,10 @@ class CollectionsListLoader extends Component {
     if (this.state.collections !== null) {
       return (
         <div>
+          <SiteTitle
+            siteTitle={this.props.siteDetails.siteTitle}
+            pageTitle="Collections"
+          />
           <CollectionsListPage
             collections={this.state.collections}
             total={this.state.total}
