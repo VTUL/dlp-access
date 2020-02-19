@@ -23,8 +23,17 @@ class App extends Component {
   }
 
   async fetchSiteDetails(siteName) {
-    const response = await fetch(`/site_data/${siteName.toLowerCase()}.json`);
-    const data = await response.json();
+    let response;
+    let data;
+
+    try {
+      response = await fetch(`/site_data/${siteName.toLowerCase()}.json`);
+      data = await response.json();
+    } catch (error) {
+      console.error(error);
+      response = await fetch("/site_data/default.json");
+      data = await response.json();
+    }
     this.setState({
       siteDetails: data
     });
