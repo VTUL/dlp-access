@@ -13,6 +13,8 @@ import ContactSection from "./shared/ContactSection";
 
 import "./App.css";
 
+const reload = () => window.location.reload();
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -115,6 +117,8 @@ class App extends Component {
                     />
                   )}
                 />
+                <Route path="/static/iawa.json" onEnter={reload} />
+                <Route path="/static/default.json" onEnter={reload} />
               </Switch>
             </div>
             <ContactSection siteDetails={this.state.siteDetails} />
