@@ -30,9 +30,17 @@ class App extends Component {
       response = await fetch(`/site_data/${siteName.toLowerCase()}.json`);
       data = await response.json();
     } catch (error) {
+      console.error(`Error fetching /site_data/${siteName.toLowerCase()}.json`);
       console.error(error);
-      response = await fetch("/site_data/default.json");
-      data = await response.json();
+    }
+    if (data === null) {
+      try {
+        response = await fetch("/site_data/default.json");
+        data = await response.json();
+      } catch (error) {
+        console.error("Error fetching /site_data/default.json");
+        console.error(error);
+      }
     }
     this.setState({
       siteDetails: data
@@ -114,7 +122,7 @@ class App extends Component {
         </Router>
       );
     } else {
-      return <></>;
+      return <div>Error fetching site details from config</div>;
     }
   }
 }
