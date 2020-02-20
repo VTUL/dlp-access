@@ -23,8 +23,8 @@ class App extends Component {
   }
 
   async fetchSiteDetails(siteName) {
-    let response;
-    let data;
+    let response = null;
+    let data = null;
 
     try {
       response = await fetch(`/site_data/${siteName.toLowerCase()}.json`);
