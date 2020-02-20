@@ -13,8 +13,6 @@ import ContactSection from "./shared/ContactSection";
 
 import "./App.css";
 
-const reload = () => window.location.reload();
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,18 +27,22 @@ class App extends Component {
     let data = null;
 
     try {
-      response = await fetch(`/static/${siteName.toLowerCase()}.json`);
+      response = await fetch(
+        `https://vtdlp-site-data.s3.amazonaws.com/${siteName.toLowerCase()}.json`
+      );
       data = await response.json();
     } catch (error) {
-      console.error(`Error fetching /static/${siteName.toLowerCase()}.json`);
+      console.error(`Error fetching ${siteName.toLowerCase()}.json`);
       console.error(error);
     }
     if (data === null) {
       try {
-        response = await fetch("/static/default.json");
+        response = await fetch(
+          "https://vtdlp-site-data.s3.amazonaws.com/default.json"
+        );
         data = await response.json();
       } catch (error) {
-        console.error("Error fetching /static/default.json");
+        console.error("Error fetching default.json");
         console.error(error);
       }
     }
@@ -117,8 +119,6 @@ class App extends Component {
                     />
                   )}
                 />
-                <Route path="/static/iawa.json" onEnter={reload} />
-                <Route path="/static/default.json" onEnter={reload} />
               </Switch>
             </div>
             <ContactSection siteDetails={this.state.siteDetails} />
