@@ -27,18 +27,18 @@ class App extends Component {
     let data = null;
 
     try {
-      response = await fetch(`/site_data/${siteName.toLowerCase()}.json`);
+      response = await fetch(`/static/${siteName.toLowerCase()}.json`);
       data = await response.json();
     } catch (error) {
-      console.error(`Error fetching /site_data/${siteName.toLowerCase()}.json`);
+      console.error(`Error fetching /static/${siteName.toLowerCase()}.json`);
       console.error(error);
     }
     if (data === null) {
       try {
-        response = await fetch("/site_data/default.json");
+        response = await fetch("/static/default.json");
         data = await response.json();
       } catch (error) {
-        console.error("Error fetching /site_data/default.json");
+        console.error("Error fetching /static/default.json");
         console.error(error);
       }
     }
