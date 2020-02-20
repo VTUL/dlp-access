@@ -13,6 +13,8 @@ import ContactSection from "./shared/ContactSection";
 
 import "./App.css";
 
+const siteDetailsBasePath = "https://vtdlp-site-data.s3.amazonaws.com";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +30,7 @@ class App extends Component {
 
     try {
       response = await fetch(
-        `https://vtdlp-site-data.s3.amazonaws.com/${siteName.toLowerCase()}.json`
+        `${siteDetailsBasePath}/${siteName.toLowerCase()}.json`
       );
       data = await response.json();
     } catch (error) {
@@ -37,9 +39,7 @@ class App extends Component {
     }
     if (data === null) {
       try {
-        response = await fetch(
-          "https://vtdlp-site-data.s3.amazonaws.com/default.json"
-        );
+        response = await fetch(`${siteDetailsBasePath}/default.json`);
         data = await response.json();
       } catch (error) {
         console.error("Error fetching default.json");
