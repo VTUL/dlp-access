@@ -13,8 +13,6 @@ import ContactSection from "./shared/ContactSection";
 
 import "./App.css";
 
-const siteDetailsBasePath = "https://vtdlp-site-data.s3.amazonaws.com";
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +28,7 @@ class App extends Component {
 
     try {
       response = await fetch(
-        `${siteDetailsBasePath}/${siteName.toLowerCase()}.json`
+        `${process.env.REACT_APP_CONFIG_PATH}/${siteName.toLowerCase()}.json`
       );
       data = await response.json();
     } catch (error) {
@@ -39,7 +37,9 @@ class App extends Component {
     }
     if (data === null) {
       try {
-        response = await fetch(`${siteDetailsBasePath}/default.json`);
+        response = await fetch(
+          `${process.env.REACT_APP_CONFIG_PATH}/default.json`
+        );
         data = await response.json();
       } catch (error) {
         console.error("Error fetching default.json");
@@ -56,6 +56,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(process.env);
     if (this.state.siteDetails !== null) {
       return (
         <Router>
