@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import TermsPage from "./pages/TermsPage";
@@ -10,7 +11,6 @@ import CollectionsShowLoader from "./pages/collections/CollectionsShowLoader";
 import SearchLoader from "./pages/search/SearchLoader";
 import ArchivePage from "./pages/archives/ArchivePage";
 import ContactSection from "./shared/ContactSection";
-import Footer from "./components/Footer";
 
 import "./App.css";
 
