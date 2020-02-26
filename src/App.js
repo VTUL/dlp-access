@@ -10,6 +10,7 @@ import CollectionsShowLoader from "./pages/collections/CollectionsShowLoader";
 import SearchLoader from "./pages/search/SearchLoader";
 import ArchivePage from "./pages/archives/ArchivePage";
 import ContactSection from "./shared/ContactSection";
+import Footer from "./components/Footer";
 
 import "./App.css";
 
@@ -124,6 +125,7 @@ class App extends Component {
             </div>
             <ContactSection siteDetails={this.state.siteDetails} />
           </main>
+          <Footer />
         </Router>
       );
     } else {
