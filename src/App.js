@@ -28,12 +28,15 @@ class App extends Component {
     let data = null;
 
     try {
+      console.log(
+        `${process.env.REACT_APP_CONFIG_PATH}/${siteName.toLowerCase()}.json`
+      );
       response = await fetch(
         `${process.env.REACT_APP_CONFIG_PATH}/${siteName.toLowerCase()}.json`
       );
       data = await response.json();
     } catch (error) {
-      console.error(`Error fetching ${siteName.toLowerCase()}.json`);
+      console.error(`Error fetching config file`);
       console.error(error);
     }
     if (data === null) {
@@ -57,7 +60,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(process.env);
     if (this.state.siteDetails !== null) {
       return (
         <Router>
