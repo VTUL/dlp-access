@@ -10,46 +10,46 @@ class Footer extends Component {
             < !-- ///////////////////////////////////////////// -->
             */}
         <footer>
-          <div class="vt-footer-row">
-            <div class="vt-footer-info">
-              <div class="vt-embed-map">
+          <div className="vt-footer-row">
+            <div className="vt-footer-info">
+              <div className="vt-embed-map">
                 <img
-                  class="vt-map-image"
+                  className="vt-map-image"
                   src="https://www.assets.cms.vt.edu/images/vt-campuses.svg"
                   longdesc="https://vt.edu/maps.html#locations"
                   alt="Map of Virginia with pins showing locations of Virginia Tech campuses. See All Locations link which follows provides details"
                 />
               </div>
-              <div class="vt-footer-infoWrapper">
-                <div class="vt-footer-logoWrapper">
+              <div className="vt-footer-infoWrapper">
+                <div className="vt-footer-logoWrapper">
                   <img
-                    class="vt-footer-logo"
+                    className="vt-footer-logo"
                     src="https://www.assets.cms.vt.edu/images/logo-white-black.svg"
                     alt="Virginia Tech logo"
                   />
                 </div>
-                <div class="vt-footer-info-linkWrapper">
-                  <p class="vt-footer-directions">
+                <div className="vt-footer-info-linkWrapper">
+                  <p className="vt-footer-directions">
                     <a
-                      class="footer-info-link"
+                      className="footer-info-link"
                       href="https://vt.edu/maps/directions.html"
                     >
                       Get Directions&nbsp;&nbsp;
                       <span
-                        class="fal fa-arrow-right"
+                        className="fal fa-arrow-right"
                         aria-hidden="true"
                         focusable="false"
                       ></span>
                     </a>
                   </p>
-                  <p class="vt-footer-locations">
+                  <p className="vt-footer-locations">
                     <a
-                      class="footer-info-link"
+                      className="footer-info-link"
                       href="https://vt.edu/maps.html#locations"
                     >
                       See All Locations&nbsp;&nbsp;
                       <span
-                        class="fal fa-arrow-right"
+                        className="fal fa-arrow-right"
                         aria-hidden="true"
                         focusable="false"
                       ></span>
@@ -59,28 +59,37 @@ class Footer extends Component {
               </div>
             </div>
 
-            <div class="vt-footer-rowSpacer"></div>
+            <div className="vt-footer-rowSpacer"></div>
 
-            <div class="vt-footer-links">
-              <ul class="vt-footer-linksCol">
+            <div className="vt-footer-links">
+              <ul className="vt-footer-linksCol">
                 <li>
-                  <a class="vt-footer-link" href="https://vt.edu/status.html">
+                  <a
+                    className="vt-footer-link"
+                    href="https://vt.edu/status.html"
+                  >
                     University Status
                   </a>
                 </li>
                 <li>
-                  <a class="vt-footer-link" href="https://vt.edu/contacts.html">
+                  <a
+                    className="vt-footer-link"
+                    href="https://vt.edu/contacts.html"
+                  >
                     Contact Virginia Tech
                   </a>
                 </li>
                 <li>
-                  <a class="vt-footer-link" href="https://vt.edu/privacy.html">
+                  <a
+                    className="vt-footer-link"
+                    href="https://vt.edu/privacy.html"
+                  >
                     Privacy Policy
                   </a>
                 </li>
                 <li>
                   <a
-                    class="vt-footer-link"
+                    className="vt-footer-link"
                     href="https://vt.edu/acceptable-use.html"
                   >
                     Acceptable Use
@@ -88,20 +97,20 @@ class Footer extends Component {
                 </li>
                 <li>
                   <a
-                    class="vt-footer-link vt-remember"
+                    className="vt-footer-link vt-remember"
                     href="https://www.weremember.vt.edu/"
                   >
                     We Remember
                   </a>
                 </li>
                 <li>
-                  <a class="vt-footer-link" href="https://lib.vt.edu">
+                  <a className="vt-footer-link" href="https://lib.vt.edu">
                     University Libraries
                   </a>
                 </li>
                 <li>
                   <a
-                    class="vt-footer-link"
+                    className="vt-footer-link"
                     href="https://vt.edu/accessibility.html"
                   >
                     Accessibility
@@ -109,7 +118,7 @@ class Footer extends Component {
                 </li>
                 <li>
                   <a
-                    class="vt-footer-link"
+                    className="vt-footer-link"
                     href="https://vt.edu/consumer-info.html"
                   >
                     Consumer Information
@@ -117,38 +126,41 @@ class Footer extends Component {
                 </li>
                 <li>
                   <a
-                    class="vt-footer-link"
+                    className="vt-footer-link"
                     href="https://www.stopabuse.vt.edu/"
                   >
                     Stop Abuse
                   </a>
                 </li>
                 <li>
-                  <a class="vt-footer-link" href="http://policies.vt.edu/">
+                  <a className="vt-footer-link" href="http://policies.vt.edu/">
                     Policies
                   </a>
                 </li>
                 <li>
                   <a
-                    class="vt-footer-link"
+                    className="vt-footer-link"
                     href="https://vt.edu/equal-opportunity.html"
                   >
                     Equal Opportunity
                   </a>
                 </li>
                 <li>
-                  <a class="vt-footer-link" href="http://www.wvtf.org/">
+                  <a className="vt-footer-link" href="http://www.wvtf.org/">
                     WVTF
                   </a>
                 </li>
                 <li>
-                  <a class="vt-footer-link" href="https://www.bookstore.vt.edu">
+                  <a
+                    className="vt-footer-link"
+                    href="https://www.bookstore.vt.edu"
+                  >
                     University Bookstore
                   </a>
                 </li>
                 <li>
                   <a
-                    class="vt-footer-link"
+                    className="vt-footer-link"
                     href="https://listings.jobs.vt.edu/"
                   >
                     Jobs at Virginia Tech
@@ -158,15 +170,15 @@ class Footer extends Component {
             </div>
           </div>
 
-          <div class="vt-footer-row vt-footer-bottom">
+          <div className="vt-footer-row vt-footer-bottom">
             <div id="vt_footer_copyright">
-              <p class="vt-copyright">
+              <p className="vt-copyright">
                 &copy;&nbsp;Virginia Polytechnic Institute and State University.
                 All rights reserved.
               </p>
             </div>
 
-            <ul class="follow-virginia-tech-icons">
+            <ul className="follow-virginia-tech-icons">
               <li>
                 <a
                   href="https://facebook.com/virginiatech"
@@ -175,11 +187,11 @@ class Footer extends Component {
                   aria-label="Facebook"
                 >
                   <span
-                    class="fab fa-facebook-square"
+                    className="fab fa-facebook-square"
                     aria-hidden="true"
                     focusable="false"
                   ></span>
-                  <span class="sr-only">Facebook</span>
+                  <span className="sr-only">Facebook</span>
                 </a>
               </li>
 
@@ -191,11 +203,11 @@ class Footer extends Component {
                   aria-label="Twitter"
                 >
                   <span
-                    class="fab fa-twitter"
+                    className="fab fa-twitter"
                     aria-hidden="true"
                     focusable="false"
                   ></span>
-                  <span class="sr-only">Twitter</span>
+                  <span className="sr-only">Twitter</span>
                 </a>
               </li>
 
@@ -207,11 +219,11 @@ class Footer extends Component {
                   aria-label="Instagram"
                 >
                   <span
-                    class="fab fa-instagram"
+                    className="fab fa-instagram"
                     aria-hidden="true"
                     focusable="false"
                   ></span>
-                  <span class="sr-only">Instagram</span>
+                  <span className="sr-only">Instagram</span>
                 </a>
               </li>
 
@@ -223,11 +235,11 @@ class Footer extends Component {
                   aria-label="Linked In"
                 >
                   <span
-                    class="fab fa-linkedin"
+                    className="fab fa-linkedin"
                     aria-hidden="true"
                     focusable="false"
                   ></span>
-                  <span class="sr-only">Linked In</span>
+                  <span className="sr-only">Linked In</span>
                 </a>
               </li>
 
@@ -239,11 +251,11 @@ class Footer extends Component {
                   aria-label="Pintrest"
                 >
                   <span
-                    class="fab fa-pinterest"
+                    className="fab fa-pinterest"
                     aria-hidden="true"
                     focusable="false"
                   ></span>
-                  <span class="sr-only">Pintrest</span>
+                  <span className="sr-only">Pintrest</span>
                 </a>
               </li>
 
@@ -255,11 +267,11 @@ class Footer extends Component {
                   aria-label="Youtube"
                 >
                   <span
-                    class="fab fa-youtube"
+                    className="fab fa-youtube"
                     aria-hidden="true"
                     focusable="false"
                   ></span>
-                  <span class="sr-only">YouTube</span>
+                  <span className="sr-only">YouTube</span>
                 </a>
               </li>
             </ul>
