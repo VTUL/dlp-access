@@ -28,9 +28,6 @@ class App extends Component {
     let data = null;
 
     try {
-      console.log(
-        `${process.env.REACT_APP_CONFIG_PATH}/${siteName.toLowerCase()}.json`
-      );
       response = await fetch(
         `${process.env.REACT_APP_CONFIG_PATH}/${siteName.toLowerCase()}.json`
       );

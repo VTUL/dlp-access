@@ -30,7 +30,7 @@ class FeaturedCarousel extends Component {
 
   next() {
     if (this.animating) return;
-    if (this.props.slides !== null && this.props.slides.length > 0) {
+    if (this.props.slides && this.props.slides.length > 0) {
       const nextIndex =
         this.state.activeIndex === this.props.slides.length - 1
           ? 0
@@ -41,7 +41,7 @@ class FeaturedCarousel extends Component {
 
   previous() {
     if (this.animating) return;
-    if (this.props.slides !== null && this.props.slides.length > 0) {
+    if (this.props.slides && this.props.slides.length > 0) {
       const nextIndex =
         this.state.activeIndex === 0
           ? this.props.slides.length - 1
@@ -57,7 +57,7 @@ class FeaturedCarousel extends Component {
 
   render() {
     const { activeIndex } = this.state;
-    if (this.props.slides !== null && this.props.slides.length > 0) {
+    if (this.props.slides && this.props.slides.length > 0) {
       const slides = this.props.slides.map(item => {
         return (
           <CarouselItem
