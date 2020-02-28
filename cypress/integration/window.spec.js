@@ -17,6 +17,7 @@ context('Window', () => {
 
   it('cy.title() - get the title', () => {
     // https://on.cypress.io/title
-    cy.title().should('include', 'IAWA')
+    cy.wait(2000)
+    cy.title().should('include', 'Home')
   })
 })
