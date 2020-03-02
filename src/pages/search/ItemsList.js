@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { ArchiveListView } from "./ArchiveListView";
-import { CollectionListView } from "./CollectionListView";
+import { ItemListView } from "./ItemListView";
 import { GalleryView } from "./GalleryView";
 import { MasonryView } from "./MasonryView";
 
@@ -35,11 +34,13 @@ class ItemsList extends Component {
                 />
               );
             } else {
-              if (this.props.dataType === "collection") {
-                return <CollectionListView key={item.id} collection={item} />;
-              } else {
-                return <ArchiveListView key={item.id} archive={item} />;
-              }
+              return (
+                <ItemListView
+                  key={item.id}
+                  item={item}
+                  dataType={this.props.dataType}
+                />
+              );
             }
           })}
         </div>

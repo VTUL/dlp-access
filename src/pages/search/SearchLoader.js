@@ -19,7 +19,8 @@ class SearchLoader extends Component {
       totalPages: 1,
       dataType: "archive",
       searchField: "title",
-      view: "List"
+      view: "List",
+      q: ""
     };
   }
 
@@ -85,10 +86,7 @@ class SearchLoader extends Component {
       visibility: { eq: true },
       parent_collection: { exists: false }
     };
-    if (
-      searchQuery.get("search_field") !== null &&
-      searchQuery.get("data_type") !== null
-    ) {
+    if (searchQuery.get("search_field") && searchQuery.get("data_type")) {
       if (searchQuery.get("data_type") === "archive") {
         if (searchQuery.get("q") !== "") {
           archiveFilter = {
@@ -110,7 +108,8 @@ class SearchLoader extends Component {
       }
       this.setState({
         dataType: searchQuery.get("data_type"),
-        searchField: searchQuery.get("search_field")
+        searchField: searchQuery.get("search_field"),
+        q: searchQuery.get("q")
       });
     }
 
@@ -198,6 +197,7 @@ class SearchLoader extends Component {
             totalPages={this.state.totalPages}
             dataType={this.state.dataType}
             searchField={this.state.searchField}
+            q={this.state.q}
             view={this.state.view}
             updateFormState={this.updateFormState}
           />

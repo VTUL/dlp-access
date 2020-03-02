@@ -5,9 +5,9 @@ import qs from "query-string";
 class SearchBar extends Component {
   state = {
     view: this.props.view,
-    dateType: this.props.dataType,
+    dataType: this.props.dataType,
     searchField: this.props.searchField,
-    q: ""
+    q: this.props.q
   };
 
   searchFields = ["title", "creator", "description"];
@@ -25,11 +25,11 @@ class SearchBar extends Component {
   };
 
   updateSearchField = e => {
-    this.props.updateFormState("searchField", e.target.value);
+    this.setState({ searchField: e.target.value });
   };
 
   updateSearchType = e => {
-    this.props.updateFormState("dataType", e.target.value);
+    this.setState({ dataType: e.target.value });
   };
 
   onKeyPress = e => {
@@ -40,8 +40,8 @@ class SearchBar extends Component {
 
   submit = () => {
     const parsedObject = {
-      data_type: this.props.dataType,
-      search_field: this.props.searchField,
+      data_type: this.state.dataType,
+      search_field: this.state.searchField,
       q: this.state.q,
       view: this.props.view
     };
@@ -57,19 +57,30 @@ class SearchBar extends Component {
     }
   };
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.setState({
+        q: this.props.q,
+        searchField: this.props.searchField,
+        dataType: this.props.dataType
+      });
+    }
+  }
+
   render() {
     return (
       <div>
         <div className="input-group">
           <input
             className="form-control"
+            value={this.state.q}
             type="text"
             placeholder="Search by title, creator, or description"
             onChange={this.updateQuery}
             onKeyPress={this.onKeyPress}
           />
           <select
-            defaultValue={this.props.searchField}
+            value={this.state.searchField}
             name="fieldOptions"
             id="field-options"
             onChange={this.updateSearchField}
@@ -88,7 +99,7 @@ class SearchBar extends Component {
                 className="form-check-input"
                 id="radio-archive"
                 value="archive"
-                checked={this.props.dataType === "archive"}
+                checked={this.state.dataType === "archive"}
                 onChange={this.updateSearchType}
               />
               Archives
@@ -101,7 +112,7 @@ class SearchBar extends Component {
                 className="form-check-input"
                 id="radio-collections"
                 value="collection"
-                checked={this.props.dataType === "collection"}
+                checked={this.state.dataType === "collection"}
                 onChange={this.updateSearchType}
               />
               Collections

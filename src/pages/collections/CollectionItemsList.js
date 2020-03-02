@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Thumbnail } from "../../components/Thumbnail";
-import { arkLinkFormatted } from "../../shared/TextFormatTools";
+import { arkLinkFormatted } from "../../shared/MetadataRenderer";
 
 import "../../css/CollectionsShowPage.css";
 

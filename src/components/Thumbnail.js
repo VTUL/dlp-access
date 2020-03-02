@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { arkLinkFormatted } from "../shared/TextFormatTools";
+import { arkLinkFormatted } from "../shared/MetadataRenderer";
 
 export const Thumbnail = ({ item, dataType }) => {
   return (

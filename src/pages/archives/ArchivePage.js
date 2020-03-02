@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import Viewer from "../../components/Viewer";
-import { Table } from "../../components/Table";
 import SearchBar from "../../components/SearchBar";
-import { SetAttrArray } from "../../components/SetAttrArray";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import SiteTitle from "../../components/SiteTitle";
+import { RenderItemsDetailed } from "../../shared/MetadataRenderer";
 
 const GetArchive = `query searchArchive($customKey: String) {
   searchArchives(filter: {
@@ -135,9 +134,16 @@ class ArchivePage extends Component {
                 </div>
               </div>
               <p>{item.description}</p>
-              <div className="row">
-                <div id="metadata_table" className="col-sm-12">
-                  <Table rows={SetAttrArray(keyArray, item)} />
+              <div className="details-section">
+                <div className="details-section-header">
+                  <h2>Archive Details</h2>
+                </div>
+                <div className="details-section-content">
+                  <table>
+                    <tbody>
+                      <RenderItemsDetailed keyArray={keyArray} item={item} />
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
