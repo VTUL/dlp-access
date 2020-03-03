@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FeaturedCarousel from "./home/FeaturedCarousel";
+import HomeStatement from "./home/HomeStatement";
 import SiteTitle from "../components/SiteTitle";
 
 import "./HomePage.css";
@@ -7,8 +8,10 @@ import "./HomePage.css";
 class HomePage extends Component {
   render() {
     let slides = null;
+    let statement = null;
     try {
       slides = this.props.siteDetails.homePage.carousel;
+      statement = this.props.siteDetails.homePage.statement;
     } catch (error) {
       console.error("Error setting config property");
     }
@@ -20,12 +23,7 @@ class HomePage extends Component {
         />
         <div className="container">
           <FeaturedCarousel slides={slides} />
-          <div className="row home-content home-statement">
-            A visual exhibit of selected items from the International Archive of
-            Women in Architecture, a joint partnership between the College of
-            Architecture and Urban Studies and the University Libraries at
-            Virginia Tech
-          </div>
+          <HomeStatement statement={statement} />
         </div>
       </>
     );
