@@ -111,6 +111,11 @@ class ArchivePage extends Component {
             showAddFromURLBox: false
           };
 
+          // log archive identifier in ga
+          window.ga("send", "pageview", {
+            dimension1: item.identifier
+          });
+
           return (
             <div>
               <SiteTitle

@@ -92,6 +92,12 @@ class CollectionsShowLoader extends Component {
             return <h3>Error</h3>;
           if (loading || !searchCollections) return <h3>Loading...</h3>;
           const collection = searchCollections.items[0];
+
+          // log collection identifier in ga
+          window.ga("send", "pageview", {
+            dimension2: collection.identifier
+          });
+
           return (
             <>
               <SiteTitle
