@@ -11,7 +11,7 @@ class CollectionItemsList extends Component {
     if (this.props.items.length) {
       retVal = (
         <div className="collection-items-list">
-          <table>
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th>&nbsp;</th>

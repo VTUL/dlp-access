@@ -152,7 +152,7 @@ class CollectionsShowPage extends Component {
                 {this.props.collection.identifier != null ? (
                   <tr>
                     <td className="collection-detail-key">Identifier</td>
-                    <td className="collection-detail-value">
+                    <td className="collection-detail-value identifier">
                       {this.props.collection.identifier}
                     </td>
                   </tr>

@@ -45,6 +45,10 @@ div.details-section-content table tr .collection-detail-value {
   text-align: left;
   vertical-align: middle;
 }
+div.details-section-content table tr td.collection-detail-value.identifier {
+  -ms-word-break: break-all;
+  word-break: break-all;
+}
 div.details-section-content table tr {
   border-bottom: 1px solid var(--light-gray);
 }
@@ -52,22 +56,29 @@ div.details-section-content table tr {
 div.collection-items-list-wrapper {
   margin-top: 50px;
 }
-
-div.collection-items-list table tbody tr:nth-child(odd) {
-  background-color: var(--light-gray);
-}
-
 div.collection-items-list table tbody tr td.item-image img {
   width: 100px;
 }
-div.collection-items-list table thead tr th,
-div.collection-items-list table tbody tr td.item-info {
-  padding: 0 15px;
+div.collection-items-list table tbody tr td.item-image {
+  padding-right: 0;
+  padding-left: 0.25rem;
 }
 div.collection-items-list table tbody tr td.item-info div.item-link-wrapper {
   font-weight: 700;
 }
+
 div.collection-items-list table tbody tr td.item-info a,
 div.collection-items-list table tbody tr td.item-info a:visited {
   color: var(--link-blue);
+}
+
+div.collection-items-list
+  table
+  tbody
+  tr
+  td.item-info
+  div.collection-link-wrapper
+  a {
+  -ms-word-break: break-all;
+  word-break: break-all;
 }
