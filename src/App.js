@@ -10,7 +10,7 @@ import CollectionsShowLoader from "./pages/collections/CollectionsShowLoader";
 
 import SearchLoader from "./pages/search/SearchLoader";
 import ArchivePage from "./pages/archives/ArchivePage";
-import ContactSection from "./shared/ContactSection";
+import ContactSection from "./components/ContactSection";
 
 import "./App.css";
 
