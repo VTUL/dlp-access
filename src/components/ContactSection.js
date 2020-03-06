@@ -15,8 +15,8 @@ class ContactSection extends Component {
               <h3 className="contact-iawa">
                 CONTACT {this.props.siteDetails.siteTitle}
               </h3>
-              {this.props.siteDetails.contact.map(contact => (
-                <div className="navbar-text">
+              {this.props.siteDetails.contact.map((contact, index) => (
+                <div className="navbar-text" key={index}>
                   <p>
                     {contact.title} [
                     <a href={`mailto:${contact.email}`}>{contact.email}</a>],{" "}
