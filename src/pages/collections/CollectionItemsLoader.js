@@ -125,6 +125,8 @@ class CollectionItemsLoader extends Component {
             previousPage={this.previousPage.bind(this)}
             nextPage={this.nextPage.bind(this)}
             totalPages={this.state.totalPages}
+            isSearch={false}
+            atBottom={true}
           />
         </div>
       );
