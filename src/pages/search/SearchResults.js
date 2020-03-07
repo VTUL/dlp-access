@@ -42,6 +42,8 @@ class SearchResults extends Component {
                 <td className="collection-detail-key">
                   {labelAttr(this.props.searchField)}
                 </td>
+              </tr>
+              <tr>
                 <td className="collection-detail-value">
                   {this.props.q} ({this.props.total})
                   <NavLink to={`/search/?${qs.stringify(defaultSearch)}`}>
