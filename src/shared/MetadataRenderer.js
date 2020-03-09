@@ -47,7 +47,15 @@ export function collectionSize(collection) {
 }
 
 function listValue(dataType, attr, value) {
-  if (attr === "creator") {
+  const LinkedFields = [
+    "creator",
+    "belongs_to",
+    "language",
+    "medium",
+    "resource_type",
+    "tags"
+  ];
+  if (LinkedFields.indexOf(attr) > -1) {
     const parsedObject = {
       data_type: dataType,
       search_field: attr,

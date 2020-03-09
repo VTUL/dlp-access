@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import qs from "query-string";
+import { labelAttr } from "../shared/MetadataRenderer";
 
 class SearchBar extends Component {
   state = {
@@ -10,12 +11,21 @@ class SearchBar extends Component {
     q: this.props.q
   };
 
-  searchFields = ["title", "creator", "description"];
+  searchFields = [
+    "title",
+    "creator",
+    "description",
+    "belongs_to",
+    "language",
+    "medium",
+    "resource_type",
+    "tags"
+  ];
 
   fieldOptions = () => {
     return this.searchFields.map(field => (
       <option value={field} key={field}>
-        {field}
+        {labelAttr(field)}
       </option>
     ));
   };

@@ -44,7 +44,7 @@ const GetArchive = `query searchArchive($customKey: String) {
 }
 `;
 
-const keyArray = [
+const KeyArray = [
   "identifier",
   "belongs_to",
   "bibliographic_citation",
@@ -141,7 +141,7 @@ class ArchivePage extends Component {
                 <div className="details-section-content">
                   <table>
                     <tbody>
-                      <RenderItemsDetailed keyArray={keyArray} item={item} />
+                      <RenderItemsDetailed keyArray={KeyArray} item={item} />
                     </tbody>
                   </table>
                 </div>

@@ -25,7 +25,7 @@ class CollectionsShowPage extends Component {
   }
 
   render() {
-    const keyArray = [
+    const KeyArray = [
       "size",
       "creator",
       "rights_statement",
@@ -71,7 +71,7 @@ class CollectionsShowPage extends Component {
             <table>
               <tbody>
                 <RenderItemsDetailed
-                  keyArray={keyArray}
+                  keyArray={KeyArray}
                   item={this.props.collection}
                 />
               </tbody>
