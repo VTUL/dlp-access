@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ItemListView } from "../search/ItemListView";
-import ResultsNumberDropdown from "../../shared/ResultsNumberDropdown";
-import Pagination from "../../shared/Pagination";
+import ResultsNumberDropdown from "../../components/ResultsNumberDropdown";
+import Pagination from "../../components/Pagination";
 import "../../css/ListPages.css";
 
 class CollectionsListPage extends Component {

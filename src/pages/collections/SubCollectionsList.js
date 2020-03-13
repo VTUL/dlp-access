@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
 import "../../css/CollectionsShowPage.css";
-import { arkLinkFormatted } from "../../shared/MetadataRenderer";
+import { arkLinkFormatted } from "../../lib/MetadataRenderer";
 
 class SubCollectionsList extends Component {
   subCollectionsContent(items) {

@@ -3,8 +3,10 @@ import "../../css/CollectionsShowPage.css";
 import SubCollectionsList from "./SubCollectionsList.js";
 import CollectionItemsLoader from "./CollectionItemsLoader.js";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
-import { collectionSize } from "../../shared/MetadataRenderer";
-import { RenderItemsDetailed } from "../../shared/MetadataRenderer";
+import {
+  RenderItemsDetailed,
+  collectionSize
+} from "../../lib/MetadataRenderer";
 
 class CollectionsShowPage extends Component {
   creatorDates(props) {

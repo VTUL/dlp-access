@@ -1,6 +1,5 @@
 import React from "react";
-import { titleFormatted } from "../../shared/MetadataRenderer";
-import { RenderItems } from "../../shared/MetadataRenderer";
+import { RenderItems, titleFormatted } from "../../lib/MetadataRenderer";
 import { Thumbnail } from "../../components/Thumbnail";
 import "../../css/SearchResult.css";
 

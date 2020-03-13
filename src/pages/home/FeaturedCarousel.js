@@ -7,7 +7,7 @@ import {
   CarouselCaption
 } from "reactstrap";
 
-import "./FeaturedCarousel.css";
+import "../../css/FeaturedCarousel.css";
 
 class FeaturedCarousel extends Component {
   constructor(props) {

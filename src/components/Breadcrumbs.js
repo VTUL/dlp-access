@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../graphql/queries";
-import { arkLinkFormatted } from "../shared/MetadataRenderer";
+import { arkLinkFormatted } from "../lib/MetadataRenderer";
 
 import "../css/breadcrumbs.css";
 

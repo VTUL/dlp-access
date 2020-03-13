@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { arkLinkFormatted } from "../../shared/MetadataRenderer";
+import { arkLinkFormatted } from "../../lib/MetadataRenderer";
 import { Thumbnail } from "../../components/Thumbnail";
 import "../../css/SearchResult.css";
 

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import qs from "query-string";
-import ResultsNumberDropdown from "../../shared/ResultsNumberDropdown";
-import Pagination from "../../shared/Pagination";
+import ResultsNumberDropdown from "../../components/ResultsNumberDropdown";
+import Pagination from "../../components/Pagination";
 import SearchBar from "../../components/SearchBar";
 import ViewBar from "../../components/ViewBar";
 import ItemsList from "./ItemsList";
-import { labelAttr } from "../../shared/MetadataRenderer";
+import { labelAttr } from "../../lib/MetadataRenderer";
 
 import "../../css/ListPages.css";
 

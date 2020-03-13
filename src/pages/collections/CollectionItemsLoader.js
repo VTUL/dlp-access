@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 
-import ResultsNumberDropdown from "../../shared/ResultsNumberDropdown";
+import ResultsNumberDropdown from "../../components/ResultsNumberDropdown";
 import CollectionItemsList from "./CollectionItemsList.js";
-import Pagination from "../../shared/Pagination";
+import Pagination from "../../components/Pagination";
 
 const GetCollectionItems = `query SearchCollectionItems(
     $parent_id: String!

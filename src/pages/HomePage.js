@@ -3,7 +3,7 @@ import FeaturedCarousel from "./home/FeaturedCarousel";
 import HomeStatement from "./home/HomeStatement";
 import SiteTitle from "../components/SiteTitle";
 
-import "./HomePage.css";
+import "../css/HomePage.css";
 
 class HomePage extends Component {
   render() {

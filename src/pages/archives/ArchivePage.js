@@ -5,7 +5,7 @@ import Viewer from "../../components/Viewer";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import SiteTitle from "../../components/SiteTitle";
-import { RenderItemsDetailed } from "../../shared/MetadataRenderer";
+import { RenderItemsDetailed } from "../../lib/MetadataRenderer";
 
 const GetArchive = `query searchArchive($customKey: String) {
   searchArchives(filter: {
