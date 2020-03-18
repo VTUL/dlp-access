@@ -20,7 +20,8 @@ class SearchLoader extends Component {
       dataType: "archive",
       searchField: "title",
       view: "List",
-      q: ""
+      q: "",
+      dateRange: "1920 - 1939"
     };
   }
 
@@ -86,25 +87,31 @@ class SearchLoader extends Component {
       visibility: { eq: true },
       parent_collection: { exists: false }
     };
+    let searchPhrase = {};
     if (searchQuery.get("search_field") && searchQuery.get("data_type")) {
+      if (searchQuery.get("search_field") === "date") {
+        let dates = searchQuery.get("date_range").split(" - ");
+        searchPhrase = {
+          start_date: { gte: `${dates[0]}/01/01`, lte: `${dates[1]}/12/31` }
+        };
+        this.setState({
+          dateRange: searchQuery.get("date_range")
+        });
+      } else if (searchQuery.get("q") !== "") {
+        searchPhrase = {
+          [searchQuery.get("search_field")]: {
+            matchPhrase: searchQuery.get("q")
+          }
+        };
+        this.setState({
+          q: searchQuery.get("q")
+        });
+      }
       if (searchQuery.get("data_type") === "archive") {
-        if (searchQuery.get("q") !== "") {
-          archiveFilter = {
-            ...archiveFilter,
-            [searchQuery.get("search_field")]: {
-              matchPhrase: searchQuery.get("q")
-            }
-          };
-        }
+        archiveFilter = { ...archiveFilter, ...searchPhrase };
+        console.log("search query", archiveFilter);
       } else if (searchQuery.get("data_type") === "collection") {
-        if (searchQuery.get("q") !== "") {
-          collectionFilter = {
-            ...collectionFilter,
-            [searchQuery.get("search_field")]: {
-              matchPhrase: searchQuery.get("q")
-            }
-          };
-        }
+        collectionFilter = { ...collectionFilter, ...searchPhrase };
       }
       this.setState({
         dataType: searchQuery.get("data_type"),
@@ -198,6 +205,7 @@ class SearchLoader extends Component {
             dataType={this.state.dataType}
             searchField={this.state.searchField}
             q={this.state.q}
+            dateRange={this.state.dateRange}
             view={this.state.view}
             updateFormState={this.updateFormState}
           />

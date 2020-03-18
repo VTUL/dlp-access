@@ -8,7 +8,8 @@ class SearchBar extends Component {
     view: this.props.view,
     dataType: this.props.dataType,
     searchField: this.props.searchField,
-    q: this.props.q
+    q: this.props.q,
+    dateRange: this.props.dateRange
   };
 
   searchFields = [
@@ -19,7 +20,16 @@ class SearchBar extends Component {
     "language",
     "medium",
     "resource_type",
-    "tags"
+    "tags",
+    "date"
+  ];
+
+  dateRanges = [
+    ["1920", "1939"],
+    ["1940", "1959"],
+    ["1960", "1979"],
+    ["1980", "1999"],
+    ["2000", "2019"]
   ];
 
   fieldOptions = () => {
@@ -30,16 +40,37 @@ class SearchBar extends Component {
     ));
   };
 
+  date = dateRange => {
+    return `${dateRange[0]} - ${dateRange[1]}`;
+  };
+
+  dateRangeOptions = () => {
+    return this.dateRanges.map(dateRange => (
+      <option value={this.date(dateRange)} key={this.date(dateRange)}>
+        {this.date(dateRange)}
+      </option>
+    ));
+  };
+
   updateQuery = e => {
     this.setState({ q: e.target.value });
   };
 
   updateSearchField = e => {
+    if (e.target.value === "date") {
+      this.setState({ searchByDate: true });
+    } else {
+      this.setState({ searchByDate: false });
+    }
     this.setState({ searchField: e.target.value });
   };
 
   updateSearchType = e => {
     this.setState({ dataType: e.target.value });
+  };
+
+  updateDateRange = e => {
+    this.setState({ dateRange: e.target.value });
   };
 
   onKeyPress = e => {
@@ -53,6 +84,7 @@ class SearchBar extends Component {
       data_type: this.state.dataType,
       search_field: this.state.searchField,
       q: this.state.q,
+      date_range: this.state.dateRange,
       view: this.props.view
     };
     try {
@@ -78,17 +110,35 @@ class SearchBar extends Component {
   }
 
   render() {
+    const SearchBox = () => {
+      return (
+        <input
+          className="form-control"
+          value={this.state.q}
+          type="text"
+          placeholder="Search by title, creator, or description"
+          onChange={this.updateQuery}
+          onKeyPress={this.onKeyPress}
+        />
+      );
+    };
+    const DateDropDown = () => {
+      return (
+        <select
+          className="form-control"
+          value={this.state.dateRange}
+          name="dateRangeOptions"
+          id="date-range-options"
+          onChange={this.updateDateRange}
+        >
+          {this.dateRangeOptions()}
+        </select>
+      );
+    };
     return (
       <div>
         <div className="input-group">
-          <input
-            className="form-control"
-            value={this.state.q}
-            type="text"
-            placeholder="Search by title, creator, or description"
-            onChange={this.updateQuery}
-            onKeyPress={this.onKeyPress}
-          />
+          {this.state.searchField === "date" ? <DateDropDown /> : <SearchBox />}
           <select
             value={this.state.searchField}
             name="fieldOptions"
