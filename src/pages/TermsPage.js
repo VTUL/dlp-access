@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SiteTitle from "../components/SiteTitle";
-import { fetchCopyHTML } from "../lib/fetch_tools";
+import { getHTML } from "../lib/fetch_tools";
 
 class TermsPage extends Component {
   constructor(props) {
@@ -11,20 +11,7 @@ class TermsPage extends Component {
   }
 
   componentDidMount() {
-    let termsCopy = null;
-    try {
-      if (this.props.siteDetails.termsCopy.type === "string") {
-        termsCopy = this.props.siteDetails.termsCopy.value;
-      } else if (this.props.siteDetails.termsCopy.type === "file") {
-        const copyLink = `${process.env.REACT_APP_CONFIG_PATH}/${this.props.siteDetails.termsCopy.value}`;
-        fetchCopyHTML(copyLink, this);
-      }
-    } catch (error) {
-      console.error("Error fetching copy for TermsPage component");
-    }
-    if (termsCopy !== null) {
-      this.setState({ copy: termsCopy });
-    }
+    getHTML(this.props.siteDetails.termsCopy, this);
   }
 
   render() {

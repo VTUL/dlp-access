@@ -1,4 +1,21 @@
-export const fetchCopyHTML = async (htmlLink, component) => {
+export function getHTML(copyObj, component) {
+  let copy = null;
+  try {
+    if (copyObj.type === "string") {
+      copy = copyObj.value;
+    } else if (copyObj.type === "file") {
+      const copyLink = `${process.env.REACT_APP_CONFIG_PATH}/${copyObj.value}`;
+      fetchCopyHTML(copyLink, component);
+    }
+  } catch (error) {
+    console.error("Error setting copy for component");
+  }
+  if (copy !== null) {
+    component.setState({ copy: copy });
+  }
+}
+
+const fetchCopyHTML = async (htmlLink, component) => {
   let response = null;
   let data = null;
 
