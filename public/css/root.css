@@ -11542,7 +11542,7 @@ figure {
   display: block;
   position: relative;
   margin: 0 10px 0 0;
-  width: 200px;
+  width: 100%;
   max-width: 100%;
 }
 
@@ -11861,7 +11861,7 @@ figure {
 
 @media screen and (min-width: 768px) {
   #vt_offcanvas_nav {
-    top: 121px;
+    top: 80px;
   }
 }
 
