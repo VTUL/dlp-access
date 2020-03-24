@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ItemListView } from "./ItemListView";
+import ItemListView from "./ItemListView";
 import { GalleryView } from "./GalleryView";
 import { MasonryView } from "./MasonryView";
 

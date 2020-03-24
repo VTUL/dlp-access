@@ -46,7 +46,7 @@ export function collectionSize(collection) {
   return subCollections + archives;
 }
 
-function listValue(dataType, attr, value) {
+function listValue(dataType, attr, value, languages) {
   const LinkedFields = [
     "creator",
     "belongs_to",
@@ -55,6 +55,9 @@ function listValue(dataType, attr, value) {
     "resource_type",
     "tags"
   ];
+  if (attr === "language" && languages !== undefined) {
+    value = languages[value];
+  }
   if (LinkedFields.indexOf(attr) > -1) {
     const parsedObject = {
       data_type: dataType,
@@ -72,7 +75,7 @@ function listValue(dataType, attr, value) {
   }
 }
 
-function textFormat(item, attr) {
+function textFormat(item, attr, languages) {
   if (item[attr] === null) return null;
   let dataType = "archive";
   if (item.collection_category) dataType = "collection";
@@ -81,7 +84,7 @@ function textFormat(item, attr) {
       <div>
         {item[attr].map((value, i) => (
           <li className="list-unstyled" key={i}>
-            {listValue(dataType, attr, value)}
+            {listValue(dataType, attr, value, languages)}
           </li>
         ))}
       </div>
@@ -124,8 +127,8 @@ const MoreLink = ({ dataType, item }) => {
   );
 };
 
-const RenderAttribute = ({ item, attribute }) => {
-  if (textFormat(item, attribute)) {
+const RenderAttribute = ({ item, attribute, languages }) => {
+  if (textFormat(item, attribute, languages)) {
     let value_style = attribute === "identifier" ? "identifier" : "";
     return (
       <div className="collection-detail">
@@ -134,7 +137,7 @@ const RenderAttribute = ({ item, attribute }) => {
             <tr>
               <td className="collection-detail-key">{labelAttr(attribute)}:</td>
               <td className={`collection-detail-value ${value_style}`}>
-                {textFormat(item, attribute)}
+                {textFormat(item, attribute, languages)}
               </td>
             </tr>
           </tbody>
@@ -146,14 +149,14 @@ const RenderAttribute = ({ item, attribute }) => {
   }
 };
 
-const RenderAttrDetailed = ({ item, attribute }) => {
-  if (textFormat(item, attribute)) {
+const RenderAttrDetailed = ({ item, attribute, languages }) => {
+  if (textFormat(item, attribute, languages)) {
     let value_style = attribute === "identifier" ? "identifier" : "";
     return (
       <tr>
         <td className="collection-detail-key">{labelAttr(attribute)}</td>
         <td className={`collection-detail-value ${value_style}`}>
-          {textFormat(item, attribute)}
+          {textFormat(item, attribute, languages)}
         </td>
       </tr>
     );
@@ -161,21 +164,31 @@ const RenderAttrDetailed = ({ item, attribute }) => {
     return <></>;
   }
 };
-export const RenderItems = ({ keyArray, item }) => {
+export const RenderItems = ({ keyArray, item, languages }) => {
   let render_items = [];
   for (const [index, value] of keyArray.entries()) {
     render_items.push(
-      <RenderAttribute item={item} attribute={value} key={index} />
+      <RenderAttribute
+        item={item}
+        attribute={value}
+        key={index}
+        languages={languages}
+      />
     );
   }
   return render_items;
 };
 
-export const RenderItemsDetailed = ({ keyArray, item }) => {
+export const RenderItemsDetailed = ({ keyArray, item, languages }) => {
   let render_items_detailed = [];
   for (const [index, value] of keyArray.entries()) {
     render_items_detailed.push(
-      <RenderAttrDetailed item={item} attribute={value} key={index} />
+      <RenderAttrDetailed
+        item={item}
+        attribute={value}
+        key={index}
+        languages={languages}
+      />
     );
   }
   return render_items_detailed;

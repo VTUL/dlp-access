@@ -32,3 +32,26 @@ const fetchCopyHTML = async (htmlLink, component) => {
     component.setState({ copy: data });
   }
 };
+
+export const fetchLanguages = async (component, key, callback) => {
+  if (component.state.languages === null) {
+    let response = null;
+    let data = null;
+
+    try {
+      const htmlLink = `${process.env.REACT_APP_CONFIG_PATH}/language_codes_by_${key}.json`;
+      response = await fetch(htmlLink);
+      data = await response.json();
+    } catch (error) {
+      console.error(`Error fetching languages`);
+      console.error(error);
+    }
+    if (data !== null) {
+      component.setState({ languages: data }, function() {
+        if (typeof component.loadItems === "function") {
+          component.loadItems();
+        }
+      });
+    }
+  }
+};

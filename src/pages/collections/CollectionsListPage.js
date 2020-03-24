@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ItemListView } from "../search/ItemListView";
+import ItemListView from "../search/ItemListView";
 import ResultsNumberDropdown from "../../components/ResultsNumberDropdown";
 import Pagination from "../../components/Pagination";
 import "../../css/ListPages.css";

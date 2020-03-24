@@ -7,8 +7,16 @@ import {
   RenderItemsDetailed,
   collectionSize
 } from "../../lib/MetadataRenderer";
+import { fetchLanguages } from "../../lib/fetch_tools";
 
 class CollectionsShowPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      languages: null
+    };
+  }
+
   creatorDates(props) {
     let collection = props.collection;
     if (collection.creator) {
@@ -26,6 +34,10 @@ class CollectionsShowPage extends Component {
     return "";
   }
 
+  componentDidMount() {
+    fetchLanguages(this, "abbr");
+  }
+
   render() {
     const KeyArray = [
       "size",
@@ -39,51 +51,56 @@ class CollectionsShowPage extends Component {
       "rights_holder",
       "related_url"
     ];
-    return (
-      <div>
-        <div className="breadcrumbs-wrapper">
-          <Breadcrumbs
-            dataType={"Collections"}
-            record={this.props.collection}
+    if (this.state.languages) {
+      return (
+        <div>
+          <div className="breadcrumbs-wrapper">
+            <Breadcrumbs
+              dataType={"Collections"}
+              record={this.props.collection}
+            />
+          </div>
+
+          <h1 className="collection-title">{this.props.collection.title}</h1>
+          <div className="post-heading">
+            <span className="item-count">
+              {this.handleZeroItems(collectionSize(this.props.collection))}
+            </span>
+
+            <this.creatorDates collection={this.props.collection} />
+
+            <span className="last-updated">
+              Last updated: {this.props.collection.modified_date}
+            </span>
+          </div>
+          <div className="description">{this.props.collection.description}</div>
+          <SubCollectionsList
+            subCollections={this.props.collection.subCollections}
           />
-        </div>
 
-        <h1 className="collection-title">{this.props.collection.title}</h1>
-        <div className="post-heading">
-          <span className="item-count">
-            {this.handleZeroItems(collectionSize(this.props.collection))}
-          </span>
-
-          <this.creatorDates collection={this.props.collection} />
-
-          <span className="last-updated">
-            Last updated: {this.props.collection.modified_date}
-          </span>
-        </div>
-        <div className="description">{this.props.collection.description}</div>
-        <SubCollectionsList
-          subCollections={this.props.collection.subCollections}
-        />
-
-        <div className="details-section">
-          <div className="details-section-header">
-            <h2>Collection Details</h2>
+          <div className="details-section">
+            <div className="details-section-header">
+              <h2>Collection Details</h2>
+            </div>
+            <div className="details-section-content">
+              <table>
+                <tbody>
+                  <RenderItemsDetailed
+                    keyArray={KeyArray}
+                    item={this.props.collection}
+                    languages={this.state.languages}
+                  />
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className="details-section-content">
-            <table>
-              <tbody>
-                <RenderItemsDetailed
-                  keyArray={KeyArray}
-                  item={this.props.collection}
-                />
-              </tbody>
-            </table>
-          </div>
-        </div>
 
-        <CollectionItemsLoader collection={this.props.collection} />
-      </div>
-    );
+          <CollectionItemsLoader collection={this.props.collection} />
+        </div>
+      );
+    } else {
+      return <></>;
+    }
   }
 }
 

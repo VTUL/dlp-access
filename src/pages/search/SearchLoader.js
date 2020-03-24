@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../../graphql/queries";
 import SiteTitle from "../../components/SiteTitle";
+import { fetchLanguages } from "../../lib/fetch_tools";
 
 import SearchResults from "./SearchResults";
 
@@ -21,8 +22,10 @@ class SearchLoader extends Component {
       searchField: "title",
       view: "List",
       q: "",
-      dateRange: "1920 - 1939"
+      dateRange: "1920 - 1939",
+      languages: null
     };
+    fetchLanguages(this, "name");
   }
 
   updateFormState = (name, val) => {
@@ -97,7 +100,34 @@ class SearchLoader extends Component {
         this.setState({
           dateRange: searchQuery.get("date_range")
         });
-      } else if (searchQuery.get("q") !== "") {
+      } else if (
+        searchQuery.get("search_field") === "language" &&
+        searchQuery.get("q") !== "" &&
+        this.state.languages
+      ) {
+        let languagePhrase = searchQuery.get("q");
+        if (
+          this.state.languages.hasOwnProperty(
+            searchQuery.get("q").toLowerCase()
+          )
+        ) {
+          languagePhrase = this.state.languages[
+            searchQuery.get("q").toLowerCase()
+          ];
+        }
+
+        searchPhrase = {
+          [searchQuery.get("search_field")]: {
+            matchPhrase: languagePhrase
+          }
+        };
+        this.setState({
+          q: languagePhrase
+        });
+      } else if (
+        searchQuery.get("search_field") !== "language" &&
+        searchQuery.get("q") !== ""
+      ) {
         searchPhrase = {
           [searchQuery.get("search_field")]: {
             matchPhrase: searchQuery.get("q")
@@ -181,6 +211,7 @@ class SearchLoader extends Component {
   }
 
   componentDidMount() {
+    fetchLanguages(this, "name", this.loadItems);
     this.loadItems();
   }
 
