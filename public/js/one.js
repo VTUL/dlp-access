@@ -87,7 +87,7 @@ function accessToggle() {
 		$("#vt_access_dialog").attr("aria-hidden", "false");
 		$(".vt-access-toggle, .vt-access-dialog-label, .vt-actions-header, .vt-one-headerRow, .vt-page-path, main, footer").attr("aria-hidden", "true");
 		$("html").addClass("vt-bodyNoScroll");
-		disableBodyScroll(true, '#vt_access_dialog');
+		// disableBodyScroll(true, '#vt_access_dialog');
 		$("#vt_access_dialog").css("-webkit-overflow-scrolling", "touch");
 		$("#vt_access_dialog a, #vt_access_dialog button").removeAttr("tabindex");
 		$(".vt-access-dialog-close").focus();
@@ -102,7 +102,7 @@ function accessToggle() {
 		$("html").removeClass("vt-bodyNoScroll");
 		$("#vt_offcanvas_nav").css("-webkit-overflow-scrolling", "auto");
 		$(".vt-access-toggle").focus();
-		disableBodyScroll(false);
+		// disableBodyScroll(false);
 		// if(accessProps.navWasOpen > 0) {
 		// 	navToggle();
 		// 	accessProps.navWasOpen = 0;
@@ -211,7 +211,7 @@ function navToggle() {
 		$("#vt_offcanvas_nav").show();
 		navInputs = $("#vt_offcanvas_nav.open").find('a, button').filter(':visible');
 		$("#vt_offcanvas_nav, #vt_offcanvas_nav a:not('.vt-option-link'), #vt_offcanvas_nav button").removeAttr("tabindex");
-		disableBodyScroll(true, '#vt_offcanvas_nav');
+		// disableBodyScroll(true, '#vt_offcanvas_nav');
 		$("#vt_offcanvas_nav").css("-webkit-overflow-scrolling", "touch");
 		$(".vt-nav-toggle").focus();
 		$(".vt-page-path").append('<section class="vt-pageContext-modal" aria-label="Disabled Main Content"><button class="vt-modal-close" aria-controls="menuDrawer searchDrawer" onclick="javascript:modalToggle();">Close Menu or Search drawer to access content</button></section>');
@@ -234,7 +234,7 @@ function navToggle() {
 	  });
 		$(".vt-body-modal, .vt-footer-modal, .vt-pageContext-modal").remove();
 		$(".has-submenu .link-wrapper").removeClass("active");
-		disableBodyScroll(false);
+		// disableBodyScroll(false);
 		$("#vt_offcanvas_nav").css("-webkit-overflow-scrolling", "auto");
 		$(".vt-nav-toggle").focus();
 	}
