@@ -8,7 +8,7 @@ export function labelAttr(attr) {
   if (attr === "resource_type") return "Type";
   else if (attr === "rights_statement") return "Rights";
   else if (attr === "custom_key") return "Permanent Link";
-  else if (attr === "related_url") return "Related URL";
+  else if (attr === "related_url") return "Relation";
   else return (attr.charAt(0).toUpperCase() + attr.slice(1)).replace("_", " ");
 }
 
@@ -73,6 +73,7 @@ function listValue(dataType, attr, value) {
 }
 
 function textFormat(item, attr) {
+  if (item[attr] === null) return null;
   let dataType = "archive";
   if (item.collection_category) dataType = "collection";
   if (Array.isArray(item[attr])) {
@@ -91,6 +92,8 @@ function textFormat(item, attr) {
         {item[attr]}
       </NavLink>
     );
+  } else if (attr === "rights_statement") {
+    return htmlParsedValue(item[attr]);
   } else if (attr === "custom_key") {
     return htmlParsedValue(
       `<a href="http://idn.lib.vt.edu/${item.custom_key}">idn.lib.vt.edu/${item.custom_key}</a>`

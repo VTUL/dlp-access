@@ -12,10 +12,10 @@ type Collection @model {
     end_date: String
     subject: [String!]
     location: [String!]
-    rights_statement: String!
+    rights_statement: String
     language: [String!]
-    bibliographic_citation: String!
-    rights_holder: String!
+    bibliographic_citation: String
+    rights_holder: String
     custom_key: String
     collection_category: String!
     visibility: Boolean!
@@ -39,14 +39,14 @@ type Archive @model {
     circa: String
     start_date: String
     end_date: String
-    rights_statement: String!
+    rights_statement: String
     language: [String!]
     resource_type: [String!]
     belongs_to: [String!]
     location: [String!]
     medium: [String!]
-    bibliographic_citation: String!
-    rights_holder: String!
+    bibliographic_citation: String
+    rights_holder: String
     format: [String!]
     related_url: [String!]
     contributor: [String!]
