@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import qs from "query-string";
 import { labelAttr } from "../lib/MetadataRenderer";
 
+import "../css/searchBar.css";
+
 class SearchBar extends Component {
   state = {
     view: this.props.view,
@@ -139,23 +141,25 @@ class SearchBar extends Component {
   render() {
     return (
       <div>
-        <div className="input-group">
-          {this.state.searchField === "date"
-            ? this.dateDropDown()
-            : this.searchBox()}
-          <select
-            value={this.state.searchField}
-            name="fieldOptions"
-            id="field-options"
-            onChange={this.updateSearchField}
-          >
-            {this.fieldOptions()}
-          </select>
-          <button className="btn btn-primary" onClick={this.submit}>
-            GO
-          </button>
+        <div className="searchbar-wrapper">
+          <div className="input-group">
+            {this.state.searchField === "date"
+              ? this.dateDropDown()
+              : this.searchBox()}
+            <select
+              value={this.state.searchField}
+              name="fieldOptions"
+              id="field-options"
+              onChange={this.updateSearchField}
+            >
+              {this.fieldOptions()}
+            </select>
+            <button className="btn" type="submit" onClick={this.submit}>
+              Search
+            </button>
+          </div>
         </div>
-        <div>
+        <div className="search-options-wrapper">
           <div className="form-check-inline">
             <label className="form-check-label" htmlFor="radio-archive">
               <input

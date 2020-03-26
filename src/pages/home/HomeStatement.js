@@ -5,7 +5,7 @@ class HomeStatement extends Component {
     if (this.props.statement && this.props.statement !== "") {
       return (
         <div
-          className="row home-content home-statement"
+          className="home-statement"
           dangerouslySetInnerHTML={{ __html: this.props.statement }}
         ></div>
       );

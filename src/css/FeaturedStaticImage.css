@@ -1,6 +1,12 @@
 .home-static-image-wrapper {
   width: 100%;
+  overflow: hidden;
+  position: relative;
+  max-height: 450px;
 }
+
 .home-static-image-wrapper img {
   width: 100%;
+  filter: brightness(85%) opacity(85%);
+  margin: 0px;
 }

@@ -1,0 +1,47 @@
+.searchbar-wrapper {
+  padding: 6px 6px 6px 6px;
+  background-color: white;
+  box-shadow: -1px 0px 8px #0000004e;
+  border-radius: 6px;
+}
+
+.searchbar-wrapper input {
+  border: none;
+  border-width: 0;
+  box-shadow: none;
+  -webkit-appearance: none;
+}
+
+.searchbar-wrapper select {
+  border-width: 0px 1px;
+  margin-right: 6px;
+  text-align: center;
+  text-align-last: center;
+  border-color: lightslategray;
+  background-color: white;
+}
+
+.searchbar-wrapper button {
+  background-color: #c52a1d;
+  padding: 5px;
+  color: white;
+}
+
+.search-options-wrapper {
+  padding-top: 10px;
+}
+
+@media (min-width: 576px) {
+  .searchbar-wrapper {
+    padding: 6px 30px 6px 30px;
+  }
+
+  .searchbar-wrapper select {
+    margin-right: 30px;
+  }
+
+  .searchbar-wrapper button {
+    padding: 5px 15px 5px 15px;
+    display: inline;
+  }
+}

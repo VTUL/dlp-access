@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FeaturedCarousel from "./home/FeaturedCarousel";
 import FeaturedStaticImage from "./home/FeaturedStaticImage";
+import SearchBar from "../components/SearchBar";
 import HomeStatement from "./home/HomeStatement";
 import SiteTitle from "../components/SiteTitle";
 
@@ -24,10 +25,28 @@ class HomePage extends Component {
           siteTitle={this.props.siteDetails.siteTitle}
           pageTitle="Home"
         />
-        <div className="container">
+        <div className="home-wrapper">
+          <div className="home-featured-image-wrapper">
+            <FeaturedStaticImage staticImage={staticImage} />
+            <div id="home-site-title-wrapper">
+              <a href="/">{this.props.siteDetails.siteName}</a>
+            </div>
+          </div>
+          <div className="home-search-wrapper">
+            <SearchBar
+              dataType={this.props.dataType}
+              view={this.props.view}
+              searchField={this.props.searchField}
+              q={this.props.q}
+              setPage={this.props.setPage}
+              dateRange={this.props.dateRange}
+            />
+          </div>
+          <div className="home-welcome-wrapper">
+            <h1>Welcome</h1>
+            <HomeStatement statement={statement} />
+          </div>
           <FeaturedCarousel slides={slides} />
-          <FeaturedStaticImage staticImage={staticImage} />
-          <HomeStatement statement={statement} />
         </div>
       </>
     );

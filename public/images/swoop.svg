@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   height="277.10522"
+   width="2102.7739"
+   xml:space="preserve"
+   viewBox="0 0 2102.7739 277.10522"
+   y="0px"
+   x="0px"
+   id="Layer_1"
+   version="1.1"><metadata
+     id="metadata24"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs22"><clipPath
+       id="clipPath3716"
+       clipPathUnits="userSpaceOnUse"><rect
+         y="105.55478"
+         x="9.8260899"
+         height="277.10522"
+         width="2102.7739"
+         id="rect3718"
+         style="fill:#ff6600;stroke-width:0.9994722" /></clipPath></defs><style
+     id="style2"
+     type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:url(#SVGID_1_);}
+	.st2{fill:#831C44;}
+</style><g
+     transform="translate(-9.8260899,-105.55478)"
+     clip-path="url(#clipPath3716)"
+     id="g3714"><rect
+       x="87"
+       y="0"
+       class="st0"
+       width="2037"
+       height="428"
+       id="rect4"
+       style="fill:#ffffff" /><g
+       id="g17"
+       transform="translate(103,10)"><linearGradient
+         id="SVGID_1_"
+         gradientUnits="userSpaceOnUse"
+         x1="943.46539"
+         y1="159.89841"
+         x2="995.58069"
+         y2="497.1149"><stop
+           offset="0"
+           style="stop-color:#831C44"
+           id="stop6" /><stop
+           offset="1"
+           style="stop-color:#831C44;stop-opacity:0"
+           id="stop8" /></linearGradient><path
+         class="st1"
+         d="M 2011.6,136.35 C 1533.88,67.89 1249.23,118.47 916.45,221.06 583.67,323.65 343.8,324.46 -97.5,324.46 v 34.78 l 2109.1,28.37 z"
+         id="path11"
+         style="fill:url(#SVGID_1_)" /><path
+         class="st2"
+         d="M 2011.6,239.7 C 1533.88,131.73 1249.29,164.14 916.51,235.99 583.73,307.85 343.8,327.03 -97.5,327.03 v 25.76 l 2109.1,19.87 z"
+         id="path13"
+         style="fill:#831c44" /><path
+         class="st0"
+         d="M 2016,352.13 C 1535.04,211.86 1252.09,199.94 916.51,256.62 562.22,316.46 338.31,326.39 -103,326.39 v 88.38 h 2119 z"
+         id="path15"
+         style="fill:#ffffff" /></g></g></svg>
