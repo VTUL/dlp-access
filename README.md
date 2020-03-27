@@ -28,7 +28,7 @@ REACT_APP_CONFIG_PATH="https://vtdlp-dev-site-data.s3.amazonaws.com"
 | Amplify     |     dev(devupdate)     |      pprd      |    master  |
 
 ## Amplify CLI
-* Version: 4.13.1 as 02/04/2020
+* Version: 4.13.2 as 02/04/2020
 
 ## Running the tests
 * End-to-end testing framework [Cypress.io](https://www.cypress.io/)
