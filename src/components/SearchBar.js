@@ -109,36 +109,40 @@ class SearchBar extends Component {
     }
   }
 
+  searchBox = () => {
+    return (
+      <input
+        className="form-control"
+        value={this.state.q}
+        type="text"
+        placeholder="Search by title, creator, or description"
+        onChange={this.updateQuery}
+        onKeyPress={this.onKeyPress}
+      />
+    );
+  };
+
+  dateDropDown = () => {
+    return (
+      <select
+        className="form-control"
+        value={this.state.dateRange}
+        name="dateRangeOptions"
+        id="date-range-options"
+        onChange={this.updateDateRange}
+      >
+        {this.dateRangeOptions()}
+      </select>
+    );
+  };
+
   render() {
-    const SearchBox = () => {
-      return (
-        <input
-          className="form-control"
-          value={this.state.q}
-          type="text"
-          placeholder="Search by title, creator, or description"
-          onChange={this.updateQuery}
-          onKeyPress={this.onKeyPress}
-        />
-      );
-    };
-    const DateDropDown = () => {
-      return (
-        <select
-          className="form-control"
-          value={this.state.dateRange}
-          name="dateRangeOptions"
-          id="date-range-options"
-          onChange={this.updateDateRange}
-        >
-          {this.dateRangeOptions()}
-        </select>
-      );
-    };
     return (
       <div>
         <div className="input-group">
-          {this.state.searchField === "date" ? <DateDropDown /> : <SearchBox />}
+          {this.state.searchField === "date"
+            ? this.dateDropDown()
+            : this.searchBox()}
           <select
             value={this.state.searchField}
             name="fieldOptions"
