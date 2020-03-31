@@ -96,7 +96,7 @@ function textFormat(item, attr) {
       `<a href="http://idn.lib.vt.edu/${item.custom_key}">idn.lib.vt.edu/${item.custom_key}</a>`
     );
   } else if (attr === "description") {
-    return item[attr].substring(0, 100) + "...";
+    return <MoreLink dataType={dataType} item={item} />;
   } else if (attr === "date") {
     return dateFormatted(item);
   } else if (attr === "size") {
@@ -106,6 +106,20 @@ function textFormat(item, attr) {
     return item[attr];
   }
 }
+
+const MoreLink = ({ dataType, item }) => {
+  return (
+    <span>
+      <span>{item["description"].substring(0, 100)}</span>
+      <NavLink
+        className="more-link"
+        to={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}
+      >
+        . . .[more]
+      </NavLink>
+    </span>
+  );
+};
 
 const RenderAttribute = ({ item, attribute }) => {
   if (textFormat(item, attribute)) {
