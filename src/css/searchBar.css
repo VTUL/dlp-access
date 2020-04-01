@@ -27,6 +27,14 @@
   color: white;
 }
 
+.searchbar-wrapper button:hover,
+.searchbar-wrapper button:active,
+.searchbar-wrapper button:focus {
+  color: #fff;
+  background-color: #aa202d;
+  border-color: #aa202d;
+}
+
 .search-options-wrapper {
   padding-top: 10px;
 }

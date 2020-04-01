@@ -34,12 +34,12 @@ class HomePage extends Component {
           </div>
           <div className="home-search-wrapper">
             <SearchBar
-              dataType={this.props.dataType}
-              view={this.props.view}
-              searchField={this.props.searchField}
-              q={this.props.q}
+              dataType="archive"
+              view="list"
+              searchField="title"
+              q=""
               setPage={this.props.setPage}
-              dateRange={this.props.dateRange}
+              dateRange="1920-1939"
             />
           </div>
           <div className="home-welcome-wrapper">
