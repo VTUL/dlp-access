@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ScrollToTop from "./lib/ScrollToTop";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -60,6 +61,7 @@ class App extends Component {
     if (this.state.siteDetails !== null) {
       return (
         <Router>
+          <ScrollToTop />
           <Header siteDetails={this.state.siteDetails} />
           <main style={{ minHeight: "500px", padding: "1em 1em 0 1em" }}>
             <div id="content-wrapper" className="container" role="main">

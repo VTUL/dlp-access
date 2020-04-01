@@ -139,7 +139,7 @@ const RenderAttribute = ({ item, attribute }) => {
       </div>
     );
   } else {
-    return "";
+    return <></>;
   }
 };
 
@@ -155,7 +155,7 @@ const RenderAttrDetailed = ({ item, attribute }) => {
       </tr>
     );
   } else {
-    return "";
+    return <></>;
   }
 };
 export const RenderItems = ({ keyArray, item }) => {

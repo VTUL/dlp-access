@@ -90,14 +90,17 @@ class Header extends Component {
           <!-- END HEADER -->
           <!-- ///////////////////////////////////////////// -->
         */}
-          <nav aria-label="Page Context" class="vt-page-path row">
-            <div class="gateway">
-              <ol id="vt_navtrail" class="long_title vt-breadcrumbs">
-                <li class="vt-breadcrumbs-item">
-                  <a class="vt-breadcrumbs-link" href="https://www.lib.vt.edu/">
+          <nav aria-label="Page Context" className="vt-page-path row">
+            <div className="gateway">
+              <ol id="vt_navtrail" className="long_title vt-breadcrumbs">
+                <li className="vt-breadcrumbs-item">
+                  <a
+                    className="vt-breadcrumbs-link"
+                    href="https://www.lib.vt.edu/"
+                  >
                     University Libraries
                   </a>
-                  <span class="breadcrumb-slash" aria-hidden="true">
+                  <span className="breadcrumb-slash" aria-hidden="true">
                     {" "}
                     /{" "}
                   </span>
