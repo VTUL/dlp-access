@@ -61,7 +61,10 @@ class App extends Component {
       return (
         <Router>
           <ScrollToTop />
-          <Header siteDetails={this.state.siteDetails} />
+          <Header
+            siteDetails={this.state.siteDetails}
+            location={window.location}
+          />
           <main style={{ minHeight: "500px", padding: "1em 1em 0 1em" }}>
             <div id="content-wrapper" className="container" role="main">
               <Switch>

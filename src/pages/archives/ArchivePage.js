@@ -7,43 +7,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.js";
 import SiteTitle from "../../components/SiteTitle";
 import { RenderItemsDetailed } from "../../lib/MetadataRenderer";
 import { fetchLanguages } from "../../lib/fetch_tools";
-
-const GetArchive = `query searchArchive($customKey: String) {
-  searchArchives(filter: {
-      custom_key: {
-          eq: $customKey
-      }
-  })
-  {
-    items {
-      id
-      title
-      description
-      identifier
-      belongs_to
-      bibliographic_citation
-      contributor
-      creator
-      custom_key
-      format
-      language
-      location
-      medium
-      resource_type
-      related_url
-      rights_holder
-      rights_statement
-      source
-      circa
-      start_date
-      end_date
-      tags
-      parent_collection
-      manifest_url
-    }
-  }
-}
-`;
+import { getArchiveByCustomKey } from "../../graphql/queries";
 
 const KeyArray = [
   "identifier",
@@ -94,7 +58,7 @@ class ArchivePage extends Component {
   render() {
     return (
       <Connect
-        query={graphqlOperation(GetArchive, {
+        query={graphqlOperation(getArchiveByCustomKey, {
           customKey: `ark:/53696/${this.props.customKey}`
         })}
       >
