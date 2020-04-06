@@ -10,8 +10,7 @@ class SearchBar extends Component {
     view: this.props.view,
     dataType: this.props.dataType,
     searchField: this.props.searchField,
-    q: this.props.q,
-    dateRange: this.props.dateRange
+    q: this.props.q
   };
 
   searchFields = [
@@ -60,19 +59,15 @@ class SearchBar extends Component {
 
   updateSearchField = e => {
     if (e.target.value === "date") {
-      this.setState({ searchByDate: true });
+      this.setState({ q: this.date(this.dateRanges[0]) });
     } else {
-      this.setState({ searchByDate: false });
+      this.setState({ q: "" });
     }
     this.setState({ searchField: e.target.value });
   };
 
   updateSearchType = e => {
     this.setState({ dataType: e.target.value });
-  };
-
-  updateDateRange = e => {
-    this.setState({ dateRange: e.target.value });
   };
 
   onKeyPress = e => {
@@ -86,7 +81,6 @@ class SearchBar extends Component {
       data_type: this.state.dataType,
       search_field: this.state.searchField,
       q: this.state.q,
-      date_range: this.state.dateRange,
       view: this.props.view
     };
     try {
@@ -128,10 +122,10 @@ class SearchBar extends Component {
     return (
       <select
         className="form-control"
-        value={this.state.dateRange}
+        value={this.state.q}
         name="dateRangeOptions"
         id="date-range-options"
-        onChange={this.updateDateRange}
+        onChange={this.updateQuery}
       >
         {this.dateRangeOptions()}
       </select>

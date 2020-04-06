@@ -22,7 +22,6 @@ class SearchLoader extends Component {
       searchField: "title",
       view: "List",
       q: "",
-      dateRange: "1920 - 1939",
       languages: null
     };
     fetchLanguages(this, "name");
@@ -92,14 +91,14 @@ class SearchLoader extends Component {
     };
     let searchPhrase = {};
     if (searchQuery.get("search_field") && searchQuery.get("data_type")) {
-      if (searchQuery.get("search_field") === "date") {
-        let dates = searchQuery.get("date_range").split(" - ");
+      if (
+        searchQuery.get("search_field") === "date" &&
+        searchQuery.get("q") !== ""
+      ) {
+        let dates = searchQuery.get("q").split(" - ");
         searchPhrase = {
           start_date: { gte: `${dates[0]}/01/01`, lte: `${dates[1]}/12/31` }
         };
-        this.setState({
-          dateRange: searchQuery.get("date_range")
-        });
       } else if (
         searchQuery.get("search_field") === "language" &&
         searchQuery.get("q") !== "" &&
@@ -133,13 +132,9 @@ class SearchLoader extends Component {
             matchPhrase: searchQuery.get("q")
           }
         };
-        this.setState({
-          q: searchQuery.get("q")
-        });
       }
       if (searchQuery.get("data_type") === "archive") {
         archiveFilter = { ...archiveFilter, ...searchPhrase };
-        console.log("search query", archiveFilter);
       } else if (searchQuery.get("data_type") === "collection") {
         collectionFilter = { ...collectionFilter, ...searchPhrase };
       }
@@ -236,7 +231,6 @@ class SearchLoader extends Component {
             dataType={this.state.dataType}
             searchField={this.state.searchField}
             q={this.state.q}
-            dateRange={this.state.dateRange}
             view={this.state.view}
             updateFormState={this.updateFormState}
           />

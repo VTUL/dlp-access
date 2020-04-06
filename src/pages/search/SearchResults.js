@@ -43,11 +43,10 @@ class SearchResults extends Component {
       data_type: this.props.dataType,
       search_field: "title",
       q: "",
-      date_range: "1920 - 1939",
       view: "List"
     };
     const SearchFieldDisplay = () => {
-      if (this.props.q || this.props.searchField === "date") {
+      if (this.props.q) {
         return (
           <table>
             <tbody>
@@ -58,8 +57,7 @@ class SearchResults extends Component {
               </tr>
               <tr>
                 <td className="collection-detail-value">
-                  {this.props.q ? this.props.q : this.props.dateRange} (
-                  {this.props.total})
+                  {this.props.q} ({this.props.total})
                   <NavLink to={`/search/?${qs.stringify(defaultSearch)}`}>
                     <i className="fas fa-times"></i>
                   </NavLink>
@@ -80,7 +78,6 @@ class SearchResults extends Component {
           searchField={this.props.searchField}
           q={this.props.q}
           setPage={this.props.setPage}
-          dateRange={this.props.dateRange}
         />
         <div className="container">
           <div className="row">

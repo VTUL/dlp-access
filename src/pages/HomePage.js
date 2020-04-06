@@ -39,7 +39,6 @@ class HomePage extends Component {
               searchField="title"
               q=""
               setPage={this.props.setPage}
-              dateRange="1920-1939"
             />
           </div>
           <div className="home-welcome-wrapper">
