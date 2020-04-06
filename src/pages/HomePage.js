@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import FeaturedCarousel from "./home/FeaturedCarousel";
 import FeaturedStaticImage from "./home/FeaturedStaticImage";
 import SearchBar from "../components/SearchBar";
 import HomeStatement from "./home/HomeStatement";
 import SiteTitle from "../components/SiteTitle";
+import FeaturedItems from "./home/FeaturedItems";
 
 import "../css/HomePage.css";
 
 class HomePage extends Component {
   render() {
-    let slides = null;
+    let featuredItems = null;
     let statement = null;
     let staticImage = null;
     try {
-      slides = this.props.siteDetails.homePage.carousel;
+      featuredItems = this.props.siteDetails.homePage.featuredItems;
       statement = this.props.siteDetails.homePage.statement;
       staticImage = this.props.siteDetails.homePage.staticImage;
     } catch (error) {
@@ -45,7 +45,8 @@ class HomePage extends Component {
             <h1>Welcome</h1>
             <HomeStatement statement={statement} />
           </div>
-          <FeaturedCarousel slides={slides} />
+          <FeaturedItems featuredItems={featuredItems} />
+          <br></br>
         </div>
       </>
     );

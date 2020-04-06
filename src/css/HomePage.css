@@ -1,3 +1,6 @@
+.home-wrapper {
+  padding-top: 50px;
+}
 .home-featured-image-wrapper {
   position: relative;
 }
@@ -49,7 +52,7 @@
 @media (min-width: 576px) {
   #home-site-title-wrapper {
     font-size: 30px;
-    width: 50%;
+    width: 60%;
   }
 
   .home-welcome-wrapper {
@@ -58,5 +61,11 @@
 
   .home-search-wrapper {
     padding: 0 40px 0 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  #home-site-title-wrapper {
+    font-size: 40px;
   }
 }

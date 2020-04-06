@@ -9,4 +9,6 @@
   width: 100%;
   filter: brightness(85%) opacity(85%);
   margin: 0px;
+  max-height: 450px;
+  object-fit: cover;
 }

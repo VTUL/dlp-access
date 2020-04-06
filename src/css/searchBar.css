@@ -22,7 +22,7 @@
 }
 
 .searchbar-wrapper button {
-  background-color: #c52a1d;
+  background-color: var(--themeHighlightColor);
   padding: 5px;
   color: white;
 }
