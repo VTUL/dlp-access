@@ -11,7 +11,6 @@ import CollectionsShowLoader from "./pages/collections/CollectionsShowLoader";
 
 import SearchLoader from "./pages/search/SearchLoader";
 import ArchivePage from "./pages/archives/ArchivePage";
-import ContactSection from "./components/ContactSection";
 
 import "./App.css";
 
@@ -124,7 +123,6 @@ class App extends Component {
                 />
               </Switch>
             </div>
-            <ContactSection siteDetails={this.state.siteDetails} />
           </main>
           <Footer />
         </Router>

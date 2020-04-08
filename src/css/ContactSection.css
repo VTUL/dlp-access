@@ -1,18 +1,21 @@
 .contact-section {
-  margin: 100px -15px 0 -15px;
-  background-color: var(--hokieMaroon);
-  font-family: "Acherus", sans-serif;
+  padding-bottom: 20px;
 }
-.contact-iawa {
-  position: relative;
-  display: block;
-  width: 100%;
-  font-size: 2em;
-  color: white;
+.contact-section p {
+  font-family: "gineso-condensed", sans-serif;
+  font-weight: 500;
 }
-.navbar-text {
-  color: white;
+
+.contact-heading {
+  font-family: "gineso-condensed", sans-serif;
+  margin: 0;
 }
-.navbar-text p {
-  margin-bottom: 0;
+
+.contact-section .contact-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.contact-section .contact-address p {
+  margin: 0;
 }

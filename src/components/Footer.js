@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import "../css/footer.css";
+import "../css/Footer.css";
 
 class Footer extends Component {
   render() {
     return (
-      <footer class="lib-ft">
-        <div class="swoop">
+      <footer className="lib-ft">
+        <div className="swoop">
           <img alt="Footer decoration" src="images/swoop.svg" />
         </div>
-        <div class="info-row">
-          <div class="lib-names">
-            <h3 class="footer-h3">LIBRARIES</h3>
+        <div className="info-row">
+          <div className="lib-names">
+            <h3 className="footer-h3">LIBRARIES</h3>
             <a href="https://lib.vt.edu/about-us/libraries/artarch-library.html">
               Art & Architecture Library
             </a>
@@ -30,40 +30,40 @@ class Footer extends Component {
               Virginia Tech Carilion School of Medicine Library
             </a>
           </div>
-          <div class="lib-give">
+          <div className="lib-give">
             <a href="https://lib.vt.edu/about-us/give-to-the-library.html">
-              <button class="give-button">GIVE TO THE LIBRARY</button>
+              <button className="give-button">GIVE TO THE LIBRARY</button>
             </a>
-            <h3 class="footer-h3">FOLLOW US</h3>
-            <div class="social-icons">
+            <h3 className="footer-h3">FOLLOW US</h3>
+            <div className="social-icons">
               <a
-                class="footer-social-links"
+                className="footer-social-links"
                 href="https://twitter.com/VTLibraries"
               >
-                <i class="fab fa-twitter"></i>
+                <i className="fab fa-twitter"></i>
               </a>
               <a
-                class="footer-social-links"
+                className="footer-social-links"
                 href="https://instagram.com/vtlibraries"
               >
-                <i class="fab fa-instagram"></i>
+                <i className="fab fa-instagram"></i>
               </a>
               <a
-                class="footer-social-links"
+                className="footer-social-links"
                 href="https://www.youtube.com/user/VaTechLibraries"
               >
-                <i class="fab fa-youtube"></i>
+                <i className="fab fa-youtube"></i>
               </a>
               <a
-                class="footer-social-links"
+                className="footer-social-links"
                 href="https://www.facebook.com/VTLibraries"
               >
-                <i class="fab fa-facebook-f"></i>
+                <i className="fab fa-facebook-f"></i>
               </a>
             </div>
           </div>
-          <div class="lib-contact">
-            <h3 class="footer-h3">CONTACT</h3>
+          <div className="lib-contact">
+            <h3 className="footer-h3">CONTACT</h3>
             <p>University Libraries (0434)</p>
             <p>Carol M. Newman Library, Virginia Tech</p>
             <p>560 Drillfield Drive</p>
@@ -71,7 +71,7 @@ class Footer extends Component {
             <p>(540) 231-9232</p>
           </div>
         </div>
-        <div class="lib-int-links">
+        <div className="lib-int-links">
           <a href="https://lib.vt.edu/about-us/employment.html">Employment</a>
           <a href="https://vt.libsurveys.com/site-feedback">
             Feedback & Comments
@@ -84,19 +84,19 @@ class Footer extends Component {
           <a href="https://lib.vt.edu/about-us/sitemap.html">Site Map</a>
           <a href="https://intranet.lib.vt.edu/">Staff Only</a>
         </div>
-        <div class="lib-cc">
+        <div className="lib-cc">
           <a
             href="http://guides.lib.vt.edu/c.php?g=726937&p=5189705"
-            class="fed-link"
+            className="fed-link"
           >
             <img
               src="https://lib.vt.edu/content/dam/lib_vt_edu/images/icons/fdlp-icon.png"
               alt="Federal Depository Emblem"
-              class="fed-img"
+              className="fed-img"
             />
           </a>
         </div>
-        <div class="page__footer-copyright">
+        <div className="page__footer-copyright">
           &copy; 2020 Virginia Polytechnic Institute and State University. All
           rights reserved.
         </div>

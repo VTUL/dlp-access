@@ -10,25 +10,25 @@ class ContactSection extends Component {
     ) {
       return (
         <>
-          <div className="navbar navbar-inverse contact-section">
-            <div className="container">
-              <h3 className="contact-iawa">
-                CONTACT {this.props.siteDetails.siteTitle}
-              </h3>
-              {this.props.siteDetails.contact.map((contact, index) => (
-                <div className="navbar-text" key={index}>
-                  <p>
-                    {contact.title} [
-                    <a href={`mailto:${contact.email}`}>{contact.email}</a>],{" "}
-                    {contact.group}
-                  </p>
+          <div className="contact-section">
+            <h2 className="contact-heading">
+              Contact {this.props.siteDetails.siteTitle}
+            </h2>
+            {this.props.siteDetails.contact.map((contact, index) => (
+              <div key={index}>
+                <p className="contact-title">
+                  {contact.title} [
+                  <a href={`mailto:${contact.email}`}>{contact.email}</a>],{" "}
+                  {contact.group}
+                </p>
+                <div className="contact-address">
                   <p>{contact.department}</p>
                   <p>{contact.streetAddress}</p>
                   <p>{contact.cityStateZip}</p>
                   <p>{contact.phone}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </>
       );

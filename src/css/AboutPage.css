@@ -1,0 +1,52 @@
+.about-page-wrapper a,
+.about-page-wrapper a:hover {
+  color: var(--themeHighlightColor);
+}
+.about-heading {
+  margin-bottom: 20px;
+  widows: 100%;
+}
+
+.about-heading h1 {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 3em;
+}
+
+.about-heading h1 span {
+  color: var(--themeHighlightColor);
+}
+
+.about-details {
+  padding-right: 0px;
+  padding-bottom: 30px;
+}
+.about-details h2 {
+  font-family: "gineso-condensed", sans-serif;
+  margin: 20px 0 0 0;
+}
+
+.about-details p {
+  font-family: "Acherus", sans-serif;
+}
+
+.contact-section-wrapper {
+  border-top: 1px solid grey;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.contact-section-wrapper .about-terms-link {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 2em;
+}
+
+@media (min-width: 768px) {
+  .about-details {
+    padding-right: 30px;
+  }
+  .contact-section-wrapper {
+    border-left: 1px solid grey;
+    padding-left: 15px;
+    border-top: none;
+  }
+}

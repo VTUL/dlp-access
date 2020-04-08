@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import SiteTitle from "../components/SiteTitle";
+import ContactSection from "../components/ContactSection";
 import { getHTML } from "../lib/fetch_tools";
 
+import "../css/AboutPage.css";
 class AboutPage extends Component {
   constructor(props) {
     super(props);
@@ -16,17 +18,31 @@ class AboutPage extends Component {
 
   render() {
     return (
-      <>
-        <SiteTitle
-          siteTitle={this.props.siteDetails.siteTitle}
-          pageTitle="About"
-        />
-        <h1>About {this.props.siteDetails.siteTitle}</h1>
-        <div
-          className="about-details"
-          dangerouslySetInnerHTML={{ __html: this.state.copy }}
-        ></div>
-      </>
+      <div className="row about-page-wrapper">
+        <div className="col-12 about-heading">
+          <SiteTitle
+            siteTitle={this.props.siteDetails.siteTitle}
+            pageTitle="About"
+          />
+          <h1>
+            About <span>{this.props.siteDetails.siteTitle}</span>
+          </h1>
+        </div>
+        <div className="col-md-8">
+          <div
+            className="about-details"
+            dangerouslySetInnerHTML={{ __html: this.state.copy }}
+          ></div>
+        </div>
+        <div className="col-md-4 contact-section-wrapper">
+          <ContactSection siteDetails={this.props.siteDetails} />
+          {this.props.siteDetails.termsCopy.value ? (
+            <a href="/terms" className="about-terms-link">
+              Permissions
+            </a>
+          ) : null}
+        </div>
+      </div>
     );
   }
 }
