@@ -20,8 +20,8 @@ class SiteNavigationLinks extends Component {
         </li>
         <li className="nav-item">
           <div className="link-wrapper">
-            <a href="/terms" tabIndex="-1">
-              PERMISSION PAGE
+            <a href="/permissions" tabIndex="-1">
+              PERMISSIONS
             </a>
           </div>
         </li>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import SiteTitle from "../components/SiteTitle";
 import { getHTML } from "../lib/fetch_tools";
 
-class TermsPage extends Component {
+class PermissionsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ class TermsPage extends Component {
       <>
         <SiteTitle
           siteTitle={this.props.siteDetails.siteTitle}
-          pageTitle="Terms"
+          pageTitle="Permissions"
         />
         <div
           className="terms-details"
@@ -30,4 +30,4 @@ class TermsPage extends Component {
   }
 }
 
-export default TermsPage;
+export default PermissionsPage;
