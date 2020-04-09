@@ -37,7 +37,7 @@ class AboutPage extends Component {
         <div className="col-md-4 contact-section-wrapper">
           <ContactSection siteDetails={this.props.siteDetails} />
           {this.props.siteDetails.termsCopy.value ? (
-            <a href="/terms" className="about-terms-link">
+            <a href="/permissions" className="about-terms-link">
               Permissions
             </a>
           ) : null}
