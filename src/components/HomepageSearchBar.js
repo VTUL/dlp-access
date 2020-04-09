@@ -5,7 +5,7 @@ import { labelAttr } from "../lib/MetadataRenderer";
 
 import "../css/searchBar.css";
 
-class SearchBar extends Component {
+class HomepageSearchBar extends Component {
   state = {
     view: this.props.view,
     dataType: this.props.dataType,
@@ -84,14 +84,7 @@ class SearchBar extends Component {
       view: this.props.view
     };
     try {
-      this.props.history.push({
-        pathname: "/search",
-        search: `?${qs.stringify(parsedObject)}`,
-        state: parsedObject
-      });
-      if (typeof this.props.setPage == "function") {
-        this.props.setPage(0);
-      }
+      window.location.href = `/search?${qs.stringify(parsedObject)}`;
     } catch (err) {
       console.error(err);
     }
@@ -187,4 +180,4 @@ class SearchBar extends Component {
     );
   }
 }
-export default withRouter(SearchBar);
+export default withRouter(HomepageSearchBar);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FeaturedCarousel from "./home/FeaturedCarousel";
 import FeaturedStaticImage from "./home/FeaturedStaticImage";
-import SearchBar from "../components/SearchBar";
+import HomepageSearchBar from "../components/HomepageSearchBar";
 import HomeStatement from "./home/HomeStatement";
 import SiteTitle from "../components/SiteTitle";
 
@@ -33,7 +33,7 @@ class HomePage extends Component {
             </div>
           </div>
           <div className="home-search-wrapper">
-            <SearchBar
+            <HomepageSearchBar
               dataType="archive"
               view="list"
               searchField="title"

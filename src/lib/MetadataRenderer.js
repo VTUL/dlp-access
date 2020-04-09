@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import qs from "query-string";
 import "../css/ListPages.css";
 import ReactHtmlParser from "react-html-parser";
@@ -23,9 +22,9 @@ export function htmlParsedValue(value) {
 export function titleFormatted(item, dataType) {
   return (
     <h4>
-      <NavLink to={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}>
+      <a href={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}>
         {item.title}
-      </NavLink>
+      </a>
     </h4>
   );
 }
@@ -65,9 +64,7 @@ function listValue(dataType, attr, value, languages) {
       q: value,
       view: "List"
     };
-    return (
-      <NavLink to={`/search/?${qs.stringify(parsedObject)}`}>{value}</NavLink>
-    );
+    return <a href={`/search/?${qs.stringify(parsedObject)}`}>{value}</a>;
   } else if (attr === "source" || attr === "related_url") {
     return htmlParsedValue(value);
   } else {
@@ -91,9 +88,9 @@ function textFormat(item, attr, languages) {
     );
   } else if (attr === "identifier") {
     return (
-      <NavLink to={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}>
+      <a href={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}>
         {item[attr]}
-      </NavLink>
+      </a>
     );
   } else if (attr === "rights_statement") {
     return htmlParsedValue(item[attr]);
@@ -117,12 +114,12 @@ const MoreLink = ({ dataType, item }) => {
   return (
     <span>
       <span>{item["description"].substring(0, 100)}</span>
-      <NavLink
+      <a
         className="more-link"
-        to={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}
+        href={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}
       >
         . . .[more]
-      </NavLink>
+      </a>
     </span>
   );
 };
