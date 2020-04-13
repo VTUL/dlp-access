@@ -84,13 +84,17 @@ class SearchBar extends Component {
       view: this.props.view
     };
     try {
-      this.props.history.push({
-        pathname: "/search",
-        search: `?${qs.stringify(parsedObject)}`,
-        state: parsedObject
-      });
-      if (typeof this.props.setPage == "function") {
-        this.props.setPage(0);
+      if (window.location.pathname === "/") {
+        window.location.href = `/search?${qs.stringify(parsedObject)}`;
+      } else {
+        this.props.history.push({
+          pathname: "/search",
+          search: `?${qs.stringify(parsedObject)}`,
+          state: parsedObject
+        });
+        if (typeof this.props.setPage == "function") {
+          this.props.setPage(0);
+        }
       }
     } catch (err) {
       console.error(err);
