@@ -24,7 +24,6 @@ class SearchLoader extends Component {
       q: "",
       languages: null
     };
-    fetchLanguages(this, "name");
   }
 
   updateFormState = (name, val) => {

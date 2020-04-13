@@ -34,10 +34,15 @@ const fetchCopyHTML = async (htmlLink, component) => {
 };
 
 export const fetchLanguages = async (component, key, callback) => {
-  if (component.state.languages === null) {
+  let data = null;
+  try {
+    data = JSON.parse(sessionStorage.getItem(`lang_by_${key}`));
+  } catch (error) {
+    console.log(`lang_by_${key} not in sessionStorage`);
+  }
+  if (data === null) {
+    console.log(`fetching by lang_by_${key}`);
     let response = null;
-    let data = null;
-
     try {
       const htmlLink = `${process.env.REACT_APP_CONFIG_PATH}/language_codes_by_${key}.json`;
       response = await fetch(htmlLink);
@@ -46,12 +51,13 @@ export const fetchLanguages = async (component, key, callback) => {
       console.error(`Error fetching languages`);
       console.error(error);
     }
-    if (data !== null) {
-      component.setState({ languages: data }, function() {
-        if (typeof component.loadItems === "function") {
-          component.loadItems();
-        }
-      });
-    }
+  }
+  if (data !== null) {
+    sessionStorage.setItem(`lang_by_${key}`, JSON.stringify(data));
+    component.setState({ languages: data }, function() {
+      if (typeof component.loadItems === "function") {
+        component.loadItems();
+      }
+    });
   }
 };

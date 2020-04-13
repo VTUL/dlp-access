@@ -26,25 +26,39 @@ class App extends Component {
   async fetchSiteDetails(siteName) {
     let response = null;
     let data = null;
-
     try {
-      response = await fetch(
-        `${process.env.REACT_APP_CONFIG_PATH}/${siteName.toLowerCase()}.json`
+      data = JSON.parse(
+        sessionStorage.getItem(`${siteName.toLowerCase()}_config`)
       );
-      data = await response.json();
     } catch (error) {
-      console.error(`Error fetching config file`);
-      console.error(error);
+      console.log("Site details not in storage");
     }
     if (data === null) {
+      console.log("Fetching site details");
       try {
         response = await fetch(
-          `${process.env.REACT_APP_CONFIG_PATH}/default.json`
+          `${process.env.REACT_APP_CONFIG_PATH}/${siteName.toLowerCase()}.json`
         );
         data = await response.json();
       } catch (error) {
-        console.error("Error fetching default.json");
+        console.error(`Error fetching config file`);
         console.error(error);
+      }
+      if (data === null) {
+        try {
+          response = await fetch(
+            `${process.env.REACT_APP_CONFIG_PATH}/default.json`
+          );
+          data = await response.json();
+        } catch (error) {
+          console.error("Error fetching default.json");
+          console.error(error);
+        }
+      } else {
+        sessionStorage.setItem(
+          `${siteName.toLowerCase()}_config`,
+          JSON.stringify(data)
+        );
       }
     }
     this.setState({
