@@ -37,9 +37,7 @@ export function dateFormatted(item) {
 
 export function collectionSize(collection) {
   let subCollections =
-    collection.subCollections.items != null
-      ? collection.subCollections.items.length
-      : 0;
+    collection.subCollections != null ? collection.subCollections.length : 0;
   let archives =
     collection.archives.items != null ? collection.archives.items.length : 0;
   return subCollections + archives;

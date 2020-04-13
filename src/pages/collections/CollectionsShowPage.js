@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../../css/CollectionsShowPage.css";
-import SubCollectionsList from "./SubCollectionsList.js";
+import SubCollectionsLoader from "./SubCollectionsLoader.js";
 import CollectionItemsLoader from "./CollectionItemsLoader.js";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import {
@@ -36,6 +36,10 @@ class CollectionsShowPage extends Component {
 
   componentDidMount() {
     fetchLanguages(this, "abbr");
+  }
+
+  updateSubCollections(collection, subCollections) {
+    collection.subCollections = subCollections;
   }
 
   render() {
@@ -74,10 +78,12 @@ class CollectionsShowPage extends Component {
             </span>
           </div>
           <div className="description">{this.props.collection.description}</div>
-          <SubCollectionsList
-            subCollections={this.props.collection.subCollections}
-          />
 
+          <SubCollectionsLoader
+            collection={this.props.collection}
+            updateSubCollections={this.updateSubCollections}
+          />
+          <br />
           <div className="details-section">
             <div className="details-section-header">
               <h2>Collection Details</h2>

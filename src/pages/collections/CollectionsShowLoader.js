@@ -4,7 +4,7 @@ import { Connect } from "aws-amplify-react";
 import SiteTitle from "../../components/SiteTitle";
 import { getCollectionByCustomKey } from "../../graphql/queries";
 
-import SubCollectionsLoader from "./SubCollectionsLoader";
+import CollectionsShowPage from "./CollectionsShowPage.js";
 
 class CollectionsShowLoader extends Component {
   render() {
@@ -31,7 +31,7 @@ class CollectionsShowLoader extends Component {
                 siteTitle={this.props.siteDetails.siteTitle}
                 pageTitle={collection.title}
               />
-              <SubCollectionsLoader collection={collection} />
+              <CollectionsShowPage collection={collection} />
             </>
           );
         }}

@@ -10,7 +10,6 @@ class SubCollectionsList extends Component {
     if (items.length) {
       content = (
         <div>
-          <h3>Subcollections ({items.length})</h3>
           <ul className="subCollectionList">
             {items.map(item => (
               <li key={item.custom_key}>
@@ -29,9 +28,7 @@ class SubCollectionsList extends Component {
   }
 
   render() {
-    return (
-      <div>{this.subCollectionsContent(this.props.subCollections.items)}</div>
-    );
+    return <div>{this.subCollectionsContent(this.props.subCollections)}</div>;
   }
 }
 
