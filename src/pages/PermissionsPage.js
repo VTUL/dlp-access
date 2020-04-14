@@ -3,13 +3,8 @@ import SiteTitle from "../components/SiteTitle";
 import ContactSection from "../components/ContactSection";
 import { getHTML } from "../lib/fetch_tools";
 
-<<<<<<< HEAD:src/pages/PermissionsPage.js
-class PermissionsPage extends Component {
-=======
 import "../css/TermsPage.css";
-
-class TermsPage extends Component {
->>>>>>> Added contact info, css, moved downloads link, and updated link on About:src/pages/TermsPage.js
+class PermissionsPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,21 +19,11 @@ class TermsPage extends Component {
   render() {
     return (
       <>
-<<<<<<< HEAD:src/pages/PermissionsPage.js
-        <SiteTitle
-          siteTitle={this.props.siteDetails.siteTitle}
-          pageTitle="Permissions"
-        />
-        <div
-          className="terms-details"
-          dangerouslySetInnerHTML={{ __html: this.state.copy }}
-        ></div>
-=======
         <div className="row terms-page-wrapper">
           <div className="col-12 terms-heading">
             <SiteTitle
               siteTitle={this.props.siteDetails.siteTitle}
-              pageTitle="Terms"
+              pageTitle="Permissions"
             />
             <h1>Permissions</h1>
           </div>
@@ -60,7 +45,6 @@ class TermsPage extends Component {
             ) : null}
           </div>
         </div>
->>>>>>> Added contact info, css, moved downloads link, and updated link on About:src/pages/TermsPage.js
       </>
     );
   }
