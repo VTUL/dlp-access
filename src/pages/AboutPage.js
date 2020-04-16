@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SiteTitle from "../components/SiteTitle";
 import ContactSection from "../components/ContactSection";
-import { getHTML } from "../lib/fetch_tools";
+import { getHTML } from "../lib/fetchTools";
 
 import "../css/AboutPage.css";
 class AboutPage extends Component {

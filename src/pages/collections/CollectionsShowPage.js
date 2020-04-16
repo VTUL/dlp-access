@@ -7,7 +7,7 @@ import {
   RenderItemsDetailed,
   collectionSize
 } from "../../lib/MetadataRenderer";
-import { fetchLanguages } from "../../lib/fetch_tools";
+import { fetchLanguages } from "../../lib/fetchTools";
 
 class CollectionsShowPage extends Component {
   constructor(props) {

@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../../graphql/queries";
 import SiteTitle from "../../components/SiteTitle";
-import { fetchLanguages } from "../../lib/fetch_tools";
+import { fetchLanguages } from "../../lib/fetchTools";
 
 import SearchResults from "./SearchResults";
 

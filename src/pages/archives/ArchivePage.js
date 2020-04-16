@@ -6,7 +6,7 @@ import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import SiteTitle from "../../components/SiteTitle";
 import { RenderItemsDetailed } from "../../lib/MetadataRenderer";
-import { fetchLanguages } from "../../lib/fetch_tools";
+import { fetchLanguages } from "../../lib/fetchTools";
 import { getArchiveByCustomKey } from "../../graphql/queries";
 
 const KeyArray = [

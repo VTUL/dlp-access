@@ -7,7 +7,7 @@ import SearchBar from "../../components/SearchBar";
 import ViewBar from "../../components/ViewBar";
 import ItemsList from "./ItemsList";
 import { labelAttr } from "../../lib/MetadataRenderer";
-import { fetchLanguages } from "../../lib/fetch_tools";
+import { fetchLanguages } from "../../lib/fetchTools";
 
 import "../../css/ListPages.css";
 

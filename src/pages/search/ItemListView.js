@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { RenderItems, titleFormatted } from "../../lib/MetadataRenderer";
 import { Thumbnail } from "../../components/Thumbnail";
 import "../../css/SearchResult.css";
-import { fetchLanguages } from "../../lib/fetch_tools";
+import { fetchLanguages } from "../../lib/fetchTools";
 
 class ItemListView extends Component {
   constructor(props) {
