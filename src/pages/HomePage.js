@@ -4,6 +4,7 @@ import SearchBar from "../components/SearchBar";
 import HomeStatement from "./home/HomeStatement";
 import SiteTitle from "../components/SiteTitle";
 import FeaturedItems from "./home/FeaturedItems";
+import SiteSponsors from "./home/SiteSponsors";
 
 import "../css/HomePage.css";
 
@@ -12,10 +13,12 @@ class HomePage extends Component {
     let featuredItems = null;
     let statement = null;
     let staticImage = null;
+    let sponsors = null;
     try {
       featuredItems = this.props.siteDetails.homePage.featuredItems;
       statement = this.props.siteDetails.homePage.statement;
       staticImage = this.props.siteDetails.homePage.staticImage;
+      sponsors = this.props.siteDetails.homePage.sponsors;
     } catch (error) {
       console.error("Error setting config property");
     }
@@ -46,7 +49,7 @@ class HomePage extends Component {
             <HomeStatement statement={statement} />
           </div>
           <FeaturedItems featuredItems={featuredItems} />
-          <br></br>
+          <SiteSponsors sponsors={sponsors} />
         </div>
       </>
     );
