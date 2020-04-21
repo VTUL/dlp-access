@@ -16,13 +16,21 @@ class Pagination extends Component {
 
   render() {
     const Displaying = () => {
-      let textBefore = this.props.isSearch ? "Search Results:" : "Displaying";
-      return (
-        <div>
-          {textBefore} {this.lowerBound()} {this.upperBound()} of{" "}
-          {this.props.total}
-        </div>
-      );
+      let displayingCopy = "";
+      if (this.props.numResults === 0) {
+        displayingCopy = <div>No results found</div>;
+      } else {
+        const textBefore = this.props.isSearch
+          ? "Search Results:"
+          : "Displaying:";
+        displayingCopy = (
+          <div>
+            {textBefore} {this.lowerBound()} {this.upperBound()} of{" "}
+            {this.props.total}
+          </div>
+        );
+      }
+      return displayingCopy;
     };
     const Previous = () => {
       if (this.props.page > 0) {
