@@ -12,6 +12,11 @@ export function labelAttr(attr) {
   else return (attr.charAt(0).toUpperCase() + attr.slice(1)).replace("_", " ");
 }
 
+export function breadcrumbTitle(title) {
+  const titleArray = title.split(",");
+  return titleArray[0];
+}
+
 export function arkLinkFormatted(customKey) {
   return customKey.replace("ark:/53696/", "");
 }
@@ -49,7 +54,7 @@ export function addNewlineInDesc(content) {
     content = content.split("\n").map((value, index) => {
       return <p key={index}>{value}</p>;
     });
-    return <div className="description">{content}</div>;
+    return <span>{content}</span>;
   }
   return <></>;
 }
@@ -155,17 +160,28 @@ const RenderAttribute = ({ item, attribute, languages }) => {
   }
 };
 
-const RenderAttrDetailed = ({ item, attribute, languages }) => {
+const RenderAttrDetailed = ({ item, attribute, languages, type }) => {
   if (textFormat(item, attribute, languages)) {
     let value_style = attribute === "identifier" ? "identifier" : "";
-    return (
-      <tr>
-        <td className="collection-detail-key">{labelAttr(attribute)}</td>
-        <td className={`collection-detail-value ${value_style}`}>
-          {textFormat(item, attribute, languages)}
-        </td>
-      </tr>
-    );
+    if (type === "table") {
+      return (
+        <tr>
+          <td className="collection-detail-key">{labelAttr(attribute)}</td>
+          <td className={`collection-detail-value ${value_style}`}>
+            {textFormat(item, attribute, languages)}
+          </td>
+        </tr>
+      );
+    } else if (type === "grid") {
+      return (
+        <div className="collection-detail-entry">
+          <div className="collection-detail-key">{labelAttr(attribute)}</div>
+          <div className={`collection-detail-value ${value_style}`}>
+            {textFormat(item, attribute, languages)}
+          </div>
+        </div>
+      );
+    }
   } else {
     return <></>;
   }
@@ -185,7 +201,12 @@ export const RenderItems = ({ keyArray, item, languages }) => {
   return render_items;
 };
 
-export const RenderItemsDetailed = ({ keyArray, item, languages }) => {
+export const RenderItemsDetailed = ({
+  keyArray,
+  item,
+  languages,
+  type = "table"
+}) => {
   let render_items_detailed = [];
   for (const [index, value] of keyArray.entries()) {
     render_items_detailed.push(
@@ -194,6 +215,7 @@ export const RenderItemsDetailed = ({ keyArray, item, languages }) => {
         attribute={value}
         key={index}
         languages={languages}
+        type={type}
       />
     );
   }

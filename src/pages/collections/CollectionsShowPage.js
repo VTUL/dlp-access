@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import "../../css/CollectionsShowPage.css";
+import { API, graphqlOperation } from "aws-amplify";
+import * as queries from "../../graphql/queries";
 import SubCollectionsLoader from "./SubCollectionsLoader.js";
 import CollectionItemsLoader from "./CollectionItemsLoader.js";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
@@ -10,12 +11,19 @@ import {
 } from "../../lib/MetadataRenderer";
 import { fetchLanguages } from "../../lib/fetchTools";
 
+import "../../css/CollectionsShowPage.css";
+
 class CollectionsShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      languages: null
+      languages: null,
+      descriptionTruncated: true,
+      description: "",
+      title: "",
+      thumbnail_path: ""
     };
+    this.onMoreLessClick = this.onMoreLessClick.bind(this);
   }
 
   creatorDates(props) {
@@ -31,16 +39,97 @@ class CollectionsShowPage extends Component {
     if (collection > 0) {
       return collection + " items";
     }
-
     return "";
-  }
-
-  componentDidMount() {
-    fetchLanguages(this, "abbr");
   }
 
   updateSubCollections(collection, subCollections) {
     collection.subCollections = subCollections;
+  }
+
+  async setTopLevelAttributes(attributes) {
+    let attributeResults = {};
+    if (this.props.collection.parent_collection) {
+      attributeResults = await this.getTopLevelAttributes(
+        this.props.collection.parent_collection[0],
+        attributes
+      );
+    }
+    this.setState(attributeResults, function() {
+      this.render();
+    });
+  }
+
+  async getTopLevelAttributes(parent_id, attributes) {
+    let attributeResults = {};
+    while (parent_id) {
+      let parent = await this.getParent(parent_id);
+      let parentData = parent.data.getCollection;
+      for (const key of attributes) {
+        attributeResults[key] = parentData[key];
+      }
+      if (parentData.parent_collection) {
+        parent_id = parentData.parent_collection[0];
+      } else {
+        parent_id = null;
+      }
+    }
+    return attributeResults;
+  }
+
+  async getParent(parent_id) {
+    const parent_collection = await API.graphql(
+      graphqlOperation(queries.getCollection, {
+        id: parent_id
+      })
+    );
+    return parent_collection;
+  }
+
+  collectionImg() {
+    return this.state.thumbnail_path || this.props.collection.thumbnail_path;
+  }
+
+  collectionTitle() {
+    return this.state.title || this.props.collection.title;
+  }
+
+  subCollectionTitle() {
+    let title = "";
+    if (this.state.title && this.state.title !== this.props.collection.title) {
+      title = this.props.collection.title;
+    }
+    return title;
+  }
+
+  onMoreLessClick(e) {
+    e.preventDefault();
+    let truncated = true;
+    if (this.state.descriptionTruncated) {
+      truncated = false;
+    }
+    this.setState(
+      {
+        descriptionTruncated: truncated
+      },
+      function() {
+        this.render();
+      }
+    );
+  }
+
+  getDescription() {
+    let description =
+      this.state.description || this.props.collection.description;
+    if (description && this.state.descriptionTruncated) {
+      description = description.substr(0, 600);
+    }
+    return addNewlineInDesc(description);
+  }
+
+  componentDidMount() {
+    fetchLanguages(this, "abbr");
+    const topLevelAttributes = ["title", "description", "thumbnail_path"];
+    this.setTopLevelAttributes(topLevelAttributes);
   }
 
   render() {
@@ -56,6 +145,7 @@ class CollectionsShowPage extends Component {
       "rights_holder",
       "related_url"
     ];
+
     if (this.state.languages) {
       return (
         <div>
@@ -65,41 +155,66 @@ class CollectionsShowPage extends Component {
               record={this.props.collection}
             />
           </div>
-
-          <h1 className="collection-title">{this.props.collection.title}</h1>
-          <div className="post-heading">
-            <span className="item-count">
-              {this.handleZeroItems(collectionSize(this.props.collection))}
-            </span>
-
-            <this.creatorDates collection={this.props.collection} />
-
-            <span className="last-updated">
-              Last updated: {this.props.collection.modified_date}
-            </span>
-          </div>
-
-          {addNewlineInDesc(this.props.collection.description)}
-
-          <SubCollectionsLoader
-            collection={this.props.collection}
-            updateSubCollections={this.updateSubCollections}
-          />
-          <br />
-          <div className="details-section">
-            <div className="details-section-header">
-              <h2>Collection Details</h2>
+          <div className="top-content-row row">
+            <div className="collection-img-col col-4">
+              <img
+                src={this.collectionImg()}
+                alt={`${this.props.collection} header`}
+              />
             </div>
-            <div className="details-section-content">
-              <table>
-                <tbody>
-                  <RenderItemsDetailed
-                    keyArray={KeyArray}
-                    item={this.props.collection}
-                    languages={this.state.languages}
-                  />
-                </tbody>
-              </table>
+            <div className="collection-details-col col-8">
+              <h1 className="collection-title">{this.collectionTitle()}</h1>
+              <h2 className="subcollection-title">
+                {this.subCollectionTitle()}
+              </h2>
+              <div className="post-heading">
+                <span className="item-count">
+                  {this.handleZeroItems(collectionSize(this.props.collection))}
+                </span>
+
+                <this.creatorDates collection={this.props.collection} />
+
+                <span className="last-updated">
+                  Last updated: {this.props.collection.modified_date}
+                </span>
+              </div>
+              <div
+                className={`description ${
+                  this.state.descriptionTruncated ? "trunc" : "full"
+                }`}
+              >
+                <div>
+                  {this.getDescription()}{" "}
+                  <a href="#" onClick={this.onMoreLessClick} id="more">
+                    . . .[more]
+                  </a>
+                  <a href="#" onClick={this.onMoreLessClick} id="less">
+                    . . .[less]
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mid-content-row row">
+            <div className="col-8 details-section">
+              <div className="details-section-header">
+                <h2>Collection Details</h2>
+              </div>
+              <div className="details-section-content-grid">
+                <RenderItemsDetailed
+                  keyArray={KeyArray}
+                  item={this.props.collection}
+                  languages={this.state.languages}
+                  type="grid"
+                />
+              </div>
+            </div>
+
+            <div className="col-4 subcollections-section">
+              <SubCollectionsLoader
+                collection={this.props.collection}
+                updateSubCollections={this.updateSubCollections}
+              />
             </div>
           </div>
 

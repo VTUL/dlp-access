@@ -6,15 +6,28 @@ div.nav-row a,
 div.nav-row a:visited {
   color: var(--link-blue);
 }
+.top-content-row {
+  margin-top: 40px;
+}
+.top-content-row .collection-img-col img {
+  width: 100%;
+}
 h1.collection-title {
   font-family: "gineso-condensed", sans-serif;
-  font-size: 35px;
+  font-size: 25px;
+  font-weight: 400;
+  display: block;
+  color: var(--themeHighlightColor);
+}
+h2.subcollection-title {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 30px;
   font-weight: 400;
   display: block;
 }
 div.post-heading {
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--light-gray);
+  border-bottom: 1px solid var(--dark-gray);
 }
 span.item-count:after,
 span.creator:after {
@@ -23,15 +36,58 @@ span.creator:after {
 .description {
   padding: 15px 0 25px 0;
 }
+
+.description #more,
+.description #less,
+.description #more:hover,
+.description #less:hover,
+.description #more:visited,
+.description #less:visited {
+  display: inline-block;
+  color: var(--themeHighlightColor);
+}
+
+.description.trunc #less {
+  display: none;
+}
+
+.description.full #more {
+  display: none;
+}
+
+.mid-content-row {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: var(--light-gray);
+}
+
+.details-section {
+  border-right: 1px solid var(--dark-gray);
+}
+
 .details-section-header {
   width: 100%;
   border-bottom: 1px solid var(--light-gray);
 }
 .details-section-header h2 {
   font-family: "gineso-condensed", sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
 }
+
+.details-section-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+  font-family: "gineso-condensed", sans-serif;
+}
+.details-section-content-grid .collection-detail-entry {
+  margin-bottom: 20px;
+}
+.details-section-content-grid .collection-detail-key {
+  font-size: 18px;
+}
+
 div.details-section-content table tr .collection-detail-key {
   width: 150px;
   padding: 8px;
@@ -53,9 +109,60 @@ div.details-section-content table tr {
   border-bottom: 1px solid var(--light-gray);
 }
 
+div.subcollections-section {
+  padding-left: 20px;
+}
+
+div.collection-items-grid {
+  display: inline-grid;
+  grid-gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: calc(100% - 80px);
+}
+div.collection-item {
+  width: 250px;
+  height: 300px;
+}
+div.collection-item .item-image {
+  display: inline-block;
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--light-gray);
+}
+div.collection-item .item-image img {
+  width: 250px;
+  height: 200px;
+  object-fit: contain;
+}
+.collection-items-grid .item-info {
+  padding: 10px;
+  border: 1px solid var(--light-gray);
+}
+.collection-items-grid .item-info a,
+.collection-items-grid .item-info a:visited {
+  font-family: "gineso-condensed", sans-serif;
+  color: black;
+}
+
 div.collection-items-list-wrapper {
   margin-top: 50px;
 }
+.collection-items-list-wrapper h3.subcollection-header {
+  font-family: "gineso-condensed", sans-serif;
+}
+.collection-items-list-wrapper .results-text {
+  font-family: "gineso-condensed", sans-serif;
+}
+.collection-items-list-wrapper .subCollectionList a,
+.collection-items-list-wrapper .subCollectionList a:visited {
+  font-family: "gineso-condensed", sans-serif;
+  color: var(--dark-gray);
+}
+.collection-items-list-wrapper .subCollectionList a:hover {
+  color: var(--themeHighlightColor);
+}
+
 div.collection-items-list table tbody tr td.item-image img {
   width: 100px;
 }

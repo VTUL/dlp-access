@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
       <footer className="lib-ft">
         <div className="swoop">
-          <img alt="Footer decoration" src="images/swoop.svg" />
+          <img alt="Footer decoration" src="/images/swoop.svg" />
         </div>
         <div className="info-row">
           <div className="lib-names">

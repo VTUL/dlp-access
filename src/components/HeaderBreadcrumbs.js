@@ -4,8 +4,6 @@ import * as queries from "../graphql/queries";
 
 import Breadcrumbs from "./Breadcrumbs";
 
-import "../css/breadcrumbs.css";
-
 class HeaderBreadcrumbs extends Breadcrumbs {
   constructor(props) {
     super(props);
