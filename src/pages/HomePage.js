@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import FeaturedStaticImage from "./home/FeaturedStaticImage";
+import MultimediaSection from "./home/MultimediaSection";
 import SearchBar from "../components/SearchBar";
 import HomeStatement from "./home/HomeStatement";
 import SiteTitle from "../components/SiteTitle";
@@ -14,11 +15,13 @@ class HomePage extends Component {
     let statement = null;
     let staticImage = null;
     let sponsors = null;
+    let mediaSection = null;
     try {
       featuredItems = this.props.siteDetails.homePage.featuredItems;
       statement = this.props.siteDetails.homePage.statement;
       staticImage = this.props.siteDetails.homePage.staticImage;
       sponsors = this.props.siteDetails.homePage.sponsors;
+      mediaSection = this.props.siteDetails.homePage.mediaSection;
     } catch (error) {
       console.error("Error setting config property");
     }
@@ -46,9 +49,10 @@ class HomePage extends Component {
           </div>
           <div className="home-welcome-wrapper">
             <h1>Welcome</h1>
-            <HomeStatement statement={statement} />
           </div>
+          <HomeStatement statement={statement} />
           <FeaturedItems featuredItems={featuredItems} />
+          <MultimediaSection mediaSection={mediaSection} />
           <SiteSponsors sponsors={sponsors} />
         </div>
       </>
