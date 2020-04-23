@@ -38,7 +38,7 @@ class App extends Component {
             location={window.location}
           />
           <main style={{ minHeight: "500px", padding: "1em 1em 0 1em" }}>
-            <div id="content-wrapper" className="container" role="main">
+            <div id="content-wrapper" className="container p-0" role="main">
               <Switch>
                 <Route
                   path="/"

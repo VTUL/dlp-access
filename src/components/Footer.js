@@ -68,7 +68,7 @@ class Footer extends Component {
             <p>Carol M. Newman Library, Virginia Tech</p>
             <p>560 Drillfield Drive</p>
             <p>Blacksburg, VA 24061</p>
-            <p>(540) 231-9232</p>
+            <p>(540) 231-6170</p>
           </div>
         </div>
         <div className="lib-int-links">

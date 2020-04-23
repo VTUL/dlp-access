@@ -17,8 +17,9 @@
   margin-right: 6px;
   text-align: center;
   text-align-last: center;
-  border-color: lightslategray;
+  border-color: var(--dark-gray);
   background-color: white;
+  border-radius: 0px;
 }
 
 .searchbar-wrapper button {
