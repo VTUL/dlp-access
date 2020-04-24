@@ -10,6 +10,7 @@ import { labelAttr } from "../../lib/MetadataRenderer";
 import { fetchLanguages } from "../../lib/fetchTools";
 
 import "../../css/ListPages.css";
+import "../../css/SearchResult.css";
 
 class SearchResults extends Component {
   constructor(props) {
@@ -71,7 +72,7 @@ class SearchResults extends Component {
       }
     };
     return (
-      <div>
+      <div className="search-result-wrapper">
         <SearchBar
           dataType={this.props.dataType}
           view={this.props.view}
@@ -79,7 +80,7 @@ class SearchResults extends Component {
           q={this.props.q}
           setPage={this.props.setPage}
         />
-        <div className="container">
+        <div className="container search-results">
           <div className="row">
             <div id="sidebar" className="col-md-3 col-sm-4">
               {/* <h2>Limit your search</h2> */}
@@ -93,11 +94,11 @@ class SearchResults extends Component {
                   <ItemsPaginationDisplay atBottom={false} />
                 </div>
                 <div className="form-inline">
-                  <ResultsNumberDropdown setLimit={this.props.setLimit} />
                   <ViewBar
                     view={this.props.view}
                     updateFormState={this.props.updateFormState}
                   />
+                  <ResultsNumberDropdown setLimit={this.props.setLimit} />
                 </div>
               </div>
               <ItemsList

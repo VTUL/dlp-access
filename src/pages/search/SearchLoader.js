@@ -20,7 +20,7 @@ class SearchLoader extends Component {
       totalPages: 1,
       dataType: "archive",
       searchField: "title",
-      view: "List",
+      view: "Gallery",
       q: "",
       languages: null
     };

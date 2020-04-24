@@ -24,7 +24,7 @@ class Pagination extends Component {
           ? "Search Results:"
           : "Displaying:";
         displayingCopy = (
-          <div>
+          <div className="pagination-text">
             {textBefore} {this.lowerBound()} {this.upperBound()} of{" "}
             {this.props.total}
           </div>
@@ -34,14 +34,16 @@ class Pagination extends Component {
     };
     const Previous = () => {
       if (this.props.page > 0) {
-        return <Button onClick={this.props.previousPage}>Previous page</Button>;
+        return (
+          <Button onClick={this.props.previousPage}>&laquo; Previous</Button>
+        );
       } else {
         return <div></div>;
       }
     };
     const Next = () => {
       if (this.props.page < this.props.totalPages - 1) {
-        return <Button onClick={this.props.nextPage}>Next page</Button>;
+        return <Button onClick={this.props.nextPage}>Next &raquo;</Button>;
       } else {
         return <div></div>;
       }
@@ -49,7 +51,7 @@ class Pagination extends Component {
 
     if (this.props.atBottom) {
       return (
-        <div>
+        <div className="pagination-section">
           <Displaying />
           <Previous />
           <Next />
@@ -57,7 +59,7 @@ class Pagination extends Component {
       );
     } else {
       return (
-        <div>
+        <div className="pagination-section">
           <Displaying />
         </div>
       );

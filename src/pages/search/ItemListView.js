@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { RenderItems, titleFormatted } from "../../lib/MetadataRenderer";
-import { Thumbnail } from "../../components/Thumbnail";
+import Thumbnail from "../../components/Thumbnail";
 import "../../css/SearchResult.css";
 import { fetchLanguages } from "../../lib/fetchTools";
 
@@ -33,11 +33,11 @@ class ItemListView extends Component {
     if (this.state.languages !== null) {
       return (
         <li key={this.props.item.id} className="collection-entry">
-          {titleFormatted(this.props.item, this.props.dataType)}
           <span className="collection-img">
             <Thumbnail item={this.props.item} dataType={this.props.dataType} />
           </span>
           <div className="collection-details">
+            {titleFormatted(this.props.item, this.props.dataType)}
             <RenderItems
               keyArray={keyArray}
               item={this.props.item}

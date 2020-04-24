@@ -22,7 +22,11 @@ class ViewBar extends Component {
           onClick={() => this.updateView("List")}
           active={(this.state.view === "List").toString()}
         >
-          <FontAwesomeIcon icon={faThList} size="lg" style={{ color: "red" }} />
+          <FontAwesomeIcon
+            icon={faThList}
+            size="lg"
+            style={{ color: "var(--themeHighlightColor" }}
+          />
         </button>
         <button
           className="btn btn-outline-light"
@@ -31,7 +35,11 @@ class ViewBar extends Component {
           onClick={() => this.updateView("Gallery")}
           active={(this.state.view === "Gallery").toString()}
         >
-          <FontAwesomeIcon icon={faTh} size="lg" style={{ color: "red" }} />
+          <FontAwesomeIcon
+            icon={faTh}
+            size="lg"
+            style={{ color: "var(--themeHighlightColor" }}
+          />
         </button>
         <button
           className="btn btn-outline-light"
@@ -40,7 +48,11 @@ class ViewBar extends Component {
           onClick={() => this.updateView("Masonry")}
           active={(this.state.view === "Masonry").toString()}
         >
-          <FontAwesomeIcon icon={faImages} size="lg" style={{ color: "red" }} />
+          <FontAwesomeIcon
+            icon={faImages}
+            size="lg"
+            style={{ color: "var(--themeHighlightColor" }}
+          />
         </button>
       </div>
     );

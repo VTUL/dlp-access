@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ItemListView from "./ItemListView";
-import { GalleryView } from "./GalleryView";
+import GalleryView from "./GalleryView";
 import { MasonryView } from "./MasonryView";
 
 class ItemsList extends Component {
@@ -14,7 +14,7 @@ class ItemsList extends Component {
 
   render() {
     return (
-      <div className="search-results">
+      <div className="search-results-section">
         <div className={this.getClassName()}>
           {this.props.items.map(item => {
             if (this.props.view === "Gallery") {

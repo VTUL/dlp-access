@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { Thumbnail } from "../../components/Thumbnail";
+import Thumbnail from "../../components/Thumbnail";
 import { arkLinkFormatted } from "../../lib/MetadataRenderer";
 
 import "../../css/CollectionsShowPage.css";
