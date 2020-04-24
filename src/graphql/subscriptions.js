@@ -17,6 +17,9 @@ export const onCreateCollection = /* GraphQL */ `
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -31,6 +34,7 @@ export const onCreateCollection = /* GraphQL */ `
           id
           title
           identifier
+          identifier2
           description
           tags
           creator
@@ -48,6 +52,9 @@ export const onCreateCollection = /* GraphQL */ `
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -79,6 +86,9 @@ export const onUpdateCollection = /* GraphQL */ `
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -93,6 +103,7 @@ export const onUpdateCollection = /* GraphQL */ `
           id
           title
           identifier
+          identifier2
           description
           tags
           creator
@@ -110,6 +121,9 @@ export const onUpdateCollection = /* GraphQL */ `
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -141,6 +155,9 @@ export const onDeleteCollection = /* GraphQL */ `
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -155,6 +172,7 @@ export const onDeleteCollection = /* GraphQL */ `
           id
           title
           identifier
+          identifier2
           description
           tags
           creator
@@ -172,6 +190,9 @@ export const onDeleteCollection = /* GraphQL */ `
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -193,6 +214,7 @@ export const onCreateArchive = /* GraphQL */ `
       id
       title
       identifier
+      identifier2
       description
       tags
       creator
@@ -210,6 +232,9 @@ export const onCreateArchive = /* GraphQL */ `
       rights_holder
       format
       related_url
+      provenance
+      repository
+      reference
       contributor
       custom_key
       parent_collection
@@ -233,6 +258,9 @@ export const onCreateArchive = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -255,6 +283,7 @@ export const onUpdateArchive = /* GraphQL */ `
       id
       title
       identifier
+      identifier2
       description
       tags
       creator
@@ -272,6 +301,9 @@ export const onUpdateArchive = /* GraphQL */ `
       rights_holder
       format
       related_url
+      provenance
+      repository
+      reference
       contributor
       custom_key
       parent_collection
@@ -295,6 +327,9 @@ export const onUpdateArchive = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -317,6 +352,7 @@ export const onDeleteArchive = /* GraphQL */ `
       id
       title
       identifier
+      identifier2
       description
       tags
       creator
@@ -334,6 +370,9 @@ export const onDeleteArchive = /* GraphQL */ `
       rights_holder
       format
       related_url
+      provenance
+      repository
+      reference
       contributor
       custom_key
       parent_collection
@@ -357,6 +396,9 @@ export const onDeleteArchive = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key

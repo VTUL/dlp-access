@@ -53,7 +53,9 @@ class CollectionsShowPage extends Component {
       "identifier",
       "bibliographic_citation",
       "rights_holder",
-      "related_url"
+      "related_url",
+      "provenance",
+      "belongs_to"
     ];
     if (this.state.languages) {
       return (

@@ -17,6 +17,9 @@ export const getCollection = /* GraphQL */ `
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -31,6 +34,7 @@ export const getCollection = /* GraphQL */ `
           id
           title
           identifier
+          identifier2
           description
           tags
           creator
@@ -48,6 +52,9 @@ export const getCollection = /* GraphQL */ `
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -90,6 +97,9 @@ export const getCollectionByCustomKey = `query searchCollection($customKey: Stri
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -104,6 +114,7 @@ export const getCollectionByCustomKey = `query searchCollection($customKey: Stri
           id
           title
           identifier
+          identifier2
           description
           tags
           creator
@@ -121,6 +132,9 @@ export const getCollectionByCustomKey = `query searchCollection($customKey: Stri
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -159,6 +173,9 @@ export const listCollections = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -182,6 +199,7 @@ export const getArchive = /* GraphQL */ `
       id
       title
       identifier
+      identifier2
       description
       tags
       creator
@@ -199,6 +217,9 @@ export const getArchive = /* GraphQL */ `
       rights_holder
       format
       related_url
+      provenance
+      repository
+      reference
       contributor
       custom_key
       parent_collection
@@ -222,6 +243,9 @@ export const getArchive = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -251,6 +275,7 @@ export const getArchiveByCustomKey = `query searchArchive($customKey: String) {
       title
       description
       identifier
+      identifier2
       belongs_to
       bibliographic_citation
       contributor
@@ -262,6 +287,9 @@ export const getArchiveByCustomKey = `query searchArchive($customKey: String) {
       medium
       resource_type
       related_url
+      provenance
+      repository
+      reference
       rights_holder
       rights_statement
       source
@@ -287,6 +315,7 @@ export const listArchives = /* GraphQL */ `
         id
         title
         identifier
+        identifier2
         description
         tags
         creator
@@ -304,6 +333,9 @@ export const listArchives = /* GraphQL */ `
         rights_holder
         format
         related_url
+        provenance
+        repository
+        reference
         contributor
         custom_key
         parent_collection
@@ -327,6 +359,9 @@ export const listArchives = /* GraphQL */ `
           location
           rights_statement
           language
+          related_url
+          provenance
+          belongs_to
           bibliographic_citation
           rights_holder
           custom_key
@@ -371,6 +406,9 @@ export const collectionByIdentifier = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -407,6 +445,7 @@ export const archiveByIdentifier = /* GraphQL */ `
         id
         title
         identifier
+        identifier2
         description
         tags
         creator
@@ -424,6 +463,9 @@ export const archiveByIdentifier = /* GraphQL */ `
         rights_holder
         format
         related_url
+        provenance
+        repository
+        reference
         contributor
         custom_key
         parent_collection
@@ -447,6 +489,9 @@ export const archiveByIdentifier = /* GraphQL */ `
           location
           rights_statement
           language
+          related_url
+          provenance
+          belongs_to
           bibliographic_citation
           rights_holder
           custom_key
@@ -489,6 +534,9 @@ export const searchCollections = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -524,6 +572,7 @@ export const searchArchives = /* GraphQL */ `
         id
         title
         identifier
+        identifier2
         description
         tags
         creator
@@ -541,6 +590,9 @@ export const searchArchives = /* GraphQL */ `
         rights_holder
         format
         related_url
+        provenance
+        repository
+        reference
         contributor
         custom_key
         parent_collection
@@ -564,6 +616,9 @@ export const searchArchives = /* GraphQL */ `
           location
           rights_statement
           language
+          related_url
+          provenance
+          belongs_to
           bibliographic_citation
           rights_holder
           custom_key
