@@ -14,6 +14,9 @@ type Collection @model {
     location: [String!]
     rights_statement: String
     language: [String!]
+    related_url: [String!]
+    provenance: [String!]
+    belongs_to: [String!]
     bibliographic_citation: String
     rights_holder: String
     custom_key: String
@@ -32,6 +35,7 @@ type Archive @model {
     id: ID!
     title: String!
     identifier: String!
+    alternative_id: String
     description: String
     tags: [String!]
     creator: [String!]
@@ -49,6 +53,9 @@ type Archive @model {
     rights_holder: String
     format: [String!]
     related_url: [String!]
+    provenance: [String!]
+    repository: [String!]
+    reference: [String!]
     contributor: [String!]
     custom_key: String
     parent_collection: [String!]

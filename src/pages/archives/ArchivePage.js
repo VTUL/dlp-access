@@ -11,6 +11,7 @@ import { getArchiveByCustomKey } from "../../graphql/queries";
 
 const KeyArray = [
   "identifier",
+  "alternative_id",
   "belongs_to",
   "bibliographic_citation",
   "contributor",

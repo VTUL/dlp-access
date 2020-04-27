@@ -32,7 +32,7 @@ type Archive @model @searchable
     id: ID!
     title: String!
     identifier: String!
-    identifier2: String
+    alternative_id: String
     description: String
     tags: [String!]
     creator: [String!]

@@ -34,7 +34,7 @@ export const onCreateCollection = /* GraphQL */ `
           id
           title
           identifier
-          identifier2
+          alternative_id
           description
           tags
           creator
@@ -103,7 +103,7 @@ export const onUpdateCollection = /* GraphQL */ `
           id
           title
           identifier
-          identifier2
+          alternative_id
           description
           tags
           creator
@@ -172,7 +172,7 @@ export const onDeleteCollection = /* GraphQL */ `
           id
           title
           identifier
-          identifier2
+          alternative_id
           description
           tags
           creator
@@ -214,7 +214,7 @@ export const onCreateArchive = /* GraphQL */ `
       id
       title
       identifier
-      identifier2
+      alternative_id
       description
       tags
       creator
@@ -283,7 +283,7 @@ export const onUpdateArchive = /* GraphQL */ `
       id
       title
       identifier
-      identifier2
+      alternative_id
       description
       tags
       creator
@@ -352,7 +352,7 @@ export const onDeleteArchive = /* GraphQL */ `
       id
       title
       identifier
-      identifier2
+      alternative_id
       description
       tags
       creator
