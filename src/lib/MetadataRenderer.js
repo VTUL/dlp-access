@@ -78,9 +78,9 @@ function textFormat(item, attr, languages) {
     return (
       <div>
         {item[attr].map((value, i) => (
-          <li className="list-unstyled" key={i}>
+          <span className="list-unstyled" key={i}>
             {listValue(dataType, attr, value, languages)}
-          </li>
+          </span>
         ))}
       </div>
     );

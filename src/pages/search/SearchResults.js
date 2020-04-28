@@ -82,13 +82,13 @@ class SearchResults extends Component {
         />
         <div className="container search-results">
           <div className="row">
-            <div id="sidebar" className="col-md-3 col-sm-4">
+            <div id="sidebar" className="col-lg-3 col-sm-12">
               {/* <h2>Limit your search</h2> */}
               <div className="collection-detail">
                 <SearchFieldDisplay />
               </div>
             </div>
-            <div id="content" className="col-md-9 col-sm-8">
+            <div id="content" className="col-lg-9 col-sm-12">
               <div className="navbar navbar-light justify-content-between">
                 <div className="navbar-text text-dark">
                   <ItemsPaginationDisplay atBottom={false} />

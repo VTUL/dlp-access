@@ -5,13 +5,6 @@ import Thumbnail from "../../components/Thumbnail";
 import "../../css/SearchResult.css";
 
 class GalleryView extends Component {
-  constructor() {
-    super();
-    this.state = {
-      className: "card-img-top"
-    };
-  }
-
   render() {
     return (
       <div className="col-md-6 col-lg-4 gallery-item">
@@ -24,7 +17,7 @@ class GalleryView extends Component {
             <Thumbnail
               item={this.props.item}
               dataType={this.props.dataType}
-              className={this.state.className}
+              className="card-img-top"
             />
             <div className="card-body">
               <h5 className="card-title crop-text-3">

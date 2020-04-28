@@ -17,25 +17,13 @@ class ItemListView extends Component {
   }
 
   render() {
-    const keyArray = [
-      "identifier",
-      "description",
-      "date",
-      "source",
-      "language",
-      "creator",
-      "resource_type",
-      "medium",
-      "belongs_to",
-      "tags",
-      "related_url"
-    ];
+    const keyArray = ["description", "tags", "creator"];
     if (this.state.languages !== null) {
       return (
-        <li key={this.props.item.id} className="collection-entry">
-          <span className="collection-img">
+        <div key={this.props.item.id} className="col-12 collection-entry">
+          <div className="collection-img">
             <Thumbnail item={this.props.item} dataType={this.props.dataType} />
-          </span>
+          </div>
           <div className="collection-details">
             {titleFormatted(this.props.item, this.props.dataType)}
             <RenderItems
@@ -44,7 +32,7 @@ class ItemListView extends Component {
               languages={this.state.languages}
             />
           </div>
-        </li>
+        </div>
       );
     } else {
       return <></>;
