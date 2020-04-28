@@ -35,7 +35,6 @@ type Archive @model {
     id: ID!
     title: String!
     identifier: String!
-    alternative_id: String
     description: String
     tags: [String!]
     creator: [String!]

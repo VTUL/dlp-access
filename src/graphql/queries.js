@@ -34,7 +34,6 @@ export const getCollection = /* GraphQL */ `
           id
           title
           identifier
-          alternative_id
           description
           tags
           creator
@@ -114,7 +113,6 @@ export const getCollectionByCustomKey = `query searchCollection($customKey: Stri
           id
           title
           identifier
-          alternative_id
           description
           tags
           creator
@@ -199,7 +197,6 @@ export const getArchive = /* GraphQL */ `
       id
       title
       identifier
-      alternative_id
       description
       tags
       creator
@@ -275,7 +272,6 @@ export const getArchiveByCustomKey = `query searchArchive($customKey: String) {
       title
       description
       identifier
-      alternative_id
       belongs_to
       bibliographic_citation
       contributor
@@ -315,7 +311,6 @@ export const listArchives = /* GraphQL */ `
         id
         title
         identifier
-        alternative_id
         description
         tags
         creator
@@ -445,7 +440,6 @@ export const archiveByIdentifier = /* GraphQL */ `
         id
         title
         identifier
-        alternative_id
         description
         tags
         creator
@@ -572,7 +566,6 @@ export const searchArchives = /* GraphQL */ `
         id
         title
         identifier
-        alternative_id
         description
         tags
         creator
