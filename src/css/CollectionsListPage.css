@@ -1,0 +1,25 @@
+.collection-browse-wrapper {
+  padding: 40px 0 40px 0;
+}
+
+.collection-browse-wrapper img.card-img-top {
+  height: 210px;
+}
+
+div.collection-browse-header {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+div.collection-browse-header h1.list-type {
+  font-family: "gineso-condensed", sans-serif;
+}
+
+div.collection-browse-header h1.list-type span {
+  color: var(--themeHighlightColor);
+}
+
+div.collection-browse-wrapper div.container div.row div.navbar {
+  margin-bottom: 15px;
+}

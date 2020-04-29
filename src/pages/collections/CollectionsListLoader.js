@@ -15,9 +15,16 @@ class CollectionsListLoader extends Component {
       nextTokens: [],
       limit: 10,
       page: 0,
-      totalPages: 1
+      totalPages: 1,
+      view: "Gallery"
     };
   }
+
+  updateFormState = (name, val) => {
+    this.setState({
+      [name]: val
+    });
+  };
 
   previousPage() {
     this.setState(
@@ -99,6 +106,8 @@ class CollectionsListLoader extends Component {
             previousPage={this.previousPage.bind(this)}
             nextPage={this.nextPage.bind(this)}
             totalPages={this.state.totalPages}
+            view={this.state.view}
+            updateFormState={this.updateFormState}
           />
         </div>
       );

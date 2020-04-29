@@ -122,7 +122,7 @@ function textFormat(item, attr, languages) {
 const MoreLink = ({ dataType, item }) => {
   return (
     <span>
-      <span>{item["description"].substring(0, 100)}</span>
+      <span>{item["description"].substring(0, 120)}</span>
       <a
         className="more-link"
         href={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}

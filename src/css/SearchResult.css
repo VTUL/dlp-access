@@ -12,6 +12,10 @@
   padding: 40px 0px 0px !important;
 }
 
+div.search-results div.row div#content div.navbar {
+  margin-bottom: 15px;
+}
+
 .navbar {
   z-index: 900;
   background-color: #f8f8f8;
@@ -83,17 +87,8 @@
   content: "\e011";
 }
 
-.masonry {
-  padding-top: 6px;
-  flex: 1;
-  min-width: 250px;
-  height: auto;
-  -webkit-flex: 1 0 250px;
-}
-
-.card-columns {
-  display: inline-block;
-  column-width: 250px;
+div.masonry div.card {
+  margin: 0.75rem 0 0 0;
 }
 
 .document {
