@@ -1,0 +1,73 @@
+.item-page-wrapper {
+  padding: 40px 0px 40px 0px;
+}
+
+.item-image-section {
+  margin-top: 40px;
+  background-color: #f8f8f8;
+  border: solid 1px #707070;
+  padding: 1.5em;
+}
+
+div.item-image-section div.breadcrumbs-wrapper {
+  padding: 0 0 1.5em 0;
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 1.1em;
+}
+
+div.item-image-section div.breadcrumbs-wrapper ul {
+  margin: 0;
+}
+
+.item-details-section {
+  padding: 40px 0 40px 0;
+}
+
+.details-section-description h4 {
+  font-family: "gineso-condensed", sans-serif;
+}
+
+.details-section-description p {
+  font-family: "Acherus", sans-serif;
+}
+
+div.details-section-metadata {
+  border-left: none;
+  padding-top: 40px;
+}
+
+div.details-section-metadata a {
+  color: var(--themeHighlightColor);
+}
+
+div.details-section-metadata table tbody tr td {
+  display: block;
+  padding: 0;
+  line-height: 1.25;
+}
+
+div.details-section-metadata table tbody tr td.collection-detail-key {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 1.25em;
+  font-weight: 500;
+  vertical-align: text-top;
+}
+
+div.details-section-metadata table tbody tr td.collection-detail-value {
+  font-family: "Acherus", sans-serif;
+  vertical-align: text-top;
+  padding-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+  div.details-section-metadata {
+    border-left: 1px solid grey;
+    padding-top: 0px;
+  }
+
+  div.item-image-section div.breadcrumbs-wrapper {
+    padding: 0 0 1.5em 0;
+    font-family: "gineso-condensed", sans-serif;
+    font-size: 1.25em;
+  }
+}

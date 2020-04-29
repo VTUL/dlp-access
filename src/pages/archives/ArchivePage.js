@@ -9,6 +9,8 @@ import { RenderItemsDetailed } from "../../lib/MetadataRenderer";
 import { fetchLanguages } from "../../lib/fetchTools";
 import { getArchiveByCustomKey } from "../../graphql/queries";
 
+import "../../css/ArchivePage.css";
+
 const KeyArray = [
   "identifier",
   "belongs_to",
@@ -90,7 +92,7 @@ class ArchivePage extends Component {
           });
           if (this.state.languages) {
             return (
-              <div>
+              <div className="item-page-wrapper">
                 <SiteTitle
                   siteTitle={this.props.siteDetails.siteTitle}
                   pageTitle={item.title}
@@ -102,21 +104,23 @@ class ArchivePage extends Component {
                   setPage={this.setPage}
                   updateFormState={this.updateFormState}
                 />
-                <div className="breadcrumbs-wrapper">
-                  <Breadcrumbs dataType={"Archives"} record={item} />
-                </div>
-                <h3>{item.title}</h3>
-                <div className="row">
-                  <div className="col-sm-12">
-                    <Viewer config={miradorConfig} />
+
+                <div className="item-image-section">
+                  <div className="breadcrumbs-wrapper">
+                    <Breadcrumbs dataType={"Archives"} record={item} />
+                  </div>
+                  <div className="row">
+                    <div className="col-sm-12">
+                      <Viewer config={miradorConfig} />
+                    </div>
                   </div>
                 </div>
-                <p>{item.description}</p>
-                <div className="details-section">
-                  <div className="details-section-header">
-                    <h2>Archive Details</h2>
+                <div className="row item-details-section">
+                  <div className="col-lg-6 details-section-description">
+                    <h4>{item.title}</h4>
+                    <p>{item.description}</p>
                   </div>
-                  <div className="details-section-content">
+                  <div className="col-lg-6 details-section-metadata">
                     <table>
                       <tbody>
                         <RenderItemsDetailed

@@ -1677,7 +1677,7 @@ pre code {
   }
 }
 
-.table {
+/*.table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 1rem;
@@ -1702,7 +1702,7 @@ pre code {
 
 .table .table {
   background-color: #fff;
-}
+}*/
 
 .table-sm th,
 .table-sm td {
