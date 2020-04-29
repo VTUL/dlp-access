@@ -106,3 +106,25 @@
   min-height: 250px;
   -webkit-flex: 1 0 250px;
 }
+
+#sidebar {
+  background: #eee;
+  width: 250px;
+}
+
+.facet-header {
+  cursor: pointer;
+  border: solid 1px #f2f2f2;
+  padding: 10px;
+  background-color: #707070;
+  color: #000000;
+}
+
+.facet-listing {
+  cursor: pointer;
+  border-left: solid 1px #f2f2f2;
+  border-right: solid 1px #f2f2f2;
+  border-bottom: solid 1px #f2f2f2;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+}

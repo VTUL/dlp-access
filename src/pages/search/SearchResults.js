@@ -4,6 +4,7 @@ import qs from "query-string";
 import ResultsNumberDropdown from "../../components/ResultsNumberDropdown";
 import Pagination from "../../components/Pagination";
 import SearchBar from "../../components/SearchBar";
+import SearchFacets from "./SearchFacets";
 import ViewBar from "../../components/ViewBar";
 import ItemsList from "./ItemsList";
 import { labelAttr } from "../../lib/MetadataRenderer";
@@ -46,6 +47,7 @@ class SearchResults extends Component {
       q: "",
       view: "List"
     };
+
     const SearchFieldDisplay = () => {
       if (this.props.q) {
         return (
@@ -68,7 +70,7 @@ class SearchResults extends Component {
           </table>
         );
       } else {
-        return "";
+        return <SearchFacets field="Years" />;
       }
     };
     return (
@@ -83,7 +85,7 @@ class SearchResults extends Component {
         <div className="container search-results">
           <div className="row">
             <div id="sidebar" className="col-lg-3 col-sm-12">
-              {/* <h2>Limit your search</h2> */}
+              <h2>Filter</h2>
               <div className="collection-detail">
                 <SearchFieldDisplay />
               </div>
