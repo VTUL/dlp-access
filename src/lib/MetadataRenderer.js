@@ -8,6 +8,7 @@ export function labelAttr(attr) {
   else if (attr === "rights_statement") return "Rights";
   else if (attr === "custom_key") return "Permanent Link";
   else if (attr === "related_url") return "Relation";
+  else if (attr === "date") return "Years";
   else return (attr.charAt(0).toUpperCase() + attr.slice(1)).replace("_", " ");
 }
 

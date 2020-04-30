@@ -1,13 +1,10 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import qs from "query-string";
 import ResultsNumberDropdown from "../../components/ResultsNumberDropdown";
 import Pagination from "../../components/Pagination";
 import SearchBar from "../../components/SearchBar";
 import SearchFacets from "./SearchFacets";
 import ViewBar from "../../components/ViewBar";
 import ItemsList from "./ItemsList";
-import { labelAttr } from "../../lib/MetadataRenderer";
 import { fetchLanguages } from "../../lib/fetchTools";
 
 import "../../css/ListPages.css";
@@ -41,38 +38,7 @@ class SearchResults extends Component {
         />
       );
     };
-    const defaultSearch = {
-      data_type: this.props.dataType,
-      search_field: "title",
-      q: "",
-      view: "List"
-    };
 
-    const SearchFieldDisplay = () => {
-      if (this.props.q) {
-        return (
-          <table>
-            <tbody>
-              <tr>
-                <td className="collection-detail-key">
-                  {labelAttr(this.props.searchField)}
-                </td>
-              </tr>
-              <tr>
-                <td className="collection-detail-value">
-                  {this.props.q} ({this.props.total})
-                  <NavLink to={`/search/?${qs.stringify(defaultSearch)}`}>
-                    <i className="fas fa-times"></i>
-                  </NavLink>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        );
-      } else {
-        return <SearchFacets field="Years" />;
-      }
-    };
     return (
       <div className="search-result-wrapper">
         <SearchBar
@@ -87,7 +53,13 @@ class SearchResults extends Component {
             <div id="sidebar" className="col-lg-3 col-sm-12">
               <h2>Filter</h2>
               <div className="collection-detail">
-                <SearchFieldDisplay />
+                <SearchFacets
+                  facetField={this.props.searchField}
+                  q={this.props.q}
+                  total={this.props.total}
+                  dataType={this.props.dataType}
+                  view={this.props.view}
+                />
               </div>
             </div>
             <div id="content" className="col-lg-9 col-sm-12">

@@ -1,6 +1,14 @@
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../../graphql/queries";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleDoubleRight,
+  faAngleDoubleDown
+} from "@fortawesome/free-solid-svg-icons";
+import { NavLink } from "react-router-dom";
+import qs from "query-string";
+import { labelAttr } from "../../lib/MetadataRenderer";
 import "../../css/ListPages.css";
 import "../../css/SearchResult.css";
 
@@ -17,7 +25,7 @@ class SearchFacets extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    this.loadFacets(this.props.field);
+    this.loadFacets("date");
   }
 
   togglePanel(e) {
@@ -48,45 +56,95 @@ class SearchFacets extends Component {
     };
     let fieldFacet = [];
     let searchPhrase = {};
-    if (field === this.props.field) {
-      for (const [index, value] of this.dateRanges.entries()) {
-        searchPhrase = {
-          start_date: { gte: `${value[0]}/01/01`, lte: `${value[1]}/12/31` }
-        };
-        archiveFilter = { ...archiveFilter, ...searchPhrase };
-        const Archives = await API.graphql(
-          graphqlOperation(queries.searchArchives, {
-            filter: archiveFilter
-          })
-        );
-        let total = Archives.data.searchArchives.total;
-        if (total > 0) {
-          fieldFacet.push({ label: this.date(value), count: total });
-        }
+    let parsedObject = {
+      data_type: this.props.dataType,
+      search_field: field,
+      view: this.props.view
+    };
+
+    for (const [index, value] of this.dateRanges.entries()) {
+      searchPhrase = {
+        start_date: { gte: `${value[0]}/01/01`, lte: `${value[1]}/12/31` }
+      };
+      archiveFilter = { ...archiveFilter, ...searchPhrase };
+      const Archives = await API.graphql(
+        graphqlOperation(queries.searchArchives, {
+          filter: archiveFilter
+        })
+      );
+      let total = Archives.data.searchArchives.total;
+      if (total > 0) {
+        let searchQuery = { q: this.date(value) };
+        fieldFacet.push({
+          label: this.date(value),
+          path: `/search/?${qs.stringify({ ...parsedObject, ...searchQuery })}`,
+          count: total
+        });
       }
-      if (this._isMounted) {
-        this.setState({ facetNodes: fieldFacet });
-      }
+    }
+    if (this._isMounted) {
+      this.setState({ facetNodes: fieldFacet });
     }
   }
 
   render() {
+    const defaultSearch = {
+      data_type: this.props.dataType,
+      search_field: "title",
+      q: "",
+      view: "List"
+    };
+
+    const FacetListing = () => {
+      if (this.props.q) {
+        return (
+          <div className="collection-detail-value">
+            {this.props.q} ({this.props.total})
+            <NavLink to={`/search/?${qs.stringify(defaultSearch)}`}>
+              <i className="fas fa-times"></i>
+            </NavLink>
+          </div>
+        );
+      } else {
+        return (
+          <ul>
+            {this.state.facetNodes.map((value, index) => {
+              return (
+                <li key={index}>
+                  <NavLink to={value["path"]}>
+                    {value["label"]} ({value["count"]})
+                  </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+    };
+
     return (
       <div>
         <div onClick={e => this.togglePanel(e)} className="facet-header">
-          {this.props.field}
+          {this.props.q ? labelAttr(this.props.facetField) : "Years"}
+          {this.state.open ? (
+            <FontAwesomeIcon
+              icon={faAngleDoubleRight}
+              size="lg"
+              color="orange"
+              className="float-right"
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faAngleDoubleDown}
+              size="lg"
+              color="orange"
+              className="float-right"
+            />
+          )}
         </div>
         {this.state.open ? (
           <div className="facet-listing">
-            <ul>
-              {this.state.facetNodes.map((value, index) => {
-                return (
-                  <li key={index}>
-                    {value["label"]} ({value["count"]})
-                  </li>
-                );
-              })}
-            </ul>
+            <FacetListing />
           </div>
         ) : null}
       </div>
