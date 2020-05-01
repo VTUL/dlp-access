@@ -118,7 +118,9 @@ class ArchivePage extends Component {
                 <div className="row item-details-section">
                   <div className="col-lg-6 details-section-description">
                     <h4>{item.title}</h4>
-                    <p>{item.description}</p>
+                    {item.description.split("\n").map((value, index) => {
+                      return <p key={index}>{value}</p>;
+                    })}
                   </div>
                   <div className="col-lg-6 details-section-metadata">
                     <table>

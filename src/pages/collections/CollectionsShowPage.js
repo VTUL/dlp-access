@@ -77,7 +77,13 @@ class CollectionsShowPage extends Component {
               Last updated: {this.props.collection.modified_date}
             </span>
           </div>
-          <div className="description">{this.props.collection.description}</div>
+          <div className="description">
+            {this.props.collection.description
+              .split("\n")
+              .map((value, index) => {
+                return <p key={index}>{value}</p>;
+              })}
+          </div>
 
           <SubCollectionsLoader
             collection={this.props.collection}
