@@ -36,6 +36,10 @@ span.creator:after {
 .description {
   padding: 15px 0 25px 0;
 }
+.description h3.introduction {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 18px;
+}
 
 .description #more,
 .description #less,

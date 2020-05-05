@@ -184,6 +184,7 @@ class CollectionsShowPage extends Component {
                 }`}
               >
                 <div>
+                  <h3 className="introduction">Introduction</h3>
                   {this.getDescription()}{" "}
                   <a href="#" onClick={this.onMoreLessClick} id="more">
                     . . .[more]
