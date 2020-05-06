@@ -39,6 +39,9 @@ class SearchLoader extends Component {
       },
       function() {
         this.loadItems();
+        if (typeof this.props.scrollUp === "function") {
+          this.props.scrollUp(new Event("click"));
+        }
       }
     );
   }
@@ -50,6 +53,9 @@ class SearchLoader extends Component {
       },
       function() {
         this.loadItems();
+        if (typeof this.props.scrollUp === "function") {
+          this.props.scrollUp(new Event("click"));
+        }
       }
     );
   }

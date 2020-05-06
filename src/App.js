@@ -20,8 +20,13 @@ class App extends Component {
     super(props);
     this.state = {
       view: "List",
-      siteDetails: null
+      siteDetails: null,
+      paginationClick: null
     };
+  }
+
+  setPaginationClick(event) {
+    this.setState({ paginationClick: event });
   }
 
   componentDidMount() {
@@ -32,7 +37,7 @@ class App extends Component {
     if (this.state.siteDetails !== null) {
       return (
         <Router>
-          <ScrollToTop />
+          <ScrollToTop paginationClick={this.state.paginationClick} />
           <Header
             siteDetails={this.state.siteDetails}
             location={window.location}
@@ -66,6 +71,7 @@ class App extends Component {
                   exact
                   render={props => (
                     <CollectionsListLoader
+                      scrollUp={this.setPaginationClick.bind(this)}
                       siteDetails={this.state.siteDetails}
                     />
                   )}
@@ -83,7 +89,10 @@ class App extends Component {
                   path="/search"
                   exact
                   render={props => (
-                    <SearchLoader siteDetails={this.state.siteDetails} />
+                    <SearchLoader
+                      scrollUp={this.setPaginationClick.bind(this)}
+                      siteDetails={this.state.siteDetails}
+                    />
                   )}
                 />
                 <Route

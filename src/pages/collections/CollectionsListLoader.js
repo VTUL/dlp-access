@@ -75,14 +75,21 @@ class CollectionsListLoader extends Component {
 
     nextTokens[this.state.page + 1] =
       collections.data.searchCollections.nextToken;
-    this.setState({
-      collections: collections.data.searchCollections.items,
-      total: collections.data.searchCollections.total,
-      nextTokens: nextTokens,
-      totalPages: Math.ceil(
-        collections.data.searchCollections.total / this.state.limit
-      )
-    });
+    this.setState(
+      {
+        collections: collections.data.searchCollections.items,
+        total: collections.data.searchCollections.total,
+        nextTokens: nextTokens,
+        totalPages: Math.ceil(
+          collections.data.searchCollections.total / this.state.limit
+        )
+      },
+      function() {
+        if (typeof this.props.scrollUp === "function") {
+          this.props.scrollUp(new Event("click"));
+        }
+      }
+    );
   }
 
   componentDidMount() {
@@ -108,6 +115,7 @@ class CollectionsListLoader extends Component {
             totalPages={this.state.totalPages}
             view={this.state.view}
             updateFormState={this.updateFormState}
+            scrollUp={this.props.scrollUp}
           />
         </div>
       );
