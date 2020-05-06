@@ -16,10 +16,11 @@ class Header extends Component {
           <div className="row vt-one-headerRow">
             <header className="col header-col" role="banner">
               <div id="vt_logo">
-                <a className="vt-logo-link" href="https://vt.edu">
+                <a className="vt-logo-link" href="https://lib.vt.edu">
                   <img
-                    alt="VT Virginia Tech"
-                    src="https://www.assets.cms.vt.edu/images/logo-maroon-whiteBG.svg"
+                    alt="University Libraries at Virginia Tech"
+                    src="/images/library-logo-lockup_color.png"
+                    style={{ width: "220px" }}
                   />
                 </a>
               </div>

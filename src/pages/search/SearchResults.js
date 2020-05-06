@@ -71,6 +71,7 @@ class SearchResults extends Component {
                   <ViewBar
                     view={this.props.view}
                     updateFormState={this.props.updateFormState}
+                    pageViews={["Gallery", "List", "Masonry"]}
                   />
                   <ResultsNumberDropdown setLimit={this.props.setLimit} />
                 </div>

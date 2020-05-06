@@ -3,24 +3,12 @@ import ItemListView from "../search/ItemListView";
 import GalleryView from "../search/GalleryView";
 import ResultsNumberDropdown from "../../components/ResultsNumberDropdown";
 import Pagination from "../../components/Pagination";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThList, faTh } from "@fortawesome/free-solid-svg-icons";
+import ViewBar from "../../components/ViewBar";
 
 import "../../css/ListPages.css";
 import "../../css/CollectionsListPage.css";
 
 class CollectionsListPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      view: this.props.view
-    };
-  }
-
-  updateView = viewType => {
-    this.props.updateFormState("view", viewType);
-  };
-
   render() {
     const Header = () => {
       if (this.props.isSearch) {
@@ -60,34 +48,11 @@ class CollectionsListPage extends Component {
             <div className="col-12 navbar navbar-light justify-content-between">
               <div></div>
               <div className="form-inline collection-view-options">
-                <div className="btn-group" aria-label="View Options">
-                  <button
-                    className="btn btn-outline-light"
-                    data-toggle="tooltip"
-                    title="List"
-                    onClick={() => this.updateView("List")}
-                    active={(this.state.view === "List").toString()}
-                  >
-                    <FontAwesomeIcon
-                      icon={faThList}
-                      size="lg"
-                      style={{ color: "var(--themeHighlightColor" }}
-                    />
-                  </button>
-                  <button
-                    className="btn btn-outline-light"
-                    data-toggle="tooltip"
-                    title="Gallery"
-                    onClick={() => this.updateView("Gallery")}
-                    active={(this.state.view === "Gallery").toString()}
-                  >
-                    <FontAwesomeIcon
-                      icon={faTh}
-                      size="lg"
-                      style={{ color: "var(--themeHighlightColor" }}
-                    />
-                  </button>
-                </div>
+                <ViewBar
+                  view={this.props.view}
+                  updateFormState={this.props.updateFormState}
+                  pageViews={["Gallery", "List"]}
+                />
                 <ResultsNumberDropdown setLimit={this.props.setLimit} />
               </div>
             </div>

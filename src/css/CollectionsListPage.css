@@ -23,3 +23,7 @@ div.collection-browse-header h1.list-type span {
 div.collection-browse-wrapper div.container div.row div.navbar {
   margin-bottom: 15px;
 }
+
+div.collection-browse-wrapper div.container div.row div.gallery-item {
+  max-width: 380px !important;
+}
