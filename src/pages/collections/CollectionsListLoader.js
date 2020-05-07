@@ -68,6 +68,10 @@ class CollectionsListLoader extends Component {
           visibility: { eq: true },
           parent_collection: { exists: false }
         },
+        sort: {
+          field: "title",
+          direction: "asc"
+        },
         limit: this.state.limit,
         nextToken: this.state.nextTokens[this.state.page]
       })

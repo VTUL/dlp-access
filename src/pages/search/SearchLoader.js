@@ -156,7 +156,7 @@ class SearchLoader extends Component {
       graphqlOperation(queries.searchArchives, {
         filter: archiveFilter,
         sort: {
-          field: "identifier",
+          field: "title",
           direction: "asc"
         },
         limit: this.state.limit,
@@ -167,7 +167,7 @@ class SearchLoader extends Component {
       graphqlOperation(queries.searchCollections, {
         filter: collectionFilter,
         sort: {
-          field: "identifier",
+          field: "title",
           direction: "asc"
         },
         limit: this.state.limit,
