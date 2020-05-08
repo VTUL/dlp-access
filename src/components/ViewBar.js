@@ -13,21 +13,21 @@ class ViewBar extends Component {
   };
 
   render() {
-    const buttons = this.props.pageViews.map((button, index) => {
+    const buttons = this.props.pageViews.map((buttonType, index) => {
       return (
         <button
           key={index}
           className="btn btn-outline-light"
           data-toggle="tooltip"
-          title={button}
-          onClick={() => this.updateView(button)}
-          active={(this.state.view === button).toString()}
+          title={buttonType}
+          onClick={() => this.updateView(buttonType)}
+          active={(this.state.view === buttonType).toString()}
         >
           <FontAwesomeIcon
             icon={
-              button === "Gallery"
+              buttonType === "Gallery"
                 ? faTh
-                : button === "List"
+                : buttonType === "List"
                 ? faThList
                 : faImages
             }
