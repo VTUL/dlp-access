@@ -1,6 +1,96 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const searchObjects = /* GraphQL */ `
+  query SearchObjects(
+    $sort: SearchableObjectSortInput
+    $filter: SearchableObjectFilterInput
+    $limit: Int
+    $nextToken: String
+    $category: String
+  ) {
+    searchObjects(
+      sort: $sort
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      category: $category
+    ) {
+      items {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        location
+        rights_statement
+        language
+        related_url
+        provenance
+        belongs_to
+        bibliographic_citation
+        rights_holder
+        custom_key
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        ... on Collection {
+          subject
+          collection_category
+          archives {
+            nextToken
+          }
+        }
+        ... on Archive {
+          tags
+          resource_type
+          medium
+          format
+          repository
+          reference
+          contributor
+          item_category
+          manifest_url
+          collection {
+            id
+            title
+            identifier
+            description
+            creator
+            source
+            circa
+            start_date
+            end_date
+            subject
+            location
+            rights_statement
+            language
+            related_url
+            provenance
+            belongs_to
+            bibliographic_citation
+            rights_holder
+            custom_key
+            collection_category
+            visibility
+            thumbnail_path
+            parent_collection
+            create_date
+            modified_date
+          }
+        }
+      }
+      nextToken
+      total
+    }
+  }
+`;
 export const getCollection = /* GraphQL */ `
   query GetCollection($id: ID!) {
     getCollection(id: $id) {
@@ -17,6 +107,9 @@ export const getCollection = /* GraphQL */ `
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -48,6 +141,9 @@ export const getCollection = /* GraphQL */ `
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -159,6 +255,9 @@ export const listCollections = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -199,6 +298,9 @@ export const getArchive = /* GraphQL */ `
       rights_holder
       format
       related_url
+      provenance
+      repository
+      reference
       contributor
       custom_key
       parent_collection
@@ -222,6 +324,9 @@ export const getArchive = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -304,6 +409,9 @@ export const listArchives = /* GraphQL */ `
         rights_holder
         format
         related_url
+        provenance
+        repository
+        reference
         contributor
         custom_key
         parent_collection
@@ -327,6 +435,9 @@ export const listArchives = /* GraphQL */ `
           location
           rights_statement
           language
+          related_url
+          provenance
+          belongs_to
           bibliographic_citation
           rights_holder
           custom_key
@@ -371,6 +482,9 @@ export const collectionByIdentifier = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -424,6 +538,9 @@ export const archiveByIdentifier = /* GraphQL */ `
         rights_holder
         format
         related_url
+        provenance
+        repository
+        reference
         contributor
         custom_key
         parent_collection
@@ -447,6 +564,9 @@ export const archiveByIdentifier = /* GraphQL */ `
           location
           rights_statement
           language
+          related_url
+          provenance
+          belongs_to
           bibliographic_citation
           rights_holder
           custom_key
@@ -489,6 +609,9 @@ export const searchCollections = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -541,6 +664,9 @@ export const searchArchives = /* GraphQL */ `
         rights_holder
         format
         related_url
+        provenance
+        repository
+        reference
         contributor
         custom_key
         parent_collection
@@ -564,6 +690,9 @@ export const searchArchives = /* GraphQL */ `
           location
           rights_statement
           language
+          related_url
+          provenance
+          belongs_to
           bibliographic_citation
           rights_holder
           custom_key

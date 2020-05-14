@@ -22,7 +22,11 @@ class ItemListView extends Component {
       return (
         <div key={this.props.item.id} className="col-12 collection-entry">
           <div className="collection-img">
-            <Thumbnail item={this.props.item} dataType={this.props.dataType} />
+            <Thumbnail
+              item={this.props.item}
+              dataType={this.props.dataType}
+              label={this.props.label}
+            />
           </div>
           <div className="collection-details">
             {titleFormatted(this.props.item, this.props.dataType)}

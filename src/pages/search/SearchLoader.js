@@ -18,7 +18,7 @@ class SearchLoader extends Component {
       limit: 10,
       page: 0,
       totalPages: 1,
-      dataType: "archive",
+      dataType: null,
       searchField: "title",
       view: "Gallery",
       q: "",
@@ -97,7 +97,7 @@ class SearchLoader extends Component {
       parent_collection: { exists: false }
     };
     let searchPhrase = {};
-    if (searchQuery.get("search_field") && searchQuery.get("data_type")) {
+    if (searchQuery.get("search_field")) {
       if (
         searchQuery.get("search_field") === "date" &&
         searchQuery.get("q") !== ""
@@ -152,40 +152,47 @@ class SearchLoader extends Component {
       });
     }
 
-    const Archives = await API.graphql(
-      graphqlOperation(queries.searchArchives, {
-        filter: archiveFilter,
-        sort: {
-          field: "title",
-          direction: "asc"
-        },
-        limit: this.state.limit,
-        nextToken: this.state.nextTokens[this.state.page]
-      })
-    );
-    const Collections = await API.graphql(
-      graphqlOperation(queries.searchCollections, {
-        filter: collectionFilter,
-        sort: {
-          field: "title",
-          direction: "asc"
-        },
-        limit: this.state.limit,
-        nextToken: this.state.nextTokens[this.state.page]
-      })
-    );
-
     let searchResults = null;
-    if (
-      searchQuery.get("q") === null &&
-      searchQuery.get("search_field") === null &&
-      searchQuery.get("data_type") === null
-    ) {
-      searchResults = Archives.data.searchArchives;
-    } else if (this.state.dataType === "collection") {
+    if (this.state.dataType === "collection") {
+      const Collections = await API.graphql(
+        graphqlOperation(queries.searchCollections, {
+          filter: collectionFilter,
+          sort: {
+            field: "title",
+            direction: "asc"
+          },
+          limit: this.state.limit,
+          nextToken: this.state.nextTokens[this.state.page]
+        })
+      );
       searchResults = Collections.data.searchCollections;
-    } else {
+    } else if (this.state.dataType === "archive") {
+      const Archives = await API.graphql(
+        graphqlOperation(queries.searchArchives, {
+          filter: archiveFilter,
+          sort: {
+            field: "title",
+            direction: "asc"
+          },
+          limit: this.state.limit,
+          nextToken: this.state.nextTokens[this.state.page]
+        })
+      );
       searchResults = Archives.data.searchArchives;
+    } else {
+      const Objects = await API.graphql(
+        graphqlOperation(queries.searchObjects, {
+          filter: searchPhrase,
+          sort: {
+            field: "title",
+            direction: "asc"
+          },
+          limit: this.state.limit,
+          nextToken: this.state.nextTokens[this.state.page],
+          category: REP_TYPE
+        })
+      );
+      searchResults = Objects.data.searchObjects;
     }
     nextTokens[this.state.page + 1] = searchResults.nextToken;
     this.setState({

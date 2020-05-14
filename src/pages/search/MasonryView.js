@@ -6,7 +6,12 @@ export const MasonryView = ({ item, dataType }) => {
   return (
     <div className="masonry">
       <div className="card border-0">
-        <Thumbnail item={item} dataType={dataType} className="card-img" />
+        <Thumbnail
+          item={item}
+          dataType={dataType}
+          label={this.props.label}
+          className="card-img"
+        />
       </div>
     </div>
   );

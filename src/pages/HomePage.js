@@ -40,8 +40,7 @@ class HomePage extends Component {
           </div>
           <div className="home-search-wrapper">
             <SearchBar
-              dataType="archive"
-              view="list"
+              view="gallery"
               searchField="title"
               q=""
               setPage={this.props.setPage}

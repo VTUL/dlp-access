@@ -17,6 +17,10 @@ export function breadcrumbTitle(title) {
   return titleArray[0];
 }
 
+export function getDataType(item) {
+  return item.collection_category ? "collection" : "archive";
+}
+
 export function arkLinkFormatted(customKey) {
   return customKey.replace("ark:/53696/", "");
 }

@@ -12,6 +12,7 @@ class GalleryView extends Component {
             item={this.props.item}
             dataType={this.props.dataType}
             className="card-img-top"
+            label={this.props.label}
           />
           <div className="card-body">
             <a

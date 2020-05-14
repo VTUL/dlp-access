@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ItemListView from "./ItemListView";
 import GalleryView from "./GalleryView";
+import { getDataType } from "../../lib/MetadataRenderer";
 import { MasonryView } from "./MasonryView";
 
 class ItemsList extends Component {
@@ -22,7 +23,8 @@ class ItemsList extends Component {
                 <GalleryView
                   key={item.id}
                   item={item}
-                  dataType={this.props.dataType}
+                  dataType={getDataType(item)}
+                  label={true}
                 />
               );
             } else if (this.props.view === "Masonry") {
@@ -30,7 +32,8 @@ class ItemsList extends Component {
                 <MasonryView
                   key={item.id}
                   item={item}
-                  dataType={this.props.dataType}
+                  dataType={getDataType(item)}
+                  label={true}
                 />
               );
             } else {
@@ -38,7 +41,8 @@ class ItemsList extends Component {
                 <ItemListView
                   key={item.id}
                   item={item}
-                  dataType={this.props.dataType}
+                  dataType={getDataType(item)}
+                  label={true}
                 />
               );
             }

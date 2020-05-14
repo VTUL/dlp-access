@@ -8,7 +8,7 @@ import "../css/searchBar.css";
 class SearchBar extends Component {
   state = {
     view: this.props.view,
-    dataType: this.props.dataType,
+    dataType: null,
     searchField: this.props.searchField,
     q: this.props.q
   };
@@ -105,8 +105,7 @@ class SearchBar extends Component {
     if (this.props !== prevProps) {
       this.setState({
         q: this.props.q,
-        searchField: this.props.searchField,
-        dataType: this.props.dataType
+        searchField: this.props.searchField
       });
     }
   }
@@ -157,34 +156,6 @@ class SearchBar extends Component {
             <button className="btn" type="submit" onClick={this.submit}>
               Search
             </button>
-          </div>
-        </div>
-        <div className="search-options-wrapper">
-          <div className="form-check-inline">
-            <label className="form-check-label" htmlFor="radio-archive">
-              <input
-                type="radio"
-                className="form-check-input"
-                id="radio-archive"
-                value="archive"
-                checked={this.state.dataType === "archive"}
-                onChange={this.updateSearchType}
-              />
-              Archives
-            </label>
-          </div>
-          <div className="form-check-inline">
-            <label className="form-check-label" htmlFor="radio-collections">
-              <input
-                type="radio"
-                className="form-check-input"
-                id="radio-collections"
-                value="collection"
-                checked={this.state.dataType === "collection"}
-                onChange={this.updateSearchType}
-              />
-              Collections
-            </label>
           </div>
         </div>
       </div>

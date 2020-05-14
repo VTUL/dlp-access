@@ -17,6 +17,9 @@ export const createCollection = /* GraphQL */ `
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -48,6 +51,9 @@ export const createCollection = /* GraphQL */ `
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -79,6 +85,9 @@ export const updateCollection = /* GraphQL */ `
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -110,6 +119,9 @@ export const updateCollection = /* GraphQL */ `
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -141,6 +153,9 @@ export const deleteCollection = /* GraphQL */ `
       location
       rights_statement
       language
+      related_url
+      provenance
+      belongs_to
       bibliographic_citation
       rights_holder
       custom_key
@@ -172,6 +187,9 @@ export const deleteCollection = /* GraphQL */ `
           rights_holder
           format
           related_url
+          provenance
+          repository
+          reference
           contributor
           custom_key
           parent_collection
@@ -210,6 +228,9 @@ export const createArchive = /* GraphQL */ `
       rights_holder
       format
       related_url
+      provenance
+      repository
+      reference
       contributor
       custom_key
       parent_collection
@@ -233,6 +254,9 @@ export const createArchive = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -272,6 +296,9 @@ export const updateArchive = /* GraphQL */ `
       rights_holder
       format
       related_url
+      provenance
+      repository
+      reference
       contributor
       custom_key
       parent_collection
@@ -295,6 +322,9 @@ export const updateArchive = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key
@@ -334,6 +364,9 @@ export const deleteArchive = /* GraphQL */ `
       rights_holder
       format
       related_url
+      provenance
+      repository
+      reference
       contributor
       custom_key
       parent_collection
@@ -357,6 +390,9 @@ export const deleteArchive = /* GraphQL */ `
         location
         rights_statement
         language
+        related_url
+        provenance
+        belongs_to
         bibliographic_citation
         rights_holder
         custom_key

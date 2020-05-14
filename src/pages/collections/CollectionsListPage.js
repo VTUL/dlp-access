@@ -63,6 +63,7 @@ class CollectionsListPage extends Component {
                     key={collection.id}
                     item={collection}
                     dataType="collection"
+                    label={false}
                   />
                 );
               } else {
@@ -71,6 +72,7 @@ class CollectionsListPage extends Component {
                     key={collection.id}
                     item={collection}
                     dataType="collection"
+                    label={false}
                   />
                 );
               }

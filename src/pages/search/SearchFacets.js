@@ -54,6 +54,11 @@ class SearchFacets extends Component {
       item_category: { eq: REP_TYPE },
       visibility: { eq: true }
     };
+    let collectionFilter = {
+      collection_category: { eq: REP_TYPE },
+      visibility: { eq: true },
+      parent_collection: { exists: false }
+    };
     let fieldFacet = [];
     let searchPhrase = {};
     let parsedObject = {
@@ -66,13 +71,31 @@ class SearchFacets extends Component {
       searchPhrase = {
         start_date: { gte: `${value[0]}/01/01`, lte: `${value[1]}/12/31` }
       };
-      archiveFilter = { ...archiveFilter, ...searchPhrase };
-      const Archives = await API.graphql(
-        graphqlOperation(queries.searchArchives, {
-          filter: archiveFilter
-        })
-      );
-      let total = Archives.data.searchArchives.total;
+      let searchResults = null;
+      if (this.props.dataType === "collection") {
+        const Collections = await API.graphql(
+          graphqlOperation(queries.searchCollections, {
+            filter: { ...collectionFilter, ...searchPhrase }
+          })
+        );
+        searchResults = Collections.data.searchCollections;
+      } else if (this.props.dataType === "archive") {
+        const Archives = await API.graphql(
+          graphqlOperation(queries.searchArchives, {
+            filter: { ...archiveFilter, ...searchPhrase }
+          })
+        );
+        searchResults = Archives.data.searchArchives;
+      } else {
+        const Objects = await API.graphql(
+          graphqlOperation(queries.searchObjects, {
+            filter: searchPhrase,
+            category: REP_TYPE
+          })
+        );
+        searchResults = Objects.data.searchObjects;
+      }
+      let total = searchResults.total;
       if (total > 0) {
         let searchQuery = { q: this.date(value) };
         fieldFacet.push({
