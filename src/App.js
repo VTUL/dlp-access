@@ -25,6 +25,16 @@ class App extends Component {
     };
   }
 
+  setColor(color) {
+    if (color) {
+      document.documentElement.style.setProperty(
+        "--themeHighlightColor",
+        color
+      );
+    } else {
+    }
+  }
+
   setPaginationClick(event) {
     this.setState({ paginationClick: event });
   }
@@ -35,6 +45,7 @@ class App extends Component {
 
   render() {
     if (this.state.siteDetails !== null) {
+      this.setColor(this.state.siteDetails.siteColor);
       return (
         <Router>
           <ScrollToTop paginationClick={this.state.paginationClick} />
