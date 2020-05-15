@@ -31,7 +31,6 @@ class App extends Component {
         "--themeHighlightColor",
         color
       );
-    } else {
     }
   }
 
