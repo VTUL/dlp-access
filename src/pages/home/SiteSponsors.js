@@ -6,12 +6,19 @@ class SiteSponsors extends Component {
   render() {
     if (this.props.sponsors) {
       return (
-        <div className="home-sponsors-section">
-          <div className="home-sponsors-wrapper">
+        <div className="container home-sponsors-section">
+          <div className="row home-sponsors-wrapper">
             {this.props.sponsors.map((sponsor, index) => (
-              <div key={index} className="sponsor-wrapper">
+              <div
+                key={index}
+                className="col-6 col-md-4 col-lg-3 sponsor-wrapper"
+              >
                 <a href={sponsor.link} target="_blank">
-                  <img src={sponsor.img} alt={sponsor.alt} />
+                  <img
+                    src={sponsor.img}
+                    alt={sponsor.alt}
+                    className="img-fluid"
+                  />
                 </a>
               </div>
             ))}
