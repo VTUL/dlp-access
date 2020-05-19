@@ -13,7 +13,11 @@ class SiteSponsors extends Component {
                 key={index}
                 className="col-6 col-md-4 col-lg-3 sponsor-wrapper"
               >
-                <a href={sponsor.link} target="_blank">
+                <a
+                  href={sponsor.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img
                     src={sponsor.img}
                     alt={sponsor.alt}
