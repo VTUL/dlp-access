@@ -19,6 +19,7 @@ class CollectionsShowPage extends Component {
     this.state = {
       languages: null,
       descriptionTruncated: true,
+      subDescriptionTruncated: true,
       description: "",
       title: "",
       thumbnail_path: ""
@@ -93,20 +94,66 @@ class CollectionsShowPage extends Component {
     return this.state.title || this.props.collection.title;
   }
 
-  onMoreLessClick(e) {
+  subCollectionTitle() {
+    let title = "";
+    if (this.state.title && this.state.title !== this.props.collection.title) {
+      title = this.props.collection.title;
+    }
+    return title;
+  }
+
+  subCollectionDescription() {
+    let descriptionSection = <></>;
+    let descriptionText = this.props.collection.description;
+    if (descriptionText && this.state.subDescriptionTruncated) {
+      descriptionText = descriptionText.substr(0, 600);
+    }
+    if (this.props.collection.parent_collection && descriptionText) {
+      descriptionSection = (
+        <div className="collection-detail-description">
+          <div className="collection-detail-key">Description</div>
+          <div
+            className={`collection-detail-value description ${
+              this.state.subDescriptionTruncated ? "trunc" : "full"
+            }`}
+          >
+            {addNewlineInDesc(descriptionText)}
+            <a
+              href="#"
+              onClick={e => this.onMoreLessClick("metadata", e)}
+              className="more"
+            >
+              . . .[more]
+            </a>
+            <a
+              href="#"
+              onClick={e => this.onMoreLessClick("metadata", e)}
+              className="less"
+            >
+              . . .[less]
+            </a>
+          </div>
+        </div>
+      );
+    }
+    return descriptionSection;
+  }
+
+  onMoreLessClick(src, e) {
     e.preventDefault();
+    let key = "descriptionTruncated";
+    if (src === "metadata") {
+      key = "subDescriptionTruncated";
+    }
     let truncated = true;
-    if (this.state.descriptionTruncated) {
+    if (this.state[key]) {
       truncated = false;
     }
-    this.setState(
-      {
-        descriptionTruncated: truncated
-      },
-      function() {
-        this.render();
-      }
-    );
+    let stateObj = {};
+    stateObj[key] = truncated;
+    this.setState(stateObj, function() {
+      this.render();
+    });
   }
 
   getDescription() {
@@ -177,10 +224,18 @@ class CollectionsShowPage extends Component {
                 <div>
                   <h3 className="introduction">Introduction</h3>
                   {this.getDescription()}{" "}
-                  <a href="/#" onClick={this.onMoreLessClick} id="more">
+                  <a
+                    href="#"
+                    onClick={e => this.onMoreLessClick("top-level", e)}
+                    className="more"
+                  >
                     . . .[more]
                   </a>
-                  <a href="/#" onClick={this.onMoreLessClick} id="less">
+                  <a
+                    href="#"
+                    onClick={e => this.onMoreLessClick("top-level", e)}
+                    className="less"
+                  >
                     . . .[less]
                   </a>
                 </div>
@@ -193,6 +248,8 @@ class CollectionsShowPage extends Component {
               <div className="col-12 col-lg-8 details-section">
                 <div className="details-section-header"></div>
                 <div className="details-section-content-grid">
+                  {this.subCollectionDescription()}
+
                   <RenderItemsDetailed
                     keyArray={KeyArray}
                     item={this.props.collection}

@@ -42,21 +42,21 @@ span.creator:after {
   font-size: 18px;
 }
 
-.description #more,
-.description #less,
-.description #more:hover,
-.description #less:hover,
-.description #more:visited,
-.description #less:visited {
+.description .more,
+.description .less,
+.description .more:hover,
+.description .less:hover,
+.description .more:visited,
+.description .less:visited {
   display: inline-block;
   color: var(--themeHighlightColor);
 }
 
-.description.trunc #less {
+.description.trunc .less {
   display: none;
 }
 
-.description.full #more {
+.description.full .more {
   display: none;
 }
 
@@ -94,6 +94,11 @@ span.creator:after {
   grid-gap: 10px;
   margin-top: 20px;
 }
+.container-fluid .details-section-content-grid .collection-detail-description {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
 .container-fluid .details-section-content-grid .collection-detail-entry {
   margin-bottom: 20px;
 }
