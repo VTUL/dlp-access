@@ -1,0 +1,90 @@
+.collection-highlights-wrapper {
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.collection-highlights-wrapper .category-container {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.collection-highlights-wrapper .category-container:hover,
+.collection-highlights-wrapper .category-container:focus {
+  border-color: var(--themeHighlightColor);
+}
+
+.collection-highlights-wrapper .category-container {
+  height: 350px;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.category-container .category-details {
+  width: 100%;
+  height: 80%;
+  background-color: rgba(31, 30, 30, 0.65);
+  padding: 80px 40px 0px 40px;
+}
+.category-container .category-details h4 {
+  font-family: "Acherus", sans-serif;
+  font-style: italic;
+  font-size: 60px;
+  color: white;
+  opacity: 1;
+  text-shadow: -2px 6px 3px #00000029;
+}
+
+.category-container .category-details p {
+  font-family: "Acherus", sans-serif;
+  color: white;
+  font-style: italic;
+}
+
+.category-container .category-link {
+  width: 100%;
+  height: 20%;
+  background-color: rgba(31, 30, 30, 0.65);
+  border-top: 1px solid white;
+}
+
+.category-container .category-link p {
+  font-family: "gineso-condensed", sans-serif;
+  color: white;
+  font-size: 22px;
+  padding-top: 15px;
+}
+
+.category-container .category-link .fa-arrow-right {
+  height: 18px;
+  width: 30px;
+  padding-left: 10px;
+}
+
+.collection-highlights-wrapper .card-body .card-title {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 1.25rem;
+}
+
+.collection-highlights-wrapper .card-body .card-text {
+  font-family: "Acherus", sans-serif;
+}
+
+.collection-highlights-wrapper a,
+.collection-highlights-wrapper a:hover,
+.collection-highlights-wrapper a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.collection-highlights-heading {
+  margin-bottom: 40px;
+}
+
+.collection-highlights-heading h1 {
+  font-family: "gineso-condensed", sans-serif;
+  text-align: center;
+}
+
+.collection-highlights-heading h1 span {
+  color: var(--themeHighlightColor);
+}

@@ -6,6 +6,7 @@ import SiteTitle from "../components/SiteTitle";
 import FeaturedItems from "./home/FeaturedItems";
 import MultimediaSection from "./home/MultimediaSection";
 import SiteSponsors from "./home/SiteSponsors";
+import CollectionHighlights from "./home/CollectionHighlights";
 
 import "../css/HomePage.css";
 
@@ -16,12 +17,15 @@ class HomePage extends Component {
     let staticImage = null;
     let mediaSection = null;
     let sponsors = null;
+    let collectionHighlights = null;
     try {
       featuredItems = this.props.siteDetails.homePage.featuredItems;
       homeStatement = this.props.siteDetails.homePage.homeStatement;
       staticImage = this.props.siteDetails.homePage.staticImage;
       mediaSection = this.props.siteDetails.homePage.mediaSection;
       sponsors = this.props.siteDetails.homePage.sponsors;
+      collectionHighlights = this.props.siteDetails.homePage
+        .collectionHighlights;
     } catch (error) {
       console.error("Error setting config property");
     }
@@ -50,6 +54,7 @@ class HomePage extends Component {
           <FeaturedItems featuredItems={featuredItems} />
           <MultimediaSection mediaSection={mediaSection} />
           <SiteSponsors sponsors={sponsors} />
+          <CollectionHighlights collectionHighlights={collectionHighlights} />
         </div>
       </>
     );
