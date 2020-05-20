@@ -1,195 +1,207 @@
 interface Object {
-    id: ID!
-    title: String!
-    identifier: String!
-    description: String
-    creator: [String!]
-    source: [String!]
-    circa: String
-    start_date: String
-    end_date: String
-    location: [String!]
-    rights_statement: String
-    language: [String!]
-		related_url: [String!]
-    provenance: [String!]
-    belongs_to: [String!]
-    bibliographic_citation: String
-    rights_holder: String
-    custom_key: String
-    visibility: Boolean!
-    thumbnail_path: String
-    parent_collection: [String!]
-    create_date: String!
-    modified_date: String!
+  id: ID!
+  title: String!
+  identifier: String!
+  description: String
+  creator: [String!]
+  source: [String!]
+  circa: String
+  start_date: String
+  end_date: String
+  location: [String!]
+  rights_statement: String
+  language: [String!]
+  related_url: [String!]
+  provenance: [String!]
+  belongs_to: [String!]
+  bibliographic_citation: String
+  rights_holder: String
+  custom_key: String
+  visibility: Boolean!
+  thumbnail_path: String
+  parent_collection: [String!]
+  create_date: String!
+  modified_date: String!
 }
 
-type Collection implements Object @model @searchable
-    @key(fields: ["identifier"], name: "Identifier", queryField: "collectionByIdentifier") {
-    id: ID!
-    title: String!
-    identifier: String!
-    description: String
-    creator: [String!]
-    source: [String!]
-    circa: String
-    start_date: String
-    end_date: String
-    subject: [String!]
-    location: [String!]
-    rights_statement: String
-    language: [String!]
-		related_url: [String!]
-    provenance: [String!]
-    belongs_to: [String!]
-    bibliographic_citation: String
-    rights_holder: String
-    custom_key: String
-    collection_category: String!
-    visibility: Boolean!
-    thumbnail_path: String
-    parent_collection: [String!]
-    create_date: String!
-    modified_date: String!
-    archives: [Archive] @connection(name: "CollectionArchives")
+type Collection implements Object
+  @model
+  @searchable
+  @key(
+    fields: ["identifier"]
+    name: "Identifier"
+    queryField: "collectionByIdentifier"
+  ) {
+  id: ID!
+  title: String!
+  identifier: String!
+  description: String
+  creator: [String!]
+  source: [String!]
+  circa: String
+  start_date: String
+  end_date: String
+  subject: [String!]
+  location: [String!]
+  rights_statement: String
+  language: [String!]
+  related_url: [String!]
+  provenance: [String!]
+  belongs_to: [String!]
+  bibliographic_citation: String
+  rights_holder: String
+  custom_key: String
+  collection_category: String!
+  visibility: Boolean!
+  thumbnail_path: String
+  parent_collection: [String!]
+  create_date: String!
+  modified_date: String!
+  archives: [Archive] @connection(name: "CollectionArchives")
 }
-type Archive implements Object @model @searchable
-    @key(fields: ["identifier"], name: "Identifier", queryField: "archiveByIdentifier") {
-    id: ID!
-    title: String!
-    identifier: String!
-    description: String
-    tags: [String!]
-    creator: [String!]
-    source: [String!]
-    circa: String
-    start_date: String
-    end_date: String
-    rights_statement: String
-    language: [String!]
-    resource_type: [String!]
-    belongs_to: [String!]
-    location: [String!]
-    medium: [String!]
-    bibliographic_citation: String
-    rights_holder: String
-    format: [String!]
-    related_url: [String!]
-		provenance: [String!]
-    repository: [String!]
-    reference: [String!]
-    contributor: [String!]
-    custom_key: String
-    parent_collection: [String!]
-    item_category: String!
-    visibility: Boolean!
-    thumbnail_path: String
-    manifest_url: String!
-    create_date: String!
-    modified_date: String!
-    collection: Collection @connection(name: "CollectionArchives")
+type Archive implements Object
+  @model
+  @searchable
+  @key(
+    fields: ["identifier"]
+    name: "Identifier"
+    queryField: "archiveByIdentifier"
+  ) {
+  id: ID!
+  title: String!
+  identifier: String!
+  description: String
+  tags: [String!]
+  creator: [String!]
+  source: [String!]
+  circa: String
+  start_date: String
+  end_date: String
+  rights_statement: String
+  language: [String!]
+  resource_type: [String!]
+  belongs_to: [String!]
+  location: [String!]
+  medium: [String!]
+  bibliographic_citation: String
+  rights_holder: String
+  format: [String!]
+  related_url: [String!]
+  provenance: [String!]
+  repository: [String!]
+  reference: [String!]
+  contributor: [String!]
+  custom_key: String
+  parent_collection: [String!]
+  item_category: String!
+  visibility: Boolean!
+  thumbnail_path: String
+  manifest_url: String!
+  create_date: String!
+  modified_date: String!
+  collection: Collection @connection(name: "CollectionArchives")
 }
 type Query {
-    searchObjects(
-		sort: SearchableObjectSortInput,
-		filter: SearchableObjectFilterInput,
-		limit: Int,
-		nextToken: String,
-		category: String
-	): SearchableObjectConnection
+  searchObjects(
+    sort: SearchableObjectSortInput
+    filter: SearchableObjectFilterInput
+    limit: Int
+    nextToken: String
+    category: String
+  ): SearchableObjectConnection
 }
 
 type SearchableObjectConnection {
-	items: [Object]
-	nextToken: String
-	total: Int
+  items: [Object]
+  nextToken: String
+  total: Int
 }
 
 input SearchableObjectFilterInput {
-	id: SearchableIDFilterInput
-	title: SearchableStringFilterInput
-	identifier: SearchableStringFilterInput
-	description: SearchableStringFilterInput
-	creator: SearchableStringFilterInput
-	source: SearchableStringFilterInput
-	circa: SearchableStringFilterInput
-	start_date: SearchableStringFilterInput
-	end_date: SearchableStringFilterInput
-	subject: SearchableStringFilterInput
-	location: SearchableStringFilterInput
-	rights_statement: SearchableStringFilterInput
-	language: SearchableStringFilterInput
-	bibliographic_citation: SearchableStringFilterInput
-	rights_holder: SearchableStringFilterInput
-	custom_key: SearchableStringFilterInput
-	visibility: SearchableBooleanFilterInput
-	thumbnail_path: SearchableStringFilterInput
-	parent_collection: SearchableStringFilterInput
-	create_date: SearchableStringFilterInput
-	modified_date: SearchableStringFilterInput
-	and: [SearchableObjectFilterInput]
-	or: [SearchableObjectFilterInput]
-	not: SearchableObjectFilterInput
+  id: SearchableIDFilterInput
+  title: SearchableStringFilterInput
+  identifier: SearchableStringFilterInput
+  description: SearchableStringFilterInput
+  creator: SearchableStringFilterInput
+  source: SearchableStringFilterInput
+  circa: SearchableStringFilterInput
+  start_date: SearchableStringFilterInput
+  end_date: SearchableStringFilterInput
+  subject: SearchableStringFilterInput
+  location: SearchableStringFilterInput
+  rights_statement: SearchableStringFilterInput
+  language: SearchableStringFilterInput
+  bibliographic_citation: SearchableStringFilterInput
+  rights_holder: SearchableStringFilterInput
+  custom_key: SearchableStringFilterInput
+  visibility: SearchableBooleanFilterInput
+  thumbnail_path: SearchableStringFilterInput
+  parent_collection: SearchableStringFilterInput
+  create_date: SearchableStringFilterInput
+  modified_date: SearchableStringFilterInput
+  and: [SearchableObjectFilterInput]
+  or: [SearchableObjectFilterInput]
+  not: SearchableObjectFilterInput
 }
 
 input SearchableBooleanFilterInput {
-	eq: Boolean
-	ne: Boolean
+  eq: Boolean
+  ne: Boolean
 }
 
 input SearchableObjectSortInput {
-	field: SearchableObjectSortableFields
-	direction: SearchableSortDirection
+  field: SearchableObjectSortableFields
+  direction: SearchableSortDirection
 }
 
 enum SearchableObjectSortableFields {
-	id
-	title
-	identifier
-	description
-	creator
-	source
-	start_date
-	end_date
-	subject
-	location
-	language
-	custom_key
+  id
+  title
+  identifier
+  description
+  creator
+  source
+  start_date
+  end_date
+  subject
+  location
+  language
+  custom_key
 }
 
 input SearchableIDFilterInput {
-	ne: ID
-	gt: ID
-	lt: ID
-	gte: ID
-	lte: ID
-	eq: ID
-	match: ID
-	matchPhrase: ID
-	matchPhrasePrefix: ID
-	multiMatch: ID
-	exists: Boolean
-	wildcard: ID
-	regexp: ID
+  ne: ID
+  gt: ID
+  lt: ID
+  gte: ID
+  lte: ID
+  eq: ID
+  match: ID
+  matchPhrase: ID
+  matchPhrasePrefix: ID
+  multiMatch: ID
+  exists: Boolean
+  wildcard: ID
+  regexp: ID
 }
 
 enum SearchableSortDirection {
-	asc
-	desc
+  asc
+  desc
 }
 
 input SearchableStringFilterInput {
-	ne: String
-	gt: String
-	lt: String
-	gte: String
-	lte: String
-	eq: String
-	match: String
-	matchPhrase: String
-	matchPhrasePrefix: String
-	multiMatch: String
-	exists: Boolean
-	wildcard: String
-	regexp: String
+  ne: String
+  gt: String
+  lt: String
+  gte: String
+  lte: String
+  eq: String
+  match: String
+  matchPhrase: String
+  matchPhrasePrefix: String
+  multiMatch: String
+  exists: Boolean
+  wildcard: String
+  regexp: String
 }

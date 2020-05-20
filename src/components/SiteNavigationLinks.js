@@ -35,7 +35,7 @@ class SiteNavigationLinks extends Component {
         <li className="nav-item">
           <div className="link-wrapper">
             <a href="/search" tabIndex="-1">
-              SEARCH OBJECTS
+              SEARCH
             </a>
           </div>
         </li>

@@ -10,12 +10,12 @@ same shape as is expected by this field.
     #set( $nextToken = $entry.sort.get(0) )
   #end
   #foreach ( $mapEntry in $entry.entrySet() )
-  	#if( $mapEntry.key == "_source" )
-    	#if( $mapEntry.value.get("collection_category") )
-    		$util.qr( $mapEntry.value.put("__typename", "Collection") )
-        #else
-        	$util.qr( $mapEntry.value.put("__typename", "Archive") )
-        #end
+    #if( $mapEntry.key == "_source" )
+      #if( $mapEntry.value.get("collection_category") )
+        $util.qr( $mapEntry.value.put("__typename", "Collection") )
+      #else
+        $util.qr( $mapEntry.value.put("__typename", "Archive") )
+      #end
     #end
   #end
   $util.qr( $es_items.add($entry.get("_source")) )

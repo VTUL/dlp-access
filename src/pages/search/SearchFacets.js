@@ -17,7 +17,7 @@ class SearchFacets extends Component {
     super(props);
     this.state = {
       open: false,
-      facetNodes: null
+      facetNodes: []
     };
     this._isMounted = false;
     this.togglePanel = this.togglePanel.bind(this);
@@ -67,7 +67,7 @@ class SearchFacets extends Component {
       view: this.props.view
     };
 
-    for (const [index, value] of this.dateRanges.entries()) {
+    for (const value of this.dateRanges) {
       searchPhrase = {
         start_date: { gte: `${value[0]}/01/01`, lte: `${value[1]}/12/31` }
       };
