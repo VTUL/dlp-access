@@ -1,3 +1,6 @@
+import { API, graphqlOperation } from "aws-amplify";
+import * as queries from "../graphql/queries";
+
 export const fetchSiteDetails = async (component, siteName) => {
   let response = null;
   let data = null;
@@ -110,4 +113,57 @@ export const fetchLanguages = async (component, key, callback) => {
       }
     });
   }
+};
+
+export const fetchSearchResults = async (
+  component,
+  filterInput,
+  sortInput,
+  limit,
+  nextToken
+) => {
+  const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+  let archiveFilter = {
+    item_category: { eq: REP_TYPE },
+    visibility: { eq: true }
+  };
+  let collectionFilter = {
+    collection_category: { eq: REP_TYPE },
+    visibility: { eq: true },
+    parent_collection: { exists: false }
+  };
+  let searchResults = null;
+  if (component.state.dataType === "collection") {
+    const Collections = await API.graphql(
+      graphqlOperation(queries.searchCollections, {
+        filter: { ...collectionFilter, ...filterInput },
+        sort: sortInput,
+        limit: limit,
+        nextToken: nextToken
+      })
+    );
+    searchResults = Collections.data.searchCollections;
+  } else if (component.state.dataType === "archive") {
+    const Archives = await API.graphql(
+      graphqlOperation(queries.searchArchives, {
+        filter: { ...archiveFilter, ...filterInput },
+        sort: sortInput,
+        limit: limit,
+        nextToken: nextToken
+      })
+    );
+    searchResults = Archives.data.searchArchives;
+  } else {
+    const Objects = await API.graphql(
+      graphqlOperation(queries.searchObjects, {
+        filter: filterInput,
+        sort: sortInput,
+        limit: limit,
+        nextToken: nextToken,
+        category: REP_TYPE
+      })
+    );
+    searchResults = Objects.data.searchObjects;
+  }
+  return searchResults;
 };

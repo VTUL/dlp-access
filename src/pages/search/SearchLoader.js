@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { API, graphqlOperation } from "aws-amplify";
-import * as queries from "../../graphql/queries";
 import SiteTitle from "../../components/SiteTitle";
 import { fetchLanguages } from "../../lib/fetchTools";
+import { fetchSearchResults } from "../../lib/fetchTools";
 
 import SearchResults from "./SearchResults";
 
@@ -86,24 +85,14 @@ class SearchLoader extends Component {
 
   async loadItems() {
     const searchQuery = new URLSearchParams(this.props.location.search);
-    const REP_TYPE = process.env.REACT_APP_REP_TYPE;
-    let archiveFilter = {
-      item_category: { eq: REP_TYPE },
-      visibility: { eq: true }
-    };
-    let collectionFilter = {
-      collection_category: { eq: REP_TYPE },
-      visibility: { eq: true },
-      parent_collection: { exists: false }
-    };
-    let searchPhrase = {};
+    let filterInput = {};
     if (searchQuery.get("search_field")) {
       if (
         searchQuery.get("search_field") === "date" &&
         searchQuery.get("q") !== ""
       ) {
         let dates = searchQuery.get("q").split(" - ");
-        searchPhrase = {
+        filterInput = {
           start_date: { gte: `${dates[0]}/01/01`, lte: `${dates[1]}/12/31` }
         };
       } else if (
@@ -122,7 +111,7 @@ class SearchLoader extends Component {
           ];
         }
 
-        searchPhrase = {
+        filterInput = {
           [searchQuery.get("search_field")]: {
             matchPhrase: languagePhrase
           }
@@ -134,16 +123,11 @@ class SearchLoader extends Component {
         searchQuery.get("search_field") !== "language" &&
         searchQuery.get("q") !== ""
       ) {
-        searchPhrase = {
+        filterInput = {
           [searchQuery.get("search_field")]: {
             matchPhrase: searchQuery.get("q")
           }
         };
-      }
-      if (searchQuery.get("data_type") === "archive") {
-        archiveFilter = { ...archiveFilter, ...searchPhrase };
-      } else if (searchQuery.get("data_type") === "collection") {
-        collectionFilter = { ...collectionFilter, ...searchPhrase };
       }
       this.setState({
         dataType: searchQuery.get("data_type"),
@@ -151,49 +135,17 @@ class SearchLoader extends Component {
         q: searchQuery.get("q")
       });
     }
-
-    let searchResults = null;
-    if (this.state.dataType === "collection") {
-      const Collections = await API.graphql(
-        graphqlOperation(queries.searchCollections, {
-          filter: collectionFilter,
-          sort: {
-            field: "title",
-            direction: "asc"
-          },
-          limit: this.state.limit,
-          nextToken: this.state.nextTokens[this.state.page]
-        })
-      );
-      searchResults = Collections.data.searchCollections;
-    } else if (this.state.dataType === "archive") {
-      const Archives = await API.graphql(
-        graphqlOperation(queries.searchArchives, {
-          filter: archiveFilter,
-          sort: {
-            field: "title",
-            direction: "asc"
-          },
-          limit: this.state.limit,
-          nextToken: this.state.nextTokens[this.state.page]
-        })
-      );
-      searchResults = Archives.data.searchArchives;
-    } else {
-      const Objects = await API.graphql(
-        graphqlOperation(queries.searchObjects, {
-          filter: searchPhrase,
-          sort: {
-            field: "title",
-            direction: "asc"
-          },
-          limit: this.state.limit,
-          nextToken: this.state.nextTokens[this.state.page],
-          category: REP_TYPE
-        })
-      );
-      searchResults = Objects.data.searchObjects;
-    }
+    let sortInput = {
+      field: "title",
+      direction: "asc"
+    };
+    let searchResults = await fetchSearchResults(
+      this,
+      filterInput,
+      sortInput,
+      this.state.limit,
+      this.state.nextTokens[this.state.page]
+    );
     nextTokens[this.state.page + 1] = searchResults.nextToken;
     this.setState({
       items: searchResults.items,

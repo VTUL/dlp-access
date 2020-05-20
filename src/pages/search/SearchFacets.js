@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { API, graphqlOperation } from "aws-amplify";
-import * as queries from "../../graphql/queries";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDoubleRight,
@@ -9,6 +7,7 @@ import {
 import { NavLink } from "react-router-dom";
 import qs from "query-string";
 import { labelAttr } from "../../lib/MetadataRenderer";
+import { fetchSearchResults } from "../../lib/fetchTools";
 import "../../css/ListPages.css";
 import "../../css/SearchResult.css";
 
@@ -36,6 +35,12 @@ class SearchFacets extends Component {
     this._isMounted = false;
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.loadFacets("date");
+    }
+  }
+
   dateRanges = [
     ["1920", "1939"],
     ["1940", "1959"],
@@ -49,18 +54,8 @@ class SearchFacets extends Component {
   };
 
   async loadFacets(field) {
-    const REP_TYPE = process.env.REACT_APP_REP_TYPE;
-    let archiveFilter = {
-      item_category: { eq: REP_TYPE },
-      visibility: { eq: true }
-    };
-    let collectionFilter = {
-      collection_category: { eq: REP_TYPE },
-      visibility: { eq: true },
-      parent_collection: { exists: false }
-    };
     let fieldFacet = [];
-    let searchPhrase = {};
+    let filterInput = {};
     let parsedObject = {
       data_type: this.props.dataType,
       search_field: field,
@@ -68,33 +63,11 @@ class SearchFacets extends Component {
     };
 
     for (const value of this.dateRanges) {
-      searchPhrase = {
+      filterInput = {
         start_date: { gte: `${value[0]}/01/01`, lte: `${value[1]}/12/31` }
       };
-      let searchResults = null;
-      if (this.props.dataType === "collection") {
-        const Collections = await API.graphql(
-          graphqlOperation(queries.searchCollections, {
-            filter: { ...collectionFilter, ...searchPhrase }
-          })
-        );
-        searchResults = Collections.data.searchCollections;
-      } else if (this.props.dataType === "archive") {
-        const Archives = await API.graphql(
-          graphqlOperation(queries.searchArchives, {
-            filter: { ...archiveFilter, ...searchPhrase }
-          })
-        );
-        searchResults = Archives.data.searchArchives;
-      } else {
-        const Objects = await API.graphql(
-          graphqlOperation(queries.searchObjects, {
-            filter: searchPhrase,
-            category: REP_TYPE
-          })
-        );
-        searchResults = Objects.data.searchObjects;
-      }
+
+      let searchResults = await fetchSearchResults(this, filterInput);
       let total = searchResults.total;
       if (total > 0) {
         let searchQuery = { q: this.date(value) };
