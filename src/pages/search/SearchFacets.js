@@ -55,7 +55,6 @@ class SearchFacets extends Component {
 
   async loadFacets(field) {
     let fieldFacet = [];
-    let filterInput = {};
     let parsedObject = {
       data_type: this.props.dataType,
       search_field: field,
@@ -63,11 +62,12 @@ class SearchFacets extends Component {
     };
 
     for (const value of this.dateRanges) {
-      filterInput = {
-        start_date: { gte: `${value[0]}/01/01`, lte: `${value[1]}/12/31` }
+      let options = {
+        filter: {
+          start_date: { gte: `${value[0]}/01/01`, lte: `${value[1]}/12/31` }
+        }
       };
-
-      let searchResults = await fetchSearchResults(this, filterInput);
+      let searchResults = await fetchSearchResults(this, options);
       let total = searchResults.total;
       if (total > 0) {
         let searchQuery = { q: this.date(value) };

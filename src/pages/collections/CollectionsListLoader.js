@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { API, graphqlOperation } from "aws-amplify";
-import * as queries from "../../graphql/queries";
 import SiteTitle from "../../components/SiteTitle";
+import { fetchSearchResults } from "../../lib/fetchTools";
 
 import CollectionsListPage from "./CollectionsListPage";
 
@@ -11,6 +10,7 @@ class CollectionsListLoader extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      dataType: "collection",
       collections: null,
       nextTokens: [],
       limit: 10,
@@ -61,32 +61,23 @@ class CollectionsListLoader extends Component {
   }
 
   async loadCollections() {
-    const collections = await API.graphql(
-      graphqlOperation(queries.searchCollections, {
-        filter: {
-          collection_category: { eq: process.env.REACT_APP_REP_TYPE },
-          visibility: { eq: true },
-          parent_collection: { exists: false }
-        },
-        sort: {
-          field: "title",
-          direction: "asc"
-        },
-        limit: this.state.limit,
-        nextToken: this.state.nextTokens[this.state.page]
-      })
-    );
-
-    nextTokens[this.state.page + 1] =
-      collections.data.searchCollections.nextToken;
+    let options = {
+      filter: null,
+      sort: {
+        field: "title",
+        direction: "asc"
+      },
+      limit: this.state.limit,
+      nextToken: this.state.nextTokens[this.state.page]
+    };
+    const searchResults = await fetchSearchResults(this, options);
+    nextTokens[this.state.page + 1] = searchResults.nextToken;
     this.setState(
       {
-        collections: collections.data.searchCollections.items,
-        total: collections.data.searchCollections.total,
+        collections: searchResults.items,
+        total: searchResults.total,
         nextTokens: nextTokens,
-        totalPages: Math.ceil(
-          collections.data.searchCollections.total / this.state.limit
-        )
+        totalPages: Math.ceil(searchResults.total / this.state.limit)
       },
       function() {
         if (typeof this.props.scrollUp === "function") {

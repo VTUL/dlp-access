@@ -135,17 +135,16 @@ class SearchLoader extends Component {
         q: searchQuery.get("q")
       });
     }
-    let sortInput = {
-      field: "title",
-      direction: "asc"
+    let options = {
+      filter: filterInput,
+      sort: {
+        field: "title",
+        direction: "asc"
+      },
+      limit: this.state.limit,
+      nextToken: this.state.nextTokens[this.state.page]
     };
-    let searchResults = await fetchSearchResults(
-      this,
-      filterInput,
-      sortInput,
-      this.state.limit,
-      this.state.nextTokens[this.state.page]
-    );
+    let searchResults = await fetchSearchResults(this, options);
     nextTokens[this.state.page + 1] = searchResults.nextToken;
     this.setState({
       items: searchResults.items,

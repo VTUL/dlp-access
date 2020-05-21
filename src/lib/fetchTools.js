@@ -117,10 +117,7 @@ export const fetchLanguages = async (component, key, callback) => {
 
 export const fetchSearchResults = async (
   component,
-  filterInput,
-  sortInput,
-  limit,
-  nextToken
+  { filter, sort, limit, nextToken }
 ) => {
   const REP_TYPE = process.env.REACT_APP_REP_TYPE;
   let archiveFilter = {
@@ -133,37 +130,40 @@ export const fetchSearchResults = async (
     parent_collection: { exists: false }
   };
   let searchResults = null;
+  let options = {
+    filter: filter,
+    sort: sort,
+    limit: limit,
+    nextToken: nextToken
+  };
   if (component.state.dataType === "collection") {
-    const Collections = await API.graphql(
-      graphqlOperation(queries.searchCollections, {
-        filter: { ...collectionFilter, ...filterInput },
-        sort: sortInput,
-        limit: limit,
-        nextToken: nextToken
-      })
-    );
+    options["filter"] = { ...collectionFilter, ...filter };
+    const Collections = await fetchObjects(queries.searchCollections, options);
     searchResults = Collections.data.searchCollections;
   } else if (component.state.dataType === "archive") {
-    const Archives = await API.graphql(
-      graphqlOperation(queries.searchArchives, {
-        filter: { ...archiveFilter, ...filterInput },
-        sort: sortInput,
-        limit: limit,
-        nextToken: nextToken
-      })
-    );
+    options["filter"] = { ...archiveFilter, ...filter };
+    const Archives = await fetchObjects(queries.searchArchives, options);
     searchResults = Archives.data.searchArchives;
   } else {
-    const Objects = await API.graphql(
-      graphqlOperation(queries.searchObjects, {
-        filter: filterInput,
-        sort: sortInput,
-        limit: limit,
-        nextToken: nextToken,
-        category: REP_TYPE
-      })
-    );
+    options["otherArgs"] = { category: REP_TYPE };
+    const Objects = await fetchObjects(queries.searchObjects, options);
     searchResults = Objects.data.searchObjects;
   }
   return searchResults;
+};
+
+const fetchObjects = async (
+  gqlQuery,
+  { filter, sort, limit, nextToken, otherArgs }
+) => {
+  const Objects = await API.graphql(
+    graphqlOperation(gqlQuery, {
+      filter: filter,
+      sort: sort,
+      limit: limit,
+      nextToken: nextToken,
+      ...otherArgs
+    })
+  );
+  return Objects;
 };
