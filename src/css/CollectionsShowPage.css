@@ -50,6 +50,8 @@ span.creator:after {
 .description .less:visited {
   display: inline-block;
   color: var(--themeHighlightColor);
+  border: none;
+  background-color: transparent;
 }
 
 .description.trunc .less {

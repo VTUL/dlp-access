@@ -13,6 +13,8 @@ import { fetchLanguages } from "../../lib/fetchTools";
 
 import "../../css/CollectionsShowPage.css";
 
+const TRUNCATION_LENGTH = 600;
+
 class CollectionsShowPage extends Component {
   constructor(props) {
     super(props);
@@ -105,8 +107,9 @@ class CollectionsShowPage extends Component {
   subCollectionDescription() {
     let descriptionSection = <></>;
     let descriptionText = this.props.collection.description;
+    descriptionText = "blah blah blah";
     if (descriptionText && this.state.subDescriptionTruncated) {
-      descriptionText = descriptionText.substr(0, 600);
+      descriptionText = descriptionText.substr(0, TRUNCATION_LENGTH);
     }
     if (this.props.collection.parent_collection && descriptionText) {
       descriptionSection = (
@@ -118,20 +121,22 @@ class CollectionsShowPage extends Component {
             }`}
           >
             {addNewlineInDesc(descriptionText)}
-            <a
-              href="#"
-              onClick={e => this.onMoreLessClick("metadata", e)}
-              className="more"
-            >
-              . . .[more]
-            </a>
-            <a
-              href="#"
-              onClick={e => this.onMoreLessClick("metadata", e)}
-              className="less"
-            >
-              . . .[less]
-            </a>
+            {descriptionText.length > TRUNCATION_LENGTH && (
+              <span>
+                <button
+                  onClick={e => this.onMoreLessClick("metadata", e)}
+                  className="more"
+                >
+                  . . .[more]
+                </button>
+                <button
+                  onClick={e => this.onMoreLessClick("metadata", e)}
+                  className="less"
+                >
+                  . . .[less]
+                </button>
+              </span>
+            )}
           </div>
         </div>
       );
@@ -224,20 +229,22 @@ class CollectionsShowPage extends Component {
                 <div>
                   <h3 className="introduction">Introduction</h3>
                   {this.getDescription()}{" "}
-                  <a
-                    href="#"
-                    onClick={e => this.onMoreLessClick("top-level", e)}
-                    className="more"
-                  >
-                    . . .[more]
-                  </a>
-                  <a
-                    href="#"
-                    onClick={e => this.onMoreLessClick("top-level", e)}
-                    className="less"
-                  >
-                    . . .[less]
-                  </a>
+                  {this.state.description.length > TRUNCATION_LENGTH && (
+                    <span>
+                      <button
+                        onClick={e => this.onMoreLessClick("top-level", e)}
+                        className="more"
+                      >
+                        . . .[more]
+                      </button>
+                      <button
+                        onClick={e => this.onMoreLessClick("top-level", e)}
+                        className="less"
+                      >
+                        . . .[less]
+                      </button>
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
