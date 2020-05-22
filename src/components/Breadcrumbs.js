@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../graphql/queries";
-import { arkLinkFormatted, breadcrumbTitle } from "../lib/MetadataRenderer";
+import { arkLinkFormatted } from "../lib/MetadataRenderer";
 
 import "../css/breadcrumbs.css";
 
