@@ -107,7 +107,7 @@ class CollectionsShowPage extends Component {
   subCollectionDescription() {
     let descriptionSection = <></>;
     let descriptionText = this.props.collection.description;
-    descriptionText = "blah blah blah";
+
     if (descriptionText && this.state.subDescriptionTruncated) {
       descriptionText = descriptionText.substr(0, TRUNCATION_LENGTH);
     }
@@ -121,27 +121,35 @@ class CollectionsShowPage extends Component {
             }`}
           >
             {addNewlineInDesc(descriptionText)}
-            {descriptionText.length > TRUNCATION_LENGTH && (
-              <span>
-                <button
-                  onClick={e => this.onMoreLessClick("metadata", e)}
-                  className="more"
-                >
-                  . . .[more]
-                </button>
-                <button
-                  onClick={e => this.onMoreLessClick("metadata", e)}
-                  className="less"
-                >
-                  . . .[less]
-                </button>
-              </span>
-            )}
+            {this.moreLessButtons(descriptionText, "metadata")}
           </div>
         </div>
       );
     }
     return descriptionSection;
+  }
+
+  moreLessButtons(text, section) {
+    let moreLess = <></>;
+    if (text.length >= TRUNCATION_LENGTH) {
+      moreLess = (
+        <span>
+          <button
+            onClick={e => this.onMoreLessClick(section, e)}
+            className="more"
+          >
+            . . .[more]
+          </button>
+          <button
+            onClick={e => this.onMoreLessClick(section, e)}
+            className="less"
+          >
+            . . .[less]
+          </button>
+        </span>
+      );
+    }
+    return moreLess;
   }
 
   onMoreLessClick(src, e) {
@@ -229,22 +237,7 @@ class CollectionsShowPage extends Component {
                 <div>
                   <h3 className="introduction">Introduction</h3>
                   {this.getDescription()}{" "}
-                  {this.state.description.length > TRUNCATION_LENGTH && (
-                    <span>
-                      <button
-                        onClick={e => this.onMoreLessClick("top-level", e)}
-                        className="more"
-                      >
-                        . . .[more]
-                      </button>
-                      <button
-                        onClick={e => this.onMoreLessClick("top-level", e)}
-                        className="less"
-                      >
-                        . . .[less]
-                      </button>
-                    </span>
-                  )}
+                  {this.moreLessButtons(this.state.description, "top-level")}
                 </div>
               </div>
             </div>
