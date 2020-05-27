@@ -131,7 +131,7 @@ class CollectionsShowPage extends Component {
 
   moreLessButtons(text, section) {
     let moreLess = <></>;
-    if (text.length >= TRUNCATION_LENGTH) {
+    if (text && text.length >= TRUNCATION_LENGTH) {
       moreLess = (
         <span>
           <button
@@ -173,7 +173,7 @@ class CollectionsShowPage extends Component {
     let description =
       this.state.description || this.props.collection.description;
     if (description && this.state.descriptionTruncated) {
-      description = description.substr(0, 600);
+      description = description.substr(0, TRUNCATION_LENGTH);
     }
     return addNewlineInDesc(description);
   }
@@ -199,6 +199,8 @@ class CollectionsShowPage extends Component {
       "provenance",
       "belongs_to"
     ];
+    const topLevelDesc =
+      this.state.description || this.props.collection.description;
 
     if (this.state.languages) {
       return (
@@ -237,7 +239,7 @@ class CollectionsShowPage extends Component {
                 <div>
                   <h3 className="introduction">Introduction</h3>
                   {this.getDescription()}{" "}
-                  {this.moreLessButtons(this.state.description, "top-level")}
+                  {this.moreLessButtons(topLevelDesc, "top-level")}
                 </div>
               </div>
             </div>
