@@ -42,18 +42,21 @@ div.search-results div.row div#content div.navbar {
 .gallery-item .card {
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 1px solid #e2e0e0;
   border-radius: 0px;
+  border: none;
 }
 
 .gallery-item .card-img-top {
   width: 100%;
   height: 170px;
   object-fit: cover;
+  border-radius: 0;
 }
 
 .gallery-item .card-body {
   height: 168px;
+  border: 1px solid #e2e0e0;
+  border-top: none;
 }
 
 .crop-text-3 {

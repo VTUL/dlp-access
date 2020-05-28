@@ -20,6 +20,7 @@ class Thumbnail extends Component {
   render() {
     return (
       <div className="image-container">
+        {this.labelDisplay()}
         <NavLink
           to={`/${this.props.dataType}/${arkLinkFormatted(
             this.props.item.custom_key
@@ -30,7 +31,6 @@ class Thumbnail extends Component {
             src={this.props.item.thumbnail_path}
             alt={this.props.item.title}
           />
-          {this.labelDisplay()}
         </NavLink>
       </div>
     );

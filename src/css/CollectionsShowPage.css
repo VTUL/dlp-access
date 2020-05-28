@@ -157,6 +157,9 @@ div.collection-item .item-image {
   overflow: hidden;
   background-color: var(--light-gray);
 }
+div.collection-item .item-image .image-container {
+  border: none;
+}
 div.collection-item .item-image img {
   width: 250px;
   height: 200px;
