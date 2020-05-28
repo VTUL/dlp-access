@@ -152,10 +152,10 @@ class CollectionsShowPage extends Component {
     return moreLess;
   }
 
-  onMoreLessClick(src, e) {
+  onMoreLessClick(section, e) {
     e.preventDefault();
     let key = "descriptionTruncated";
-    if (src === "metadata") {
+    if (section === "metadata") {
       key = "subDescriptionTruncated";
     }
     let truncated = true;
