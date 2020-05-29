@@ -141,22 +141,21 @@ class SearchBar extends Component {
     return (
       <div>
         <div className="searchbar-wrapper">
-          <div className="input-group">
-            {this.state.searchField === "date"
-              ? this.dateDropDown()
-              : this.searchBox()}
-            <select
-              value={this.state.searchField}
-              name="fieldOptions"
-              id="field-options"
-              onChange={this.updateSearchField}
-            >
-              {this.fieldOptions()}
-            </select>
-            <button className="btn" type="submit" onClick={this.submit}>
-              Search
-            </button>
-          </div>
+          {this.state.searchField === "date"
+            ? this.dateDropDown()
+            : this.searchBox()}
+          <select
+            value={this.state.searchField}
+            name="fieldOptions"
+            id="field-options"
+            onChange={this.updateSearchField}
+            className="custom-select"
+          >
+            {this.fieldOptions()}
+          </select>
+          <button className="btn" type="submit" onClick={this.submit}>
+            <i class="fas fa-search"></i>
+          </button>
         </div>
       </div>
     );
