@@ -24,7 +24,8 @@ class CollectionsShowPage extends Component {
       subDescriptionTruncated: true,
       description: "",
       title: "",
-      thumbnail_path: ""
+      thumbnail_path: "",
+      titleList: []
     };
     this.onMoreLessClick = this.onMoreLessClick.bind(this);
   }
@@ -178,6 +179,21 @@ class CollectionsShowPage extends Component {
     return addNewlineInDesc(description);
   }
 
+  setTitleList(titleList) {
+    const titleListCopy = titleList.slice();
+    this.setState({ titleList: titleListCopy.reverse() });
+  }
+
+  metadataTitle() {
+    let title = "";
+    if (this.state.titleList.length) {
+      title +=
+        "Collection Details for " +
+        this.state.titleList.map(elem => elem.title).join(", ");
+    }
+    return title;
+  }
+
   componentDidMount() {
     fetchLanguages(this, "abbr");
     const topLevelAttributes = ["title", "description", "thumbnail_path"];
@@ -209,6 +225,7 @@ class CollectionsShowPage extends Component {
             <Breadcrumbs
               dataType={"Collections"}
               record={this.props.collection}
+              setTitleList={this.setTitleList.bind(this)}
             />
           </div>
           <div className="top-content-row row">
@@ -224,9 +241,7 @@ class CollectionsShowPage extends Component {
                 <span className="item-count">
                   {this.handleZeroItems(collectionSize(this.props.collection))}
                 </span>
-
                 <this.creatorDates collection={this.props.collection} />
-
                 <span className="last-updated">
                   Last updated: {this.props.collection.modified_date}
                 </span>
@@ -248,10 +263,11 @@ class CollectionsShowPage extends Component {
           <div className="container-fluid">
             <div className="mid-content-row row">
               <div className="col-12 col-lg-8 details-section">
-                <div className="details-section-header"></div>
+                <h2 className="details-section-header">
+                  {this.metadataTitle()}
+                </h2>
                 <div className="details-section-content-grid">
                   {this.subCollectionDescription()}
-
                   <RenderItemsDetailed
                     keyArray={KeyArray}
                     item={this.props.collection}

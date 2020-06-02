@@ -52,7 +52,11 @@ class Breadcrumbs extends Component {
         });
       } while (parent_id !== null);
     }
-    this.setState({ links: parent_list });
+    this.setState({ links: parent_list }, function() {
+      if (typeof this.props.setTitleList == "function") {
+        this.props.setTitleList(parent_list);
+      }
+    });
   }
 
   componentDidMount() {

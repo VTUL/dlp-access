@@ -84,9 +84,9 @@ span.creator:after {
   width: 100%;
   border-bottom: 1px solid var(--light-gray);
 }
-.container-fluid .details-section-header h2 {
+.container-fluid h2.details-section-header {
   font-family: "gineso-condensed", sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
 }
 
@@ -106,7 +106,8 @@ span.creator:after {
 }
 .container-fluid .details-section-content-grid .collection-detail-key {
   font-family: "gineso-condensed", sans-serif;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 500;
 }
 .container-fluid .details-section-content-grid .collection-detail-value {
   font-family: "Acherus", sans-serif;
