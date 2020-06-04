@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./lib/ScrollToTop";
 import { fetchSiteDetails } from "./lib/fetchTools";
+import AnalyticsConfig from "./components/AnalyticsConfig";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
@@ -47,6 +48,7 @@ class App extends Component {
       this.setColor(this.state.siteDetails.siteColor);
       return (
         <Router>
+          <AnalyticsConfig analyticsID={this.state.siteDetails.analyticsID} />
           <ScrollToTop paginationClick={this.state.paginationClick} />
           <Header
             siteDetails={this.state.siteDetails}
