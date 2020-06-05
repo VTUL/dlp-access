@@ -1,0 +1,79 @@
+.related-items-wrapper {
+  background-color: var(--light-gray);
+  padding: 40px;
+  width: 100%;
+  overflow: hidden;
+}
+.related-items-wrapper .card {
+  margin: 5px;
+  border-radius: 0px;
+}
+.related-items-wrapper .card:hover,
+.related-items-wrapper .card:focus {
+  box-shadow: 0px 0px 2px var(--dark-gray);
+}
+
+.related-items-wrapper .card-img-top {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.related-items-wrapper .card-body {
+  height: 9rem;
+}
+
+.related-items-wrapper .card-body .card-title {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 1.25rem;
+}
+
+.related-items-wrapper .card-body .card-text {
+  font-family: "Acherus", sans-serif;
+}
+
+.related-items-wrapper a,
+.related-items-wrapper a:hover,
+.related-items-wrapper a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+.crop-text-4 {
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.related-items-heading {
+  margin-bottom: 30px;
+}
+
+.related-items-heading h1 {
+  font-family: "gineso-condensed", sans-serif;
+  text-align: center;
+}
+
+.related-items-heading h1 span {
+  color: var(--themeHighlightColor);
+}
+
+.related-items-wrapper .slick-prev:before,
+.related-items-wrapper .slick-next:before {
+  color: var(--dark-gray);
+  font-size: 35px;
+}
+
+.related-items-wrapper .slick-prev {
+  left: -35px;
+  height: 35px;
+  width: 35px;
+}
+
+.related-items-wrapper .slick-next {
+  right: -35px;
+  height: 35px;
+  width: 35px;
+}

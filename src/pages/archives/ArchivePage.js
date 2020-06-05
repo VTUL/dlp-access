@@ -14,6 +14,7 @@ import {
 } from "../../lib/MetadataRenderer";
 import { fetchLanguages } from "../../lib/fetchTools";
 import { searchArchives } from "../../graphql/queries";
+import RelatedItems from "../../components/RelatedItems";
 
 import "../../css/ArchivePage.css";
 
@@ -229,6 +230,7 @@ class ArchivePage extends Component {
                     </table>
                   </div>
                 </div>
+                <RelatedItems collection={item} />
               </div>
             );
           } else {
