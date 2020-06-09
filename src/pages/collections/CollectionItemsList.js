@@ -13,7 +13,7 @@ class CollectionItemsList extends Component {
           {this.props.items.map(item => (
             <div className="collection-item" key={item.custom_key}>
               <div className="item-image">
-                <Thumbnail item={item} dataType="archive" />
+                <Thumbnail item={item} category="archive" />
               </div>
               <div className="item-info">
                 <div className="item-link-wrapper">

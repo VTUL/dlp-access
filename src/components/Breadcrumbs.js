@@ -32,7 +32,7 @@ class Breadcrumbs extends Component {
       title: this.props.record.title,
       url:
         "/" +
-        this.props.dataType.replace(/s+$/, "").toLowerCase() +
+        this.props.category.replace(/s+$/, "").toLowerCase() +
         "/" +
         arkLinkFormatted(this.props.record.custom_key),
       custom_key: arkLinkFormatted(this.props.record.custom_key)

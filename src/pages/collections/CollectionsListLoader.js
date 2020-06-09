@@ -10,7 +10,6 @@ class CollectionsListLoader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dataType: "collection",
       collections: null,
       nextTokens: [],
       limit: 10,
@@ -62,7 +61,7 @@ class CollectionsListLoader extends Component {
 
   async loadCollections() {
     let options = {
-      filter: null,
+      filter: { category: "collection" },
       sort: {
         field: "title",
         direction: "asc"

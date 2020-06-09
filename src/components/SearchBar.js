@@ -7,48 +7,16 @@ import "../css/searchBar.css";
 
 class SearchBar extends Component {
   state = {
-    view: this.props.view,
-    dataType: null,
-    searchField: this.props.searchField,
+    field: this.props.field,
     q: this.props.q
   };
 
-  searchFields = [
-    "title",
-    "creator",
-    "description",
-    "belongs_to",
-    "language",
-    "medium",
-    "resource_type",
-    "tags",
-    "date"
-  ];
-
-  dateRanges = [
-    ["1920", "1939"],
-    ["1940", "1959"],
-    ["1960", "1979"],
-    ["1980", "1999"],
-    ["2000", "2019"]
-  ];
+  fields = ["title", "description"];
 
   fieldOptions = () => {
-    return this.searchFields.map(field => (
+    return this.fields.map(field => (
       <option value={field} key={field}>
         {labelAttr(field)}
-      </option>
-    ));
-  };
-
-  date = dateRange => {
-    return `${dateRange[0]} - ${dateRange[1]}`;
-  };
-
-  dateRangeOptions = () => {
-    return this.dateRanges.map(dateRange => (
-      <option value={this.date(dateRange)} key={this.date(dateRange)}>
-        {this.date(dateRange)}
       </option>
     ));
   };
@@ -58,16 +26,7 @@ class SearchBar extends Component {
   };
 
   updateSearchField = e => {
-    if (e.target.value === "date") {
-      this.setState({ q: this.date(this.dateRanges[0]) });
-    } else {
-      this.setState({ q: "" });
-    }
-    this.setState({ searchField: e.target.value });
-  };
-
-  updateSearchType = e => {
-    this.setState({ dataType: e.target.value });
+    this.setState({ field: e.target.value });
   };
 
   onKeyPress = e => {
@@ -78,10 +37,10 @@ class SearchBar extends Component {
 
   submit = () => {
     const parsedObject = {
-      data_type: this.state.dataType,
-      search_field: this.state.searchField,
+      field: this.state.field,
       q: this.state.q,
-      view: this.props.view
+      view: this.props.view,
+      ...this.props.filters
     };
     try {
       if (window.location.pathname === "/") {
@@ -92,7 +51,7 @@ class SearchBar extends Component {
           search: `?${qs.stringify(parsedObject)}`,
           state: parsedObject
         });
-        if (typeof this.props.setPage == "function") {
+        if (typeof this.props.setPage === "function") {
           this.props.setPage(0);
         }
       }
@@ -105,7 +64,7 @@ class SearchBar extends Component {
     if (this.props !== prevProps) {
       this.setState({
         q: this.props.q,
-        searchField: this.props.searchField
+        field: this.props.field
       });
     }
   }
@@ -114,7 +73,7 @@ class SearchBar extends Component {
     return (
       <input
         className="form-control"
-        value={this.state.q}
+        value={this.state.q || ""}
         type="text"
         placeholder="Search by title, creator, or description"
         onChange={this.updateQuery}
@@ -123,29 +82,13 @@ class SearchBar extends Component {
     );
   };
 
-  dateDropDown = () => {
-    return (
-      <select
-        className="form-control"
-        value={this.state.q}
-        name="dateRangeOptions"
-        id="date-range-options"
-        onChange={this.updateQuery}
-      >
-        {this.dateRangeOptions()}
-      </select>
-    );
-  };
-
   render() {
     return (
       <div>
         <div className="searchbar-wrapper">
-          {this.state.searchField === "date"
-            ? this.dateDropDown()
-            : this.searchBox()}
+          {this.searchBox()}
           <select
-            value={this.state.searchField}
+            value={this.state.field}
             name="fieldOptions"
             id="field-options"
             onChange={this.updateSearchField}

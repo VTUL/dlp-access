@@ -24,12 +24,12 @@ class ItemListView extends Component {
           <div className="collection-img">
             <Thumbnail
               item={this.props.item}
-              dataType={this.props.dataType}
+              category={this.props.category}
               label={this.props.label}
             />
           </div>
           <div className="collection-details">
-            {titleFormatted(this.props.item, this.props.dataType)}
+            {titleFormatted(this.props.item, this.props.category)}
             <RenderItems
               keyArray={keyArray}
               item={this.props.item}

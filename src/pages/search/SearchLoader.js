@@ -17,8 +17,8 @@ class SearchLoader extends Component {
       limit: 10,
       page: 0,
       totalPages: 1,
-      dataType: null,
-      searchField: "title",
+      filters: {},
+      field: "title",
       view: "Gallery",
       q: "",
       languages: null
@@ -26,9 +26,28 @@ class SearchLoader extends Component {
   }
 
   updateFormState = (name, val) => {
-    this.setState({
-      [name]: val
-    });
+    const url = this.setParams(name, val);
+    this.props.history.push(`?${url}`);
+  };
+
+  setParams = (name, val) => {
+    let q = name === "q" ? val : this.state.q;
+    let field = name === "field" ? val : this.state.field;
+    let view = name === "view" ? val : this.state.view;
+    let filters = name === "filters" ? val : this.state.filters;
+
+    const searchParams = new URLSearchParams();
+    const searchQuery = {
+      q: q,
+      field: field,
+      view: view,
+      ...filters
+    };
+
+    for (const key of Object.keys(searchQuery)) {
+      searchParams.set(key, searchQuery[key]);
+    }
+    return searchParams.toString();
   };
 
   previousPage() {
@@ -83,60 +102,37 @@ class SearchLoader extends Component {
     );
   }
 
-  async loadItems() {
-    const searchQuery = new URLSearchParams(this.props.location.search);
-    let filterInput = {};
-    if (searchQuery.get("search_field")) {
-      if (
-        searchQuery.get("search_field") === "date" &&
-        searchQuery.get("q") !== ""
-      ) {
-        let dates = searchQuery.get("q").split(" - ");
-        filterInput = {
-          start_date: { gte: `${dates[0]}/01/01`, lte: `${dates[1]}/12/31` }
-        };
-      } else if (
-        searchQuery.get("search_field") === "language" &&
-        searchQuery.get("q") !== "" &&
-        this.state.languages
-      ) {
-        let languagePhrase = searchQuery.get("q");
-        if (
-          this.state.languages.hasOwnProperty(
-            searchQuery.get("q").toLowerCase()
-          )
-        ) {
-          languagePhrase = this.state.languages[
-            searchQuery.get("q").toLowerCase()
-          ];
-        }
-
-        filterInput = {
-          [searchQuery.get("search_field")]: {
-            matchPhrase: languagePhrase
-          }
-        };
-        this.setState({
-          q: languagePhrase
-        });
-      } else if (
-        searchQuery.get("search_field") !== "language" &&
-        searchQuery.get("q") !== ""
-      ) {
-        filterInput = {
-          [searchQuery.get("search_field")]: {
-            matchPhrase: searchQuery.get("q")
-          }
-        };
+  getParams(location) {
+    const searchParams = new URLSearchParams(location.search);
+    let restQuery = {};
+    for (const key of searchParams.keys()) {
+      if (key !== "field" && key !== "q" && key !== "view") {
+        restQuery[key] = searchParams.get(key);
       }
-      this.setState({
-        dataType: searchQuery.get("data_type"),
-        searchField: searchQuery.get("search_field"),
-        q: searchQuery.get("q")
-      });
     }
+    return {
+      q: searchParams.get("q") || "",
+      field: searchParams.get("field") || "title",
+      view: searchParams.get("view") || "Gallery",
+      ...restQuery
+    };
+  }
+
+  async loadItems() {
+    const { q, field, view, ...filters } = this.getParams(this.props.location);
+    let searchInput = {};
+    if (field && q) {
+      searchInput = { [field]: q };
+    }
+    this.setState({
+      q: q,
+      field: field,
+      view: view,
+      filters: filters
+    });
+
     let options = {
-      filter: filterInput,
+      filter: { ...filters, ...searchInput },
       sort: {
         field: "title",
         direction: "asc"
@@ -144,6 +140,7 @@ class SearchLoader extends Component {
       limit: this.state.limit,
       nextToken: this.state.nextTokens[this.state.page]
     };
+
     let searchResults = await fetchSearchResults(this, options);
     nextTokens[this.state.page + 1] = searchResults.nextToken;
     this.setState({
@@ -193,8 +190,8 @@ class SearchLoader extends Component {
             nextPage={this.nextPage.bind(this)}
             setPage={this.setPage.bind(this)}
             totalPages={this.state.totalPages}
-            dataType={this.state.dataType}
-            searchField={this.state.searchField}
+            filters={this.state.filters}
+            field={this.state.field}
             q={this.state.q}
             view={this.state.view}
             updateFormState={this.updateFormState}

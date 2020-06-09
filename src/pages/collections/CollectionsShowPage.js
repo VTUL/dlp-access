@@ -244,7 +244,7 @@ class CollectionsShowPage extends Component {
         <div>
           <div className="breadcrumbs-wrapper">
             <Breadcrumbs
-              dataType={"Collections"}
+              category="Collections"
               record={this.state.collection}
               setTitleList={this.setTitleList.bind(this)}
             />

@@ -62,7 +62,7 @@ class CollectionsListPage extends Component {
                   <GalleryView
                     key={collection.id}
                     item={collection}
-                    dataType="collection"
+                    category="collection"
                     label={false}
                   />
                 );
@@ -71,7 +71,7 @@ class CollectionsListPage extends Component {
                   <ItemListView
                     key={collection.id}
                     item={collection}
-                    dataType="collection"
+                    category="collection"
                     label={false}
                   />
                 );

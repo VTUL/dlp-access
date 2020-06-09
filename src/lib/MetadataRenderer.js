@@ -8,7 +8,7 @@ export function labelAttr(attr) {
   else if (attr === "rights_statement") return "Rights";
   else if (attr === "custom_key") return "Permanent Link";
   else if (attr === "related_url") return "Relation";
-  else if (attr === "date") return "Years";
+  else if (attr === "start_date") return "Date";
   else return (attr.charAt(0).toUpperCase() + attr.slice(1)).replace("_", " ");
 }
 
@@ -17,7 +17,7 @@ export function breadcrumbTitle(title) {
   return titleArray[0];
 }
 
-export function getDataType(item) {
+export function getCategory(item) {
   return item.collection_category ? "collection" : "archive";
 }
 
@@ -29,10 +29,10 @@ export function htmlParsedValue(value) {
   return value.includes("<a href=") ? ReactHtmlParser(value) : value;
 }
 
-export function titleFormatted(item, dataType) {
+export function titleFormatted(item, category) {
   return (
     <h4>
-      <a href={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}>
+      <a href={`/${category}/${arkLinkFormatted(item.custom_key)}`}>
         {item.title}
       </a>
     </h4>
@@ -72,7 +72,7 @@ export function addNewlineInDesc(content) {
   return <></>;
 }
 
-function listValue(dataType, attr, value, languages) {
+function listValue(category, attr, value, languages) {
   const LinkedFields = [
     "creator",
     "belongs_to",
@@ -86,7 +86,7 @@ function listValue(dataType, attr, value, languages) {
   }
   if (LinkedFields.indexOf(attr) > -1) {
     const parsedObject = {
-      data_type: dataType,
+      category: category,
       search_field: attr,
       q: value,
       view: "List"
@@ -101,21 +101,21 @@ function listValue(dataType, attr, value, languages) {
 
 function textFormat(item, attr, languages) {
   if (item[attr] === null) return null;
-  let dataType = "archive";
-  if (item.collection_category) dataType = "collection";
+  let category = "archive";
+  if (item.collection_category) category = "collection";
   if (Array.isArray(item[attr])) {
     return (
       <div>
         {item[attr].map((value, i) => (
           <span className="list-unstyled" key={i}>
-            {listValue(dataType, attr, value, languages)}
+            {listValue(category, attr, value, languages)}
           </span>
         ))}
       </div>
     );
   } else if (attr === "identifier") {
     return (
-      <a href={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}>
+      <a href={`/${category}/${arkLinkFormatted(item.custom_key)}`}>
         {item[attr]}
       </a>
     );
@@ -126,24 +126,24 @@ function textFormat(item, attr, languages) {
       `<a href="http://idn.lib.vt.edu/${item.custom_key}">idn.lib.vt.edu/${item.custom_key}</a>`
     );
   } else if (attr === "description") {
-    return <MoreLink dataType={dataType} item={item} />;
+    return <MoreLink category={category} item={item} />;
   } else if (attr === "date") {
     return dateFormatted(item);
   } else if (attr === "size") {
-    if (dataType === "collection") return collectionSizeText(item);
+    if (category === "collection") return collectionSizeText(item);
     else return 0;
   } else {
     return item[attr];
   }
 }
 
-const MoreLink = ({ dataType, item }) => {
+const MoreLink = ({ category, item }) => {
   return (
     <span>
       <span>{item["description"].substring(0, 120)}</span>
       <a
         className="more-link"
-        href={`/${dataType}/${arkLinkFormatted(item.custom_key)}`}
+        href={`/${category}/${arkLinkFormatted(item.custom_key)}`}
       >
         . . .[more]
       </a>

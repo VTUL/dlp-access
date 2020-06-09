@@ -20,7 +20,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: "List",
       siteDetails: null,
       paginationClick: null
     };

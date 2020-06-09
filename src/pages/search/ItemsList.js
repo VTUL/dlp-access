@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ItemListView from "./ItemListView";
 import GalleryView from "./GalleryView";
-import { getDataType } from "../../lib/MetadataRenderer";
+import { getCategory } from "../../lib/MetadataRenderer";
 import { MasonryView } from "./MasonryView";
 
 class ItemsList extends Component {
@@ -23,7 +23,7 @@ class ItemsList extends Component {
                 <GalleryView
                   key={item.id}
                   item={item}
-                  dataType={getDataType(item)}
+                  category={getCategory(item)}
                   label={true}
                 />
               );
@@ -32,7 +32,7 @@ class ItemsList extends Component {
                 <MasonryView
                   key={item.id}
                   item={item}
-                  dataType={getDataType(item)}
+                  category={getCategory(item)}
                   label={true}
                 />
               );
@@ -41,7 +41,7 @@ class ItemsList extends Component {
                 <ItemListView
                   key={item.id}
                   item={item}
-                  dataType={getDataType(item)}
+                  category={getCategory(item)}
                   label={true}
                 />
               );

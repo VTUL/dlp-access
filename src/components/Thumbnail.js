@@ -8,8 +8,8 @@ class Thumbnail extends Component {
   labelDisplay() {
     if (this.props.label) {
       return (
-        <div className={`${this.props.dataType}-label`}>
-          {this.props.dataType === "collection" ? "Collection" : "Item"}
+        <div className={`${this.props.category}-label`}>
+          {this.props.category === "collection" ? "Collection" : "Item"}
         </div>
       );
     } else {
@@ -22,7 +22,7 @@ class Thumbnail extends Component {
       <div className="image-container">
         {this.labelDisplay()}
         <NavLink
-          to={`/${this.props.dataType}/${arkLinkFormatted(
+          to={`/${this.props.category}/${arkLinkFormatted(
             this.props.item.custom_key
           )}`}
         >

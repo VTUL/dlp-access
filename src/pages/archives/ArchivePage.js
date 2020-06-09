@@ -42,9 +42,9 @@ class ArchivePage extends Component {
     super(props);
     this.state = {
       page: 0,
-      dataType: "archive",
+      category: "archive",
       searchField: "title",
-      view: "List",
+      view: "Gallery",
       languages: null
     };
   }
@@ -114,7 +114,7 @@ class ArchivePage extends Component {
                   pageTitle={item.title}
                 />
                 <SearchBar
-                  dataType={this.state.dataType}
+                  category={this.state.category}
                   view={this.state.view}
                   searchField={this.state.searchField}
                   setPage={this.setPage}
@@ -123,7 +123,7 @@ class ArchivePage extends Component {
 
                 <div className="item-image-section">
                   <div className="breadcrumbs-wrapper">
-                    <Breadcrumbs dataType={"Archives"} record={item} />
+                    <Breadcrumbs category={"Archives"} record={item} />
                   </div>
                   <div className="row">
                     <div className="col-sm-12">

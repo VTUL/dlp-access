@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
+import qs from "query-string";
 import ResultsNumberDropdown from "../../components/ResultsNumberDropdown";
 import Pagination from "../../components/Pagination";
 import SearchBar from "../../components/SearchBar";
@@ -22,6 +24,10 @@ class SearchResults extends Component {
     fetchLanguages(this, "abbr");
   }
 
+  onClearArray = () => {
+    this.props.updateFormState("filters", {});
+  };
+
   render() {
     const ItemsPaginationDisplay = ({ atBottom }) => {
       return (
@@ -39,34 +45,61 @@ class SearchResults extends Component {
       );
     };
 
+    const FiltersDisplay = () => {
+      const defaultSearch = {
+        field: this.props.field,
+        q: this.props.q,
+        view: this.props.view
+      };
+      if (Object.keys(this.props.filters).length > 0) {
+        return (
+          <div>
+            Filtering by:
+            <ul>
+              {Object.entries(this.props.filters).map(([key, value]) => {
+                return (
+                  <li key={key}>
+                    <b>{key}</b> --> {value}
+                  </li>
+                );
+              })}
+            </ul>
+            Clear All Filters
+            <NavLink to={`/search/?${qs.stringify(defaultSearch)}`}>
+              <i className="fas fa-times"></i>
+            </NavLink>
+          </div>
+        );
+      } else return null;
+    };
     return (
       <div className="search-result-wrapper">
         <SearchBar
-          dataType={this.props.dataType}
+          filters={this.props.filters}
           view={this.props.view}
-          searchField={this.props.searchField}
+          field={this.props.field}
           q={this.props.q}
           setPage={this.props.setPage}
+          updateFormState={this.props.updateFormState}
         />
         <div className="container search-results">
           <div className="row">
             <div id="sidebar" className="col-lg-3 col-sm-12">
-              <h2>Filter</h2>
-              <div className="collection-detail">
-                <SearchFacets
-                  facetField={this.props.searchField}
-                  q={this.props.q}
-                  total={this.props.total}
-                  dataType={this.props.dataType}
-                  view={this.props.view}
-                />
-              </div>
+              <SearchFacets
+                filters={this.props.filters}
+                field={this.props.field}
+                q={this.props.q}
+                total={this.props.total}
+                view={this.props.view}
+                updateFormState={this.props.updateFormState}
+              />
             </div>
             <div id="content" className="col-lg-9 col-sm-12">
               <div className="navbar navbar-light justify-content-between">
                 <div className="navbar-text text-dark">
                   <ItemsPaginationDisplay atBottom={false} />
                 </div>
+                <FiltersDisplay />
                 <div className="form-inline">
                   <ViewBar
                     view={this.props.view}
@@ -76,11 +109,7 @@ class SearchResults extends Component {
                   <ResultsNumberDropdown setLimit={this.props.setLimit} />
                 </div>
               </div>
-              <ItemsList
-                items={this.props.items}
-                dataType={this.props.dataType}
-                view={this.props.view}
-              />
+              <ItemsList items={this.props.items} view={this.props.view} />
             </div>
           </div>
           <ItemsPaginationDisplay atBottom={true} />

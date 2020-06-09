@@ -130,18 +130,35 @@ export const fetchSearchResults = async (
     parent_collection: { exists: false }
   };
   let searchResults = null;
+  let category = "";
+  let filters = {};
+  for (const key of Object.keys(filter)) {
+    if (key === "category") {
+      category = filter.category;
+    } else if (key === "date") {
+      let dates = filter.date.split(" - ");
+      filters["start_date"] = {
+        gte: `${dates[0]}/01/01`,
+        lte: `${dates[1]}/12/31`
+      };
+    } else if (key === "title" || key === "description") {
+      filters[key] = { matchPhrase: filter[key] };
+    } else {
+      filters[key] = { eq: filter[key] };
+    }
+  }
   let options = {
-    filter: filter,
+    filter: filters,
     sort: sort,
     limit: limit,
     nextToken: nextToken
   };
-  if (component.state.dataType === "collection") {
-    options["filter"] = { ...collectionFilter, ...filter };
+  if (category === "collection") {
+    options["filter"] = { ...collectionFilter, ...filters };
     const Collections = await fetchObjects(queries.searchCollections, options);
     searchResults = Collections.data.searchCollections;
-  } else if (component.state.dataType === "archive") {
-    options["filter"] = { ...archiveFilter, ...filter };
+  } else if (category === "archive") {
+    options["filter"] = { ...archiveFilter, ...filters };
     const Archives = await fetchObjects(queries.searchArchives, options);
     searchResults = Archives.data.searchArchives;
   } else {

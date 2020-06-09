@@ -1,13 +1,6 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDoubleRight,
-  faAngleDoubleDown
-} from "@fortawesome/free-solid-svg-icons";
-import { NavLink } from "react-router-dom";
-import qs from "query-string";
-import { labelAttr } from "../../lib/MetadataRenderer";
 import { fetchSearchResults } from "../../lib/fetchTools";
+import Collapsible from "../../components/Collapsible";
 import "../../css/ListPages.css";
 import "../../css/SearchResult.css";
 
@@ -15,20 +8,17 @@ class SearchFacets extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      facetNodes: []
+      categoryList: [],
+      creatorList: [],
+      languageList: [],
+      dateList: []
     };
     this._isMounted = false;
-    this.togglePanel = this.togglePanel.bind(this);
   }
 
   componentDidMount() {
     this._isMounted = true;
-    this.loadFacets("date");
-  }
-
-  togglePanel(e) {
-    this.setState({ open: !this.state.open });
+    this.loadFacets();
   }
 
   componentWillUnmount() {
@@ -37,112 +27,137 @@ class SearchFacets extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
-      this.loadFacets("date");
+      this.loadFacets();
     }
   }
-
-  dateRanges = [
-    ["1920", "1939"],
-    ["1940", "1959"],
-    ["1960", "1979"],
-    ["1980", "1999"],
-    ["2000", "2019"]
-  ];
-
-  date = dateRange => {
-    return `${dateRange[0]} - ${dateRange[1]}`;
+  searchInput = () => {
+    if (this.props.field && this.props.q) {
+      return { [this.props.field]: this.props.q };
+    } else return {};
   };
 
-  async loadFacets(field) {
-    let fieldFacet = [];
-    let parsedObject = {
-      data_type: this.props.dataType,
-      search_field: field,
-      view: this.props.view
-    };
+  async loadFacets() {
+    this.loadCategoryFacet();
+    const Creators = [
+      "Alexander, Dorothy Baxter",
+      "Chadeayne, Olive, 1904-2001",
+      "Cochrane, Margaret Ann",
+      "Crawford, Martha J. (1925-1994)",
+      "King, Dorothee Stelzer (1934- )",
+      "Pfeiffer, Alberta, 1899-1994",
+      "Rodeck, Melita (1914-2011)",
+      "Roth, E. Maria",
+      "Rudoff, Lorraine (1920- )",
+      "Tebbs, Robert W.",
+      "Young, Jean Linden (1922-1997)"
+    ];
+    this.loadFieldFacet(Creators, "creator", "creatorList");
+    const Languages = ["en", "fr"];
+    this.loadFieldFacet(Languages, "language", "languageList");
+    this.loadDateFacet();
+  }
 
-    for (const value of this.dateRanges) {
-      let options = {
-        filter: {
-          start_date: { gte: `${value[0]}/01/01`, lte: `${value[1]}/12/31` }
-        }
+  async loadCategoryFacet() {
+    let categoryNodes = [];
+    const Categories = ["collection", "archive"];
+
+    for (const category of Categories) {
+      let filter = {
+        ...this.props.filters,
+        ...this.searchInput(),
+        category: category
       };
+      let options = { filter: filter };
       let searchResults = await fetchSearchResults(this, options);
       let total = searchResults.total;
       if (total > 0) {
-        let searchQuery = { q: this.date(value) };
-        fieldFacet.push({
-          label: this.date(value),
-          path: `/search/?${qs.stringify({ ...parsedObject, ...searchQuery })}`,
-          count: total
+        categoryNodes.push({
+          label: category,
+          count: total,
+          selected: this.props.filters.category === category
         });
       }
     }
     if (this._isMounted) {
-      this.setState({ facetNodes: fieldFacet });
+      this.setState({ categoryList: categoryNodes });
+    }
+  }
+
+  async loadFieldFacet(facetValues, field, fieldList) {
+    let facetNodes = [];
+
+    for (const value of facetValues) {
+      let filter = {
+        ...this.props.filters,
+        ...this.searchInput(),
+        [field]: value
+      };
+      let options = { filter: filter };
+      let searchResults = await fetchSearchResults(this, options);
+      let total = searchResults.total;
+      if (total > 0) {
+        facetNodes.push({
+          label: value,
+          count: total,
+          selected: this.props.filters[field] === value
+        });
+      }
+    }
+    if (this._isMounted) {
+      this.setState({ [fieldList]: facetNodes });
+    }
+  }
+
+  async loadDateFacet() {
+    let dateNodes = [];
+    const DateRanges = [
+      ["1920", "1939"],
+      ["1940", "1959"],
+      ["1960", "1979"],
+      ["1980", "1999"],
+      ["2000", "2019"]
+    ];
+
+    for (const dateRange of DateRanges) {
+      let start_date = `${dateRange[0]} - ${dateRange[1]}`;
+      let filter = {
+        ...this.props.filters,
+        ...this.searchInput(),
+        date: start_date
+      };
+      let options = { filter: filter };
+      let searchResults = await fetchSearchResults(this, options);
+      let total = searchResults.total;
+      if (total > 0) {
+        dateNodes.push({
+          label: start_date,
+          count: total,
+          selected: this.props.filters.date === start_date
+        });
+      }
+    }
+    if (this._isMounted) {
+      this.setState({ dateList: dateNodes });
     }
   }
 
   render() {
-    const defaultSearch = {
-      data_type: this.props.dataType,
-      search_field: "title",
-      q: "",
-      view: "List"
-    };
-
-    const FacetListing = () => {
-      if (this.props.q) {
-        return (
-          <div className="collection-detail-value">
-            {this.props.q} ({this.props.total})
-            <NavLink to={`/search/?${qs.stringify(defaultSearch)}`}>
-              <i className="fas fa-times"></i>
-            </NavLink>
-          </div>
-        );
-      } else {
-        return (
-          <ul>
-            {this.state.facetNodes.map((value, index) => {
-              return (
-                <li key={index}>
-                  <NavLink to={value["path"]}>
-                    {value["label"]} ({value["count"]})
-                  </NavLink>
-                </li>
-              );
-            })}
-          </ul>
-        );
-      }
-    };
-
+    const facetFields = ["category", "creator", "language", "date"];
     return (
       <div>
-        <div onClick={e => this.togglePanel(e)} className="facet-header">
-          {this.props.q ? labelAttr(this.props.facetField) : "Years"}
-          {this.state.open ? (
-            <FontAwesomeIcon
-              icon={faAngleDoubleRight}
-              size="lg"
-              color="orange"
-              className="float-right"
+        <h2>Filter</h2>
+        <div className="collection-detail">
+          {facetFields.map((field, idx) => (
+            <Collapsible
+              filters={this.props.filters}
+              filterField={field}
+              updateFormState={this.props.updateFormState}
+              facetNodes={this.state[`${field}List`]}
+              multiSelect={false}
+              key={idx}
             />
-          ) : (
-            <FontAwesomeIcon
-              icon={faAngleDoubleDown}
-              size="lg"
-              color="orange"
-              className="float-right"
-            />
-          )}
+          ))}
         </div>
-        {this.state.open ? (
-          <div className="facet-listing">
-            <FacetListing />
-          </div>
-        ) : null}
       </div>
     );
   }
