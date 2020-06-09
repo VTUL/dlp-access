@@ -9,7 +9,7 @@
 }
 .featured-items-wrapper .card:hover,
 .featured-items-wrapper .card:focus {
-  border-color: var(--themeHighlightColor);
+  box-shadow: 0px 0px 2px var(--dark-gray);
 }
 
 .featured-items-wrapper .card-img-top {

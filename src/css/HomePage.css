@@ -23,14 +23,13 @@
   color: white;
   font-family: "crimson-text", serif;
   font-weight: 600;
-  text-shadow: -2px 3px 5px #000000b5;
+  text-shadow: -2px 3px 5px black;
   text-decoration: none;
 }
 
 .home-welcome-wrapper {
   width: 100%;
   padding: 40px 0px 40px 0px;
-  font-family: "gineso-condensed", sans-serif;
 }
 
 .home-welcome-wrapper h1 {

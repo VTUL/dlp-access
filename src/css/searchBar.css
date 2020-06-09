@@ -27,20 +27,22 @@
 }
 
 .searchbar-wrapper button {
+  padding: 0px;
+  border: 0px;
+  margin-left: 3px;
   background-color: white;
   color: var(--themeHighlightColor);
-  padding: 0.5px 8px;
   font-size: 22px;
 }
-
+.searchbar-wrapper button div {
+  width: 47px;
+  height: 36px;
+}
 .searchbar-wrapper button:hover,
 .searchbar-wrapper button:active,
 .searchbar-wrapper button:focus {
-  color: #fff;
-  background-color: #aa202d;
-  border-color: #aa202d;
+  color: var(--dark-gray);
 }
-
 .search-options-wrapper {
   padding-top: 10px;
 }
@@ -56,10 +58,24 @@
     margin-right: 30px;
     width: 100px;
   }
-
   .searchbar-wrapper button {
     background-color: var(--themeHighlightColor);
     color: white;
-    padding: 0.5px 20px;
+  }
+  .searchbar-wrapper button div {
+    width: 64px;
+    height: 36px;
+    border-radius: 5px;
+  }
+  .searchbar-wrapper button:hover,
+  .searchbar-wrapper button:active,
+  .searchbar-wrapper button:focus {
+    color: white;
+  }
+  .searchbar-wrapper button div:hover,
+  .searchbar-wrapper button div:active,
+  .searchbar-wrapper button div:focus {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
   }
 }

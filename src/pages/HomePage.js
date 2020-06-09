@@ -12,13 +12,13 @@ import "../css/HomePage.css";
 class HomePage extends Component {
   render() {
     let featuredItems = null;
-    let statement = null;
+    let homeStatement = null;
     let staticImage = null;
     let mediaSection = null;
     let sponsors = null;
     try {
       featuredItems = this.props.siteDetails.homePage.featuredItems;
-      statement = this.props.siteDetails.homePage.statement;
+      homeStatement = this.props.siteDetails.homePage.homeStatement;
       staticImage = this.props.siteDetails.homePage.staticImage;
       mediaSection = this.props.siteDetails.homePage.mediaSection;
       sponsors = this.props.siteDetails.homePage.sponsors;
@@ -46,10 +46,7 @@ class HomePage extends Component {
               setPage={this.props.setPage}
             />
           </div>
-          <div className="home-welcome-wrapper">
-            <h1>Welcome</h1>
-            <HomeStatement statement={statement} />
-          </div>
+          <HomeStatement homeStatement={homeStatement} />
           <FeaturedItems featuredItems={featuredItems} />
           <MultimediaSection mediaSection={mediaSection} />
           <SiteSponsors sponsors={sponsors} />
