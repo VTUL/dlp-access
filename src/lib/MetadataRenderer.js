@@ -46,11 +46,35 @@ export function dateFormatted(item) {
 }
 
 export function collectionSize(collection) {
-  let subCollections =
-    collection.subCollections != null ? collection.subCollections.length : 0;
+  let subCollections = 0;
+  if (collection.subCollections) {
+    subCollections =
+      collection.subCollections.total != null
+        ? collection.subCollections.total
+        : 0;
+  }
   let archives =
     collection.archives.items != null ? collection.archives.items.length : 0;
   return subCollections + archives;
+}
+
+export function collectionSizeText(collection) {
+  let subCollections = null;
+  console.log(collection);
+  if (collection.subCollections) {
+    subCollections =
+      collection.subCollections.total != null
+        ? collection.subCollections.total
+        : 0;
+  }
+  let archives =
+    collection.archives.items != null ? collection.archives.items.length : 0;
+  return (
+    <div>
+      {subCollections > 0 && <div>Collections: {subCollections}</div>}
+      {archives > 0 && <div>Items: {archives}</div>}
+    </div>
+  );
 }
 
 export function addNewlineInDesc(content) {
@@ -121,7 +145,7 @@ function textFormat(item, attr, languages) {
   } else if (attr === "date") {
     return dateFormatted(item);
   } else if (attr === "size") {
-    if (dataType === "collection") return collectionSize(item);
+    if (dataType === "collection") return collectionSizeText(item);
     else return 0;
   } else {
     return item[attr];

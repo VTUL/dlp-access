@@ -6,7 +6,6 @@ import CollectionItemsLoader from "./CollectionItemsLoader.js";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import {
   RenderItemsDetailed,
-  collectionSize,
   addNewlineInDesc
 } from "../../lib/MetadataRenderer";
 import { fetchLanguages } from "../../lib/fetchTools";
@@ -47,7 +46,12 @@ class CollectionsShowPage extends Component {
   }
 
   updateSubCollections(collection, subCollections) {
-    collection.subCollections = subCollections;
+    collection.subCollections = subCollections.items;
+    collection.subCollections.total = subCollections.total;
+  }
+
+  updateCollectionArchives(collection, items) {
+    collection.archives = items;
   }
 
   async setTopLevelAttributes(attributes) {
@@ -238,9 +242,6 @@ class CollectionsShowPage extends Component {
             <div className="collection-details-col col-8">
               <h1 className="collection-title">{this.collectionTitle()}</h1>
               <div className="post-heading">
-                <span className="item-count">
-                  {this.handleZeroItems(collectionSize(this.props.collection))}
-                </span>
                 <this.creatorDates collection={this.props.collection} />
                 <span className="last-updated">
                   Last updated: {this.props.collection.modified_date}
@@ -286,7 +287,10 @@ class CollectionsShowPage extends Component {
             </div>
           </div>
 
-          <CollectionItemsLoader collection={this.props.collection} />
+          <CollectionItemsLoader
+            collection={this.props.collection}
+            updateCollectionArchives={this.updateCollectionArchives.bind(this)}
+          />
         </div>
       );
     } else {

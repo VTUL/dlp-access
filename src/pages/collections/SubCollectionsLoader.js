@@ -100,7 +100,7 @@ class SubCollectionsLoader extends Component {
     });
     this.updateParentSubcollections(
       this.props.collection,
-      items.data.searchCollections.items
+      items.data.searchCollections
     );
   }
 
