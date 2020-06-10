@@ -18,6 +18,7 @@ class CollectionsShowPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      collection: {},
       languages: null,
       descriptionTruncated: true,
       subDescriptionTruncated: true,
@@ -45,20 +46,29 @@ class CollectionsShowPage extends Component {
     return "";
   }
 
-  updateSubCollections(collection, subCollections) {
+  updateSubCollections(component, collection, subCollections) {
     collection.subCollections = subCollections.items;
     collection.subCollections.total = subCollections.total;
+
+    component.setCollectionState(collection);
   }
 
-  updateCollectionArchives(collection, items) {
+  updateCollectionArchives(component, collection, items) {
     collection.archives = items;
+    component.setCollectionState(collection);
+  }
+
+  setCollectionState(collection) {
+    this.setState({
+      collection: collection
+    });
   }
 
   async setTopLevelAttributes(attributes) {
     let attributeResults = {};
-    if (this.props.collection.parent_collection) {
+    if (this.state.collection.parent_collection) {
       attributeResults = await this.getTopLevelAttributes(
-        this.props.collection.parent_collection[0],
+        this.state.collection.parent_collection[0],
         attributes
       );
     }
@@ -94,29 +104,29 @@ class CollectionsShowPage extends Component {
   }
 
   collectionImg() {
-    return this.state.thumbnail_path || this.props.collection.thumbnail_path;
+    return this.state.thumbnail_path || this.state.collection.thumbnail_path;
   }
 
   collectionTitle() {
-    return this.state.title || this.props.collection.title;
+    return this.state.title || this.state.collection.title;
   }
 
   subCollectionTitle() {
     let title = "";
-    if (this.state.title && this.state.title !== this.props.collection.title) {
-      title = this.props.collection.title;
+    if (this.state.title && this.state.title !== this.state.collection.title) {
+      title = this.state.collection.title;
     }
     return title;
   }
 
   subCollectionDescription() {
     let descriptionSection = <></>;
-    let descriptionText = this.props.collection.description;
+    let descriptionText = this.state.collection.description;
 
     if (descriptionText && this.state.subDescriptionTruncated) {
       descriptionText = descriptionText.substr(0, TRUNCATION_LENGTH);
     }
-    if (this.props.collection.parent_collection && descriptionText) {
+    if (this.state.collection.parent_collection && descriptionText) {
       descriptionSection = (
         <div className="collection-detail-description">
           <div className="collection-detail-key">Description</div>
@@ -176,7 +186,7 @@ class CollectionsShowPage extends Component {
 
   getDescription() {
     let description =
-      this.state.description || this.props.collection.description;
+      this.state.description || this.state.collection.description;
     if (description && this.state.descriptionTruncated) {
       description = description.substr(0, TRUNCATION_LENGTH);
     }
@@ -199,9 +209,16 @@ class CollectionsShowPage extends Component {
   }
 
   componentDidMount() {
-    fetchLanguages(this, "abbr");
-    const topLevelAttributes = ["title", "description", "thumbnail_path"];
-    this.setTopLevelAttributes(topLevelAttributes);
+    this.setState(
+      {
+        collection: this.props.collection
+      },
+      function() {
+        fetchLanguages(this, "abbr");
+        const topLevelAttributes = ["title", "description", "thumbnail_path"];
+        this.setTopLevelAttributes(topLevelAttributes);
+      }
+    );
   }
 
   render() {
@@ -220,15 +237,15 @@ class CollectionsShowPage extends Component {
       "belongs_to"
     ];
     const topLevelDesc =
-      this.state.description || this.props.collection.description;
+      this.state.description || this.state.collection.description;
 
-    if (this.state.languages) {
+    if (this.state.languages && this.state.collection) {
       return (
         <div>
           <div className="breadcrumbs-wrapper">
             <Breadcrumbs
               dataType={"Collections"}
-              record={this.props.collection}
+              record={this.state.collection}
               setTitleList={this.setTitleList.bind(this)}
             />
           </div>
@@ -236,15 +253,15 @@ class CollectionsShowPage extends Component {
             <div className="collection-img-col col-4">
               <img
                 src={this.collectionImg()}
-                alt={`${this.props.collection} header`}
+                alt={`${this.state.collection} header`}
               />
             </div>
             <div className="collection-details-col col-8">
               <h1 className="collection-title">{this.collectionTitle()}</h1>
               <div className="post-heading">
-                <this.creatorDates collection={this.props.collection} />
+                <this.creatorDates collection={this.state.collection} />
                 <span className="last-updated">
-                  Last updated: {this.props.collection.modified_date}
+                  Last updated: {this.state.collection.modified_date}
                 </span>
               </div>
               <div
@@ -271,7 +288,7 @@ class CollectionsShowPage extends Component {
                   {this.subCollectionDescription()}
                   <RenderItemsDetailed
                     keyArray={KeyArray}
-                    item={this.props.collection}
+                    item={this.state.collection}
                     languages={this.state.languages}
                     type="grid"
                   />
@@ -280,7 +297,8 @@ class CollectionsShowPage extends Component {
 
               <div className="col-12 col-lg-4 subcollections-section">
                 <SubCollectionsLoader
-                  collection={this.props.collection}
+                  parent={this}
+                  collection={this.state.collection}
                   updateSubCollections={this.updateSubCollections}
                 />
               </div>
@@ -288,7 +306,8 @@ class CollectionsShowPage extends Component {
           </div>
 
           <CollectionItemsLoader
-            collection={this.props.collection}
+            parent={this}
+            collection={this.state.collection}
             updateCollectionArchives={this.updateCollectionArchives.bind(this)}
           />
         </div>

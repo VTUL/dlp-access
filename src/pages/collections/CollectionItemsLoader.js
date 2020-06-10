@@ -97,12 +97,11 @@ class CollectionItemsLoader extends Component {
           items.data.searchArchives.total / this.state.limit
         )
       },
-      function() {
-        this.props.updateCollectionArchives(
-          this.props.collection,
-          items.data.searchArchives
-        );
-      }
+      this.props.updateCollectionArchives(
+        this.props.parent,
+        this.props.collection,
+        items.data.searchArchives
+      )
     );
   }
 

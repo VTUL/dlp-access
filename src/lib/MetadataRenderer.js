@@ -45,22 +45,8 @@ export function dateFormatted(item) {
   return circa_date + start_date + end_date;
 }
 
-export function collectionSize(collection) {
-  let subCollections = 0;
-  if (collection.subCollections) {
-    subCollections =
-      collection.subCollections.total != null
-        ? collection.subCollections.total
-        : 0;
-  }
-  let archives =
-    collection.archives.items != null ? collection.archives.items.length : 0;
-  return subCollections + archives;
-}
-
 export function collectionSizeText(collection) {
   let subCollections = null;
-  console.log(collection);
   if (collection.subCollections) {
     subCollections =
       collection.subCollections.total != null

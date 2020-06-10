@@ -78,7 +78,11 @@ class SubCollectionsLoader extends Component {
   }
 
   updateParentSubcollections(collection, subCollections) {
-    this.props.updateSubCollections(collection, subCollections);
+    this.props.updateSubCollections(
+      this.props.parent,
+      collection,
+      subCollections
+    );
   }
 
   async loadItems(collectionID) {
