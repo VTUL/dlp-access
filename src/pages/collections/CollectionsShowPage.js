@@ -54,7 +54,7 @@ class CollectionsShowPage extends Component {
   }
 
   updateCollectionArchives(component, collection, items) {
-    collection.archives = items;
+    collection.archives = items.total;
     component.setCollectionState(collection);
   }
 

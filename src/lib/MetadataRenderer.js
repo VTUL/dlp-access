@@ -53,8 +53,7 @@ export function collectionSizeText(collection) {
         ? collection.subCollections.total
         : 0;
   }
-  let archives =
-    collection.archives.items != null ? collection.archives.items.length : 0;
+  let archives = collection.archives || 0;
   return (
     <div>
       {subCollections > 0 && <div>Collections: {subCollections}</div>}
