@@ -154,7 +154,7 @@ class SearchBar extends Component {
             {this.fieldOptions()}
           </select>
           <button className="btn" type="submit" onClick={this.submit}>
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </button>
         </div>
       </div>

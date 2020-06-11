@@ -90,7 +90,7 @@ class ArchivePage extends Component {
             data: [
               {
                 manifestUri: item.manifest_url,
-                location: "IAWA"
+                location: this.props.siteDetails.siteId.toUpperCase()
               }
             ],
             windowObjects: [
