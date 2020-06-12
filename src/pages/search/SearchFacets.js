@@ -37,7 +37,8 @@ class SearchFacets extends Component {
   };
 
   async loadFacets() {
-    this.loadCategoryFacet();
+    const Categories = ["collection", "archive"];
+    this.loadFieldFacet(Categories, "category", "categoryList");
     const Creators = [
       "Alexander, Dorothy Baxter",
       "Chadeayne, Olive, 1904-2001",
@@ -54,33 +55,14 @@ class SearchFacets extends Component {
     this.loadFieldFacet(Creators, "creator", "creatorList");
     const Languages = ["en", "fr"];
     this.loadFieldFacet(Languages, "language", "languageList");
-    this.loadDateFacet();
-  }
-
-  async loadCategoryFacet() {
-    let categoryNodes = [];
-    const Categories = ["collection", "archive"];
-
-    for (const category of Categories) {
-      let filter = {
-        ...this.props.filters,
-        ...this.searchInput(),
-        category: category
-      };
-      let options = { filter: filter };
-      let searchResults = await fetchSearchResults(this, options);
-      let total = searchResults.total;
-      if (total > 0) {
-        categoryNodes.push({
-          label: category,
-          count: total,
-          selected: this.props.filters.category === category
-        });
-      }
-    }
-    if (this._isMounted) {
-      this.setState({ categoryList: categoryNodes });
-    }
+    const DateRanges = [
+      "1920 - 1939",
+      "1940 - 1959",
+      "1960 - 1979",
+      "1980 - 1999",
+      "2000 - 2019"
+    ];
+    this.loadFieldFacet(DateRanges, "date", "dateList");
   }
 
   async loadFieldFacet(facetValues, field, fieldList) {
@@ -105,39 +87,6 @@ class SearchFacets extends Component {
     }
     if (this._isMounted) {
       this.setState({ [fieldList]: facetNodes });
-    }
-  }
-
-  async loadDateFacet() {
-    let dateNodes = [];
-    const DateRanges = [
-      ["1920", "1939"],
-      ["1940", "1959"],
-      ["1960", "1979"],
-      ["1980", "1999"],
-      ["2000", "2019"]
-    ];
-
-    for (const dateRange of DateRanges) {
-      let start_date = `${dateRange[0]} - ${dateRange[1]}`;
-      let filter = {
-        ...this.props.filters,
-        ...this.searchInput(),
-        date: start_date
-      };
-      let options = { filter: filter };
-      let searchResults = await fetchSearchResults(this, options);
-      let total = searchResults.total;
-      if (total > 0) {
-        dateNodes.push({
-          label: start_date,
-          count: total,
-          selected: this.props.filters.date === start_date
-        });
-      }
-    }
-    if (this._isMounted) {
-      this.setState({ dateList: dateNodes });
     }
   }
 
