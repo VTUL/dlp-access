@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
-import Viewer from "../../components/Viewer";
+import MiradorViewer from "../../components/MiradorViewer";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import SiteTitle from "../../components/SiteTitle";
@@ -69,6 +69,45 @@ class ArchivePage extends Component {
     return content;
   }
 
+  isImgURL(url) {
+    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+  }
+
+  isJsonURL(url) {
+    return url.match(/\.(json)$/) != null;
+  }
+
+  imageViewer(item) {
+    let viewer = null;
+    if (this.isImgURL(item.manifest_url)) {
+      viewer = (
+        <img className="item-img" src={item.manifest_url} alt={item.title} />
+      );
+    } else if (this.isJsonURL(item.manifest_url)) {
+      const miradorConfig = {
+        id: "mirador_viewer",
+        data: [
+          {
+            manifestUri: item.manifest_url,
+            location: this.props.siteDetails.siteId.toUpperCase()
+          }
+        ],
+        windowObjects: [
+          {
+            loadedManifest: item.manifest_url,
+            viewType: "ImageView"
+          }
+        ],
+        showAddFromURLBox: false
+      };
+
+      viewer = <MiradorViewer config={miradorConfig} />;
+    } else {
+      viewer = <></>;
+    }
+    return viewer;
+  }
+
   componentDidMount() {
     fetchLanguages(this, "abbr");
   }
@@ -85,27 +124,12 @@ class ArchivePage extends Component {
             return <h3>Error</h3>;
           if (loading || !searchArchives) return <h3>Loading...</h3>;
           const item = searchArchives.items[0];
-          var miradorConfig = {
-            id: "mirador_viewer",
-            data: [
-              {
-                manifestUri: item.manifest_url,
-                location: this.props.siteDetails.siteId.toUpperCase()
-              }
-            ],
-            windowObjects: [
-              {
-                loadedManifest: item.manifest_url,
-                viewType: "ImageView"
-              }
-            ],
-            showAddFromURLBox: false
-          };
 
           // log archive identifier in ga
           window.ga("send", "pageview", {
             dimension1: item.identifier
           });
+
           if (this.state.languages) {
             return (
               <div className="item-page-wrapper">
@@ -126,9 +150,7 @@ class ArchivePage extends Component {
                     <Breadcrumbs category={"Archives"} record={item} />
                   </div>
                   <div className="row">
-                    <div className="col-sm-12">
-                      <Viewer config={miradorConfig} />
-                    </div>
+                    <div className="col-sm-12">{this.imageViewer(item)}</div>
                   </div>
                 </div>
                 <div className="row item-details-section">

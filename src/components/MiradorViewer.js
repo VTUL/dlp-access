@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../css/Viewer.css";
 
-class Viewer extends Component {
+class MiradorViewer extends Component {
   get miradorConfig() {
     return this.props.config;
   }
@@ -15,4 +15,4 @@ class Viewer extends Component {
   }
 }
 
-export default Viewer;
+export default MiradorViewer;
