@@ -8,6 +8,16 @@ describe('Archive static img view', () => {
   });
 });
 
+describe('Archive audio player', () => {
+  it('renders html5 audio player', () => {
+    cy.visit('http://localhost:3000/archive/m69xyh01');
+    cy.get('audio')
+      .eq(0)
+      .should('have.class', 'audiojs')
+      .should('be.visible');
+  });
+});
+
 describe('Archive Mirador viewer', () => {
   it('renders viewer if manifest.json', () => {
     cy.visit('http://localhost:3000/archive/5v709r98');

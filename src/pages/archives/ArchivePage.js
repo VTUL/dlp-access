@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
+import AudioPlayer from "../../components/AudioPlayer";
 import MiradorViewer from "../../components/MiradorViewer";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
@@ -73,17 +74,17 @@ class ArchivePage extends Component {
     return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
   }
 
+  isAudioURL(url) {
+    return url.match(/\.(mp3|ogg|wav)$/) != null;
+  }
+
   isJsonURL(url) {
     return url.match(/\.(json)$/) != null;
   }
 
-  imageViewer(item) {
-    let viewer = null;
-    if (this.isImgURL(item.manifest_url)) {
-      viewer = (
-        <img className="item-img" src={item.manifest_url} alt={item.title} />
-      );
-    } else if (this.isJsonURL(item.manifest_url)) {
+  mediaDisplay(item) {
+    let display = null;
+    if (this.isJsonURL(item.manifest_url)) {
       const miradorConfig = {
         id: "mirador_viewer",
         data: [
@@ -101,11 +102,17 @@ class ArchivePage extends Component {
         showAddFromURLBox: false
       };
 
-      viewer = <MiradorViewer config={miradorConfig} />;
+      display = <MiradorViewer config={miradorConfig} />;
+    } else if (this.isImgURL(item.manifest_url)) {
+      display = (
+        <img className="item-img" src={item.manifest_url} alt={item.title} />
+      );
+    } else if (this.isAudioURL(item.manifest_url)) {
+      display = <AudioPlayer manifest_url={item.manifest_url} />;
     } else {
-      viewer = <></>;
+      display = <></>;
     }
-    return viewer;
+    return display;
   }
 
   componentDidMount() {
@@ -150,7 +157,7 @@ class ArchivePage extends Component {
                     <Breadcrumbs category={"Archives"} record={item} />
                   </div>
                   <div className="row">
-                    <div className="col-sm-12">{this.imageViewer(item)}</div>
+                    <div className="col-sm-12">{this.mediaDisplay(item)}</div>
                   </div>
                 </div>
                 <div className="row item-details-section">
