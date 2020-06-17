@@ -75,20 +75,24 @@ class Collapsible extends Component {
   render() {
     return (
       <div>
-        <div onClick={e => this.togglePanel(e)} className="facet-header">
+        <div
+          onClick={e => this.togglePanel(e)}
+          className="facet-title"
+          data-cy="filter-collapsible"
+        >
           {labelAttr(this.props.filterField)}
           {this.state.expanded ? (
             <FontAwesomeIcon
               icon={faAngleDoubleRight}
-              size="lg"
-              color="orange"
+              size="1x"
+              color="#75787b"
               className="float-right"
             />
           ) : (
             <FontAwesomeIcon
               icon={faAngleDoubleDown}
-              size="lg"
-              color="orange"
+              size="1x"
+              color="#75787b"
               className="float-right"
             />
           )}

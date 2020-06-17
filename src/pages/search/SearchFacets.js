@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { fetchSearchResults } from "../../lib/fetchTools";
 import Collapsible from "../../components/Collapsible";
+import { NavLink } from "react-router-dom";
+import qs from "query-string";
 import "../../css/ListPages.css";
 import "../../css/SearchResult.css";
 
@@ -18,6 +20,10 @@ class SearchFacets extends Component {
     };
     this._isMounted = false;
   }
+
+  hideModal = () => {
+    this.props.updateModal();
+  };
 
   componentDidMount() {
     this._isMounted = true;
@@ -163,19 +169,46 @@ class SearchFacets extends Component {
     ];
     const multiFields = ["format", "medium", "resource_type"];
     return (
-      <div>
-        <h2>Filter</h2>
-        <div className="collection-detail" data-cy="filter-collapsibles">
-          {facetFields.map((field, idx) => (
-            <Collapsible
-              filters={this.props.filters}
-              filterField={field}
-              updateFormState={this.props.updateFormState}
-              facetNodes={this.state[`${field}List`]}
-              multiSelect={multiFields.includes(field) ? true : false}
-              key={idx}
-            />
-          ))}
+      <div className={this.props.isActive ? "facet-modal-wrapper" : null}>
+        <div className="facet-wrapper">
+          <h4 className="facet-heading">Filter My Results</h4>
+          <div className="facet-fields">
+            {facetFields.map((field, idx) => (
+              <Collapsible
+                filters={this.props.filters}
+                filterField={field}
+                updateFormState={this.props.updateFormState}
+                facetNodes={this.state[`${field}List`]}
+                multiSelect={false}
+                key={idx}
+              />
+            ))}
+            <div
+              className="facet-modal-buttons"
+              style={
+                this.props.isActive ? { display: "flex" } : { display: "none" }
+              }
+            >
+              <NavLink
+                to={`/search/?${qs.stringify(this.props.defaultSearch)}`}
+              >
+                Clear
+              </NavLink>
+              <button
+                type="button"
+                className="apply-filters"
+                onClick={this.hideModal}
+              >
+                Apply Filters
+              </button>
+              <NavLink
+                to={`/search/?${qs.stringify(this.props.defaultSearch)}`}
+                onClick={this.hideModal}
+              >
+                X
+              </NavLink>
+            </div>
+          </div>
         </div>
       </div>
     );
