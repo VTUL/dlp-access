@@ -82,24 +82,18 @@ function listValue(category, attr, value, languages) {
     "tags"
   ];
   if (LinkedFields.indexOf(attr) > -1) {
-    let parsedObject = {};
+    let attrValue = [value];
     if (["creator", "language"].includes(attr)) {
-      parsedObject = {
-        category: category,
-        [attr]: value,
-        field: "title",
-        q: "",
-        view: "Gallery"
-      };
-    } else {
-      parsedObject = {
-        category: category,
-        [attr]: [value],
-        field: "title",
-        q: "",
-        view: "Gallery"
-      };
+      attrValue = value;
     }
+    let parsedObject = {
+      category: category,
+      [attr]: attrValue,
+      field: "title",
+      q: "",
+      view: "Gallery"
+    };
+
     if (attr === "language" && languages !== undefined) {
       value = languages[value];
     }

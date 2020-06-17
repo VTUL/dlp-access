@@ -77,16 +77,18 @@ class SearchFacets extends Component {
     this.loadFieldFacet(Formats, "format", "formatList", true);
     const Languages = ["en", "fr"];
     this.loadFieldFacet(Languages, "language", "languageList", false);
-    const Mediums = ["Blueprints", "Diazotypes (copies)", "Ink"];
+    const Mediums = ["Blueprints", "Diazotypes (copies)", "Ink", "Graphite"];
     this.loadFieldFacet(Mediums, "medium", "mediumList", true);
     const Types = [
       "Architectural drawings (visual works)",
+      "Axonometric projections (images)",
       "Conceptual drawings",
       "Elevations (orthographic projections)",
       "Floor plans (orthographic projections)",
       "Sections (orthographic projections)",
       "Site plans",
-      "Sketches"
+      "Sketches",
+      "Travel sketches"
     ];
     this.loadFieldFacet(Types, "resource_type", "resource_typeList", true);
   }
