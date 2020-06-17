@@ -30,28 +30,52 @@ class Collapsible extends Component {
 
   handleCheckboxChange = changeEvent => {
     const { name } = changeEvent.target;
-    if (
-      this.props.filters &&
-      this.props.filters[this.props.filterField] === name
-    ) {
-      delete this.props.filters[this.props.filterField];
-      this.updateFilters(this.props.filters);
+    let filterValues = [];
+    if (this.props.multiSelect) {
+      if (Array.isArray(this.props.filters[this.props.filterField])) {
+        if (this.props.filters[this.props.filterField].includes(name)) {
+          filterValues = this.props.filters[this.props.filterField].filter(
+            function(value) {
+              return value !== name;
+            }
+          );
+        } else {
+          filterValues = this.props.filters[this.props.filterField].concat([
+            name
+          ]);
+        }
+      } else {
+        filterValues = [name];
+      }
+      if (filterValues.length > 0) {
+        this.updateFilters({
+          ...this.props.filters,
+          [this.props.filterField]: filterValues
+        });
+      } else {
+        delete this.props.filters[this.props.filterField];
+        this.updateFilters(this.props.filters);
+      }
     } else {
-      this.updateFilters({
-        ...this.props.filters,
-        [this.props.filterField]: name
-      });
+      if (
+        this.props.filters &&
+        this.props.filters[this.props.filterField] === name
+      ) {
+        delete this.props.filters[this.props.filterField];
+        this.updateFilters(this.props.filters);
+      } else {
+        this.updateFilters({
+          ...this.props.filters,
+          [this.props.filterField]: name
+        });
+      }
     }
   };
 
   render() {
     return (
       <div>
-        <div
-          onClick={e => this.togglePanel(e)}
-          className="facet-header"
-          data-cy="filter-collapsible"
-        >
+        <div onClick={e => this.togglePanel(e)} className="facet-header">
           {labelAttr(this.props.filterField)}
           {this.state.expanded ? (
             <FontAwesomeIcon
@@ -70,7 +94,7 @@ class Collapsible extends Component {
           )}
         </div>
         {this.state.expanded ? (
-          <div className="facet-listing">
+          <div className="facet-listing" data-cy="facet-checkboxes">
             {this.props.facetNodes.map(value => (
               <Checkbox
                 label={`${labelAttr(value["label"])} (${value["count"]})`}

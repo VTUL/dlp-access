@@ -122,17 +122,22 @@ input SearchableObjectFilterInput {
   title: SearchableStringFilterInput
   identifier: SearchableStringFilterInput
   description: SearchableStringFilterInput
+  tags: SearchableStringFilterInput
   creator: SearchableStringFilterInput
   source: SearchableStringFilterInput
   circa: SearchableStringFilterInput
   start_date: SearchableStringFilterInput
   end_date: SearchableStringFilterInput
   subject: SearchableStringFilterInput
+  belongs_to: SearchableStringFilterInput
   location: SearchableStringFilterInput
+  medium: SearchableStringFilterInput
   rights_statement: SearchableStringFilterInput
   language: SearchableStringFilterInput
+  resource_type: SearchableStringFilterInput
   bibliographic_citation: SearchableStringFilterInput
   rights_holder: SearchableStringFilterInput
+  format: SearchableStringFilterInput
   custom_key: SearchableStringFilterInput
   visibility: SearchableBooleanFilterInput
   thumbnail_path: SearchableStringFilterInput

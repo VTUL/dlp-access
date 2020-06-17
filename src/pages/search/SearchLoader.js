@@ -45,7 +45,13 @@ class SearchLoader extends Component {
     };
 
     for (const key of Object.keys(searchQuery)) {
-      searchParams.set(key, searchQuery[key]);
+      if (Array.isArray(searchQuery[key])) {
+        searchQuery[key].forEach(val => {
+          searchParams.append(key, val);
+        });
+      } else {
+        searchParams.set(key, searchQuery[key]);
+      }
     }
     return searchParams.toString();
   };
@@ -105,9 +111,26 @@ class SearchLoader extends Component {
   getParams(location) {
     const searchParams = new URLSearchParams(location.search);
     let restQuery = {};
-    for (const key of searchParams.keys()) {
-      if (key !== "field" && key !== "q" && key !== "view") {
-        restQuery[key] = searchParams.get(key);
+    const otherKeys = ["field", "q", "view"];
+    const multiKeys = [
+      "format",
+      "medium",
+      "resource_type",
+      "tags",
+      "belongs_to"
+    ];
+    for (let pair of searchParams.entries()) {
+      if (
+        !multiKeys.includes(pair[0]) &&
+        !otherKeys.includes(pair[0]) &&
+        pair[1]
+      ) {
+        restQuery[pair[0]] = pair[1];
+      } else if (multiKeys.includes(pair[0]) && pair[1]) {
+        if (!restQuery[pair[0]]) {
+          restQuery[pair[0]] = [];
+        }
+        restQuery[pair[0]].push(pair[1]);
       }
     }
     return {
@@ -130,7 +153,6 @@ class SearchLoader extends Component {
       view: view,
       filters: filters
     });
-
     let options = {
       filter: { ...filters, ...searchInput },
       sort: {

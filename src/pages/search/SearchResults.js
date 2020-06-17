@@ -53,15 +53,25 @@ class SearchResults extends Component {
       };
       if (Object.keys(this.props.filters).length > 0) {
         return (
-          <div>
+          <div data-cy="search-filter-field-value-pairs">
             Filtering by:
             <ul>
               {Object.entries(this.props.filters).map(([key, value]) => {
-                return (
-                  <li key={key}>
-                    <b>{key}</b> --> {value}
-                  </li>
-                );
+                if (Array.isArray(value)) {
+                  return value.map((val, idx) => {
+                    return (
+                      <li key={`${idx}_${val}`}>
+                        <b>{key}</b> --> {val}
+                      </li>
+                    );
+                  });
+                } else {
+                  return (
+                    <li key={key}>
+                      <b>{key}</b> --> {value}
+                    </li>
+                  );
+                }
               })}
             </ul>
             Clear All Filters

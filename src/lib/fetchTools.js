@@ -132,6 +132,7 @@ export const fetchSearchResults = async (
   let searchResults = null;
   let category = "";
   let filters = {};
+  let andArray = [];
   for (const key of Object.keys(filter)) {
     if (key === "category") {
       category = filter.category;
@@ -143,6 +144,11 @@ export const fetchSearchResults = async (
       };
     } else if (key === "title" || key === "description") {
       filters[key] = { matchPhrase: filter[key] };
+    } else if (Array.isArray(filter[key])) {
+      filter[key].forEach(function(value) {
+        andArray.push({ [key]: { eq: value } });
+      });
+      filters["and"] = andArray;
     } else {
       filters[key] = { eq: filter[key] };
     }
@@ -154,9 +160,20 @@ export const fetchSearchResults = async (
     nextToken: nextToken
   };
   if (category === "collection") {
-    options["filter"] = { ...collectionFilter, ...filters };
-    const Collections = await fetchObjects(queries.searchCollections, options);
-    searchResults = Collections.data.searchCollections;
+    if (filters.hasOwnProperty("and")) {
+      searchResults = {
+        items: [],
+        total: 0,
+        nextToken: null
+      };
+    } else {
+      options["filter"] = { ...collectionFilter, ...filters };
+      const Collections = await fetchObjects(
+        queries.searchCollections,
+        options
+      );
+      searchResults = Collections.data.searchCollections;
+    }
   } else if (category === "archive") {
     options["filter"] = { ...archiveFilter, ...filters };
     const Archives = await fetchObjects(queries.searchArchives, options);
