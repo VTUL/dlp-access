@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import AudioPlayer from "../../components/AudioPlayer";
+import VideoPlayer from "../../components/VideoPlayer";
+import KalturaPlayer from "../../components/KalturaPlayer";
 import MiradorViewer from "../../components/MiradorViewer";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
@@ -78,6 +80,14 @@ class ArchivePage extends Component {
     return url.match(/\.(mp3|ogg|wav)$/) != null;
   }
 
+  isVideoURL(url) {
+    return url.match(/\.(mp4)$/) != null;
+  }
+
+  isKalturaURL(url) {
+    return url.match(/\.(kaltura.com)/) != null;
+  }
+
   isJsonURL(url) {
     return url.match(/\.(json)$/) != null;
   }
@@ -109,6 +119,10 @@ class ArchivePage extends Component {
       );
     } else if (this.isAudioURL(item.manifest_url)) {
       display = <AudioPlayer manifest_url={item.manifest_url} />;
+    } else if (this.isVideoURL(item.manifest_url)) {
+      display = <VideoPlayer manifest_url={item.manifest_url} />;
+    } else if (this.isKalturaURL(item.manifest_url)) {
+      display = <KalturaPlayer manifest_url={item.manifest_url} />;
     } else {
       display = <></>;
     }
