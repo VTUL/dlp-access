@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
+import PDFViewer from "../../components/PDFViewer";
 import AudioPlayer from "../../components/AudioPlayer";
 import VideoPlayer from "../../components/VideoPlayer";
 import KalturaPlayer from "../../components/KalturaPlayer";
@@ -88,6 +89,10 @@ class ArchivePage extends Component {
     return url.match(/\.(kaltura.com)/) != null;
   }
 
+  isPdfURL(url) {
+    return url.match(/\.(pdf)$/) != null;
+  }
+
   isJsonURL(url) {
     return url.match(/\.(json)$/) != null;
   }
@@ -123,6 +128,10 @@ class ArchivePage extends Component {
       display = <VideoPlayer manifest_url={item.manifest_url} />;
     } else if (this.isKalturaURL(item.manifest_url)) {
       display = <KalturaPlayer manifest_url={item.manifest_url} />;
+    } else if (this.isPdfURL(item.manifest_url)) {
+      display = (
+        <PDFViewer manifest_url={item.manifest_url} title={item.title} />
+      );
     } else {
       display = <></>;
     }

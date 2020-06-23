@@ -38,6 +38,16 @@ describe('Archive kaltura embed', () => {
   });
 });
 
+describe('Archive pdf embed', () => {
+  it('renders pdf file inside iframe', () => {
+    cy.visit('http://localhost:3000/archive/m92xyh34');
+    cy.get('iframe')
+      .eq(0)
+      .should('have.class', 'pdf-viewer')
+      .should('be.visible');
+  });
+});
+
 describe('Archive Mirador viewer', () => {
   it('renders viewer if manifest.json', () => {
     cy.visit('http://localhost:3000/archive/5v709r98');
