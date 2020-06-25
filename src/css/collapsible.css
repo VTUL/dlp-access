@@ -10,3 +10,20 @@
   cursor: pointer;
   padding: 0px 10px 10px 10px;
 }
+
+.all-less .more,
+.all-less .less,
+.all-less .more:hover,
+.all-less .less:hover,
+.all-less .more:visited,
+.all-less .less:visited {
+  display: inline-block;
+  color: var(--themeHighlightColor);
+  border: none;
+  background-color: transparent;
+}
+
+.scroll {
+  height: 200px;
+  overflow: scroll;
+}

@@ -2,17 +2,17 @@ describe('Single selectable checkboxes corresponding to facet values of a search
   beforeEach(() => {
     cy.visit('/search');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1)')
-        .click();
+      .click();
   });
 
   it('allows to select none of the checkboxes', () => {
-    cy.get('[data-cy=facet-checkboxes] > :nth-child(1) input')
-        .should('not.have.class', 'checked')
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(1) input')
+      .should('not.have.class', 'checked')
   });
 
   it('allows to select one of the checkboxes', () => {
-    cy.get('[data-cy=facet-checkboxes] > :nth-child(1) input')
-        .check();
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(1) input')
+      .check();
 
     cy.url()
       .should('contain', 'category=collection');
@@ -22,10 +22,10 @@ describe('Single selectable checkboxes corresponding to facet values of a search
   });
 
   it('Prevents from select more than one checkboxes', () => {
-    cy.get('[data-cy=facet-checkboxes] > :nth-child(1) input')
-        .check();
-    cy.get('[data-cy=facet-checkboxes] > :nth-child(2) input')
-        .check();
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(1) input')
+      .check();
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(2) input')
+      .check();
 
     cy.url()
         .should('contain', 'category=archive')

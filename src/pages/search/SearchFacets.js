@@ -9,15 +9,6 @@ import "../../css/SearchResult.css";
 class SearchFacets extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      categoryList: [],
-      creatorList: [],
-      dateList: [],
-      formatList: [],
-      languageList: [],
-      mediumList: [],
-      resource_typeList: []
-    };
     this._isMounted = false;
   }
 
@@ -25,6 +16,12 @@ class SearchFacets extends Component {
     this.props.updateModal();
   };
 
+  componentWillMount() {
+    const facetFields = this.loadfacetFields();
+    facetFields.forEach(field => {
+      this.setState({ [`${field.name}List`]: [] });
+    });
+  }
   componentDidMount() {
     this._isMounted = true;
     this.loadFacets();
@@ -45,72 +42,35 @@ class SearchFacets extends Component {
     } else return {};
   };
 
-  async loadFacets() {
-    const Categories = ["collection", "archive"];
-    this.loadFieldFacet(Categories, "category", "categoryList", false);
-    const Creators = [
-      "Alexander, Dorothy Baxter",
-      "Chadeayne, Olive, 1904-2001",
-      "Cochrane, Margaret Ann",
-      "Crawford, Martha J. (1925-1994)",
-      "King, Dorothee Stelzer (1934- )",
-      "Pfeiffer, Alberta, 1899-1994",
-      "Rodeck, Melita (1914-2011)",
-      "Roth, E. Maria",
-      "Rudoff, Lorraine (1920- )",
-      "Tebbs, Robert W.",
-      "Young, Jean Linden (1922-1997)"
-    ];
-    this.loadFieldFacet(Creators, "creator", "creatorList", false);
-    const DateRanges = [
-      "1920 - 1939",
-      "1940 - 1959",
-      "1960 - 1979",
-      "1980 - 1999",
-      "2000 - 2019"
-    ];
-    this.loadFieldFacet(DateRanges, "date", "dateList", false);
-    const Formats = [
-      "12 in. x 17 in.",
-      "12 in. x 18 in.",
-      "13.5 in. x 16 in.",
-      "30.48 cm x 43.18 cm",
-      "30.48 cm x 45.72 cm",
-      "34.29 cm x 40.64 cm",
-      "Scale: 1/8 in. = 1 ft.",
-      "Scale: 1/16 in. = 1 ft."
-    ];
-    this.loadFieldFacet(Formats, "format", "formatList", true);
-    const Languages = ["en", "fr"];
-    this.loadFieldFacet(Languages, "language", "languageList", false);
-    const Mediums = ["Blueprints", "Diazotypes (copies)", "Ink", "Graphite"];
-    this.loadFieldFacet(Mediums, "medium", "mediumList", true);
-    const Types = [
-      "Architectural drawings (visual works)",
-      "Axonometric projections (images)",
-      "Conceptual drawings",
-      "Elevations (orthographic projections)",
-      "Floor plans (orthographic projections)",
-      "Sections (orthographic projections)",
-      "Site plans",
-      "Sketches",
-      "Travel sketches"
-    ];
-    this.loadFieldFacet(Types, "resource_type", "resource_typeList", true);
+  loadfacetFields() {
+    let facetFields = null;
+    try {
+      facetFields = this.props.searchFacets;
+    } catch (err) {
+      console.error("Error config search facets: ", err);
+    }
+    return facetFields || [];
   }
 
-  setFilters(field, value, isMulti) {
+  async loadFacets() {
+    const facetFields = this.loadfacetFields();
+    facetFields.forEach(field => {
+      this.loadFieldFacet(field.values, field.name, field.multiValued);
+    });
+  }
+
+  setFilters(name, value, isMulti = false) {
     let updatedFilters = {};
     let updatedFieldValues = null;
     if (isMulti) {
       if (
-        this.props.filters.hasOwnProperty(field) &&
-        Array.isArray(this.props.filters[field])
+        this.props.filters.hasOwnProperty(name) &&
+        Array.isArray(this.props.filters[name])
       ) {
-        if (this.props.filters[field].indexOf(value) === -1) {
-          updatedFieldValues = this.props.filters[field].concat([value]);
+        if (this.props.filters[name].indexOf(value) === -1) {
+          updatedFieldValues = this.props.filters[name].concat([value]);
         } else {
-          updatedFieldValues = this.props.filters[field];
+          updatedFieldValues = this.props.filters[name];
         }
       } else {
         updatedFieldValues = [value];
@@ -121,28 +81,28 @@ class SearchFacets extends Component {
     updatedFilters = {
       ...this.props.filters,
       ...this.searchInput(),
-      [field]: updatedFieldValues
+      [name]: updatedFieldValues
     };
     return updatedFilters;
   }
 
-  async loadFieldFacet(facetValues, field, fieldList, isMulti) {
+  async loadFieldFacet(facetValues, fieldName, isMulti) {
     let facetNodes = [];
     for (const value of facetValues) {
-      let updatedFilters = this.setFilters(field, value, isMulti);
+      let updatedFilters = this.setFilters(fieldName, value, isMulti);
       let options = { filter: updatedFilters };
       let searchResults = await fetchSearchResults(this, options);
       let total = searchResults.total;
       let isSelected = false;
       if (isMulti) {
         if (
-          this.props.filters[field] &&
-          this.props.filters[field].includes(value)
+          this.props.filters[fieldName] &&
+          this.props.filters[fieldName].includes(value)
         ) {
           isSelected = true;
         }
       } else {
-        isSelected = this.props.filters[field] === value;
+        isSelected = this.props.filters[fieldName] === value;
       }
       if (total > 0) {
         facetNodes.push({
@@ -153,21 +113,12 @@ class SearchFacets extends Component {
       }
     }
     if (this._isMounted) {
-      this.setState({ [fieldList]: facetNodes });
+      this.setState({ [`${fieldName}List`]: facetNodes });
     }
   }
 
   render() {
-    const facetFields = [
-      "category",
-      "creator",
-      "date",
-      "format",
-      "language",
-      "medium",
-      "resource_type"
-    ];
-    const multiFields = ["format", "medium", "resource_type"];
+    const facetFields = this.loadfacetFields();
     return (
       <div className={this.props.isActive ? "facet-modal-wrapper" : null}>
         <div className="facet-wrapper">
@@ -176,10 +127,10 @@ class SearchFacets extends Component {
             {facetFields.map((field, idx) => (
               <Collapsible
                 filters={this.props.filters}
-                filterField={field}
+                filterField={field.name}
                 updateFormState={this.props.updateFormState}
-                facetNodes={this.state[`${field}List`]}
-                multiSelect={multiFields.includes(field) ? true : false}
+                facetNodes={this.state[`${field.name}List`]}
+                multiSelect={field.multiValued}
                 key={idx}
               />
             ))}

@@ -13,10 +13,12 @@ class Collapsible extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
+      fullList: false
     };
 
     this.togglePanel = this.togglePanel.bind(this);
+    this.allLessButton = this.allLessButton.bind(this);
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
@@ -72,7 +74,41 @@ class Collapsible extends Component {
     }
   };
 
+  allLessButton(e) {
+    this.setState({ fullList: !this.state.fullList });
+  }
+
+  partialListLength() {
+    let len = this.props.facetNodes.length;
+    if (!this.state.fullList && this.props.facetNodes.length > 5) {
+      len = 5;
+    }
+    return len;
+  }
+
+  scrollableClassName() {
+    if (this.partialListLength() > 5) {
+      return "scroll";
+    } else {
+      return "";
+    }
+  }
+
   render() {
+    const DisplayAllLess = () => {
+      if (this.props.facetNodes.length > 5) {
+        return this.partialListLength() > 5 ? (
+          <button className="less" data-cy="show-less-button">
+            Show Less
+          </button>
+        ) : (
+          <button className="more" data-cy="show-all-button">
+            Show All
+          </button>
+        );
+      } else return null;
+    };
+
     return (
       <div>
         <div
@@ -98,16 +134,23 @@ class Collapsible extends Component {
           )}
         </div>
         {this.state.expanded ? (
-          <div className="facet-listing" data-cy="facet-checkboxes">
-            {this.props.facetNodes.map(value => (
-              <Checkbox
-                label={`${labelAttr(value["label"])} (${value["count"]})`}
-                name={value["label"]}
-                selected={value["selected"]}
-                onCheckboxChange={this.handleCheckboxChange}
-                key={value["label"]}
-              />
-            ))}
+          <div>
+            <div className={`facet-listing ${this.scrollableClassName()}`}>
+              {this.props.facetNodes
+                .slice(0, this.partialListLength())
+                .map(value => (
+                  <Checkbox
+                    label={`${labelAttr(value["label"])} (${value["count"]})`}
+                    name={value["label"]}
+                    selected={value["selected"]}
+                    onCheckboxChange={this.handleCheckboxChange}
+                    key={value["label"]}
+                  />
+                ))}
+            </div>
+            <div onClick={e => this.allLessButton(e)} className="all-less">
+              <DisplayAllLess />
+            </div>
           </div>
         ) : null}
       </div>

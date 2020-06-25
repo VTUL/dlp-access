@@ -9,6 +9,7 @@ export function labelAttr(attr) {
   else if (attr === "custom_key") return "Permanent Link";
   else if (attr === "related_url") return "Relation";
   else if (attr === "start_date") return "Date";
+  else if (attr === "archive") return "Item";
   else return (attr.charAt(0).toUpperCase() + attr.slice(1)).replace("_", " ");
 }
 
@@ -113,7 +114,7 @@ function textFormat(item, attr, languages) {
     return (
       <div>
         {item[attr].map((value, i) => (
-          <span className="list-unstyled" key={i}>
+          <span className="list-unstyled" key={i} data-cy="multi-field-span">
             {listValue(category, attr, value, languages)}
           </span>
         ))}

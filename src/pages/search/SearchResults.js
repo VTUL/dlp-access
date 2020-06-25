@@ -134,6 +134,7 @@ class SearchResults extends Component {
                 isActive={this.state.isActive}
                 updateModal={this.updateModal}
                 defaultSearch={defaultSearch}
+                searchFacets={this.props.searchPage.facets}
               />
             </div>
             <div id="content" className="col-lg-9 col-sm-12">

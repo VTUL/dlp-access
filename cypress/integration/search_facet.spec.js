@@ -15,35 +15,40 @@ describe('Collapsible search filter field', () => {
   });
 
   it('displays the facet field while hiding the list of facet values', () => {
-    cy.get('[data-cy=facet-checkboxes]')
-        .should('not.be.visible');
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div.facet-listing')
+    .should('not.be.visible');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1)')
-        .invoke('text')
-        .should('equal', 'Category');
+      .invoke('text')
+      .should('equal', 'Category');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(2)')
-        .invoke('text')
-        .should('equal', 'Creator');
+      .invoke('text')
+      .should('equal', 'Creator');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(3)')
-        .invoke('text')
-        .should('equal', 'Date');
+      .invoke('text')
+      .should('equal', 'Date');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(4)')
-        .invoke('text')
-        .should('equal', 'Format');
+      .invoke('text')
+      .should('equal', 'Format');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(5)')
-        .invoke('text')
-        .should('equal', 'Language');
+      .invoke('text')
+      .should('equal', 'Language');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
-        .invoke('text')
-        .should('equal', 'Medium');
+      .invoke('text')
+      .should('equal', 'Medium');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(7)')
-        .invoke('text')
-        .should('equal', 'Type');
+      .invoke('text')
+      .should('equal', 'Tags');
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(8)')
+      .invoke('text')
+      .should('equal', 'Type');
   });
 
   it('displays the list of facet values after the facet field being expanded', () => {
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(3)')
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing')
+        .should('not.be.visible');
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
         .click();
-    cy.get('[data-cy=facet-checkboxes]')
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing')
         .should('be.visible');
   });
-}) 
+})

@@ -217,6 +217,7 @@ class SearchLoader extends Component {
             q={this.state.q}
             view={this.state.view}
             updateFormState={this.updateFormState}
+            searchPage={this.props.siteDetails.searchPage}
           />
         </div>
       );
