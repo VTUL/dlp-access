@@ -172,14 +172,14 @@ class SearchFacets extends Component {
       <div className={this.props.isActive ? "facet-modal-wrapper" : null}>
         <div className="facet-wrapper">
           <h4 className="facet-heading">Filter My Results</h4>
-          <div className="facet-fields">
+          <div className="facet-fields" data-cy="filter-collapsibles">
             {facetFields.map((field, idx) => (
               <Collapsible
                 filters={this.props.filters}
                 filterField={field}
                 updateFormState={this.props.updateFormState}
                 facetNodes={this.state[`${field}List`]}
-                multiSelect={false}
+                multiSelect={multiFields.includes(field) ? true : false}
                 key={idx}
               />
             ))}
