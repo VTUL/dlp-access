@@ -16,9 +16,9 @@ describe('Single selectable checkboxes corresponding to facet values of a search
 
     cy.url()
       .should('contain', 'category=collection');
-    cy.get('[data-cy=search-filter-field-value-pairs]')
-        .invoke('text')
-        .should('contain', 'category --> collection');
+    cy.get("[data-cy=search-filter-field-value-pairs]")
+      .invoke("text")
+      .should("contain", "category › collection");
   });
 
   it('Prevents from select more than one checkboxes', () => {
@@ -30,9 +30,9 @@ describe('Single selectable checkboxes corresponding to facet values of a search
     cy.url()
         .should('contain', 'category=archive')
         .should('not.contain', 'category=collection');
-    cy.get('[data-cy=search-filter-field-value-pairs]')
-        .invoke('text')
-        .should('contain', 'category --> archive')
-        .should('not.contain', 'category --> collection');
+    cy.get("[data-cy=search-filter-field-value-pairs]")
+      .invoke("text")
+      .should("contain", "category › archive")
+      .should("not.contain", "category › collection");
   });
 });

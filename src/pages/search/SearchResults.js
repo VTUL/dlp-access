@@ -67,30 +67,28 @@ class SearchResults extends Component {
       if (Object.keys(this.props.filters).length > 0) {
         return (
           <div className="facet-navbar">
+            <div className="facet-navbar-heading">Filtering by:</div>
             <div
-              className="facet-navbar-heading"
+              className="facet-navbar-facets"
               data-cy="search-filter-field-value-pairs"
             >
-              Filtering by:
-            </div>
-            <div className="facet-navbar-facets">
               <ul>
                 {Object.entries(this.props.filters).map(([key, value]) => {
                   if (Array.isArray(value)) {
                     return value.map((val, idx) => {
                       return (
                         <li key={`${idx}_${val}`}>
-                          {key}
-                          <span> &#8250; </span>
-                          {value}
+                          <span className="facet-navbar-name">{key}</span>
+                          <span className="facet-navbar-arrow"> &#8250; </span>
+                          {val}
                         </li>
                       );
                     });
                   } else {
                     return (
                       <li key={key}>
-                        {key}
-                        <span> &#8250; </span>
+                        <span className="facet-navbar-name">{key}</span>
+                        <span className="facet-navbar-arrow"> &#8250; </span>
                         {value}
                       </li>
                     );

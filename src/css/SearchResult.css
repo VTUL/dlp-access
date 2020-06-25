@@ -230,13 +230,17 @@ div.masonry div.card {
   list-style-type: none;
 }
 .facet-navbar-facets li {
-  text-transform: capitalize;
   padding-right: 20px;
   float: left;
 }
+.facet-navbar-facets .facet-navbar-name {
+  text-transform: capitalize;
+}
 
-.facet-navbar-facets span {
+.facet-navbar-facets .facet-navbar-arrow {
   font-weight: 800;
+  font-size: 18px;
+  line-height: 14px;
 }
 
 .facet-navbar-clear {

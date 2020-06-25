@@ -3,9 +3,9 @@ import { Children } from "react";
 describe('Heading text', () => {
   it('contains the correct title', () => {
     cy.visit('/search');
-    cy.get('h2')
+    cy.get('h4')
       .invoke('text')
-      .should('equal', 'Filter');
+      .should('equal', 'Filter My Results');
   });
 });
 
