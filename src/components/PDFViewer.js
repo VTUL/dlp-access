@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 const pdfjs = require("pdfjs-dist");
-pdfjs.GlobalWorkerOptions.workerSrc =
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.4.456/pdf.worker.js";
 
 class PDFViewer extends Component {
   constructor(props) {
@@ -23,6 +21,7 @@ class PDFViewer extends Component {
   }
 
   componentDidMount() {
+    pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
     this.getPdfHeight();
   }
 
