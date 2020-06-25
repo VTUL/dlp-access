@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import PDFViewer from "../../components/PDFViewer";
-import AudioPlayer from "../../components/AudioPlayer";
-import VideoPlayer from "../../components/VideoPlayer";
 import KalturaPlayer from "../../components/KalturaPlayer";
 import MiradorViewer from "../../components/MiradorViewer";
+import MediaElement from "../../components/MediaElement";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import SiteTitle from "../../components/SiteTitle";
@@ -99,6 +98,8 @@ class ArchivePage extends Component {
 
   mediaDisplay(item) {
     let display = null;
+    const config = {};
+    const tracks = {};
     if (this.isJsonURL(item.manifest_url)) {
       const miradorConfig = {
         id: "mirador_viewer",
@@ -123,9 +124,9 @@ class ArchivePage extends Component {
         <img className="item-img" src={item.manifest_url} alt={item.title} />
       );
     } else if (this.isAudioURL(item.manifest_url)) {
-      display = <AudioPlayer manifest_url={item.manifest_url} />;
+      display = this.mediaElement(item.manifest_url, "audio", config, tracks);
     } else if (this.isVideoURL(item.manifest_url)) {
-      display = <VideoPlayer manifest_url={item.manifest_url} />;
+      display = this.mediaElement(item.manifest_url, "video", config, tracks);
     } else if (this.isKalturaURL(item.manifest_url)) {
       display = <KalturaPlayer manifest_url={item.manifest_url} />;
     } else if (this.isPdfURL(item.manifest_url)) {
@@ -136,6 +137,31 @@ class ArchivePage extends Component {
       display = <></>;
     }
     return display;
+  }
+
+  fileExtensionFromUrl(manifest_url) {
+    let url = new URL(manifest_url);
+    let filename = url.pathname.split("/").reverse()[0];
+    return filename.split(".")[1];
+  }
+
+  mediaElement(src, type, config, tracks) {
+    const typeString = `${type}/${this.fileExtensionFromUrl(src)}`;
+    const srcArray = [{ src: src, type: typeString }];
+    return (
+      <MediaElement
+        id="player1"
+        mediaType={type}
+        preload="none"
+        controls
+        width="100%"
+        height="640"
+        poster=""
+        sources={JSON.stringify(srcArray)}
+        options={JSON.stringify(config)}
+        tracks={JSON.stringify(tracks)}
+      />
+    );
   }
 
   componentDidMount() {

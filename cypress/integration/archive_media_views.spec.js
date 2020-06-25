@@ -13,8 +13,7 @@ describe('Archive audio player', () => {
     cy.visit('/archive/m69xyh01');
     cy.get('audio')
       .eq(0)
-      .should('have.class', 'audiojs')
-      .should('be.visible');
+      .should('have.id', 'player1_html5');
   });
 });
 
@@ -23,7 +22,7 @@ describe('Archive video player', () => {
     cy.visit('/archive/m70xyh12');
     cy.get('video')
       .eq(0)
-      .should('have.class', 'videojs')
+      .should('have.id', 'player1_html5')
       .should('be.visible');
   });
 });
