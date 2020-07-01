@@ -139,10 +139,13 @@ class ArchivePage extends Component {
     return display;
   }
 
-  fileExtensionFromUrl(manifest_url) {
-    let url = new URL(manifest_url);
-    let filename = url.pathname.split("/").reverse()[0];
+  fileExtensionFromFileName(filename) {
     return filename.split(".")[1];
+  }
+
+  fileNameFromUrl(manifest_url) {
+    let url = new URL(manifest_url);
+    return url.pathname.split("/").reverse()[0];
   }
 
   mediaElement(src, type, config, tracks) {
