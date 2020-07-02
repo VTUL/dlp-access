@@ -250,13 +250,13 @@ class CollectionsShowPage extends Component {
             />
           </div>
           <div className="top-content-row row">
-            <div className="collection-img-col col-4">
+            <div className="collection-img-col col-sm-4">
               <img
                 src={this.collectionImg()}
                 alt={`${this.state.collection} header`}
               />
             </div>
-            <div className="collection-details-col col-8">
+            <div className="collection-details-col col-sm-8">
               <h1 className="collection-title">{this.collectionTitle()}</h1>
               <div className="post-heading">
                 <this.creatorDates collection={this.state.collection} />

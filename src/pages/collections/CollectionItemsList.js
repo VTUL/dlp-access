@@ -12,14 +12,16 @@ class CollectionItemsList extends Component {
         <div className="collection-items-grid">
           {this.props.items.map(item => (
             <div className="collection-item" key={item.custom_key}>
-              <div className="item-image">
-                <Thumbnail item={item} category="archive" />
-              </div>
-              <div className="item-info">
-                <div className="item-link-wrapper">
-                  <a href={`/archive/${arkLinkFormatted(item.custom_key)}`}>
-                    {item.title}
-                  </a>
+              <div className="collection-item-wrapper">
+                <div className="item-image">
+                  <Thumbnail item={item} category="archive" />
+                </div>
+                <div className="item-info">
+                  <div className="item-link-wrapper">
+                    <a href={`/archive/${arkLinkFormatted(item.custom_key)}`}>
+                      {item.title}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

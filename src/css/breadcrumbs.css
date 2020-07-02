@@ -7,6 +7,8 @@
   font-family: "gineso-condensed", sans-serif;
 }
 .breadcrumbs-wrapper ol {
+  margin: 0;
+  padding: 0;
   margin-left: 15px;
   list-style-type: none;
 }
@@ -28,10 +30,6 @@
 .breadcrumbs-wrapper ol li:last-child a.vt-breadcrumbs-link,
 .breadcrumbs-wrapper ol li:last-child a.vt-breadcrumbs-link:visited {
   color: var(--themeHighlightColor);
-}
-
-.breadcrumbs-wrapper ol li:first-child {
-  margin-left: -40px;
 }
 
 .breadcrumbs-wrapper ol li:last-child .breadcrumb-slash {

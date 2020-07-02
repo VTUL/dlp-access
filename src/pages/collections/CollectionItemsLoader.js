@@ -115,7 +115,7 @@ class CollectionItemsLoader extends Component {
         <div className="collection-items-list-wrapper">
           <div className="mb-3">
             <h4 className="collection-items-header">
-              Items in collection ({this.state.total})
+              Items in Collection ({this.state.total})
             </h4>
           </div>
           <form className="form-group">
