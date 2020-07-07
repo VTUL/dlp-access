@@ -22,7 +22,7 @@
   border-color: var(--dark-gray);
   background-color: white;
   border-radius: 0px;
-  width: 65px;
+  width: 110px;
   flex: none;
 }
 
@@ -56,7 +56,7 @@
   }
   .searchbar-wrapper select {
     margin-right: 30px;
-    width: 100px;
+    width: 110px;
   }
   .searchbar-wrapper button {
     background-color: var(--themeHighlightColor);

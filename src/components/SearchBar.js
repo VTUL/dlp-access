@@ -75,7 +75,7 @@ class SearchBar extends Component {
         className="form-control"
         value={this.state.q || ""}
         type="text"
-        placeholder="Search by title, creator, or description"
+        placeholder="Search by title or description"
         onChange={this.updateQuery}
         onKeyPress={this.onKeyPress}
       />
