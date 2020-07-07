@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import SiteTitle from "../../components/SiteTitle";
-import { getCollectionByCustomKey } from "../../graphql/queries";
+import { searchCollections } from "../../graphql/queries";
 
 import CollectionsShowPage from "./CollectionsShowPage.js";
 
@@ -10,8 +10,14 @@ class CollectionsShowLoader extends Component {
   render() {
     return (
       <Connect
-        query={graphqlOperation(getCollectionByCustomKey, {
-          customKey: `ark:/53696/${this.props.customKey}`
+        query={graphqlOperation(searchCollections, {
+          order: "ASC",
+          limit: 1,
+          filter: {
+            custom_key: {
+              eq: `ark:/53696/${this.props.customKey}`
+            }
+          }
         })}
       >
         {({ data: { searchCollections }, loading, errors }) => {

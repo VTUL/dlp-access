@@ -13,7 +13,7 @@ import {
   addNewlineInDesc
 } from "../../lib/MetadataRenderer";
 import { fetchLanguages } from "../../lib/fetchTools";
-import { getArchiveByCustomKey } from "../../graphql/queries";
+import { searchArchives } from "../../graphql/queries";
 
 import "../../css/ArchivePage.css";
 
@@ -191,8 +191,14 @@ class ArchivePage extends Component {
   render() {
     return (
       <Connect
-        query={graphqlOperation(getArchiveByCustomKey, {
-          customKey: `ark:/53696/${this.props.customKey}`
+        query={graphqlOperation(searchArchives, {
+          order: "ASC",
+          limit: 1,
+          filter: {
+            custom_key: {
+              eq: `ark:/53696/${this.props.customKey}`
+            }
+          }
         })}
       >
         {({ data: { searchArchives }, loading, errors }) => {

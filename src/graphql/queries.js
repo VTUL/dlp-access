@@ -159,81 +159,6 @@ export const getCollection = /* GraphQL */ `
     }
   }
 `;
-
-export const getCollectionByCustomKey = `query searchCollection($customKey: String) {
-  searchCollections(
-    filter: {
-      custom_key: {
-          eq: $customKey
-      }
-    },
-    sort: {
-      field: identifier, 
-      direction: asc
-    }
-  ){
-    items {
-      id
-      title
-      identifier
-      description
-      creator
-      source
-      circa
-      start_date
-      end_date
-      subject
-      location
-      rights_statement
-      language
-      bibliographic_citation
-      rights_holder
-      custom_key
-      collection_category
-      visibility
-      thumbnail_path
-      parent_collection
-      create_date
-      modified_date
-      archives {
-        items {
-          id
-          title
-          identifier
-          description
-          tags
-          creator
-          source
-          circa
-          start_date
-          end_date
-          rights_statement
-          language
-          resource_type
-          belongs_to
-          location
-          medium
-          bibliographic_citation
-          rights_holder
-          format
-          related_url
-          contributor
-          custom_key
-          parent_collection
-          item_category
-          visibility
-          thumbnail_path
-          manifest_url
-          create_date
-          modified_date
-        }
-      }
-    }
-    nextToken
-  }
-}
-`;
-
 export const listCollections = /* GraphQL */ `
   query ListCollections(
     $filter: ModelCollectionFilterInput
@@ -343,44 +268,6 @@ export const getArchive = /* GraphQL */ `
     }
   }
 `;
-
-export const getArchiveByCustomKey = `query searchArchive($customKey: String) {
-  searchArchives(filter: {
-      custom_key: {
-          eq: $customKey
-      }
-  })
-  {
-    items {
-      id
-      title
-      description
-      identifier
-      belongs_to
-      bibliographic_citation
-      contributor
-      creator
-      custom_key
-      format
-      language
-      location
-      medium
-      resource_type
-      related_url
-      rights_holder
-      rights_statement
-      source
-      circa
-      start_date
-      end_date
-      tags
-      parent_collection
-      manifest_url
-    }
-  }
-}
-`;
-
 export const listArchives = /* GraphQL */ `
   query ListArchives(
     $filter: ModelArchiveFilterInput

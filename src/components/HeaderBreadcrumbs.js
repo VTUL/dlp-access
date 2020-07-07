@@ -16,23 +16,31 @@ class HeaderBreadcrumbs extends Breadcrumbs {
   async getTitle(pathname, path_array) {
     const type = path_array[1];
     const customKey = path_array[2];
-    const filter = { customKey: `ark:/53696/${customKey}` };
+    const options = {
+      order: "ASC",
+      limit: 1,
+      filter: {
+        custom_key: {
+          eq: `ark:/53696/${customKey}`
+        }
+      }
+    };
     let title = null;
     let query = null;
     let dataRecord = null;
     if (type === "collection") {
-      query = queries.getCollectionByCustomKey;
+      query = queries.searchCollections;
       dataRecord = "searchCollections";
     } else if (type === "archive") {
-      query = queries.getArchiveByCustomKey;
+      query = queries.searchArchives;
       dataRecord = "searchArchives";
     }
     if (query) {
-      const item = await API.graphql(graphqlOperation(query, filter));
+      const item = await API.graphql(graphqlOperation(query, options));
       try {
         title = item.data[dataRecord].items[0].title;
       } catch (error) {
-        console.error(`error getting title for archive: ${customKey}`);
+        console.error(`error getting title for ${type}: ${customKey}`);
       }
     }
     if (title) {
