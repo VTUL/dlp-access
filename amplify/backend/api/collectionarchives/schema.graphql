@@ -103,12 +103,27 @@ type Archive implements Object
 }
 type Query {
   searchObjects(
+    allFields: String
     sort: SearchableObjectSortInput
     filter: SearchableObjectFilterInput
     limit: Int
     nextToken: String
     category: String
   ): SearchableObjectConnection
+  fulltextCollections(
+    allFields: String
+    filter: SearchableCollectionFilterInput
+    sort: SearchableCollectionSortInput
+    limit: Int
+    nextToken: String
+  ): SearchableCollectionConnection
+  fulltextArchives(
+    allFields: String
+    filter: SearchableArchiveFilterInput
+    sort: SearchableArchiveSortInput
+    limit: Int
+    nextToken: String
+  ): SearchableArchiveConnection
 }
 
 type SearchableObjectConnection {
@@ -144,6 +159,8 @@ input SearchableObjectFilterInput {
   parent_collection: SearchableStringFilterInput
   create_date: SearchableStringFilterInput
   modified_date: SearchableStringFilterInput
+  collection_category: SearchableStringFilterInput
+  item_category: SearchableStringFilterInput
   and: [SearchableObjectFilterInput]
   or: [SearchableObjectFilterInput]
   not: SearchableObjectFilterInput
@@ -172,6 +189,160 @@ enum SearchableObjectSortableFields {
   location
   language
   custom_key
+}
+
+type SearchableCollectionConnection {
+  items: [Collection]
+  nextToken: String
+  total: Int
+}
+
+input SearchableCollectionFilterInput {
+  id: SearchableIDFilterInput
+  title: SearchableStringFilterInput
+  identifier: SearchableStringFilterInput
+  description: SearchableStringFilterInput
+  creator: SearchableStringFilterInput
+  source: SearchableStringFilterInput
+  circa: SearchableStringFilterInput
+  start_date: SearchableStringFilterInput
+  end_date: SearchableStringFilterInput
+  subject: SearchableStringFilterInput
+  location: SearchableStringFilterInput
+  rights_statement: SearchableStringFilterInput
+  language: SearchableStringFilterInput
+  related_url: SearchableStringFilterInput
+  provenance: SearchableStringFilterInput
+  belongs_to: SearchableStringFilterInput
+  bibliographic_citation: SearchableStringFilterInput
+  rights_holder: SearchableStringFilterInput
+  custom_key: SearchableStringFilterInput
+  collection_category: SearchableStringFilterInput
+  visibility: SearchableBooleanFilterInput
+  thumbnail_path: SearchableStringFilterInput
+  parent_collection: SearchableStringFilterInput
+  create_date: SearchableStringFilterInput
+  modified_date: SearchableStringFilterInput
+  and: [SearchableCollectionFilterInput]
+  or: [SearchableCollectionFilterInput]
+  not: SearchableCollectionFilterInput
+}
+
+input SearchableCollectionSortInput {
+  field: SearchableCollectionSortableFields
+  direction: SearchableSortDirection
+}
+
+enum SearchableCollectionSortableFields {
+  id
+  title
+  identifier
+  description
+  creator
+  source
+  circa
+  start_date
+  end_date
+  subject
+  location
+  rights_statement
+  language
+  related_url
+  provenance
+  belongs_to
+  bibliographic_citation
+  rights_holder
+  custom_key
+  collection_category
+  visibility
+  thumbnail_path
+  parent_collection
+  create_date
+  modified_date
+}
+
+type SearchableArchiveConnection {
+  items: [Archive]
+  nextToken: String
+  total: Int
+}
+
+input SearchableArchiveFilterInput {
+  id: SearchableIDFilterInput
+  title: SearchableStringFilterInput
+  identifier: SearchableStringFilterInput
+  description: SearchableStringFilterInput
+  tags: SearchableStringFilterInput
+  creator: SearchableStringFilterInput
+  source: SearchableStringFilterInput
+  circa: SearchableStringFilterInput
+  start_date: SearchableStringFilterInput
+  end_date: SearchableStringFilterInput
+  rights_statement: SearchableStringFilterInput
+  language: SearchableStringFilterInput
+  resource_type: SearchableStringFilterInput
+  belongs_to: SearchableStringFilterInput
+  location: SearchableStringFilterInput
+  medium: SearchableStringFilterInput
+  bibliographic_citation: SearchableStringFilterInput
+  rights_holder: SearchableStringFilterInput
+  format: SearchableStringFilterInput
+  related_url: SearchableStringFilterInput
+  provenance: SearchableStringFilterInput
+  repository: SearchableStringFilterInput
+  reference: SearchableStringFilterInput
+  contributor: SearchableStringFilterInput
+  custom_key: SearchableStringFilterInput
+  parent_collection: SearchableStringFilterInput
+  item_category: SearchableStringFilterInput
+  visibility: SearchableBooleanFilterInput
+  thumbnail_path: SearchableStringFilterInput
+  manifest_url: SearchableStringFilterInput
+  create_date: SearchableStringFilterInput
+  modified_date: SearchableStringFilterInput
+  and: [SearchableArchiveFilterInput]
+  or: [SearchableArchiveFilterInput]
+  not: SearchableArchiveFilterInput
+}
+
+input SearchableArchiveSortInput {
+  field: SearchableArchiveSortableFields
+  direction: SearchableSortDirection
+}
+
+enum SearchableArchiveSortableFields {
+  id
+  title
+  identifier
+  description
+  tags
+  creator
+  source
+  circa
+  start_date
+  end_date
+  rights_statement
+  language
+  resource_type
+  belongs_to
+  location
+  medium
+  bibliographic_citation
+  rights_holder
+  format
+  related_url
+  provenance
+  repository
+  reference
+  contributor
+  custom_key
+  parent_collection
+  item_category
+  visibility
+  thumbnail_path
+  manifest_url
+  create_date
+  modified_date
 }
 
 input SearchableIDFilterInput {

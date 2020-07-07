@@ -11,7 +11,7 @@ class SearchBar extends Component {
     q: this.props.q
   };
 
-  fields = ["title", "description"];
+  fields = ["title", "description", "all"];
 
   fieldOptions = () => {
     return this.fields.map(field => (
@@ -75,7 +75,7 @@ class SearchBar extends Component {
         className="form-control"
         value={this.state.q || ""}
         type="text"
-        placeholder="Search by title or description"
+        placeholder="Search by title, description, or all fields"
         onChange={this.updateQuery}
         onKeyPress={this.onKeyPress}
       />

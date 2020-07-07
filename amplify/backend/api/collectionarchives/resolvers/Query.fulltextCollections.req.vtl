@@ -1,8 +1,4 @@
-#**
-The 'params' key accepts any valid Elasticsearch DSL expression.
-You must replace the <index>, <type>, and <field> placeholders with actual values.
-*#
-#set( $indexPath = "/*/doc/_search" )
+#set( $indexPath = "/collection/doc/_search" )
 #set( $nonKeywordFields = ["visibility"] )
 #if( $util.isNullOrEmpty($context.args.sort) )
   #set( $sortDirection = "desc" )
@@ -22,22 +18,20 @@ You must replace the <index>, <type>, and <field> placeholders with actual value
   "path": "$indexPath",
   "params": {
     "body": {
-      #if($context.args.nextToken) "search_after": [$util.toJson($context.args.nextToken)], #end
-      "size": #if($context.args.limit) $context.args.limit #else 10 #end,
+      #if($context.args.nextToken)"search_after": [$util.toJson($context.args.nextToken)], #end
+      "size": #if($context.args.limit) $context.args.limit #else 100 #end,
       "sort": [{$sortField0: { "order" : $util.toJson($sortDirection) }}],
+      "version": false,
       "query": #if($context.args.filter || $context.args.allFields) {
         "bool": {
-          #if($context.args.filter)
-            "must": $util.transform.toElasticsearchQueryDSL($context.args.filter),
-          #end
+          #if($context.args.filter) "must": $util.transform.toElasticsearchQueryDSL($context.args.filter), #end
           #if($context.args.allFields)
             "should": [{
               "multi_match" : {
                 "query": $util.toJson($context.args.allFields),
                 "type": "phrase",
-                "fields": ["title", "description", "creator",  "medium", "resource_type", "tags",
-                           "identifier", "belongs_to", "format", "location", "subject", "source",
-                           "bibliographic_citation", "rights_statement", "rights_holder"]
+                "fields": ["title", "description", "creator", "identifier", "location", "subject", "source",
+                           "belongs_to", "bibliographic_citation", "rights_statement", "rights_holder"]
               }
             }],
             "minimum_should_match" : 1

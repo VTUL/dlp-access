@@ -3,6 +3,7 @@
 
 export const searchObjects = /* GraphQL */ `
   query SearchObjects(
+    $allFields: String
     $sort: SearchableObjectSortInput
     $filter: SearchableObjectFilterInput
     $limit: Int
@@ -10,6 +11,7 @@ export const searchObjects = /* GraphQL */ `
     $category: String
   ) {
     searchObjects(
+      allFields: $allFields
       sort: $sort
       filter: $filter
       limit: $limit
@@ -84,6 +86,137 @@ export const searchObjects = /* GraphQL */ `
             create_date
             modified_date
           }
+        }
+      }
+      nextToken
+      total
+    }
+  }
+`;
+export const fulltextCollections = /* GraphQL */ `
+  query FulltextCollections(
+    $allFields: String
+    $filter: SearchableCollectionFilterInput
+    $sort: SearchableCollectionSortInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    fulltextCollections(
+      allFields: $allFields
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        related_url
+        provenance
+        belongs_to
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        archives {
+          nextToken
+        }
+      }
+      nextToken
+      total
+    }
+  }
+`;
+export const fulltextArchives = /* GraphQL */ `
+  query FulltextArchives(
+    $allFields: String
+    $filter: SearchableArchiveFilterInput
+    $sort: SearchableArchiveSortInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    fulltextArchives(
+      allFields: $allFields
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        title
+        identifier
+        description
+        tags
+        creator
+        source
+        circa
+        start_date
+        end_date
+        rights_statement
+        language
+        resource_type
+        belongs_to
+        location
+        medium
+        bibliographic_citation
+        rights_holder
+        format
+        related_url
+        provenance
+        repository
+        reference
+        contributor
+        custom_key
+        parent_collection
+        item_category
+        visibility
+        thumbnail_path
+        manifest_url
+        create_date
+        modified_date
+        collection {
+          id
+          title
+          identifier
+          description
+          creator
+          source
+          circa
+          start_date
+          end_date
+          subject
+          location
+          rights_statement
+          language
+          related_url
+          provenance
+          belongs_to
+          bibliographic_citation
+          rights_holder
+          custom_key
+          collection_category
+          visibility
+          thumbnail_path
+          parent_collection
+          create_date
+          modified_date
         }
       }
       nextToken

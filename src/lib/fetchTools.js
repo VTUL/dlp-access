@@ -129,12 +129,29 @@ export const fetchSearchResults = async (
     visibility: { eq: true },
     parent_collection: { exists: false }
   };
+  let objectFilter = {
+    or: [
+      {
+        collection_category: { eq: REP_TYPE },
+        visibility: { eq: true },
+        parent_collection: { exists: false }
+      },
+      {
+        item_category: { eq: REP_TYPE },
+        visibility: { eq: true }
+      }
+    ]
+  };
   let searchResults = null;
   let category = "";
   let filters = {};
   let andArray = [];
+  let allFields = null;
   for (const key of Object.keys(filter)) {
-    if (key === "category") {
+    if (key === "all") {
+      allFields = filter["all"];
+      delete filter["allFields"];
+    } else if (key === "category") {
       category = filter.category;
     } else if (key === "title" || key === "description") {
       filters[key] = { matchPhrase: filter[key] };
@@ -165,6 +182,9 @@ export const fetchSearchResults = async (
     limit: limit,
     nextToken: nextToken
   };
+  if (allFields) {
+    options["otherArgs"] = { allFields: allFields };
+  }
   if (category === "collection") {
     const item_fields = ["format", "medium", "resource_type", "tags"];
     if (
@@ -178,18 +198,27 @@ export const fetchSearchResults = async (
       };
     } else {
       options["filter"] = { ...collectionFilter, ...filters };
-      const Collections = await fetchObjects(
-        queries.searchCollections,
-        options
-      );
-      searchResults = Collections.data.searchCollections;
+      let Collections = null;
+      if (allFields) {
+        Collections = await fetchObjects(queries.fulltextCollections, options);
+        searchResults = Collections.data.fulltextCollections;
+      } else {
+        Collections = await fetchObjects(queries.searchCollections, options);
+        searchResults = Collections.data.searchCollections;
+      }
     }
   } else if (category === "archive") {
     options["filter"] = { ...archiveFilter, ...filters };
-    const Archives = await fetchObjects(queries.searchArchives, options);
-    searchResults = Archives.data.searchArchives;
+    let Archives = null;
+    if (allFields) {
+      Archives = await fetchObjects(queries.fulltextArchives, options);
+      searchResults = Archives.data.fulltextArchives;
+    } else {
+      Archives = await fetchObjects(queries.searchArchives, options);
+      searchResults = Archives.data.searchArchives;
+    }
   } else {
-    options["otherArgs"] = { category: REP_TYPE };
+    options["filter"] = { ...objectFilter, ...filters };
     const Objects = await fetchObjects(queries.searchObjects, options);
     searchResults = Objects.data.searchObjects;
   }
