@@ -136,18 +136,24 @@ export const fetchSearchResults = async (
   for (const key of Object.keys(filter)) {
     if (key === "category") {
       category = filter.category;
-    } else if (key === "date") {
-      let dates = filter.date.split(" - ");
-      filters["start_date"] = {
-        gte: `${dates[0]}/01/01`,
-        lte: `${dates[1]}/12/31`
-      };
     } else if (key === "title" || key === "description") {
       filters[key] = { matchPhrase: filter[key] };
     } else if (Array.isArray(filter[key])) {
-      filter[key].forEach(function(value) {
-        andArray.push({ [key]: { eq: value } });
-      });
+      if (key === "date") {
+        filter[key].forEach(function(value) {
+          let dates = value.split(" - ");
+          andArray.push({
+            start_date: {
+              gte: `${dates[0]}/01/01`,
+              lte: `${dates[1]}/12/31`
+            }
+          });
+        });
+      } else {
+        filter[key].forEach(function(value) {
+          andArray.push({ [key]: { eq: value } });
+        });
+      }
       filters["and"] = andArray;
     } else {
       filters[key] = { eq: filter[key] };
@@ -160,7 +166,11 @@ export const fetchSearchResults = async (
     nextToken: nextToken
   };
   if (category === "collection") {
-    if (filters.hasOwnProperty("and")) {
+    const item_fields = ["format", "medium", "resource_type", "tags"];
+    if (
+      filters.hasOwnProperty("and") &&
+      item_fields.some(e => Object.keys(filter).indexOf(e) > -1)
+    ) {
       searchResults = {
         items: [],
         total: 0,

@@ -1,4 +1,4 @@
-describe('Single selectable checkboxes corresponding to facet values of a search facet field', () => {
+describe('Multi-selectable checkboxes correspond to mulitple facet values of a facet field', () => {
   beforeEach(() => {
     cy.visit('/search');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')

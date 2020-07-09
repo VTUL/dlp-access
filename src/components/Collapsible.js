@@ -32,9 +32,25 @@ class Collapsible extends Component {
 
   handleCheckboxChange = changeEvent => {
     const { name } = changeEvent.target;
-    let filterValues = [];
-    if (this.props.multiSelect) {
-      if (Array.isArray(this.props.filters[this.props.filterField])) {
+    if (this.props.filterField === "category") {
+      if (
+        this.props.filters &&
+        this.props.filters[this.props.filterField] === name
+      ) {
+        delete this.props.filters[this.props.filterField];
+        this.updateFilters(this.props.filters);
+      } else {
+        this.updateFilters({
+          ...this.props.filters,
+          [this.props.filterField]: name
+        });
+      }
+    } else {
+      let filterValues = [];
+      if (
+        this.props.filters &&
+        Array.isArray(this.props.filters[this.props.filterField])
+      ) {
         if (this.props.filters[this.props.filterField].includes(name)) {
           filterValues = this.props.filters[this.props.filterField].filter(
             function(value) {
@@ -57,19 +73,6 @@ class Collapsible extends Component {
       } else {
         delete this.props.filters[this.props.filterField];
         this.updateFilters(this.props.filters);
-      }
-    } else {
-      if (
-        this.props.filters &&
-        this.props.filters[this.props.filterField] === name
-      ) {
-        delete this.props.filters[this.props.filterField];
-        this.updateFilters(this.props.filters);
-      } else {
-        this.updateFilters({
-          ...this.props.filters,
-          [this.props.filterField]: name
-        });
       }
     }
   };

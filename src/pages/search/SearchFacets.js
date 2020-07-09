@@ -55,14 +55,16 @@ class SearchFacets extends Component {
   async loadFacets() {
     const facetFields = this.loadfacetFields();
     facetFields.forEach(field => {
-      this.loadFieldFacet(field.values, field.name, field.multiValued);
+      this.loadFieldFacet(field.values, field.name);
     });
   }
 
-  setFilters(name, value, isMulti = false) {
+  setFilters(name, value) {
     let updatedFilters = {};
-    let updatedFieldValues = null;
-    if (isMulti) {
+    let updatedFieldValues = [];
+    if (name === "category") {
+      updatedFieldValues = value;
+    } else {
       if (
         this.props.filters.hasOwnProperty(name) &&
         Array.isArray(this.props.filters[name])
@@ -75,8 +77,6 @@ class SearchFacets extends Component {
       } else {
         updatedFieldValues = [value];
       }
-    } else {
-      updatedFieldValues = value;
     }
     updatedFilters = {
       ...this.props.filters,
@@ -86,24 +86,18 @@ class SearchFacets extends Component {
     return updatedFilters;
   }
 
-  async loadFieldFacet(facetValues, fieldName, isMulti) {
+  async loadFieldFacet(facetValues, fieldName) {
     let facetNodes = [];
     for (const value of facetValues) {
-      let updatedFilters = this.setFilters(fieldName, value, isMulti);
+      let updatedFilters = this.setFilters(fieldName, value);
       let options = { filter: updatedFilters };
       let searchResults = await fetchSearchResults(this, options);
       let total = searchResults.total;
-      let isSelected = false;
-      if (isMulti) {
-        if (
-          this.props.filters[fieldName] &&
-          this.props.filters[fieldName].includes(value)
-        ) {
-          isSelected = true;
-        }
-      } else {
-        isSelected = this.props.filters[fieldName] === value;
-      }
+      let isSelected =
+        this.props.filters[fieldName] &&
+        this.props.filters[fieldName].includes(value)
+          ? true
+          : false;
       if (total > 0) {
         facetNodes.push({
           label: value,
@@ -112,6 +106,7 @@ class SearchFacets extends Component {
         });
       }
     }
+
     if (this._isMounted) {
       this.setState({ [`${fieldName}List`]: facetNodes });
     }
@@ -130,7 +125,6 @@ class SearchFacets extends Component {
                 filterField={field.name}
                 updateFormState={this.props.updateFormState}
                 facetNodes={this.state[`${field.name}List`]}
-                multiSelect={field.multiValued}
                 key={idx}
               />
             ))}

@@ -112,21 +112,10 @@ class SearchLoader extends Component {
     const searchParams = new URLSearchParams(location.search);
     let restQuery = {};
     const otherKeys = ["field", "q", "view"];
-    const multiKeys = [
-      "format",
-      "medium",
-      "resource_type",
-      "tags",
-      "belongs_to"
-    ];
     for (let pair of searchParams.entries()) {
-      if (
-        !multiKeys.includes(pair[0]) &&
-        !otherKeys.includes(pair[0]) &&
-        pair[1]
-      ) {
+      if (pair[0] === "category" && pair[1]) {
         restQuery[pair[0]] = pair[1];
-      } else if (multiKeys.includes(pair[0]) && pair[1]) {
+      } else if (!otherKeys.includes(pair[0]) && pair[1]) {
         if (!restQuery[pair[0]]) {
           restQuery[pair[0]] = [];
         }

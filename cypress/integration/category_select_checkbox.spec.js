@@ -1,16 +1,16 @@
-describe('Single selectable checkboxes corresponding to facet values of a search facet field', () => {
+describe('Object category options are mutually exclusive facet checkboxes', () => {
   beforeEach(() => {
     cy.visit('/search');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1)')
       .click();
   });
 
-  it('allows to select none of the checkboxes', () => {
+  it('sets category to all if none of the checkboxes being selected', () => {
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(1) input')
       .should('not.have.class', 'checked')
   });
 
-  it('allows to select one of the checkboxes', () => {
+  it('sets one categoyr if one of the checkboxes being selected', () => {
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(1) input')
       .check();
 
@@ -21,7 +21,7 @@ describe('Single selectable checkboxes corresponding to facet values of a search
       .should("contain", "category › collection");
   });
 
-  it('Prevents from select more than one checkboxes', () => {
+  it('prevents from selecting more than one categories(checkboxes)', () => {
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(1) input')
       .check();
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(2) input')
