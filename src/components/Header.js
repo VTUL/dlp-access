@@ -75,7 +75,7 @@ class Header extends Component {
                     </li>
                   </ol>
 
-                  <SiteNavigationLinks />
+                  <SiteNavigationLinks siteDetails={this.props.siteDetails} />
                 </div>
               </nav>{" "}
               {/* !-- end vt_nav --> */}

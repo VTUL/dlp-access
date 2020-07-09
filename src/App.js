@@ -15,6 +15,7 @@ import SearchLoader from "./pages/search/SearchLoader";
 import ArchivePage from "./pages/archives/ArchivePage";
 
 import "./App.css";
+import AdditionalPages from "./pages/AdditionalPages";
 
 class App extends Component {
   constructor(props) {
@@ -45,6 +46,7 @@ class App extends Component {
   render() {
     if (this.state.siteDetails !== null) {
       this.setColor(this.state.siteDetails.siteColor);
+
       return (
         <Router>
           <AnalyticsConfig analyticsID={this.state.siteDetails.analyticsID} />
@@ -116,6 +118,22 @@ class App extends Component {
                     />
                   )}
                 />
+                {this.state.siteDetails.aboutCopy.additionalPages
+                  ? this.state.siteDetails.aboutCopy.additionalPages.map(
+                      (page, index) => {
+                        return (
+                          <Route
+                            key={index}
+                            path={page.link}
+                            exact
+                            render={() => (
+                              <AdditionalPages siteDetails={page} />
+                            )}
+                          />
+                        );
+                      }
+                    )
+                  : null}
               </Switch>
             </div>
           </main>
