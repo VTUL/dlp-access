@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Item } from "semantic-ui-react";
 
 class SiteNavigationLinks extends Component {
   onFoldAction(event) {
