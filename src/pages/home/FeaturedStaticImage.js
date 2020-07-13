@@ -7,10 +7,12 @@ class FeaturedStaticImage extends Component {
     if (this.props.staticImage) {
       return (
         <div className="home-static-image-wrapper">
-          <img
-            src={this.props.staticImage.src}
-            alt={this.props.staticImage.altText}
-          />
+          <a href="/">
+            <img
+              src={this.props.staticImage.src}
+              alt={this.props.staticImage.altText}
+            />
+          </a>
         </div>
       );
     } else {

@@ -4,7 +4,7 @@ class HomeStatement extends Component {
   render() {
     if (this.props.homeStatement) {
       return (
-        <div className="home-welcome-wrapper">
+        <div className="home-statement-wrapper">
           <h1
             style={{
               display: this.props.homeStatement.heading ? "block" : "none"

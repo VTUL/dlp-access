@@ -5,9 +5,16 @@
   max-height: 450px;
 }
 
-.home-static-image-wrapper img {
+.home-wrapper .home-static-image-wrapper img {
   width: 100%;
   filter: brightness(70%) contrast(70%);
+  margin: 0px;
+  max-height: 450px;
+  object-fit: cover;
+}
+
+.home-wrapper-no-text .home-static-image-wrapper img {
+  width: 100%;
   margin: 0px;
   max-height: 450px;
   object-fit: cover;

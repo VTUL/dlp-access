@@ -35,7 +35,13 @@ class HomePage extends Component {
           siteTitle={this.props.siteDetails.siteTitle}
           pageTitle="Home"
         />
-        <div className="home-wrapper">
+        <div
+          className={
+            this.props.siteDetails.homePage.staticImage.showTitle
+              ? "home-wrapper"
+              : "home-wrapper-no-text"
+          }
+        >
           <div className="home-featured-image-wrapper">
             <FeaturedStaticImage staticImage={staticImage} />
             <div id="home-site-title-wrapper">
