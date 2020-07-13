@@ -15,7 +15,7 @@ class AboutPage extends Component {
   componentDidMount() {
     getHTML(
       this.props.siteDetails.assetBasePath,
-      this.props.siteDetails.aboutCopy,
+      this.props.siteDetails.sitePages[this.props.parentKey].data_url,
       this
     );
   }
@@ -40,7 +40,7 @@ class AboutPage extends Component {
         </div>
         <div className="col-md-4 contact-section-wrapper">
           <ContactSection siteDetails={this.props.siteDetails} />
-          {this.props.siteDetails.termsCopy.value ? (
+          {this.props.siteDetails.sitePages.terms ? (
             <a href="/permissions" className="about-terms-link">
               Permissions
             </a>

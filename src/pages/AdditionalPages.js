@@ -10,7 +10,12 @@ class AdditionalPages extends Component {
   }
 
   componentDidMount() {
-    getHTML(this.props.siteDetails.assetBasePath, this.props.page, this);
+    let copyObj = this.props.siteDetails.sitePages[this.props.parentKey];
+    if (copyObj.children && this.props.childKey) {
+      copyObj = copyObj.children[this.props.childKey];
+    }
+    const copyUrl = copyObj.data_url;
+    getHTML(this.props.siteDetails.assetBasePath, copyUrl, this);
   }
 
   render() {

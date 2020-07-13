@@ -44,14 +44,10 @@ export const fetchSiteDetails = async (component, siteName) => {
   });
 };
 
-export function getHTML(basePath, copyObj, component) {
+export function getHTML(basePath, copyURL, component) {
   let copy = null;
   try {
-    if (copyObj.type === "string") {
-      copy = copyObj.value;
-    } else if (copyObj.type === "file") {
-      fetchCopyHTML(basePath, copyObj, component);
-    }
+    fetchCopyHTML(basePath, copyURL, component);
   } catch (error) {
     console.error("Error setting copy for component");
   }
@@ -60,16 +56,16 @@ export function getHTML(basePath, copyObj, component) {
   }
 }
 
-const fetchCopyHTML = async (basePath, copyObj, component) => {
+const fetchCopyHTML = async (basePath, copyURL, component) => {
   let data = null;
   try {
-    data = sessionStorage.getItem(copyObj.value);
+    data = sessionStorage.getItem(copyURL);
   } catch (error) {
-    console.log(`${copyObj.value} not in sessionStorage`);
+    console.log(`${copyURL} not in sessionStorage`);
   }
   if (data === null) {
     try {
-      const copyLink = `${basePath}/${copyObj.value}`;
+      const copyLink = `${basePath}/${copyURL}`;
       console.log(copyLink);
       console.log(`fetching copy from: ${copyLink}`);
       const response = await fetch(copyLink);
@@ -82,7 +78,7 @@ const fetchCopyHTML = async (basePath, copyObj, component) => {
     }
   }
   if (data !== null) {
-    sessionStorage.setItem(copyObj.value, data);
+    sessionStorage.setItem(copyURL, data);
     component.setState({ copy: data });
   }
 };

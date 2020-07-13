@@ -13,11 +13,20 @@ class PermissionsPage extends Component {
   }
 
   componentDidMount() {
-    const assetBasePath = this.props.siteDetails.assetBasePath;
-    getHTML(assetBasePath, this.props.siteDetails.termsCopy, this);
+    getHTML(
+      this.props.siteDetails.assetBasePath,
+      this.props.siteDetails.sitePages[this.props.parentKey].data_url,
+      this
+    );
   }
 
   render() {
+    let download = "";
+    try {
+      download = this.props.siteDetails.sitePages.terms.assets.download;
+    } catch (error) {
+      console.log("no download link specified");
+    }
     return (
       <>
         <div className="row terms-page-wrapper">
@@ -36,12 +45,10 @@ class PermissionsPage extends Component {
           </div>
           <div className="col-md-4 contact-section-wrapper">
             <ContactSection siteDetails={this.props.siteDetails} />
-            {this.props.siteDetails.termsCopy.download ? (
+            {download ? (
               <div>
                 <p className="terms-downloads-heading">Downloadable forms</p>
-                <a href={this.props.siteDetails.termsCopy.download}>
-                  Permission form for image reproductions
-                </a>
+                <a href={download}>Permission form for image reproductions</a>
               </div>
             ) : null}
           </div>
