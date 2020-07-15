@@ -44,13 +44,13 @@ export const fetchSiteDetails = async (component, siteName) => {
   });
 };
 
-export function getHTML(copyObj, component) {
+export function getHTML(basePath, copyObj, component) {
   let copy = null;
   try {
     if (copyObj.type === "string") {
       copy = copyObj.value;
     } else if (copyObj.type === "file") {
-      fetchCopyHTML(copyObj, component);
+      fetchCopyHTML(basePath, copyObj, component);
     }
   } catch (error) {
     console.error("Error setting copy for component");
@@ -60,7 +60,7 @@ export function getHTML(copyObj, component) {
   }
 }
 
-const fetchCopyHTML = async (copyObj, component) => {
+const fetchCopyHTML = async (basePath, copyObj, component) => {
   let data = null;
   try {
     data = sessionStorage.getItem(copyObj.value);
@@ -69,7 +69,8 @@ const fetchCopyHTML = async (copyObj, component) => {
   }
   if (data === null) {
     try {
-      const copyLink = `${process.env.REACT_APP_CONFIG_PATH}/${copyObj.value}`;
+      const copyLink = `${basePath}/${copyObj.value}`;
+      console.log(copyLink);
       console.log(`fetching copy from: ${copyLink}`);
       const response = await fetch(copyLink);
       data = await response.text();

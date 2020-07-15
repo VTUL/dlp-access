@@ -13,7 +13,8 @@ class PermissionsPage extends Component {
   }
 
   componentDidMount() {
-    getHTML(this.props.siteDetails.termsCopy, this);
+    const assetBasePath = this.props.siteDetails.assetBasePath;
+    getHTML(assetBasePath, this.props.siteDetails.termsCopy, this);
   }
 
   render() {

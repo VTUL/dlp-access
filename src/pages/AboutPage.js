@@ -13,7 +13,11 @@ class AboutPage extends Component {
   }
 
   componentDidMount() {
-    getHTML(this.props.siteDetails.aboutCopy, this);
+    getHTML(
+      this.props.siteDetails.assetBasePath,
+      this.props.siteDetails.aboutCopy,
+      this
+    );
   }
 
   render() {

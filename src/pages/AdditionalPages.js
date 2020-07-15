@@ -10,7 +10,7 @@ class AdditionalPages extends Component {
   }
 
   componentDidMount() {
-    getHTML(this.props.siteDetails, this);
+    getHTML(this.props.siteDetails.assetBasePath, this.props.siteDetails, this);
   }
 
   render() {
