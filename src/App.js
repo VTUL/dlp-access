@@ -127,7 +127,10 @@ class App extends Component {
                             path={page.link}
                             exact
                             render={() => (
-                              <AdditionalPages siteDetails={page} />
+                              <AdditionalPages
+                                siteDetails={this.state.siteDetails}
+                                page={page}
+                              />
                             )}
                           />
                         );
