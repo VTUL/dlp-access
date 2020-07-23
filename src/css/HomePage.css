@@ -1,6 +1,7 @@
 .home-wrapper {
   padding-top: 50px;
 }
+
 .home-featured-image-wrapper {
   position: relative;
 }
@@ -55,6 +56,31 @@
 .home-wrapper-no-text .home-search-wrapper {
   width: 100%;
   padding-top: 40px;
+}
+
+.home-nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 40px;
+  justify-content: center;
+}
+
+.home-nav-links button {
+  color: var(--themeHighlightColor);
+  font-family: "Acherus", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4285em;
+  border: 2px solid var(--themeHighlightColor);
+  border-radius: 0px;
+  width: 181px;
+  margin: 5px 20px;
+}
+
+.home-nav-links button:hover,
+.home-nav-links button:focus {
+  color: white;
+  background-color: var(--themeHighlightColor);
 }
 
 @media (min-width: 576px) {

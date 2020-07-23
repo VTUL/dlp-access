@@ -57,6 +57,18 @@ class HomePage extends Component {
             />
           </div>
           <HomeStatement homeStatement={homeStatement} />
+          <div className="home-nav-links">
+            <a href="/search">
+              <button type="button" className="btn btn-outline">
+                View All Items
+              </button>
+            </a>
+            <a href="/collections">
+              <button type="button" className="btn btn-outline">
+                View All Collections
+              </button>
+            </a>
+          </div>
           <FeaturedItems featuredItems={featuredItems} />
           <MultimediaSection mediaSection={mediaSection} />
           <SiteSponsors sponsors={sponsors} />

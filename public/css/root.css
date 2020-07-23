@@ -172,14 +172,14 @@ sup {
 }
 
 a {
-  color: #c64600;
+  color: var(--themeHighlightColor);
   text-decoration: none;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
 
 a:hover {
-  color: #7a2b00;
+  color: var(--themeHighlightColor);
   text-decoration: underline;
 }
 
@@ -11018,7 +11018,7 @@ h6 {
 
 a:visited {
   position: relative;
-  color: #c64600;
+  color: var(--themeHighlightColor);
   cursor: pointer;
 }
 
