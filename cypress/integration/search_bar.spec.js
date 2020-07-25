@@ -1,6 +1,8 @@
 describe('Search by title by hitting enter key', () => {
   beforeEach(() => {
-    cy.visit('/search');
+    cy.visit('/search?field=title&q=building&view=Gallery');
+    cy.get('input')
+      .clear()
     cy.get('select')
       .select('title');
     cy.get('input').type('Additions{enter}').trigger('input');

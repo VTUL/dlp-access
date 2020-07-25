@@ -15,14 +15,24 @@ class CollectionsListLoader extends Component {
       limit: 10,
       page: 0,
       totalPages: 1,
+      filter: {},
+      sort: {
+        field: "title",
+        direction: "asc"
+      },
       view: "Gallery"
     };
   }
 
   updateFormState = (name, val) => {
-    this.setState({
-      [name]: val
-    });
+    this.setState(
+      {
+        [name]: val
+      },
+      function() {
+        this.loadCollections();
+      }
+    );
   };
 
   previousPage() {
@@ -61,11 +71,11 @@ class CollectionsListLoader extends Component {
 
   async loadCollections() {
     let options = {
-      filter: { category: "collection" },
-      sort: {
-        field: "title",
-        direction: "asc"
+      filter: {
+        category: "collection",
+        ...this.state.filter
       },
+      sort: this.state.sort,
       limit: this.state.limit,
       nextToken: this.state.nextTokens[this.state.page]
     };
@@ -110,6 +120,7 @@ class CollectionsListLoader extends Component {
             view={this.state.view}
             updateFormState={this.updateFormState}
             scrollUp={this.props.scrollUp}
+            browseCollections={this.props.siteDetails.browseCollections}
           />
         </div>
       );
