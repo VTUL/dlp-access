@@ -1,6 +1,11 @@
 .terms-page-wrapper a,
-.terms-page-wrapper a:hover {
-  color: var(--themeHighlightColor);
+.terms-page-wrapper a:visited {
+  color: var(--hokieOrange);
+}
+.terms-page-wrapper a:hover,
+.terms-page-wrapper a:focus,
+.terms-page-wrapper a:active {
+  color: var(--hokieOrangeHover);
 }
 .terms-heading {
   margin-bottom: 20px;
@@ -9,7 +14,7 @@
 
 .terms-heading h1 {
   font-family: "gineso-condensed", sans-serif;
-  font-size: 3em;
+  font-size: 2.625rem;
 }
 
 .terms-details {
@@ -25,7 +30,7 @@
 }
 
 .terms-details h1 {
-  font-size: 1.75rem;
+  font-size: 1.53rem;
 }
 
 .terms-details h3 {
@@ -44,7 +49,7 @@
 
 .terms-downloads-heading {
   font-family: "gineso-condensed", sans-serif;
-  font-size: 2em;
+  font-size: 2rem;
   margin: 0;
 }
 

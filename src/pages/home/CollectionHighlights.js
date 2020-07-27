@@ -18,8 +18,8 @@ class CollectionHighlights extends Component {
                 }}
               >
                 <div className="category-details">
-                  <h4>{item.itemCount}</h4>
-                  <p>{item.title}</p>
+                  <span>{item.itemCount}</span>
+                  <h3>{item.title}</h3>
                 </div>
                 <div className="category-link">
                   <p>
@@ -35,9 +35,9 @@ class CollectionHighlights extends Component {
       return (
         <div className="collection-highlights-wrapper">
           <div className="collection-highlights-heading">
-            <h1>
+            <h2>
               Collection <span>Highlights</span>
-            </h1>
+            </h2>
           </div>
           <div className="row">{tiles}</div>
         </div>

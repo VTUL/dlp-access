@@ -5,13 +5,13 @@ class HomeStatement extends Component {
     if (this.props.homeStatement) {
       return (
         <div className="home-statement-wrapper">
-          <h1
+          <h2
             style={{
               display: this.props.homeStatement.heading ? "block" : "none"
             }}
           >
             {this.props.homeStatement.heading}
-          </h1>
+          </h2>
           <div
             style={{
               display: this.props.homeStatement.statement ? "block" : "none"

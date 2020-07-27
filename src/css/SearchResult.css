@@ -18,7 +18,7 @@ div.search-results div.row div#content div.navbar {
 
 .search-results .navbar {
   z-index: 900;
-  background-color: #f8f8f8;
+  background-color: var(--light-gray);
 }
 
 .navbar .ui.compact.selection.dropdown {
@@ -34,6 +34,10 @@ div.search-results div.row div#content div.navbar {
 .view-options {
   width: 100%;
   justify-content: flex-end;
+}
+
+.view-options div button:active {
+  background-color: var(--dark-gray);
 }
 
 .search-results-section {
@@ -59,9 +63,10 @@ div.search-results div.row div#content div.navbar {
 }
 
 .gallery-item .card-body {
-  height: 168px;
+  height: 10.5rem;
   border: 1px solid #e2e0e0;
   border-top: none;
+  padding: 1rem;
 }
 
 .crop-text-3 {
@@ -74,6 +79,7 @@ div.search-results div.row div#content div.navbar {
 
 .gallery-item .card-body .card-title {
   font-family: "gineso-condensed", sans-serif;
+  font-size: 1.1rem;
 }
 
 .gallery-item .card-body .card-text {
@@ -81,8 +87,8 @@ div.search-results div.row div#content div.navbar {
 }
 
 .gallery-item a,
-.gallery-item a:hover,
-.gallery-item a:visited {
+.gallery-item a:visited,
+.gallery-item a:hover {
   color: black;
   text-decoration: none;
 }
@@ -112,19 +118,20 @@ div.masonry div.card {
 
 .facet-wrapper {
   display: none;
-  background-color: #f8f8f8;
-  border: solid 1px #75787b;
+  background-color: var(--light-gray);
+  border: solid 1px var(--dark-gray);
 }
 
 .facet-heading {
   font-family: "gineso-condensed", sans-serif;
   padding: 10px 0px 0px 10px;
+  font-size: 1.3125rem;
 }
 
 .facet-title {
   font-family: "Acherus", sans-serif;
   cursor: pointer;
-  border-top: solid 1px #75787b;
+  border-top: solid 1px var(--dark-gray);
   padding: 10px;
   padding-left: 20px;
   color: #000000;
@@ -157,9 +164,9 @@ div.masonry div.card {
   flex: 1 1 auto;
   text-align: center;
   padding: 10px;
-  background-color: #20202029;
+  background-color: #e8e3e8;
   font-family: "gineso-condensed", sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   border-radius: 0px;
@@ -171,10 +178,10 @@ div.masonry div.card {
   flex: 1 1 auto;
   text-align: center;
   padding: 10px;
-  background-color: #e2e0e0;
-  color: var(--themeHighlightColor);
+  background-color: #f2f0f2;
+  color: var(--hokieMaroon);
   font-family: "gineso-condensed", sans-serif;
-  font-size: 1.2em;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
   border-radius: 0px;
@@ -183,13 +190,13 @@ div.masonry div.card {
 
 .facet-modal-buttons button:hover,
 .facet-modal-buttons button:focus {
-  background-color: #f8f8f8;
+  background-color: var(--light-gray);
   border-color: var(--dark-gray);
 }
 
 .facet-modal-buttons a:hover,
 .facet-modal-buttons a:focus {
-  background-color: #f8f8f8;
+  background-color: var(--light-gray);
   border-color: var(--dark-gray);
   color: #000000;
   text-decoration: none;
@@ -200,6 +207,11 @@ div.masonry div.card {
   text-align: right;
   display: block;
   padding-right: 10px;
+}
+
+.facet-button-navbar button {
+  border: none;
+  background-color: var(--light-gray);
 }
 
 .facet-navbar {

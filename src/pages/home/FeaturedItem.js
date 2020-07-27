@@ -12,9 +12,9 @@ class FeaturedItem extends Component {
               alt={this.props.tile.altText}
             />
             <div className="card-body">
-              <h4 className="card-title crop-text-4">
+              <h3 className="card-title crop-text-4">
                 {this.props.tile.cardTitle}
-              </h4>
+              </h3>
             </div>
           </div>
         </a>

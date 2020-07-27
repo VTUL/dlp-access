@@ -31,9 +31,9 @@ class FeaturedItems extends Component {
       return (
         <div className="featured-items-wrapper">
           <div className="featured-items-heading">
-            <h1>
+            <h2>
               Our Featured <span>Items</span>
-            </h1>
+            </h2>
           </div>
 
           <div className="row">{tiles}</div>

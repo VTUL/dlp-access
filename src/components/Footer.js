@@ -41,24 +41,28 @@ class Footer extends Component {
                 href="https://twitter.com/VTLibraries"
               >
                 <i className="fab fa-twitter"></i>
+                <span className="sr-only">Twitter</span>
               </a>
               <a
                 className="footer-social-links"
                 href="https://instagram.com/vtlibraries"
               >
                 <i className="fab fa-instagram"></i>
+                <span className="sr-only">Instagram</span>
               </a>
               <a
                 className="footer-social-links"
                 href="https://www.youtube.com/user/VaTechLibraries"
               >
                 <i className="fab fa-youtube"></i>
+                <span className="sr-only">YouTube</span>
               </a>
               <a
                 className="footer-social-links"
                 href="https://www.facebook.com/VTLibraries"
               >
                 <i className="fab fa-facebook-f"></i>
+                <span className="sr-only">Facebook</span>
               </a>
             </div>
           </div>

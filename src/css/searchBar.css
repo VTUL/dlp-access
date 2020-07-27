@@ -6,12 +6,17 @@
   display: flex;
 }
 
+.searchbar-wrapper div {
+  width: 100%;
+}
+
 .searchbar-wrapper input {
   border: none;
   border-width: 0;
   box-shadow: none;
   -webkit-appearance: none;
-  width: calc(100% - 105px);
+  width: 100%;
+  font-size: 1rem;
 }
 
 .searchbar-wrapper select {
@@ -22,21 +27,21 @@
   border-color: var(--dark-gray);
   background-color: white;
   border-radius: 0px;
-  width: 110px;
+  width: 7.55rem;
   flex: none;
+  font-size: 1rem;
 }
 
 .searchbar-wrapper button {
   padding: 0px;
   border: 0px;
-  margin-left: 3px;
   background-color: white;
   color: var(--themeHighlightColor);
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 .searchbar-wrapper button div {
-  width: 47px;
-  height: 36px;
+  width: 2.938rem;
+  height: 2.25rem;
 }
 .searchbar-wrapper button:hover,
 .searchbar-wrapper button:active,
@@ -51,20 +56,17 @@
   .searchbar-wrapper {
     padding: 6px 30px 6px 30px;
   }
-  .searchbar-wrapper input {
-    width: calc(100% - 164px);
-  }
+
   .searchbar-wrapper select {
     margin-right: 30px;
-    width: 110px;
   }
   .searchbar-wrapper button {
     background-color: var(--themeHighlightColor);
     color: white;
   }
   .searchbar-wrapper button div {
-    width: 64px;
-    height: 36px;
+    width: 4rem;
+    height: 2.25rem;
     border-radius: 5px;
   }
   .searchbar-wrapper button:hover,

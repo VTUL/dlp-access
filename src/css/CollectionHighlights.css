@@ -25,7 +25,7 @@
   background-color: rgba(31, 30, 30, 0.65);
   padding: 80px 40px 0px 40px;
 }
-.category-container .category-details h4 {
+.category-container .category-details span {
   font-family: "Acherus", sans-serif;
   font-style: italic;
   font-size: 60px;
@@ -34,10 +34,11 @@
   text-shadow: -2px 6px 3px #00000029;
 }
 
-.category-container .category-details p {
+.category-container .category-details h3 {
   font-family: "Acherus", sans-serif;
   color: white;
   font-style: italic;
+  font-size: 1rem;
 }
 
 .category-container .category-link {
@@ -70,8 +71,8 @@
 }
 
 .collection-highlights-wrapper a,
-.collection-highlights-wrapper a:hover,
-.collection-highlights-wrapper a:visited {
+.collection-highlights-wrapper a:visited,
+.collection-highlights-wrapper a:hover {
   color: black;
   text-decoration: none;
 }
@@ -80,11 +81,12 @@
   margin-bottom: 40px;
 }
 
-.collection-highlights-heading h1 {
+.collection-highlights-heading h2 {
   font-family: "gineso-condensed", sans-serif;
   text-align: center;
+  font-size: 2.1875rem;
 }
 
-.collection-highlights-heading h1 span {
+.collection-highlights-heading h2 span {
   color: var(--themeHighlightColor);
 }

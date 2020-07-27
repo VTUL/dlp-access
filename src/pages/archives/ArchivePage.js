@@ -223,7 +223,7 @@ class ArchivePage extends Component {
                 </div>
                 <div className="row item-details-section">
                   <div className="col-lg-6 details-section-description">
-                    <h4>{item.title}</h4>
+                    <h1>{item.title}</h1>
                     {addNewlineInDesc(item.description)}
                   </div>
                   <div className="col-lg-6 details-section-metadata">

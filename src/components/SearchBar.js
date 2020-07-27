@@ -71,14 +71,21 @@ class SearchBar extends Component {
 
   searchBox = () => {
     return (
-      <input
-        className="form-control"
-        value={this.state.q || ""}
-        type="text"
-        placeholder="Search by title, description, or all fields"
-        onChange={this.updateQuery}
-        onKeyPress={this.onKeyPress}
-      />
+      <div>
+        <label htmlFor="search" className="sr-only">
+          Search:
+        </label>
+        <input
+          className="form-control"
+          value={this.state.q || ""}
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search by keyword, title, description"
+          onChange={this.updateQuery}
+          onKeyPress={this.onKeyPress}
+        />
+      </div>
     );
   };
 
@@ -87,6 +94,9 @@ class SearchBar extends Component {
       <div>
         <div className="searchbar-wrapper">
           {this.searchBox()}
+          <label htmlFor="field-options" className="sr-only">
+            Select search filter:
+          </label>
           <select
             value={this.state.field}
             name="fieldOptions"
@@ -100,6 +110,7 @@ class SearchBar extends Component {
             <div>
               <i className="fas fa-search"></i>
             </div>
+            <span className="sr-only">Search</span>
           </button>
         </div>
       </div>

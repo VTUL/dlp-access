@@ -24,7 +24,7 @@
 
 .featured-items-wrapper .card-body .card-title {
   font-family: "gineso-condensed", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
 }
 
 .featured-items-wrapper .card-body .card-text {
@@ -32,8 +32,10 @@
 }
 
 .featured-items-wrapper a,
+.featured-items-wrapper a:visited,
 .featured-items-wrapper a:hover,
-.featured-items-wrapper a:visited {
+.featured-items-wrapper a:focus,
+.featured-items-wrapper a:active {
   color: black;
   text-decoration: none;
 }
@@ -50,12 +52,13 @@
   margin-bottom: 40px;
 }
 
-.featured-items-heading h1 {
+.featured-items-heading h2 {
   font-family: "gineso-condensed", sans-serif;
   text-align: center;
+  font-size: 2.1875rem;
 }
 
-.featured-items-heading h1 span {
+.featured-items-heading h2 span {
   color: var(--themeHighlightColor);
 }
 

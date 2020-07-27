@@ -32,11 +32,11 @@ export function htmlParsedValue(value) {
 
 export function titleFormatted(item, category) {
   return (
-    <h4>
+    <h3>
       <a href={`/${category}/${arkLinkFormatted(item.custom_key)}`}>
         {item.title}
       </a>
-    </h4>
+    </h3>
   );
 }
 export function dateFormatted(item) {

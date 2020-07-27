@@ -18,7 +18,7 @@
 .all-less .more:visited,
 .all-less .less:visited {
   display: inline-block;
-  color: var(--themeHighlightColor);
+  color: var(--hokieOrange);
   border: none;
   background-color: transparent;
 }

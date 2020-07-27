@@ -116,8 +116,10 @@ class SearchFacets extends Component {
     const facetFields = this.loadfacetFields();
     return (
       <div className={this.props.isActive ? "facet-modal-wrapper" : null}>
-        <div className="facet-wrapper">
-          <h4 className="facet-heading">Filter My Results</h4>
+        <div className="facet-wrapper" role="group" aria-labelledby="filters">
+          <h2 className="facet-heading" id="filters">
+            Filter My Results
+          </h2>
           <div className="facet-fields" data-cy="filter-collapsibles">
             {facetFields.map((field, idx) => (
               <Collapsible
@@ -150,7 +152,8 @@ class SearchFacets extends Component {
                 to={`/search/?${qs.stringify(this.props.defaultSearch)}`}
                 onClick={this.hideModal}
               >
-                X
+                <i className="fas fa-times"></i>
+                <span className="sr-only">Close</span>
               </NavLink>
             </div>
           </div>

@@ -47,7 +47,7 @@ class PermissionsPage extends Component {
             <ContactSection siteDetails={this.props.siteDetails} />
             {download ? (
               <div>
-                <p className="terms-downloads-heading">Downloadable forms</p>
+                <h2 className="terms-downloads-heading">Downloadable forms</h2>
                 <a href={download}>Permission form for image reproductions</a>
               </div>
             ) : null}

@@ -16,10 +16,12 @@ class ViewBar extends Component {
     const buttons = this.props.pageViews.map((buttonType, index) => {
       return (
         <button
+          type="button"
           key={index}
           className="btn btn-outline-light"
           data-toggle="tooltip"
-          title={buttonType}
+          title={`${buttonType} view`}
+          aria-label={`${buttonType} view`}
           onClick={() => this.updateView(buttonType)}
           active={(this.state.view === buttonType).toString()}
         >

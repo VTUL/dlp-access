@@ -124,14 +124,14 @@ class Collapsible extends Component {
             <FontAwesomeIcon
               icon={faAngleDoubleRight}
               size="1x"
-              color="#75787b"
+              color="var(--darker-gray)"
               className="float-right"
             />
           ) : (
             <FontAwesomeIcon
               icon={faAngleDoubleDown}
               size="1x"
-              color="#75787b"
+              color="var(--darker-gray)"
               className="float-right"
             />
           )}

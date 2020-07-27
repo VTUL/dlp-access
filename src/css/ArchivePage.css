@@ -4,7 +4,7 @@
 
 .item-image-section {
   margin-top: 40px;
-  background-color: #f8f8f8;
+  background-color: var(--light-gray);
   border: solid 1px #707070;
   padding: 1.5em;
 }
@@ -12,7 +12,7 @@
 div.item-image-section div.breadcrumbs-wrapper {
   padding: 0 0 1.5em 0;
   font-family: "gineso-condensed", sans-serif;
-  font-size: 1.1em;
+  font-size: 1rem;
 }
 
 div.item-image-section div.breadcrumbs-wrapper ul {
@@ -27,8 +27,9 @@ div.item-image-section img.item-img {
   padding: 40px 0 40px 0;
 }
 
-.details-section-description h4 {
+.details-section-description h1 {
   font-family: "gineso-condensed", sans-serif;
+  font-size: 1.3125rem;
 }
 
 .details-section-description p {
@@ -47,12 +48,12 @@ div.details-section-metadata a {
 div.details-section-metadata table tbody tr td {
   display: block;
   padding: 0;
-  line-height: 1.25;
+  line-height: 1.25em;
 }
 
 div.details-section-metadata table tbody tr td.collection-detail-key {
   font-family: "gineso-condensed", sans-serif;
-  font-size: 1.25em;
+  font-size: 1.15rem;
   font-weight: 500;
   vertical-align: text-top;
 }
@@ -72,6 +73,6 @@ div.details-section-metadata table tbody tr td.collection-detail-value {
   div.item-image-section div.breadcrumbs-wrapper {
     padding: 0 0 1.5em 0;
     font-family: "gineso-condensed", sans-serif;
-    font-size: 1.25em;
+    font-size: 1.09rem;
   }
 }

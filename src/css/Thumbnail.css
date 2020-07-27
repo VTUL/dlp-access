@@ -25,7 +25,7 @@
   justify-content: center;
   align-items: center;
   font-family: "gineso-condensed", sans-serif;
-  background: #75787b;
+  background: var(--darker-gray);
   color: white;
   font-size: 16px;
   position: absolute;

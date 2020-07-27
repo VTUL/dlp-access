@@ -45,7 +45,9 @@ class HomePage extends Component {
           <div className="home-featured-image-wrapper">
             <FeaturedStaticImage staticImage={staticImage} />
             <div id="home-site-title-wrapper">
-              <a href="/">{this.props.siteDetails.siteName}</a>
+              <h1>
+                <a href="/">{this.props.siteDetails.siteName}</a>
+              </h1>
             </div>
           </div>
           <div className="home-search-wrapper">

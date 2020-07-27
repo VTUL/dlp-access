@@ -270,7 +270,7 @@ class CollectionsShowPage extends Component {
                 }`}
               >
                 <div>
-                  <h3 className="introduction">Introduction</h3>
+                  <h2 className="introduction">Introduction</h2>
                   {this.getDescription()}{" "}
                   {this.moreLessButtons(topLevelDesc, "top-level")}
                 </div>

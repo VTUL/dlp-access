@@ -4,16 +4,17 @@ div.collection-entry {
   margin: 15px 0 15px 0;
 }
 
-.collection-entry a {
-  color: var(--themeHighlightColor);
+.collection-entry a,
+.collection-entry a:visited {
+  color: var(--hokieOrange);
 }
-
 .collection-entry a:hover,
-.collection-entry a:focus {
-  color: var(--themeHighlightColor);
+.collection-entry a:focus,
+.collection-entry a:active {
+  color: var(--hokieOrangeHover);
 }
 
-div.collection-details h4 a {
+.collection-entry .collection-details h3 a {
   color: black;
   -webkit-line-clamp: 5;
   overflow: hidden;
@@ -23,7 +24,7 @@ div.collection-details h4 a {
 }
 
 h4.collection-title {
-  font-size: 24px;
+  font-size: 1.5rem;
   margin-bottom: 20px;
 }
 div.collection-img {
@@ -44,8 +45,8 @@ div.collection-details {
   width: calc(100% - 180px);
 }
 
-div.collection-details h4 {
-  font-size: 1.2em;
+div.collection-details h3 {
+  font-size: 1.0625rem;
   font-family: "gineso-condensed", sans-serif;
   margin-bottom: 0.25rem;
 }
@@ -55,14 +56,14 @@ div.collection-detail {
 }
 
 div.collection-detail table tr .collection-detail-key {
-  font-size: 1.3em;
+  font-size: 1.15rem;
   padding-right: 3px;
   font-family: "gineso-condensed", sans-serif;
   vertical-align: text-top;
 }
 
 div.collection-detail table tr .collection-detail-value {
-  font-size: 1em;
+  font-size: 1rem;
   font-family: "Acherus", sans-serif;
   font-weight: 400;
   text-align: left;
@@ -79,7 +80,7 @@ span.list-unstyled:nth-of-type(n + 2)::before {
 
 a.more-link {
   margin-left: 10px;
-  color: var(--themeHighlightColor);
+  color: var(--hokieOrange);
 }
 
 .pagination-section {
@@ -91,7 +92,7 @@ a.more-link {
 .pagination-text {
   padding: 5px 3.5px 5px 0px;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
 }
 
 .pagination-section .ui.button {
@@ -121,8 +122,8 @@ a.more-link {
     width: calc(100% - 300px);
   }
 
-  div.collection-details h4 {
-    font-size: 20px;
+  div.collection-details h3 {
+    font-size: 1.25rem;
     font-family: "gineso-condensed", sans-serif;
     margin-bottom: 0.25rem;
   }

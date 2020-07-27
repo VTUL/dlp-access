@@ -143,10 +143,17 @@ class SearchResults extends Component {
                   <ItemsPaginationDisplay atBottom={false} />
                 </div>
                 <div className="facet-button-navbar" onClick={this.updateModal}>
-                  <FontAwesomeIcon
-                    icon={faFilter}
-                    color="var(--themeHighlightColor)"
-                  />
+                  <button
+                    type="button"
+                    data-toggle="tooltip"
+                    title="Filters"
+                    aria-label="Filters"
+                  >
+                    <FontAwesomeIcon
+                      icon={faFilter}
+                      color="var(--themeHighlightColor)"
+                    />
+                  </button>
                 </div>
                 <div className="form-inline view-options">
                   <ViewBar

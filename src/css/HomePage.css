@@ -20,7 +20,9 @@
 
 .home-wrapper #home-site-title-wrapper a,
 .home-wrapper #home-site-title-wrapper a:visited,
-.home-wrapper #home-site-title-wrapper a:hover {
+.home-wrapper #home-site-title-wrapper a:hover,
+.home-wrapper #home-site-title-wrapper a:focus,
+.home-wrapper #home-site-title-wrapper a:active {
   color: white;
   font-family: "crimson-text", serif;
   font-weight: 600;
@@ -37,13 +39,13 @@
   padding: 40px 0px 40px 0px;
 }
 
-.home-statement-wrapper h1 {
+.home-statement-wrapper h2 {
   font-family: "gineso-condensed", sans-serif;
   text-align: center;
+  font-size: 2.1875rem;
 }
 
 .home-statement {
-  font-size: 16px;
   font-family: "Acherus", sans-serif;
 }
 
@@ -69,11 +71,11 @@
   color: var(--themeHighlightColor);
   font-family: "Acherus", sans-serif;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.4285em;
   border: 2px solid var(--themeHighlightColor);
   border-radius: 0px;
-  width: 181px;
+  width: 11.313rem;
   margin: 5px 20px;
 }
 

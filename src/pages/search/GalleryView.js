@@ -20,9 +20,9 @@ class GalleryView extends Component {
                 this.props.item.custom_key
               )}`}
             >
-              <h5 className="card-title crop-text-3">
+              <h3 className="card-title crop-text-3">
                 {this.props.item.title}
-              </h5>
+              </h3>
               <p className="card-text crop-text-3">
                 {this.props.item.description}
               </p>
