@@ -113,23 +113,9 @@ class ArchivePage extends Component {
     let config = {};
     let tracks = [];
     if (this.isJsonURL(item.manifest_url)) {
-      const miradorConfig = {
-        id: "mirador_viewer",
-        data: [
-          {
-            manifestUri: item.manifest_url,
-            location: this.props.siteDetails.siteId.toUpperCase()
-          }
-        ],
-        windowObjects: [
-          {
-            loadedManifest: item.manifest_url,
-            viewType: "ImageView"
-          }
-        ],
-        showAddFromURLBox: false
-      };
-      display = <MiradorViewer config={miradorConfig} />;
+      display = (
+        <MiradorViewer item={item} siteDetails={this.props.siteDetails} />
+      );
     } else if (this.isImgURL(item.manifest_url)) {
       display = (
         <img className="item-img" src={item.manifest_url} alt={item.title} />
