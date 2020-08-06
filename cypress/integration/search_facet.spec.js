@@ -3,7 +3,7 @@ import { Children } from "react";
 describe('Heading text', () => {
   it('contains the correct title', () => {
     cy.visit('/search');
-    cy.get('h4')
+    cy.get('h2')
       .invoke('text')
       .should('equal', 'Filter My Results');
   });
