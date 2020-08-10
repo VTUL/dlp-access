@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import { labelAttr } from "../lib/MetadataRenderer";
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -33,16 +32,19 @@ class FilterDropdown extends Component {
   };
 
   render() {
-    const text = `${labelAttr(this.props.siteFilter.field)}: ${
-      this.state.selectedValue
-    }`;
+    const text = `${this.state.selectedValue}`;
+    const label =
+      this.props.siteFilter.field.charAt(0).toUpperCase() +
+      this.props.siteFilter.field.slice(1);
     return (
-      <div className="btn-group mr-2">
+      <div className="form-group">
+        <label htmlFor={this.props.siteFilter.field}>{label}</label>
         <Dropdown
           text={text}
           selection
           options={this.valueOptions()}
           onChange={this.updateFilter}
+          id={this.props.siteFilter.field}
         />
       </div>
     );

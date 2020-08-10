@@ -5,7 +5,7 @@ describe('Viewing options interaction', () => {
 
   it('should display list viewing style if "list" viewing option is selected', () => {
     cy.get('#content-wrapper')
-      .find('div.collection-view-options > :nth-child(3) > :nth-child(2)')
+      .find('div.collection-view-options > :nth-child(1) > :nth-child(2)')
       .click()
     cy.get('#content-wrapper')
       .find('div.row')
@@ -15,7 +15,7 @@ describe('Viewing options interaction', () => {
 
   it('should display gallery viewing style if "gallery" viewing option is selected', () => {
     cy.get('#content-wrapper')
-      .find('div.collection-view-options > :nth-child(3) > :nth-child(1)')
+      .find('div.collection-view-options > :nth-child(1) > :nth-child(1)')
       .click()
     cy.get('#content-wrapper')
       .find('div.row')

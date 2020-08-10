@@ -11,16 +11,28 @@ class SortbyDropdown extends Component {
     };
   }
 
-  renameDate = field => {
-    return field === "start_date" ? "Recently Created" : field;
+  formatField = field => {
+    let name = field === "start_date" ? "Date" : field;
+    let capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+    return capitalizedName;
+  };
+
+  formatDirection = (field, direction) => {
+    if (field === "title" && direction === "asc") return "(A-Z)";
+    else if (field === "title" && direction === "desc") return "(Z-A)";
+    else if (field === "start_date" && direction === "desc")
+      return "(Newest first)";
+    else return undefined;
   };
 
   valueOptions = () => {
     return this.props.siteSort.map(val => ({
       key: `${val.field} ${val.direction}`,
-      text: this.renameDate(val.field),
-      value: `${val.field} ${val.direction}`,
-      icon: val.direction === "asc" ? "caret up" : "caret down"
+      text: `${this.formatField(val.field)} ${this.formatDirection(
+        val.field,
+        val.direction
+      )}`,
+      value: `${val.field} ${val.direction}`
     }));
   };
 
@@ -37,16 +49,19 @@ class SortbyDropdown extends Component {
 
   render() {
     let selectedOpt = this.state.selectedValue.split(" ");
-    const text = `Sort by: ${this.renameDate(selectedOpt[0])}`;
-    const icon = selectedOpt[1] === "asc" ? "caret up" : "caret down";
+    const text = `${this.formatField(selectedOpt[0])} ${this.formatDirection(
+      selectedOpt[0],
+      selectedOpt[1]
+    )}`;
     return (
-      <div className="btn-group mr-2">
+      <div className="form-group">
+        <label htmlFor="sort">Sort by</label>
         <Dropdown
           text={text}
           selection
-          icon={icon}
           options={this.valueOptions()}
           onChange={this.updateSort}
+          id="sort"
         />
       </div>
     );

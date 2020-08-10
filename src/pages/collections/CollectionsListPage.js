@@ -47,9 +47,8 @@ class CollectionsListPage extends Component {
         </div>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="col-12 navbar navbar-light justify-content-between">
-              <div></div>
-              <div className="form-inline collection-view-options">
+            <div className="navbar navbar-light justify-content-between">
+              <div className="collection-filters">
                 <FilterDropdown
                   siteFilter={this.props.browseCollections.filter}
                   updateFormState={this.props.updateFormState}
@@ -58,6 +57,8 @@ class CollectionsListPage extends Component {
                   siteSort={this.props.browseCollections.sort}
                   updateFormState={this.props.updateFormState}
                 />
+              </div>
+              <div className="form-inline collection-view-options">
                 <ViewBar
                   view={this.props.view}
                   updateFormState={this.props.updateFormState}

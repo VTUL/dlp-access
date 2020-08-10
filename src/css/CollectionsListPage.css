@@ -21,10 +21,51 @@ div.collection-browse-header h1.list-type span {
   color: var(--themeHighlightColor);
 }
 
-div.collection-browse-wrapper div.container div.row div.navbar {
+.collection-browse-wrapper .navbar {
+  width: 100%;
   margin-bottom: 15px;
+  background-color: var(--light-gray);
+}
+
+.collection-view-options {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.collection-filters .form-group {
+  display: block;
+  padding-right: 10px;
+  font-family: "Acherus", sans-serif;
+}
+
+.collection-filters div.form-group label {
+  justify-content: left;
+  color: var(--themeHighlightColor);
+  display: block;
+}
+
+.collection-filters {
+  width: 100%;
+}
+.collection-filters div.form-group div.ui.selection.dropdown {
+  width: 100%;
 }
 
 div.collection-browse-wrapper div.container div.row div.gallery-item {
   max-width: 380px !important;
+}
+
+@media (min-width: 992px) {
+  .collection-filters {
+    width: initial;
+  }
+  .collection-filters .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+
+  .collection-view-options {
+    width: initial;
+    padding-top: 30px;
+  }
 }
