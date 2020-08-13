@@ -62,7 +62,7 @@ class SearchFacets extends Component {
   setFilters(name, value) {
     let updatedFilters = {};
     let updatedFieldValues = [];
-    if (name === "category") {
+    if (name === "category" || name === "collection") {
       updatedFieldValues = value;
     } else {
       if (

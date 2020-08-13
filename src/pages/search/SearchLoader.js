@@ -113,7 +113,7 @@ class SearchLoader extends Component {
     let restQuery = {};
     const otherKeys = ["field", "q", "view"];
     for (let pair of searchParams.entries()) {
-      if (pair[0] === "category" && pair[1]) {
+      if ((pair[0] === "category" || pair[0] === "collection") && pair[1]) {
         restQuery[pair[0]] = pair[1];
       } else if (!otherKeys.includes(pair[0]) && pair[1]) {
         if (!restQuery[pair[0]]) {

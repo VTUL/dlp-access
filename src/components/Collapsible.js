@@ -32,7 +32,10 @@ class Collapsible extends Component {
 
   handleCheckboxChange = changeEvent => {
     const { name } = changeEvent.target;
-    if (this.props.filterField === "category") {
+    if (
+      this.props.filterField === "category" ||
+      this.props.filterField === "collection"
+    ) {
       if (
         this.props.filters &&
         this.props.filters[this.props.filterField] === name

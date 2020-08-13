@@ -150,6 +150,14 @@ export const fetchSearchResults = async (
       delete filter["allFields"];
     } else if (key === "category") {
       category = filter.category;
+    } else if (key === "collection") {
+      if (filter[key] === "Leonard J. Currie Slides") {
+        filters["identifier"] = { matchPhrasePrefix: "LJC_" };
+      } else {
+        let parent_collection_id = await getCollectionIDByTitle(filter[key]);
+        filters["parent_collection"] = { eq: parent_collection_id };
+      }
+      objectFilter = archiveFilter;
     } else if (key === "title" || key === "description") {
       filters[key] = { matchPhrase: filter[key] };
     } else if (Array.isArray(filter[key])) {
@@ -185,8 +193,10 @@ export const fetchSearchResults = async (
   if (category === "collection") {
     const item_fields = ["format", "medium", "resource_type", "tags"];
     if (
-      filters.hasOwnProperty("and") &&
-      item_fields.some(e => Object.keys(filter).indexOf(e) > -1)
+      filters.hasOwnProperty("parent_collection") ||
+      filters.hasOwnProperty("identifier") ||
+      (filters.hasOwnProperty("and") &&
+        item_fields.some(e => Object.keys(filter).indexOf(e) > -1))
     ) {
       searchResults = {
         items: [],
@@ -236,4 +246,25 @@ const fetchObjects = async (
     })
   );
   return Objects;
+};
+
+const getCollectionIDByTitle = async title => {
+  const Results = await API.graphql(
+    graphqlOperation(queries.searchCollections, {
+      order: "ASC",
+      limit: 1,
+      filter: {
+        title: {
+          eq: title
+        }
+      }
+    })
+  );
+  let id = null;
+  try {
+    id = Results.data.searchCollections.items[0].id;
+  } catch (error) {
+    console.error(`Error getting id for collection title: ${title}`);
+  }
+  return id;
 };
