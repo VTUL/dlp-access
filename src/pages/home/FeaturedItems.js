@@ -40,18 +40,21 @@ class FeaturedItems extends Component {
 
           {/* Indicators - dots*/}
           <div className="featured-items-indicators">
-            <span
+            <button
               className={this.state.startIndex === 0 ? "dot dot-active" : "dot"}
               onClick={() => this.handleClick(0, 4)}
-            ></span>
-            <span
+              type="button"
+            ></button>
+            <button
               className={this.state.startIndex === 4 ? "dot dot-active" : "dot"}
               onClick={() => this.handleClick(4, 8)}
-            ></span>
-            <span
+              type="button"
+            ></button>
+            <button
               className={this.state.startIndex === 8 ? "dot dot-active" : "dot"}
               onClick={() => this.handleClick(8, 13)}
-            ></span>
+              type="button"
+            ></button>
           </div>
         </div>
       );

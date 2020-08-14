@@ -152,12 +152,14 @@ class CollectionsShowPage extends Component {
           <button
             onClick={e => this.onMoreLessClick(section, e)}
             className="more"
+            type="button"
           >
             . . .[more]
           </button>
           <button
             onClick={e => this.onMoreLessClick(section, e)}
             className="less"
+            type="button"
           >
             . . .[less]
           </button>
@@ -264,7 +266,7 @@ class CollectionsShowPage extends Component {
             </div>
           </div>
 
-          <div className="container-fluid">
+          <div className="container">
             <div className="mid-content-row row">
               <div className="col-12 col-lg-8 details-section">
                 <h2 className="details-section-header">
@@ -272,14 +274,17 @@ class CollectionsShowPage extends Component {
                 </h2>
                 <div className="details-section-content-grid">
                   {this.subCollectionDescription()}
-                  <RenderItemsDetailed
-                    keyArray={
-                      this.props.siteDetails.displayedAttributes.collection
-                    }
-                    item={this.state.collection}
-                    languages={this.state.languages}
-                    type="grid"
-                  />
+                  <table>
+                    <caption class="sr-only">Collection Metadata</caption>
+                    <RenderItemsDetailed
+                      keyArray={
+                        this.props.siteDetails.displayedAttributes.collection
+                      }
+                      item={this.state.collection}
+                      languages={this.state.languages}
+                      type="table"
+                    />
+                  </table>
                 </div>
               </div>
 

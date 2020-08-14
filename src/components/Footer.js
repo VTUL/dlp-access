@@ -32,7 +32,9 @@ class Footer extends Component {
           </div>
           <div className="lib-give">
             <a href="https://lib.vt.edu/about-us/give-to-the-library.html">
-              <button className="give-button">GIVE TO THE LIBRARY</button>
+              <button className="give-button" tabIndex="-1">
+                GIVE TO THE LIBRARY
+              </button>
             </a>
             <h3 className="footer-h3">FOLLOW US</h3>
             <div className="social-icons">

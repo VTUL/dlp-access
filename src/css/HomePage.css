@@ -12,18 +12,14 @@
   text-align: center;
   text-transform: uppercase;
   position: absolute;
-  font-size: 20px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.home-wrapper #home-site-title-wrapper a,
-.home-wrapper #home-site-title-wrapper a:visited,
-.home-wrapper #home-site-title-wrapper a:hover,
-.home-wrapper #home-site-title-wrapper a:focus,
-.home-wrapper #home-site-title-wrapper a:active {
+.home-wrapper #home-site-title-wrapper h1 {
   color: white;
+  font-size: 25px;
   font-family: "crimson-text", serif;
   font-weight: 600;
   text-shadow: -2px 3px 5px #000000b5;
@@ -67,11 +63,13 @@
   justify-content: center;
 }
 
-.home-nav-links button {
+.home-nav-links a {
   color: var(--themeHighlightColor);
   font-family: "Acherus", sans-serif;
   font-weight: 600;
   font-size: 1rem;
+  text-align: center;
+  padding: 5px;
   line-height: 1.4285em;
   border: 2px solid var(--themeHighlightColor);
   border-radius: 0px;
@@ -79,10 +77,11 @@
   margin: 5px 20px;
 }
 
-.home-nav-links button:hover,
-.home-nav-links button:focus {
+.home-nav-links a:hover,
+.home-nav-links a:focus {
   color: white;
   background-color: var(--themeHighlightColor);
+  text-decoration: none;
 }
 
 @media (min-width: 576px) {
@@ -106,7 +105,7 @@
 }
 
 @media (min-width: 768px) {
-  .home-wrapper #home-site-title-wrapper {
+  .home-wrapper #home-site-title-wrapper h1 {
     font-size: 40px;
   }
 }

@@ -91,76 +91,72 @@ span.creator:after {
   color: var(--hokieOrangeHover);
 }
 
-.container-fluid .details-section {
+.mid-content-row .details-section {
   line-height: 1.2em;
   border-bottom: 1px solid var(--dark-gray);
   border-right: none;
 }
 @media only screen and (min-width: 992px) {
-  .container-fluid .details-section {
+  .mid-content-row .details-section {
     border-right: 1px solid var(--dark-gray);
     border-bottom: none;
   }
 }
 
-.container-fluid .details-section-header {
+.mid-content-row .details-section-header {
   width: 100%;
   border-bottom: 1px solid var(--light-gray);
 }
-.container-fluid h2.details-section-header {
+.mid-content-row h2.details-section-header {
   font-family: "gineso-condensed", sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
 }
 
-.container-fluid .details-section-content-grid {
+.mid-content-row .details-section-content-grid {
   margin-top: 20px;
 }
 
-.container-fluid .details-section-content-grid .collection-detail-entry {
+.mid-content-row .details-section-content-grid td,
+.mid-content-row .details-section-content-grid th {
+  display: block;
+  padding: 0;
+  line-height: 1.25em;
+}
+
+.mid-content-row .details-section-content-grid td {
   margin-bottom: 15px;
 }
 
-.container-fluid
-  .details-section-content-grid
-  div.collection-detail-entry:last-child {
-  margin-bottom: 30px;
+.mid-content-row div.details-section-content-grid {
+  margin-bottom: 15px;
 }
 
 @media only screen and (min-width: 992px) {
-  .container-fluid
-    .details-section-content-grid
-    div.collection-detail-entry:last-child {
-    margin-bottom: 15px;
+  .mid-content-row .details-section-content-grid {
+    margin-bottom: 0px;
   }
 }
 
-.container-fluid .details-section-content-grid .collection-detail-key {
+.mid-content-row .details-section-content-grid .collection-detail-key {
   font-family: "gineso-condensed", sans-serif;
   font-size: 1.125rem;
   font-weight: 500;
 }
-.container-fluid .details-section-content-grid .collection-detail-value {
+
+.mid-content-row .details-section-content-grid .collection-detail-value {
   font-family: "Acherus", sans-serif;
   font-size: 1rem;
 }
 
-.collection-detail-value.identifier {
+.mid-content-row .collection-detail-value.identifier {
   -ms-word-break: break-all;
   word-break: break-all;
 }
 
-.container-fluid div.subcollections-section {
+.mid-content-row div.subcollections-section {
   padding-left: 20px;
   line-height: 1.2em;
-}
-
-.container-fluid
-  div.subcollections-section
-  .ui.compact.selection.dropdown
-  .default.text {
-  font-family: "gineso-condensed", sans-serif;
-  font-size: 16px;
 }
 
 div.collection-items-grid {
@@ -173,10 +169,6 @@ div.collection-item {
   width: 250px;
   min-height: 300px;
   margin: 0 auto;
-}
-
-.collection-items-grid .collection-item-wrapper {
-  border: 1px solid var(--light-gray);
 }
 
 div.collection-item .item-image {
@@ -240,31 +232,4 @@ div.collection-items-list-wrapper {
 .collection-items-list-wrapper .subCollectionList a:visited {
   font-family: "gineso-condensed", sans-serif;
   font-size: 1rem;
-}
-
-div.collection-items-list table tbody tr td.item-image img {
-  width: 100px;
-}
-div.collection-items-list table tbody tr td.item-image {
-  padding-right: 0;
-  padding-left: 0.25rem;
-}
-div.collection-items-list table tbody tr td.item-info div.item-link-wrapper {
-  font-weight: 700;
-}
-
-div.collection-items-list table tbody tr td.item-info a,
-div.collection-items-list table tbody tr td.item-info a:visited {
-  color: var(--link-blue);
-}
-
-div.collection-items-list
-  table
-  tbody
-  tr
-  td.item-info
-  div.collection-link-wrapper
-  a {
-  -ms-word-break: break-all;
-  word-break: break-all;
 }

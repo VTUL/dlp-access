@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.skipLink {
+  color: var(--hokieMaroon) !important;
+  font-family: Acherus, sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 1.25rem;
+}

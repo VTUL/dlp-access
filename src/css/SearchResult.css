@@ -21,23 +21,21 @@ div.search-results div.row div#content div.navbar {
   background-color: var(--light-gray);
 }
 
-.navbar .ui.compact.selection.dropdown {
+.ui.compact.selection.dropdown {
   background-color: #ffffff;
   border-color: #707070;
   color: #000000;
 }
 
-.navbar .ui.compact.selection.dropdown .default.text {
+.ui.compact.selection.dropdown .default.text {
   color: #000000;
+  font-size: 1rem;
+  line-height: 1rem;
 }
 
 .view-options {
   width: 100%;
   justify-content: flex-end;
-}
-
-.view-options div button:active {
-  background-color: var(--dark-gray);
 }
 
 .search-results-section {
@@ -93,14 +91,6 @@ div.search-results div.row div#content div.navbar {
   text-decoration: none;
 }
 
-.glyphicon-list:before {
-  content: "\e056";
-}
-
-.view-icon-gallery:before {
-  content: "\e011";
-}
-
 div.masonry div.card {
   margin: 0.75rem 0 0 0;
 }
@@ -129,12 +119,25 @@ div.masonry div.card {
 }
 
 .facet-title {
-  font-family: "Acherus", sans-serif;
   cursor: pointer;
   border-top: solid 1px var(--dark-gray);
   padding: 10px;
   padding-left: 20px;
   color: #000000;
+}
+
+.facet-title h3 {
+  font-family: "Acherus", sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.facet-title button {
+  border: none;
+  background-color: inherit;
 }
 
 .facet-modal-wrapper {
@@ -226,7 +229,7 @@ div.masonry div.card {
 }
 
 .facet-navbar-heading {
-  width: 100px;
+  width: 6.25rem;
   flex: 0 0 auto;
   font-weight: 600;
   padding-bottom: 5px;
@@ -256,7 +259,7 @@ div.masonry div.card {
 }
 
 .facet-navbar-clear {
-  width: 135px;
+  width: 9.375em;
   padding-top: 5px;
   flex: 0 0 auto;
 }
@@ -273,7 +276,7 @@ div.masonry div.card {
   color: var(--themeHighlightColor);
 }
 
-@media (min-width: 576px) {
+@media (min-width: 768px) {
   .facet-navbar {
     padding-top: 5px;
     flex-direction: row;

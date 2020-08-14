@@ -186,7 +186,7 @@ const RenderAttrDetailed = ({ item, attribute, languages, type }) => {
     if (type === "table") {
       return (
         <tr>
-          <td className="collection-detail-key">{attribute.label}</td>
+          <th className="collection-detail-key" scope="row">{attribute.label}</th>
           <td className={`collection-detail-value ${value_style}`}>
             {textFormat(item, attribute.field, languages)}
           </td>

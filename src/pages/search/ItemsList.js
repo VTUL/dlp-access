@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ItemListView from "./ItemListView";
 import GalleryView from "./GalleryView";
 import { getCategory } from "../../lib/MetadataRenderer";
-import { MasonryView } from "./MasonryView";
+import MasonryView from "./MasonryView";
 
 class ItemsList extends Component {
   getClassName() {

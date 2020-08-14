@@ -36,29 +36,30 @@ div.item-image-section img.item-img {
   font-family: "Acherus", sans-serif;
 }
 
-div.details-section-metadata {
+.details-section-metadata {
   border-left: none;
   padding-top: 40px;
 }
 
-div.details-section-metadata a {
+.details-section-metadata a {
   color: var(--themeHighlightColor);
 }
 
-div.details-section-metadata table tbody tr td {
+.details-section-metadata td,
+.details-section-metadata th {
   display: block;
   padding: 0;
   line-height: 1.25em;
 }
 
-div.details-section-metadata table tbody tr td.collection-detail-key {
+.details-section-metadata th.collection-detail-key {
   font-family: "gineso-condensed", sans-serif;
   font-size: 1.15rem;
   font-weight: 500;
   vertical-align: text-top;
 }
 
-div.details-section-metadata table tbody tr td.collection-detail-value {
+.details-section-metadata td.collection-detail-value {
   font-family: "Acherus", sans-serif;
   vertical-align: text-top;
   padding-bottom: 10px;

@@ -104,11 +104,11 @@ class Collapsible extends Component {
     const DisplayAllLess = () => {
       if (this.props.facetNodes.length > 5) {
         return this.partialListLength() > 5 ? (
-          <button className="less" data-cy="show-less-button">
+          <button type="button" className="less" data-cy="show-less-button">
             Show Less
           </button>
         ) : (
-          <button className="more" data-cy="show-all-button">
+          <button type="button" className="more" data-cy="show-all-button">
             Show All
           </button>
         );
@@ -122,7 +122,11 @@ class Collapsible extends Component {
           className="facet-title"
           data-cy="filter-collapsible"
         >
-          {labelAttr(this.props.filterField)}
+          <h3>
+            <button type="button" aria-expanded={this.state.expanded}>
+              {labelAttr(this.props.filterField)}
+            </button>
+          </h3>
           {this.state.expanded ? (
             <FontAwesomeIcon
               icon={faAngleDoubleRight}

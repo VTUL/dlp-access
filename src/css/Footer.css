@@ -62,6 +62,13 @@ footer.lib-ft a:hover {
   text-decoration: underline;
 }
 
+footer.lib-ft a:focus {
+  outline-color: #75787b;
+  outline-offset: 1px;
+  outline-style: dashed;
+  outline-width: 2px;
+}
+
 footer.lib-ft p {
   color: #020202;
   font-size: 0.8em;

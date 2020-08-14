@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
-import { arkLinkFormatted } from "../lib/MetadataRenderer";
 
 import "../css/Thumbnail.css";
 
@@ -21,17 +19,11 @@ class Thumbnail extends Component {
     return (
       <div className="image-container">
         {this.labelDisplay()}
-        <NavLink
-          to={`/${this.props.category}/${arkLinkFormatted(
-            this.props.item.custom_key
-          )}`}
-        >
-          <img
-            className={this.props.className}
-            src={this.props.item.thumbnail_path}
-            alt={this.props.item.title}
-          />
-        </NavLink>
+        <img
+          className={this.props.className}
+          src={this.props.item.thumbnail_path}
+          alt={this.props.item.title}
+        />
       </div>
     );
   }

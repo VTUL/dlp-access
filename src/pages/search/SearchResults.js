@@ -97,10 +97,13 @@ class SearchResults extends Component {
               </ul>
             </div>
             <div className="facet-navbar-clear">
-              <p>
+              <p id="clearButton">
                 Clear All Filters
-                <span className="facet-navbar-clear">
-                  <NavLink to={`/search/?${qs.stringify(defaultSearch)}`}>
+                <span>
+                  <NavLink
+                    to={`/search/?${qs.stringify(defaultSearch)}`}
+                    aria-labelledby="clearButton"
+                  >
                     <i className="fas fa-times"></i>
                   </NavLink>
                 </span>

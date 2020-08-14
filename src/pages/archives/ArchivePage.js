@@ -205,15 +205,16 @@ class ArchivePage extends Component {
                   </div>
                   <div className="col-lg-6 details-section-metadata">
                     <table>
-                      <tbody>
-                        <RenderItemsDetailed
-                          keyArray={
-                            this.props.siteDetails.displayedAttributes.archive
-                          }
-                          item={item}
-                          languages={this.state.languages}
-                        />
-                      </tbody>
+                      <caption className="sr-only">
+                        <h2>Item Metadata</h2>
+                      </caption>
+                      <RenderItemsDetailed
+                        keyArray={
+                          this.props.siteDetails.displayedAttributes.archive
+                        }
+                        item={item}
+                        languages={this.state.languages}
+                      />
                     </table>
                   </div>
                 </div>

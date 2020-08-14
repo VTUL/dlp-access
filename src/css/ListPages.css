@@ -14,7 +14,7 @@ div.collection-entry {
   color: var(--hokieOrangeHover);
 }
 
-.collection-entry .collection-details h3 a {
+.collection-entry .collection-details h3 {
   color: black;
   -webkit-line-clamp: 5;
   overflow: hidden;
@@ -60,6 +60,7 @@ div.collection-detail table tr .collection-detail-key {
   padding-right: 3px;
   font-family: "gineso-condensed", sans-serif;
   vertical-align: text-top;
+  color: black;
 }
 
 div.collection-detail table tr .collection-detail-value {
@@ -68,6 +69,7 @@ div.collection-detail table tr .collection-detail-value {
   font-weight: 400;
   text-align: left;
   vertical-align: text-top;
+  color: black;
 }
 
 td.collection-detail-value div span.list-unstyled {

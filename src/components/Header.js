@@ -15,6 +15,12 @@ class Header extends Component {
         <div className="header">
           <div className="row vt-one-headerRow">
             <header className="col header-col" role="banner">
+              <a
+                className="sr-only sr-only-focusable skipLink"
+                href="#content-wrapper"
+              >
+                Skip to main content
+              </a>
               <div id="vt_logo">
                 <a className="vt-logo-link" href="https://lib.vt.edu">
                   <img

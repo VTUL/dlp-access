@@ -18,7 +18,7 @@ class ViewBar extends Component {
         <button
           type="button"
           key={index}
-          className="btn btn-outline-light"
+          className="btn"
           data-toggle="tooltip"
           title={`${buttonType} view`}
           aria-label={`${buttonType} view`}
