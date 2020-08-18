@@ -16,7 +16,7 @@ describe('Collapsible search filter field', () => {
 
   it('displays the facet field while hiding the list of facet values', () => {
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div.facet-listing')
-    .should('not.be.visible');
+      .should('not.be.visible');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1)')
       .invoke('text')
       .should('equal', 'Category');

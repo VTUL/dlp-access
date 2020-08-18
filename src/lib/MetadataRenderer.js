@@ -160,15 +160,15 @@ const MoreLink = ({ category, item }) => {
 
 const RenderAttribute = ({ item, attribute, languages }) => {
   if (textFormat(item, attribute, languages)) {
-    let value_style = attribute === "identifier" ? "identifier" : "";
+    let value_style = attribute.field === "identifier" ? "identifier" : "";
     return (
       <div className="collection-detail">
         <table>
           <tbody>
             <tr>
-              <td className="collection-detail-key">{labelAttr(attribute)}:</td>
+              <td className="collection-detail-key">{attribute.label}:</td>
               <td className={`collection-detail-value ${value_style}`}>
-                {textFormat(item, attribute, languages)}
+                {textFormat(item, attribute.field, languages)}
               </td>
             </tr>
           </tbody>
@@ -181,23 +181,23 @@ const RenderAttribute = ({ item, attribute, languages }) => {
 };
 
 const RenderAttrDetailed = ({ item, attribute, languages, type }) => {
-  if (textFormat(item, attribute, languages)) {
-    let value_style = attribute === "identifier" ? "identifier" : "";
+  if (textFormat(item, attribute.field, languages)) {
+    let value_style = attribute.field === "identifier" ? "identifier" : "";
     if (type === "table") {
       return (
         <tr>
-          <td className="collection-detail-key">{labelAttr(attribute)}</td>
+          <td className="collection-detail-key">{attribute.label}</td>
           <td className={`collection-detail-value ${value_style}`}>
-            {textFormat(item, attribute, languages)}
+            {textFormat(item, attribute.field, languages)}
           </td>
         </tr>
       );
     } else if (type === "grid") {
       return (
         <div className="collection-detail-entry">
-          <div className="collection-detail-key">{labelAttr(attribute)}</div>
+          <div className="collection-detail-key">{attribute.label}</div>
           <div className={`collection-detail-value ${value_style}`}>
-            {textFormat(item, attribute, languages)}
+            {textFormat(item, attribute.field, languages)}
           </div>
         </div>
       );

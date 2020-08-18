@@ -37,7 +37,10 @@ class CollectionsShowLoader extends Component {
                 siteTitle={this.props.siteDetails.siteTitle}
                 pageTitle={collection.title}
               />
-              <CollectionsShowPage collection={collection} />
+              <CollectionsShowPage
+                collection={collection}
+                siteDetails={this.props.siteDetails}
+              />
             </>
           );
         }}

@@ -222,20 +222,6 @@ class CollectionsShowPage extends Component {
   }
 
   render() {
-    const KeyArray = [
-      "size",
-      "creator",
-      "rights_statement",
-      "date",
-      "subject",
-      "language",
-      "identifier",
-      "bibliographic_citation",
-      "rights_holder",
-      "related_url",
-      "provenance",
-      "belongs_to"
-    ];
     const topLevelDesc =
       this.state.description || this.state.collection.description;
 
@@ -287,7 +273,9 @@ class CollectionsShowPage extends Component {
                 <div className="details-section-content-grid">
                   {this.subCollectionDescription()}
                   <RenderItemsDetailed
-                    keyArray={KeyArray}
+                    keyArray={
+                      this.props.siteDetails.displayedAttributes.collection
+                    }
                     item={this.state.collection}
                     languages={this.state.languages}
                     type="grid"

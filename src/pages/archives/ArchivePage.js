@@ -17,29 +17,6 @@ import { searchArchives } from "../../graphql/queries";
 
 import "../../css/ArchivePage.css";
 
-const KeyArray = [
-  "identifier",
-  "belongs_to",
-  "bibliographic_citation",
-  "contributor",
-  "creator",
-  "custom_key",
-  "format",
-  "language",
-  "location",
-  "medium",
-  "resource_type",
-  "related_url",
-  "provenance",
-  "repository",
-  "reference",
-  "rights_holder",
-  "rights_statement",
-  "source",
-  "start_date",
-  "tags"
-];
-
 class ArchivePage extends Component {
   constructor(props) {
     super(props);
@@ -230,7 +207,9 @@ class ArchivePage extends Component {
                     <table>
                       <tbody>
                         <RenderItemsDetailed
-                          keyArray={KeyArray}
+                          keyArray={
+                            this.props.siteDetails.displayedAttributes.archive
+                          }
                           item={item}
                           languages={this.state.languages}
                         />
