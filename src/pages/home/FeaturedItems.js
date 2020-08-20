@@ -41,16 +41,19 @@ class FeaturedItems extends Component {
           {/* Indicators - dots*/}
           <div className="featured-items-indicators">
             <button
+              aria-label="Card group one"
               className={this.state.startIndex === 0 ? "dot dot-active" : "dot"}
               onClick={() => this.handleClick(0, 4)}
               type="button"
             ></button>
             <button
+              aria-label="Card group two"
               className={this.state.startIndex === 4 ? "dot dot-active" : "dot"}
               onClick={() => this.handleClick(4, 8)}
               type="button"
             ></button>
             <button
+              aria-label="Card group three"
               className={this.state.startIndex === 8 ? "dot dot-active" : "dot"}
               onClick={() => this.handleClick(8, 13)}
               type="button"
