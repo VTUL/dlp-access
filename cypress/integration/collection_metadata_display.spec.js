@@ -8,21 +8,21 @@ describe('A single Collection Show page metadata section', () => {
 
   it('displays the size field and its corresponding value', () => {
     cy.get('@metadataSection')
-      .find(':nth-child(1) > th.collection-detail-key')
+      .find(':nth-child(2) > th.collection-detail-key')
       .invoke('text')
       .should('equal', 'Size')
     cy.get('@metadataSection')
-      .find(':nth-child(1) > td.collection-detail-value')
+      .find(':nth-child(2) > td.collection-detail-value')
       .contains('Collections:')
   })
 
   it('displays the identifier field and its corresponding value', () => {
     cy.get('@metadataSection')
-      .find(':nth-child(7) > th.collection-detail-key')
+      .find(':nth-child(8) > th.collection-detail-key')
       .invoke('text')
       .should('equal', 'Identifier')
     cy.get('@metadataSection')
-      .find(':nth-child(7) > td.collection-detail-value').click()
+      .find(':nth-child(8) > td.collection-detail-value').click()
     cy.url().should('include', '/collection/vb765t25')
   })
 })
