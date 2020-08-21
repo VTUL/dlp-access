@@ -47,8 +47,17 @@ class CollectionsListPage extends Component {
         </div>
         <div className="container">
           <div className="row justify-content-center">
-            <div className="navbar navbar-light justify-content-between">
-              <div className="collection-filters">
+            <div
+              className="navbar navbar-light justify-content-between"
+              role="region"
+              aria-label="Browsing Tools"
+              aria-controls="browse-results"
+            >
+              <div
+                className="collection-filters"
+                role="group"
+                aria-roledescription="Filter and sort options"
+              >
                 <FilterDropdown
                   siteFilter={this.props.browseCollections.filter}
                   updateFormState={this.props.updateFormState}
@@ -67,6 +76,13 @@ class CollectionsListPage extends Component {
                 <ResultsNumberDropdown setLimit={this.props.setLimit} />
               </div>
             </div>
+          </div>
+          <div
+            className="row justify-content-center"
+            id="browse-results"
+            role="region"
+            aria-label="Browse results"
+          >
             {this.props.collections.map(collection => {
               if (this.props.view === "Gallery") {
                 return (

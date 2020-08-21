@@ -76,20 +76,43 @@ class Breadcrumbs extends Component {
             /{" "}
           </span>
         </li>
-        {linksCopy.reverse().map(link => (
-          <li
-            className="vt-breadcrumbs-item"
-            key={arkLinkFormatted(link.custom_key)}
-          >
-            <a className="vt-breadcrumbs-link" href={link.url}>
-              {link.title}
-            </a>
-            <span className="breadcrumb-slash" aria-hidden="true">
-              {" "}
-              /{" "}
-            </span>
-          </li>
-        ))}
+        {linksCopy.reverse().map((link, index, arr) => {
+          if (index !== arr.length - 1) {
+            return (
+              <li
+                className="vt-breadcrumbs-item"
+                key={arkLinkFormatted(link.custom_key)}
+              >
+                <a className="vt-breadcrumbs-link" href={link.url}>
+                  {link.title}
+                </a>
+                <span className="breadcrumb-slash" aria-hidden="true">
+                  {" "}
+                  /{" "}
+                </span>
+              </li>
+            );
+          } else {
+            return (
+              <li
+                className="vt-breadcrumbs-item"
+                key={arkLinkFormatted(link.custom_key)}
+              >
+                <a
+                  className="vt-breadcrumbs-link"
+                  href={link.url}
+                  aria-current="page"
+                >
+                  {link.title}
+                </a>
+                <span className="breadcrumb-slash" aria-hidden="true">
+                  {" "}
+                  /{" "}
+                </span>
+              </li>
+            );
+          }
+        })}
       </ol>
     );
   }

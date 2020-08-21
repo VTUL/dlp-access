@@ -28,11 +28,11 @@ class AboutPage extends Component {
             siteTitle={this.props.siteDetails.siteTitle}
             pageTitle="About"
           />
-          <h1>
+          <h1 id="about-heading">
             About <span>{this.props.siteDetails.siteTitle}</span>
           </h1>
         </div>
-        <div className="col-md-8">
+        <div className="col-md-8" role="region" aria-labelledby="about-heading">
           <div
             className="about-details"
             dangerouslySetInnerHTML={{ __html: this.state.copy }}

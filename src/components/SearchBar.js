@@ -91,7 +91,7 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div role="search">
         <div className="searchbar-wrapper">
           {this.searchBox()}
           <label htmlFor="field-options" className="sr-only">

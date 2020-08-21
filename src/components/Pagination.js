@@ -51,7 +51,11 @@ class Pagination extends Component {
 
     if (this.props.atBottom) {
       return (
-        <div className="pagination-section">
+        <div
+          className="pagination-section"
+          role="region"
+          aria-label="Pagination"
+        >
           <Displaying />
           <Previous />
           <Next />

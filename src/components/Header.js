@@ -42,6 +42,7 @@ class Header extends Component {
                     aria-controls="vt_main_nav"
                     aria-expanded="false"
                     onClick={this.onNavClick}
+                    aria-haspopup="menu"
                   >
                     <span className="vt-nav-toggleLabel">Menu</span>
                     <span
@@ -98,7 +99,7 @@ class Header extends Component {
           <!-- END HEADER -->
           <!-- ///////////////////////////////////////////// -->
         */}
-          <nav aria-label="Page Context" className="vt-page-path row">
+          <nav aria-label="Site breadcrumbs" className="vt-page-path row">
             <div className="gateway">
               <HeaderBreadcrumbs
                 siteDetails={this.props.siteDetails}

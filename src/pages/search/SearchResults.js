@@ -66,35 +66,54 @@ class SearchResults extends Component {
     const FiltersDisplay = () => {
       if (Object.keys(this.props.filters).length > 0) {
         return (
-          <div className="facet-navbar">
-            <div className="facet-navbar-heading">Filtering by:</div>
+          <div
+            className="facet-navbar"
+            role="group"
+            aria-roledescription="Current filters"
+          >
+            <div className="facet-navbar-heading">
+              <h2 id="facet-navbar-title">Filtering by:</h2>
+            </div>
             <div
               className="facet-navbar-facets"
               data-cy="search-filter-field-value-pairs"
             >
-              <ul>
+              <div
+                id="facet-navbar-grid"
+                role="grid"
+                aria-labelledby="facet-navbar-title"
+                aria-rowcount={Object.keys(this.props.filters).length}
+                data-wrap-cols="true"
+              >
                 {Object.entries(this.props.filters).map(([key, value]) => {
                   if (Array.isArray(value)) {
                     return value.map((val, idx) => {
                       return (
-                        <li key={`${idx}_${val}`}>
-                          <span className="facet-navbar-name">{key}</span>
-                          <span className="facet-navbar-arrow"> &#8250; </span>
-                          {val}
-                        </li>
+                        <div key={`${idx}_${val}`} role="row">
+                          <div role="gridcell" tabIndex="-1">
+                            <span className="facet-navbar-name">{key}</span>
+                            <span className="facet-navbar-arrow">
+                              {" "}
+                              &#8250;{" "}
+                            </span>
+                            {val}
+                          </div>
+                        </div>
                       );
                     });
                   } else {
                     return (
-                      <li key={key}>
-                        <span className="facet-navbar-name">{key}</span>
-                        <span className="facet-navbar-arrow"> &#8250; </span>
-                        {value}
-                      </li>
+                      <div key={key} role="row">
+                        <div role="gridcell" tabIndex="-1">
+                          <span className="facet-navbar-name">{key}</span>
+                          <span className="facet-navbar-arrow"> &#8250; </span>
+                          {value}
+                        </div>
+                      </div>
                     );
                   }
                 })}
-              </ul>
+              </div>
             </div>
             <div className="facet-navbar-clear">
               <p id="clearButton">
@@ -103,6 +122,8 @@ class SearchResults extends Component {
                   <NavLink
                     to={`/search/?${qs.stringify(defaultSearch)}`}
                     aria-labelledby="clearButton"
+                    role="button"
+                    aria-controls="facet-navbar-grid"
                   >
                     <i className="fas fa-times"></i>
                   </NavLink>
@@ -141,7 +162,12 @@ class SearchResults extends Component {
               />
             </div>
             <div id="content" className="col-lg-9 col-sm-12">
-              <div className="navbar navbar-light justify-content-between">
+              <div
+                className="navbar navbar-light justify-content-between"
+                role="region"
+                aria-label="Search Tools"
+                aria-controls="search-results"
+              >
                 <div className="navbar-text text-dark">
                   <ItemsPaginationDisplay atBottom={false} />
                 </div>
@@ -151,6 +177,7 @@ class SearchResults extends Component {
                     data-toggle="tooltip"
                     title="Filters"
                     aria-label="Filters"
+                    aria-pressed={this.state.isActive}
                   >
                     <FontAwesomeIcon
                       icon={faFilter}

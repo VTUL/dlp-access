@@ -216,7 +216,7 @@ div.collection-item .item-image img {
 div.collection-items-list-wrapper {
   margin-top: 30px;
 }
-.collection-items-list-wrapper h4.collection-items-header {
+.collection-items-list-wrapper h2.collection-items-header {
   font-family: "gineso-condensed", sans-serif;
   font-size: 1.3125rem;
 }

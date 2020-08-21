@@ -76,6 +76,7 @@ class SiteNavigationLinks extends Component {
           aria-expanded="false"
           aria-label={accessibilityText}
           aria-controls={ariaControls}
+          aria-haspopup="true"
         >
           <span className="far fa-times" focusable="false"></span>
           <span className="sr-only">{accessibilityText}</span>
@@ -89,7 +90,7 @@ class SiteNavigationLinks extends Component {
     const additionalListItems = this.buildListItems();
 
     return (
-      <ul id="vt_main_nav" role="presentation" aria-label="Pages in Site">
+      <ul id="vt_main_nav" aria-label="Pages in Site">
         <li className="nav-item">
           <div className="link-wrapper">
             <a href="/" tabIndex="-1">

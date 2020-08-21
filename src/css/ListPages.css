@@ -61,6 +61,7 @@ div.collection-detail table tr .collection-detail-key {
   font-family: "gineso-condensed", sans-serif;
   vertical-align: text-top;
   color: black;
+  font-weight: 400;
 }
 
 div.collection-detail table tr .collection-detail-value {

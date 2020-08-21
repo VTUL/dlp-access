@@ -41,8 +41,15 @@ div.item-image-section img.item-img {
   padding-top: 40px;
 }
 
-.details-section-metadata a {
-  color: var(--themeHighlightColor);
+.details-section-metadata a,
+.details-section-metadata a:visited {
+  color: var(--hokieOrange);
+}
+
+.details-section-metadata a:hover,
+.details-section-metadata a:focus,
+.details-section-metadata a:active {
+  color: var(--hokieOrangeHover);
 }
 
 .details-section-metadata td,

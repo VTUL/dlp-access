@@ -153,6 +153,8 @@ class CollectionsShowPage extends Component {
             onClick={e => this.onMoreLessClick(section, e)}
             className="more"
             type="button"
+            aria-controls="collection-description"
+            aria-expanded="false"
           >
             . . .[more]
           </button>
@@ -160,6 +162,8 @@ class CollectionsShowPage extends Component {
             onClick={e => this.onMoreLessClick(section, e)}
             className="less"
             type="button"
+            aria-controls="collection-description"
+            aria-expanded="true"
           >
             . . .[less]
           </button>
@@ -231,13 +235,19 @@ class CollectionsShowPage extends Component {
       return (
         <div>
           <div className="breadcrumbs-wrapper">
-            <Breadcrumbs
-              category="Collections"
-              record={this.state.collection}
-              setTitleList={this.setTitleList.bind(this)}
-            />
+            <nav aria-label="Collection breadcrumbs">
+              <Breadcrumbs
+                category="Collections"
+                record={this.state.collection}
+                setTitleList={this.setTitleList.bind(this)}
+              />
+            </nav>
           </div>
-          <div className="top-content-row row">
+          <div
+            className="top-content-row row"
+            role="region"
+            aria-labelledby="collection-page-title"
+          >
             <div className="collection-img-col col-sm-4">
               <img
                 src={this.collectionImg()}
@@ -245,7 +255,9 @@ class CollectionsShowPage extends Component {
               />
             </div>
             <div className="collection-details-col col-sm-8">
-              <h1 className="collection-title">{this.collectionTitle()}</h1>
+              <h1 className="collection-title" id="collection-page-title">
+                {this.collectionTitle()}
+              </h1>
               <div className="post-heading">
                 <this.creatorDates collection={this.state.collection} />
                 <span className="last-updated">
@@ -256,6 +268,7 @@ class CollectionsShowPage extends Component {
                 className={`description ${
                   this.state.descriptionTruncated ? "trunc" : "full"
                 }`}
+                id="collection-description"
               >
                 <div>
                   <h2 className="introduction">Introduction</h2>
@@ -268,27 +281,39 @@ class CollectionsShowPage extends Component {
 
           <div className="container">
             <div className="mid-content-row row">
-              <div className="col-12 col-lg-8 details-section">
-                <h2 className="details-section-header">
+              <div
+                className="col-12 col-lg-8 details-section"
+                role="region"
+                aria-labelledby="collection-details-section-header"
+              >
+                <h2
+                  className="details-section-header"
+                  id="collection-details-section-header"
+                >
                   {this.metadataTitle()}
                 </h2>
                 <div className="details-section-content-grid">
                   {this.subCollectionDescription()}
-                  <table>
-                    <caption class="sr-only">Collection Metadata</caption>
-                    <RenderItemsDetailed
-                      keyArray={
-                        this.props.siteDetails.displayedAttributes.collection
-                      }
-                      item={this.state.collection}
-                      languages={this.state.languages}
-                      type="table"
-                    />
+                  <table aria-label="Collection Metadata">
+                    <tbody>
+                      <RenderItemsDetailed
+                        keyArray={
+                          this.props.siteDetails.displayedAttributes.collection
+                        }
+                        item={this.state.collection}
+                        languages={this.state.languages}
+                        type="table"
+                      />
+                    </tbody>
                   </table>
                 </div>
               </div>
 
-              <div className="col-12 col-lg-4 subcollections-section">
+              <div
+                className="col-12 col-lg-4 subcollections-section"
+                role="region"
+                aria-labelledby="collection-subcollections-section"
+              >
                 <SubCollectionsLoader
                   parent={this}
                   collection={this.state.collection}

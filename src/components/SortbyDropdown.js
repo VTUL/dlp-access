@@ -55,13 +55,14 @@ class SortbyDropdown extends Component {
     )}`;
     return (
       <div className="form-group">
-        <label htmlFor="sort">Sort by</label>
+        <label id="sort-label">Sort by</label>
         <Dropdown
           text={text}
           selection
           options={this.valueOptions()}
           onChange={this.updateSort}
-          id="sort"
+          aria-labelledby="sort-label"
+          aria-haspopup="listbox"
         />
       </div>
     );

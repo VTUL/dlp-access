@@ -192,29 +192,40 @@ class ArchivePage extends Component {
 
                 <div className="item-image-section">
                   <div className="breadcrumbs-wrapper">
-                    <Breadcrumbs category={"Archives"} record={item} />
+                    <nav aria-label="Collection breadcrumbs">
+                      <Breadcrumbs category={"Archives"} record={item} />
+                    </nav>
                   </div>
                   <div className="row">
-                    <div className="col-sm-12">{this.mediaDisplay(item)}</div>
+                    <div
+                      className="col-sm-12"
+                      role="region"
+                      aria-label="Item media"
+                    >
+                      {this.mediaDisplay(item)}
+                    </div>
                   </div>
                 </div>
-                <div className="row item-details-section">
+                <div
+                  className="row item-details-section"
+                  role="region"
+                  aria-label="Item details"
+                >
                   <div className="col-lg-6 details-section-description">
                     <h1>{item.title}</h1>
                     {addNewlineInDesc(item.description)}
                   </div>
                   <div className="col-lg-6 details-section-metadata">
-                    <table>
-                      <caption className="sr-only">
-                        <h2>Item Metadata</h2>
-                      </caption>
-                      <RenderItemsDetailed
-                        keyArray={
-                          this.props.siteDetails.displayedAttributes.archive
-                        }
-                        item={item}
-                        languages={this.state.languages}
-                      />
+                    <table aria-label="Item Metadata">
+                      <tbody>
+                        <RenderItemsDetailed
+                          keyArray={
+                            this.props.siteDetails.displayedAttributes.archive
+                          }
+                          item={item}
+                          languages={this.state.languages}
+                        />
+                      </tbody>
                     </table>
                   </div>
                 </div>

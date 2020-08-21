@@ -35,9 +35,13 @@ class PermissionsPage extends Component {
               siteTitle={this.props.siteDetails.siteTitle}
               pageTitle="Permissions"
             />
-            <h1>Permissions</h1>
+            <h1 id="permissions-heading">Permissions</h1>
           </div>
-          <div className="col-md-8">
+          <div
+            className="col-md-8"
+            role="region"
+            aria-labelledby="permissions-heading"
+          >
             <div
               className="terms-details"
               dangerouslySetInnerHTML={{ __html: this.state.copy }}
@@ -46,8 +50,13 @@ class PermissionsPage extends Component {
           <div className="col-md-4 contact-section-wrapper">
             <ContactSection siteDetails={this.props.siteDetails} />
             {download ? (
-              <div>
-                <h2 className="terms-downloads-heading">Downloadable forms</h2>
+              <div role="region" aria-labelledby="terms-downloads-section">
+                <h2
+                  className="terms-downloads-heading"
+                  id="terms-downloads-section"
+                >
+                  Downloadable forms
+                </h2>
                 <a href={download}>Permission form for image reproductions</a>
               </div>
             ) : null}

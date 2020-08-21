@@ -10,8 +10,12 @@ class ContactSection extends Component {
     ) {
       return (
         <>
-          <div className="contact-section">
-            <h2 className="contact-heading">
+          <div
+            className="contact-section"
+            role="region"
+            aria-labelledby="contact-section-heading"
+          >
+            <h2 className="contact-heading" id="contact-section-heading">
               Contact {this.props.siteDetails.siteTitle}
             </h2>
             {this.props.siteDetails.contact.map((contact, index) => (

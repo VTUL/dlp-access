@@ -6,7 +6,11 @@ class MultimediaSection extends Component {
   render() {
     if (this.props.mediaSection) {
       return (
-        <div className="row media-section-wrapper">
+        <div
+          className="row media-section-wrapper"
+          role="region"
+          aria-labelledby="multimedia-region"
+        >
           <div className="col-lg-6">
             <div
               className="multimedia-column"
@@ -18,15 +22,20 @@ class MultimediaSection extends Component {
           <div className="col-lg-6">
             <div className="multimedia-text-column">
               <div className="media-section-title-wrapper">
-                <h1>{this.props.mediaSection.title}</h1>
+                <h2 id="multimedia-region">{this.props.mediaSection.title}</h2>
               </div>
               <div className="media-section-divider"></div>
               <p className="media-section-text">
                 {this.props.mediaSection.text}
               </p>
-              <form action={this.props.mediaSection.link}>
-                <button type="submit">Learn More</button>
-              </form>
+              <a
+                className="media-section-link"
+                href={this.props.mediaSection.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn More
+              </a>
             </div>
           </div>
         </div>

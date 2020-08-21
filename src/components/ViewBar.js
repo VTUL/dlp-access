@@ -24,6 +24,7 @@ class ViewBar extends Component {
           aria-label={`${buttonType} view`}
           onClick={() => this.updateView(buttonType)}
           active={(this.state.view === buttonType).toString()}
+          aria-pressed={(this.state.view === buttonType).toString()}
         >
           <FontAwesomeIcon
             icon={
@@ -35,12 +36,17 @@ class ViewBar extends Component {
             }
             size="lg"
             style={{ color: "var(--themeHighlightColor" }}
+            aria-hidden="true"
           />
         </button>
       );
     });
     return (
-      <div className="btn-group" aria-label="View Options">
+      <div
+        className="btn-group"
+        role="group"
+        aria-roledescription="View Options"
+      >
         {buttons}
       </div>
     );

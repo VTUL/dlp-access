@@ -1,10 +1,11 @@
 .media-section-wrapper {
-  padding: 60px 0px 30px 0px;
+  padding: 40px 0px;
   font-family: "Acherus", sans-serif;
 }
 
 .multimedia-text-column {
   padding: 30px;
+  padding-bottom: 0px;
   text-align: center;
 }
 
@@ -14,7 +15,7 @@
   text-align: left;
 }
 
-.media-section-title-wrapper h1 {
+.media-section-title-wrapper h2 {
   font-family: "gineso-condensed", sans-serif;
 }
 
@@ -26,41 +27,51 @@
 
 .media-section-wrapper .media-section-text {
   text-align: left;
+  margin-bottom: 20px;
 }
 
-.media-section-wrapper button {
+.media-section-wrapper .media-section-link {
+  display: inline-block;
   background-color: var(--themeHighlightColor);
   color: white;
   font-family: "gineso-condensed", sans-serif;
   font-size: 1.5rem;
   padding: 10px 23px 10px 23px;
-  margin-top: 20px;
   border: none;
   border-radius: 0px;
 }
 
-.media-section-wrapper button:hover {
+.media-section-wrapper .media-section-link:hover,
+.media-section-wrapper .media-section-link:focus {
   color: #fff;
-  background-color: #aa202d;
-  border-color: #aa202d;
-  border: none;
+  text-decoration: none;
+  filter: brightness(85%);
 }
 
 .multimedia-column {
   flex: 1 1 auto;
   display: flex;
   flex-flow: column;
-  height: 100%;
-  min-height: 325px;
+  position: relative;
+  padding-bottom: 52%;
+  margin: 0px 30px 0px 30px;
 }
 
 .multimedia-column iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
 }
 
 @media (min-width: 992px) {
+  .multimedia-column {
+    margin: 0px;
+    padding-bottom: 56.25%;
+  }
   .media-section-wrapper {
-    padding: 60px 40px 60px 40px;
+    padding: 40px;
   }
 
   .multimedia-text-column {

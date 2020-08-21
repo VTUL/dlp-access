@@ -40,15 +40,17 @@ class ResultsNumberDropdown extends Component {
         value: "100"
       }
     ];
-    const placeholder = "Show Results: " + this.state.selectedLimit;
+    const placeholder = this.state.selectedLimit + " per page";
     return (
-      <div className="btn-group mr-2">
+      <div className="btn-group">
         <Dropdown
           placeholder={placeholder}
           compact
           selection
           options={numberOptions}
           onChange={this.props.setLimit}
+          aria-label="Results per page"
+          aria-haspopup="listbox"
         />
       </div>
     );

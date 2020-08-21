@@ -15,6 +15,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding-bottom: 23px;
 }
 
 .home-wrapper #home-site-title-wrapper h1 {
@@ -23,7 +24,6 @@
   font-family: "crimson-text", serif;
   font-weight: 600;
   text-shadow: -2px 3px 5px #000000b5;
-  text-decoration: none;
 }
 
 .home-wrapper-no-text #home-site-title-wrapper {
@@ -32,7 +32,7 @@
 
 .home-statement-wrapper {
   width: 100%;
-  padding: 40px 0px 40px 0px;
+  padding-top: 40px;
 }
 
 .home-statement-wrapper h2 {
@@ -59,7 +59,7 @@
 .home-nav-links {
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 40px;
+  padding: 40px 0px;
   justify-content: center;
 }
 
@@ -91,7 +91,7 @@
   }
 
   .home-statement-wrapper {
-    padding: 40px;
+    padding: 40px 40px 0px 40px;
   }
 
   .home-wrapper .home-search-wrapper {

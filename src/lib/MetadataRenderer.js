@@ -159,14 +159,16 @@ const MoreLink = ({ category, item }) => {
 };
 
 const RenderAttribute = ({ item, attribute, languages }) => {
-  if (textFormat(item, attribute, languages)) {
+  if (textFormat(item, attribute.field, languages)) {
     let value_style = attribute.field === "identifier" ? "identifier" : "";
     return (
       <div className="collection-detail">
-        <table>
+        <table aria-label="Item Metadata">
           <tbody>
             <tr>
-              <td className="collection-detail-key">{attribute.label}:</td>
+              <th className="collection-detail-key" scope="row">
+                {attribute.label}:
+              </th>
               <td className={`collection-detail-value ${value_style}`}>
                 {textFormat(item, attribute.field, languages)}
               </td>
@@ -186,7 +188,9 @@ const RenderAttrDetailed = ({ item, attribute, languages, type }) => {
     if (type === "table") {
       return (
         <tr>
-          <th className="collection-detail-key" scope="row">{attribute.label}</th>
+          <th className="collection-detail-key" scope="row">
+            {attribute.label}
+          </th>
           <td className={`collection-detail-value ${value_style}`}>
             {textFormat(item, attribute.field, languages)}
           </td>

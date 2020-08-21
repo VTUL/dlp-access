@@ -159,10 +159,6 @@ div.masonry div.card {
   width: 80%;
 }
 
-.facet-modal-buttons {
-  display: flex;
-}
-
 .facet-modal-buttons a {
   flex: 1 1 auto;
   text-align: center;
@@ -191,25 +187,28 @@ div.masonry div.card {
   border: 1px solid #20202029;
 }
 
-.facet-modal-buttons button:hover,
-.facet-modal-buttons button:focus {
+.facet-modal-buttons button:hover {
   background-color: var(--light-gray);
   border-color: var(--dark-gray);
 }
 
-.facet-modal-buttons a:hover,
-.facet-modal-buttons a:focus {
+.facet-modal-buttons a:hover {
   background-color: var(--light-gray);
   border-color: var(--dark-gray);
   color: #000000;
   text-decoration: none;
 }
 
+.facet-modal-buttons a:focus {
+  outline-color: black;
+  outline-style: auto;
+  outline-width: 5px;
+}
+
 .facet-button-navbar {
   flex: 1 1 auto;
   text-align: right;
   display: block;
-  padding-right: 10px;
 }
 
 .facet-button-navbar button {
@@ -231,20 +230,22 @@ div.masonry div.card {
 .facet-navbar-heading {
   width: 6.25rem;
   flex: 0 0 auto;
+}
+
+.facet-navbar-heading h2 {
+  font-family: "Acherus", sans-serif;
+  font-size: 1rem;
   font-weight: 600;
-  padding-bottom: 5px;
+  line-height: 1.5rem;
+  padding: 0;
+  margin: 0;
 }
 
 .facet-navbar-facets {
   padding-left: 20px;
 }
 
-.facet-navbar-facets ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-.facet-navbar-facets li {
+.facet-navbar-facets div div {
   padding-right: 20px;
   float: left;
 }

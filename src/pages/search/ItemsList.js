@@ -15,7 +15,12 @@ class ItemsList extends Component {
 
   render() {
     return (
-      <div className="search-results-section">
+      <div
+        className="search-results-section"
+        id="search-results"
+        role="region"
+        aria-label="Search results"
+      >
         <div className={this.getClassName()}>
           {this.props.items.map(item => {
             if (this.props.view === "Gallery") {

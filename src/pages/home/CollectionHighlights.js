@@ -5,9 +5,14 @@ import "../../css/CollectionHighlights.css";
 class CollectionHighlights extends Component {
   render() {
     if (this.props.collectionHighlights) {
-      const tiles = this.props.collectionHighlights.map(item => {
+      const tiles = this.props.collectionHighlights.map((item, index) => {
         return (
-          <div className="col-md-6 col-lg-3">
+          <div
+            className="col-md-6 col-lg-3"
+            key={index}
+            role="group"
+            aria-roledescription="category card"
+          >
             <a href={item.link}>
               <div
                 className="category-container"
@@ -33,7 +38,12 @@ class CollectionHighlights extends Component {
       });
 
       return (
-        <div className="collection-highlights-wrapper">
+        <div
+          className="collection-highlights-wrapper"
+          role="region"
+          aria-roledescription="Collection highlights"
+          aria-label="Collection Highlights"
+        >
           <div className="collection-highlights-heading">
             <h2>
               Collection <span>Highlights</span>

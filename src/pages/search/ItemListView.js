@@ -17,7 +17,11 @@ class ItemListView extends Component {
   }
 
   render() {
-    const keyArray = ["description", "tags", "creator"];
+    const keyArray = [
+      { field: "description", label: "Description" },
+      { field: "tags", label: "Tags" },
+      { field: "creator", label: "Creator" }
+    ];
     if (this.state.languages !== null) {
       return (
         <div key={this.props.item.id} className="col-12 collection-entry">
@@ -35,7 +39,6 @@ class ItemListView extends Component {
             </div>
             <div className="collection-details">
               <h3>{this.props.item.title}</h3>
-
               <RenderItems
                 keyArray={keyArray}
                 item={this.props.item}

@@ -12,10 +12,6 @@ class SearchFacets extends Component {
     this._isMounted = false;
   }
 
-  hideModal = () => {
-    this.props.updateModal();
-  };
-
   componentWillMount() {
     const facetFields = this.loadfacetFields();
     facetFields.forEach(field => {
@@ -36,6 +32,11 @@ class SearchFacets extends Component {
       this.loadFacets();
     }
   }
+
+  hideModal = () => {
+    this.props.updateModal();
+  };
+
   searchInput = () => {
     if (this.props.field && this.props.q) {
       return { [this.props.field]: this.props.q };
@@ -115,12 +116,21 @@ class SearchFacets extends Component {
   render() {
     const facetFields = this.loadfacetFields();
     return (
-      <div className={this.props.isActive ? "facet-modal-wrapper" : null}>
-        <div className="facet-wrapper" role="group" aria-labelledby="filters">
+      <div
+        className={this.props.isActive ? "facet-modal-wrapper" : null}
+        role={this.props.isActive ? "dialog" : null}
+        aria-modal={this.props.isActive}
+      >
+        <div className="facet-wrapper" role="region" aria-labelledby="filters">
           <h2 className="facet-heading" id="filters">
             Filter My Results
           </h2>
-          <div className="facet-fields" data-cy="filter-collapsibles">
+          <div
+            className="facet-fields"
+            data-cy="filter-collapsibles"
+            role="group"
+            aria-label="filters"
+          >
             {facetFields.map((field, idx) => (
               <Collapsible
                 filters={this.props.filters}
@@ -138,6 +148,7 @@ class SearchFacets extends Component {
             >
               <NavLink
                 to={`/search/?${qs.stringify(this.props.defaultSearch)}`}
+                role="button"
               >
                 Clear
               </NavLink>
@@ -151,6 +162,7 @@ class SearchFacets extends Component {
               <NavLink
                 to={`/search/?${qs.stringify(this.props.defaultSearch)}`}
                 onClick={this.hideModal}
+                role="button"
               >
                 <i className="fas fa-times"></i>
                 <span className="sr-only">Close</span>

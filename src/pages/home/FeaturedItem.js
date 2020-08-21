@@ -3,7 +3,12 @@ import React, { Component } from "react";
 class FeaturedItem extends Component {
   render() {
     return (
-      <div className="col-md-6 col-lg-3">
+      <div
+        className="col-md-6 col-lg-3"
+        role="group"
+        aria-roledescription="slide"
+        aria-label={`${this.props.position} of ${this.props.length}`}
+      >
         <a href={this.props.tile.link}>
           <div className="card">
             <img

@@ -117,16 +117,16 @@ class SubCollectionsLoader extends Component {
       return (
         <div className="collection-items-list-wrapper">
           <div className="mb-3">
-            <h3 className="subcollection-header">
+            <h3
+              className="subcollection-header"
+              id="collection-subcollections-section"
+            >
               Subcollections ({this.state.total})
             </h3>
           </div>
-          <form className="form-group">
-            <label className="mr-1">
-              <span className="results-text">Results per page:</span>
-            </label>
+          <div className="mb-3">
             <ResultsNumberDropdown setLimit={this.setLimit.bind(this)} />
-          </form>
+          </div>
           <SubCollectionsList subCollections={this.state.items} />
           <Pagination
             numResults={this.state.items.length}

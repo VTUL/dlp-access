@@ -6,7 +6,11 @@ class SiteSponsors extends Component {
   render() {
     if (this.props.sponsors) {
       return (
-        <div className="container home-sponsors-section">
+        <div
+          className="container home-sponsors-section"
+          role="region"
+          aria-label="Sponsors"
+        >
           <div className="row home-sponsors-wrapper">
             {this.props.sponsors.map((sponsor, index) => (
               <div

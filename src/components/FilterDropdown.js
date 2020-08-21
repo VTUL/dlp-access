@@ -38,13 +38,15 @@ class FilterDropdown extends Component {
       this.props.siteFilter.field.slice(1);
     return (
       <div className="form-group">
-        <label htmlFor={this.props.siteFilter.field}>{label}</label>
+        <label id={`${this.props.siteFilter.field}-label`}>{label}</label>
         <Dropdown
           text={text}
           selection
           options={this.valueOptions()}
           onChange={this.updateFilter}
           id={this.props.siteFilter.field}
+          aria-labelledby={`${this.props.siteFilter.field}-label`}
+          aria-haspopup="listbox"
         />
       </div>
     );

@@ -112,18 +112,22 @@ class CollectionItemsLoader extends Component {
   render() {
     if (this.state.items !== null && this.state.total > 0) {
       return (
-        <div className="collection-items-list-wrapper">
+        <div
+          className="collection-items-list-wrapper"
+          role="region"
+          aria-labelledby="collection-items-section-header"
+        >
           <div className="mb-3">
-            <h4 className="collection-items-header">
+            <h2
+              className="collection-items-header"
+              id="collection-items-section-header"
+            >
               Items in Collection ({this.state.total})
-            </h4>
+            </h2>
           </div>
-          <form className="form-group">
-            <label className="mr-1">
-              <span>Results per page:</span>
-            </label>
+          <div className="form-group">
             <ResultsNumberDropdown setLimit={this.setLimit.bind(this)} />
-          </form>
+          </div>
           <CollectionItemsList
             items={this.state.items}
             collection={this.props.collection}

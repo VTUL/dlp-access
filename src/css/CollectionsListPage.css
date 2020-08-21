@@ -34,7 +34,6 @@ div.collection-browse-header h1.list-type span {
 
 .collection-filters .form-group {
   display: block;
-  padding-right: 10px;
   font-family: "Acherus", sans-serif;
 }
 
@@ -62,6 +61,7 @@ div.collection-browse-wrapper div.container div.row div.gallery-item {
   .collection-filters .form-group {
     display: inline-block;
     margin-bottom: 0;
+    padding-right: 10px;
   }
 
   .collection-view-options {

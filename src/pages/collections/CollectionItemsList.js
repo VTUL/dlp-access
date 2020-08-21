@@ -9,7 +9,11 @@ class CollectionItemsList extends Component {
     let retVal = null;
     if (this.props.items.length) {
       retVal = (
-        <div className="collection-items-grid">
+        <div
+          className="collection-items-grid"
+          role="group"
+          aria-roledescription="Collection items"
+        >
           {this.props.items.map(item => (
             <div className="collection-item" key={item.custom_key}>
               <div className="collection-item-wrapper">

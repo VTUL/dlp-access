@@ -29,9 +29,15 @@
 }
 .breadcrumbs-wrapper ol li:last-child a.vt-breadcrumbs-link,
 .breadcrumbs-wrapper ol li:last-child a.vt-breadcrumbs-link:visited {
-  color: var(--themeHighlightColor);
+  color: var(--hokieOrange);
 }
 
 .breadcrumbs-wrapper ol li:last-child .breadcrumb-slash {
   display: none;
+}
+
+#content-wrapper .breadcrumbs-wrapper a:focus {
+  outline-color: black;
+  outline-offset: 1px;
+  outline-style: solid;
 }
