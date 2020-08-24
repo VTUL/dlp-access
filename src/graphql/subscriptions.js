@@ -29,6 +29,42 @@ export const onCreateCollection = /* GraphQL */ `
       parent_collection
       create_date
       modified_date
+      heirarchy_path
+      collectionmap_id
+      collectionmap {
+        id
+        collection_id
+        map_object
+        collection {
+          id
+          title
+          identifier
+          description
+          creator
+          source
+          circa
+          start_date
+          end_date
+          subject
+          location
+          rights_statement
+          language
+          related_url
+          provenance
+          belongs_to
+          bibliographic_citation
+          rights_holder
+          custom_key
+          collection_category
+          visibility
+          thumbnail_path
+          parent_collection
+          create_date
+          modified_date
+          heirarchy_path
+          collectionmap_id
+        }
+      }
       archives {
         items {
           id
@@ -97,6 +133,42 @@ export const onUpdateCollection = /* GraphQL */ `
       parent_collection
       create_date
       modified_date
+      heirarchy_path
+      collectionmap_id
+      collectionmap {
+        id
+        collection_id
+        map_object
+        collection {
+          id
+          title
+          identifier
+          description
+          creator
+          source
+          circa
+          start_date
+          end_date
+          subject
+          location
+          rights_statement
+          language
+          related_url
+          provenance
+          belongs_to
+          bibliographic_citation
+          rights_holder
+          custom_key
+          collection_category
+          visibility
+          thumbnail_path
+          parent_collection
+          create_date
+          modified_date
+          heirarchy_path
+          collectionmap_id
+        }
+      }
       archives {
         items {
           id
@@ -165,6 +237,42 @@ export const onDeleteCollection = /* GraphQL */ `
       parent_collection
       create_date
       modified_date
+      heirarchy_path
+      collectionmap_id
+      collectionmap {
+        id
+        collection_id
+        map_object
+        collection {
+          id
+          title
+          identifier
+          description
+          creator
+          source
+          circa
+          start_date
+          end_date
+          subject
+          location
+          rights_statement
+          language
+          related_url
+          provenance
+          belongs_to
+          bibliographic_citation
+          rights_holder
+          custom_key
+          collection_category
+          visibility
+          thumbnail_path
+          parent_collection
+          create_date
+          modified_date
+          heirarchy_path
+          collectionmap_id
+        }
+      }
       archives {
         items {
           id
@@ -201,6 +309,144 @@ export const onDeleteCollection = /* GraphQL */ `
           modified_date
         }
         nextToken
+      }
+    }
+  }
+`;
+export const onCreateCollectionmap = /* GraphQL */ `
+  subscription OnCreateCollectionmap {
+    onCreateCollectionmap {
+      id
+      collection_id
+      map_object
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        related_url
+        provenance
+        belongs_to
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        heirarchy_path
+        collectionmap_id
+        collectionmap {
+          id
+          collection_id
+          map_object
+        }
+        archives {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const onUpdateCollectionmap = /* GraphQL */ `
+  subscription OnUpdateCollectionmap {
+    onUpdateCollectionmap {
+      id
+      collection_id
+      map_object
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        related_url
+        provenance
+        belongs_to
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        heirarchy_path
+        collectionmap_id
+        collectionmap {
+          id
+          collection_id
+          map_object
+        }
+        archives {
+          nextToken
+        }
+      }
+    }
+  }
+`;
+export const onDeleteCollectionmap = /* GraphQL */ `
+  subscription OnDeleteCollectionmap {
+    onDeleteCollectionmap {
+      id
+      collection_id
+      map_object
+      collection {
+        id
+        title
+        identifier
+        description
+        creator
+        source
+        circa
+        start_date
+        end_date
+        subject
+        location
+        rights_statement
+        language
+        related_url
+        provenance
+        belongs_to
+        bibliographic_citation
+        rights_holder
+        custom_key
+        collection_category
+        visibility
+        thumbnail_path
+        parent_collection
+        create_date
+        modified_date
+        heirarchy_path
+        collectionmap_id
+        collectionmap {
+          id
+          collection_id
+          map_object
+        }
+        archives {
+          nextToken
+        }
       }
     }
   }
@@ -266,6 +512,13 @@ export const onCreateArchive = /* GraphQL */ `
         parent_collection
         create_date
         modified_date
+        heirarchy_path
+        collectionmap_id
+        collectionmap {
+          id
+          collection_id
+          map_object
+        }
         archives {
           nextToken
         }
@@ -334,6 +587,13 @@ export const onUpdateArchive = /* GraphQL */ `
         parent_collection
         create_date
         modified_date
+        heirarchy_path
+        collectionmap_id
+        collectionmap {
+          id
+          collection_id
+          map_object
+        }
         archives {
           nextToken
         }
@@ -402,6 +662,13 @@ export const onDeleteArchive = /* GraphQL */ `
         parent_collection
         create_date
         modified_date
+        heirarchy_path
+        collectionmap_id
+        collectionmap {
+          id
+          collection_id
+          map_object
+        }
         archives {
           nextToken
         }

@@ -47,8 +47,7 @@ class CollectionsShowPage extends Component {
   }
 
   updateSubCollections(component, collection, subCollections) {
-    collection.subCollections = subCollections.items;
-    collection.subCollections.total = subCollections.total;
+    collection.subCollection_total = subCollections.length;
 
     component.setCollectionState(collection);
   }

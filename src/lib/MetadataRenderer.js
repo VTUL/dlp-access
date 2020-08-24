@@ -48,12 +48,8 @@ export function dateFormatted(item) {
 
 export function collectionSizeText(collection) {
   let subCollections = null;
-  if (collection.subCollections) {
-    subCollections =
-      collection.subCollections.total != null
-        ? collection.subCollections.total
-        : 0;
-  }
+  subCollections =
+    collection.subCollection_total != null ? collection.subCollection_total : 0;
   let archives = collection.archives || 0;
   return (
     <div>

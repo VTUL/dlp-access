@@ -57,8 +57,22 @@ type Collection implements Object
   parent_collection: [String!]
   create_date: String!
   modified_date: String!
+  heirarchy_path: [String!]
+  collectionmap_id: String
+  collectionmap: Collectionmap @connection(name: "CollectionCollectionMap")
   archives: [Archive] @connection(name: "CollectionArchives")
 }
+
+type Collectionmap
+  @model
+  @searchable
+  {
+    id: ID!
+    collection_id: String!
+    map_object: String!
+    collection: Collection @connection(name: "CollectionCollectionMap")
+  }
+
 type Archive implements Object
   @model
   @searchable
