@@ -151,10 +151,15 @@ div.masonry div.card {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.facet-modal-wrapper div {
+  position: relative;
+  display: block;
+  top: 10%;
+}
+
 .facet-modal-wrapper .facet-wrapper {
   display: block;
   position: relative;
-  top: 10%;
   left: 10%;
   width: 80%;
 }
