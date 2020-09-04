@@ -19,6 +19,7 @@
     "jquery": "^3.5.1",
     "js-levenshtein": "^1.1.6",
     "mediaelement": "^4.2.16",
+    "mirador": "^3.0.0-rc.5",
     "mocha": "^8.1.0",
     "mochawesome": "^4.1.0",
     "patch-package": "^6.2.2",

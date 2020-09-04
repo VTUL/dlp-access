@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import mirador from "mirador";
 import "../css/Viewer.css";
 
 class MiradorViewer extends Component {
@@ -12,84 +13,49 @@ class MiradorViewer extends Component {
 
   miradorConfig() {
     let config = {
+      language: "en",
       id: "mirador_viewer",
-      mainMenuSettings: {
-        show: false
+      window: {
+        allowClose: false,
+        allowFullscreen: true,
+        allowMaximize: false,
+        allowWindowSideBar: true,
+        defaultView: "single",
+        panels: {
+          canvas: false,
+          search: false
+        }
       },
-      data: [
+      windows: [
         {
-          manifestUri: this.props.item.manifest_url,
-          location: this.props.siteDetails.siteId.toUpperCase()
+          manifestId: this.props.item.manifest_url
         }
       ],
-      windowObjects: [
-        {
-          loadedManifest: this.props.item.manifest_url,
-          viewType: "ImageView",
-          displayLayout: false,
-          bottomPanel: false,
-          bottomPanelAvailable: false,
-          bottomPanelVisible: false,
-          sidePanel: false,
-          annotationLayer: false
-        }
-      ],
-      showAddFromURLBox: false
+      workspace: {
+        allowNewWindows: false,
+        isWorkspaceAddVisible: false,
+        showZoomControls: true,
+        type: "mosaic"
+      },
+      workspaceControlPanel: {
+        enabled: false
+      }
     };
     if (
       this.props.siteDetails.miradorOptions &&
       this.props.siteDetails.miradorOptions.windowObjects
     ) {
-      config.windowObjects[0] = Object.assign(
-        config.windowObjects[0],
+      config.windows[0] = Object.assign(
+        config.windows[0],
         this.props.siteDetails.miradorOptions.windowObjects
       );
     }
     return config;
   }
 
-  hideElement(elementClassName) {
-    window.setTimeout(function() {
-      try {
-        let elem = document.getElementsByClassName(elementClassName)[0];
-        elem.style.display = "none";
-      } catch (error) {
-        console.log(`error hiding ${elementClassName}`);
-      }
-    }, 500);
-  }
-
-  setOptionState(option) {
-    if (
-      this.props.siteDetails.miradorOptions &&
-      option in this.props.siteDetails.miradorOptions
-    ) {
-      let stateObj = {};
-      stateObj[option] = this.props.siteDetails.miradorOptions[option];
-
-      this.setState(stateObj, function() {
-        this.setOptionVisibility();
-      });
-    } else {
-      this.setOptionVisibility();
-    }
-  }
-
-  setOptionVisibility() {
-    if (!this.state.annotationTooltipVisible) {
-      this.hideElement("mirador-osd-annotation-controls");
-    }
-    if (!this.state.viewTypeControlVisible) {
-      this.hideElement("mirador-icon-view-type");
-    }
-  }
-
   componentDidMount() {
     this.miradorConfig();
-    window.Mirador(this.miradorConfig());
-
-    this.setOptionState("annotationTooltipVisible");
-    this.setOptionState("viewTypeControlVisible");
+    mirador.viewer(this.miradorConfig());
   }
 
   render() {

@@ -212,7 +212,7 @@ class ArchivePage extends Component {
                   aria-label="Item details"
                 >
                   <div className="col-lg-6 details-section-description">
-                    <h1>{item.title}</h1>
+                    <h2>{item.title}</h2>
                     {addNewlineInDesc(item.description)}
                   </div>
                   <div className="col-lg-6 details-section-metadata">

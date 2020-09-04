@@ -1,5 +1,11 @@
 #mirador_viewer {
-  height: 700px;
+  height: 500px;
   width: 100%;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  #mirador_viewer {
+    height: 700px;
+  }
 }
