@@ -80,17 +80,9 @@ class SubCollectionsLoader extends Component {
   }
 
   sortChildren(children) {
-    return children.sort(function(a, b) {
-      var nameA = a.name.toUpperCase();
-      var nameB = b.name.toUpperCase();
-      if (nameA < nameB) {
-        return -1;
-      }
-      if (nameA > nameB) {
-        return 1;
-      }
-      return 0;
-    });
+    return children.sort((a, b) =>
+      a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
+    );
   }
 
   buildLabel(node) {
@@ -159,7 +151,7 @@ class SubCollectionsLoader extends Component {
               Subcollections
             </h3>
           </div>
-          
+
           <TreeView
             defaultCollapseIcon={<MinusSquare />}
             defaultExpandIcon={<PlusSquare />}
