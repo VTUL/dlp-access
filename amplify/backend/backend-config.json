@@ -7,5 +7,21 @@
 				"securityType": "API_KEY"
 			}
 		}
+	},
+	"function": {
+		"collectionTitleEdit": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "api",
+					"resourceName": "collectionarchives",
+					"attributes": [
+						"GraphQLAPIIdOutput"
+					]
+				}
+			]
+		}
 	}
 }
