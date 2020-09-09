@@ -50,11 +50,11 @@ describe('Archive pdf embed', () => {
 describe('Archive Mirador viewer', () => {
   it('renders viewer if manifest.json', () => {
     cy.visit('/archive/5v709r98');
-    cy.get('div#mirador_viewer')
+    cy.get('div#mirador_viewer > div > main')
       .eq(0)
-      .should('have.class', 'mirador-container')
+      .should('have.class', 'mirador-viewer')
       .should('be.visible');
-    cy.get('div.workspace-container > div > div > div.window > div.content-container > div.view-container > div.image-view')
+    cy.get('div.mirador-primary-window > section.mirador-osd-container > div.openseadragon-container > div.openseadragon-canvas > canvas')
       .eq(0)
       .should('be.visible');
   });
