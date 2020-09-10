@@ -58,7 +58,7 @@ class HomePage extends Component {
           </div>
           <HomeStatement homeStatement={homeStatement} />
           <div className="home-nav-links">
-            <a href="/search">View All Items</a>
+            <a href="/search">View All Items2</a>
             <a href="/collections">View All Collections</a>
           </div>
           <FeaturedItems featuredItems={featuredItems} />
