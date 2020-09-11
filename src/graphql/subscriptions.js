@@ -35,6 +35,8 @@ export const onCreateCollection = /* GraphQL */ `
         id
         collection_id
         map_object
+        create_date
+        modified_date
         collection {
           id
           title
@@ -63,7 +65,11 @@ export const onCreateCollection = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
+          createdAt
+          updatedAt
         }
+        createdAt
+        updatedAt
       }
       archives {
         items {
@@ -97,11 +103,16 @@ export const onCreateCollection = /* GraphQL */ `
           visibility
           thumbnail_path
           manifest_url
+          heirarchy_path
           create_date
           modified_date
+          createdAt
+          updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -139,6 +150,8 @@ export const onUpdateCollection = /* GraphQL */ `
         id
         collection_id
         map_object
+        create_date
+        modified_date
         collection {
           id
           title
@@ -167,7 +180,11 @@ export const onUpdateCollection = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
+          createdAt
+          updatedAt
         }
+        createdAt
+        updatedAt
       }
       archives {
         items {
@@ -201,11 +218,16 @@ export const onUpdateCollection = /* GraphQL */ `
           visibility
           thumbnail_path
           manifest_url
+          heirarchy_path
           create_date
           modified_date
+          createdAt
+          updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -243,6 +265,8 @@ export const onDeleteCollection = /* GraphQL */ `
         id
         collection_id
         map_object
+        create_date
+        modified_date
         collection {
           id
           title
@@ -271,7 +295,11 @@ export const onDeleteCollection = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
+          createdAt
+          updatedAt
         }
+        createdAt
+        updatedAt
       }
       archives {
         items {
@@ -305,11 +333,16 @@ export const onDeleteCollection = /* GraphQL */ `
           visibility
           thumbnail_path
           manifest_url
+          heirarchy_path
           create_date
           modified_date
+          createdAt
+          updatedAt
         }
         nextToken
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -319,6 +352,8 @@ export const onCreateCollectionmap = /* GraphQL */ `
       id
       collection_id
       map_object
+      create_date
+      modified_date
       collection {
         id
         title
@@ -351,11 +386,19 @@ export const onCreateCollectionmap = /* GraphQL */ `
           id
           collection_id
           map_object
+          create_date
+          modified_date
+          createdAt
+          updatedAt
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -365,6 +408,8 @@ export const onUpdateCollectionmap = /* GraphQL */ `
       id
       collection_id
       map_object
+      create_date
+      modified_date
       collection {
         id
         title
@@ -397,11 +442,19 @@ export const onUpdateCollectionmap = /* GraphQL */ `
           id
           collection_id
           map_object
+          create_date
+          modified_date
+          createdAt
+          updatedAt
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -411,6 +464,8 @@ export const onDeleteCollectionmap = /* GraphQL */ `
       id
       collection_id
       map_object
+      create_date
+      modified_date
       collection {
         id
         title
@@ -443,11 +498,19 @@ export const onDeleteCollectionmap = /* GraphQL */ `
           id
           collection_id
           map_object
+          create_date
+          modified_date
+          createdAt
+          updatedAt
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -484,6 +547,7 @@ export const onCreateArchive = /* GraphQL */ `
       visibility
       thumbnail_path
       manifest_url
+      heirarchy_path
       create_date
       modified_date
       collection {
@@ -518,11 +582,19 @@ export const onCreateArchive = /* GraphQL */ `
           id
           collection_id
           map_object
+          create_date
+          modified_date
+          createdAt
+          updatedAt
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -559,6 +631,7 @@ export const onUpdateArchive = /* GraphQL */ `
       visibility
       thumbnail_path
       manifest_url
+      heirarchy_path
       create_date
       modified_date
       collection {
@@ -593,11 +666,19 @@ export const onUpdateArchive = /* GraphQL */ `
           id
           collection_id
           map_object
+          create_date
+          modified_date
+          createdAt
+          updatedAt
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
@@ -634,6 +715,7 @@ export const onDeleteArchive = /* GraphQL */ `
       visibility
       thumbnail_path
       manifest_url
+      heirarchy_path
       create_date
       modified_date
       collection {
@@ -668,11 +750,19 @@ export const onDeleteArchive = /* GraphQL */ `
           id
           collection_id
           map_object
+          create_date
+          modified_date
+          createdAt
+          updatedAt
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
       }
+      createdAt
+      updatedAt
     }
   }
 `;
