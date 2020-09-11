@@ -7,6 +7,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { buildRoutes } from "./lib/CustomPageRoutes";
 import HomePage from "./pages/HomePage";
+import SiteAdmin from "./pages/SiteAdmin";
 
 import CollectionsListLoader from "./pages/collections/CollectionsListLoader";
 import CollectionsShowLoader from "./pages/collections/CollectionsShowLoader";
@@ -104,6 +105,7 @@ class App extends Component {
                     />
                   )}
                 />
+                <Route exact path="/siteAdmin" component={SiteAdmin} />
               </Switch>
             </div>
           </main>
