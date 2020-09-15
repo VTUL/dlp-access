@@ -221,6 +221,10 @@ div.masonry div.card {
   background-color: var(--light-gray);
 }
 
+.facet-navbar-section {
+  width: 100%;
+}
+
 .facet-navbar {
   background-color: white;
   width: 100%;
@@ -254,14 +258,18 @@ div.masonry div.card {
   padding-right: 20px;
   float: left;
 }
+
 .facet-navbar-facets .facet-navbar-name {
   text-transform: capitalize;
 }
 
 .facet-navbar-facets .facet-navbar-arrow {
+  padding: 3.5px;
+}
+.facet-navbar-facets .facet-navbar-arrow .fa-angle-right {
   font-weight: 800;
-  font-size: 18px;
-  line-height: 14px;
+  font-size: 1.1rem;
+  transform: translateY(1px);
 }
 
 .facet-navbar-clear {

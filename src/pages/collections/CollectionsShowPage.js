@@ -249,10 +249,7 @@ class CollectionsShowPage extends Component {
             aria-labelledby="collection-page-title"
           >
             <div className="collection-img-col col-sm-4">
-              <img
-                src={this.collectionImg()}
-                alt={`${this.state.collection} header`}
-              />
+              <img src={this.collectionImg()} alt="" />
             </div>
             <div className="collection-details-col col-sm-8">
               <h1 className="collection-title" id="collection-page-title">

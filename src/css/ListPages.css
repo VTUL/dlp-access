@@ -100,11 +100,16 @@ a.more-link {
 
 .pagination-section .ui.button {
   font-family: "gineso-condensed", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   padding: 10px;
   border: solid 1px #707070;
   background-color: #f8f8f8;
   color: #000000;
+}
+
+.pagination-section .fa-angle-double-right,
+.pagination-section .fa-angle-double-left {
+  transform: translateY(1px);
 }
 
 @media (min-width: 768px) {

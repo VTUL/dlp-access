@@ -171,7 +171,11 @@ class Collapsible extends Component {
                 .slice(0, this.partialListLength())
                 .map(value => (
                   <Checkbox
-                    label={`${labelAttr(value["label"])} (${value["count"]})`}
+                    label={`${labelAttr(
+                      value["label"],
+                      this.props.filterField,
+                      this.props.languages
+                    )} (${value["count"]})`}
                     name={value["label"]}
                     selected={value["selected"]}
                     onCheckboxChange={this.handleCheckboxChange}

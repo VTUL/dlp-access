@@ -106,7 +106,9 @@ class CollectionsListPage extends Component {
             })}
           </div>
         </div>
-        <CollectionsPaginationDisplay atBottom={true} />
+        <div aria-live="polite">
+          <CollectionsPaginationDisplay atBottom={true} />
+        </div>
       </div>
     );
   }

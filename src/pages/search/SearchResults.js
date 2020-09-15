@@ -10,7 +10,7 @@ import ItemsList from "./ItemsList";
 import { fetchLanguages } from "../../lib/fetchTools";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
-
+import { labelAttr } from "../../lib/MetadataRenderer";
 import "../../css/ListPages.css";
 import "../../css/SearchResult.css";
 
@@ -93,10 +93,11 @@ class SearchResults extends Component {
                           <div role="gridcell" tabIndex="-1">
                             <span className="facet-navbar-name">{key}</span>
                             <span className="facet-navbar-arrow">
-                              {" "}
-                              &#8250;{" "}
+                              <i className="fas fa-angle-right"></i>
                             </span>
-                            {val}
+                            <span className="facet-navbar-selection">
+                              {labelAttr(val, key, this.state.languages)}
+                            </span>
                           </div>
                         </div>
                       );
@@ -106,8 +107,12 @@ class SearchResults extends Component {
                       <div key={key} role="row">
                         <div role="gridcell" tabIndex="-1">
                           <span className="facet-navbar-name">{key}</span>
-                          <span className="facet-navbar-arrow"> &#8250; </span>
-                          {value}
+                          <span className="facet-navbar-arrow">
+                            <i className="fas fa-angle-right"></i>
+                          </span>
+                          <span className="facet-navbar-selection">
+                            {labelAttr(value, key, this.state.languages)}
+                          </span>
                         </div>
                       </div>
                     );
@@ -124,6 +129,7 @@ class SearchResults extends Component {
                     aria-labelledby="clearButton"
                     role="button"
                     aria-controls="facet-navbar-grid"
+                    aria-live="off"
                   >
                     <i className="fas fa-times"></i>
                   </NavLink>
@@ -135,73 +141,86 @@ class SearchResults extends Component {
       } else return null;
     };
 
-    return (
-      <div className="search-result-wrapper">
-        <SearchBar
-          filters={this.props.filters}
-          view={this.props.view}
-          field={this.props.field}
-          q={this.props.q}
-          setPage={this.props.setPage}
-          updateFormState={this.props.updateFormState}
-        />
-        <div className="container search-results">
-          <div className="row">
-            <div id="sidebar" className="col-lg-3 col-sm-12">
-              <SearchFacets
-                filters={this.props.filters}
-                field={this.props.field}
-                q={this.props.q}
-                total={this.props.total}
-                view={this.props.view}
-                updateFormState={this.props.updateFormState}
-                isActive={this.state.isActive}
-                updateModal={this.updateModal}
-                defaultSearch={defaultSearch}
-                searchFacets={this.props.searchPage.facets}
-              />
-            </div>
-            <div id="content" className="col-lg-9 col-sm-12">
-              <div
-                className="navbar navbar-light justify-content-between"
-                role="region"
-                aria-label="Search Tools"
-                aria-controls="search-results"
-              >
-                <div className="navbar-text text-dark">
-                  <ItemsPaginationDisplay atBottom={false} />
-                </div>
-                <div className="facet-button-navbar" onClick={this.updateModal}>
-                  <button
-                    type="button"
-                    data-toggle="tooltip"
-                    title="Filters"
-                    aria-label="Filters"
-                    aria-pressed={this.state.isActive}
-                  >
-                    <FontAwesomeIcon
-                      icon={faFilter}
-                      color="var(--themeHighlightColor)"
-                    />
-                  </button>
-                </div>
-                <div className="form-inline view-options">
-                  <ViewBar
-                    view={this.props.view}
-                    updateFormState={this.props.updateFormState}
-                    pageViews={["Gallery", "List", "Masonry"]}
-                  />
-                  <ResultsNumberDropdown setLimit={this.props.setLimit} />
-                </div>
-                <FiltersDisplay />
+    if (this.state.languages) {
+      return (
+        <div className="search-result-wrapper">
+          <SearchBar
+            filters={this.props.filters}
+            view={this.props.view}
+            field={this.props.field}
+            q={this.props.q}
+            setPage={this.props.setPage}
+            updateFormState={this.props.updateFormState}
+          />
+          <div className="container search-results">
+            <div className="row">
+              <div id="sidebar" className="col-lg-3 col-sm-12">
+                <SearchFacets
+                  filters={this.props.filters}
+                  field={this.props.field}
+                  q={this.props.q}
+                  total={this.props.total}
+                  view={this.props.view}
+                  updateFormState={this.props.updateFormState}
+                  isActive={this.state.isActive}
+                  updateModal={this.updateModal}
+                  defaultSearch={defaultSearch}
+                  searchFacets={this.props.searchPage.facets}
+                  languages={this.state.languages}
+                />
               </div>
-              <ItemsList items={this.props.items} view={this.props.view} />
+              <div id="content" className="col-lg-9 col-sm-12">
+                <div
+                  className="navbar navbar-light justify-content-between"
+                  id="search-tools"
+                  role="region"
+                  aria-label="Search Tools"
+                  aria-controls="search-results"
+                >
+                  <div className="navbar-text text-dark">
+                    <ItemsPaginationDisplay atBottom={false} />
+                  </div>
+                  <div
+                    className="facet-button-navbar"
+                    onClick={this.updateModal}
+                  >
+                    <button
+                      type="button"
+                      data-toggle="tooltip"
+                      title="Filters"
+                      aria-label="Filters"
+                      aria-pressed={this.state.isActive}
+                    >
+                      <FontAwesomeIcon
+                        icon={faFilter}
+                        color="var(--themeHighlightColor)"
+                      />
+                    </button>
+                  </div>
+                  <div className="form-inline view-options">
+                    <ViewBar
+                      view={this.props.view}
+                      updateFormState={this.props.updateFormState}
+                      pageViews={["Gallery", "List", "Masonry"]}
+                    />
+                    <ResultsNumberDropdown setLimit={this.props.setLimit} />
+                  </div>
+                  <div className="facet-navbar-section" aria-live="polite">
+                    <FiltersDisplay />
+                  </div>
+                </div>
+                <ItemsList items={this.props.items} view={this.props.view} />
+              </div>
+            </div>
+            <div aria-live="polite">
+              <ItemsPaginationDisplay atBottom={true} />
             </div>
           </div>
-          <ItemsPaginationDisplay atBottom={true} />
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <> </>;
+    }
   }
 }
 

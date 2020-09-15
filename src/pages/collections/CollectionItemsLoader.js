@@ -132,17 +132,19 @@ class CollectionItemsLoader extends Component {
             items={this.state.items}
             collection={this.props.collection}
           />
-          <Pagination
-            numResults={this.state.items.length}
-            total={this.state.total}
-            page={this.state.page}
-            limit={this.state.limit}
-            previousPage={this.previousPage.bind(this)}
-            nextPage={this.nextPage.bind(this)}
-            totalPages={this.state.totalPages}
-            isSearch={false}
-            atBottom={true}
-          />
+          <div aria-live="polite">
+            <Pagination
+              numResults={this.state.items.length}
+              total={this.state.total}
+              page={this.state.page}
+              limit={this.state.limit}
+              previousPage={this.previousPage.bind(this)}
+              nextPage={this.nextPage.bind(this)}
+              totalPages={this.state.totalPages}
+              isSearch={false}
+              atBottom={true}
+            />
+          </div>
         </div>
       );
     } else if (this.state.total === 0) {

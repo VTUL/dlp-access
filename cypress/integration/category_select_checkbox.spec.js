@@ -18,7 +18,7 @@ describe('Object category options are mutually exclusive facet checkboxes', () =
       .should('contain', 'category=collection');
     cy.get("[data-cy=search-filter-field-value-pairs]")
       .invoke("text")
-      .should("contain", "category › collection");
+      .should("contain", "category", "collection");
   });
 
   it('prevents from selecting more than one categories(checkboxes)', () => {
@@ -32,7 +32,7 @@ describe('Object category options are mutually exclusive facet checkboxes', () =
         .should('not.contain', 'category=collection');
     cy.get("[data-cy=search-filter-field-value-pairs]")
       .invoke("text")
-      .should("contain", "category › archive")
-      .should("not.contain", "category › collection");
+      .should("contain", "category", "archive")
+      .should("not.contain", "collection");
   });
 });

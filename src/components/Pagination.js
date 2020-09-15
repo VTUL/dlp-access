@@ -18,15 +18,25 @@ class Pagination extends Component {
     const Displaying = () => {
       let displayingCopy = "";
       if (this.props.numResults === 0) {
-        displayingCopy = <div>No results found</div>;
+        displayingCopy = (
+          <div role={this.props.atBottom ? "alert" : null}>
+            No results found
+          </div>
+        );
       } else {
         const textBefore = this.props.isSearch
           ? "Search Results:"
           : "Displaying:";
         displayingCopy = (
-          <div className="pagination-text">
-            {textBefore} {this.lowerBound()} {this.upperBound()} of{" "}
-            {this.props.total}
+          <div
+            className="pagination-text"
+            aria-live={this.props.atBottom ? "polite" : "off"}
+          >
+            <p>
+              {`${textBefore} ${this.lowerBound()} ${this.upperBound()} of ${
+                this.props.total
+              }`}
+            </p>
           </div>
         );
       }
@@ -35,7 +45,9 @@ class Pagination extends Component {
     const Previous = () => {
       if (this.props.page > 0) {
         return (
-          <Button onClick={this.props.previousPage}>&laquo; Previous</Button>
+          <Button onClick={this.props.previousPage} aria-live="off">
+            <i className="fas fa-angle-double-left"></i> Previous
+          </Button>
         );
       } else {
         return <div></div>;
@@ -43,7 +55,11 @@ class Pagination extends Component {
     };
     const Next = () => {
       if (this.props.page < this.props.totalPages - 1) {
-        return <Button onClick={this.props.nextPage}>Next &raquo;</Button>;
+        return (
+          <Button onClick={this.props.nextPage} aria-live="off">
+            Next <i className="fas fa-angle-double-right"></i>
+          </Button>
+        );
       } else {
         return <div></div>;
       }

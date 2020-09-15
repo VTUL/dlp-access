@@ -18,6 +18,7 @@ class MasonryView extends Component {
               category={this.props.category}
               label={this.props.label}
               className="card-img"
+              altText="true"
             />
           </a>
         </div>

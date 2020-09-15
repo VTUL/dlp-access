@@ -15,7 +15,7 @@ describe('Multi-selectable checkboxes correspond to mulitple facet values of a f
       .should('contain', 'medium=Colored+pencil');
     cy.get('[data-cy=search-filter-field-value-pairs]')
       .invoke('text')
-      .should('contain', 'medium › Colored pencil')
+      .should('contain', 'medium', 'Colored pencil')
   })
 
   it('allows to select more than one checkboxes', () => {
@@ -33,7 +33,7 @@ describe('Multi-selectable checkboxes correspond to mulitple facet values of a f
       .and('contain', 'medium=Marker+pen')
     cy.get('[data-cy=search-filter-field-value-pairs]')
       .invoke('text')
-      .should('contain', 'medium › Colored pencil')
-      .and('contain', 'medium › Marker pen')
+      .should('contain', 'medium', 'Colored pencil')
+      .and('contain', 'medium', 'Marker pen')
   })
 })

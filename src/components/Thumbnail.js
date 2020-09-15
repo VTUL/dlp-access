@@ -22,7 +22,7 @@ class Thumbnail extends Component {
         <img
           className={this.props.className}
           src={this.props.item.thumbnail_path}
-          alt={this.props.item.title}
+          alt={this.props.altText ? this.props.item.title : ""}
         />
       </div>
     );
