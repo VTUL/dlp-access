@@ -70,8 +70,6 @@ type Collectionmap
     id: ID!
     collection_id: String!
     map_object: String!
-    create_date: String!
-    modified_date: String!
     collection: Collection @connection(name: "CollectionCollectionMap")
   }
 
@@ -113,7 +111,6 @@ type Archive implements Object
   visibility: Boolean!
   thumbnail_path: String
   manifest_url: String!
-  heirarchy_path: [String!]
   create_date: String!
   modified_date: String!
   collection: Collection @connection(name: "CollectionArchives")
@@ -238,7 +235,6 @@ input SearchableCollectionFilterInput {
   visibility: SearchableBooleanFilterInput
   thumbnail_path: SearchableStringFilterInput
   parent_collection: SearchableStringFilterInput
-  heirarchy_path: SearchableStringFilterInput
   create_date: SearchableStringFilterInput
   modified_date: SearchableStringFilterInput
   and: [SearchableCollectionFilterInput]
@@ -318,7 +314,6 @@ input SearchableArchiveFilterInput {
   manifest_url: SearchableStringFilterInput
   create_date: SearchableStringFilterInput
   modified_date: SearchableStringFilterInput
-  heirarchy_path: SearchableStringFilterInput
   and: [SearchableArchiveFilterInput]
   or: [SearchableArchiveFilterInput]
   not: SearchableArchiveFilterInput

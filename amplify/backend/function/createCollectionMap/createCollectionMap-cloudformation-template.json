@@ -134,8 +134,8 @@
         "Layers": [],
         "Timeout": "25",
         "Code": {
-          "S3Bucket": "amplify-iawav2-leearchive-132616-deployment",
-          "S3Key": "amplify-builds/createCollectionMap-61456956587458666648-build.zip"
+          "S3Bucket": "amplify-iawav2-dev-154638-deployment",
+          "S3Key": "amplify-builds/createCollectionMap-386a5a457a4d50597a34-build.zip"
         }
       }
     },

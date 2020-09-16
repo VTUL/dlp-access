@@ -12,7 +12,7 @@ const GetCollectionItems = `query SearchCollectionItems(
   ) {
   searchArchives(
     filter: { 
-      heirarchy_path: { eq: $parent_id }
+      parent_collection: { eq: $parent_id }
     },
     sort: {
       field: identifier,

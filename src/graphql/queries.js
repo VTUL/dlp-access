@@ -51,16 +51,10 @@ export const searchObjects = /* GraphQL */ `
             id
             collection_id
             map_object
-            create_date
-            modified_date
-            createdAt
-            updatedAt
           }
           archives {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         ... on Archive {
           tags
@@ -72,7 +66,6 @@ export const searchObjects = /* GraphQL */ `
           contributor
           item_category
           manifest_url
-          heirarchy_path
           collection {
             id
             title
@@ -101,11 +94,7 @@ export const searchObjects = /* GraphQL */ `
             modified_date
             heirarchy_path
             collectionmap_id
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
       }
       nextToken
@@ -160,16 +149,10 @@ export const fulltextCollections = /* GraphQL */ `
           id
           collection_id
           map_object
-          create_date
-          modified_date
-          createdAt
-          updatedAt
         }
         archives {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       nextToken
       total
@@ -222,7 +205,6 @@ export const fulltextArchives = /* GraphQL */ `
         visibility
         thumbnail_path
         manifest_url
-        heirarchy_path
         create_date
         modified_date
         collection {
@@ -253,11 +235,7 @@ export const fulltextArchives = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
       total
@@ -298,8 +276,6 @@ export const getCollection = /* GraphQL */ `
         id
         collection_id
         map_object
-        create_date
-        modified_date
         collection {
           id
           title
@@ -328,11 +304,7 @@ export const getCollection = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       archives {
         items {
@@ -366,16 +338,11 @@ export const getCollection = /* GraphQL */ `
           visibility
           thumbnail_path
           manifest_url
-          heirarchy_path
           create_date
           modified_date
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -418,16 +385,10 @@ export const listCollections = /* GraphQL */ `
           id
           collection_id
           map_object
-          create_date
-          modified_date
-          createdAt
-          updatedAt
         }
         archives {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -439,8 +400,6 @@ export const getCollectionmap = /* GraphQL */ `
       id
       collection_id
       map_object
-      create_date
-      modified_date
       collection {
         id
         title
@@ -473,19 +432,11 @@ export const getCollectionmap = /* GraphQL */ `
           id
           collection_id
           map_object
-          create_date
-          modified_date
-          createdAt
-          updatedAt
         }
         archives {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -500,8 +451,6 @@ export const listCollectionmaps = /* GraphQL */ `
         id
         collection_id
         map_object
-        create_date
-        modified_date
         collection {
           id
           title
@@ -530,11 +479,7 @@ export const listCollectionmaps = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -573,7 +518,6 @@ export const getArchive = /* GraphQL */ `
       visibility
       thumbnail_path
       manifest_url
-      heirarchy_path
       create_date
       modified_date
       collection {
@@ -608,19 +552,11 @@ export const getArchive = /* GraphQL */ `
           id
           collection_id
           map_object
-          create_date
-          modified_date
-          createdAt
-          updatedAt
         }
         archives {
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -662,7 +598,6 @@ export const listArchives = /* GraphQL */ `
         visibility
         thumbnail_path
         manifest_url
-        heirarchy_path
         create_date
         modified_date
         collection {
@@ -693,11 +628,7 @@ export const listArchives = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -750,16 +681,10 @@ export const collectionByIdentifier = /* GraphQL */ `
           id
           collection_id
           map_object
-          create_date
-          modified_date
-          createdAt
-          updatedAt
         }
         archives {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -811,7 +736,6 @@ export const archiveByIdentifier = /* GraphQL */ `
         visibility
         thumbnail_path
         manifest_url
-        heirarchy_path
         create_date
         modified_date
         collection {
@@ -842,11 +766,7 @@ export const archiveByIdentifier = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
     }
@@ -897,16 +817,10 @@ export const searchCollections = /* GraphQL */ `
           id
           collection_id
           map_object
-          create_date
-          modified_date
-          createdAt
-          updatedAt
         }
         archives {
           nextToken
         }
-        createdAt
-        updatedAt
       }
       nextToken
       total
@@ -930,8 +844,6 @@ export const searchCollectionmaps = /* GraphQL */ `
         id
         collection_id
         map_object
-        create_date
-        modified_date
         collection {
           id
           title
@@ -960,11 +872,7 @@ export const searchCollectionmaps = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
       total
@@ -1015,7 +923,6 @@ export const searchArchives = /* GraphQL */ `
         visibility
         thumbnail_path
         manifest_url
-        heirarchy_path
         create_date
         modified_date
         collection {
@@ -1046,11 +953,7 @@ export const searchArchives = /* GraphQL */ `
           modified_date
           heirarchy_path
           collectionmap_id
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
       total
