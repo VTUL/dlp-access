@@ -14,7 +14,7 @@ describe('Search by title by hitting enter key', () => {
       .should('eq', 'http://localhost:3000/search?field=title&q=Additions&view=Gallery');
     cy.get('#content > div.navbar > div.navbar-text > div.pagination-section > div.pagination-text')
       .invoke('text')
-      .should('equal', 'Search Results: 1 - 10 of 37');
+      .should('equal', 'Search Results: 1 - 10 of 35');
     
     cy.get('#content > div.search-results-section > div.row')
       .children()
@@ -73,7 +73,7 @@ describe('Search by all fields by hitting enter key', () => {
       .should('eq', 'http://localhost:3000/search?field=all&q=Diazotypes%20%28copies%29&view=Gallery');
     cy.get('#content > div.navbar > div.navbar-text > div.pagination-section > div.pagination-text')
       .invoke('text')
-      .should('equal', 'Search Results: 1 - 10 of 469');
+      .should('equal', 'Search Results: 1 - 10 of 452');
 
     cy.get('#content > div.search-results-section > div.row')
       .children()
