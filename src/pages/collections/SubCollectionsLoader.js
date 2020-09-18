@@ -80,9 +80,17 @@ class SubCollectionsLoader extends Component {
   }
 
   sortChildren(children) {
-    return children.sort((a, b) =>
-      a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
-    );
+    return children.sort(function(a, b) {
+      let aArray = a.name.split(" ");
+      let bArray = b.name.split(" ");
+      let aNum = parseInt(aArray[aArray.length - 1]);
+      let bNum = parseInt(bArray[bArray.length - 1]);
+      if (!isNaN(aNum) && !isNaN(bNum)) {
+        return aNum > bNum ? 1 : -1;
+      } else {
+        return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1;
+      }
+    });
   }
 
   buildLabel(node) {
