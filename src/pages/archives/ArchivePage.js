@@ -179,7 +179,7 @@ class ArchivePage extends Component {
             return (
               <div className="item-page-wrapper">
                 <SiteTitle
-                  siteTitle={this.props.siteDetails.siteTitle}
+                  siteTitle={this.props.site.siteTitle}
                   pageTitle={item.title}
                 />
                 <SearchBar

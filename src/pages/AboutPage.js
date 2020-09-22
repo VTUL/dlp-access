@@ -24,12 +24,9 @@ class AboutPage extends Component {
     return (
       <div className="row about-page-wrapper">
         <div className="col-12 about-heading">
-          <SiteTitle
-            siteTitle={this.props.siteDetails.siteTitle}
-            pageTitle="About"
-          />
+          <SiteTitle siteTitle={this.props.site.siteTitle} pageTitle="About" />
           <h1 id="about-heading">
-            About <span>{this.props.siteDetails.siteTitle}</span>
+            About <span>{this.props.site.siteTitle}</span>
           </h1>
         </div>
         <div className="col-md-8" role="region" aria-labelledby="about-heading">
@@ -39,7 +36,10 @@ class AboutPage extends Component {
           ></div>
         </div>
         <div className="col-md-4 contact-section-wrapper">
-          <ContactSection siteDetails={this.props.siteDetails} />
+          <ContactSection
+            siteDetails={this.props.siteDetails}
+            site={this.props.site}
+          />
           {this.props.siteDetails.sitePages.terms ? (
             <a href="/permissions" className="about-terms-link">
               Permissions

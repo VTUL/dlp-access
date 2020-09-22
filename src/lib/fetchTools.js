@@ -304,3 +304,18 @@ export const fetchHeirarchyPathMembers = async collection => {
 
   return retVal;
 };
+
+export const getSite = async () => {
+  const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+  const apiData = await API.graphql({
+    query: queries.siteBySiteId,
+    variables: { siteId: REP_TYPE.toLowerCase(), limit: 1 }
+  });
+  const {
+    data: {
+      siteBySiteId: { items }
+    }
+  } = apiData;
+  const site = items[0];
+  return site;
+};

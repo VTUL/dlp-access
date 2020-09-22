@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import SiteForm from "./SiteForm";
 
 function SiteAdmin() {
   useEffect(() => {
@@ -28,9 +29,7 @@ function SiteAdmin() {
   return (
     <div>
       <h1>
-        {authorized
-          ? "Update Site Configurations"
-          : "Not authorized to access this page!"}
+        {authorized ? <SiteForm /> : "Not authorized to access this page!"}
       </h1>
       <AmplifySignOut />
     </div>

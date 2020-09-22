@@ -16,7 +16,7 @@ class ContactSection extends Component {
             aria-labelledby="contact-section-heading"
           >
             <h2 className="contact-heading" id="contact-section-heading">
-              Contact {this.props.siteDetails.siteTitle}
+              Contact {this.props.site.siteTitle}
             </h2>
             {this.props.siteDetails.contact.map((contact, index) => (
               <div key={index}>

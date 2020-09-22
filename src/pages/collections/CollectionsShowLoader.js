@@ -34,7 +34,7 @@ class CollectionsShowLoader extends Component {
           return (
             <>
               <SiteTitle
-                siteTitle={this.props.siteDetails.siteTitle}
+                siteTitle={this.props.site.siteTitle}
                 pageTitle={collection.title}
               />
               <CollectionsShowPage

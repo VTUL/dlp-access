@@ -103,6 +103,7 @@ class Header extends Component {
             <div className="gateway">
               <HeaderBreadcrumbs
                 siteDetails={this.props.siteDetails}
+                site={this.props.site}
                 location={this.props.location}
               />
             </div>

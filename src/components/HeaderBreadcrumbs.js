@@ -83,7 +83,7 @@ class HeaderBreadcrumbs extends Breadcrumbs {
       custom_key: null
     });
     baseList.push({
-      title: this.props.siteDetails.siteTitle,
+      title: this.props.site.siteTitle,
       url: "/",
       custom_key: null
     });

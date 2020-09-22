@@ -105,7 +105,7 @@ class CollectionsListLoader extends Component {
       return (
         <div>
           <SiteTitle
-            siteTitle={this.props.siteDetails.siteTitle}
+            siteTitle={this.props.site.siteTitle}
             pageTitle="Collections"
           />
           <CollectionsListPage

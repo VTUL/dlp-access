@@ -187,10 +187,7 @@ class SearchLoader extends Component {
     if (this.state.items !== null) {
       return (
         <div>
-          <SiteTitle
-            siteTitle={this.props.siteDetails.siteTitle}
-            pageTitle="Search"
-          />
+          <SiteTitle siteTitle={this.props.site.siteTitle} pageTitle="Search" />
           <SearchResults
             items={this.state.items}
             total={this.state.total}

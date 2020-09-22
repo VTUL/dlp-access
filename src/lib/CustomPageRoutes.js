@@ -10,7 +10,7 @@ const pageComponents = {
   AdditionalPages: AdditionalPages
 };
 
-function route(siteDetails, key, path, PageComponent, childKey = null) {
+function route(siteDetails, site, key, path, PageComponent, childKey = null) {
   let elemKey = key;
   if (childKey) {
     elemKey += "." + childKey;
@@ -23,6 +23,7 @@ function route(siteDetails, key, path, PageComponent, childKey = null) {
       render={props => (
         <PageComponent
           siteDetails={siteDetails}
+          site={site}
           parentKey={key}
           childKey={childKey}
         />
@@ -31,17 +32,18 @@ function route(siteDetails, key, path, PageComponent, childKey = null) {
   );
 }
 
-export function buildRoutes(siteDetails) {
+export function buildRoutes(siteDetails, site) {
   let routes = [];
   for (const [key, obj] of Object.entries(siteDetails.sitePages)) {
     const pageComponent = pageComponents[obj.component];
-    routes.push(route(siteDetails, key, obj.local_url, pageComponent));
+    routes.push(route(siteDetails, site, key, obj.local_url, pageComponent));
     if (obj.children) {
       for (const [childKey, childObj] of Object.entries(obj.children)) {
         const childPageComponent = pageComponents[childObj.component];
         routes.push(
           route(
             siteDetails,
+            site,
             key,
             childObj.local_url,
             childPageComponent,

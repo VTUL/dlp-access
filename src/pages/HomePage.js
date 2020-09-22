@@ -31,10 +31,7 @@ class HomePage extends Component {
     }
     return (
       <>
-        <SiteTitle
-          siteTitle={this.props.siteDetails.siteTitle}
-          pageTitle="Home"
-        />
+        <SiteTitle siteTitle={this.props.site.siteTitle} pageTitle="Home" />
         <div
           className={
             this.props.siteDetails.homePage.staticImage.showTitle
@@ -45,7 +42,7 @@ class HomePage extends Component {
           <div className="home-featured-image-wrapper">
             <FeaturedStaticImage staticImage={staticImage} />
             <div id="home-site-title-wrapper">
-              <h1>{this.props.siteDetails.siteName}</h1>
+              <h1>{this.props.site.siteName}</h1>
             </div>
           </div>
           <div className="home-search-wrapper">

@@ -32,7 +32,7 @@ class PermissionsPage extends Component {
         <div className="row terms-page-wrapper">
           <div className="col-12 terms-heading">
             <SiteTitle
-              siteTitle={this.props.siteDetails.siteTitle}
+              siteTitle={this.props.site.siteTitle}
               pageTitle="Permissions"
             />
             <h1 id="permissions-heading">Permissions</h1>
