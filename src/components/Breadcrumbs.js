@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { API, graphqlOperation } from "aws-amplify";
-import * as queries from "../graphql/queries";
 import { arkLinkFormatted } from "../lib/MetadataRenderer";
+import { fetchHeirarchyPathMembers } from "../lib/fetchTools";
 
 import "../css/breadcrumbs.css";
 
@@ -13,21 +12,26 @@ class Breadcrumbs extends Component {
     };
   }
 
-  async getParent(parent_id) {
-    const parent_collection = await API.graphql(
-      graphqlOperation(queries.getCollection, {
-        id: parent_id
-      })
-    );
-    return parent_collection;
-  }
-
   async buildList() {
-    let parent_id =
-      this.props.record.parent_collection !== null
-        ? this.props.record.parent_collection[0]
-        : null;
+    const records = await fetchHeirarchyPathMembers(this.props.record);
     let parent_list = [];
+    for (const pathIdx in this.props.record.heirarchy_path) {
+      const id = this.props.record.heirarchy_path[pathIdx];
+      for (const recordIdx in records) {
+        if (
+          records[recordIdx].id === id &&
+          records[recordIdx].id !== this.props.record.id
+        ) {
+          parent_list.push({
+            title: records[recordIdx].title,
+            url:
+              "/collection/" + arkLinkFormatted(records[recordIdx].custom_key),
+            custom_key: arkLinkFormatted(records[recordIdx].custom_key)
+          });
+        }
+      }
+    }
+
     parent_list.push({
       title: this.props.record.title,
       url:
@@ -37,21 +41,7 @@ class Breadcrumbs extends Component {
         arkLinkFormatted(this.props.record.custom_key),
       custom_key: arkLinkFormatted(this.props.record.custom_key)
     });
-    if (parent_id !== null) {
-      do {
-        let response = await this.getParent(parent_id);
-        let parent_collection = response.data.getCollection;
-        parent_id =
-          parent_collection.parent_collection !== null
-            ? parent_collection.parent_collection[0]
-            : null;
-        parent_list.push({
-          title: parent_collection.title,
-          url: "/collection/" + arkLinkFormatted(parent_collection.custom_key),
-          custom_key: arkLinkFormatted(parent_collection.custom_key)
-        });
-      } while (parent_id !== null);
-    }
+
     this.setState({ links: parent_list }, function() {
       if (typeof this.props.setTitleList == "function") {
         this.props.setTitleList(parent_list);
@@ -64,7 +54,6 @@ class Breadcrumbs extends Component {
   }
 
   render() {
-    const linksCopy = this.state.links.slice();
     return (
       <ol id="vt_navtrail" className="long_title vt-breadcrumbs">
         <li key="home" className="vt-breadcrumbs-item">
@@ -76,7 +65,7 @@ class Breadcrumbs extends Component {
             /{" "}
           </span>
         </li>
-        {linksCopy.reverse().map((link, index, arr) => {
+        {this.state.links.map((link, index, arr) => {
           if (index !== arr.length - 1) {
             return (
               <li

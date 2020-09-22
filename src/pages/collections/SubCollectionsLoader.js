@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { API, graphqlOperation } from "aws-amplify";
-import { getCollection, getCollectionmap } from "../../graphql/queries";
+import { getCollectionmap } from "../../graphql/queries";
 import TreeView from "@material-ui/lab/TreeView";
 import TreeItem from "@material-ui/lab/TreeItem";
 import SvgIcon from "@material-ui/core/SvgIcon";
+import { getTopLevelParentForCollection } from "../../lib/fetchTools";
 
 class SubCollectionsLoader extends Component {
   constructor(props) {
@@ -48,35 +49,14 @@ class SubCollectionsLoader extends Component {
     if (this.props.collection.collectionmap_id) {
       mapID = this.props.collection.collectionmap_id;
     } else {
-      let parentID = this.props.collection.parent_collection[0];
-      while (mapID == null && parentID) {
-        let parent = await this.getParent(parentID);
-        let parentData = parent.data.getCollection;
-        if (parentData.parent_collection) {
-          parentID = parentData.parent_collection[0];
-        } else {
-          parentID = null;
-        }
-        if (parentData.collectionmap_id) {
-          mapID = parentData.collectionmap_id;
-        }
-      }
-    }
-    if (mapID == null) {
-      mapID = false;
+      const topLevelParent = await getTopLevelParentForCollection(
+        this.props.collection
+      );
+      mapID = topLevelParent.collectionmap_id;
     }
     this.setState({ mapID: mapID }, function() {
       this.loadMap();
     });
-  }
-
-  async getParent(parent_id) {
-    const parent_collection = await API.graphql(
-      graphqlOperation(getCollection, {
-        id: parent_id
-      })
-    );
-    return parent_collection;
   }
 
   sortChildren(children) {

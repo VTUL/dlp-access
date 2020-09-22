@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { API, graphqlOperation } from "aws-amplify";
-import * as queries from "../../graphql/queries";
 import SubCollectionsLoader from "./SubCollectionsLoader.js";
 import CollectionItemsLoader from "./CollectionItemsLoader.js";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
@@ -8,7 +6,10 @@ import {
   RenderItemsDetailed,
   addNewlineInDesc
 } from "../../lib/MetadataRenderer";
-import { fetchLanguages } from "../../lib/fetchTools";
+import {
+  fetchLanguages,
+  getTopLevelParentForCollection
+} from "../../lib/fetchTools";
 
 import "../../css/CollectionsShowPage.css";
 
@@ -68,7 +69,7 @@ class CollectionsShowPage extends Component {
     let attributeResults = {};
     if (this.state.collection.parent_collection) {
       attributeResults = await this.getTopLevelAttributes(
-        this.state.collection.parent_collection[0],
+        this.props.collection,
         attributes
       );
     }
@@ -77,30 +78,13 @@ class CollectionsShowPage extends Component {
     });
   }
 
-  async getTopLevelAttributes(parent_id, attributes) {
+  async getTopLevelAttributes(collection, attributes) {
     let attributeResults = {};
-    while (parent_id) {
-      let parent = await this.getParent(parent_id);
-      let parentData = parent.data.getCollection;
-      for (const key of attributes) {
-        attributeResults[key] = parentData[key];
-      }
-      if (parentData.parent_collection) {
-        parent_id = parentData.parent_collection[0];
-      } else {
-        parent_id = null;
-      }
+    let parentData = await getTopLevelParentForCollection(collection);
+    for (const key of attributes) {
+      attributeResults[key] = parentData[key];
     }
     return attributeResults;
-  }
-
-  async getParent(parent_id) {
-    const parent_collection = await API.graphql(
-      graphqlOperation(queries.getCollection, {
-        id: parent_id
-      })
-    );
-    return parent_collection;
   }
 
   collectionImg() {
@@ -200,8 +184,7 @@ class CollectionsShowPage extends Component {
   }
 
   setTitleList(titleList) {
-    const titleListCopy = titleList.slice();
-    this.setState({ titleList: titleListCopy.reverse() });
+    this.setState({ titleList: titleList });
   }
 
   metadataTitle() {

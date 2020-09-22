@@ -268,3 +268,39 @@ const getCollectionIDByTitle = async title => {
   }
   return id;
 };
+
+export const getTopLevelParentForCollection = async collection => {
+  const topLevelId = collection.heirarchy_path[0];
+  let retVal = null;
+  const response = await API.graphql(
+    graphqlOperation(queries.getCollection, {
+      id: topLevelId
+    })
+  );
+  try {
+    retVal = response.data.getCollection;
+  } catch (error) {
+    console.error(`Error getting top level parent for: ${collection.id}`);
+  }
+  return retVal;
+};
+
+export const fetchHeirarchyPathMembers = async collection => {
+  let retVal = null;
+  const orArray = [];
+  for (var idx in collection.heirarchy_path) {
+    orArray.push({ id: { eq: collection.heirarchy_path[idx] } });
+  }
+  const response = await API.graphql(
+    graphqlOperation(queries.searchCollections, {
+      filter: { or: orArray }
+    })
+  );
+  try {
+    retVal = response.data.searchCollections.items;
+  } catch (error) {
+    console.error(`Error getting heirarchy path for: ${collection.id}`);
+  }
+
+  return retVal;
+};
