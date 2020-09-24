@@ -88,15 +88,19 @@ class SiteForm extends Component {
   };
 
   viewSite = () => {
-    return (
-      <div>
+    if (this.state.site) {
+      return (
         <div>
-          <p>SiteId: iawa</p>
-          <p>Site Title: {this.state.formState.siteTitle}</p>
-          <p>Site Name: {this.state.formState.siteName}</p>
+          <div>
+            <p>SiteId: {this.state.site.siteId} </p>
+            <p>Site Title: {this.state.formState.siteTitle}</p>
+            <p>Site Name: {this.state.formState.siteName}</p>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return <div>Error fetching site configurations......</div>;
+    }
   };
 
   render() {
