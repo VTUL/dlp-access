@@ -19,4 +19,9 @@ describe('Related items on archives page', () => {
         cy.visit("http://localhost:3000/archive/ft77nv3b");
         cy.get(".slick-slide").should('have.class', 'slick-active')
     })
+
+    it("Carousel populates when less than 10 items in the entire collection", () => {
+        cy.visit("http://localhost:3000/archive/0863k84a");
+        cy.get(".slick-slide").should("have.class", "slick-active");
+    });
 })

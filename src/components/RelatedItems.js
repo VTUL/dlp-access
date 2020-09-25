@@ -33,18 +33,13 @@ class RelatedItems extends Component {
     return items.data.searchArchives.items;
   }
 
-  removeDuplicates(item_list) {
-    let uniqueItems = item_list.filter(
-      (item, index, array) => array.findIndex(i => i.id === item.id) === index
-    );
+  formatArray(item_list) {
+    let uniqueItems = item_list
+      .filter(
+        (item, index, array) => array.findIndex(i => i.id === item.id) === index
+      )
+      .filter(value => value.identifier !== this.props.collection.identifier);
     return uniqueItems;
-  }
-
-  removeItem(item_list) {
-    let arr = item_list.filter(
-      value => value.identifier !== this.props.collection.identifier
-    );
-    return arr;
   }
 
   async buildList() {
@@ -55,22 +50,13 @@ class RelatedItems extends Component {
       let collection_id = this.props.collection.heirarchy_path[i];
       let collection_items = await this.getItems(collection_id, limit);
       item_list.push(...collection_items);
-      item_list = this.removeDuplicates(item_list);
-      item_list = this.removeItem(item_list);
+      item_list = this.formatArray(item_list);
       i--;
       limit = limit + 10;
     }
-
-    let newArray = [];
-    if (item_list.length > 10) {
-      newArray = item_list.slice(0, 10);
-    } else {
-      newArray = item_list;
-    }
-
-    if (newArray.length > 0) {
+    if (item_list.slice(0, 10).length > 0) {
       this.setState({
-        items: newArray
+        items: item_list.slice(0, 10)
       });
     }
   }
