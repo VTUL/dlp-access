@@ -153,6 +153,9 @@ class ArchivePage extends Component {
   }
 
   render() {
+    const citationKeyArray = [
+      { field: "custom_key", label: "Permanent Link:" }
+    ];
     return (
       <Connect
         query={graphqlOperation(searchArchives, {
@@ -217,6 +220,21 @@ class ArchivePage extends Component {
                     {addNewlineInDesc(item.description)}
                   </div>
                   <div className="col-lg-6 details-section-metadata">
+                    <table
+                      aria-label="Item Citation"
+                      className="details-section-citation"
+                    >
+                      <tbody>
+                        <tr className="citation-heading">
+                          <th>Cite this Item</th>
+                          <td></td>
+                        </tr>
+                        <RenderItemsDetailed
+                          keyArray={citationKeyArray}
+                          item={item}
+                        />
+                      </tbody>
+                    </table>
                     <table aria-label="Item Metadata">
                       <tbody>
                         <RenderItemsDetailed

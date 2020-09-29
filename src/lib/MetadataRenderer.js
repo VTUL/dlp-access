@@ -127,7 +127,7 @@ function textFormat(item, attr, languages) {
     return htmlParsedValue(item[attr]);
   } else if (attr === "custom_key") {
     return htmlParsedValue(
-      `<a href="http://idn.lib.vt.edu/${item.custom_key}">idn.lib.vt.edu/${item.custom_key}</a>`
+      `<a href="http://idn.lib.vt.edu/${item.custom_key}">https://idn.lib.vt.edu/${item.custom_key}</a>`
     );
   } else if (attr === "description") {
     return <MoreLink category={category} item={item} />;
