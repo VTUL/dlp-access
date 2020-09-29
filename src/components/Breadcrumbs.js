@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import { arkLinkFormatted } from "../lib/MetadataRenderer";
 import { fetchHeirarchyPathMembers } from "../lib/fetchTools";
 
@@ -49,6 +50,12 @@ class Breadcrumbs extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.record.id !== prevProps.record.id) {
+      this.buildList();
+    }
+  }
+
   componentDidMount() {
     this.buildList();
   }
@@ -57,9 +64,9 @@ class Breadcrumbs extends Component {
     return (
       <ol id="vt_navtrail" className="long_title vt-breadcrumbs">
         <li key="home" className="vt-breadcrumbs-item">
-          <a className="vt-breadcrumbs-link" href={"/"}>
+          <NavLink className="vt-breadcrumbs-link" to={"/"}>
             Home
-          </a>
+          </NavLink>
           <span className="breadcrumb-slash" aria-hidden="true">
             {" "}
             /{" "}
@@ -72,9 +79,9 @@ class Breadcrumbs extends Component {
                 className="vt-breadcrumbs-item"
                 key={arkLinkFormatted(link.custom_key)}
               >
-                <a className="vt-breadcrumbs-link" href={link.url}>
+                <NavLink className="vt-breadcrumbs-link" to={link.url}>
                   {link.title}
-                </a>
+                </NavLink>
                 <span className="breadcrumb-slash" aria-hidden="true">
                   {" "}
                   /{" "}
@@ -87,13 +94,13 @@ class Breadcrumbs extends Component {
                 className="vt-breadcrumbs-item"
                 key={arkLinkFormatted(link.custom_key)}
               >
-                <a
+                <NavLink
                   className="vt-breadcrumbs-link"
-                  href={link.url}
+                  to={link.url}
                   aria-current="page"
                 >
                   {link.title}
-                </a>
+                </NavLink>
                 <span className="breadcrumb-slash" aria-hidden="true">
                   {" "}
                   /{" "}

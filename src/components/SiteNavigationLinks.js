@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 
 class SiteNavigationLinks extends Component {
+  onNavClick() {
+    window.navToggle();
+  }
   onFoldAction(event) {
     window.foldAction(event.currentTarget);
   }
@@ -21,9 +25,9 @@ class SiteNavigationLinks extends Component {
     const listItem = (
       <li key={page.text} className={hasChildClass}>
         <div className="link-wrapper">
-          <a href={page.local_url} tabIndex="-1">
+          <NavLink onClick={this.onNavClick} to={page.local_url} tabIndex="-1">
             {page.text.toUpperCase()}
-          </a>
+          </NavLink>
           {this.childButton(page)}
         </div>
         {this.childList(page)}
@@ -53,9 +57,9 @@ class SiteNavigationLinks extends Component {
       const liKey = `${parentKey}.${childKey}`;
       const item = (
         <li className="nav-item" key={liKey}>
-          <a href={page.local_url} tabIndex="-1">
+          <NavLink onClick={this.onNavClick} to={page.local_url} tabIndex="-1">
             {page.text}
-          </a>
+          </NavLink>
         </li>
       );
       childItems.push(item);
@@ -93,23 +97,23 @@ class SiteNavigationLinks extends Component {
       <ul id="vt_main_nav" aria-label="Pages in Site">
         <li className="nav-item">
           <div className="link-wrapper">
-            <a href="/" tabIndex="-1">
+            <NavLink onClick={this.onNavClick} to="/" tabIndex="-1">
               Home
-            </a>
+            </NavLink>
           </div>
         </li>
         <li className="nav-item">
           <div className="link-wrapper">
-            <a href="/collections" tabIndex="-1">
+            <NavLink onClick={this.onNavClick} to="/collections" tabIndex="-1">
               BROWSE COLLECTIONS
-            </a>
+            </NavLink>
           </div>
         </li>
         <li className="nav-item">
           <div className="link-wrapper">
-            <a href="/search" tabIndex="-1">
+            <NavLink onClick={this.onNavClick} to="/search" tabIndex="-1">
               SEARCH
-            </a>
+            </NavLink>
           </div>
         </li>
         {additionalListItems}

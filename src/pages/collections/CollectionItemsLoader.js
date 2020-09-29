@@ -105,6 +105,12 @@ class CollectionItemsLoader extends Component {
     );
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.collection.id !== prevProps.collection.id) {
+      this.loadItems(this.props.collection.id);
+    }
+  }
+
   componentDidMount() {
     this.loadItems(this.props.collection.id);
   }

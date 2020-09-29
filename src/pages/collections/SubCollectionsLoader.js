@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import { getCollectionmap } from "../../graphql/queries";
 import TreeView from "@material-ui/lab/TreeView";
@@ -35,12 +36,16 @@ class SubCollectionsLoader extends Component {
       } catch (error) {
         console.error("Error fetching collection tree map");
       }
-      this.setState({ collectionMap: JSON.parse(map) }, function() {
-        this.updateParentSubcollections(
-          this.props.collection,
-          JSON.parse(map).children
-        );
-      });
+      if (map) {
+        const mapObj = JSON.parse(map);
+        const sorted = this.sortMap(mapObj);
+        this.setState({ collectionMap: sorted }, function() {
+          this.updateParentSubcollections(
+            this.props.collection,
+            sorted.children
+          );
+        });
+      }
     }
   }
 
@@ -59,6 +64,21 @@ class SubCollectionsLoader extends Component {
     });
   }
 
+  sortMap(map) {
+    const sort = function(node, context) {
+      if (Array.isArray(node.children)) {
+        const tempChildren = node.children.slice();
+        node.children = context.sortChildren(tempChildren);
+        for (const child in node.children) {
+          sort(node.children[child], context);
+        }
+      }
+    };
+    const temp = JSON.parse(JSON.stringify(map));
+    sort(temp, this);
+    return temp;
+  }
+
   sortChildren(children) {
     return children.sort(function(a, b) {
       let aArray = a.name.split(" ");
@@ -74,8 +94,8 @@ class SubCollectionsLoader extends Component {
   }
 
   buildLabel(node) {
-    const target = `${window.location.protocol}//${window.location.host}/collection/${node.custom_key}`;
-    return <a href={target}>{node.name}</a>;
+    const target = `/collection/${node.custom_key}`;
+    return <NavLink to={target}>{node.name}</NavLink>;
   }
 
   updateParentSubcollections(collection, subCollections) {
@@ -84,6 +104,12 @@ class SubCollectionsLoader extends Component {
       collection,
       subCollections
     );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.collection.id !== prevProps.collection.id) {
+      this.loadMap();
+    }
   }
 
   componentDidMount() {
@@ -125,7 +151,7 @@ class SubCollectionsLoader extends Component {
           label={this.buildLabel(nodes)}
         >
           {Array.isArray(nodes.children)
-            ? this.sortChildren(nodes.children).map(node => renderTree(node))
+            ? nodes.children.map(node => renderTree(node))
             : null}
         </TreeItem>
       );
@@ -143,8 +169,8 @@ class SubCollectionsLoader extends Component {
           <TreeView
             defaultCollapseIcon={<MinusSquare />}
             defaultExpandIcon={<PlusSquare />}
-            defaultExpanded={this.props.collection.heirarchy_path}
-            defaultSelected={[this.props.collection.id]}
+            expanded={this.props.collection.heirarchy_path}
+            selected={[this.props.collection.id]}
           >
             {renderTree(this.state.collectionMap)}
           </TreeView>

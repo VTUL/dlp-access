@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import { RenderItems, arkLinkFormatted } from "../../lib/MetadataRenderer";
 import Thumbnail from "../../components/Thumbnail";
 import "../../css/SearchResult.css";
@@ -25,8 +26,8 @@ class ItemListView extends Component {
     if (this.state.languages !== null) {
       return (
         <div key={this.props.item.id} className="col-12 collection-entry">
-          <a
-            href={`/${this.props.category}/${arkLinkFormatted(
+          <NavLink
+            to={`/${this.props.category}/${arkLinkFormatted(
               this.props.item.custom_key
             )}`}
           >
@@ -45,7 +46,7 @@ class ItemListView extends Component {
                 languages={this.state.languages}
               />
             </div>
-          </a>
+          </NavLink>
         </div>
       );
     } else {

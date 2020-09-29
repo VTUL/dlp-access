@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import { arkLinkFormatted } from "../../lib/MetadataRenderer";
 import Thumbnail from "../../components/Thumbnail";
 import "../../css/SearchResult.css";
@@ -8,8 +9,8 @@ class GalleryView extends Component {
     return (
       <div className="col-md-6 col-lg-4 gallery-item">
         <div className="card">
-          <a
-            href={`/${this.props.category}/${arkLinkFormatted(
+          <NavLink
+            to={`/${this.props.category}/${arkLinkFormatted(
               this.props.item.custom_key
             )}`}
           >
@@ -28,7 +29,7 @@ class GalleryView extends Component {
                 {this.props.item.description}
               </p>
             </div>
-          </a>
+          </NavLink>
         </div>
       </div>
     );
