@@ -120,9 +120,9 @@ class RelatedItems extends Component {
       return (
         <div className="related-items-wrapper">
           <div className="related-items-heading">
-            <h1>
+            <h2>
               Related <span>Items</span>
-            </h1>
+            </h2>
           </div>
           <Slider {...settings}>{featuredItems}</Slider>
         </div>

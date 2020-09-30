@@ -1,0 +1,52 @@
+.citation-section {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.citation-section .citation-heading {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 1.3125rem;
+  font-weight: 500;
+}
+
+.citation-section .citation-heading span {
+  color: var(--themeHighlightColor);
+}
+
+.citation-section .permanent-link {
+  padding: 10px;
+  border: 1px solid var(--dark-gray);
+}
+
+.citation-section .permanent-link .link-label {
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  display: block;
+}
+
+.citation-section .permanent-link .link-text {
+  display: block;
+  word-break: break-all;
+}
+
+.citation-section .permanent-link .help-icon {
+  padding: 2.5px;
+  font-size: 0.85rem;
+  vertical-align: top;
+}
+
+@media (min-width: 576px) {
+  .citation-section .permanent-link {
+    padding: 10px 15px;
+  }
+
+  .citation-section .permanent-link .link-label {
+    display: inline-block;
+  }
+
+  .citation-section .permanent-link .link-text {
+    padding-left: 5px;
+    display: inline-block;
+  }
+}

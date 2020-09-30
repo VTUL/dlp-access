@@ -15,6 +15,7 @@ import {
 import { fetchLanguages } from "../../lib/fetchTools";
 import { searchArchives } from "../../graphql/queries";
 import RelatedItems from "../../components/RelatedItems";
+import Citation from "../../components/Citation";
 
 import "../../css/ArchivePage.css";
 
@@ -153,9 +154,6 @@ class ArchivePage extends Component {
   }
 
   render() {
-    const citationKeyArray = [
-      { field: "custom_key", label: "Permanent Link:" }
-    ];
     return (
       <Connect
         query={graphqlOperation(searchArchives, {
@@ -220,21 +218,7 @@ class ArchivePage extends Component {
                     {addNewlineInDesc(item.description)}
                   </div>
                   <div className="col-lg-6 details-section-metadata">
-                    <table
-                      aria-label="Item Citation"
-                      className="details-section-citation"
-                    >
-                      <tbody>
-                        <tr className="citation-heading">
-                          <th>Cite this Item</th>
-                          <td></td>
-                        </tr>
-                        <RenderItemsDetailed
-                          keyArray={citationKeyArray}
-                          item={item}
-                        />
-                      </tbody>
-                    </table>
+                    <Citation item={item} />
                     <table aria-label="Item Metadata">
                       <tbody>
                         <RenderItemsDetailed

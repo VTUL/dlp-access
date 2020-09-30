@@ -15,7 +15,7 @@ div.item-image-section div.breadcrumbs-wrapper {
   font-size: 1rem;
 }
 
-div.item-image-section div.breadcrumbs-wrapper ul {
+div.item-image-section div.breadcrumbs-wrapper ol {
   margin: 0;
 }
 
@@ -72,33 +72,8 @@ div.item-image-section img.item-img {
   padding-bottom: 10px;
 }
 
-.details-section-metadata .details-section-citation {
-  border: solid 1px black;
-  width: 100%;
-  margin-bottom: 10px;
-  background-color: white;
-}
-
-.details-section-metadata .details-section-citation .citation-heading {
-  background-color: var(--light-gray);
-  border-bottom: solid 1px black;
-}
-
-.details-section-metadata .details-section-citation .citation-heading th {
-  font-family: "gineso-condensed", sans-serif;
-  font-size: 1.3125rem;
-  font-weight: 500;
-}
-
-.details-section-metadata .details-section-citation td,
-.details-section-metadata .details-section-citation td.collection-detail-value,
-.details-section-metadata .details-section-citation th,
-.details-section-metadata .details-section-citation th.collection-detail-key {
-  display: table-cell;
-  padding-bottom: 0px;
-  vertical-align: baseline;
-  padding: 10px;
-  padding-right: 0px;
+.details-section-metadata td.collection-detail-value.identifier {
+  word-break: break-all;
 }
 
 @media (min-width: 992px) {

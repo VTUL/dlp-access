@@ -76,7 +76,7 @@ span.creator:after {
 
 .mid-content-row {
   margin: 40px 0;
-  padding: 20px;
+  padding: 20px 10px;
   background-color: var(--light-gray);
 }
 
@@ -97,6 +97,9 @@ span.creator:after {
   border-right: none;
 }
 @media only screen and (min-width: 992px) {
+  .mid-content-row {
+    padding: 20px;
+  }
   .mid-content-row .details-section {
     border-right: 1px solid var(--dark-gray);
     border-bottom: none;
