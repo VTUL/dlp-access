@@ -842,6 +842,76 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "getHistory",
+              "description": null,
+              "args": [
+                {
+                  "name": "id",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "ID",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "listHistorys",
+              "description": null,
+              "args": [
+                {
+                  "name": "filter",
+                  "description": null,
+                  "type": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "ModelHistoryFilterInput",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "limit",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "nextToken",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "ModelHistoryConnection",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -6119,6 +6189,30 @@
               "deprecationReason": null
             },
             {
+              "name": "analyticsID",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "siteColor",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "createdAt",
               "description": null,
               "args": [],
@@ -6242,6 +6336,26 @@
               "defaultValue": null
             },
             {
+              "name": "analyticsID",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelStringFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "siteColor",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelStringFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "and",
               "description": null,
               "type": {
@@ -6275,6 +6389,261 @@
               "type": {
                 "kind": "INPUT_OBJECT",
                 "name": "ModelSiteFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "History",
+          "description": null,
+          "fields": [
+            {
+              "name": "id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "userEmail",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "AWSEmail",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "siteID",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "event",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "AWSJSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "createdAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "AWSDateTime",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "updatedAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "AWSDateTime",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "AWSEmail",
+          "description": "The `AWSEmail` scalar type provided by AWS AppSync, represents an Email address string that complies with [RFC 822](https://www.ietf.org/rfc/rfc822.txt). For example, \"**username@example.com**\" is a valid Email address.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "AWSJSON",
+          "description": "The `AWSJSON` scalar type provided by AWS AppSync, represents a JSON string that complies with [RFC 8259](https://tools.ietf.org/html/rfc8259).  Maps like \"**{\\\\\"upvotes\\\\\": 10}**\", lists like \"**[1,2,3]**\", and scalar values like \"**\\\\\"AWSJSON example string\\\\\"**\", \"**1**\", and \"**true**\" are accepted as valid JSON and will automatically be parsed and loaded in the resolver mapping templates as Maps, Lists, or Scalar values rather than as the literal input strings.  Invalid JSON strings like \"**{a: 1}**\", \"**{'a': 1}**\" and \"**Unquoted string**\" will throw GraphQL validation errors.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "ModelHistoryConnection",
+          "description": null,
+          "fields": [
+            {
+              "name": "items",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "History",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "nextToken",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "ModelHistoryFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "id",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelIDFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "userEmail",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelStringFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "siteID",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelIDFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "event",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelStringFilterInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "and",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "ModelHistoryFilterInput",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "or",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "ModelHistoryFilterInput",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "not",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "ModelHistoryFilterInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -6608,6 +6977,87 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "Site",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "createHistory",
+              "description": null,
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "CreateHistoryInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "updateHistory",
+              "description": null,
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "UpdateHistoryInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "deleteHistory",
+              "description": null,
+              "args": [
+                {
+                  "name": "input",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "INPUT_OBJECT",
+                      "name": "DeleteHistoryInput",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -8661,6 +9111,26 @@
                 }
               },
               "defaultValue": null
+            },
+            {
+              "name": "analyticsID",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "siteColor",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -8716,6 +9186,26 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "analyticsID",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "siteColor",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -8725,6 +9215,145 @@
         {
           "kind": "INPUT_OBJECT",
           "name": "DeleteSiteInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "CreateHistoryInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "id",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "userEmail",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "AWSEmail",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "siteID",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "event",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "AWSJSON",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "UpdateHistoryInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "id",
+              "description": null,
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "userEmail",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "AWSEmail",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "siteID",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "event",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "AWSJSON",
+                "ofType": null
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "DeleteHistoryInput",
           "description": null,
           "fields": null,
           "inputFields": [
@@ -8891,6 +9520,42 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "onCreateHistory",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "onUpdateHistory",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "onDeleteHistory",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -8900,52 +9565,12 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "SearchableFloatFilterInput",
+          "name": "ModelFloatFilterInput",
           "description": null,
           "fields": null,
           "inputFields": [
             {
               "name": "ne",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lte",
               "description": null,
               "type": {
                 "kind": "SCALAR",
@@ -8965,7 +9590,47 @@
               "defaultValue": null
             },
             {
-              "name": "range",
+              "name": "le",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "ge",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "gt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "between",
               "description": null,
               "type": {
                 "kind": "LIST",
@@ -8989,91 +9654,6 @@
           "description": "Built-in Float",
           "fields": null,
           "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INPUT_OBJECT",
-          "name": "SearchableIntFilterInput",
-          "description": null,
-          "fields": null,
-          "inputFields": [
-            {
-              "name": "ne",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lt",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "gte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "lte",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "eq",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "range",
-              "description": null,
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
           "interfaces": null,
           "enumValues": null,
           "possibleTypes": null
@@ -9165,7 +9745,7 @@
         },
         {
           "kind": "INPUT_OBJECT",
-          "name": "ModelFloatFilterInput",
+          "name": "SearchableIntFilterInput",
           "description": null,
           "fields": null,
           "inputFields": [
@@ -9174,27 +9754,17 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "Int",
                 "ofType": null
               },
               "defaultValue": null
             },
             {
-              "name": "eq",
+              "name": "gt",
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Float",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "le",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "Float",
+                "name": "Int",
                 "ofType": null
               },
               "defaultValue": null
@@ -9204,13 +9774,68 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "Float",
+                "name": "Int",
                 "ofType": null
               },
               "defaultValue": null
             },
             {
-              "name": "ge",
+              "name": "gte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "eq",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "range",
+              "description": null,
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INPUT_OBJECT",
+          "name": "SearchableFloatFilterInput",
+          "description": null,
+          "fields": null,
+          "inputFields": [
+            {
+              "name": "ne",
               "description": null,
               "type": {
                 "kind": "SCALAR",
@@ -9230,7 +9855,47 @@
               "defaultValue": null
             },
             {
-              "name": "between",
+              "name": "lt",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "gte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "lte",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "eq",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "Float",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "range",
               "description": null,
               "type": {
                 "kind": "LIST",
@@ -10120,6 +10785,68 @@
           "onField": true
         },
         {
+          "name": "aws_api_key",
+          "description": "Tells the service this field/object has access authorized by an API key.",
+          "locations": ["OBJECT", "FIELD_DEFINITION"],
+          "args": [],
+          "onOperation": false,
+          "onFragment": false,
+          "onField": false
+        },
+        {
+          "name": "aws_auth",
+          "description": "Directs the schema to enforce authorization on a field",
+          "locations": ["FIELD_DEFINITION"],
+          "args": [
+            {
+              "name": "cognito_groups",
+              "description": "List of cognito user pool groups which have access on this field",
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "defaultValue": null
+            }
+          ],
+          "onOperation": false,
+          "onFragment": false,
+          "onField": false
+        },
+        {
+          "name": "deprecated",
+          "description": null,
+          "locations": ["FIELD_DEFINITION", "ENUM_VALUE"],
+          "args": [
+            {
+              "name": "reason",
+              "description": null,
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "defaultValue": "\"No longer supported\""
+            }
+          ],
+          "onOperation": false,
+          "onFragment": false,
+          "onField": false
+        },
+        {
+          "name": "aws_iam",
+          "description": "Tells the service this field/object has access authorized by sigv4 signing.",
+          "locations": ["OBJECT", "FIELD_DEFINITION"],
+          "args": [],
+          "onOperation": false,
+          "onFragment": false,
+          "onField": false
+        },
+        {
           "name": "aws_publish",
           "description": "Tells the service which subscriptions will be published to when this mutation is called. This directive is deprecated use @aws_susbscribe directive instead.",
           "locations": ["FIELD_DEFINITION"],
@@ -10144,8 +10871,8 @@
           "onField": false
         },
         {
-          "name": "aws_iam",
-          "description": "Tells the service this field/object has access authorized by sigv4 signing.",
+          "name": "aws_oidc",
+          "description": "Tells the service this field/object has access authorized by an OIDC token.",
           "locations": ["OBJECT", "FIELD_DEFINITION"],
           "args": [],
           "onOperation": false,
@@ -10196,68 +10923,6 @@
               "defaultValue": null
             }
           ],
-          "onOperation": false,
-          "onFragment": false,
-          "onField": false
-        },
-        {
-          "name": "aws_api_key",
-          "description": "Tells the service this field/object has access authorized by an API key.",
-          "locations": ["OBJECT", "FIELD_DEFINITION"],
-          "args": [],
-          "onOperation": false,
-          "onFragment": false,
-          "onField": false
-        },
-        {
-          "name": "deprecated",
-          "description": null,
-          "locations": ["FIELD_DEFINITION", "ENUM_VALUE"],
-          "args": [
-            {
-              "name": "reason",
-              "description": null,
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "defaultValue": "\"No longer supported\""
-            }
-          ],
-          "onOperation": false,
-          "onFragment": false,
-          "onField": false
-        },
-        {
-          "name": "aws_auth",
-          "description": "Directs the schema to enforce authorization on a field",
-          "locations": ["FIELD_DEFINITION"],
-          "args": [
-            {
-              "name": "cognito_groups",
-              "description": "List of cognito user pool groups which have access on this field",
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "defaultValue": null
-            }
-          ],
-          "onOperation": false,
-          "onFragment": false,
-          "onField": false
-        },
-        {
-          "name": "aws_oidc",
-          "description": "Tells the service this field/object has access authorized by an OIDC token.",
-          "locations": ["OBJECT", "FIELD_DEFINITION"],
-          "args": [],
           "onOperation": false,
           "onFragment": false,
           "onField": false

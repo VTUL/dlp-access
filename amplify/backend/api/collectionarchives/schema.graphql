@@ -123,13 +123,27 @@ type Site
   @model
   @key(fields: ["siteId"], name: "SiteId", queryField: "siteBySiteId")
   @auth(rules: [
-    { allow: public, operations: [read] }
-    { allow: groups, groups: ["SiteAdmin"] }
+    { allow: public, operations: [read] },
+    { allow: groups, groups: ["SiteAdmin"]}
     ]) {
   id: ID!
   siteId: String!
   siteTitle: String!
   siteName: String!
+  analyticsID: String
+  siteColor: String
+}
+
+type History
+  @model
+  @auth(rules: [
+    { allow: groups, groups: ["SiteAdmin"], operations: [read, create] },
+    { allow: groups, groups: ["Admin"] }
+  ]) {
+  id: ID!
+  userEmail: AWSEmail!
+  siteID: ID!
+  event: AWSJSON!
 }
 
 type Query {

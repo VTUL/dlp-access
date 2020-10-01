@@ -53,11 +53,11 @@ class App extends Component {
 
   render() {
     if (this.state.siteDetails && this.state.site) {
-      this.setColor(this.state.siteDetails.siteColor);
+      this.setColor(this.state.site.siteColor);
       const customRoutes = buildRoutes(this.state.siteDetails, this.state.site);
       return (
         <Router>
-          <AnalyticsConfig analyticsID={this.state.siteDetails.analyticsID} />
+          <AnalyticsConfig analyticsID={this.state.site.analyticsID} />
           <ScrollToTop paginationClick={this.state.paginationClick} />
           <Header
             siteDetails={this.state.siteDetails}

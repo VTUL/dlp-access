@@ -773,6 +773,8 @@ export const createSite = /* GraphQL */ `
       siteId
       siteTitle
       siteName
+      analyticsID
+      siteColor
       createdAt
       updatedAt
     }
@@ -785,6 +787,8 @@ export const updateSite = /* GraphQL */ `
       siteId
       siteTitle
       siteName
+      analyticsID
+      siteColor
       createdAt
       updatedAt
     }
@@ -797,6 +801,44 @@ export const deleteSite = /* GraphQL */ `
       siteId
       siteTitle
       siteName
+      analyticsID
+      siteColor
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createHistory = /* GraphQL */ `
+  mutation CreateHistory($input: CreateHistoryInput!) {
+    createHistory(input: $input) {
+      id
+      userEmail
+      siteID
+      event
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateHistory = /* GraphQL */ `
+  mutation UpdateHistory($input: UpdateHistoryInput!) {
+    updateHistory(input: $input) {
+      id
+      userEmail
+      siteID
+      event
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteHistory = /* GraphQL */ `
+  mutation DeleteHistory($input: DeleteHistoryInput!) {
+    deleteHistory(input: $input) {
+      id
+      userEmail
+      siteID
+      event
       createdAt
       updatedAt
     }

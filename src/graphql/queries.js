@@ -1064,6 +1064,8 @@ export const getSite = /* GraphQL */ `
       siteId
       siteTitle
       siteName
+      analyticsID
+      siteColor
       createdAt
       updatedAt
     }
@@ -1081,6 +1083,8 @@ export const listSites = /* GraphQL */ `
         siteId
         siteTitle
         siteName
+        analyticsID
+        siteColor
         createdAt
         updatedAt
       }
@@ -1108,6 +1112,39 @@ export const siteBySiteId = /* GraphQL */ `
         siteId
         siteTitle
         siteName
+        analyticsID
+        siteColor
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getHistory = /* GraphQL */ `
+  query GetHistory($id: ID!) {
+    getHistory(id: $id) {
+      id
+      userEmail
+      siteID
+      event
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listHistorys = /* GraphQL */ `
+  query ListHistorys(
+    $filter: ModelHistoryFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listHistorys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        userEmail
+        siteID
+        event
         createdAt
         updatedAt
       }
