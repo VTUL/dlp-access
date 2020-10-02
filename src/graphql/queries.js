@@ -1061,11 +1061,18 @@ export const getSite = /* GraphQL */ `
   query GetSite($id: ID!) {
     getSite(id: $id) {
       id
-      siteId
-      siteTitle
-      siteName
       analyticsID
+      assetBasePath
+      browseCollections
+      contact
+      displayedAttributes
+      homePage
+      searchPage
       siteColor
+      siteId
+      siteName
+      sitePages
+      siteTitle
       createdAt
       updatedAt
     }
@@ -1080,11 +1087,18 @@ export const listSites = /* GraphQL */ `
     listSites(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        siteId
-        siteTitle
-        siteName
         analyticsID
+        assetBasePath
+        browseCollections
+        contact
+        displayedAttributes
+        homePage
+        searchPage
         siteColor
+        siteId
+        siteName
+        sitePages
+        siteTitle
         createdAt
         updatedAt
       }
@@ -1109,11 +1123,18 @@ export const siteBySiteId = /* GraphQL */ `
     ) {
       items {
         id
-        siteId
-        siteTitle
-        siteName
         analyticsID
+        assetBasePath
+        browseCollections
+        contact
+        displayedAttributes
+        homePage
+        searchPage
         siteColor
+        siteId
+        siteName
+        sitePages
+        siteTitle
         createdAt
         updatedAt
       }

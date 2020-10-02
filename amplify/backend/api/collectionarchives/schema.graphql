@@ -124,14 +124,21 @@ type Site
   @key(fields: ["siteId"], name: "SiteId", queryField: "siteBySiteId")
   @auth(rules: [
     { allow: public, operations: [read] },
-    { allow: groups, groups: ["SiteAdmin"]}
+    { allow: groups, groups: ["SiteAdmin"] }
     ]) {
   id: ID!
-  siteId: String!
-  siteTitle: String!
-  siteName: String!
   analyticsID: String
+  assetBasePath: String
+  browseCollections: AWSJSON!
+  contact: [AWSJSON!]!
+  displayedAttributes: AWSJSON!
+  homePage: AWSJSON!
+  searchPage: AWSJSON!
   siteColor: String
+  siteId: String!
+  siteName: String!
+  sitePages: AWSJSON
+  siteTitle: String!
 }
 
 type History
