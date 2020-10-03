@@ -19,7 +19,7 @@ class MiradorViewer extends Component {
       data: [
         {
           manifestUri: this.props.item.manifest_url,
-          location: this.props.siteDetails.siteId.toUpperCase()
+          location: this.props.site.siteId.toUpperCase()
         }
       ],
       windowObjects: [

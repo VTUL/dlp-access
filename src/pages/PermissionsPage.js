@@ -48,7 +48,10 @@ class PermissionsPage extends Component {
             ></div>
           </div>
           <div className="col-md-4 contact-section-wrapper">
-            <ContactSection siteDetails={this.props.siteDetails} />
+            <ContactSection
+              siteDetails={this.props.siteDetails}
+              site={this.props.site}
+            />
             {download ? (
               <div role="region" aria-labelledby="terms-downloads-section">
                 <h2

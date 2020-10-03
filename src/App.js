@@ -64,7 +64,7 @@ class App extends Component {
       return (
         <Router>
           <RouteListener setPathname={this.setPathname} context={this} />
-          <AnalyticsConfig analyticsID={this.state.siteDetails.analyticsID} />
+          <AnalyticsConfig analyticsID={this.state.site.analyticsID} />
           <ScrollToTop paginationClick={this.state.paginationClick} />
           <Header
             siteDetails={this.state.siteDetails}
