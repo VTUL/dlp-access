@@ -1,0 +1,21 @@
+section {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid black;
+}
+legend.admin {
+  margin-bottom: 15px;
+}
+div.deletePageWrapper {
+  position: relative;
+  display: block;
+  margin-top: 10px;
+}
+a.addPage,
+a.deletePage {
+  float: right;
+  overflow: hidden;
+}
+div.clear {
+  clear: both;
+}

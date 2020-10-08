@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
-import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { AmplifySignOut } from "@aws-amplify/ui-react";
+import { withAuthenticator } from "aws-amplify-react";
 import { NavLink } from "react-router-dom";
 import SiteForm from "./SiteForm";
+import SitePagesForm from "./SitePagesForm";
 import ContentUpload from "./ContentUpload";
 
-function SiteAdmin() {
+function SiteAdmin(props) {
   useEffect(() => {
     checkGroup();
+    setForm(props.form);
   }, []);
 
   const [authorized, setAuthorized] = useState(false);
   const [form, setForm] = useState("site");
 
   const Forms = {
-    site: <SiteForm />,
-    contentUpload: <ContentUpload />
+    "site": <SiteForm />,
+    "contentUpload": <ContentUpload />,
+    "site-pages": <SitePagesForm />
   };
 
   async function checkGroup() {
@@ -37,6 +41,7 @@ function SiteAdmin() {
   function getForm() {
     return Forms[form];
   }
+
   return (
     <div>
       <div>
@@ -47,9 +52,17 @@ function SiteAdmin() {
             </NavLink>
           </li>
           <li>
+            <NavLink
+              onClick={() => setForm("site-pages")}
+              to={"/siteAdmin/site-pages"}
+            >
+              Site Pages Config
+            </NavLink>
+          </li>
+          <li>
             <NavLink onClick={() => setForm("contentUpload")} to={"/siteAdmin"}>
               Upload Site Content
-            </NavLink>
+              </NavLink>
           </li>
         </ul>
       </div>
