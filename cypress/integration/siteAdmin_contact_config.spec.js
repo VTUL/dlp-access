@@ -1,5 +1,5 @@
 const USERNAME = "devtest";
-const PASSWORD = "access2020";
+const PASSWORD = Cypress.env("password");
 
 describe("Displays and updates contact configurations", () => {
   it("Logs in to admin site", () => {
@@ -38,10 +38,21 @@ describe("Displays and updates contact configurations", () => {
   
   it("Updates contact fields", () => {
     cy.get("input[value='editSite']").parent().click();
-    cy.get("#c1_title").clear().type("Director");
+    cy.get("#c0_title").clear().type("Director");
     cy.contains("Update Site").click()
     cy.contains("Title: Director");
   })
+
+    it("Reverses update", () => {
+      cy.get("input[value='editSite']")
+        .parent()
+        .click();
+      cy.get("#c0_title")
+        .clear()
+        .type("IAWA Archivist");
+      cy.contains("Update Site").click();
+      cy.contains("Title: IAWA Archivist");
+    });
 
 });
 
