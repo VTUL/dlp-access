@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
 
 class Contacts extends Component {
   render() {
-    const contacts = this.props.contacts.map((obj, index) => {
+    const contactList = this.props.contacts.map((obj, index) => {
       return (
         <div key={index}>
           <fieldset>
@@ -83,10 +84,10 @@ class Contacts extends Component {
         <button aria-label="Add contact" onClick={this.props.addContact}>
           <i className="fas fa-plus"></i>
         </button>
-        {contacts}
+        {contactList}
       </div>
     );
   }
 }
 
-export default Contacts;
+export default withAuthenticator(Contacts);
