@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withAuthenticator } from "@aws-amplify/ui-react";
 
 class Contacts extends Component {
   render() {
@@ -90,4 +89,4 @@ class Contacts extends Component {
   }
 }
 
-export default withAuthenticator(Contacts);
+export default Contacts;
