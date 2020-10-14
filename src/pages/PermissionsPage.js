@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SiteTitle from "../components/SiteTitle";
 import ContactSection from "../components/ContactSection";
-import { getHTML } from "../lib/fetchTools";
+import { getFile } from "../lib/fetchTools";
 
 import "../css/TermsPage.css";
 class PermissionsPage extends Component {
@@ -13,11 +13,9 @@ class PermissionsPage extends Component {
   }
 
   componentDidMount() {
-    getHTML(
-      this.props.siteDetails.assetBasePath,
-      this.props.siteDetails.sitePages[this.props.parentKey].data_url,
-      this
-    );
+    const htmlUrl = this.props.siteDetails.sitePages[this.props.parentKey]
+      .data_url;
+    getFile(htmlUrl, "html", this);
   }
 
   render() {

@@ -1,10 +1,31 @@
 import React, { Component } from "react";
+import { getImgUrl } from "../../lib/fetchTools";
 
 import "../../css/CollectionHighlights.css";
 
 class CollectionHighlights extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      highlightImgs: []
+    };
+  }
+
+  componentDidMount() {
+    this.props.collectionHighlights.map(item => {
+      return getImgUrl(item.img.split("/").pop()).then(src => {
+        const imgUrls = this.state.highlightImgs.slice();
+        imgUrls.push(src);
+        this.setState({ highlightImgs: imgUrls });
+      });
+    });
+  }
+
   render() {
-    if (this.props.collectionHighlights) {
+    if (
+      this.props.collectionHighlights &&
+      this.props.collectionHighlights.length === this.state.highlightImgs.length
+    ) {
       const tiles = this.props.collectionHighlights.map((item, index) => {
         return (
           <div
@@ -17,7 +38,7 @@ class CollectionHighlights extends Component {
               <div
                 className="category-container"
                 style={{
-                  backgroundImage: `url(${item.img})`,
+                  backgroundImage: `url(${this.state.highlightImgs[index]})`,
                   backgroundPosition: "center",
                   backgroundSize: "cover"
                 }}

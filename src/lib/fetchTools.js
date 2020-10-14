@@ -1,4 +1,4 @@
-import { API, graphqlOperation } from "aws-amplify";
+import { API, graphqlOperation, Storage } from "aws-amplify";
 import * as queries from "../graphql/queries";
 
 export const fetchSiteDetails = async (component, siteName) => {
@@ -44,32 +44,36 @@ export const fetchSiteDetails = async (component, siteName) => {
   });
 };
 
-export function getHTML(basePath, copyURL, component) {
-  let copy = null;
+export function getFile(copyURL, type, component) {
   try {
-    fetchCopyHTML(basePath, copyURL, component);
+    fetchCopyFile(copyURL, type, component);
   } catch (error) {
     console.error("Error setting copy for component");
   }
-  if (copy !== null) {
-    component.setState({ copy: copy });
-  }
 }
 
-const fetchCopyHTML = async (basePath, copyURL, component) => {
+const fetchCopyFile = async (copyURL, type, component) => {
   let data = null;
   try {
     data = sessionStorage.getItem(copyURL);
   } catch (error) {
     console.log(`${copyURL} not in sessionStorage`);
   }
-  if (data === null) {
+  if (!data) {
     try {
-      const copyLink = `${basePath}/${copyURL}`;
-      console.log(copyLink);
+      Storage.configure({
+        customPrefix: {
+          public: `public/sitecontent/${type}/${process.env.REACT_APP_REP_TYPE.toLowerCase()}/`
+        }
+      });
+      const copyLink = await Storage.get(copyURL);
       console.log(`fetching copy from: ${copyLink}`);
-      const response = await fetch(copyLink);
-      data = await response.text();
+      if (type === "html") {
+        const response = await fetch(copyLink);
+        data = await response.text();
+      } else {
+        data = copyLink;
+      }
     } catch (error) {
       console.error(
         `Error fetching html for ${component.constructor.name} component`
@@ -77,7 +81,7 @@ const fetchCopyHTML = async (basePath, copyURL, component) => {
       console.error(error);
     }
   }
-  if (data !== null) {
+  if (data) {
     sessionStorage.setItem(copyURL, data);
     component.setState({ copy: data });
   }
@@ -316,4 +320,25 @@ export const getSite = async () => {
   } = apiData;
   const site = items[0];
   return site;
+};
+
+export const getImgUrl = key => {
+  let data = null;
+  try {
+    data = sessionStorage.getItem(key);
+  } catch (error) {
+    console.log(`${key} not in sessionStorage`);
+  }
+  if (!data) {
+    Storage.configure({
+      customPrefix: {
+        public: `public/sitecontent/image/${process.env.REACT_APP_REP_TYPE.toLowerCase()}/`
+      }
+    });
+    return Storage.get(key)
+      .then(res => res)
+      .catch(err => console.log(err));
+  } else {
+    return data;
+  }
 };

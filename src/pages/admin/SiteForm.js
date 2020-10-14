@@ -172,7 +172,7 @@ class SiteForm extends Component {
   editSiteForm = () => {
     return (
       <div>
-        <h2>{`Edit Site with SiteId: ${process.env.REACT_APP_REP_TYPE.toLowerCase()}`}</h2>
+        <h2>{`${process.env.REACT_APP_REP_TYPE}: Update Site Configurations`}</h2>
         <Form>
           <Form.Input
             label="Analytics ID"

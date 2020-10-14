@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getHTML } from "../lib/fetchTools";
+import { getFile } from "../lib/fetchTools";
 
 class AdditionalPages extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class AdditionalPages extends Component {
       copyObj = copyObj.children[this.props.childKey];
     }
     const copyUrl = copyObj.data_url;
-    getHTML(this.props.siteDetails.assetBasePath, copyUrl, this);
+    getFile(copyUrl, "html", this);
   }
 
   render() {

@@ -1,10 +1,31 @@
 import React, { Component } from "react";
+import { getImgUrl } from "../../lib/fetchTools";
 
 import "../../css/SiteSponsors.css";
 
 class SiteSponsors extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sponsorImgs: []
+    };
+  }
+
+  componentDidMount() {
+    this.props.sponsors.map(sponsor => {
+      return getImgUrl(sponsor.img.split("/").pop()).then(src => {
+        const imgUrls = this.state.sponsorImgs.slice();
+        imgUrls.push(src);
+        this.setState({ sponsorImgs: imgUrls });
+      });
+    });
+  }
+
   render() {
-    if (this.props.sponsors) {
+    if (
+      this.props.sponsors &&
+      this.props.sponsors.length === this.state.sponsorImgs.length
+    ) {
       return (
         <div
           className="container home-sponsors-section"
@@ -23,7 +44,7 @@ class SiteSponsors extends Component {
                   rel="noopener noreferrer"
                 >
                   <img
-                    src={sponsor.img}
+                    src={this.state.sponsorImgs[index]}
                     alt={sponsor.alt}
                     className="img-fluid"
                   />
