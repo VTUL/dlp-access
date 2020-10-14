@@ -5,7 +5,7 @@ import { updatedDiff } from "deep-object-diff";
 import { API, Auth } from "aws-amplify";
 import { getSite } from "../../lib/fetchTools";
 import * as mutations from "../../graphql/mutations";
-import Contacts from "./Contacts";
+import { Contacts } from "./Contacts";
 
 const initialFormState = {
   analyticsID: "",
