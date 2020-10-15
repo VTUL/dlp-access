@@ -173,7 +173,7 @@ class SiteForm extends Component {
     return (
       <div>
         <h2>{`Edit Site with SiteId: ${process.env.REACT_APP_REP_TYPE.toLowerCase()}`}</h2>
-        <Form onSubmit={this.handleSubmit}>
+        <Form>
           <Form.Input
             label="Analytics ID"
             value={this.state.formState.analyticsID}
@@ -208,8 +208,8 @@ class SiteForm extends Component {
             addContact={this.addContact}
             removeContact={this.removeContact}
           />
-          <Form.Button>Update Site</Form.Button>
         </Form>
+        <button onClick={this.handleSubmit}>Update Site</button>
       </div>
     );
   };
