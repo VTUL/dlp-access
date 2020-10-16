@@ -34,7 +34,7 @@ class SiteForm extends Component {
         siteColor: site.siteColor || "",
         siteName: site.siteName,
         siteTitle: site.siteTitle,
-        contact: site.contact
+        contact: site.contact.length
           ? site.contact.map(contact => {
               return JSON.parse(contact);
             })

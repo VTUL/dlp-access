@@ -4,10 +4,10 @@ import "../css/ContactSection.css";
 
 class ContactSection extends Component {
   render() {
-    if (
-      this.props.siteDetails.contact &&
-      this.props.siteDetails.contact.length
-    ) {
+    if (this.props.site.contact && this.props.site.contact.length) {
+      const contactList = this.props.site.contact.map(item => {
+        return JSON.parse(item);
+      });
       return (
         <>
           <div
@@ -18,7 +18,7 @@ class ContactSection extends Component {
             <h2 className="contact-heading" id="contact-section-heading">
               Contact {this.props.site.siteTitle}
             </h2>
-            {this.props.siteDetails.contact.map((contact, index) => (
+            {contactList.map((contact, index) => (
               <div key={index}>
                 <p className="contact-title">
                   {contact.title} [

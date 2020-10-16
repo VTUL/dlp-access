@@ -36,10 +36,7 @@ class AboutPage extends Component {
           ></div>
         </div>
         <div className="col-md-4 contact-section-wrapper">
-          <ContactSection
-            siteDetails={this.props.siteDetails}
-            site={this.props.site}
-          />
+          <ContactSection site={this.props.site} />
           {this.props.siteDetails.sitePages.terms ? (
             <a href="/permissions" className="about-terms-link">
               Permissions
