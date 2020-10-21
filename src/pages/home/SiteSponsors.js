@@ -12,13 +12,15 @@ class SiteSponsors extends Component {
   }
 
   componentDidMount() {
-    this.props.sponsors.map(sponsor => {
-      return getImgUrl(sponsor.img.split("/").pop()).then(src => {
-        const imgUrls = this.state.sponsorImgs.slice();
-        imgUrls.push(src);
-        this.setState({ sponsorImgs: imgUrls });
+    if (this.props.sponsors) {
+      this.props.sponsors.map(sponsor => {
+        return getImgUrl(sponsor.img.split("/").pop()).then(src => {
+          const imgUrls = this.state.sponsorImgs.slice();
+          imgUrls.push(src);
+          this.setState({ sponsorImgs: imgUrls });
+        });
       });
-    });
+    }
   }
 
   render() {

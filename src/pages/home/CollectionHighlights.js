@@ -12,13 +12,15 @@ class CollectionHighlights extends Component {
   }
 
   componentDidMount() {
-    this.props.collectionHighlights.map(item => {
-      return getImgUrl(item.img.split("/").pop()).then(src => {
-        const imgUrls = this.state.highlightImgs.slice();
-        imgUrls.push(src);
-        this.setState({ highlightImgs: imgUrls });
+    if (this.props.collectionHighlights) {
+      this.props.collectionHighlights.map(item => {
+        return getImgUrl(item.img.split("/").pop()).then(src => {
+          const imgUrls = this.state.highlightImgs.slice();
+          imgUrls.push(src);
+          this.setState({ highlightImgs: imgUrls });
+        });
       });
-    });
+    }
   }
 
   render() {

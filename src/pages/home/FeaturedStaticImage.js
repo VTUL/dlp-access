@@ -11,8 +11,10 @@ class FeaturedStaticImage extends Component {
   }
 
   componentDidMount() {
-    const imgUrl = this.props.staticImage.src.split("/").pop();
-    getFile(imgUrl, "image", this);
+    if (this.props.staticImage) {
+      const imgUrl = this.props.staticImage.src.split("/").pop();
+      getFile(imgUrl, "image", this);
+    }
   }
 
   render() {
