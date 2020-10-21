@@ -4,28 +4,26 @@ const PASSWORD = Cypress.env('password');
 describe("Upload Site Content test", () => {
     beforeEach(() => {
       cy.visit("/siteAdmin");
-      cy.get("amplify-authenticator")
+      cy.get("form")
           .find(selectors.usernameInput, {
             includeShadowDom: true,
           })
           .type(USERNAME);
 
-      cy.get("amplify-authenticator")
+      cy.get("form")
         .find(selectors.signInPasswordInput, {
           includeShadowDom: true,
         })
         .type(PASSWORD, { force: true });
 
-      cy.get("amplify-authenticator")
+      cy.get("form")
         .find(selectors.signInSignInButton, {
           includeShadowDom: true,
         })
-        .first()
-        .find("button[type='submit']", { includeShadowDom: true })
         .click({ force: true });
 
       cy.get("#content-wrapper > div > div > ul")
-        .find(":nth-child(2) > a")
+        .find(":nth-child(3) > a")
         .contains("Upload Site Content")
         .click()
       cy.url().should("include", "/siteAdmin")
@@ -78,7 +76,7 @@ describe("Upload Site Content test", () => {
 });
 
 export const selectors = {
-  usernameInput: '[data-test="sign-in-username-input"]',
+  usernameInput: '[data-test="username-input"]',
   signInPasswordInput: '[data-test="sign-in-password-input"]',
   signInSignInButton: '[data-test="sign-in-sign-in-button"]',
   signOutButton: '[data-test="sign-out-button"]'
