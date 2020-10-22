@@ -8,22 +8,24 @@ describe("Authenticator:", function() {
  
     describe("Sign in and Sign out:", () => {
       it("allows a user to signin and signout", () => {
-        cy.get("form")
+        cy.get("amplify-authenticator")
           .find(selectors.usernameInput, {
             includeShadowDom: true,
           })
           .type(USERNAME);
 
-        cy.get("form")
+        cy.get("amplify-authenticator")
           .find(selectors.signInPasswordInput, {
             includeShadowDom: true,
           })
           .type(PASSWORD, { force: true });
 
-        cy.get("form")
+        cy.get("amplify-authenticator")
           .find(selectors.signInSignInButton, {
             includeShadowDom: true,
           })
+          .first()
+          .find("button[type='submit']", { includeShadowDom: true })
           .click({ force: true });
         
         cy.get("amplify-sign-out")
@@ -35,7 +37,7 @@ describe("Authenticator:", function() {
 
 export const selectors = {
   // Auth component classes
-  usernameInput: '[data-test="username-input"]',
+  usernameInput: '[data-test="sign-in-username-input"]',
   signInPasswordInput: '[data-test="sign-in-password-input"]',
   signInSignInButton: '[data-test="sign-in-sign-in-button"]',
   signOutButton: '[data-test="sign-out-button"]'

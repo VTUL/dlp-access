@@ -1,75 +1,94 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { Auth } from "aws-amplify";
-import { AmplifySignOut } from "@aws-amplify/ui-react";
-import { withAuthenticator } from "aws-amplify-react";
+import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
 import { NavLink } from "react-router-dom";
 import SiteForm from "./SiteForm";
 import SitePagesForm from "./SitePagesForm";
 import ContentUpload from "./ContentUpload";
 
-function SiteAdmin(props) {
-  useEffect(() => {
-    checkGroup();
-    setForm(props.form);
-  }, [props.form]);
+class SiteAdmin extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      authorized: false,
+      form: "site"
+    };
+  }
 
-  const [authorized, setAuthorized] = useState(false);
-  const [form, setForm] = useState("site");
-
-  const Forms = {
-    site: <SiteForm />,
-    contentUpload: <ContentUpload />,
-    "site-pages": <SitePagesForm />
-  };
-
-  async function checkGroup() {
+  async checkGroup() {
     try {
       const data = await Auth.currentUserPoolUser();
       const groups =
         data.signInUserSession.accessToken.payload["cognito:groups"];
       if (groups.indexOf("SiteAdmin") !== -1) {
-        setAuthorized(true);
+        this.setAuthorized(true);
       } else {
-        setAuthorized(false);
+        this.setAuthorized(false);
       }
     } catch (err) {
       console.log("error: ", err);
-      setAuthorized(false);
+      this.setAuthorized(false);
     }
   }
 
-  function getForm() {
-    return Forms[form];
+  setAuthorized(authorized) {
+    this.setState({ authorized: authorized });
   }
 
-  return (
-    <div>
+  setForm(form) {
+    this.setState({ form: form });
+  }
+
+  getForm() {
+    const forms = {
+      site: <SiteForm />,
+      contentUpload: <ContentUpload />,
+      "site-pages": <SitePagesForm />
+    };
+    return forms[this.state.form];
+  }
+
+  componentDidMount() {
+    this.checkGroup();
+  }
+
+  render() {
+    return (
       <div>
-        <ul>
-          <li>
-            <NavLink onClick={() => setForm("site")} to={"/siteAdmin"}>
-              General Site Config
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              onClick={() => setForm("site-pages")}
-              to={"/siteAdmin/site-pages"}
-            >
-              Site Pages Config
-            </NavLink>
-          </li>
-          <li>
-            <NavLink onClick={() => setForm("contentUpload")} to={"/siteAdmin"}>
-              Upload Site Content
-            </NavLink>
-          </li>
-        </ul>
+        <div>
+          <ul>
+            <li>
+              <NavLink onClick={() => this.setForm("site")} to={"/siteAdmin"}>
+                General Site Config
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={() => this.setForm("site-pages")}
+                to={"/siteAdmin"}
+              >
+                Site Pages Config
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={() => this.setForm("contentUpload")}
+                to={"/siteAdmin"}
+              >
+                Upload Site Content
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        <h1>
+          {this.state.authorized
+            ? this.getForm()
+            : "Not authorized to access this page!"}
+        </h1>
+        <AmplifySignOut />
       </div>
-      <h1>{authorized ? getForm() : "Not authorized to access this page!"}</h1>
-      <AmplifySignOut />
-    </div>
-  );
+    );
+  }
 }
 
 export default withAuthenticator(SiteAdmin);

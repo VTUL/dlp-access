@@ -129,17 +129,7 @@ class App extends Component {
                     />
                   )}
                 />
-                <Route
-                  path="/siteAdmin/:form?"
-                  exact
-                  render={props => (
-                    <SiteAdmin
-                      siteDetails={this.state.siteDetails}
-                      site={this.state.site}
-                      form={props.match.params.form || "site"}
-                    />
-                  )}
-                />
+                <Route path="/siteAdmin" exact component={SiteAdmin} />
               </Switch>
             </div>
           </main>
