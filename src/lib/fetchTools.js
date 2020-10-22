@@ -157,7 +157,6 @@ export const fetchSearchResults = async (
     } else if (key === "collection") {
       let parent_collection_id = await getCollectionIDByTitle(filter[key]);
       filters["heirarchy_path"] = { eq: parent_collection_id };
-      objectFilter = archiveFilter;
     } else if (key === "title" || key === "description") {
       filters[key] = { matchPhrase: filter[key] };
     } else if (Array.isArray(filter[key])) {
@@ -193,9 +192,8 @@ export const fetchSearchResults = async (
   if (category === "collection") {
     const item_fields = ["format", "medium", "resource_type", "tags"];
     if (
-      filters.hasOwnProperty("heirarchy_path") ||
-      (filters.hasOwnProperty("and") &&
-        item_fields.some(e => Object.keys(filter).indexOf(e) > -1))
+      filters.hasOwnProperty("and") &&
+      item_fields.some(e => Object.keys(filter).indexOf(e) > -1)
     ) {
       searchResults = {
         items: [],
@@ -213,10 +211,7 @@ export const fetchSearchResults = async (
         searchResults = Collections.data.searchCollections;
       }
     }
-  } else if (
-    category === "archive" ||
-    filters.hasOwnProperty("heirarchy_path")
-  ) {
+  } else if (category === "archive") {
     options["filter"] = { ...archiveFilter, ...filters };
     let Archives = null;
     if (allFields) {

@@ -8,6 +8,7 @@ interface Object {
   circa: String
   start_date: String
   end_date: String
+  subject: [String!]
   location: [String!]
   rights_statement: String
   language: [String!]
@@ -18,6 +19,7 @@ interface Object {
   rights_holder: String
   custom_key: String
   visibility: Boolean!
+  heirarchy_path: [String!]
   thumbnail_path: String
   parent_collection: [String!]
   create_date: String!
@@ -93,6 +95,7 @@ type Archive implements Object
   circa: String
   start_date: String
   end_date: String
+  subject: [String!]
   rights_statement: String
   language: [String!]
   resource_type: [String!]
@@ -160,7 +163,6 @@ type Query {
     filter: SearchableObjectFilterInput
     limit: Int
     nextToken: String
-    category: String
   ): SearchableObjectConnection
   fulltextCollections(
     allFields: String
@@ -207,6 +209,7 @@ input SearchableObjectFilterInput {
   format: SearchableStringFilterInput
   custom_key: SearchableStringFilterInput
   visibility: SearchableBooleanFilterInput
+  heirarchy_path: SearchableStringFilterInput
   thumbnail_path: SearchableStringFilterInput
   parent_collection: SearchableStringFilterInput
   create_date: SearchableStringFilterInput
@@ -308,6 +311,7 @@ enum SearchableCollectionSortableFields {
   custom_key
   collection_category
   visibility
+  heirarchy_path
   thumbnail_path
   parent_collection
   create_date
@@ -331,6 +335,7 @@ input SearchableArchiveFilterInput {
   circa: SearchableStringFilterInput
   start_date: SearchableStringFilterInput
   end_date: SearchableStringFilterInput
+  subject: SearchableStringFilterInput
   rights_statement: SearchableStringFilterInput
   language: SearchableStringFilterInput
   resource_type: SearchableStringFilterInput
@@ -375,6 +380,7 @@ enum SearchableArchiveSortableFields {
   circa
   start_date
   end_date
+  subject
   rights_statement
   language
   resource_type
@@ -393,6 +399,7 @@ enum SearchableArchiveSortableFields {
   parent_collection
   item_category
   visibility
+  heirarchy_path
   thumbnail_path
   manifest_url
   create_date

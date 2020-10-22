@@ -83,6 +83,7 @@ export const onCreateCollection = /* GraphQL */ `
           circa
           start_date
           end_date
+          subject
           rights_statement
           language
           resource_type
@@ -198,6 +199,7 @@ export const onUpdateCollection = /* GraphQL */ `
           circa
           start_date
           end_date
+          subject
           rights_statement
           language
           resource_type
@@ -313,6 +315,7 @@ export const onDeleteCollection = /* GraphQL */ `
           circa
           start_date
           end_date
+          subject
           rights_statement
           language
           resource_type
@@ -527,6 +530,7 @@ export const onCreateArchive = /* GraphQL */ `
       circa
       start_date
       end_date
+      subject
       rights_statement
       language
       resource_type
@@ -611,6 +615,7 @@ export const onUpdateArchive = /* GraphQL */ `
       circa
       start_date
       end_date
+      subject
       rights_statement
       language
       resource_type
@@ -695,6 +700,7 @@ export const onDeleteArchive = /* GraphQL */ `
       circa
       start_date
       end_date
+      subject
       rights_statement
       language
       resource_type
