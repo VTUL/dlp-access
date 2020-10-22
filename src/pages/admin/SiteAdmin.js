@@ -11,14 +11,14 @@ function SiteAdmin(props) {
   useEffect(() => {
     checkGroup();
     setForm(props.form);
-  }, []);
+  }, [props.form]);
 
   const [authorized, setAuthorized] = useState(false);
   const [form, setForm] = useState("site");
 
   const Forms = {
-    "site": <SiteForm />,
-    "contentUpload": <ContentUpload />,
+    site: <SiteForm />,
+    contentUpload: <ContentUpload />,
     "site-pages": <SitePagesForm />
   };
 
@@ -62,7 +62,7 @@ function SiteAdmin(props) {
           <li>
             <NavLink onClick={() => setForm("contentUpload")} to={"/siteAdmin"}>
               Upload Site Content
-              </NavLink>
+            </NavLink>
           </li>
         </ul>
       </div>
