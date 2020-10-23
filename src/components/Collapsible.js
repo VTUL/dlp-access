@@ -100,6 +100,26 @@ class Collapsible extends Component {
     }
   }
 
+  collapsibleArrow = () => {
+    if (this.props.facetNodes.length) {
+      return this.state.expanded ? (
+        <FontAwesomeIcon
+          icon={faAngleDoubleRight}
+          size="1x"
+          color="var(--darker-gray)"
+          className="float-right"
+        />
+      ) : (
+        <FontAwesomeIcon
+          icon={faAngleDoubleDown}
+          size="1x"
+          color="var(--darker-gray)"
+          className="float-right"
+        />
+      );
+    } else return <></>;
+  };
+
   render() {
     const DisplayAllLess = () => {
       if (this.props.facetNodes.length > 5) {
@@ -143,21 +163,7 @@ class Collapsible extends Component {
               {labelAttr(this.props.filterField)}
             </button>
           </h3>
-          {this.state.expanded ? (
-            <FontAwesomeIcon
-              icon={faAngleDoubleRight}
-              size="1x"
-              color="var(--darker-gray)"
-              className="float-right"
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon={faAngleDoubleDown}
-              size="1x"
-              color="var(--darker-gray)"
-              className="float-right"
-            />
-          )}
+          {this.collapsibleArrow()}
         </div>
         {this.state.expanded ? (
           <div>
