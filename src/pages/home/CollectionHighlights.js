@@ -68,9 +68,7 @@ class CollectionHighlights extends Component {
           aria-label="Collection Highlights"
         >
           <div className="collection-highlights-heading">
-            <h2>
-              Collection <span>Highlights</span>
-            </h2>
+            <h2>Collection Highlights</h2>
           </div>
           <div className="row">{tiles}</div>
         </div>

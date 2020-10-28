@@ -9,10 +9,6 @@
   font-weight: 500;
 }
 
-.citation-section .citation-heading span {
-  color: var(--themeHighlightColor);
-}
-
 .citation-section .permanent-link {
   padding: 10px;
   border: 1px solid var(--dark-gray);

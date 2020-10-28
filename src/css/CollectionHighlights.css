@@ -86,7 +86,3 @@
   text-align: center;
   font-size: 2.1875rem;
 }
-
-.collection-highlights-heading h2 span {
-  color: var(--themeHighlightColor);
-}

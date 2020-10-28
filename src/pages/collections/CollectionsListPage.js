@@ -16,11 +16,7 @@ class CollectionsListPage extends Component {
       if (this.props.isSearch) {
         return <CollectionsPaginationDisplay atBottom={false} />;
       } else {
-        return (
-          <h1 className="list-type">
-            About Our <span>Collections</span>
-          </h1>
-        );
+        return <h1 className="list-type">About Our Collections</h1>;
       }
     };
 

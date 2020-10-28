@@ -43,9 +43,7 @@ class FeaturedItems extends Component {
           aria-label="Our Featured Items"
         >
           <div className="featured-items-heading">
-            <h2>
-              Our Featured <span>Items</span>
-            </h2>
+            <h2>Our Featured Items</h2>
           </div>
           <div className="row" id="slide-row" aria-live="off">
             {tiles}

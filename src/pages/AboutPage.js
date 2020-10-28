@@ -24,9 +24,7 @@ class AboutPage extends Component {
       <div className="row about-page-wrapper">
         <div className="col-12 about-heading">
           <SiteTitle siteTitle={this.props.site.siteTitle} pageTitle="About" />
-          <h1 id="about-heading">
-            About <span>{this.props.site.siteTitle}</span>
-          </h1>
+          <h1 id="about-heading">About {this.props.site.siteTitle}</h1>
         </div>
         <div className="col-md-8" role="region" aria-labelledby="about-heading">
           <div

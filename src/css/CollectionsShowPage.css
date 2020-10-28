@@ -29,7 +29,6 @@ h1.collection-title {
   font-size: 1.563rem;
   font-weight: 400;
   display: block;
-  color: var(--themeHighlightColor);
 }
 h2.subcollection-title {
   font-family: "gineso-condensed", sans-serif;

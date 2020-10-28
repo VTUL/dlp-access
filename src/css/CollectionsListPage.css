@@ -17,10 +17,6 @@ div.collection-browse-header h1.list-type {
   font-size: 2.1875rem;
 }
 
-div.collection-browse-header h1.list-type span {
-  color: var(--themeHighlightColor);
-}
-
 .collection-browse-wrapper .navbar {
   width: 100%;
   margin-bottom: 15px;

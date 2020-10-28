@@ -18,10 +18,6 @@
   font-size: 2.625rem;
 }
 
-.about-heading h1 span {
-  color: var(--themeHighlightColor);
-}
-
 .about-details {
   padding-right: 0px;
   padding-bottom: 30px;
