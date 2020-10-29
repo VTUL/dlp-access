@@ -63,6 +63,19 @@ describe("Update Homepage fields and revert", function() {
     cy.wait(1000);
   })
 
+  it("displays successful upload", () => {
+    cy.get("input[value='edit']").parent().click();
+    const imgPath = "sitecontent/cover_image1.jpg"
+    cy.get("input[type=file]").eq(0).attachFile(imgPath).trigger('change', { force: true });
+    cy.get("div.fileUploadField > button.uploadButton")
+      .click({ force: true })
+      
+    cy.get('[data-test="upload-message"]')
+      .should('have.attr', 'style', 'color: green;')
+      .invoke("text")
+      .should("include", "uploaded successfully")
+  })
+
   afterEach("User signout:", () => {
     cy.get("amplify-sign-out")
       .find(selectors.signOutButton, { includeShadowDom: true })

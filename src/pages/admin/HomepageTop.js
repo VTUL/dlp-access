@@ -5,6 +5,7 @@ import { updatedDiff } from "deep-object-diff";
 import { API, Auth } from "aws-amplify";
 import { getSite } from "../../lib/fetchTools";
 import * as mutations from "../../graphql/mutations";
+import FileUploadField from "./FileUploadField";
 
 const initialFormState = {
   staticImageSrc: "",
@@ -50,8 +51,12 @@ class HomepageTop extends Component {
     }
   }
 
-  componentDidMount() {
-    this.loadSite();
+  setStaticImgSrc(context, srcName) {
+    let evt = { target: { name: null, value: null, type: "upload" } };
+    evt.target.name = "staticImageSrc";
+    const filePrefix = `https://img.cloud.lib.vt.edu/sites/images/${process.env.REACT_APP_REP_TYPE.toLowerCase()}`;
+    evt.target.value = `${filePrefix}/${srcName}`;
+    context.updateInputValue(evt);
   }
 
   updateInputValue = event => {
@@ -111,6 +116,14 @@ class HomepageTop extends Component {
     this.setState({ viewState: value });
   };
 
+  fileUploadLabel(staticImageSrc) {
+    let hasValue = "";
+    if (staticImageSrc) {
+      hasValue = "to change ";
+    }
+    return `Upload file ${hasValue} (Image or HTML file only):`;
+  }
+
   editForm = () => {
     return (
       <div>
@@ -135,12 +148,14 @@ class HomepageTop extends Component {
           </section>
           <section>
             <h3>Static Image</h3>
-            <Form.Input
-              label="Src"
+            <FileUploadField
+              context={this}
               value={this.state.formState.staticImageSrc}
+              label={this.fileUploadLabel(this.state.formState.staticImageSrc)}
               name="staticImageSrc"
               placeholder="Enter Src"
-              onChange={this.updateInputValue}
+              site={this.state.site}
+              setStaticImgSrc={this.setStaticImgSrc.bind(this)}
             />
             <Form.Input
               label="Alt Text"
@@ -213,6 +228,10 @@ class HomepageTop extends Component {
     }
   };
 
+  componentDidMount() {
+    this.loadSite();
+  }
+
   render() {
     return (
       <div>
@@ -226,7 +245,6 @@ class HomepageTop extends Component {
               checked={this.state.viewState === "edit"}
               onChange={this.handleChange}
             />
-
             <Form.Radio
               label="View"
               name="viewRadioGroup"
