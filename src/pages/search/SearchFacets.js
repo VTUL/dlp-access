@@ -155,6 +155,7 @@ class SearchFacets extends Component {
                 <Collapsible
                   filters={this.props.filters}
                   filterField={field.name}
+                  filterLabel={field.label}
                   updateFormState={this.props.updateFormState}
                   facetNodes={this.state[`${field.name}List`]}
                   key={idx}

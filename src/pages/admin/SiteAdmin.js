@@ -6,6 +6,7 @@ import SiteForm from "./SiteForm";
 import SitePagesForm from "./SitePagesForm";
 import ContentUpload from "./ContentUpload";
 import HomepageTop from "./HomepageTop";
+import SearchFacetsForm from "./SearchFacetsForm";
 
 class SiteAdmin extends Component {
   constructor(props) {
@@ -45,7 +46,8 @@ class SiteAdmin extends Component {
       site: <SiteForm />,
       contentUpload: <ContentUpload />,
       sitePages: <SitePagesForm />,
-      homepageTop: <HomepageTop />
+      homepageTop: <HomepageTop />,
+      searchFacets: <SearchFacetsForm />
     };
     return forms[this.state.form];
   }
@@ -88,13 +90,21 @@ class SiteAdmin extends Component {
                 Homepage Top Config
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                onClick={() => this.setForm("searchFacets")}
+                to={"/siteAdmin"}
+              >
+                Search Facets Config
+              </NavLink>
+            </li>
           </ul>
         </div>
-        <h1>
-          {this.state.authorized
-            ? this.getForm()
-            : "Not authorized to access this page!"}
-        </h1>
+        {this.state.authorized ? (
+          this.getForm()
+        ) : (
+          <h1>"Not authorized to access this page!"</h1>
+        )}
         <AmplifySignOut />
       </div>
     );

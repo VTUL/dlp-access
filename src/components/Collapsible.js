@@ -160,7 +160,7 @@ class Collapsible extends Component {
               aria-expanded={this.state.expanded}
               id={this.props.filterField}
             >
-              {labelAttr(this.props.filterField)}
+              {this.props.filterLabel}
             </button>
           </h3>
           {this.collapsibleArrow()}
