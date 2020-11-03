@@ -44,6 +44,33 @@ const fetchCopyFile = async (copyURL, type, component) => {
   }
 };
 
+export const fetchAvailableDisplayedAttributes = async (site) => {
+  let data = null;
+  const keyName = `availableAttributes`;
+  try {
+    data = JSON.parse(sessionStorage.getItem(keyName));
+  } catch (error) {
+    console.log(`${keyName} not in sessionStorage`);
+  }
+  if (data === null) {
+    console.log(`fetching ${keyName}`);
+    let response = null;
+    try {
+      const htmlLink = `${site.lang}/${keyName}.json`;
+      response = await fetch(htmlLink);
+      data = await response.json();
+    } catch (error) {
+      console.error(`Error fetching ${keyName}`);
+      console.error(error);
+    }
+  }
+  if (data !== null) {
+    sessionStorage.setItem(keyName, JSON.stringify(data));
+    return data;
+  }
+
+}
+
 export const fetchLanguages = async (component, site, key, callback) => {
   let data = null;
   try {

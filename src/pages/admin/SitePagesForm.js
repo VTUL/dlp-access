@@ -172,7 +172,7 @@ class SitePagesForm extends Component {
             return this.editSitePagesSection(item, idx);
           })}
           <div>
-            <NavLink className="addPage" to="#" onClick={() => this.addPage()}>
+            <NavLink className="add" to="#" onClick={() => this.addPage()}>
               New Page
             </NavLink>
             <div className="clear"></div>
@@ -245,9 +245,9 @@ class SitePagesForm extends Component {
             onChange={this.updateInputValue}
           />
         </fieldset>
-        <div className="deletePageWrapper">
+        <div className="deleteWrapper">
           <NavLink
-            className="deletePage"
+            className="delete"
             to="#"
             onClick={() => this.deletePage(item.pageName)}
           >

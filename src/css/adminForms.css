@@ -6,7 +6,7 @@ section {
 legend.admin {
   margin-bottom: 15px;
 }
-div.deletePageWrapper {
+div.deleteWrapper {
   position: relative;
   display: block;
   margin-top: 10px;
@@ -17,16 +17,31 @@ button.deleteValue {
   overflow: hidden;
 }
 a.addPage,
-a.deletePage {
+a.deletePage,
+a.add,
+a.delete,
+span.required {
   float: right;
   overflow: hidden;
+}
+a.add {
+  margin-top: 15px;
+  padding: 5px;
+  border: 1px solid lightgray;
 }
 div.clear {
   clear: both;
 }
 
-div.view-section p {
+div.view-section p,
+div.view-section ul li {
   font-size: 18px;
+}
+div.view-section ul li {
+  margin-bottom: 10px;
+}
+div.view-section ul li span.entry {
+  margin-right: 15px;
 }
 .key {
   font-weight: bold;
@@ -48,4 +63,14 @@ div.currentStaticImgWrapper img {
   width: 150px;
   height: 150px;
   object-fit: contain;
+}
+form.displayedAttributesForm div.field.attributeField,
+form.displayedAttributesForm div.field.attributeLabel {
+  margin-right: 10px;
+  display: inline-block;
+  width: calc(50% - 80px);
+}
+form.displayedAttributesForm a.delete,
+span.required {
+  margin-top: 40px;
 }
