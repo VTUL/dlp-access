@@ -256,7 +256,7 @@ class SearchFacetsForm extends Component {
           ...this.state.facets,
           [newFacetKey]: { label: newFacetKey, values: [] }
         },
-        newFacet: newFacetKey
+        newFacet: ""
       });
     }
   };
@@ -272,23 +272,25 @@ class SearchFacetsForm extends Component {
   };
 
   addFacetSection = () => {
-    return (
-      <div>
-        <select
-          value={this.state.newFacet}
-          name="new_facet"
-          id="new-facet-options"
-          onChange={this.dropdownChange}
-          className="custom-select"
-        >
-          {this.facetOptions()}
-        </select>
-        <NavLink className="addPage" to="#" onClick={() => this.addFacet()}>
-          Add New Search Facet
-        </NavLink>
-        <div className="clear"></div>
-      </div>
-    );
+    if (this.availableFacets().length) {
+      return (
+        <div>
+          <select
+            value={this.state.newFacet}
+            name="new_facet"
+            id="new-facet-options"
+            onChange={this.dropdownChange}
+            className="custom-select"
+          >
+            {this.facetOptions()}
+          </select>
+          <NavLink className="addPage" to="#" onClick={() => this.addFacet()}>
+            Add New Search Facet
+          </NavLink>
+          <div className="clear"></div>
+        </div>
+      );
+    } else return <></>;
   };
 
   editSearchFacetsForm = () => {
@@ -338,7 +340,7 @@ class SearchFacetsForm extends Component {
             <label>Switch between view and edit</label>
             <Form.Radio
               label="Edit Search Facets"
-              name="viewSearchFacetsRadioGroup"
+              name="editSearchFacetsRadioGroup"
               value="edit"
               checked={this.state.viewState === "edit"}
               onChange={this.handleChange}

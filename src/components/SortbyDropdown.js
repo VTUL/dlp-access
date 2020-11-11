@@ -22,7 +22,9 @@ class SortbyDropdown extends Component {
     else if (field === "title" && direction === "desc") return "(Z-A)";
     else if (field === "start_date" && direction === "desc")
       return "(Newest first)";
-    else return undefined;
+    else if (field === "start_date" && direction === "asc")
+      return "(Oldest first)";
+    else return `(${direction})`;
   };
 
   valueOptions = () => {

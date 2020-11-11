@@ -97,7 +97,7 @@ describe("Displays and updates sitepages configurations", () => {
   });
 
   describe("Adds creator facet's value and removes it", () => {
-    it("Updates creator facet's value", () => {
+    it("Adds creator facet's value", () => {
       cy.get("input[value='edit']").parent().click();
       cy.contains("Add Value")
         .first()
@@ -124,7 +124,7 @@ describe("Displays and updates sitepages configurations", () => {
     });
   });
 
-  describe("Add a new facet field and remove it", () => {
+  describe("Adds a new facet field and removes it", () => {
     it("Adds a new search facet field", () => {
       cy.get("input[value='edit']").parent().click();
       cy.get("select").select("collection");

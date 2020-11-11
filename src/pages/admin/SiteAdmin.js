@@ -7,6 +7,7 @@ import SitePagesForm from "./SitePagesForm";
 import ContentUpload from "./ContentUpload";
 import HomepageTop from "./HomepageTop";
 import SearchFacetsForm from "./SearchFacetsForm";
+import BrowseCollectionsForm from "./BrowseCollectionsForm";
 
 class SiteAdmin extends Component {
   constructor(props) {
@@ -47,7 +48,8 @@ class SiteAdmin extends Component {
       contentUpload: <ContentUpload />,
       sitePages: <SitePagesForm />,
       homepageTop: <HomepageTop />,
-      searchFacets: <SearchFacetsForm />
+      searchFacets: <SearchFacetsForm />,
+      browseCollections: <BrowseCollectionsForm />
     };
     return forms[this.state.form];
   }
@@ -96,6 +98,14 @@ class SiteAdmin extends Component {
                 to={"/siteAdmin"}
               >
                 Search Facets Config
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                onClick={() => this.setForm("browseCollections")}
+                to={"/siteAdmin"}
+              >
+                Filter and Sort Config for Browse Collections Page
               </NavLink>
             </li>
           </ul>

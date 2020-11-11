@@ -290,7 +290,7 @@ class SitePagesForm extends Component {
             <label>Switch between view and edit</label>
             <Form.Radio
               label="Edit Site Pages"
-              name="viewStatePagesRadioGroup"
+              name="editStatePagesRadioGroup"
               value="edit"
               checked={this.state.viewState === "edit"}
               onChange={this.handleChange}
