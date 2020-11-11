@@ -26,10 +26,16 @@ describe("Update Homepage fields and revert", function() {
 
     cy.get("#content-wrapper > div > div > ul")
       .find(":nth-child(4) > a")
+<<<<<<< HEAD
       .contains("Homepage Top Config")
       .click();
     cy.wait(500);
     cy.url().should("include", "/siteAdmin");
+=======
+      .contains("Homepage Config")
+      .click()
+    cy.url().should("include", "/siteAdmin")
+>>>>>>> c82c75d... Added sponsors configurations
   })
  
   it("Update Homepage statement heading", () => {

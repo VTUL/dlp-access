@@ -12,7 +12,7 @@ class SiteSponsors extends Component {
   }
 
   componentDidMount() {
-    if (this.props.sponsors) {
+    if (this.props.sponsors && this.props.sponsors.length !== 0) {
       this.props.sponsors.map(sponsor => {
         return getImgUrl(sponsor.img.split("/").pop()).then(src => {
           const imgUrls = this.state.sponsorImgs.slice();
@@ -26,6 +26,7 @@ class SiteSponsors extends Component {
   render() {
     if (
       this.props.sponsors &&
+      this.props.sponsors.length !== 0 &&
       this.props.sponsors.length === this.state.sponsorImgs.length
     ) {
       return (
