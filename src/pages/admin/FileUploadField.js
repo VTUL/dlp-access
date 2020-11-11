@@ -42,7 +42,11 @@ class FileUploadField extends Component {
         }
       };
       this.setState({ isUploaded: true }, () => {
-        this.props.setStaticImgSrc(this.props.context, this.state.file.name);
+        this.props.setSrc(
+          this.props.context,
+          this.state.file.name,
+          this.props.name
+        );
       });
       const userInfo = await Auth.currentUserPoolUser();
       let historyInfo = {

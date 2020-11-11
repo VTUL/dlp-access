@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import SiteForm from "./SiteForm";
 import SitePagesForm from "./SitePagesForm";
 import ContentUpload from "./ContentUpload";
-import HomepageTop from "./HomepageTop";
+import Homepage from "./Homepage";
 import SearchFacetsForm from "./SearchFacetsForm";
 
 class SiteAdmin extends Component {
@@ -46,7 +46,7 @@ class SiteAdmin extends Component {
       site: <SiteForm />,
       contentUpload: <ContentUpload />,
       sitePages: <SitePagesForm />,
-      homepageTop: <HomepageTop />,
+      homepage: <Homepage />,
       searchFacets: <SearchFacetsForm />
     };
     return forms[this.state.form];
@@ -84,10 +84,10 @@ class SiteAdmin extends Component {
             </li>
             <li>
               <NavLink
-                onClick={() => this.setForm("homepageTop")}
+                onClick={() => this.setForm("homepage")}
                 to={"/siteAdmin"}
               >
-                Homepage Top Config
+                Homepage Config
               </NavLink>
             </li>
             <li>

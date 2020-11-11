@@ -26,7 +26,7 @@ describe("Update Homepage fields and revert", function() {
 
     cy.get("#content-wrapper > div > div > ul")
       .find(":nth-child(4) > a")
-      .contains("Homepage Top Config")
+      .contains("Homepage Config")
       .click()
     cy.url().should("include", "/siteAdmin")
   })
