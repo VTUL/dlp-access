@@ -1,43 +1,43 @@
 const USERNAME = "devtest";
 const PASSWORD = Cypress.env("password");
 
-describe("Update sponsors fields and revert", function() {
+describe("Update sponsors fields and revert", function () {
     beforeEach(() => {
         cy.visit("/siteAdmin");
         cy.get("amplify-authenticator")
-        .find(selectors.usernameInput, {
-            includeShadowDom: true,
-        })
-        .type(USERNAME);
+            .find(selectors.usernameInput, {
+                includeShadowDom: true,
+            })
+            .type(USERNAME);
 
         cy.get("amplify-authenticator")
-        .find(selectors.signInPasswordInput, {
-            includeShadowDom: true,
-        })
-        .type(PASSWORD, { force: true });
+            .find(selectors.signInPasswordInput, {
+                includeShadowDom: true,
+            })
+            .type(PASSWORD, { force: true });
 
         cy.get("amplify-authenticator")
-        .find(selectors.signInSignInButton, {
-            includeShadowDom: true,
-        })
-        .first()
-        .find("button[type='submit']", { includeShadowDom: true })
-        .click({ force: true });
+            .find(selectors.signInSignInButton, {
+                includeShadowDom: true,
+            })
+            .first()
+            .find("button[type='submit']", { includeShadowDom: true })
+            .click({ force: true });
 
         cy.get("#content-wrapper > div > div > ul")
-        .find(":nth-child(4) > a")
-        .contains("Homepage Config")
-        .click();
+            .find(":nth-child(4) > a")
+            .contains("Homepage Config")
+            .click();
         cy.url().should("include", "/siteAdmin");
     });
 
     it("Updates first sponsor URL", () => {
         cy.get("input[value='edit']")
-        .parent()
-        .click();
+            .parent()
+            .click();
         cy.get("#s0_link")
-        .clear()
-        .type("https://www.lib.vt.edu");
+            .clear()
+            .type("https://www.lib.vt.edu");
         cy.contains("Update Config").click();
         cy.contains("URL: https://www.lib.vt.edu").should("be.visible");
         cy.wait(1000);
@@ -45,11 +45,11 @@ describe("Update sponsors fields and revert", function() {
 
     it("Reverses update", () => {
         cy.get("input[value='edit']")
-        .parent()
-        .click();
+            .parent()
+            .click();
         cy.get("#s0_link")
-        .clear()
-        .type("https://clir.org/");
+            .clear()
+            .type("https://clir.org/");
         cy.contains("Update Config").click();
         cy.contains("URL: https://clir.org/").should("be.visible");
         cy.wait(1000);
@@ -57,22 +57,22 @@ describe("Update sponsors fields and revert", function() {
 
     it("Updates existing sponsor image", () => {
         cy.get("input[value='edit']")
-        .parent()
-        .click();
+            .parent()
+            .click();
         const imgPath = "sitecontent/sponsor1.png";
         cy.get(
-        "#sponsor0_form > section > div.fileUploadField > input[type=file]"
+            "#sponsor0_form > section > div.fileUploadField > input[type=file]"
         )
-        .eq(0)
-        .attachFile(imgPath)
-        .trigger("change", { force: true });
+            .eq(0)
+            .attachFile(imgPath)
+            .trigger("change", { force: true });
         cy.get("#sponsor0_form > section > div.fileUploadField > button.uploadButton").click({ force: true });
 
         cy.get(
-        '#sponsor0_form > section > div.fileUploadField > [data-test="upload-message"]'
+            '#sponsor0_form > section > div.fileUploadField > [data-test="upload-message"]'
         )
-        .should("have.attr", "style", "color: green;")
-        .invoke("text")
+            .should("have.attr", "style", "color: green;")
+            .invoke("text")
             .should("include", "uploaded successfully");
         cy.wait(1000);
     });
@@ -106,23 +106,22 @@ describe("Update sponsors fields and revert", function() {
 
     it("Removes new sponsor", () => {
         cy.get("input[value='edit']")
-        .parent()
+            .parent()
             .click();
-          cy.get(
+        cy.get(
             "#sponsor2_form > section > button"
         ).click()
         cy.contains("Update Config").click();
         cy.contains("Sponsor 3").should("not.exist");
-    })    
-})
+    })
 
-  afterEach("User signout:", () => {
-    cy.get("amplify-sign-out")
-      .find(selectors.signOutButton, { includeShadowDom: true })
-      .contains("Sign Out")
-      .click({ force: true });
-  });
-});
+    afterEach("User signout:", () => {
+        cy.get("amplify-sign-out")
+            .find(selectors.signOutButton, { includeShadowDom: true })
+            .contains("Sign Out")
+            .click({ force: true });
+    })
+});    
 
 export const selectors = {
   usernameInput: '[data-test="sign-in-username-input"]',
