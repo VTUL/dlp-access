@@ -3,7 +3,7 @@ describe('Search Facet field with more than 5 selectable values', () => {
     cy.visit('/search');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
       .click();
-    cy.wait(12000);
+    cy.wait(20000);
   });
   
   it('displays the first 5 facet values', () => {

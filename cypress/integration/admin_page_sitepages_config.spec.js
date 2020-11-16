@@ -27,8 +27,8 @@ describe("Displays and updates sitepages configurations", () => {
     cy.get("#content-wrapper > div > div > ul")
       .find(":nth-child(2) > a")
       .contains("Site Pages Config")
-      .click()
-    cy.url().should("include", "/siteAdmin")
+      .click();
+    cy.url().should("include", "/siteAdmin");
   });
 
   describe("Displays site pages fields", () => {

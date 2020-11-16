@@ -1,9 +1,9 @@
-describe('Multi-selectable checkboxes correspond to mulitple facet values of a facet field', () => {
+describe('Search facet checkboxes correspond to the facet values of a facet field', () => {
   beforeEach(() => {
     cy.visit('/search?field=title&q=building&view=Gallery');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
       .click();
-    cy.wait(12000);
+    cy.wait(20000);
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(2) input')
       .should('not.have.class', 'checked');
   })

@@ -65,7 +65,7 @@ describe("Update Homepage fields and revert", function() {
 
   it("displays successful upload", () => {
     cy.get("input[value='edit']").parent().click();
-    const imgPath = "sitecontent/cover_image1.jpg"
+    const imgPath = "sitecontent/cover_image1.jpg";
     cy.get("input[type=file]").eq(0).attachFile(imgPath).trigger('change', { force: true });
     cy.get("div.fileUploadField > button.uploadButton")
       .click({ force: true });
