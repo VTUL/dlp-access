@@ -215,7 +215,7 @@ class CollectionsShowPage extends Component {
   }
 
   componentDidMount() {
-    fetchLanguages(this, "abbr");
+    fetchLanguages(this, this.props.site, "abbr");
     this.getCollection(this.props.customKey);
   }
 

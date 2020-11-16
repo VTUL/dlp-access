@@ -179,7 +179,7 @@ class SearchLoader extends Component {
   }
 
   componentDidMount() {
-    fetchLanguages(this, "name", this.loadItems);
+    fetchLanguages(this, this.props.site, "name", this.loadItems);
     this.loadItems();
   }
 
@@ -199,6 +199,7 @@ class SearchLoader extends Component {
         <div>
           <SiteTitle siteTitle={this.props.site.siteTitle} pageTitle="Search" />
           <SearchResults
+            site={this.props.site}
             items={this.state.items}
             total={this.state.total}
             page={this.state.page}

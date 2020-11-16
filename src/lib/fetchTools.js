@@ -44,7 +44,7 @@ const fetchCopyFile = async (copyURL, type, component) => {
   }
 };
 
-export const fetchLanguages = async (component, key, callback) => {
+export const fetchLanguages = async (component, site, key, callback) => {
   let data = null;
   try {
     data = JSON.parse(sessionStorage.getItem(`lang_by_${key}`));
@@ -55,7 +55,7 @@ export const fetchLanguages = async (component, key, callback) => {
     console.log(`fetching by lang_by_${key}`);
     let response = null;
     try {
-      const htmlLink = `${process.env.REACT_APP_CONFIG_PATH}/language_codes_by_${key}.json`;
+      const htmlLink = `${site.lang}/language_codes_by_${key}.json`;
       response = await fetch(htmlLink);
       data = await response.json();
     } catch (error) {

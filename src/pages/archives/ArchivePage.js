@@ -148,7 +148,7 @@ class ArchivePage extends Component {
   }
 
   componentDidMount() {
-    fetchLanguages(this, "abbr");
+    fetchLanguages(this, this.props.site, "abbr");
   }
 
   render() {
