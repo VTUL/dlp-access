@@ -88,12 +88,11 @@ aws amplify list-backend-environments --app-id=AmplifyAppId
   ```
 
 ## Amplify Environment variables
-We assign each site with a unique ```REACT_APP_REP_TYPE``` and each site fetches its site configuration from ```REACT_APP_CONFIG_PATH```.
+We assign each site with a unique ```REACT_APP_REP_TYPE```.
 
 As an example, the site of [IAWA](https://iawa.lib.vt.edu/) takes these settings below:
 ```
 REACT_APP_REP_TYPE=IAWA
-REACT_APP_CONFIG_PATH="https://vtdlp-dev-site-data.s3.amazonaws.com"
 ```
 
 <img src="https://img.cloud.lib.vt.edu/images/amplify_env.png" width="80%"/>
