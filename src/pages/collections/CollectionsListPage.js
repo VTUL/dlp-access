@@ -11,6 +11,13 @@ import "../../css/ListPages.css";
 import "../../css/CollectionsListPage.css";
 
 class CollectionsListPage extends Component {
+  componentDidUpdate() {
+    console.log("update", this.props.site);
+  }
+
+  componentDidMount() {
+    console.log("mount", this.props.site);
+  }
   render() {
     const Header = () => {
       if (this.props.isSearch) {
@@ -83,6 +90,7 @@ class CollectionsListPage extends Component {
               if (this.props.view === "Gallery") {
                 return (
                   <GalleryView
+                    site={this.props.site}
                     key={collection.id}
                     item={collection}
                     category="collection"
@@ -92,6 +100,7 @@ class CollectionsListPage extends Component {
               } else {
                 return (
                   <ItemListView
+                    site={this.props.site}
                     key={collection.id}
                     item={collection}
                     category="collection"

@@ -174,11 +174,13 @@ class SearchLoader extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
+      fetchLanguages(this, this.props.site, "name", this.loadItems);
       this.loadItems();
     }
   }
 
   componentDidMount() {
+    console.log(this.props);
     fetchLanguages(this, this.props.site, "name", this.loadItems);
     this.loadItems();
   }

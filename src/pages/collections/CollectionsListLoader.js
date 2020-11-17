@@ -109,6 +109,7 @@ class CollectionsListLoader extends Component {
             pageTitle="Collections"
           />
           <CollectionsListPage
+            site={this.props.site}
             collections={this.state.collections}
             total={this.state.total}
             page={this.state.page}
