@@ -28,6 +28,7 @@ describe("Update sponsors fields and revert", function () {
             .find(":nth-child(4) > a")
             .contains("Homepage Config")
             .click();
+        cy.wait(500);
         cy.url().should("include", "/siteAdmin");
     });
 
@@ -39,8 +40,8 @@ describe("Update sponsors fields and revert", function () {
             .clear()
             .type("https://www.lib.vt.edu");
         cy.contains("Update Config").click();
+        cy.wait(500);
         cy.contains("URL: https://www.lib.vt.edu").should("be.visible");
-        cy.wait(1000);
     });
 
     it("Reverses update", () => {
@@ -51,14 +52,15 @@ describe("Update sponsors fields and revert", function () {
             .clear()
             .type("https://clir.org/");
         cy.contains("Update Config").click();
+        cy.wait(500);
         cy.contains("URL: https://clir.org/").should("be.visible");
-        cy.wait(1000);
     });
 
     it("Updates existing sponsor image", () => {
         cy.get("input[value='edit']")
             .parent()
             .click();
+        cy.wait(500);
         const imgPath = "sitecontent/sponsor1.png";
         cy.get(
             "#sponsor0_form > section > div.fileUploadField > input[type=file]"
@@ -74,7 +76,6 @@ describe("Update sponsors fields and revert", function () {
             .should("have.attr", "style", "color: green;")
             .invoke("text")
             .should("include", "uploaded successfully");
-        cy.wait(1000);
     });
     
     it("Adds new sponsor", () => {
@@ -92,6 +93,7 @@ describe("Update sponsors fields and revert", function () {
         cy.get(
             "#sponsor2_form > section > div.fileUploadField > button.uploadButton"
         ).click({ force: true });
+        cy.wait(500);
         cy.get("#s2_alt").type("Virginia Tech");
         cy.get("#s2_link").type("https://lib.vt.edu");
         cy.contains("Update Config").click();
@@ -101,7 +103,6 @@ describe("Update sponsors fields and revert", function () {
         ).should("be.visible");
         cy.contains("Alt text: Virginia Tech").should("be.visible");
         cy.contains("URL: https://lib.vt.edu").should("be.visible");
-        cy.wait(1000);
     })
 
     it("Removes new sponsor", () => {
@@ -112,6 +113,7 @@ describe("Update sponsors fields and revert", function () {
             "#sponsor2_form > section > button"
         ).click()
         cy.contains("Update Config").click();
+        cy.wait(500);
         cy.contains("Sponsor 3").should("not.exist");
     })
 

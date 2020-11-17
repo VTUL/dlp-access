@@ -29,7 +29,7 @@ describe("Update Homepage fields and revert", function() {
       .contains("Homepage Config")
       .click()
     cy.wait(500);
-    cy.url().should("include", "/siteAdmin")
+    cy.url().should("include", "/siteAdmin");
   })
  
   it("Update Homepage statement heading", () => {
