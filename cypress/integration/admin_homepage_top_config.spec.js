@@ -28,6 +28,7 @@ describe("Update Homepage fields and revert", function() {
       .find(":nth-child(4) > a")
       .contains("Homepage Top Config")
       .click();
+    cy.wait(500);
     cy.url().should("include", "/siteAdmin");
   })
  

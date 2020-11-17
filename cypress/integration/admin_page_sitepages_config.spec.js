@@ -28,7 +28,7 @@ describe("Displays and updates sitepages configurations", () => {
       .find(":nth-child(2) > a")
       .contains("Site Pages Config")
       .click();
-    cy.wait(1000);
+    cy.wait(500);
     cy.url().should("include", "/siteAdmin");
   });
 

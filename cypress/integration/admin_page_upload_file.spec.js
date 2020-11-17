@@ -28,6 +28,7 @@ describe("Upload Site Content test", () => {
         .find(":nth-child(3) > a")
         .contains("Upload Site Content")
         .click();
+      cy.wait(500);
       cy.url().should("include", "/siteAdmin");
     })
  

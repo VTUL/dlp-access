@@ -28,6 +28,7 @@ describe("Displays and updates sitepages configurations", () => {
       .find(":nth-child(5) > a")
       .contains("Search Facets Config")
       .click();
+    cy.wait(500);
     cy.url().should("include", "/siteAdmin");
   });
 

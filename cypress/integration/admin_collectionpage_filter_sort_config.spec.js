@@ -28,6 +28,7 @@ describe("Displays and updates sitepages configurations", () => {
       .find(":nth-child(6) > a")
       .contains("Filter and Sort Config for Browse Collections Page")
       .click();
+    cy.wait(500);
     cy.url().should("include", "/siteAdmin");
   });
 
