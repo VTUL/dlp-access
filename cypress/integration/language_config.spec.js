@@ -14,7 +14,7 @@ describe('Selecting English loads English results', () => {
       .click()
       .invoke('text')
       .should('equal', 'Language');
-    cy.get('input#en').click()
+    cy.get('input#en').click();
     cy.url().should("include", "language=en");
   });
 
@@ -22,7 +22,7 @@ describe('Selecting English loads English results', () => {
     cy.get('div.gallery-item').first()
       .find('a')
       .click();
-    cy.url().should("include", "/archive/")
+    cy.url().should("include", "/archive/");
     cy.get('div.details-section-metadata > table[aria-label="Item Metadata"] tbody')
       .find(':nth-child(7) td a')
       .invoke('text')

@@ -108,16 +108,10 @@ You can see various examples in the [VTDLP-sitecontent](https://github.com/VTUL/
 * An end-to-end testing framework using [Cypress.io](https://www.cypress.io/) has been setup for this project.
 <img src="https://img.cloud.lib.vt.edu/images/e2e.png" width="80%"/>
 
-* To test locally:
-
-  0. Put your configuration json files to ```public/site_data/```
-  1. Start local server using ```REACT_APP_REP_TYPE=IAWA REACT_APP_CONFIG_PATH="http://localhost:3000/site_data/" npm start```
-  2. Launch the Cypress app ```CYPRESS_password=secret yarn run cypress open -c experimentalShadowDomSupport=true```
-
-* To test using config files in the S3 bucket
+* To test locally
 
   0. Put your configuration json files to a S3 bucket and enable CORS and make the config file public. 
-  1. Start local server using ```REACT_APP_REP_TYPE=IAWA REACT_APP_CONFIG_PATH="https://vtdlp-dev-site-data.s3.amazonaws.com" npm start```
+  1. Start local server using ```REACT_APP_REP_TYPE=IAWA npm start```
   2. Launch the Cypress app ```CYPRESS_password=secret yarn run cypress open```
 
 ## Cleanup
