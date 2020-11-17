@@ -6,7 +6,7 @@ import { API, Auth } from "aws-amplify";
 import { getSite } from "../../lib/fetchTools";
 import * as mutations from "../../graphql/mutations";
 import FileUploadField from "./FileUploadField";
-import { SponsorForm, SponsorFields } from "./Sponsors";
+import { SponsorForm, Sponsors } from "./SponsorFields";
 
 const initialFormState = {
   staticImageSrc: "",
@@ -17,7 +17,7 @@ const initialFormState = {
   sponsors: []
 };
 
-class Homepage extends Component {
+class HomepageForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -170,7 +170,7 @@ class Homepage extends Component {
       <div>
         <h2>{`Edit Homepage Top with SiteId: ${process.env.REACT_APP_REP_TYPE.toLowerCase()}`}</h2>
         <Form>
-          <section>
+          <section className="homepage-statement">
             <h3>Homepage Statement</h3>
             <Form.Input
               label="Heading"
@@ -187,7 +187,7 @@ class Homepage extends Component {
               onChange={this.updateInputValue}
             />
           </section>
-          <section>
+          <section className="static-image">
             <h3>Static Image</h3>
             <FileUploadField
               context={this}
@@ -270,7 +270,7 @@ class Homepage extends Component {
               {this.showTitleFormatted()}
             </p>
             <h3>Sponsors</h3>
-            <SponsorFields sponsorsList={this.state.formState.sponsors} />
+            <Sponsors sponsorsList={this.state.formState.sponsors} />
           </div>
         </div>
       );
@@ -311,4 +311,4 @@ class Homepage extends Component {
   }
 }
 
-export default withAuthenticator(Homepage);
+export default withAuthenticator(HomepageForm);

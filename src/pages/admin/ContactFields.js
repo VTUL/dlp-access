@@ -87,7 +87,7 @@ const ContactForm = props => {
   );
 };
 
-const ContactFields = props => {
+const Contacts = props => {
   const fields = props.contactList.map((obj, index) => {
     return (
       <div key={`field_${index}`}>
@@ -105,4 +105,4 @@ const ContactFields = props => {
   return fields;
 };
 
-export { ContactForm, ContactFields };
+export { ContactForm, Contacts };

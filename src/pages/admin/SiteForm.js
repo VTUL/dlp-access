@@ -5,7 +5,7 @@ import { updatedDiff } from "deep-object-diff";
 import { API, Auth } from "aws-amplify";
 import { getSite } from "../../lib/fetchTools";
 import * as mutations from "../../graphql/mutations";
-import { ContactForm, ContactFields } from "./Contacts";
+import { ContactForm, Contacts } from "./ContactFields";
 
 const initialFormState = {
   analyticsID: "",
@@ -225,7 +225,7 @@ class SiteForm extends Component {
             <p>Site Name: {this.state.formState.siteName}</p>
             <p>Site Title: {this.state.formState.siteTitle}</p>
             <p>Contacts</p>
-            <ContactFields contactList={this.state.formState.contact} />
+            <Contacts contactList={this.state.formState.contact} />
           </div>
         </div>
       );

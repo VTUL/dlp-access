@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import SiteForm from "./SiteForm";
 import SitePagesForm from "./SitePagesForm";
 import ContentUpload from "./ContentUpload";
-import Homepage from "./Homepage";
+import HomepageForm from "./HomepageForm";
 import SearchFacetsForm from "./SearchFacetsForm";
 import BrowseCollectionsForm from "./BrowseCollectionsForm";
 
@@ -47,7 +47,7 @@ class SiteAdmin extends Component {
       site: <SiteForm />,
       contentUpload: <ContentUpload />,
       sitePages: <SitePagesForm />,
-      homepage: <Homepage />,
+      homepage: <HomepageForm />,
       searchFacets: <SearchFacetsForm />,
       browseCollections: <BrowseCollectionsForm />
     };

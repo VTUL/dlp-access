@@ -61,7 +61,7 @@ const SponsorForm = props => {
   );
 };
 
-const SponsorFields = props => {
+const Sponsors = props => {
   const fields = props.sponsorsList.map((obj, index) => {
     return (
       <div key={`field_${index}`} className="p-1">
@@ -83,4 +83,4 @@ const SponsorFields = props => {
   return fields;
 };
 
-export { SponsorForm, SponsorFields };
+export { SponsorForm, Sponsors };
