@@ -27,8 +27,8 @@ describe("Displays and updates sitepages configurations", () => {
     cy.get("#content-wrapper > div > div > ul")
       .find(":nth-child(5) > a")
       .contains("Search Facets Config")
-      .click()
-    cy.url().should("include", "/siteAdmin")
+      .click();
+    cy.url().should("include", "/siteAdmin");
   });
 
   describe("Displays search facet fields", () => {
@@ -117,7 +117,7 @@ describe("Displays and updates sitepages configurations", () => {
         .click();
       cy.get("#content-wrapper > div > div > div > form > section:nth-child(2) > fieldset > ul > li:nth-child(13)")
         .contains("X")
-        .click()
+        .click();
       cy.contains("Update Search Facets").click();
       cy.wait(1000);
       cy.contains("Department of the Army").should("not.be.visible");
@@ -135,7 +135,7 @@ describe("Displays and updates sitepages configurations", () => {
         .type("Collection Type");
       cy.get("#content-wrapper > div > div > div > form > section:nth-child(9) > fieldset")
         .contains("Add Value")
-        .click()
+        .click();
       cy.get("input[name='collection_value_0']")
         .first()
         .clear()
@@ -153,7 +153,7 @@ describe("Displays and updates sitepages configurations", () => {
         .click();
       cy.get("#content-wrapper > div > div > div > form > section:nth-child(2)")
         .contains("Delete Facet Field")
-        .click()
+        .click();
       cy.contains("Update Search Facets").click();
       cy.wait(1000);
       cy.contains("Facet Field: collection").should("not.be.visible");
