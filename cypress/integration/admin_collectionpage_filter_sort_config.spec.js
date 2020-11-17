@@ -27,8 +27,8 @@ describe("Displays and updates sitepages configurations", () => {
     cy.get("#content-wrapper > div > div > ul")
       .find(":nth-child(6) > a")
       .contains("Filter and Sort Config for Browse Collections Page")
-      .click()
-    cy.url().should("include", "/siteAdmin")
+      .click();
+    cy.url().should("include", "/siteAdmin");
   });
 
   describe("Displays filter and sort fields", () => {
@@ -61,19 +61,19 @@ describe("Displays and updates sitepages configurations", () => {
         .first()
         .clear()
         .type("Infrastructure");
-      cy.contains("Update Filter and Sort Fields").click()
+      cy.contains("Update Filter and Sort Fields").click();
+      cy.wait(1000);
       cy.contains("Infrastructure").should("be.visible");
     })
 
     it("Reverses update", () => {
-      cy.get("input[value='edit']")
-        .parent()
-        .click();
+      cy.get("input[value='edit']").parent().click();
       cy.get("input[name='filter_value_2']")
         .first()
         .clear()
         .type("Architecture");
       cy.contains("Update Filter and Sort Fields").click();
+      cy.wait(1000);
       cy.contains("Infrastructure").should("not.be.visible");
       cy.contains("Architecture").should("be.visible");
     });
@@ -82,25 +82,23 @@ describe("Displays and updates sitepages configurations", () => {
   describe("Adds filter's value and removes it", () => {
     it("Adds filter's value", () => {
       cy.get("input[value='edit']").parent().click();
-      cy.contains("Add Value")
-        .first()
-        .click();
+      cy.contains("Add Value").first().click();
       cy.get("input[name='filter_value_7']")
         .first()
         .clear()
         .type("Infrastructure");
-      cy.contains("Update Filter and Sort Fields").click()
+      cy.contains("Update Filter and Sort Fields").click();
+      cy.wait(1000);
       cy.contains("Infrastructure").should("be.visible");
     })
 
     it("Removes the added filter value", () => {
-      cy.get("input[value='edit']")
-        .parent()
-        .click();
+      cy.get("input[value='edit']").parent().click();
       cy.get("#content-wrapper > div > div > div > form > section:nth-child(1) > fieldset > ul > li:nth-child(8)")
         .contains("X")
-        .click()
+        .click();
       cy.contains("Update Filter and Sort Fields").click();
+      cy.wait(1000);
       cy.contains("Infrastructure").should("not.be.visible");
     });
   });
@@ -111,17 +109,17 @@ describe("Displays and updates sitepages configurations", () => {
       cy.get("select").select("identifier (asc)");
       cy.contains("Add New Sort Field").click();
       cy.contains("Update Filter and Sort Fields").click();
+      cy.wait(1000);
       cy.contains("Sort Field: identifier").should("be.visible");
     })
 
     it("Removes the newly added sort field", () => {
-      cy.get("input[value='edit']")
-        .parent()
-        .click();
+      cy.get("input[value='edit']").parent().click();
       cy.get("#content-wrapper > div > div > div > form > ul > section:nth-child(4)")
         .contains("Delete Sort Field")
-        .click()
+        .click();
       cy.contains("Update Filter and Sort Fields").click();
+      cy.wait(1000);
       cy.contains("Sort Field: identifier").should("not.be.visible");
     });
   });
