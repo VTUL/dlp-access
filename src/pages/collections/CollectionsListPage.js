@@ -11,13 +11,6 @@ import "../../css/ListPages.css";
 import "../../css/CollectionsListPage.css";
 
 class CollectionsListPage extends Component {
-  componentDidUpdate() {
-    console.log("update", this.props.site);
-  }
-
-  componentDidMount() {
-    console.log("mount", this.props.site);
-  }
   render() {
     const Header = () => {
       if (this.props.isSearch) {
