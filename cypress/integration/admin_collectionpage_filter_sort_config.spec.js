@@ -119,6 +119,7 @@ describe("Displays and updates sitepages configurations", () => {
       cy.get("#content-wrapper > div > div > div > form > ul > section:nth-child(4)")
         .contains("Delete Sort Field")
         .click();
+      cy.wait(1000);
       cy.contains("Update Filter and Sort Fields").click();
       cy.wait(1000);
       cy.contains("Sort Field: identifier").should("not.be.visible");
