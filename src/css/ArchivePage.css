@@ -6,7 +6,7 @@
   margin-top: 40px;
   background-color: var(--light-gray);
   border: solid 1px #707070;
-  padding: 1.5em;
+  padding: 0.5em;
 }
 
 div.item-image-section div.breadcrumbs-wrapper {
@@ -27,7 +27,7 @@ div.item-image-section img.item-img {
   padding: 40px 0 40px 0;
 }
 
-.details-section-description h1 {
+.details-section-description h2 {
   font-family: "gineso-condensed", sans-serif;
   font-size: 1.3125rem;
 }
@@ -76,6 +76,12 @@ div.item-image-section img.item-img {
   word-break: break-all;
 }
 
+@media (min-width: 576px) {
+  .item-image-section {
+    padding: 1.5em;
+  }
+}
+
 @media (min-width: 992px) {
   div.details-section-metadata {
     border-left: 1px solid grey;
@@ -83,8 +89,6 @@ div.item-image-section img.item-img {
   }
 
   div.item-image-section div.breadcrumbs-wrapper {
-    padding: 0 0 1.5em 0;
-    font-family: "gineso-condensed", sans-serif;
     font-size: 1.09rem;
   }
 }

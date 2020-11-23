@@ -37,7 +37,7 @@ class Citation extends Component {
                 tabIndex="0"
               >
                 <span className="help-icon">
-                  <i class="fas fa-question-circle"></i>
+                  <i className="fas fa-question-circle"></i>
                 </span>
               </Tooltip>
             </MuiThemeProvider>
