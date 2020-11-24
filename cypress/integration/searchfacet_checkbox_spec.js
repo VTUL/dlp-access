@@ -1,11 +1,9 @@
 describe('Search facet checkboxes correspond to the facet values of a facet field', () => {
   beforeEach(() => {
-    cy.visit('/search?field=title&q=building&view=Gallery');
+    cy.visit('/search');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
       .click();
     cy.wait(20000);
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(2) input')
-      .should('not.have.class', 'checked');
   })
 
   it('allows to select one of the checkboxes', () => {
@@ -30,10 +28,10 @@ describe('Search facet checkboxes correspond to the facet values of a facet fiel
 
     cy.url()
       .should('contain', 'medium=Colored+pencil')
-      .and('contain', 'medium=Marker+pen');
+      .and('contain', 'medium=Photographic+Print+-+Black+and+White');
     cy.get('[data-cy=search-filter-field-value-pairs]')
       .invoke('text')
       .should('contain', 'medium', 'Colored pencil')
-      .and('contain', 'medium', 'Marker pen');
+      .and('contain', 'medium', 'Photographic Print - Black and White');
   })
 })

@@ -1,7 +1,7 @@
 const USERNAME = "devtest";
 const PASSWORD = Cypress.env("password");
 
-describe("Displays and updates sitepages configurations", () => {
+describe("Displays and updates browse collections page configurations", () => {
   beforeEach(() => {
     cy.visit("/siteAdmin");
     cy.get("amplify-authenticator")
@@ -84,7 +84,7 @@ describe("Displays and updates sitepages configurations", () => {
     it("Adds filter's value", () => {
       cy.get("input[value='edit']").parent().click();
       cy.contains("Add Value").first().click();
-      cy.get("input[name='filter_value_7']")
+      cy.get("input[name='filter_value_6']")
         .first()
         .clear()
         .type("Infrastructure");
@@ -95,7 +95,7 @@ describe("Displays and updates sitepages configurations", () => {
 
     it("Removes the added filter value", () => {
       cy.get("input[value='edit']").parent().click();
-      cy.get("#content-wrapper > div > div > div > form > section:nth-child(1) > fieldset > ul > li:nth-child(8)")
+      cy.get("#content-wrapper > div > div > div > form > section:nth-child(1) > fieldset > ul > li:nth-child(7)")
         .contains("X")
         .click();
       cy.contains("Update Filter and Sort Fields").click();

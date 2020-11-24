@@ -45,7 +45,7 @@ class HomepageForm extends Component {
       let index = sponsorArray.length + 1;
       let newSponsor = {
         alt: "",
-        img: `https://img.cloud.lib.vt.edu/sites/images/iawa/sponsor${index}.png`,
+        img: `https://img.cloud.lib.vt.edu/sites/images/${process.env.REACT_APP_REP_TYPE.toLowerCase()}/sponsor${index}.png`,
         link: ""
       };
       sponsorArray.push(newSponsor);

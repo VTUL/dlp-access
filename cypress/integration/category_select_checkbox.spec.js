@@ -10,7 +10,7 @@ describe('Object category options are mutually exclusive facet checkboxes', () =
       .should('not.have.class', 'checked');
   });
 
-  it('sets one categoyr if one of the checkboxes being selected', () => {
+  it('sets one categoy if one of the checkboxes being selected', () => {
     cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div > div.facet-listing > :nth-child(1) input')
       .check();
 

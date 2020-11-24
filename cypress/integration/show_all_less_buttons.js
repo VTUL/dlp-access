@@ -22,12 +22,12 @@ describe('Search Facet field with more than 5 selectable values', () => {
       .click();
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing')
       .children()
-      .should('have.length', 17);
+      .should('have.length', 9);
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing')
       .should('have.class', 'scroll');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(17) input')
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(9) input')
       .should('not.be.visible');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(17) input').scrollIntoView()
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(9) input').scrollIntoView()
       .should('be.visible');
   });
 })

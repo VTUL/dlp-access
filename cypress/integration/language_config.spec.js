@@ -1,5 +1,3 @@
-import { Children } from "react";
-
 describe('Selecting English loads English results', () => {
   it('Language checkbox exists and updates url', () => {
     cy.visit("/search");
@@ -24,7 +22,7 @@ describe('Selecting English loads English results', () => {
       .click();
     cy.url({ timeout: 2000 }).should("include", "/archive/");
     cy.get('div.details-section-metadata > table[aria-label="Item Metadata"] tbody')
-      .find(':nth-child(7) td a')
+      .find(':nth-child(6) td a')
       .invoke('text')
       .should('equal', 'English');
   });

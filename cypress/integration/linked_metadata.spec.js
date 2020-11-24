@@ -11,7 +11,7 @@ describe('Archive metadata', () => {
 
 describe('Collection metadata', () => {
   it('lands on search facet by the metadata field', () => {
-    cy.visit('/collection/vb765t25');
+    cy.visit('/collection/vb765t25demo');
     cy.get('[data-cy=multi-field-span] a')
       .eq(1)
       .click();

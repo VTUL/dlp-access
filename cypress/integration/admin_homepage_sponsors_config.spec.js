@@ -78,26 +78,26 @@ describe("Update sponsors fields and revert", function () {
         cy.get("input[value='edit']")
             .parent()
             .click();
-        const imgPath = "sitecontent/sponsor3.png";
+        const imgPath = "sitecontent/sponsor4.png";
         cy.get("button[aria-label='Add sponsor']", { timeout: 2000 }).click();
         cy.get(
-            "#sponsor2_form > section > div.fileUploadField > input[type=file]", { timeout: 2000 }
+            "#sponsor3_form > section > div.fileUploadField > input[type=file]", { timeout: 2000 }
         )
             .eq(0)
             .attachFile(imgPath)
             .trigger("change", { force: true });
         cy.get(
-            "#sponsor2_form > section > div.fileUploadField > button.uploadButton"
+            "#sponsor3_form > section > div.fileUploadField > button.uploadButton"
         ).click({ force: true });
-        cy.get("#s2_alt", { timeout: 2000 }).type("Virginia Tech");
-        cy.get("#s2_link").type("https://lib.vt.edu");
+        cy.get("#s3_alt", { timeout: 2000 }).type("Virginia Tech");
+        cy.get("#s3_link").type("https://vt.edu");
         cy.contains("Update Config").click();
-        cy.contains("Sponsor 3", { timeout: 2000 }).should("be.visible");
+        cy.contains("Sponsor 4", { timeout: 2000 }).should("be.visible");
         cy.contains(
-            "Source: https://img.cloud.lib.vt.edu/sites/images/iawa/sponsor3.png"
+            "Source: https://img.cloud.lib.vt.edu/sites/images/default/sponsor4.png"
         ).should("be.visible");
         cy.contains("Alt text: Virginia Tech").should("be.visible");
-        cy.contains("URL: https://lib.vt.edu").should("be.visible");
+        cy.contains("URL: https://vt.edu").should("be.visible");
     })
 
     it("Removes new sponsor", () => {
@@ -105,10 +105,10 @@ describe("Update sponsors fields and revert", function () {
             .parent()
             .click();
         cy.get(
-            "#sponsor2_form > section > button", { timeout: 2000 }
+            "#sponsor3_form > section > button", { timeout: 2000 }
         ).click()
         cy.contains("Update Config").click();
-        cy.contains("Sponsor 3", { timeout: 2000 }).should("not.exist");
+        cy.contains("Sponsor 4", { timeout: 2000 }).should("not.exist");
     })
 
     afterEach("User signout:", () => {

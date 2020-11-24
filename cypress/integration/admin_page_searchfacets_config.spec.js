@@ -74,21 +74,22 @@ describe("Displays and updates sitepages configurations", () => {
       cy.get("input[name='creator_value_0']", { timeout: 2000 })
         .first()
         .clear()
-        .type("Pfeiffer, Alberta, 1899-1993");
+        .type("Creator Updated");
       cy.contains("Update Search Facets").click();
-      cy.contains("Pfeiffer, Alberta, 1899-1993", { timeout: 2000 }).should("be.visible");
+      cy.contains("Creator Updated", { timeout: 2000 }).should("be.visible");
     })
 
     it("Reverses update", () => {
       cy.get("input[value='edit']")
         .parent()
         .click();
+      const input = "Pfeiffer, Alberta, 1899-1994";
       cy.get("input[name='creator_value_0']", { timeout: 2000 })
         .first()
         .clear()
-        .type("Pfeiffer, Alberta, 1899-1994");
+        .type("Demo");
       cy.contains("Update Search Facets").click();
-      cy.contains("Pfeiffer, Alberta, 1899-1994", { timeout: 2000 }).should("be.visible");
+      cy.contains("Demo", { timeout: 2000 }).should("be.visible");
     });
   });
 
@@ -98,27 +99,28 @@ describe("Displays and updates sitepages configurations", () => {
       cy.contains("Add Value", { timeout: 2000 })
         .first()
         .click();
-      cy.get("input[name='creator_value_12']", { timeout: 2000 })
+      cy.get("input[name='creator_value_10']", { timeout: 2000 })
         .first()
         .clear()
-        .type("Department of the Army");
+        .type("Creator 10");
       cy.contains("Update Search Facets").click();
-      cy.contains("Department of the Army", { timeout: 2000 }).should("be.visible");
+      cy.contains("Creator 10", { timeout: 2000 }).should("be.visible");
     })
 
     it("Removes the added creator value", () => {
       cy.get("input[value='edit']")
         .parent()
         .click();
-      cy.get("#content-wrapper > div > div > div > form > section:nth-child(2) > fieldset > ul > li:nth-child(13)", { timeout: 2000 })
+      cy.get("#content-wrapper > div > div > div > form > section:nth-child(2) > fieldset > ul > li:nth-child(11)", { timeout: 2000 })
         .contains("X")
         .click();
-      cy.contains("Update Search Facets", { timeout: 2000 }).click();
-      cy.contains("Department of the Army", { timeout: 2000 }).should("not.be.visible");
+      cy.contains("Update Search Facets").click();
+      cy.contains("Creator 10", { timeout: 2000 }).should("not.be.visible");
     });
   });
 
   describe("Adds a new facet field and removes it", () => {
+    const input = "Alberta Pfeiffer Architectural Collection, 1929-1976 (Ms1988-017)";
     it("Adds a new search facet field", () => {
       cy.get("input[value='edit']").parent().click();
       cy.get("select", { timeout: 2000 }).select("collection");
@@ -133,11 +135,11 @@ describe("Displays and updates sitepages configurations", () => {
       cy.get("input[name='collection_value_0']", { timeout: 2000 })
         .first()
         .clear()
-        .type("Alberta Pfeiffer Architectural Collection, 1929-1976 (Ms1988-017)");
+        .type(input);
       cy.contains("Update Search Facets").click();
       cy.contains("Facet Field: collection", { timeout: 2000 }).should("be.visible");
       cy.contains("Label: Collection Type").should("be.visible");
-      cy.contains("Alberta Pfeiffer Architectural Collection, 1929-1976 (Ms1988-017)").should("be.visible");
+      cy.contains(input).should("be.visible");
     })
 
     it("Removes the newly added facet field", () => {
@@ -150,7 +152,7 @@ describe("Displays and updates sitepages configurations", () => {
       cy.contains("Update Search Facets", { timeout: 2000 }).click();
       cy.contains("Facet Field: collection", { timeout: 2000 }).should("not.be.visible");
       cy.contains("Label: Collection Type").should("not.be.visible");
-      cy.contains("Alberta Pfeiffer Architectural Collection, 1929-1976 (Ms1988-017)").should("not.be.visible");
+      cy.contains(input).should("not.be.visible");
     });
   });
 
