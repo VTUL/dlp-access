@@ -24,59 +24,54 @@ describe("Update attribute and change it back", function() {
       .find("button[type='submit']", { includeShadowDom: true })
       .click({ force: true });
 
-      cy.get("#content-wrapper > div > div > ul")
+      cy.get("#content-wrapper > div > div > ul", { timeout: 2000 })
       .find(":nth-child(7) > a")
       .contains("Displayed Attributes")
       .click()
-    cy.url().should("include", "/siteAdmin")
+    cy.url().should("include", "/siteAdmin", { timeout: 2000 })
   })
   it("first attribute required", () => {
     cy.get("input[value='edit']").parent().click();
-    cy.get("#archive_0_wrapper")
+    cy.get("#archive_0_wrapper", { timeout: 2000 })
      .find("span.required")
      .invoke("text").should("eq", "Required");
   })
  
   it("Update first attribute", () => {
     cy.get("input[value='edit']").parent().click();
-    cy.get("input[id='archive_0']").clear().type("Not Identifier");
+    cy.get("input[id='archive_0']", { timeout: 2000 }).clear().type("Not Identifier");
     cy.contains("Update Attributes").click();
-    cy.contains("label: Not Identifier").should('be.visible');
-    cy.wait(1000);
+    cy.contains("label: Not Identifier", { timeout: 2000 }).should('be.visible');
   })
 
   it("Change first attribute back", () => {
     cy.get("input[value='edit']").parent().click();
-    cy.get("input[id='archive_0']").clear().type("Identifier");
+    cy.get("input[id='archive_0']", { timeout: 2000 }).clear().type("Identifier");
     cy.contains("Update Attributes").click();
-    cy.contains("label: Identifier").should('be.visible');
-    cy.wait(1000);
+    cy.contains("label: Identifier", { timeout: 2000 }).should('be.visible');
   })
 
   it("Can delete attribute", () => {
     cy.get("input[value='edit']").parent().click();
-    cy.get("section#archive")
+    cy.get("section#archive", { timeout: 2000 })
       .find('a.delete.active').last().click();
     cy.contains("Update Attributes").click();
-    cy.contains("field: tags").should('not.exist');
+    cy.contains("field: tags", { timeout: 2000 }).should('not.exist');
     cy.contains("label: Tags").should('not.exist');
-    cy.wait(1000);
   })  
 
   it("Can add attribute", () => {
     cy.get("input[value='edit']").parent().click();
-    cy.get("section#archive")
+    cy.get("section#archive", { timeout: 2000 })
       .find('select.add_archive_attribute').select("archive#tags");
     cy.get("section#archive")
       .find('a.add.active').click();
-    cy.get("section#archive")
+    cy.get("section#archive", { timeout: 2000 })
       .find('div.field.attributeLabel').last()
       .find('input').clear().type('Tags');
     cy.contains("Update Attributes").click();
-
-    cy.contains("field: tags").should('be.visible');
+    cy.contains("field: tags", { timeout: 2000 }).should('be.visible');
     cy.contains("label: Tags").should('be.visible');
-    cy.wait(1000);
   })
 
   afterEach("User signout:", () => {
