@@ -28,7 +28,7 @@ describe("Update attribute and change it back", function() {
       .find(":nth-child(7) > a")
       .contains("Displayed Attributes")
       .click()
-    cy.url().should("include", "/siteAdmin", { timeout: 2000 })
+    cy.url({ timeout: 2000 }).should("include", "/siteAdmin")
   })
   it("first attribute required", () => {
     cy.get("input[value='edit']").parent().click();
@@ -55,7 +55,7 @@ describe("Update attribute and change it back", function() {
     cy.get("input[value='edit']").parent().click();
     cy.get("section#archive", { timeout: 2000 })
       .find('a.delete.active').last().click();
-    cy.contains("Update Attributes").click();
+    cy.contains("Update Attributes", { timeout: 2000 }).click();
     cy.contains("field: tags", { timeout: 2000 }).should('not.exist');
     cy.contains("label: Tags").should('not.exist');
   })  

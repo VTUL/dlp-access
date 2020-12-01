@@ -65,23 +65,8 @@ class DisplayedAttributesForm extends Component {
     this.setState({ formState: attributes });
   };
 
-  handleSubmit = async () => {
-    this.setState({ viewState: "view" });
-    const siteID = this.state.site.id;
-    const siteInfo = {
-      id: siteID,
-      displayedAttributes: JSON.stringify(this.state.formState)
-    };
-    await API.graphql({
-      query: mutations.updateSite,
-      variables: { input: siteInfo },
-      authMode: "AMAZON_COGNITO_USER_POOLS"
-    });
-    const newData = updatedDiff(this.state.prevFormState, this.state.formState);
-    const oldData = updatedDiff(this.state.formState, this.state.prevFormState);
-
+  addNewAttributes(newData) {
     let newAttributes = [];
-    // check if pages were added (for history)
     const numNewAttributes =
       this.state.formState.length - this.state.prevFormState.length;
     if (numNewAttributes > 0) {
@@ -94,6 +79,26 @@ class DisplayedAttributesForm extends Component {
         newData[Object.keys(newData).length] = newAttributes[idx];
       }
     }
+    return newData;
+  }
+
+  handleSubmit = async () => {
+    this.setState({ viewState: "view" });
+    const siteID = this.state.site.id;
+    const siteInfo = {
+      id: siteID,
+      displayedAttributes: JSON.stringify(this.state.formState)
+    };
+    await API.graphql({
+      query: mutations.updateSite,
+      variables: { input: siteInfo },
+      authMode: "AMAZON_COGNITO_USER_POOLS"
+    });
+    let newData = updatedDiff(this.state.prevFormState, this.state.formState);
+    const oldData = updatedDiff(this.state.formState, this.state.prevFormState);
+
+    newData = this.addNewAttributes(newData);
+
     const userInfo = await Auth.currentUserPoolUser();
     let eventInfo = {};
     eventInfo = Object.keys(newData).reduce((acc, key) => {
@@ -216,9 +221,7 @@ class DisplayedAttributesForm extends Component {
       }
     }
 
-    this.setState({ selectAttributes: selectAttributes }, () => {
-      console.log(this.state);
-    });
+    this.setState({ selectAttributes: selectAttributes });
   }
 
   onDropdownSelect = e => {
@@ -228,9 +231,7 @@ class DisplayedAttributesForm extends Component {
     const value = eventValue.split("#")[1];
     copy[type] = value;
 
-    this.setState({ tempAttributes: copy }, () =>
-      console.log(this.state.tempAttributes)
-    );
+    this.setState({ tempAttributes: copy });
   };
 
   checkRequired(type, item) {
