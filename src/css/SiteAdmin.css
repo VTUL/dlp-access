@@ -1,0 +1,34 @@
+.admin-sidebar {
+  background-color: var(--darker-gray);
+  padding-bottom: 15px;
+}
+
+.admin-sidebar ul li {
+  font-family: "Acherus", sans-serif;
+  padding: 8px 0 8px 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.admin-sidebar ul li:hover {
+  background-color: var(--hokieMaroon);
+}
+
+.admin-sidebar ul li a {
+  color: white;
+}
+
+.admin-sidebar ul li a:hover {
+  text-decoration: none;
+}
+
+.admin-active {
+  background-color: var(--hokieMaroon);
+}
+
+.admin-content {
+  background-color: var(--light-gray);
+  font-family: "Acherus", sans-serif;
+}

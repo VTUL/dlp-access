@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Auth } from "aws-amplify";
 import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import SiteForm from "./SiteForm";
 import SitePagesForm from "./SitePagesForm";
 import ContentUpload from "./ContentUpload";
@@ -9,6 +9,8 @@ import HomepageForm from "./HomepageForm";
 import SearchFacetsForm from "./SearchFacetsForm";
 import BrowseCollectionsForm from "./BrowseCollectionsForm";
 import DisplayedAttributesForm from "./DisplayedAttributesForm";
+
+import "../../css/SiteAdmin.css";
 
 class SiteAdmin extends Component {
   constructor(props) {
@@ -62,53 +64,63 @@ class SiteAdmin extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="row admin-wrapper">
+        <div className="col-lg-3 col-sm-12 admin-sidebar">
           <ul>
-            <li>
-              <NavLink onClick={() => this.setForm("site")} to={"/siteAdmin"}>
+            <li className={this.state.form === "site" ? "admin-active" : ""}>
+              <Link onClick={() => this.setForm("site")} to={"/siteAdmin"}>
                 General Site Config
-              </NavLink>
+              </Link>
             </li>
-            <li>
-              <NavLink
-                onClick={() => this.setForm("sitePages")}
-                to={"/siteAdmin"}
-              >
+            <li
+              className={this.state.form === "sitePages" ? "admin-active" : ""}
+            >
+              <Link onClick={() => this.setForm("sitePages")} to={"/siteAdmin"}>
                 Site Pages Config
-              </NavLink>
+              </Link>
             </li>
-            <li>
-              <NavLink
+            <li
+              className={
+                this.state.form === "contentUpload" ? "admin-active" : ""
+              }
+            >
+              <Link
                 onClick={() => this.setForm("contentUpload")}
                 to={"/siteAdmin"}
               >
                 Upload Site Content
-              </NavLink>
+              </Link>
             </li>
-            <li>
-              <NavLink
-                onClick={() => this.setForm("homepage")}
-                to={"/siteAdmin"}
-              >
+            <li
+              className={this.state.form === "homepage" ? "admin-active" : ""}
+            >
+              <Link onClick={() => this.setForm("homepage")} to={"/siteAdmin"}>
                 Homepage Config
-              </NavLink>
+              </Link>
             </li>
-            <li>
-              <NavLink
+            <li
+              className={
+                this.state.form === "searchFacets" ? "admin-active" : ""
+              }
+            >
+              <Link
                 onClick={() => this.setForm("searchFacets")}
                 to={"/siteAdmin"}
               >
                 Search Facets Config
-              </NavLink>
+              </Link>
             </li>
-            <li>
-              <NavLink
+            <li
+              className={
+                this.state.form === "browseCollections" ? "admin-active" : ""
+              }
+            >
+              <Link
                 onClick={() => this.setForm("browseCollections")}
                 to={"/siteAdmin"}
               >
                 Filter and Sort Config for Browse Collections Page
-              </NavLink>
+              </Link>
             </li>
             <li>
               <NavLink
@@ -119,13 +131,13 @@ class SiteAdmin extends Component {
               </NavLink>
             </li>
           </ul>
+          <AmplifySignOut />
         </div>
         {this.state.authorized ? (
           this.getForm()
         ) : (
           <h1>"Not authorized to access this page!"</h1>
         )}
-        <AmplifySignOut />
       </div>
     );
   }

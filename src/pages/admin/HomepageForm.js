@@ -285,10 +285,10 @@ class HomepageForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-lg-9 col-sm-12 admin-content">
         <Form>
           <Form.Group inline>
-            <label>Switch between view and edit</label>
+            <label>Current mode:</label>
             <Form.Radio
               label="Edit"
               name="viewRadioGroup"

@@ -283,13 +283,13 @@ class SitePagesForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-lg-9 col-sm-12 admin-content">
         <h1>{`Site Pages for: ${process.env.REACT_APP_REP_TYPE.toLowerCase()}`}</h1>
         <Form>
           <Form.Group inline>
-            <label>Switch between view and edit</label>
+            <label>Current mode:</label>
             <Form.Radio
-              label="Edit Site Pages"
+              label="Edit"
               name="editStatePagesRadioGroup"
               value="edit"
               checked={this.state.viewState === "edit"}
@@ -297,7 +297,7 @@ class SitePagesForm extends Component {
             />
 
             <Form.Radio
-              label="View Site Pages"
+              label="View"
               name="viewStatePagesRadioGroup"
               value="view"
               checked={this.state.viewState === "view"}

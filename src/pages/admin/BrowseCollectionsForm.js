@@ -350,13 +350,13 @@ class BrowseCollectionsForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-lg-9 col-sm-12 admin-content">
         <h1>{`Browse Collections page's filter and sort: ${process.env.REACT_APP_REP_TYPE.toLowerCase()}`}</h1>
         <Form>
           <Form.Group inline>
-            <label>Switch between view and edit</label>
+            <label>Current mode:</label>
             <Form.Radio
-              label="Edit Filter and Sort"
+              label="Edit"
               name="editFilterSortRadioGroup"
               value="edit"
               checked={this.state.viewState === "edit"}
@@ -364,7 +364,7 @@ class BrowseCollectionsForm extends Component {
             />
 
             <Form.Radio
-              label="View Filter and Sort"
+              label="View"
               name="viewFilterSortRadioGroup"
               value="view"
               checked={this.state.viewState === "view"}

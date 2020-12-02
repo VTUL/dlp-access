@@ -109,7 +109,7 @@ class ContentUpload extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-lg-9 col-sm-12 admin-content">
         <h2>{`${process.env.REACT_APP_REP_TYPE}: Upload Site Content`}</h2>
         {this.uploadForm()}
       </div>

@@ -236,12 +236,12 @@ class SiteForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-lg-9 col-sm-12 admin-content">
         <Form>
           <Form.Group inline>
-            <label>Switch between view and edit</label>
+            <label>Current mode:</label>
             <Form.Radio
-              label="Edit Site"
+              label="Edit"
               name="viewStateRadioGroup"
               value="editSite"
               checked={this.state.viewState === "editSite"}
@@ -249,7 +249,7 @@ class SiteForm extends Component {
             />
 
             <Form.Radio
-              label="View Site"
+              label="View"
               name="viewStateRadioGroup"
               value="viewSite"
               checked={this.state.viewState === "viewSite"}
