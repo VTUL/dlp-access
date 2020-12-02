@@ -82,6 +82,24 @@ class DisplayedAttributesForm extends Component {
     return newData;
   }
 
+  async recordDeletedAttributes(historyInfo) {
+    if (this.state.deletedAttributes.length) {
+      let eventInfo = {};
+      for (const idx in this.state.deletedAttributes) {
+        eventInfo[idx] = {
+          old: this.state.deletedAttributes[idx],
+          new: "Deleted"
+        };
+      }
+      historyInfo.event = JSON.stringify(eventInfo);
+      await API.graphql({
+        query: mutations.createHistory,
+        variables: { input: historyInfo },
+        authMode: "AMAZON_COGNITO_USER_POOLS"
+      });
+    }
+  }
+
   handleSubmit = async () => {
     this.setState({ viewState: "view" });
     const siteID = this.state.site.id;
@@ -122,22 +140,7 @@ class DisplayedAttributesForm extends Component {
       authMode: "AMAZON_COGNITO_USER_POOLS"
     });
 
-    // record if one or more attributes have been deleted
-    if (this.state.deletedAttributes.length) {
-      eventInfo = {};
-      for (const idx in this.state.deletedAttributes) {
-        eventInfo[idx] = {
-          old: this.state.deletedAttributes[idx],
-          new: "Deleted"
-        };
-      }
-      historyInfo.event = JSON.stringify(eventInfo);
-      await API.graphql({
-        query: mutations.createHistory,
-        variables: { input: historyInfo },
-        authMode: "AMAZON_COGNITO_USER_POOLS"
-      });
-    }
+    this.recordDeletedAttributes(historyInfo);
   };
 
   handleChange = (e, { value }) => {
