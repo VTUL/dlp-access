@@ -348,9 +348,9 @@ class DisplayedAttributesForm extends Component {
         <h1>{`Displayed Attributes for: ${process.env.REACT_APP_REP_TYPE.toLowerCase()}`}</h1>
         <Form>
           <Form.Group inline>
-            <label>Switch between view and edit</label>
+            <label>Current mode:</label>
             <Form.Radio
-              label="Edit Displayed Attributes"
+              label="Edit"
               name="viewDisplayedAttributesRadioGroup"
               value="edit"
               checked={this.state.viewState === "edit"}
@@ -358,7 +358,7 @@ class DisplayedAttributesForm extends Component {
             />
 
             <Form.Radio
-              label="View Displayed Attributes"
+              label="View"
               name="viewDisplayedAttributesRadioGroup"
               value="view"
               checked={this.state.viewState === "view"}

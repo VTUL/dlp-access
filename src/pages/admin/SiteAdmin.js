@@ -123,12 +123,12 @@ class SiteAdmin extends Component {
               </Link>
             </li>
             <li>
-              <NavLink
+              <Link
                 onClick={() => this.setForm("displayedAttributes")}
                 to={"/siteAdmin"}
               >
                 Displayed Attributes
-              </NavLink>
+              </Link>
             </li>
           </ul>
           <AmplifySignOut />
