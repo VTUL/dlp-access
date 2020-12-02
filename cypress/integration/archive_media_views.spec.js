@@ -9,6 +9,13 @@ describe('Archive static img view', () => {
 });
 
 describe('Archive audio player', () => {
+  it('renders audio file thumbnail', () => {
+    cy.visit('/archive/m69xyh01');
+    cy.get('div.audio-img-wrapper')
+      .find('img')
+      .should('have.class', 'audio-img')
+      .should('be.visible');
+  });
   it('renders html5 audio player', () => {
     cy.visit('/archive/m69xyh01');
     cy.get('audio')
@@ -25,6 +32,11 @@ describe('Archive video player', () => {
       .should('have.id', 'player1_html5')
       .should('be.visible');
   });
+  it('renders with img placeholder', () => {
+    cy.visit('/archive/m70xyh12');
+    cy.get('video')
+      .invoke('attr', 'poster').should('eq', 'http://i3.ytimg.com/vi/iWO5N3n1DXU/hqdefault.jpg')
+  })
 });
 
 describe('Archive kaltura embed', () => {

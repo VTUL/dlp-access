@@ -75,7 +75,7 @@ class ArchivePage extends Component {
     return url.match(/\.(json)$/) != null;
   }
 
-  buildTrack(url) {
+  buildTrack(url, thumbnail_path) {
     const nameExt = this.fileNameFromUrl(url);
     const name = nameExt.split(".")[0];
 
@@ -84,6 +84,8 @@ class ArchivePage extends Component {
     track["label"] = "English";
     track["src"] = url.replace(nameExt, name + ".srt");
     track["srclang"] = "en";
+    track["poster"] = thumbnail_path;
+    console.log(track);
     return track;
   }
 
@@ -98,11 +100,11 @@ class ArchivePage extends Component {
         <img className="item-img" src={item.manifest_url} alt={item.title} />
       );
     } else if (this.isAudioURL(item.manifest_url)) {
-      const track = this.buildTrack(item.manifest_url);
+      const track = this.buildTrack(item.manifest_url, item.thumbnail_path);
       tracks.push(track);
       display = this.mediaElement(item.manifest_url, "audio", config, tracks);
     } else if (this.isVideoURL(item.manifest_url)) {
-      const track = this.buildTrack(item.manifest_url);
+      const track = this.buildTrack(item.manifest_url, item.thumbnail_path);
       tracks.push(track);
       display = this.mediaElement(item.manifest_url, "video", config, tracks);
     } else if (this.isKalturaURL(item.manifest_url)) {
@@ -128,7 +130,6 @@ class ArchivePage extends Component {
 
   mediaElement(src, type, config, tracks) {
     const filename = this.fileNameFromUrl(src);
-    console.log(filename);
     const typeString = `${type}/${this.fileExtensionFromFileName(filename)}`;
     const srcArray = [{ src: src, type: typeString }];
     return (
@@ -139,7 +140,7 @@ class ArchivePage extends Component {
         controls
         width="100%"
         height="640"
-        poster=""
+        poster={tracks[0].poster}
         sources={JSON.stringify(srcArray)}
         options={JSON.stringify(config)}
         tracks={JSON.stringify(tracks)}
