@@ -9,6 +9,7 @@ import HomepageForm from "./HomepageForm";
 import SearchFacetsForm from "./SearchFacetsForm";
 import BrowseCollectionsForm from "./BrowseCollectionsForm";
 import DisplayedAttributesForm from "./DisplayedAttributesForm";
+import MediaSectionForm from "./MediaSectionForm";
 
 import "../../css/SiteAdmin.css";
 
@@ -53,7 +54,8 @@ class SiteAdmin extends Component {
       homepage: <HomepageForm />,
       searchFacets: <SearchFacetsForm />,
       browseCollections: <BrowseCollectionsForm />,
-      displayedAttributes: <DisplayedAttributesForm />
+      displayedAttributes: <DisplayedAttributesForm />,
+      mediaSection: <MediaSectionForm />
     };
     return forms[this.state.form];
   }
@@ -128,6 +130,14 @@ class SiteAdmin extends Component {
                 to={"/siteAdmin"}
               >
                 Displayed Attributes
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={() => this.setForm("mediaSection")}
+                to={"/siteAdmin"}
+              >
+                Homepage media section
               </Link>
             </li>
           </ul>
