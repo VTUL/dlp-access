@@ -85,11 +85,11 @@ class ArchivePage extends Component {
     track["src"] = url.replace(nameExt, name + ".srt");
     track["srclang"] = "en";
     track["poster"] = thumbnail_path;
-    console.log(track);
     return track;
   }
 
   mediaDisplay(item) {
+    console.log(item);
     let display = null;
     let config = {};
     let tracks = [];
@@ -102,7 +102,13 @@ class ArchivePage extends Component {
     } else if (this.isAudioURL(item.manifest_url)) {
       const track = this.buildTrack(item.manifest_url, item.thumbnail_path);
       tracks.push(track);
-      display = this.mediaElement(item.manifest_url, "audio", config, tracks);
+      display = this.mediaElement(
+        item.manifest_url,
+        "audio",
+        config,
+        tracks,
+        item.title
+      );
     } else if (this.isVideoURL(item.manifest_url)) {
       const track = this.buildTrack(item.manifest_url, item.thumbnail_path);
       tracks.push(track);
@@ -128,7 +134,7 @@ class ArchivePage extends Component {
     return url.pathname.split("/").reverse()[0];
   }
 
-  mediaElement(src, type, config, tracks) {
+  mediaElement(src, type, config, tracks, title = "") {
     const filename = this.fileNameFromUrl(src);
     const typeString = `${type}/${this.fileExtensionFromFileName(filename)}`;
     const srcArray = [{ src: src, type: typeString }];
@@ -144,6 +150,7 @@ class ArchivePage extends Component {
         sources={JSON.stringify(srcArray)}
         options={JSON.stringify(config)}
         tracks={JSON.stringify(tracks)}
+        title={title}
       />
     );
   }

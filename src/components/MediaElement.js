@@ -49,7 +49,11 @@ export default class MediaElement extends Component {
   audioImg() {
     return (
       <div className="audio-img-wrapper">
-        <img className="audio-img" src={this.props.poster} />
+        <img
+          className="audio-img"
+          src={this.props.poster}
+          alt={this.props.title}
+        />
       </div>
     );
   }
