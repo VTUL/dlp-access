@@ -118,7 +118,12 @@ class RelatedItems extends Component {
       };
 
       return (
-        <div className="related-items-wrapper">
+        <div
+          className="related-items-wrapper"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Related Items"
+        >
           <div className="related-items-heading">
             <h2>Related Items</h2>
           </div>

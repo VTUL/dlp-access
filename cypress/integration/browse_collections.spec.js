@@ -26,7 +26,7 @@ describe('Browse collections page', () => {
     cy.get('#content-wrapper')
       .find('.row')
       .children('.gallery-item')
-      .should('have.length', 3);
+      .should('have.length', 4);
   })
   
   it('renders the all the collections if increasing the number of results to be showed', () => {
@@ -38,6 +38,6 @@ describe('Browse collections page', () => {
     cy.get('#content-wrapper', { timeout: 2000 })
       .find('.row')
       .children('.gallery-item')
-      .should('have.length', 3);
+      .should('have.length', 4);
   })
 })

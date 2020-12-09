@@ -10,7 +10,7 @@ describe('Viewing options interaction', () => {
     cy.get('#content-wrapper', { timeout: 2000 })
       .find('div.row')
       .children('.collection-entry')
-      .should('have.length', 3);
+      .should('have.length', 4);
   });
 
   it('should display gallery viewing style if "gallery" viewing option is selected', () => {
@@ -20,6 +20,6 @@ describe('Viewing options interaction', () => {
     cy.get('#content-wrapper', { timeout: 2000 })
       .find('div.row')
       .children('.gallery-item')
-      .should('have.length', 3);
+      .should('have.length', 4);
   });
 })

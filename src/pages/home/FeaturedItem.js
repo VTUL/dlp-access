@@ -27,11 +27,7 @@ class FeaturedItem extends Component {
         >
           <a href={this.props.tile.link}>
             <div className="card">
-              <img
-                className="card-img-top"
-                src={this.state.copy}
-                alt={this.props.tile.altText}
-              />
+              <img className="card-img-top" src={this.state.copy} alt="" />
               <div className="card-body">
                 <h3 className="card-title crop-text-4">
                   {this.props.tile.cardTitle}

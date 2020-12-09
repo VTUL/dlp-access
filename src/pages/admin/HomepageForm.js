@@ -6,6 +6,7 @@ import { API, Auth } from "aws-amplify";
 import { getSite } from "../../lib/fetchTools";
 import * as mutations from "../../graphql/mutations";
 import FileUploadField from "./FileUploadField";
+import { FeaturedItemsForm, FeaturedItems } from "./FeaturedItemsFields";
 import { SponsorForm, Sponsors } from "./SponsorFields";
 
 const initialFormState = {
@@ -14,7 +15,8 @@ const initialFormState = {
   staticImageShowTitle: false,
   homeStatementHeading: "",
   homeStatement: "",
-  sponsors: []
+  sponsors: [],
+  featuredItems: []
 };
 
 class HomepageForm extends Component {
@@ -66,6 +68,47 @@ class HomepageForm extends Component {
     });
   };
 
+  updateItemValue = event => {
+    const { name, value, dataset } = event.target;
+    const index = dataset.index;
+    this.setState(prevState => {
+      let itemArray = [...prevState.formState.featuredItems];
+      let item = { ...itemArray[index], [name]: value };
+      itemArray[index] = item;
+      return {
+        formState: { ...prevState.formState, featuredItems: itemArray }
+      };
+    });
+  };
+
+  addItem = () => {
+    this.setState(prevState => {
+      let itemArray = [...prevState.formState.featuredItems];
+      let index = itemArray.length + 1;
+      let newItem = {
+        altText: "",
+        src: `https://img.cloud.lib.vt.edu/sites/images/${process.env.REACT_APP_REP_TYPE.toLowerCase()}/featured_item${index}.png`,
+        cardTitle: "",
+        link: ""
+      };
+      itemArray.push(newItem);
+      return {
+        formState: { ...prevState.formState, featuredItems: itemArray }
+      };
+    });
+  };
+
+  removeItem = event => {
+    const index = event.target.dataset.index;
+    this.setState(prevState => {
+      let itemArray = [...prevState.formState.featuredItems];
+      itemArray.splice(index, 1);
+      return {
+        formState: { ...prevState.formState, featuredItems: itemArray }
+      };
+    });
+  };
+
   async loadSite() {
     const site = await getSite();
     if (site && site.homePage) {
@@ -78,7 +121,8 @@ class HomepageForm extends Component {
           staticImageShowTitle: homepage.staticImage.showTitle || false,
           homeStatementHeading: homepage.homeStatement.heading || "",
           homeStatement: homepage.homeStatement.statement,
-          sponsors: homepage.sponsors || []
+          sponsors: homepage.sponsors || [],
+          featuredItems: homepage.featuredItems || []
         };
       } catch (error) {
         console.error(error);
@@ -121,6 +165,7 @@ class HomepageForm extends Component {
     homePage.staticImage.altText = this.state.formState.staticImageAltText;
     homePage.staticImage.showTitle = this.state.formState.staticImageShowTitle;
     homePage.sponsors = this.state.formState.sponsors;
+    homePage.featuredItems = this.state.formState.featuredItems;
     let siteInfo = { id: siteID, homePage: JSON.stringify(homePage) };
     await API.graphql({
       query: mutations.updateSite,
@@ -217,6 +262,14 @@ class HomepageForm extends Component {
             </label>
           </section>
         </Form>
+        <FeaturedItemsForm
+          itemList={this.state.formState.featuredItems}
+          updateItemValue={this.updateItemValue}
+          addItem={this.addItem}
+          removeItem={this.removeItem}
+          site={this.state.site}
+          context={this}
+        />
         <SponsorForm
           sponsorsList={this.state.formState.sponsors}
           updateSponsorValue={this.updateSponsorValue}
@@ -269,6 +322,8 @@ class HomepageForm extends Component {
               <span className="key">Show title:</span>{" "}
               {this.showTitleFormatted()}
             </p>
+            <h3>Featured Items</h3>
+            <FeaturedItems itemList={this.state.formState.featuredItems} />
             <h3>Sponsors</h3>
             <Sponsors sponsorsList={this.state.formState.sponsors} />
           </div>
