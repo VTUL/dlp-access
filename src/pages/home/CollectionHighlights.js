@@ -70,7 +70,7 @@ class CollectionHighlights extends Component {
           <div className="collection-highlights-heading">
             <h2>Collection Highlights</h2>
           </div>
-          <div className="row">{tiles}</div>
+          <div className="row justify-content-center">{tiles}</div>
         </div>
       );
     } else {

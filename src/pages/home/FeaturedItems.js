@@ -110,7 +110,11 @@ class FeaturedItems extends Component {
           <div className="featured-items-heading">
             <h2>Our Featured Items</h2>
           </div>
-          <div className="row" id="slide-row" aria-live="off">
+          <div
+            className="row justify-content-center"
+            id="slide-row"
+            aria-live="off"
+          >
             {tiles}
           </div>
           <div

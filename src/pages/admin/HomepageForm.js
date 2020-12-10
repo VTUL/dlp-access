@@ -8,6 +8,10 @@ import * as mutations from "../../graphql/mutations";
 import FileUploadField from "./FileUploadField";
 import { FeaturedItemsForm, FeaturedItems } from "./FeaturedItemsFields";
 import { SponsorForm, Sponsors } from "./SponsorFields";
+import {
+  CollectionHighlightsForm,
+  CollectionHighlights
+} from "./CollectionHighlightsFields";
 
 const initialFormState = {
   staticImageSrc: "",
@@ -16,7 +20,8 @@ const initialFormState = {
   homeStatementHeading: "",
   homeStatement: "",
   sponsors: [],
-  featuredItems: []
+  featuredItems: [],
+  collectionHighlights: []
 };
 
 class HomepageForm extends Component {
@@ -109,6 +114,47 @@ class HomepageForm extends Component {
     });
   };
 
+  updateHighlightValue = event => {
+    const { name, value, dataset } = event.target;
+    const index = dataset.index;
+    this.setState(prevState => {
+      let itemArray = [...prevState.formState.collectionHighlights];
+      let item = { ...itemArray[index], [name]: value };
+      itemArray[index] = item;
+      return {
+        formState: { ...prevState.formState, collectionHighlights: itemArray }
+      };
+    });
+  };
+
+  addHighlight = () => {
+    this.setState(prevState => {
+      let itemArray = [...prevState.formState.collectionHighlights];
+      let index = itemArray.length + 1;
+      let newItem = {
+        title: "",
+        img: `https://img.cloud.lib.vt.edu/sites/images/${process.env.REACT_APP_REP_TYPE.toLowerCase()}/highlight${index}.jpg`,
+        link: "",
+        itemCount: ""
+      };
+      itemArray.push(newItem);
+      return {
+        formState: { ...prevState.formState, collectionHighlights: itemArray }
+      };
+    });
+  };
+
+  removeHighlight = event => {
+    const index = event.target.dataset.index;
+    this.setState(prevState => {
+      let itemArray = [...prevState.formState.collectionHighlights];
+      itemArray.splice(index, 1);
+      return {
+        formState: { ...prevState.formState, collectionHighlights: itemArray }
+      };
+    });
+  };
+
   async loadSite() {
     const site = await getSite();
     if (site && site.homePage) {
@@ -122,7 +168,8 @@ class HomepageForm extends Component {
           homeStatementHeading: homepage.homeStatement.heading || "",
           homeStatement: homepage.homeStatement.statement,
           sponsors: homepage.sponsors || [],
-          featuredItems: homepage.featuredItems || []
+          featuredItems: homepage.featuredItems || [],
+          collectionHighlights: homepage.collectionHighlights || []
         };
       } catch (error) {
         console.error(error);
@@ -166,6 +213,7 @@ class HomepageForm extends Component {
     homePage.staticImage.showTitle = this.state.formState.staticImageShowTitle;
     homePage.sponsors = this.state.formState.sponsors;
     homePage.featuredItems = this.state.formState.featuredItems;
+    homePage.collectionHighlights = this.state.formState.collectionHighlights;
     let siteInfo = { id: siteID, homePage: JSON.stringify(homePage) };
     await API.graphql({
       query: mutations.updateSite,
@@ -278,6 +326,14 @@ class HomepageForm extends Component {
           site={this.state.site}
           context={this}
         />
+        <CollectionHighlightsForm
+          highlightsList={this.state.formState.collectionHighlights}
+          updateHighlightValue={this.updateHighlightValue}
+          addHighlight={this.addHighlight}
+          removeHighlight={this.removeHighlight}
+          site={this.state.site}
+          context={this}
+        />
         <button className="submit" onClick={this.handleSubmit}>
           Update Config
         </button>
@@ -326,6 +382,10 @@ class HomepageForm extends Component {
             <FeaturedItems itemList={this.state.formState.featuredItems} />
             <h3>Sponsors</h3>
             <Sponsors sponsorsList={this.state.formState.sponsors} />
+            <h3>Collection Highlights</h3>
+            <CollectionHighlights
+              highlightsList={this.state.formState.collectionHighlights}
+            />
           </div>
         </div>
       );
