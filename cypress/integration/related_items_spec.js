@@ -6,35 +6,23 @@ describe("Related items on archives page", () => {
     })
 
     it("Carousel populates when more than ten items in the item's subcollection", () => {
-        cy.visit("http://localhost:3000/archive/4121w776");
-        cy.get(".slick-slide", { timeout: 2000 }).should(
-          "have.class",
-          "slick-active"
-        );
+        cy.visit("http://localhost:3000/archive/4121w776", { timeout: 2000 });
+        cy.get(".slick-slide").should("have.class", "slick-active");
     })
 
     it("Carousel populates when less than 10 items in the item's subcollection, and more than 10 items in the parent's subcollections", () => {
-        cy.visit("http://localhost:3000/archive/p0636w4x");
-        cy.get(".slick-slide", { timeout: 2000 }).should(
-          "have.class",
-          "slick-active"
-        );
+        cy.visit("http://localhost:3000/archive/p0636w4x", { timeout: 2000 });
+        cy.get(".slick-slide").should("have.class", "slick-active");
     });
 
     it("Carousel populates when less than 10 items in the item's subcollection, and less than 10 items in the parent's subcollections", () => {
-        cy.visit("http://localhost:3000/archive/ft77nv3b");
-        cy.get(".slick-slide", { timeout: 2000 }).should(
-          "have.class",
-          "slick-active"
-        );
+        cy.visit("http://localhost:3000/archive/ft77nv3b", { timeout: 2000 });
+        cy.get(".slick-slide").should("have.class", "slick-active");
     })
 
     it("Carousel populates when less than 10 items in the entire collection", () => {
-        cy.visit("http://localhost:3000/archive/0863k84a");
-        cy.get(".slick-slide", { timeout: 2000 }).should(
-          "have.class",
-          "slick-active"
-        );
+        cy.visit("http://localhost:3000/archive/0863k84a", { timeout: 2000 });
+        cy.get(".slick-slide").should("have.class", "slick-active");
     });
 
 })
