@@ -4,6 +4,7 @@ import { Connect } from "aws-amplify-react";
 import PDFViewer from "../../components/PDFViewer";
 import KalturaPlayer from "../../components/KalturaPlayer";
 import MiradorViewer from "../../components/MiradorViewer";
+import { OBJModel } from "react-3d-viewer";
 import MediaElement from "../../components/MediaElement";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
@@ -75,6 +76,10 @@ class ArchivePage extends Component {
     return url.match(/\.(json)$/) != null;
   }
 
+  is3DURL(url) {
+    return url.match(/\.(obj|OBJ)$/) != null;
+  }
+
   buildTrack(url, thumbnail_path) {
     const nameExt = this.fileNameFromUrl(url);
     const name = nameExt.split(".")[0];
@@ -89,7 +94,6 @@ class ArchivePage extends Component {
   }
 
   mediaDisplay(item) {
-    console.log(item);
     let display = null;
     let config = {};
     let tracks = [];
@@ -118,6 +122,12 @@ class ArchivePage extends Component {
     } else if (this.isPdfURL(item.manifest_url)) {
       display = (
         <PDFViewer manifest_url={item.manifest_url} title={item.title} />
+      );
+    } else if (this.is3DURL(item.manifest_url)) {
+      display = (
+        <div className="obj-wrapper">
+          <OBJModel src={item.manifest_url} texPath="" />
+        </div>
       );
     } else {
       display = <></>;

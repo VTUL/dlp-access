@@ -27,6 +27,7 @@
     "pdfjs-dist": "^2.4.456",
     "query-string": "^6.9.0",
     "react": "^16.13.1",
+    "react-3d-viewer": "^1.0.12",
     "react-dom": "^16.13.1",
     "react-focus-lock": "^2.4.1",
     "react-fontawesome": "^1.7.1",

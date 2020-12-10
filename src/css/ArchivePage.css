@@ -86,6 +86,12 @@ img.audio-img {
   max-width: 50%;
   margin: 0 auto;
 }
+div.obj-wrapper {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  max-width: 50%;
+}
 
 @media (min-width: 576px) {
   .item-image-section {

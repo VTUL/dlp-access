@@ -71,3 +71,12 @@ describe('Archive Mirador viewer', () => {
       .should('be.visible');
   });
 });
+
+describe('Archive 3d viewer', () => {
+  it('renders 3d viewer for 3d records', () => {
+    cy.visit('http://localhost:3000/archive/cz94zm9p');
+    cy.get('div.obj-wrapper canvas')
+      .eq(0)
+      .should('be.visible');
+  });
+});
