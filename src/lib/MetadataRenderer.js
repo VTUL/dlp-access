@@ -132,11 +132,15 @@ function textFormat(item, attr, languages, collectionCustomKey) {
       </div>
     );
   } else if (attr === "identifier") {
-    return (
-      <a href={`/${category}/${arkLinkFormatted(item.custom_key)}`}>
-        {item[attr]}
-      </a>
-    );
+    if (category === "archive") {
+      return (
+        <a href={`/${category}/${arkLinkFormatted(item.custom_key)}`}>
+          {item[attr]}
+        </a>
+      );
+    } else {
+      return "";
+    }
   } else if (attr === "rights_statement") {
     return htmlParsedValue(item[attr]);
   } else if (attr === "custom_key") {

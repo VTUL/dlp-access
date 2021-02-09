@@ -19,7 +19,7 @@ describe('Browse collections page', () => {
     cy.get('@firstCollection').click();
     cy.url({ timeout: 2000 })
       .should('include', '/collection/vb765t25demo');
-    cy.contains('Ms1988_017_Pfeiffer');
+    cy.contains('Pfeiffer, Alberta Raffl, 1899-1994');
   })
 
   it('renders the first 10 collections by default number of results to be showed', () => {

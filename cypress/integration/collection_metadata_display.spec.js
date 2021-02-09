@@ -16,11 +16,8 @@ describe('A single Collection Show page metadata section', () => {
       .contains('Collections:');
   })
 
-  it('displays the identifier field and its corresponding value', () => {
-    cy.get('@metadataSection')
-      .find(':nth-child(6) > th.collection-detail-key')
-      .invoke('text')
-      .should('equal', 'Identifier');
+  it('displays not display the identifier field in the collection page', () => {
+    cy.contains('Identifier').should('not.exist');;
     cy.get('@metadataSection')
       .find(':nth-child(6) > td.collection-detail-value').click();
     cy.url({ timeout: 2000 }).should('include', '/collection/vb765t25demo');
