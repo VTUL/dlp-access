@@ -5,6 +5,7 @@ import KalturaPlayer from "../../components/KalturaPlayer";
 import MiradorViewer from "../../components/MiradorViewer";
 import { OBJModel } from "react-3d-viewer";
 import MediaElement from "../../components/MediaElement";
+import PodcastMediaElement from "../../components/PodcastMediaElement";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import SiteTitle from "../../components/SiteTitle";
@@ -210,7 +211,8 @@ class ArchivePage extends Component {
     const filename = this.fileNameFromUrl(src);
     const typeString = `${type}/${this.fileExtensionFromFileName(filename)}`;
     const srcArray = [{ src: src, type: typeString }];
-    return (
+    let library = process.env.REACT_APP_REP_TYPE;
+    return library !== "podcasts" ? (
       <MediaElement
         id="player1"
         mediaType={type}
@@ -223,6 +225,21 @@ class ArchivePage extends Component {
         options={JSON.stringify(config)}
         tracks={JSON.stringify(tracks)}
         title={title}
+      />
+    ) : (
+      <PodcastMediaElement
+        id="player1"
+        mediaType={type}
+        preload="none"
+        controls
+        width="100%"
+        height="640"
+        poster={tracks[0].poster}
+        sources={JSON.stringify(srcArray)}
+        options={JSON.stringify(config)}
+        tracks={JSON.stringify(tracks)}
+        title={title}
+        transcript={this.state.item.transcript}
       />
     );
   }
