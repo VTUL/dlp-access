@@ -14,6 +14,8 @@ import {
   fetchLanguages,
   getTopLevelParentForCollection
 } from "../../lib/fetchTools";
+import Citation from "../../components/Citation";
+import SocialButtons from "../../components/SocialButtons";
 
 import "../../css/CollectionsShowPage.scss";
 
@@ -215,6 +217,12 @@ class CollectionsShowPage extends Component {
     return title;
   }
 
+  getTitle() {
+    let title = this.metadataTitle();
+    title = title.replace("Collection Details for ", "");
+    return title;
+  }
+
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {
       this.getCollection(this.props.customKey);
@@ -243,7 +251,6 @@ class CollectionsShowPage extends Component {
               />
             </nav>
           </div>
-
           <CollectionTopContent
             collectionImg={this.state.thumbnail_path}
             collectionTitle={this.state.title}
@@ -252,7 +259,6 @@ class CollectionsShowPage extends Component {
             TRUNCATION_LENGTH={TRUNCATION_LENGTH}
             creator={this.state.creator}
           />
-
           <div className="container">
             <div className="mid-content-row row">
               <div
@@ -269,6 +275,22 @@ class CollectionsShowPage extends Component {
 
                 <div className="details-section-content-grid">
                   {this.subCollectionDescription()}
+                  <div style={{ marginTop: "30px" }}>
+                    <SocialButtons
+                      buttons={[
+                        "Email",
+                        "Facebook",
+                        "Twitter",
+                        "Pinterest",
+                        "Tumblr",
+                        "Reddit"
+                      ]}
+                      url={window.location.href}
+                      image={this.state.thumbnail_path}
+                      title={this.getTitle()}
+                    />
+                  </div>
+                  <Citation item={this.state.collection} type="collection" />
                   <table aria-label="Collection Metadata">
                     <tbody>
                       <RenderItemsDetailed
