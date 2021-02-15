@@ -1,11 +1,9 @@
 .media-element-container {
   display: flex;
-  justify-content: center;
-  align-items: baseline;
   flex-wrap: wrap;
 }
 
-.audio-img-wrapper {
+.media-element-container div.audio-img-wrapper {
   max-width: 100%;
   margin-bottom: 30px;
 }
@@ -15,12 +13,13 @@
     flex-wrap: nowrap;
   }
 
-  .audio-img-wrapper {
+  .media-element-container div.audio-img-wrapper {
     max-width: 33%;
+    margin-bottom: 0;
   }
 }
 
-img.audio-img {
+.media-element-container img.audio-img {
   max-width: 100%;
   margin: 0 auto;
 }
@@ -103,15 +102,4 @@ div.feed-button-wrapper {
   margin: 0 10px 10px 0;
   color: black;
   font-weight: 500;
-}
-
-div.obj-wrapper {
-  position: relative;
-  display: block;
-  margin: 0 auto;
-
-  section {
-    padding: 0;
-    border: none;
-  }
 }

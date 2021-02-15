@@ -211,8 +211,7 @@ class ArchivePage extends Component {
     const filename = this.fileNameFromUrl(src);
     const typeString = `${type}/${this.fileExtensionFromFileName(filename)}`;
     const srcArray = [{ src: src, type: typeString }];
-    let library = process.env.REACT_APP_REP_TYPE;
-    return library !== "podcasts" ? (
+    return this.state.item.type !== "podcast" ? (
       <MediaElement
         id="player1"
         mediaType={type}
