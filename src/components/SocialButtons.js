@@ -57,8 +57,12 @@ class SocialButtons extends Component {
           );
         case "Facebook":
           return (
-            <FacebookShareButton key={index} url={this.props.url}>
-              <FacebookIcon size={44} round quote={this.props.title} />
+            <FacebookShareButton
+              key={index}
+              url={this.props.url}
+              quote={this.props.title}
+            >
+              <FacebookIcon size={44} round />
             </FacebookShareButton>
           );
         case "Hatena":
