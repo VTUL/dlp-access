@@ -2,40 +2,22 @@ import React, { Component } from "react";
 import {
   EmailShareButton,
   FacebookShareButton,
-  HatenaShareButton,
-  InstapaperShareButton,
-  LineShareButton,
   LinkedinShareButton,
-  LivejournalShareButton,
-  MailruShareButton,
-  OKShareButton,
   PinterestShareButton,
-  PocketShareButton,
   RedditShareButton,
-  TelegramShareButton,
   TumblrShareButton,
   TwitterShareButton,
   ViberShareButton,
-  VKShareButton,
   WhatsappShareButton,
   WorkplaceShareButton,
   EmailIcon,
   FacebookIcon,
-  HatenaIcon,
-  InstapaperIcon,
-  LineIcon,
   LinkedinIcon,
-  LivejournalIcon,
-  MailruIcon,
-  OKIcon,
   PinterestIcon,
-  PocketIcon,
   RedditIcon,
-  TelegramIcon,
   TumblrIcon,
   TwitterIcon,
   ViberIcon,
-  VKIcon,
   WhatsappIcon,
   WorkplaceIcon
 } from "react-share";
@@ -65,36 +47,6 @@ class SocialButtons extends Component {
               <FacebookIcon size={44} round />
             </FacebookShareButton>
           );
-        case "Hatena":
-          return (
-            <HatenaShareButton
-              key={index}
-              url={this.props.url}
-              title={this.props.title}
-            >
-              <HatenaIcon size={44} round />
-            </HatenaShareButton>
-          );
-        case "Instagram":
-          return (
-            <InstapaperShareButton
-              key={index}
-              url={this.props.url}
-              title={this.props.title}
-            >
-              <InstapaperIcon size={44} round />
-            </InstapaperShareButton>
-          );
-        case "Line":
-          return (
-            <LineShareButton
-              key={index}
-              url={this.props.url}
-              title={this.props.title}
-            >
-              <LineIcon size={44} round />
-            </LineShareButton>
-          );
         case "LinkedIn":
           return (
             <LinkedinShareButton
@@ -104,38 +56,6 @@ class SocialButtons extends Component {
             >
               <LinkedinIcon size={44} round />
             </LinkedinShareButton>
-          );
-        case "LiveJournal":
-          return (
-            <LivejournalShareButton
-              key={index}
-              url={this.props.url}
-              title={this.props.title}
-            >
-              <LivejournalIcon size={44} round />
-            </LivejournalShareButton>
-          );
-        case "Mailru":
-          return (
-            <MailruShareButton
-              key={index}
-              url={this.props.url}
-              title={this.props.title}
-              imageUrl={this.props.image}
-            >
-              <MailruIcon size={44} round />
-            </MailruShareButton>
-          );
-        case "OK":
-          return (
-            <OKShareButton
-              key={index}
-              url={this.props.url}
-              title={this.props.title}
-              image={this.props.image}
-            >
-              <OKIcon size={44} round />
-            </OKShareButton>
           );
         case "Pinterest":
           return (
@@ -147,16 +67,6 @@ class SocialButtons extends Component {
               <PinterestIcon size={44} round />
             </PinterestShareButton>
           );
-        case "Pocket":
-          return (
-            <PocketShareButton
-              key={index}
-              url={this.props.url}
-              title={this.props.title}
-            >
-              <PocketIcon size={44} round />
-            </PocketShareButton>
-          );
         case "Reddit":
           return (
             <RedditShareButton
@@ -166,16 +76,6 @@ class SocialButtons extends Component {
             >
               <RedditIcon size={44} round />
             </RedditShareButton>
-          );
-        case "Telegram":
-          return (
-            <TelegramShareButton
-              key={index}
-              url={this.props.url}
-              title={this.props.title}
-            >
-              <TelegramIcon size={44} round />
-            </TelegramShareButton>
           );
         case "Tumblr":
           return (
@@ -206,17 +106,6 @@ class SocialButtons extends Component {
             >
               <ViberIcon size={44} round />
             </ViberShareButton>
-          );
-        case "VK":
-          return (
-            <VKShareButton
-              key={index}
-              url={this.props.URL}
-              title={this.props.title}
-              image={this.props.image}
-            >
-              <VKIcon size={44} round />
-            </VKShareButton>
           );
         case "Whatsapp":
           return (
