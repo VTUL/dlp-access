@@ -211,7 +211,11 @@ class ArchivePage extends Component {
     const filename = this.fileNameFromUrl(src);
     const typeString = `${type}/${this.fileExtensionFromFileName(filename)}`;
     const srcArray = [{ src: src, type: typeString }];
-    return this.state.item.type !== "podcast" ? (
+    let podcast = false;
+    podcast = this.state.item.resource_type
+      ? this.state.item.resource_type.find(item => item === "podcast")
+      : false;
+    return podcast !== "podcast" ? (
       <MediaElement
         id="player1"
         mediaType={type}
@@ -238,7 +242,7 @@ class ArchivePage extends Component {
         options={JSON.stringify(config)}
         tracks={JSON.stringify(tracks)}
         title={title}
-        transcript={this.state.item.transcript}
+        transcript={false}
       />
     );
   }

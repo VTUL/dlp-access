@@ -60,16 +60,16 @@
     margin-top: 0px;
     width: 110px;
     text-align: left;
+    line-height: 1px;
   }
 }
 
 .download-link {
   color: white !important;
-  font-size: 1.75em;
+  font-size: 1.4em;
   background-color: var(--themeHighlightColor);
-  padding: 0px 7px 4px 7px;
+  padding: 5px 10px 5px 10px;
   border-radius: 25px;
-  vertical-align: middle;
 }
 
 .transcript-button {

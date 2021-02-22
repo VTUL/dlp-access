@@ -112,7 +112,6 @@ export default class PodcastMediaElement extends Component {
             className="media-player"
             dangerouslySetInnerHTML={{ __html: mediaHtml }}
           ></div>
-          {console.log(props.sources)}
           <div className="media-buttons">
             {this.transcriptButton()}
             <a
