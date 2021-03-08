@@ -10,6 +10,7 @@ import SearchPageForm from "./SearchPageForm";
 import BrowseCollectionsForm from "./BrowseCollectionsForm";
 import DisplayedAttributesForm from "./DisplayedAttributesForm";
 import MediaSectionForm from "./MediaSectionForm";
+import MiradorForm from "./MiradorForm";
 
 import "../../css/SiteAdmin.scss";
 
@@ -64,7 +65,8 @@ class SiteAdmin extends Component {
       searchPage: <SearchPageForm />,
       browseCollections: <BrowseCollectionsForm />,
       displayedAttributes: <DisplayedAttributesForm />,
-      mediaSection: <MediaSectionForm />
+      mediaSection: <MediaSectionForm />,
+      mirador: <MiradorForm />
     };
     return forms[this.state.form];
   }
@@ -145,6 +147,11 @@ class SiteAdmin extends Component {
                 to={"/siteAdmin"}
               >
                 Homepage media section
+              </Link>
+            </li>
+            <li>
+              <Link onClick={() => this.setForm("mirador")} to={"/siteAdmin"}>
+                Mirador Viewer
               </Link>
             </li>
           </ul>
