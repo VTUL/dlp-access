@@ -33,6 +33,7 @@ export const createCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
+      explicit
       collectionmap {
         collection_id
         create_date
@@ -69,6 +70,7 @@ export const createCollection = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -89,7 +91,6 @@ export const createCollection = /* GraphQL */ `
           description
           display_date
           end_date
-          explicit
           extent
           format
           heirarchy_path
@@ -98,6 +99,7 @@ export const createCollection = /* GraphQL */ `
           item_category
           language
           location
+          manifest_file_characterization
           manifest_url
           medium
           modified_date
@@ -156,6 +158,7 @@ export const updateCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
+      explicit
       collectionmap {
         collection_id
         create_date
@@ -192,6 +195,7 @@ export const updateCollection = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -212,7 +216,6 @@ export const updateCollection = /* GraphQL */ `
           description
           display_date
           end_date
-          explicit
           extent
           format
           heirarchy_path
@@ -221,6 +224,7 @@ export const updateCollection = /* GraphQL */ `
           item_category
           language
           location
+          manifest_file_characterization
           manifest_url
           medium
           modified_date
@@ -279,6 +283,7 @@ export const deleteCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
+      explicit
       collectionmap {
         collection_id
         create_date
@@ -315,6 +320,7 @@ export const deleteCollection = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -335,7 +341,6 @@ export const deleteCollection = /* GraphQL */ `
           description
           display_date
           end_date
-          explicit
           extent
           format
           heirarchy_path
@@ -344,6 +349,7 @@ export const deleteCollection = /* GraphQL */ `
           item_category
           language
           location
+          manifest_file_characterization
           manifest_url
           medium
           modified_date
@@ -408,6 +414,7 @@ export const createCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -466,6 +473,7 @@ export const updateCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -524,6 +532,7 @@ export const deleteCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -557,7 +566,6 @@ export const createArchive = /* GraphQL */ `
       description
       display_date
       end_date
-      explicit
       extent
       format
       heirarchy_path
@@ -566,6 +574,7 @@ export const createArchive = /* GraphQL */ `
       item_category
       language
       location
+      manifest_file_characterization
       manifest_url
       medium
       modified_date
@@ -614,6 +623,7 @@ export const createArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -647,7 +657,6 @@ export const updateArchive = /* GraphQL */ `
       description
       display_date
       end_date
-      explicit
       extent
       format
       heirarchy_path
@@ -656,6 +665,7 @@ export const updateArchive = /* GraphQL */ `
       item_category
       language
       location
+      manifest_file_characterization
       manifest_url
       medium
       modified_date
@@ -704,6 +714,7 @@ export const updateArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -737,7 +748,6 @@ export const deleteArchive = /* GraphQL */ `
       description
       display_date
       end_date
-      explicit
       extent
       format
       heirarchy_path
@@ -746,6 +756,7 @@ export const deleteArchive = /* GraphQL */ `
       item_category
       language
       location
+      manifest_file_characterization
       manifest_url
       medium
       modified_date
@@ -794,6 +805,7 @@ export const deleteArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date

@@ -48,5 +48,30 @@
         }
       }
     }
+  },
+  "podcast": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-iawav2-podcast-114857-authRole",
+      "UnauthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-podcast-114857-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-podcast-114857-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-iawav2-podcast-114857-deployment",
+      "UnauthRoleName": "amplify-iawav2-podcast-114857-unauthRole",
+      "StackName": "amplify-iawav2-podcast-114857",
+      "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/amplify-iawav2-podcast-114857/9c556c80-9238-11eb-810c-1225390e8313",
+      "AmplifyAppId": "d110hebvzelp4y"
+    },
+    "categories": {
+      "auth": {
+        "iawav2658176f3": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "iawav2658176f3PostConfirmation": {
+          "deploymentBucketName": "amplify-iawav2-podcast-114857-deployment",
+          "s3Key": "amplify-builds/iawav2658176f3PostConfirmation-652b31586e3964303064-build.zip"
+        }
+      }
+    }
   }
 }

@@ -47,6 +47,7 @@ export const searchObjects = /* GraphQL */ `
           collection_category
           collectionmap_id
           ownerinfo
+          explicit
           collectionmap {
             collection_id
             create_date
@@ -64,10 +65,10 @@ export const searchObjects = /* GraphQL */ `
         }
         ... on Archive {
           contributor
-          explicit
           extent
           format
           item_category
+          manifest_file_characterization
           manifest_url
           medium
           reference
@@ -104,6 +105,7 @@ export const searchObjects = /* GraphQL */ `
             thumbnail_path
             title
             visibility
+            explicit
             createdAt
             updatedAt
           }
@@ -161,6 +163,7 @@ export const fulltextCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -207,7 +210,6 @@ export const fulltextArchives = /* GraphQL */ `
         description
         display_date
         end_date
-        explicit
         extent
         format
         heirarchy_path
@@ -216,6 +218,7 @@ export const fulltextArchives = /* GraphQL */ `
         item_category
         language
         location
+        manifest_file_characterization
         manifest_url
         medium
         modified_date
@@ -264,6 +267,7 @@ export const fulltextArchives = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -307,6 +311,7 @@ export const getCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
+      explicit
       collectionmap {
         collection_id
         create_date
@@ -343,6 +348,7 @@ export const getCollection = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -363,7 +369,6 @@ export const getCollection = /* GraphQL */ `
           description
           display_date
           end_date
-          explicit
           extent
           format
           heirarchy_path
@@ -372,6 +377,7 @@ export const getCollection = /* GraphQL */ `
           item_category
           language
           location
+          manifest_file_characterization
           manifest_url
           medium
           modified_date
@@ -435,6 +441,7 @@ export const listCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -492,6 +499,7 @@ export const getCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -555,6 +563,7 @@ export const listCollectionmaps = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -610,6 +619,7 @@ export const collectionByIdentifier = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -674,6 +684,7 @@ export const searchCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -745,6 +756,7 @@ export const searchCollectionmaps = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -769,7 +781,6 @@ export const getArchive = /* GraphQL */ `
       description
       display_date
       end_date
-      explicit
       extent
       format
       heirarchy_path
@@ -778,6 +789,7 @@ export const getArchive = /* GraphQL */ `
       item_category
       language
       location
+      manifest_file_characterization
       manifest_url
       medium
       modified_date
@@ -826,6 +838,7 @@ export const getArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
+        explicit
         collectionmap {
           collection_id
           create_date
@@ -864,7 +877,6 @@ export const listArchives = /* GraphQL */ `
         description
         display_date
         end_date
-        explicit
         extent
         format
         heirarchy_path
@@ -873,6 +885,7 @@ export const listArchives = /* GraphQL */ `
         item_category
         language
         location
+        manifest_file_characterization
         manifest_url
         medium
         modified_date
@@ -921,6 +934,7 @@ export const listArchives = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -957,7 +971,6 @@ export const archiveByIdentifier = /* GraphQL */ `
         description
         display_date
         end_date
-        explicit
         extent
         format
         heirarchy_path
@@ -966,6 +979,7 @@ export const archiveByIdentifier = /* GraphQL */ `
         item_category
         language
         location
+        manifest_file_characterization
         manifest_url
         medium
         modified_date
@@ -1014,6 +1028,7 @@ export const archiveByIdentifier = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }
@@ -1050,7 +1065,6 @@ export const searchArchives = /* GraphQL */ `
         description
         display_date
         end_date
-        explicit
         extent
         format
         heirarchy_path
@@ -1059,6 +1073,7 @@ export const searchArchives = /* GraphQL */ `
         item_category
         language
         location
+        manifest_file_characterization
         manifest_url
         medium
         modified_date
@@ -1107,6 +1122,7 @@ export const searchArchives = /* GraphQL */ `
           thumbnail_path
           title
           visibility
+          explicit
           createdAt
           updatedAt
         }

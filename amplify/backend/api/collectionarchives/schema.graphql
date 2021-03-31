@@ -64,6 +64,7 @@ type Collection implements Object
   thumbnail_path: String
   title: String!
   visibility: Boolean!
+  explicit: Boolean
   collectionmap: Collectionmap @connection(name: "CollectionCollectionMap")
   archives: [Archive] @connection(name: "CollectionArchives")
 }
@@ -103,7 +104,6 @@ type Archive implements Object
   description: String
   display_date: String
   end_date: String
-  explicit: Boolean
   extent: String
   format: [String!]
   heirarchy_path: [String!]
@@ -112,6 +112,7 @@ type Archive implements Object
   item_category: String!
   language: [String!]
   location: [String!]
+  manifest_file_characterization: AWSJSON
   manifest_url: String!
   medium: [String!]
   modified_date: String
