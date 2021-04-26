@@ -112,7 +112,7 @@ We put custom static images (e.g., site cover image) and HTML files (e.g, about 
 See instruction and various site content examples below:
 * [Instruction](https://github.com/VTUL/dlp-access/wiki/Customization)
 * [html](examples/html/) exampes
-* [images](examples/images/) exampes
+* [images](examples/images/) exampes 
 
 ## Running the tests
 * An end-to-end testing framework using [Cypress.io](https://www.cypress.io/) has been setup for this project.
