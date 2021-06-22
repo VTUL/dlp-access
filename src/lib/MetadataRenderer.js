@@ -140,7 +140,7 @@ function textFormat(item, attr, languages, collectionCustomKey, site) {
   } else if (attr === "rights_statement") {
     return htmlParsedValue(item[attr]);
   } else if (attr === "custom_key") {
-    let redirect = "http://idn.lib.vt.edu";
+    let redirect = "";
     try {
       const options = JSON.parse(site.siteOptions);
       if (options.redirectURL) {

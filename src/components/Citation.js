@@ -7,7 +7,7 @@ import "../css/Citation.scss";
 
 class Citation extends Component {
   redirect_url() {
-    let redirect = "http://idn.lib.vt.edu";
+    let redirect = "";
     try {
       const options = JSON.parse(this.props.site.siteOptions);
       if (options.redirectURL) {
