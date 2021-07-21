@@ -1152,7 +1152,6 @@ export const getSite = /* GraphQL */ `
       groups
       homePage
       id
-      lang
       miradorOptions
       searchPage
       siteColor
@@ -1182,7 +1181,6 @@ export const listSites = /* GraphQL */ `
         groups
         homePage
         id
-        lang
         miradorOptions
         searchPage
         siteColor
@@ -1222,7 +1220,6 @@ export const siteBySiteId = /* GraphQL */ `
         groups
         homePage
         id
-        lang
         miradorOptions
         searchPage
         siteColor

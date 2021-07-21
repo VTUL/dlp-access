@@ -843,7 +843,6 @@ export const createSite = /* GraphQL */ `
       groups
       homePage
       id
-      lang
       miradorOptions
       searchPage
       siteColor
@@ -868,7 +867,6 @@ export const updateSite = /* GraphQL */ `
       groups
       homePage
       id
-      lang
       miradorOptions
       searchPage
       siteColor
@@ -893,7 +891,6 @@ export const deleteSite = /* GraphQL */ `
       groups
       homePage
       id
-      lang
       miradorOptions
       searchPage
       siteColor

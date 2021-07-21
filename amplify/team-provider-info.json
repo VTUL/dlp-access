@@ -48,5 +48,31 @@
         }
       }
     }
+  },
+  "nositelang": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-iawav2-nositelang-144416-authRole",
+      "UnauthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-nositelang-144416-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::909117335741:role/amplify-iawav2-nositelang-144416-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-iawav2-nositelang-144416-deployment",
+      "UnauthRoleName": "amplify-iawav2-nositelang-144416-unauthRole",
+      "StackName": "amplify-iawav2-nositelang-144416",
+      "StackId": "arn:aws:cloudformation:us-east-1:909117335741:stack/amplify-iawav2-nositelang-144416/d313bd70-eb1c-11eb-9216-123f12969ebd",
+      "AmplifyAppId": "d29or9fnug9fhn"
+    },
+    "categories": {
+      "auth": {
+        "iawav2658176f3": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "iawav2658176f3PostConfirmation": {
+          "GROUP": "public",
+          "deploymentBucketName": "amplify-iawav2-nositelang-144416-deployment",
+          "s3Key": "amplify-builds/iawav2658176f3PostConfirmation-652b31586e3964303064-build.zip"
+        }
+      }
+    }
   }
 }

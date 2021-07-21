@@ -155,7 +155,6 @@ type Site
   groups: [String]!
   homePage: AWSJSON!
   id: ID!
-  lang: String
   miradorOptions: AWSJSON
   searchPage: AWSJSON!
   siteColor: String
