@@ -156,17 +156,6 @@ describe("Displays and updates search page configurations", () => {
     });
   });
 
-
-
-
-
-
-
-
-
-
-
-
   describe("Adds Subject facet field and removes it", () => {
     it("Adds Subject search facet field", () => {
       cy.get("input[value='edit']").parent().click();
@@ -191,37 +180,6 @@ describe("Displays and updates search page configurations", () => {
       cy.contains("Label: Subject Type").should("not.be.visible");
     });
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   describe("Adds a new sort field and removes it", () => {
     it("Adds a new sort field", () => {
