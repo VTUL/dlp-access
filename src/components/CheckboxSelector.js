@@ -139,7 +139,7 @@ class CheckboxSelector extends Component {
   render() {
     const facetKey = this.props.facet;
     return (
-      <section key={facetKey}>
+      <section key={facetKey} id={facetKey}>
         <fieldset>
           <legend className="admin">{`Configuration for facet field: ${facetKey}`}</legend>
           <Form.Input
@@ -165,6 +165,7 @@ class CheckboxSelector extends Component {
 
         <div className="deletePageWrapper">
           <NavLink
+            id={`${facetKey}_delete_link`}
             className="deletePage"
             to="#"
             onClick={() => this.props.deleteFacet(facetKey)}
