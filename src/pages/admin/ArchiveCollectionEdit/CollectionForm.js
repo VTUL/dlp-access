@@ -11,6 +11,8 @@ import { v4 as uuidv4 } from "uuid";
 import SiteContext from "../SiteContext";
 import FileUploadField from "../../../components/FileUploadField";
 
+const collectionOptions = ["podcast_links"];
+
 const multiFields = [
   "belongs_to",
   "creator",
@@ -55,6 +57,12 @@ const CollectionForm = React.memo(props => {
   const siteContext = useContext(SiteContext);
 
   useEffect(() => {
+    if (siteContext.site.siteId === "podcasts") {
+      multiFields.push("podcast_links");
+      if (editableFields.indexOf("podcast_links") === -1) {
+        editableFields.push("podcast_links");
+      }
+    }
     async function loadItem() {
       let item;
       let editableCollection = {};
@@ -76,9 +84,19 @@ const CollectionForm = React.memo(props => {
           return value;
         };
 
+        const inOptions = key => {
+          let retVal = null;
+          if (item.collectionOptions[key] !== null) {
+            const options = JSON.parse(item.collectionOptions);
+            retVal = options[key];
+          }
+          return retVal;
+        };
+
         for (const idx in editableFields) {
           const field = editableFields[idx];
-          editableCollection[field] = item[field] || defaultValue(field);
+          editableCollection[field] =
+            item[field] || inOptions(field) || defaultValue(field);
         }
         item_id = item.id;
       } catch (e) {
@@ -117,10 +135,10 @@ const CollectionForm = React.memo(props => {
     } else if (newCollection) {
       setNewCollection();
     }
-  }, [identifier, newCollection]);
+  }, [identifier, newCollection, siteContext.site.siteId, viewState]);
 
   const isRequiredField = attribute => {
-    const requiredFields = ["title", "visibility"];
+    const requiredFields = ["title"];
     return requiredFields.includes(attribute);
   };
 
@@ -183,6 +201,16 @@ const CollectionForm = React.memo(props => {
       collection.ownerinfo.constructor === {}.constructor
     ) {
       collection.ownerinfo = JSON.stringify(collection.ownerinfo);
+    }
+
+    // Options
+    const options = collection.collectionOptions || {};
+    for (const i in collectionOptions) {
+      const key = collectionOptions[i];
+      options[key] = collection[key];
+      collection.collectionOptions = JSON.stringify(options);
+
+      delete collection[key];
     }
 
     if (newCollection) {
