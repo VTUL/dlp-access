@@ -86,7 +86,7 @@ const CollectionForm = React.memo(props => {
 
         const inOptions = key => {
           let retVal = null;
-          if (item.collectionOptions[key] !== null) {
+          if (item.collectionOptions && item.collectionOptions[key] !== null) {
             const options = JSON.parse(item.collectionOptions);
             retVal = options[key];
           }
