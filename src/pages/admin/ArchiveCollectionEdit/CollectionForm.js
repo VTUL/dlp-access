@@ -129,12 +129,14 @@ const CollectionForm = React.memo(props => {
       setCollection(newCollection);
       setCollectionId(null);
     }
-
-    if (identifier && !newCollection) {
-      loadItem();
-    } else if (newCollection) {
-      setNewCollection();
+    async function init() {
+      if (identifier && !newCollection) {
+        await loadItem();
+      } else if (newCollection) {
+        setNewCollection();
+      }
     }
+    init();
   }, [identifier, newCollection, siteContext.site.siteId, viewState]);
 
   const isRequiredField = attribute => {
@@ -226,9 +228,6 @@ const CollectionForm = React.memo(props => {
       collection.collection_category = siteContext.site.groups[0];
     }
 
-    setValidForm(true);
-    setViewState("view");
-
     const collectionInfo = {
       id: collectionId,
       ...collection
@@ -307,6 +306,9 @@ const CollectionForm = React.memo(props => {
     };
 
     siteContext.updateSite(eventInfo);
+
+    setValidForm(true);
+    setViewState("view");
   };
 
   const changeValueHandler = (event, field, valueIdx) => {
