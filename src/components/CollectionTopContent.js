@@ -62,7 +62,7 @@ class CollectionTopContent extends Component {
     });
   }
 
-  createRss(key, rssUrl, className, imageUrl, alt) {
+  createRssHtml(key, rssUrl, className, imageUrl, alt) {
     const rssLinks = `<li key="${key}">
           <a href="${rssUrl}" target="_blank" rel="noopener noreferrer" className="${className}">
             <img
@@ -82,7 +82,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "amazon",
                 l,
                 "border-square",
@@ -96,7 +96,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "apple",
                 l,
                 "border-square",
@@ -110,7 +110,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "google",
                 l,
                 "border-curved",
@@ -124,7 +124,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "spotify",
                 l,
                 "badge-outline",
@@ -138,7 +138,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "stitcher",
                 l,
                 "border-square",
@@ -152,7 +152,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "breaker",
                 l,
                 "badge-outline",
@@ -166,7 +166,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "radio_public",
                 l,
                 "border-square",
@@ -180,7 +180,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "pocket_casts",
                 l,
                 "border-square",
@@ -194,7 +194,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "tunein",
                 l,
                 "border-square",
@@ -208,7 +208,7 @@ class CollectionTopContent extends Component {
         return (
           <div
             dangerouslySetInnerHTML={{
-              __html: this.createRss(
+              __html: this.createRssHtml(
                 "podchaser",
                 l,
                 "border-square",
@@ -220,35 +220,31 @@ class CollectionTopContent extends Component {
         );
       } else if (l.indexOf("podbean.com") >= 0) {
         return (
-          <li key="podbean">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/podbean.png"
-                alt="Listen on Podbean"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRssHtml(
+                "podbean",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/podbean.png",
+                "Listen on Podbean"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("castbox.fm") >= 0) {
         return (
-          <li key="castbox">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/Castbox.svg"
-                alt="Listen on Castbox"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRssHtml(
+                "castbox",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/Castbox.svg",
+                "Listen on Castbox"
+              )
+            }}
+          />
         );
       } else {
         console.log(`Error: ${l}`);
