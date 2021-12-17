@@ -205,7 +205,6 @@ const CollectionForm = React.memo(props => {
       collection.ownerinfo = JSON.stringify(collection.ownerinfo);
     }
 
-    // Options
     const options = collection.collectionOptions || {};
     for (const i in collectionOptions) {
       const key = collectionOptions[i];

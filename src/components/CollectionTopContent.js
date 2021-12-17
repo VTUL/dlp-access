@@ -62,169 +62,161 @@ class CollectionTopContent extends Component {
     });
   }
 
+  createRss(key, rssUrl, className, imageUrl, alt) {
+    const rssLinks = `<li key="${key}">
+          <a href="${rssUrl}" target="_blank" rel="noopener noreferrer" className="${className}">
+            <img
+              src="${imageUrl}"
+              alt="${alt}"
+            />
+          </a>
+        </li>`;
+
+    return rssLinks;
+  }
+
   getFeeds = () => {
     let links = this.props.collectionOptions.podcast_links.map(link => {
       let l = link.toLowerCase();
       if (l.indexOf("amazon.com") >= 0) {
         return (
-          <li key="amazon">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/Amazon.png"
-                alt="Listen on Amazon Music"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "amazon",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/Amazon.png",
+                "Listen on Amazon Music"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("apple.com") >= 0) {
         return (
-          <li key="apple">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/Apple.svg"
-                alt="Listen on Apple Music"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "apple",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/Apple.svg",
+                "Listen on Apple Music"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("goo.gl") >= 0) {
         return (
-          <li key="google">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-curved"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/Google.svg"
-                alt="Listen on Google Podcasts"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "google",
+                l,
+                "border-curved",
+                "https://static.lib.vt.edu/vtdlp/images/Google.svg",
+                "Listen on Google Podcasts"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("spotify.com") >= 0) {
         return (
-          <li key="spotify" className="badge-outline">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-curved"
-            >
-              <img
-                className="p-1"
-                src="https://static.lib.vt.edu/vtdlp/images/Spotify.png"
-                alt="Listen on Spotify"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "spotify",
+                l,
+                "badge-outline",
+                "https://static.lib.vt.edu/vtdlp/images/Spotify.png",
+                "Listen on Spotify"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("stitcher.com") >= 0) {
         return (
-          <li key="stitcher">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/Stitcher.png"
-                alt="Listen on Stitcher"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "stitcher",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/Stitcher.png",
+                "Listen on Stitcher"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("breaker.audio") >= 0) {
         return (
-          <li key="breaker" className="badge-outline">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-curved"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/breaker--white.svg"
-                alt="Listen on Breaker"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "breaker",
+                l,
+                "badge-outline",
+                "https://static.lib.vt.edu/vtdlp/images/breaker--white.svg",
+                "Listen on Breaker"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("radiopublic.com") >= 0) {
         return (
-          <li key="radio_public">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/radiopublic-white.png"
-                alt="Listen on Radio Public"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "radio_public",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/radiopublic-white.png",
+                "Listen on Radio Public"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("pocketcasts.com") >= 0) {
         return (
-          <li key="pocket_casts">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/pocketcasts.png"
-                alt="Listen on Pocket Casts"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "pocket_casts",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/radiopublic-white.png",
+                "Listen on Pocket Casts"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("tunein.com") >= 0) {
         return (
-          <li key="tunein">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/tunein.png"
-                alt="Listen on Tune In"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "tunein",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/tunein.png",
+                "Listen on Tune In"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("podchaser.com") >= 0) {
         return (
-          <li key="podchaser">
-            <a
-              href={l}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-square"
-            >
-              <img
-                src="https://static.lib.vt.edu/vtdlp/images/podchaser.png"
-                alt="Listen on Podchaser"
-              />
-            </a>
-          </li>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: this.createRss(
+                "podchaser",
+                l,
+                "border-square",
+                "https://static.lib.vt.edu/vtdlp/images/podchaser.png",
+                "Listen on Pod Chaser"
+              )
+            }}
+          />
         );
       } else if (l.indexOf("podbean.com") >= 0) {
         return (
