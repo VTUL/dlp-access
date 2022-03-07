@@ -64,7 +64,7 @@ aws amplify list-backend-environments --app-id=AmplifyAppId
   ```sh
   git clone git@github.com:VTUL/dlp-access.git
   ```
-
+ 
 2. Change into the directory & install dependencies
 
   ```sh
