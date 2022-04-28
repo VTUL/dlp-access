@@ -171,10 +171,12 @@ class FileUploadField extends Component {
 
   render() {
     return (
-      <div className="fileUploadField">
-        <div>
-          <span className="key">{this.props.label}</span>
-        </div>
+      <div
+        className={`fileUploadField ${
+          this.props.required ? "required " : ""
+        } field`}
+      >
+        <label htmlFor={this.props.input_id}>{this.props.label}</label>
         {this.props.value && (
           <div>
             <span>Current file:</span>{" "}

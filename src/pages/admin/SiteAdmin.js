@@ -93,7 +93,7 @@ class SiteAdmin extends Component {
       case "collectionForm":
         return <IdentifierForm type="collection" identifier={null} />;
       case "podcastDeposit":
-        return <PodcastDeposit />;
+        return <IdentifierForm type="podcast" identifier={null} />;
       default:
         return <SiteForm />;
     }
@@ -244,14 +244,16 @@ class SiteAdmin extends Component {
             {this.state.site && this.state.site.siteId === "podcasts" && (
               <li
                 className={
-                  this.state.form === "podcastDeposit" ? "admin-active" : ""
+                  this.state.form === "podcastDeposit"
+                    ? "podcastDeposit admin-active"
+                    : "podcastDeposit"
                 }
               >
                 <Link
                   onClick={() => this.setForm("podcastDeposit")}
                   to={"/siteAdmin"}
                 >
-                  Add Podcast Episode
+                  New / Update Podcast Episode
                 </Link>
               </li>
             )}

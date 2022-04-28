@@ -28,13 +28,24 @@ export const input = (options, type) => {
 };
 
 const defaultInput = options => {
-  const { label, id, name, placeholder, onChange, onBlur } = options;
+  const {
+    label,
+    id,
+    name,
+    placeholder,
+    value,
+    onChange,
+    onBlur,
+    required
+  } = options;
   return (
     <Form.Input
+      required={required}
       key={id || name}
       id={id || name}
       label={label}
       name={name}
+      value={value}
       placeholder={placeholder}
       onChange={onChange}
       onBlur={onBlur}
@@ -43,10 +54,12 @@ const defaultInput = options => {
 };
 
 const selectInput = options => {
-  const { label, id, name, value, onChange, entries } = options;
+  const { label, id, name, value, onChange, entries, required } = options;
   return (
-    <label key={id || name}>
-      {label}
+    <div className={`${required ? "required " : ""} field`}>
+      <label key={id || name} htmlFor={id}>
+        {label}
+      </label>
       <select id={id || name} name={name} value={value} onChange={onChange}>
         {entries.map(entry => (
           <option key={entry.id} value={entry.id}>
@@ -54,18 +67,19 @@ const selectInput = options => {
           </option>
         ))}
       </select>
-    </label>
+    </div>
   );
 };
 
 const textAreaInput = options => {
-  const { id, label, name, placeholder, onChange } = options;
+  const { id, label, name, placeholder, value, onChange } = options;
   return (
     <Form.TextArea
       key={id || name}
       id={id || name}
       label={label}
       name={name}
+      value={value}
       placeholder={placeholder}
       onChange={onChange}
     />
@@ -73,9 +87,21 @@ const textAreaInput = options => {
 };
 
 const dateInput = options => {
-  const { outerClass, innerClass, label, id, name, value, onChange } = options;
+  const {
+    outerClass,
+    innerClass,
+    label,
+    id,
+    name,
+    value,
+    required,
+    onChange
+  } = options;
   return (
-    <div className={outerClass} key={id || name}>
+    <div
+      className={`${outerClass} ${required ? "required" : ""}`}
+      key={id || name}
+    >
       <label htmlFor={id || name}>{label}</label>
       <div className={innerClass}>
         <input
@@ -119,10 +145,13 @@ const fileInput = options => {
     fileType,
     setFileFolder,
     setFileCharacterization,
-    context
+    context,
+    required,
+    value
   } = options;
   return (
     <FileUploadField
+      required={required}
       key={id || name}
       label={label}
       input_id={id || name}
@@ -133,6 +162,7 @@ const fileInput = options => {
       setFileFolder={setFileFolder}
       setFileCharacterization={setFileCharacterization}
       context={context}
+      value={value}
     />
   );
 };
