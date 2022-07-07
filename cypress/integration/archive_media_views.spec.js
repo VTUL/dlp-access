@@ -1,6 +1,7 @@
 describe('archive_media_views: Archive static img view', () => {
   it('shows correct img tag', () => {
-    cy.visit('/archive/m58xyh90');
+    cy.visit('http://localhost:3000/archive/m58xyh90');
+    cy.wait(5 * 1000);
     cy.get('img.item-img')
       .eq(0)
       .should('be.visible');
@@ -9,14 +10,16 @@ describe('archive_media_views: Archive static img view', () => {
 
 describe('archive_media_views: Archive audio player', () => {
   it('renders audio file thumbnail', () => {
-    cy.visit('/archive/m69xyh01');
+    cy.visit('http://localhost:3000/archive/m69xyh01');
+    cy.wait(5 * 1000);
     cy.get('div.audio-img-wrapper')
       .find('img')
       .should('have.class', 'audio-img')
       .should('be.visible');
   });
   it('renders html5 audio player', () => {
-    cy.visit('/archive/m69xyh01');
+    cy.visit('http://localhost:3000/archive/m69xyh01');
+    cy.wait(5 * 1000);
     cy.get('audio')
       .eq(0)
       .should('have.id', 'player1_html5');
@@ -25,14 +28,16 @@ describe('archive_media_views: Archive audio player', () => {
 
 describe('archive_media_views: Archive video player', () => {
   it('renders html5 video player', () => {
-    cy.visit('/archive/m70xyh12');
+    cy.visit('http://localhost:3000/archive/m70xyh12');
+    cy.wait(5 * 1000);
     cy.get('video')
       .eq(0)
       .should('have.id', 'player1_html5')
       .should('be.visible');
   });
   it('renders with img placeholder', () => {
-    cy.visit('/archive/m70xyh12');
+    cy.visit('http://localhost:3000/archive/m70xyh12');
+    cy.wait(5 * 1000);
     cy.get('video')
       .invoke('attr', 'poster').should('eq', 'http://i3.ytimg.com/vi/iWO5N3n1DXU/hqdefault.jpg')
   })
@@ -41,6 +46,7 @@ describe('archive_media_views: Archive video player', () => {
 describe('archive_media_views: Archive kaltura embed', () => {
   it('renders kaltura video player inside iframe', () => {
     cy.visit('http://localhost:3000/archive/m81xyh23');
+    cy.wait(5 * 1000);
     cy.get('iframe')
       .eq(0)
       .should('have.class', 'kaltura-player')
@@ -51,6 +57,7 @@ describe('archive_media_views: Archive kaltura embed', () => {
 describe('archive_media_views: Archive pdf embed', () => {
   it('renders pdf file inside iframe', () => {
     cy.visit('http://localhost:3000/archive/m92xyh34');
+    cy.wait(5 * 1000);
     cy.get('iframe')
       .eq(0)
       .should('have.class', 'pdf-viewer')
@@ -60,7 +67,8 @@ describe('archive_media_views: Archive pdf embed', () => {
 
 describe('archive_media_views: Archive Mirador viewer', () => {
   it('renders viewer if manifest.json', () => {
-    cy.visit('/archive/cv65x38f');
+    cy.visit('http://localhost:3000/archive/cv65x38f');
+    cy.wait(5 * 1000);
     cy.get('div#mirador_viewer > div > main')
       .eq(0)
       .should('have.class', 'mirador-viewer')
@@ -74,6 +82,7 @@ describe('archive_media_views: Archive Mirador viewer', () => {
 describe('archive_media_views: Archive 3d .obj viewer', () => {
   it('renders 3d viewer for 3d .obj records', () => {
     cy.visit('http://localhost:3000/archive/cz94zm9p');
+    cy.wait(5 * 1000);
     cy.get('div.obj-wrapper canvas')
       .eq(0)
       .should('be.visible');
@@ -83,6 +92,7 @@ describe('archive_media_views: Archive 3d .obj viewer', () => {
 describe('archive_media_views: Archive 3d .x3d viewer', () => {
   it('renders 3d viewer for 3d .x3d records', () => {
     cy.visit('http://localhost:3000/archive/h387pp1c');
+    cy.wait(5 * 1000);
     cy.get('div.obj-wrapper x3d#x3dElement canvas')
       .eq(0)
       .should('be.visible');
