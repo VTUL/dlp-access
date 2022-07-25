@@ -45,3 +45,10 @@ ul.sharing-options {
   list-style: inside;
   margin-left: 1em;
 }
+
+.auth-dialog p {
+  color: var(--hokieOrange);
+}
+hr.auth-divider {
+  border-top: 1px solid white;
+}

@@ -124,6 +124,8 @@ REACT_APP_MINT_API_KEY=<your api key here>
 
 ## Amplify Build settings
 * Use [amplify.yml](examples/amplify.yml) for version after v1.3.2
+  * Note: Environment variables in the command to run Cypress tests must be set to your actual account values `CYPRESS_userPoolId=<your user pool Id> CYPRESS_clientId=<your user pool client Id>`
+
 
 
 ## Site custom images and HTML files
@@ -143,7 +145,7 @@ See instruction and various site content examples below:
 
   0. Put your configuration json files to a S3 bucket and enable CORS and make the config file public. 
   1. Start local server using ```REACT_APP_REP_TYPE=Default npm start```
-  2. Launch the Cypress app ```CYPRESS_password=secret yarn run cypress open```
+  2. Launch the Cypress app ```CYPRESS_password=<secret> CYPRESS_userPoolId=<your user pool Id> CYPRESS_clientId=<your user pool client Id> yarn run cypress open``` Note: Environment varibles in the above command beginning with `CYPRESS_` must be updated with your actual account values
 
   * The username for authentication is: `devtest`. You can create this `devtest` account through account creation page.
   * You can create your own testing account and password, and update the username. E.g., [an example here](https://github.com/VTUL/dlp-access/blob/dev/cypress/integration/admin_page_sitepages_config.spec.js#L1)

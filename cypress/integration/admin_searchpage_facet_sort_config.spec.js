@@ -1,34 +1,26 @@
-const USERNAME = "devtest";
-const PASSWORD = Cypress.env("password");
-
 describe("admin_searchpage_facet_sort_config: Displays and updates search page configurations", () => {
+  before(() => {
+    cy.signIn();
+  });
+
   beforeEach(() => {
+    cy.restoreLocalStorage();
     cy.visit("/siteAdmin");
-    cy.get("amplify-authenticator")
-      .find(selectors.usernameInput, {
-        includeShadowDom: true,
-      })
-      .type(USERNAME);
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInPasswordInput, {
-        includeShadowDom: true,
-      })
-      .type(PASSWORD, { force: true });
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInSignInButton, {
-        includeShadowDom: true,
-      })
-      .first()
-      .find("button[type='submit']", { includeShadowDom: true })
-      .click({ force: true });
 
     cy.get("#content-wrapper > div > div > ul")
       .find(":nth-child(5) > a")
       .contains("Search Page Config")
       .click();
     cy.url().should("include", "/siteAdmin");
+  });
+
+  after(() => {
+    cy.clearLocalStorageSnapshot();
+    cy.clearLocalStorage();
+  });
+
+  afterEach(() => {
+    cy.saveLocalStorage();
   });
 
   describe("admin_searchpage_facet_sort_config: Displays search facet fields", () => {
@@ -199,18 +191,4 @@ describe("admin_searchpage_facet_sort_config: Displays and updates search page c
       cy.contains("Sort Field: identifier").should("not.be.visible");
     });
   });
-
-  afterEach(() => {
-    cy.get("amplify-sign-out")
-      .find(selectors.signOutButton, { includeShadowDom: true })
-      .contains("Sign Out").click({ force: true });    
-  });
 });
-
-export const selectors = {
-  // Auth component classes
-  usernameInput: '[data-test="sign-in-username-input"]',
-  signInPasswordInput: '[data-test="sign-in-password-input"]',
-  signInSignInButton: '[data-test="sign-in-sign-in-button"]',
-  signOutButton: '[data-test="sign-out-button"]',
-};

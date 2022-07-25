@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { API, Auth } from "aws-amplify";
 import * as mutations from "../../graphql/mutations";
-import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
+import { Authenticator, withAuthenticator } from "@aws-amplify/ui-react";
 import { Link } from "react-router-dom";
 import { getSite } from "../../lib/fetchTools";
 import SiteForm from "./SiteForm";
@@ -14,8 +14,8 @@ import DisplayedAttributesForm from "./DisplayedAttributesForm";
 import MediaSectionForm from "./MediaSectionForm";
 import IdentifierForm from "./ArchiveCollectionEdit/IdentifierForm";
 import SiteContext from "./SiteContext";
-import PodcastDeposit from "./PodcastDeposit";
 
+import "@aws-amplify/ui-react/styles.css";
 import "../../css/SiteAdmin.scss";
 
 class SiteAdmin extends Component {
@@ -258,7 +258,15 @@ class SiteAdmin extends Component {
               </li>
             )}
           </ul>
-          <AmplifySignOut />
+          <hr class="auth-divider" />
+          <Authenticator>
+            {({ signOut, user }) => (
+              <div className="auth-dialog">
+                <p>{user.username} successfully logged in.</p>
+                <button onClick={signOut}>Sign out</button>
+              </div>
+            )}
+          </Authenticator>
         </div>
         <SiteContext.Provider
           value={{

@@ -1,30 +1,13 @@
-const USERNAME = "devtest";
-const PASSWORD = Cypress.env('password');
-
 describe("admin_collection_edit: Update collection metadata and change it back", function() {
+  before(() => {
+    cy.signIn();
+  });
+  
   beforeEach(() => {
+    cy.restoreLocalStorage();
     cy.visit("/siteAdmin");
-    cy.get("amplify-authenticator")
-      .find(selectors.usernameInput, {
-        includeShadowDom: true,
-      })
-      .type(USERNAME);
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInPasswordInput, {
-        includeShadowDom: true,
-      })
-      .type(PASSWORD, { force: true });
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInSignInButton, {
-        includeShadowDom: true,
-      })
-      .first()
-      .find("button[type='submit']", { includeShadowDom: true })
-      .click({ force: true });
-
-      cy.get("#content-wrapper > div > div > ul", { timeout: 2000 })
+    
+    cy.get("#content-wrapper > div > div > ul", { timeout: 2000 })
       .find(".collectionFormLink > a")
       .contains("New / Update Collection")
       .click()
@@ -41,6 +24,15 @@ describe("admin_collection_edit: Update collection metadata and change it back",
     cy.contains("Description: Alberta Pfeiffer’s architectural career spanned 55 years, where she worked primarily in Hadlyme, Connecticut.").should("be.visible");
   })
 
+  after(() => {
+    cy.clearLocalStorageSnapshot();
+    cy.clearLocalStorage();
+  });
+
+  afterEach(() => {
+    cy.saveLocalStorage();
+  });
+
   it("Update single-valued metadata", () => {
     cy.get("input[value='edit']").parent().click();
     cy.get("textarea[name='title']").invoke('val', '');
@@ -56,17 +48,4 @@ describe("admin_collection_edit: Update collection metadata and change it back",
     cy.contains("Update Collection Metadata").click();
     cy.contains("Title: Alberta Pfeiffer Architectural Collection, 1929-1976 (Ms1988-017)").should('be.visible');
   })
-
-  afterEach("User signout:", () => {
-    cy.get("amplify-sign-out")
-      .find(selectors.signOutButton, { includeShadowDom: true })
-      .contains("Sign Out").click({ force: true });
-  })
 });
-
-export const selectors = {
-  usernameInput: '[data-test="sign-in-username-input"]',
-  signInPasswordInput: '[data-test="sign-in-password-input"]',
-  signInSignInButton: '[data-test="sign-in-sign-in-button"]',
-  signOutButton: '[data-test="sign-out-button"]'
-}

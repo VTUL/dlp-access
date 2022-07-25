@@ -1,35 +1,28 @@
-const USERNAME = "devtest";
-const PASSWORD = Cypress.env('password');
-
 describe("admin_displayed_attributes_config: Update attribute and change it back", function() {
+  before(() => {
+    cy.signIn();
+  });
+  
   beforeEach(() => {
+    cy.restoreLocalStorage();
     cy.visit("/siteAdmin");
-    cy.get("amplify-authenticator")
-      .find(selectors.usernameInput, {
-        includeShadowDom: true,
-      })
-      .type(USERNAME);
 
-    cy.get("amplify-authenticator")
-      .find(selectors.signInPasswordInput, {
-        includeShadowDom: true,
-      })
-      .type(PASSWORD, { force: true });
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInSignInButton, {
-        includeShadowDom: true,
-      })
-      .first()
-      .find("button[type='submit']", { includeShadowDom: true })
-      .click({ force: true });
-
-      cy.get("#content-wrapper > div > div > ul", { timeout: 2000 })
+    cy.get("#content-wrapper > div > div > ul", { timeout: 2000 })
       .find(":nth-child(7) > a")
       .contains("Displayed Attributes")
       .click()
     cy.url({ timeout: 2000 }).should("include", "/siteAdmin")
   })
+
+  after(() => {
+    cy.clearLocalStorageSnapshot();
+    cy.clearLocalStorage();
+  });
+
+  afterEach(() => {
+    cy.saveLocalStorage();
+  });
+
   it("first attribute required", () => {
     cy.get("input[value='edit']").parent().click();
     cy.get("#archive_0_wrapper", { timeout: 2000 })
@@ -73,17 +66,4 @@ describe("admin_displayed_attributes_config: Update attribute and change it back
     cy.contains("field: tags", { timeout: 2000 }).should('be.visible');
     cy.contains("label: Tags").should('be.visible');
   })
-
-  afterEach("User signout:", () => {
-    cy.get("amplify-sign-out")
-      .find(selectors.signOutButton, { includeShadowDom: true })
-      .contains("Sign Out").click({ force: true });
-  })
 });
-
-export const selectors = {
-  usernameInput: '[data-test="sign-in-username-input"]',
-  signInPasswordInput: '[data-test="sign-in-password-input"]',
-  signInSignInButton: '[data-test="sign-in-sign-in-button"]',
-  signOutButton: '[data-test="sign-out-button"]'
-}

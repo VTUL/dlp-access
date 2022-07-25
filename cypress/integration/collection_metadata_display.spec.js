@@ -11,8 +11,8 @@ describe('collection_metadata_display: A single Collection Show page metadata se
       .find(':nth-child(1) > th.collection-detail-key')
       .invoke('text')
       .should('equal', 'Size');
-    cy.get('@metadataSection')
-      .find(':nth-child(1) > td.collection-detail-value')
+    cy.get('@metadataSection', {timeout: 5000})
+      .find('tbody > tr.size > td > div > div:nth-child(1)', {timeout: 5000})
       .contains('Collections:');
   })
 

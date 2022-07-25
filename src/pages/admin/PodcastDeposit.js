@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
+import { Authenticator, withAuthenticator } from "@aws-amplify/ui-react";
 import { Form } from "semantic-ui-react";
 import { updatedDiff } from "deep-object-diff";
 import { API, Auth, Storage } from "aws-amplify";
@@ -12,6 +12,7 @@ import * as mutations from "../../graphql/mutations";
 import { input } from "../../components/FormFields";
 import { v4 as uuidv4 } from "uuid";
 
+import "@aws-amplify/ui-react/styles.css";
 import "../../css/adminForms.scss";
 
 const initialFormState = {
@@ -589,8 +590,16 @@ class PodcastDeposit extends Component {
               ? this.newPodcastForm()
               : this.view()}
           </div>
+          <hr class="auth-divider" />
           <div className="signout-wrapper">
-            <AmplifySignOut />
+            <Authenticator>
+              {({ signOut, user }) => (
+                <div className="auth-dialog">
+                  <p>{user.username} successfully logged in.</p>
+                  <button onClick={signOut}>Sign out</button>
+                </div>
+              )}
+            </Authenticator>
           </div>
         </>
       );

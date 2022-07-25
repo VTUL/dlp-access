@@ -1,32 +1,16 @@
-const USERNAME = "devtest";
-const PASSWORD = Cypress.env("password");
 const linkText = "https://lib.vt.edu/";
 const mediaEmbedText = '<iframe src="https://www.youtube.com/embed/8fswmAtvCqI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
 const titleText = "Welcome to the University Libraries at Virginia Tech";
 const textText = "The University Libraries play an essential role in furthering Virginia Tech’s mission as a global land-grant university by providing a diversity of resources to produce, disseminate, use, share and sustain data and information.";
 
 describe("admin_media_section_config: Displays and updates media section configurations", () => {
+  before(() => {
+    cy.signIn();
+  });
+  
   beforeEach(() => {
+    cy.restoreLocalStorage();
     cy.visit("/siteAdmin");
-    cy.get("amplify-authenticator")
-      .find(selectors.usernameInput, {
-        includeShadowDom: true,
-      })
-      .type(USERNAME);
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInPasswordInput, {
-        includeShadowDom: true,
-      })
-      .type(PASSWORD, { force: true });
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInSignInButton, {
-        includeShadowDom: true,
-      })
-      .first()
-      .find("button[type='submit']", { includeShadowDom: true })
-      .click({ force: true });
 
     cy.get("#content-wrapper > div > div > ul")
       .find(":nth-child(8) > a")
@@ -34,6 +18,15 @@ describe("admin_media_section_config: Displays and updates media section configu
       .click();
     cy.url({ timeout: 2000 }).should("include", "/siteAdmin");
   })
+
+  after(() => {
+    cy.clearLocalStorageSnapshot();
+    cy.clearLocalStorage();
+  });
+
+  afterEach(() => {
+    cy.saveLocalStorage();
+  });
 
   describe("admin_media_section_config: Displays media section fields", () => {
     it("Displays media section fields", () => {
@@ -122,18 +115,4 @@ describe("admin_media_section_config: Displays and updates media section configu
       cy.visit("/siteAdmin");
     });
   });
-
-  afterEach("User signout:", () => {
-    cy.get("amplify-sign-out")
-      .find(selectors.signOutButton, { includeShadowDom: true })
-      .contains("Sign Out").click({ force: true });
-  })
 });
-
-export const selectors = {
-  // Auth component classes
-  usernameInput: '[data-test="sign-in-username-input"]',
-  signInPasswordInput: '[data-test="sign-in-password-input"]',
-  signInSignInButton: '[data-test="sign-in-sign-in-button"]',
-  signOutButton: '[data-test="sign-out-button"]',
-};

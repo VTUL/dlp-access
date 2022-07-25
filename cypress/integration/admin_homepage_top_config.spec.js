@@ -1,35 +1,27 @@
-const USERNAME = "devtest";
-const PASSWORD = Cypress.env('password');
-
 describe("admin_homepage_top_config: Update Homepage fields and revert", function() {
+  before(() => {
+    cy.signIn();
+  });
+
   beforeEach(() => {
+    cy.restoreLocalStorage();
     cy.visit("/siteAdmin");
-    cy.get("amplify-authenticator")
-      .find(selectors.usernameInput, {
-        includeShadowDom: true,
-      })
-      .type(USERNAME);
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInPasswordInput, {
-        includeShadowDom: true,
-      })
-      .type(PASSWORD, { force: true });
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInSignInButton, {
-        includeShadowDom: true,
-      })
-      .first()
-      .find("button[type='submit']", { includeShadowDom: true })
-      .click({ force: true });
 
     cy.get("#content-wrapper > div > div > ul")
       .find(":nth-child(4) > a")
       .contains("Homepage Config")
       .click()
     cy.url().should("include", "/siteAdmin");
-  })
+  });
+
+  after(() => {
+    cy.clearLocalStorageSnapshot();
+    cy.clearLocalStorage();
+  });
+
+  afterEach(() => {
+    cy.saveLocalStorage();
+  });
  
   it("Update Homepage statement heading", () => {
     cy.get("input[value='edit']").parent().click();
@@ -51,22 +43,9 @@ describe("admin_homepage_top_config: Update Homepage fields and revert", functio
     cy.get("input[type=file]").eq(0).attachFile(imgPath).trigger('change', { force: true });
     cy.get(".static-image > div.fileUploadField > button.uploadButton")
       .click({ force: true });
-    cy.get('[data-test="upload-message"]')
+    cy.get('[data-test="upload-message"]', { timeout: 5000 })
       .should('have.attr', 'style', 'color: green;')
       .invoke("text")
       .should("include", "uploaded successfully");
   })
-
-  afterEach("User signout:", () => {
-    cy.get("amplify-sign-out")
-      .find(selectors.signOutButton, { includeShadowDom: true })
-      .contains("Sign Out").click({ force: true });
-  })
 });
-
-export const selectors = {
-  usernameInput: '[data-test="sign-in-username-input"]',
-  signInPasswordInput: '[data-test="sign-in-password-input"]',
-  signInSignInButton: '[data-test="sign-in-sign-in-button"]',
-  signOutButton: '[data-test="sign-out-button"]'
-}

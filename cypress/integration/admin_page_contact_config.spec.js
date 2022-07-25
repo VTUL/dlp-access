@@ -1,29 +1,21 @@
-const USERNAME = "devtest";
-const PASSWORD = Cypress.env("password");
-
 describe("admin_page_contact_config: Displays and updates contact configurations", () => {
+  before(() => {
+    cy.signIn();
+  });
+  
   beforeEach(() => {
+    cy.restoreLocalStorage();
     cy.visit("/siteAdmin");
-    cy.get("amplify-authenticator")
-      .find(selectors.usernameInput, {
-        includeShadowDom: true,
-      })
-      .type(USERNAME);
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInPasswordInput, {
-        includeShadowDom: true,
-      })
-      .type(PASSWORD, { force: true });
-
-    cy.get("amplify-authenticator")
-      .find(selectors.signInSignInButton, {
-        includeShadowDom: true,
-      })
-      .first()
-      .find("button[type='submit']", { includeShadowDom: true })
-      .click({ force: true });
   })
+
+  after(() => {
+    cy.clearLocalStorageSnapshot();
+    cy.clearLocalStorage();
+  });
+
+  afterEach(() => {
+    cy.saveLocalStorage();
+  });
 
   describe("admin_page_contact_config: Displays contact fields", () => {
     it("Displays contact fields", () => {
@@ -56,18 +48,4 @@ describe("admin_page_contact_config: Displays and updates contact configurations
       cy.contains("Title: IAWA Archivist").should("be.visible");
     });
   });
-
-  afterEach("User signout:", () => {
-    cy.get("amplify-sign-out")
-      .find(selectors.signOutButton, { includeShadowDom: true })
-      .contains("Sign Out").click({ force: true });
-  })
 });
-
-export const selectors = {
-  // Auth component classes
-  usernameInput: '[data-test="sign-in-username-input"]',
-  signInPasswordInput: '[data-test="sign-in-password-input"]',
-  signInSignInButton: '[data-test="sign-in-sign-in-button"]',
-  signOutButton: '[data-test="sign-out-button"]',
-};
