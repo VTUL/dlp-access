@@ -47,7 +47,7 @@ export const asyncGetFile = async (copyURL, type, component, attr) => {
   return response;
 };
 
-const fetchCopyFile = async (copyURL, type, component, attr) => {
+export const fetchCopyFile = async (copyURL, type, component, attr) => {
   let data = null;
   let filename = copyURL;
   let prefix = `public/sitecontent/${type}/${process.env.REACT_APP_REP_TYPE.toLowerCase()}/`;
@@ -88,6 +88,33 @@ const fetchCopyFile = async (copyURL, type, component, attr) => {
   } else {
     return { success: false };
   }
+};
+
+export const fetchSignedLink = async objLink => {
+  let filename = new URL(objLink).pathname.split("/").pop();
+  const bucket = Storage._config.AWSS3.bucket;
+  let prefix = objLink
+    .replace(`https://${bucket}.s3.amazonaws.com/`, "")
+    .replace(filename, "");
+  let signedLink = "";
+
+  try {
+    Storage.configure({
+      customPrefix: {
+        public: prefix
+      }
+    });
+    signedLink = await Storage.get(filename);
+    console.log(`fetching signedURL for: ${filename}`);
+  } catch (error) {
+    console.error(`Error fetching signedLink for ${filename}`);
+    console.error(error);
+  }
+  let success = false;
+  if (signedLink && signedLink.length) {
+    success = true;
+  }
+  return { success: true, data: signedLink };
 };
 
 export const mintNOID = async () => {

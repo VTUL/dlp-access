@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 import { htmlParsedValue } from "../lib/MetadataRenderer";
 
@@ -20,7 +20,7 @@ class Citation extends Component {
   }
 
   render() {
-    const theme = createMuiTheme({
+    const theme = createTheme({
       overrides: {
         MuiTooltip: {
           tooltip: {

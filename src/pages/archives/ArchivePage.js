@@ -26,6 +26,7 @@ import Thumbnail from "../../components/Thumbnail";
 import MtlElement from "../../components/MtlElement";
 import X3DElement from "../../components/X3DElement";
 import SocialButtons from "../../components/SocialButtons";
+import { DownloadLinks } from "../../components/DownloadLinks";
 
 import "../../css/ArchivePage.scss";
 
@@ -319,6 +320,7 @@ class ArchivePage extends Component {
       window.ga("send", "pageview", {
         dimension1: this.state.item.identifier
       });
+      const archiveOptions = JSON.parse(this.state.item.archiveOptions);
       return (
         <div className="item-page-wrapper">
           <SiteTitle
@@ -372,6 +374,12 @@ class ArchivePage extends Component {
               {addNewlineInDesc(this.state.item.description)}
             </div>
             <div className="col-lg-6 details-section-metadata">
+              {archiveOptions?.derivatives?.downloads && (
+                <DownloadLinks
+                  title="Download this file"
+                  links={archiveOptions.derivatives.downloads}
+                />
+              )}
               <SocialButtons
                 buttons={JSON.parse(this.props.site.siteOptions)}
                 url={window.location.href}
