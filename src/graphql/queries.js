@@ -49,8 +49,6 @@ export const searchObjects = /* GraphQL */ `
           collectionOptions
           explicit_content
           ownerinfo
-          createdAt
-          updatedAt
           collectionmap {
             collectionmap_category
             collection_id
@@ -60,10 +58,14 @@ export const searchObjects = /* GraphQL */ `
             modified_date
             createdAt
             updatedAt
+            collectionmapCollectionId
           }
           archives {
             nextToken
           }
+          createdAt
+          updatedAt
+          collectionCollectionmapId
         }
         ... on Archive {
           archiveOptions
@@ -79,8 +81,6 @@ export const searchObjects = /* GraphQL */ `
           repository
           resource_type
           tags
-          createdAt
-          updatedAt
           collection {
             belongs_to
             bibliographic_citation
@@ -115,7 +115,12 @@ export const searchObjects = /* GraphQL */ `
             visibility
             createdAt
             updatedAt
+            collectionCollectionmapId
           }
+          createdAt
+          updatedAt
+          collectionArchivesId
+          archiveCollectionId
         }
       }
       nextToken
@@ -170,8 +175,6 @@ export const fulltextCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -181,10 +184,14 @@ export const fulltextCollections = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
       nextToken
       total
@@ -246,8 +253,6 @@ export const fulltextArchives = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -282,7 +287,12 @@ export const fulltextArchives = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionArchivesId
+        archiveCollectionId
       }
       nextToken
       total
@@ -323,8 +333,6 @@ export const getCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collectionmap {
         collectionmap_category
         collection_id
@@ -332,8 +340,6 @@ export const getCollection = /* GraphQL */ `
         id
         map_object
         modified_date
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -368,7 +374,11 @@ export const getCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionmapCollectionId
       }
       archives {
         items {
@@ -413,9 +423,14 @@ export const getCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionArchivesId
+          archiveCollectionId
         }
         nextToken
       }
+      createdAt
+      updatedAt
+      collectionCollectionmapId
     }
   }
 `;
@@ -458,8 +473,6 @@ export const listCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -469,10 +482,14 @@ export const listCollections = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
       nextToken
     }
@@ -480,7 +497,7 @@ export const listCollections = /* GraphQL */ `
 `;
 export const collectionByIdentifier = /* GraphQL */ `
   query CollectionByIdentifier(
-    $identifier: String
+    $identifier: String!
     $sortDirection: ModelSortDirection
     $filter: ModelCollectionFilterInput
     $limit: Int
@@ -525,8 +542,6 @@ export const collectionByIdentifier = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -536,10 +551,14 @@ export const collectionByIdentifier = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
       nextToken
     }
@@ -548,10 +567,11 @@ export const collectionByIdentifier = /* GraphQL */ `
 export const searchCollections = /* GraphQL */ `
   query SearchCollections(
     $filter: SearchableCollectionFilterInput
-    $sort: SearchableCollectionSortInput
+    $sort: [SearchableCollectionSortInput]
     $limit: Int
     $nextToken: String
     $from: Int
+    $aggregates: [SearchableCollectionAggregationInput]
   ) {
     searchCollections(
       filter: $filter
@@ -559,6 +579,7 @@ export const searchCollections = /* GraphQL */ `
       limit: $limit
       nextToken: $nextToken
       from: $from
+      aggregates: $aggregates
     ) {
       items {
         belongs_to
@@ -592,8 +613,6 @@ export const searchCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -603,10 +622,14 @@ export const searchCollections = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
       nextToken
       total
@@ -622,8 +645,6 @@ export const getCollectionmap = /* GraphQL */ `
       id
       map_object
       modified_date
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -656,8 +677,6 @@ export const getCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -667,11 +686,18 @@ export const getCollectionmap = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionmapCollectionId
     }
   }
 `;
@@ -689,8 +715,6 @@ export const listCollectionmaps = /* GraphQL */ `
         id
         map_object
         modified_date
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -725,7 +749,11 @@ export const listCollectionmaps = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionmapCollectionId
       }
       nextToken
     }
@@ -773,8 +801,6 @@ export const getArchive = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -807,8 +833,6 @@ export const getArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -818,11 +842,19 @@ export const getArchive = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionArchivesId
+      archiveCollectionId
     }
   }
 `;
@@ -873,8 +905,6 @@ export const listArchives = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -909,7 +939,12 @@ export const listArchives = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionArchivesId
+        archiveCollectionId
       }
       nextToken
     }
@@ -917,7 +952,7 @@ export const listArchives = /* GraphQL */ `
 `;
 export const archiveByIdentifier = /* GraphQL */ `
   query ArchiveByIdentifier(
-    $identifier: String
+    $identifier: String!
     $sortDirection: ModelSortDirection
     $filter: ModelArchiveFilterInput
     $limit: Int
@@ -970,8 +1005,6 @@ export const archiveByIdentifier = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -1006,7 +1039,12 @@ export const archiveByIdentifier = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionArchivesId
+        archiveCollectionId
       }
       nextToken
     }
@@ -1015,10 +1053,11 @@ export const archiveByIdentifier = /* GraphQL */ `
 export const searchArchives = /* GraphQL */ `
   query SearchArchives(
     $filter: SearchableArchiveFilterInput
-    $sort: SearchableArchiveSortInput
+    $sort: [SearchableArchiveSortInput]
     $limit: Int
     $nextToken: String
     $from: Int
+    $aggregates: [SearchableArchiveAggregationInput]
   ) {
     searchArchives(
       filter: $filter
@@ -1026,6 +1065,7 @@ export const searchArchives = /* GraphQL */ `
       limit: $limit
       nextToken: $nextToken
       from: $from
+      aggregates: $aggregates
     ) {
       items {
         archiveOptions
@@ -1067,8 +1107,6 @@ export const searchArchives = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -1103,7 +1141,12 @@ export const searchArchives = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionArchivesId
+        archiveCollectionId
       }
       nextToken
       total
@@ -1204,7 +1247,7 @@ export const listSites = /* GraphQL */ `
 `;
 export const siteBySiteId = /* GraphQL */ `
   query SiteBySiteId(
-    $siteId: String
+    $siteId: String!
     $sortDirection: ModelSortDirection
     $filter: ModelSiteFilterInput
     $limit: Int
@@ -1255,13 +1298,13 @@ export const getHistory = /* GraphQL */ `
     }
   }
 `;
-export const listHistorys = /* GraphQL */ `
-  query ListHistorys(
+export const listHistories = /* GraphQL */ `
+  query ListHistories(
     $filter: ModelHistoryFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listHistorys(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listHistories(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         event
         groups

@@ -33,7 +33,7 @@
         "ApiId": {
           "Ref": "AppSyncApiId"
         },
-        "DataSourceName": "ElasticSearchDomain",
+        "DataSourceName": "OpenSearchDataSource",
         "TypeName": "Query",
         "FieldName": "searchObjects",
         "RequestMappingTemplateS3Location": {
@@ -70,7 +70,7 @@
         "ApiId": {
           "Ref": "AppSyncApiId"
         },
-        "DataSourceName": "ElasticSearchDomain",
+        "DataSourceName": "OpenSearchDataSource",
         "TypeName": "Query",
         "FieldName": "fulltextCollections",
         "RequestMappingTemplateS3Location": {
@@ -107,7 +107,7 @@
         "ApiId": {
           "Ref": "AppSyncApiId"
         },
-        "DataSourceName": "ElasticSearchDomain",
+        "DataSourceName": "OpenSearchDataSource",
         "TypeName": "Query",
         "FieldName": "fulltextArchives",
         "RequestMappingTemplateS3Location": {

@@ -2,8 +2,11 @@
 // this is an auto generated file. This will be overwritten
 
 export const createCollection = /* GraphQL */ `
-  mutation CreateCollection($input: CreateCollectionInput!) {
-    createCollection(input: $input) {
+  mutation CreateCollection(
+    $input: CreateCollectionInput!
+    $condition: ModelCollectionConditionInput
+  ) {
+    createCollection(input: $input, condition: $condition) {
       belongs_to
       bibliographic_citation
       circa
@@ -35,8 +38,6 @@ export const createCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collectionmap {
         collectionmap_category
         collection_id
@@ -44,8 +45,6 @@ export const createCollection = /* GraphQL */ `
         id
         map_object
         modified_date
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -80,7 +79,11 @@ export const createCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionmapCollectionId
       }
       archives {
         items {
@@ -125,15 +128,23 @@ export const createCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionArchivesId
+          archiveCollectionId
         }
         nextToken
       }
+      createdAt
+      updatedAt
+      collectionCollectionmapId
     }
   }
 `;
 export const updateCollection = /* GraphQL */ `
-  mutation UpdateCollection($input: UpdateCollectionInput!) {
-    updateCollection(input: $input) {
+  mutation UpdateCollection(
+    $input: UpdateCollectionInput!
+    $condition: ModelCollectionConditionInput
+  ) {
+    updateCollection(input: $input, condition: $condition) {
       belongs_to
       bibliographic_citation
       circa
@@ -165,8 +176,6 @@ export const updateCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collectionmap {
         collectionmap_category
         collection_id
@@ -174,8 +183,6 @@ export const updateCollection = /* GraphQL */ `
         id
         map_object
         modified_date
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -210,7 +217,11 @@ export const updateCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionmapCollectionId
       }
       archives {
         items {
@@ -255,15 +266,23 @@ export const updateCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionArchivesId
+          archiveCollectionId
         }
         nextToken
       }
+      createdAt
+      updatedAt
+      collectionCollectionmapId
     }
   }
 `;
 export const deleteCollection = /* GraphQL */ `
-  mutation DeleteCollection($input: DeleteCollectionInput!) {
-    deleteCollection(input: $input) {
+  mutation DeleteCollection(
+    $input: DeleteCollectionInput!
+    $condition: ModelCollectionConditionInput
+  ) {
+    deleteCollection(input: $input, condition: $condition) {
       belongs_to
       bibliographic_citation
       circa
@@ -295,8 +314,6 @@ export const deleteCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collectionmap {
         collectionmap_category
         collection_id
@@ -304,8 +321,6 @@ export const deleteCollection = /* GraphQL */ `
         id
         map_object
         modified_date
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -340,7 +355,11 @@ export const deleteCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionmapCollectionId
       }
       archives {
         items {
@@ -385,23 +404,29 @@ export const deleteCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionArchivesId
+          archiveCollectionId
         }
         nextToken
       }
+      createdAt
+      updatedAt
+      collectionCollectionmapId
     }
   }
 `;
 export const createCollectionmap = /* GraphQL */ `
-  mutation CreateCollectionmap($input: CreateCollectionmapInput!) {
-    createCollectionmap(input: $input) {
+  mutation CreateCollectionmap(
+    $input: CreateCollectionmapInput!
+    $condition: ModelCollectionmapConditionInput
+  ) {
+    createCollectionmap(input: $input, condition: $condition) {
       collectionmap_category
       collection_id
       create_date
       id
       map_object
       modified_date
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -434,8 +459,6 @@ export const createCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -445,25 +468,33 @@ export const createCollectionmap = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionmapCollectionId
     }
   }
 `;
 export const updateCollectionmap = /* GraphQL */ `
-  mutation UpdateCollectionmap($input: UpdateCollectionmapInput!) {
-    updateCollectionmap(input: $input) {
+  mutation UpdateCollectionmap(
+    $input: UpdateCollectionmapInput!
+    $condition: ModelCollectionmapConditionInput
+  ) {
+    updateCollectionmap(input: $input, condition: $condition) {
       collectionmap_category
       collection_id
       create_date
       id
       map_object
       modified_date
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -496,8 +527,6 @@ export const updateCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -507,25 +536,33 @@ export const updateCollectionmap = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionmapCollectionId
     }
   }
 `;
 export const deleteCollectionmap = /* GraphQL */ `
-  mutation DeleteCollectionmap($input: DeleteCollectionmapInput!) {
-    deleteCollectionmap(input: $input) {
+  mutation DeleteCollectionmap(
+    $input: DeleteCollectionmapInput!
+    $condition: ModelCollectionmapConditionInput
+  ) {
+    deleteCollectionmap(input: $input, condition: $condition) {
       collectionmap_category
       collection_id
       create_date
       id
       map_object
       modified_date
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -558,8 +595,6 @@ export const deleteCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -569,17 +604,27 @@ export const deleteCollectionmap = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionmapCollectionId
     }
   }
 `;
 export const createArchive = /* GraphQL */ `
-  mutation CreateArchive($input: CreateArchiveInput!) {
-    createArchive(input: $input) {
+  mutation CreateArchive(
+    $input: CreateArchiveInput!
+    $condition: ModelArchiveConditionInput
+  ) {
+    createArchive(input: $input, condition: $condition) {
       archiveOptions
       belongs_to
       bibliographic_citation
@@ -619,8 +664,6 @@ export const createArchive = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -653,8 +696,6 @@ export const createArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -664,17 +705,28 @@ export const createArchive = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionArchivesId
+      archiveCollectionId
     }
   }
 `;
 export const updateArchive = /* GraphQL */ `
-  mutation UpdateArchive($input: UpdateArchiveInput!) {
-    updateArchive(input: $input) {
+  mutation UpdateArchive(
+    $input: UpdateArchiveInput!
+    $condition: ModelArchiveConditionInput
+  ) {
+    updateArchive(input: $input, condition: $condition) {
       archiveOptions
       belongs_to
       bibliographic_citation
@@ -714,8 +766,6 @@ export const updateArchive = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -748,8 +798,6 @@ export const updateArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -759,17 +807,28 @@ export const updateArchive = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionArchivesId
+      archiveCollectionId
     }
   }
 `;
 export const deleteArchive = /* GraphQL */ `
-  mutation DeleteArchive($input: DeleteArchiveInput!) {
-    deleteArchive(input: $input) {
+  mutation DeleteArchive(
+    $input: DeleteArchiveInput!
+    $condition: ModelArchiveConditionInput
+  ) {
+    deleteArchive(input: $input, condition: $condition) {
       archiveOptions
       belongs_to
       bibliographic_citation
@@ -809,8 +868,6 @@ export const deleteArchive = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -843,8 +900,6 @@ export const deleteArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -854,17 +909,28 @@ export const deleteArchive = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionArchivesId
+      archiveCollectionId
     }
   }
 `;
 export const createEmbargo = /* GraphQL */ `
-  mutation CreateEmbargo($input: CreateEmbargoInput!) {
-    createEmbargo(input: $input) {
+  mutation CreateEmbargo(
+    $input: CreateEmbargoInput!
+    $condition: ModelEmbargoConditionInput
+  ) {
+    createEmbargo(input: $input, condition: $condition) {
       id
       identifier
       start_date
@@ -877,8 +943,11 @@ export const createEmbargo = /* GraphQL */ `
   }
 `;
 export const updateEmbargo = /* GraphQL */ `
-  mutation UpdateEmbargo($input: UpdateEmbargoInput!) {
-    updateEmbargo(input: $input) {
+  mutation UpdateEmbargo(
+    $input: UpdateEmbargoInput!
+    $condition: ModelEmbargoConditionInput
+  ) {
+    updateEmbargo(input: $input, condition: $condition) {
       id
       identifier
       start_date
@@ -891,8 +960,11 @@ export const updateEmbargo = /* GraphQL */ `
   }
 `;
 export const deleteEmbargo = /* GraphQL */ `
-  mutation DeleteEmbargo($input: DeleteEmbargoInput!) {
-    deleteEmbargo(input: $input) {
+  mutation DeleteEmbargo(
+    $input: DeleteEmbargoInput!
+    $condition: ModelEmbargoConditionInput
+  ) {
+    deleteEmbargo(input: $input, condition: $condition) {
       id
       identifier
       start_date
@@ -905,8 +977,11 @@ export const deleteEmbargo = /* GraphQL */ `
   }
 `;
 export const createSite = /* GraphQL */ `
-  mutation CreateSite($input: CreateSiteInput!) {
-    createSite(input: $input) {
+  mutation CreateSite(
+    $input: CreateSiteInput!
+    $condition: ModelSiteConditionInput
+  ) {
+    createSite(input: $input, condition: $condition) {
       analyticsID
       assetBasePath
       browseCollections
@@ -930,8 +1005,11 @@ export const createSite = /* GraphQL */ `
   }
 `;
 export const updateSite = /* GraphQL */ `
-  mutation UpdateSite($input: UpdateSiteInput!) {
-    updateSite(input: $input) {
+  mutation UpdateSite(
+    $input: UpdateSiteInput!
+    $condition: ModelSiteConditionInput
+  ) {
+    updateSite(input: $input, condition: $condition) {
       analyticsID
       assetBasePath
       browseCollections
@@ -955,8 +1033,11 @@ export const updateSite = /* GraphQL */ `
   }
 `;
 export const deleteSite = /* GraphQL */ `
-  mutation DeleteSite($input: DeleteSiteInput!) {
-    deleteSite(input: $input) {
+  mutation DeleteSite(
+    $input: DeleteSiteInput!
+    $condition: ModelSiteConditionInput
+  ) {
+    deleteSite(input: $input, condition: $condition) {
       analyticsID
       assetBasePath
       browseCollections
@@ -980,8 +1061,11 @@ export const deleteSite = /* GraphQL */ `
   }
 `;
 export const createHistory = /* GraphQL */ `
-  mutation CreateHistory($input: CreateHistoryInput!) {
-    createHistory(input: $input) {
+  mutation CreateHistory(
+    $input: CreateHistoryInput!
+    $condition: ModelHistoryConditionInput
+  ) {
+    createHistory(input: $input, condition: $condition) {
       event
       groups
       id
@@ -993,8 +1077,11 @@ export const createHistory = /* GraphQL */ `
   }
 `;
 export const updateHistory = /* GraphQL */ `
-  mutation UpdateHistory($input: UpdateHistoryInput!) {
-    updateHistory(input: $input) {
+  mutation UpdateHistory(
+    $input: UpdateHistoryInput!
+    $condition: ModelHistoryConditionInput
+  ) {
+    updateHistory(input: $input, condition: $condition) {
       event
       groups
       id
@@ -1006,8 +1093,11 @@ export const updateHistory = /* GraphQL */ `
   }
 `;
 export const deleteHistory = /* GraphQL */ `
-  mutation DeleteHistory($input: DeleteHistoryInput!) {
-    deleteHistory(input: $input) {
+  mutation DeleteHistory(
+    $input: DeleteHistoryInput!
+    $condition: ModelHistoryConditionInput
+  ) {
+    deleteHistory(input: $input, condition: $condition) {
       event
       groups
       id

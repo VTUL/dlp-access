@@ -3,11 +3,11 @@ describe('searchfacet_checkbox: Search facet checkboxes correspond to the facet 
     cy.visit('/search');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
       .click();
-    cy.wait(20000);
+      cy.wait(20000);
   })
 
   it('allows to select one of the checkboxes', () => {
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(2) input')
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(2) input', { timeout: 5000 })
       .check();
     cy.url()
       .should('contain', 'medium=Colored+pencil');
@@ -17,7 +17,7 @@ describe('searchfacet_checkbox: Search facet checkboxes correspond to the facet 
   })
 
   it('allows to select more than one checkboxes', () => {
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(2) input')
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing > :nth-child(2) input', { timeout: 5000 })
       .check();
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.all-less')
       .click();

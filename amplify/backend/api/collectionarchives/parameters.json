@@ -1,12 +1,12 @@
 {
   "AppSyncApiName": "collectionarchives",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": "false",
-  "APIKeyExpirationEpoch": "1663862869",
+  "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
       "authiawav2658176f3",
       "Outputs.UserPoolId"
     ]
-  }
+  },
+  "AuthModeLastUpdated": "2022-08-04T15:26:34.452Z"
 }

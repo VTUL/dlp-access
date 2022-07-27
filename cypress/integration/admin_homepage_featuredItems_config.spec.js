@@ -66,7 +66,7 @@ describe("admin_homepage_featuredItems_config: Update featured items fields and 
         cy.get("#FI9_link").type(
           "https://swva-dev.cloud.lib.vt.edu/archive/pp439d2v"
         );
-        cy.wait(5000);
+        cy.wait(3000);
         cy.contains("Update Config").click();
         cy.contains("Featured Item 10").should("be.visible");
         cy.contains(

@@ -7,6 +7,6 @@
 #end
 $util.toJson({
   "items": $es_items,
-  "total": $ctx.result.hits.total,
+  "total": $ctx.result.hits.total.value,
   "nextToken": $nextToken
 })

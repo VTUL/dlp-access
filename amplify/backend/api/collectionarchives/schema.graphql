@@ -30,11 +30,6 @@ interface Object {
 type Collection implements Object
   @model
   @searchable
-  @key(
-    fields: ["identifier"]
-    name: "Identifier"
-    queryField: "collectionByIdentifier"
-  )
   @auth(rules: [
     { allow: public, operations: [read] },
     { allow: groups, groups: ["Admin", "Editor"] },
@@ -55,7 +50,7 @@ type Collection implements Object
   explicit_content: Boolean
   heirarchy_path: [String!]
   id: ID!
-  identifier: String!
+  identifier: String! @index(name: "Identifier", queryField: "collectionByIdentifier")
   language: [String!]
   location: [String!]
   modified_date: String
@@ -71,12 +66,13 @@ type Collection implements Object
   thumbnail_path: String
   title: String!
   visibility: Boolean!
-  collectionmap: Collectionmap @connection(name: "CollectionCollectionMap")
-  archives: [Archive] @connection(name: "CollectionArchives")
+  collectionmap: Collectionmap  @hasOne
+  archives: [Archive]  @hasMany
 }
 
 type Collectionmap
-  @model@auth(rules: [
+  @model
+  @auth(rules: [
     { allow: public, operations: [read] },
     { allow: groups, groups: ["Admin", "Editor"] },
     { allow: groups, groupsField: "collectionmap_category" }
@@ -87,17 +83,12 @@ type Collectionmap
     id: ID!
     map_object: String!
     modified_date: String
-    collection: Collection @connection(name: "CollectionCollectionMap")
+    collection: Collection  @hasOne
   }
 
 type Archive implements Object
   @model
   @searchable
-  @key(
-    fields: ["identifier"]
-    name: "Identifier"
-    queryField: "archiveByIdentifier"
-  )
   @auth(rules: [
     { allow: public, operations: [read] },
     { allow: groups, groups: ["Admin", "Editor"] },
@@ -119,7 +110,7 @@ type Archive implements Object
   format: [String!]
   heirarchy_path: [String!]
   id: ID!
-  identifier: String!
+  identifier: String! @index(name: "Identifier", queryField: "archiveByIdentifier")
   item_category: String!
   language: [String!]
   location: [String!]
@@ -142,13 +133,11 @@ type Archive implements Object
   thumbnail_path: String
   title: String!
   visibility: Boolean!
-  collection: Collection @connection(name: "CollectionArchives")
+  collection: Collection @hasOne
 }
 
 type Embargo
 @model
-@key(fields: ["start_date"], name: "start_date_index")
-@key(fields: ["end_date"], name: "end_date_index")
 @auth(rules: [
     { allow: public, operations: [read] },
     { allow: groups, groups: ["Admin", "Editor"] },
@@ -157,15 +146,14 @@ type Embargo
 {
   id: ID!
   identifier: String!
-  start_date: AWSDate
-  end_date: AWSDate
+  start_date: AWSDate @index(name: "start_date_index")
+  end_date: AWSDate @index(name: "end_date_index")
   note: String
   record_type: String!
 }
 
 type Site
   @model
-  @key(fields: ["siteId"], name: "SiteId", queryField: "siteBySiteId")
   @auth(rules: [
     { allow: public, operations: [read] },
     { allow: groups, groupsField: "groups" }
@@ -182,7 +170,7 @@ type Site
   miradorOptions: AWSJSON
   searchPage: AWSJSON!
   siteColor: String
-  siteId: String!
+  siteId: String! @index(name: "SiteId", queryField: "siteBySiteId" )
   siteName: String!
   siteOptions: AWSJSON
   sitePages: AWSJSON

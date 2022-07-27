@@ -63,7 +63,7 @@ describe("admin_homepage_collectionHighlights_config: Update collection highligh
           "/search?q=building&view=gallery"
         );
         cy.get("#highlight3_count").type("5");
-        cy.wait(5000);
+        cy.wait(3000);
         cy.contains("Update Config").click();
         cy.contains("Collection Highlight 4").should("be.visible");
         cy.contains(

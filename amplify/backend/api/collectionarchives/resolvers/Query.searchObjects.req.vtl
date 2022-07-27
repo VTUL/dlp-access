@@ -2,7 +2,7 @@
 The 'params' key accepts any valid Elasticsearch DSL expression.
 You must replace the <index>, <type>, and <field> placeholders with actual values.
 *#
-#set( $indexPath = "/*/doc/_search" )
+#set( $indexPath = "/*/_search" )
 #set( $nonKeywordFields = ["visibility", "start_date"] )
 #if( $util.isNullOrEmpty($context.args.sort) )
   #set( $sortDirection = "desc" )

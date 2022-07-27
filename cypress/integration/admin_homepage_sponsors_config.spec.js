@@ -61,7 +61,7 @@ describe("admin_homepage_sponsors_config: Update sponsors fields and revert", fu
         ).click({ force: true });
         cy.get("#s3_alt").type("Virginia Tech");
         cy.get("#s3_link").type("https://vt.edu");
-        cy.wait(5000);
+        cy.wait(3000);
         cy.contains("Update Config").click();
         cy.contains("Sponsor 4").should("be.visible");
         cy.contains(

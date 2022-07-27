@@ -35,8 +35,6 @@ export const onCreateCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collectionmap {
         collectionmap_category
         collection_id
@@ -44,8 +42,6 @@ export const onCreateCollection = /* GraphQL */ `
         id
         map_object
         modified_date
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -80,7 +76,11 @@ export const onCreateCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionmapCollectionId
       }
       archives {
         items {
@@ -125,9 +125,14 @@ export const onCreateCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionArchivesId
+          archiveCollectionId
         }
         nextToken
       }
+      createdAt
+      updatedAt
+      collectionCollectionmapId
     }
   }
 `;
@@ -165,8 +170,6 @@ export const onUpdateCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collectionmap {
         collectionmap_category
         collection_id
@@ -174,8 +177,6 @@ export const onUpdateCollection = /* GraphQL */ `
         id
         map_object
         modified_date
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -210,7 +211,11 @@ export const onUpdateCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionmapCollectionId
       }
       archives {
         items {
@@ -255,9 +260,14 @@ export const onUpdateCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionArchivesId
+          archiveCollectionId
         }
         nextToken
       }
+      createdAt
+      updatedAt
+      collectionCollectionmapId
     }
   }
 `;
@@ -295,8 +305,6 @@ export const onDeleteCollection = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collectionmap {
         collectionmap_category
         collection_id
@@ -304,8 +312,6 @@ export const onDeleteCollection = /* GraphQL */ `
         id
         map_object
         modified_date
-        createdAt
-        updatedAt
         collection {
           belongs_to
           bibliographic_citation
@@ -340,7 +346,11 @@ export const onDeleteCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionCollectionmapId
         }
+        createdAt
+        updatedAt
+        collectionmapCollectionId
       }
       archives {
         items {
@@ -385,9 +395,14 @@ export const onDeleteCollection = /* GraphQL */ `
           visibility
           createdAt
           updatedAt
+          collectionArchivesId
+          archiveCollectionId
         }
         nextToken
       }
+      createdAt
+      updatedAt
+      collectionCollectionmapId
     }
   }
 `;
@@ -400,8 +415,6 @@ export const onCreateCollectionmap = /* GraphQL */ `
       id
       map_object
       modified_date
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -434,8 +447,6 @@ export const onCreateCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -445,11 +456,18 @@ export const onCreateCollectionmap = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionmapCollectionId
     }
   }
 `;
@@ -462,8 +480,6 @@ export const onUpdateCollectionmap = /* GraphQL */ `
       id
       map_object
       modified_date
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -496,8 +512,6 @@ export const onUpdateCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -507,11 +521,18 @@ export const onUpdateCollectionmap = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionmapCollectionId
     }
   }
 `;
@@ -524,8 +545,6 @@ export const onDeleteCollectionmap = /* GraphQL */ `
       id
       map_object
       modified_date
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -558,8 +577,6 @@ export const onDeleteCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -569,11 +586,18 @@ export const onDeleteCollectionmap = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionmapCollectionId
     }
   }
 `;
@@ -619,8 +643,6 @@ export const onCreateArchive = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -653,8 +675,6 @@ export const onCreateArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -664,11 +684,19 @@ export const onCreateArchive = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionArchivesId
+      archiveCollectionId
     }
   }
 `;
@@ -714,8 +742,6 @@ export const onUpdateArchive = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -748,8 +774,6 @@ export const onUpdateArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -759,11 +783,19 @@ export const onUpdateArchive = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionArchivesId
+      archiveCollectionId
     }
   }
 `;
@@ -809,8 +841,6 @@ export const onDeleteArchive = /* GraphQL */ `
       thumbnail_path
       title
       visibility
-      createdAt
-      updatedAt
       collection {
         belongs_to
         bibliographic_citation
@@ -843,8 +873,6 @@ export const onDeleteArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        createdAt
-        updatedAt
         collectionmap {
           collectionmap_category
           collection_id
@@ -854,11 +882,19 @@ export const onDeleteArchive = /* GraphQL */ `
           modified_date
           createdAt
           updatedAt
+          collectionmapCollectionId
         }
         archives {
           nextToken
         }
+        createdAt
+        updatedAt
+        collectionCollectionmapId
       }
+      createdAt
+      updatedAt
+      collectionArchivesId
+      archiveCollectionId
     }
   }
 `;

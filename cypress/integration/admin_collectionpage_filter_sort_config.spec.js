@@ -83,7 +83,7 @@ describe("admin_collectionpage_filter_sort_config: Displays and updates browse c
 
     it("Removes the added filter value", () => {
       cy.get("input[value='edit']").parent().click();
-      cy.get("#content-wrapper > div > div > div > form > section:nth-child(1) > fieldset > ul > li:nth-child(7)")
+      cy.get("#content-wrapper > div > div > div > form > section:nth-child(1) > fieldset > ul > li:nth-child(7)", {timeout: 3000})
         .contains("X")
         .click();
       cy.contains("Update Filter and Sort Fields").click();

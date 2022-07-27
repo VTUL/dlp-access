@@ -70,6 +70,6 @@
 } )
 #if( $es_items.size() > 0 )
   $util.qr($es_response.put("nextToken", $nextToken))
-  $util.qr($es_response.put("total", $context.result.hits.total))
+  $util.qr($es_response.put("total", $context.result.hits.total.value))
 #end
 $util.toJson($es_response)

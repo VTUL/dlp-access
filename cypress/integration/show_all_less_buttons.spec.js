@@ -3,11 +3,11 @@ describe('show_all_less_buttons: Search Facet field with more than 5 selectable 
     cy.visit('/search');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
       .click();
-    cy.wait(20000);
+      cy.wait(20000);
   });
   
   it('displays the first 5 facet values', () => {
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing')
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing', { timeout: 5000 })
       .should("be.visible");
     
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing')
@@ -16,7 +16,7 @@ describe('show_all_less_buttons: Search Facet field with more than 5 selectable 
   });
   
   it('displays all facet values if all button is clicked', () => {
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing')
+    cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing', { timeout: 5000 })
       .should('be.visible');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.all-less')
       .click();

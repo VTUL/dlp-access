@@ -3,8 +3,25 @@
     "collectionarchives": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "iawav2658176f3",
+          "attributes": [
+            "UserPoolId"
+          ]
+        }
+      ],
       "output": {
         "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7,
+              "apiKeyExpirationDate": "2022-08-11T15:26:27.165Z",
+              "description": ""
+            }
+          },
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AMAZON_COGNITO_USER_POOLS",
@@ -12,14 +29,7 @@
                 "userPoolId": "authiawav2658176f3"
               }
             }
-          ],
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 360,
-              "description": "dlp-access key"
-            }
-          }
+          ]
         }
       }
     }
