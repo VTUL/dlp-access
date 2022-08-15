@@ -6,6 +6,7 @@ export function override(resources: AmplifyApiGraphQlResourceStackTemplate) {
     instanceCount: 3
   }
   resources.opensearch.OpenSearchDomain.ebsOptions = {
+    ebsEnabled: true,
     volumeSize: 20
   }
 }
