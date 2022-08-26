@@ -31,7 +31,7 @@ describe('archive_metadata_display: A single Archive Show page metadata section'
       .invoke('text')
       .should('equal', 'Belongs to');
     cy.get('@metadataSection')
-      .find(':nth-child(2) > td.collection-detail-value > div > :nth-child(1)').click();
-    cy.url({ timeout: 2000 }).should('include', '/collection/4g825g7ddemo');
+      .find('tr.belongs_to > td > div > span:nth-child(1) > a').click();
+    cy.url({ timeout: 3000 }).should('include', '/collection/4g825g7ddemo');
   })
 })

@@ -76,11 +76,7 @@ div.collection-detail table tr .collection-detail-value {
 }
 
 td.collection-detail-value div span.list-unstyled {
-  margin-right: 2px;
-}
-
-span.list-unstyled:nth-of-type(n + 2)::before {
-  content: ", ";
+  display: block;
 }
 
 a.more-link {

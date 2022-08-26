@@ -153,9 +153,14 @@ describe("admin_searchpage_facet_sort_config: Displays and updates search page c
       cy.get("input[value='edit']").parent().click();
       cy.get("select").eq(0).select("subject");
       cy.contains("Add New Search Facet").click();
-      cy.get("input#Art")
-        .check();
+      cy.get("#subject > fieldset > button", {timeout: 2000})
+        .click();
+      cy.get("#subject fieldset ul li#subject_li_0 input[name='subject_value_0']", {timeout: 2000})
+        .first()
+        .clear()
+        .type("Art")
       cy.contains("Update Facet and Sort Fields").click();
+      cy.wait(2000)
       cy.contains("Facet Field: subject").should("be.visible");
       cy.contains("Art").should("be.visible");
     })

@@ -258,7 +258,7 @@ class SiteAdmin extends Component {
               </li>
             )}
           </ul>
-          <hr class="auth-divider" />
+          <hr className="auth-divider" />
           <Authenticator>
             {({ signOut, user }) => (
               <div className="auth-dialog">
