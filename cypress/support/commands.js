@@ -1,13 +1,15 @@
 const Auth = require ("aws-amplify").Auth;
 import "cypress-file-upload"
 import "cypress-localstorage-commands"; 
+import Amplify from "aws-amplify";
+import config from "../../src/aws-exports";
 const username = "devtest"; 
 const password = Cypress. env("password"); 
-const userPoolId = Cypress. env("userPoolId"); 
-const clientId = Cypress. env ("clientId"); 
+
+Amplify.configure(config)
 const awsconfig = { 
-  aws_user_pools_id: userPoolId, 
-  aws_user_pools_web_client_id: clientId, 
+  aws_user_pools_id: Amplify.Auth._config.aws_user_pools_id, 
+  aws_user_pools_web_client_id: Amplify.Auth._config.aws_user_pools_web_client_id, 
 }; 
 Auth.configure(awsconfig);
 

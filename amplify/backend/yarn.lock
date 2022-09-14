@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@aws-amplify/amplify-category-custom@2.4.3":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/amplify-category-custom/-/amplify-category-custom-2.4.3.tgz#da7d00e56dd1bc843f77e86a8f091d8eaf37dc4c"
-  integrity sha512-/RXjxA+apGx0c0VxnAMIK7NbYYnSnu6mFSZ0R7diiOWEVmybhd2c4E68nffWaS0AcjATC2m3wdVh0TI7j15Tgg==
+"@aws-amplify/amplify-category-custom@2.4.4":
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/amplify-category-custom/-/amplify-category-custom-2.4.4.tgz#63084b8244fcea953f0bb06f876b5b119ba92697"
+  integrity sha512-Xge/BeMs3FciVq6OG+29rwe0HS7VoG6IGsBHwGJva4fjNaDyFnOzDAyg2cDX52Z2uttaTl1bhiSIby8Y1FrjRA==
   dependencies:
-    amplify-cli-core "2.12.0"
-    amplify-prompts "2.2.0"
+    amplify-cli-core "3.0.0"
+    amplify-prompts "2.3.0"
     execa "^5.1.1"
     fs-extra "^8.1.0"
     glob "^7.2.0"
@@ -17,11 +17,11 @@
     uuid "^8.3.2"
 
 "@aws-amplify/cli-extensibility-helper@^2.3.0":
-  version "2.3.33"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/cli-extensibility-helper/-/cli-extensibility-helper-2.3.33.tgz#a4dc09eb434be908789a052e1572b3367490709f"
-  integrity sha512-dK/1/Q9wbdsOP5et49w+HTjuONMtTUnIZyijqCMH0zxWzfFi0mJ9afVd1BI8unQDcS8cjzARZMhDr/3uX5/ptw==
+  version "2.3.34"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/cli-extensibility-helper/-/cli-extensibility-helper-2.3.34.tgz#4e3d0392b19914bda08a2fd0498a81cb42983572"
+  integrity sha512-3uY3+1Qug4MJ9s870rOkO8wPAfqIQWFKwSjkf7dTrK79MrADrYe6uvNR647RRW10fTB0xGgRoWRpCydjqWdWJg==
   dependencies:
-    "@aws-amplify/amplify-category-custom" "2.4.3"
+    "@aws-amplify/amplify-category-custom" "2.4.4"
     "@aws-cdk/aws-apigateway" "~1.124.0"
     "@aws-cdk/aws-appsync" "~1.124.0"
     "@aws-cdk/aws-cognito" "~1.124.0"
@@ -31,14 +31,14 @@
     "@aws-cdk/aws-lambda" "~1.124.0"
     "@aws-cdk/aws-s3" "~1.124.0"
     "@aws-cdk/core" "~1.124.0"
-    amplify-cli-core "2.12.0"
+    amplify-cli-core "3.0.0"
 
-"@aws-amplify/graphql-transformer-core@^0.17.9":
-  version "0.17.9"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/graphql-transformer-core/-/graphql-transformer-core-0.17.9.tgz#92a1c56bddb0aa3bf0a7d3299b1d10bd18322b1c"
-  integrity sha512-c1ssCQg5tBk2/lisSdZy+Z7+PBJ1BLzZj7wAsdE93GgTQkLteDhlvVbBGHLCZ/v1vRnDgm00ytfr57aP9uZ1KA==
+"@aws-amplify/graphql-transformer-core@^0.17.11":
+  version "0.17.11"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/graphql-transformer-core/-/graphql-transformer-core-0.17.11.tgz#70243c53647382359852a7de8dba22133e5cb2f4"
+  integrity sha512-ErjsrZ9ZhZeLfFS9bqAQBxpIwF/p85KBc3iVvlEWj9WedEZrWWO0aQHSZuYjJ5ENl5yUCz0roamXeqdt6K3qsg==
   dependencies:
-    "@aws-amplify/graphql-transformer-interfaces" "1.14.6"
+    "@aws-amplify/graphql-transformer-interfaces" "1.14.7"
     "@aws-cdk/aws-applicationautoscaling" "~1.124.0"
     "@aws-cdk/aws-appsync" "~1.124.0"
     "@aws-cdk/aws-certificatemanager" "~1.124.0"
@@ -73,10 +73,10 @@
     ts-dedent "^2.0.0"
     vm2 "^3.9.8"
 
-"@aws-amplify/graphql-transformer-interfaces@1.14.6", "@aws-amplify/graphql-transformer-interfaces@^1.14.6":
-  version "1.14.6"
-  resolved "https://registry.yarnpkg.com/@aws-amplify/graphql-transformer-interfaces/-/graphql-transformer-interfaces-1.14.6.tgz#1721feb585b20db4b4ac8e8c27bb219bbeee9f35"
-  integrity sha512-OVWB81IxjpC9E1TLSirOEeHM/33gaJjOnswlL5cBH32L9ShxeDJeMVd7D3egYdd1nt48HGmHyQyVqYxx3xhACg==
+"@aws-amplify/graphql-transformer-interfaces@1.14.7", "@aws-amplify/graphql-transformer-interfaces@^1.14.7":
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/@aws-amplify/graphql-transformer-interfaces/-/graphql-transformer-interfaces-1.14.7.tgz#20dbe66f30378433087afe83ec684f096f300bc2"
+  integrity sha512-UCpkRoYbt+GeZVnLSpasH96QZ0AOiZ59eXJWatMoRANMFbREytCP4xN/AyBV3MLEuWidAFpOXVB9e9TfLST5rQ==
   dependencies:
     "@aws-cdk/aws-appsync" "~1.124.0"
     "@aws-cdk/aws-cloudwatch" "~1.124.0"
@@ -673,9 +673,9 @@
   integrity sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==
 
 "@types/node@^16.9.2":
-  version "16.11.47"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.47.tgz#efa9e3e0f72e7aa6a138055dace7437a83d9f91c"
-  integrity sha512-fpP+jk2zJ4VW66+wAMFoBJlx1bxmBKx4DUFf68UHgdGCOuyUTDlLWqsaNPJh7xhNDykyJ9eIzAygilP/4WoN8g==
+  version "16.11.58"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.58.tgz#0a3698dee3492617a8d5fe7998d18d7520b63026"
+  integrity sha512-uMVxJ111wpHzkx/vshZFb6Qni3BOMnlWLq7q9jrwej7Yw/KvjsEbpxCCxw+hLKxexFMc8YmpG8J9tnEe/rKsIg==
 
 acorn-walk@^8.1.1, acorn-walk@^8.2.0:
   version "8.2.0"
@@ -704,16 +704,16 @@ ajv@^6.12.6:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-amplify-cli-core@2.12.0:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/amplify-cli-core/-/amplify-cli-core-2.12.0.tgz#d1e7a6196c364efacb656642b6e703091530f09e"
-  integrity sha512-X1Lba/1/HzjPu3RpIdGXjdYwufC7srsGc2jwn0VnGDz36+A5rht+fcHtI+hO4jr27EUTHu3te2EL2XeQxzniyg==
+amplify-cli-core@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/amplify-cli-core/-/amplify-cli-core-3.0.0.tgz#44a5768c2b8beaf56d805d099af9241ebfc879f8"
+  integrity sha512-0odc4IeyrqlCYCJdvpNnpTkTZr/sf/saEnjGc307UwmSr0B8FR+z94mCzQMvsjDU92B7wTpQDGkWwHPwBEonTA==
   dependencies:
-    "@aws-amplify/graphql-transformer-core" "^0.17.9"
-    "@aws-amplify/graphql-transformer-interfaces" "^1.14.6"
+    "@aws-amplify/graphql-transformer-core" "^0.17.11"
+    "@aws-amplify/graphql-transformer-interfaces" "^1.14.7"
     ajv "^6.12.6"
     amplify-cli-logger "1.2.0"
-    amplify-prompts "2.2.0"
+    amplify-prompts "2.3.0"
     chalk "^4.1.1"
     ci-info "^2.0.0"
     cloudform-types "^4.2.0"
@@ -746,10 +746,10 @@ amplify-cli-shared-interfaces@1.1.0:
   resolved "https://registry.yarnpkg.com/amplify-cli-shared-interfaces/-/amplify-cli-shared-interfaces-1.1.0.tgz#105c8645c50bb469272badf2501505793c3974de"
   integrity sha512-lN5Y4PfyY5SSCZLxRSfv3qhYYSEwEsFG9T+SbQIf05o6Yfim93Xy9f+1pAAlGc3f/HWjEqdegAH3HG496/BGeg==
 
-amplify-prompts@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/amplify-prompts/-/amplify-prompts-2.2.0.tgz#288a52ee990eb19a51eed28c20bd43703980ec78"
-  integrity sha512-JZv9GTVz3//s8QlhNBZRuYcUCoxdAEJU6q2tivl2hN0XK3pckeofaXqv6Fi8e9c8NfUyA/u+JVRR7vE4QIMtyw==
+amplify-prompts@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/amplify-prompts/-/amplify-prompts-2.3.0.tgz#7449638bccb17729767d3bc7a0a2282af3a18d80"
+  integrity sha512-gUiCNhP1yv++qGGRQby3fs2VUBJK7C9Pg3IxPuLQ0CAbqNk0izHrGUEYFunmOF7W2InEgbZjUfjE6IhyeS7dwg==
   dependencies:
     amplify-cli-shared-interfaces "1.1.0"
     chalk "^4.1.1"
@@ -973,9 +973,9 @@ concat-map@0.0.1:
   integrity sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==
 
 constructs@^3.3.125, constructs@^3.3.69:
-  version "3.4.63"
-  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.4.63.tgz#2a5a523c43834184d21b248ab6f8b35f7157873d"
-  integrity sha512-4A+8nr86Ls1v1a6uOVan7ohy7PNoAo17ZDkXQO8Qqa5g3GgfFAI97OI2zdE5j99ZF8utjVHvTL4+Ra4YaUe8nw==
+  version "3.4.93"
+  resolved "https://registry.yarnpkg.com/constructs/-/constructs-3.4.93.tgz#1fc5389bb5f8e023fe2d4e98cf05765077072be9"
+  integrity sha512-24Qmfb/7GGpV8ha4HfEgnAvj1C4rk3iQNZnDGsu9wXCNNBFYj8XNrJ7R4EJv3Ow2h2VzS1RgSHHTMUz/VZN2Xw==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -1151,9 +1151,9 @@ fast-deep-equal@^3.1.1:
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
 
 fast-glob@^3.2.9:
-  version "3.2.11"
-  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.11.tgz#a1172ad95ceb8a16e20caa5c5e56480e5129c1d9"
-  integrity sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==
+  version "3.2.12"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.12.tgz#7f39ec99c2e6ab030337142da9e0c18f37afae80"
+  integrity sha512-DVj4CQIYYow0BlaelwK1pHl5n5cRSJfM60UA0zK891sVInoPri2Ekj7+e1CT3/3qxXenpI+nBBmQAcJPJgaj4w==
   dependencies:
     "@nodelib/fs.stat" "^2.0.2"
     "@nodelib/fs.walk" "^1.2.3"
@@ -2135,9 +2135,9 @@ typescript-json-schema@~0.52.0:
     yargs "^17.1.1"
 
 typescript@^4.2.4:
-  version "4.7.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
-  integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.3.tgz#d59344522c4bc464a65a730ac695007fdb66dd88"
+  integrity sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==
 
 typescript@~4.4.4:
   version "4.4.4"
@@ -2182,9 +2182,9 @@ v8-compile-cache-lib@^3.0.1:
   integrity sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==
 
 vm2@^3.9.8:
-  version "3.9.10"
-  resolved "https://registry.yarnpkg.com/vm2/-/vm2-3.9.10.tgz#c66543096b5c44c8861a6465805c23c7cc996a44"
-  integrity sha512-AuECTSvwu2OHLAZYhG716YzwodKCIJxB6u1zG7PgSQwIgAlEaoXH52bxdcvT8GkGjnYK7r7yWDW0m0sOsPuBjQ==
+  version "3.9.11"
+  resolved "https://registry.yarnpkg.com/vm2/-/vm2-3.9.11.tgz#a880f510a606481719ec3f9803b940c5805a06fe"
+  integrity sha512-PFG8iJRSjvvBdisowQ7iVF580DXb1uCIiGaXgm7tynMR1uTBlv7UJlB1zdv5KJ+Tmq1f0Upnj3fayoEOPpCBKg==
   dependencies:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
@@ -2236,10 +2236,11 @@ winston-transport@^4.4.0, winston-transport@^4.5.0:
     triple-beam "^1.3.0"
 
 winston@^3.3.3:
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/winston/-/winston-3.8.1.tgz#76f15b3478cde170b780234e0c4cf805c5a7fb57"
-  integrity sha512-r+6YAiCR4uI3N8eQNOg8k3P3PqwAm20cLKlzVD9E66Ch39+LZC+VH1UKf9JemQj2B3QoUHfKD7Poewn0Pr3Y1w==
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/winston/-/winston-3.8.2.tgz#56e16b34022eb4cff2638196d9646d7430fdad50"
+  integrity sha512-MsE1gRx1m5jdTTO9Ld/vND4krP2To+lgDoMEHGGa4HIlAUyXJtfc7CxQcGXVyz2IBpw5hbFkj2b/AtUdQwyRew==
   dependencies:
+    "@colors/colors" "1.5.0"
     "@dabh/diagnostics" "^2.0.2"
     async "^3.2.3"
     is-stream "^2.0.0"

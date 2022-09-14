@@ -124,7 +124,6 @@ REACT_APP_MINT_API_KEY=<your api key here>
 
 ## Amplify Build settings
 * Use [amplify.yml](examples/amplify.yml) for version after v1.3.2
-  * Note: Environment variables in the command to run Cypress tests must be set to your actual account values `CYPRESS_userPoolId=<your user pool Id> CYPRESS_clientId=<your user pool client Id>`
 
 
 
