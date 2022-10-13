@@ -110,10 +110,7 @@ export const fetchSignedLink = async objLink => {
     console.error(`Error fetching signedLink for ${filename}`);
     console.error(error);
   }
-  let success = false;
-  if (signedLink && signedLink.length) {
-    success = true;
-  }
+
   return { success: true, data: signedLink };
 };
 

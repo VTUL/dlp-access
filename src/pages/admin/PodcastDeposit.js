@@ -64,8 +64,6 @@ class PodcastDeposit extends Component {
 
   async loadPodcast() {
     let item;
-    let editableArchive = {};
-    let item_id = null;
     try {
       item = await getArchiveByIdentifier(this.props.identifier);
     } catch (e) {

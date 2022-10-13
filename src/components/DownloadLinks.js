@@ -6,13 +6,33 @@ const DownloadLinks = ({ title, links }) => {
   const [linkElements, setLinkElements] = useState([]);
 
   useEffect(() => {
-    createLinksSection();
-  }, [title, links]);
+    const createLinksSection = async () => {
+      let linksList = [];
+      for (const size in links) {
+        const signedLink = await fetchSignedLink(links[size]);
+        const fileName = new URL(links[size]).pathname.split("/").pop();
+        if (size && signedLink?.data?.length && fileName) {
+          linksList.push(
+            <li key={size}>
+              {size}: <a href={signedLink.data}>{fileName}</a>
+            </li>
+          );
+        }
+      }
+      setLinkElements(linksList.sort(sortLinks).reverse());
+    };
+    const init = async () => {
+      if (!linkElements.length) {
+        await createLinksSection();
+      }
+    };
+    init();
+  }, [title, links, linkElements.length]);
 
   const linksExist = () => {
     let exist = false;
     linkElements.forEach(link => {
-      if (link.type == "li") {
+      if (link.type === "li") {
         exist = true;
       }
     });
@@ -29,21 +49,6 @@ const DownloadLinks = ({ title, links }) => {
     return retVal;
   };
 
-  const createLinksSection = async () => {
-    let linksList = [];
-    for (const size in links) {
-      const signedLink = await fetchSignedLink(links[size]);
-      const fileName = new URL(links[size]).pathname.split("/").pop();
-      if (size && signedLink?.data?.length && fileName) {
-        linksList.push(
-          <li key={size}>
-            {size}: <a href={signedLink.data}>{fileName}</a>
-          </li>
-        );
-      }
-    }
-    setLinkElements(linksList.sort(sortLinks).reverse());
-  };
   let downloadLinks = null;
   if (linksExist()) {
     downloadLinks = (
