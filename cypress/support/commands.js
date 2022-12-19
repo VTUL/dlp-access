@@ -1,7 +1,7 @@
 const Auth = require ("aws-amplify").Auth;
 import "cypress-file-upload"
 import "cypress-localstorage-commands"; 
-import Amplify from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import config from "../../src/aws-exports";
 const username = "devtest"; 
 const password = Cypress. env("password"); 

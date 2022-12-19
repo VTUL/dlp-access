@@ -19,7 +19,7 @@ describe('archive_media_views: Archive audio player', () => {
     cy.visit('/archive/m69xyh01');
     cy.get('audio')
       .eq(0)
-      .should('have.id', 'player1_html5');
+      .should('have.id', 'player1');
   });
 });
 
@@ -28,7 +28,7 @@ describe('archive_media_views: Archive video player', () => {
     cy.visit('/archive/m70xyh12');
     cy.get('video')
       .eq(0)
-      .should('have.id', 'player1_html5')
+      .should('have.id', 'player1')
       .should('be.visible');
   });
   it('renders with img placeholder', () => {
@@ -49,11 +49,11 @@ describe('archive_media_views: Archive kaltura embed', () => {
 });
 
 describe('archive_media_views: Archive pdf embed', () => {
-  it('renders pdf file inside iframe', () => {
+  it('renders pdf file inside canvas', () => {
     cy.visit('http://localhost:3000/archive/m92xyh34').wait(1000);
-    cy.get('div#item-media-col > iframe', {timeout: 20000})
+    cy.get('#item-media-col > canvas', {timeout: 20000})
       .eq(0)
-      .should('have.class', 'pdf-viewer')
+      .should('have.id', 'pdf-canvas')
       .should('be.visible');
   });
 });

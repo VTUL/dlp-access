@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter } from "../../lib/WithRouter.js";
 import SiteTitle from "../../components/SiteTitle";
 import { fetchLanguages } from "../../lib/fetchTools";
 import { fetchSearchResults } from "../../lib/fetchTools";
@@ -41,7 +41,7 @@ class SearchLoader extends Component {
       );
     } else {
       const url = this.setParams(name, val);
-      this.props.history.push(`?${url}`);
+      this.props.navigate(`?${url}`);
     }
   };
 
@@ -174,20 +174,12 @@ class SearchLoader extends Component {
     });
   }
 
-  componentWillMount() {
-    this.unlisten = this.props.history.listen((location, action) => {
-      console.log("route change");
-    });
-  }
-
-  componentWillUnmount() {
-    this.unlisten();
-  }
-
   componentDidUpdate(prevProps) {
-    if (this.props.location !== prevProps.location) {
-      fetchLanguages(this, this.props.site, "name", this.loadItems);
-    }
+    if (
+      this.props.location.pathname !== prevProps.location.pathname ||
+      this.props.location.key !== prevProps.location.key) {
+        fetchLanguages(this, this.props.site, "name", this.loadItems);
+      }
   }
 
   componentDidMount() {

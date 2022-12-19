@@ -82,9 +82,10 @@ describe("admin_media_section_config: Displays and updates media section configu
     it("Clears values and doesn't render section", () => {
       cy.get("input[value='edit']").parent().click();
       cy.get("#clear-values").click();
-      cy.get("button.submit").contains("Update Config").click();
+      cy.get("button.submit").contains("Update Config").click().wait(1000);
 
-      cy.visit("/");
+      cy.visit("/").wait(1000);
+      cy.reload(true);
       cy.wait(5000);
       cy.get("div.media-section-wrapper", { timeout: 2000 }).should('not.exist');
       cy.visit("/siteAdmin");

@@ -69,7 +69,7 @@ describe("admin_page_sitepages_config: Displays and updates sitepages configurat
       cy.get("button#terms_assets_button")
         .click({ force: true });
       cy.wait(3000);
-      cy.get('#terms_assets_upload_message', { timeout: (10 * 1000) })
+      cy.get('#file_upload_results_message', { timeout: (10 * 1000) })
         .should('have.attr', 'style', 'color: green;')
         .invoke("text")
         .should("include", "uploaded successfully");
@@ -81,7 +81,7 @@ describe("admin_page_sitepages_config: Displays and updates sitepages configurat
       cy.get("button#terms_dataURL_button")
         .click({ force: true });
       cy.wait(3000);
-      cy.get('#terms_dataURL_upload_message', { timeout: (10 * 1000) })
+      cy.get('#file_upload_results_message', { timeout: (10 * 1000) })
         .should('have.attr', 'style', 'color: green;')
         .invoke("text")
         .should("include", "uploaded successfully");

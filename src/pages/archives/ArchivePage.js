@@ -202,7 +202,9 @@ class ArchivePage extends Component {
       display = <KalturaPlayer manifest_url={item.manifest_url} />;
     } else if (this.isPdfURL(item.manifest_url)) {
       display = (
-        <PDFViewer manifest_url={item.manifest_url} title={item.title} />
+        <canvas id="pdf-canvas">
+          <PDFViewer manifest_url={item.manifest_url} title={item.title} />
+        </canvas>
       );
     } else if (this.isObjURL(item.manifest_url)) {
       const texPath = item.manifest_url.substring(

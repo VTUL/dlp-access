@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { API, graphqlOperation } from "aws-amplify";
 import { getCollectionmap } from "../../graphql/queries";
-import TreeView from "@material-ui/lab/TreeView";
-import TreeItem from "@material-ui/lab/TreeItem";
-import SvgIcon from "@material-ui/core/SvgIcon";
+import TreeView from "@mui/lab/TreeView";
+import TreeItem from "@mui/lab/TreeItem";
+import SvgIcon from "@mui/material/SvgIcon";
 import { getTopLevelParentForCollection } from "../../lib/fetchTools";
 
 class SubCollectionsLoader extends Component {

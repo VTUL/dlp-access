@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import Tooltip from "@material-ui/core/Tooltip";
-import ReactHtmlParser from "react-html-parser";
+import { createTheme, ThemeProvider, StyledEngineProvider, adaptV4Theme } from "@mui/material/styles";
+import Tooltip from "@mui/material/Tooltip";
+import parse from "html-react-parser";
 
 import "../css/Citation.scss";
 
@@ -20,7 +20,7 @@ class Citation extends Component {
   }
 
   render() {
-    const theme = createTheme({
+    const theme = createTheme(adaptV4Theme({
       overrides: {
         MuiTooltip: {
           tooltip: {
@@ -33,7 +33,7 @@ class Citation extends Component {
           }
         }
       }
-    });
+    }));
     const redirect = this.redirect_url();
 
     return (
@@ -43,21 +43,23 @@ class Citation extends Component {
         <div className="permanent-link">
           <div className="link-label">
             Permanent Link:
-            <MuiThemeProvider theme={theme}>
-              <Tooltip
-                title="Use this link for citations in publications and presentations to ensure consistent access in the future."
-                arrow
-                placement="top"
-                tabIndex="0"
-              >
-                <span className="help-icon">
-                  <i className="fas fa-question-circle"></i>
-                </span>
-              </Tooltip>
-            </MuiThemeProvider>
+            <StyledEngineProvider injectFirst>
+              <ThemeProvider theme={theme}>
+                <Tooltip
+                  title="Use this link for citations in publications and presentations to ensure consistent access in the future."
+                  arrow
+                  placement="top"
+                  tabIndex="0"
+                >
+                  <span className="help-icon">
+                    <i className="fas fa-question-circle"></i>
+                  </span>
+                </Tooltip>
+              </ThemeProvider>
+            </StyledEngineProvider>
           </div>
           <div className="link-text">
-            {ReactHtmlParser(
+            {parse(
               `<a href="${redirect}/${this.props.item.custom_key}">${redirect}/${this.props.item.custom_key}</a>`
             )}
           </div>

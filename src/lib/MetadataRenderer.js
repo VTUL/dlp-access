@@ -1,7 +1,7 @@
 import React from "react";
 import qs from "query-string";
 import "../css/ListPages.scss";
-import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import * as sanitizeHtml from "sanitize-html";
 
 export function cleanHTML(content, type) {
@@ -153,10 +153,11 @@ export function cleanHTML(content, type) {
     options = null;
   }
   let cleaned = options
-    ? ReactHtmlParser(sanitizeHtml(content, options))
-    : ReactHtmlParser(sanitizeHtml(content));
+    ? parse(sanitizeHtml(content, options))
+    : parse(sanitizeHtml(content));
   return cleaned;
 }
+
 
 export function labelAttr(attr, filter, languages) {
   if (attr === "archive") return "Item";
@@ -175,6 +176,10 @@ export function getCategory(item) {
 
 export function arkLinkFormatted(customKey) {
   return customKey?.split("/")?.pop();
+}
+
+export function htmlParsedValue(value) {
+  return value.includes("<a href=") ? parse(value) : value;
 }
 
 export function titleFormatted(item, category) {
@@ -290,7 +295,7 @@ function textFormat(item, attr, languages, collectionCustomKey, site) {
     } catch (error) {
       console.log("Redirect url not defined in site config.");
     }
-    return ReactHtmlParser(
+    return parse(
       `<a href="${redirect}/${item.custom_key}">${redirect}/${item.custom_key}</a>`
     );
   } else if (attr === "description") {

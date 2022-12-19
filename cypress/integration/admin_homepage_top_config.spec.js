@@ -53,8 +53,8 @@ describe("admin_homepage_top_config: Update Homepage fields and revert", functio
     const imgPath = "sitecontent/cover_image1.jpg";
     cy.get("input[type=file]").eq(0).attachFile(imgPath).trigger('change', { force: true });
     cy.get(".static-image > div.fileUploadField > button.uploadButton")
-      .click({ force: true });
-    cy.get('[data-test="upload-message"]', { timeout: 5000 })
+      .click({ force: true }).wait(5000);
+    cy.get('#file_upload_results_message', { timeout: 5000 })
       .should('have.attr', 'style', 'color: green;')
       .invoke("text")
       .should("include", "uploaded successfully");

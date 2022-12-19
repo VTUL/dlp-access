@@ -20,9 +20,9 @@ function route(site, key, path, PageComponent, childKey = null) {
       key={elemKey}
       path={path}
       exact
-      render={props => (
+      element={
         <PageComponent site={site} parentKey={key} childKey={childKey} />
-      )}
+      }
     />
   );
 }

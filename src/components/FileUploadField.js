@@ -156,7 +156,7 @@ class FileUploadField extends Component {
     }
     return (
       <p
-        id={`${this.props.input_id}_upload_message`}
+        id={`file_upload_results_message`}
         style={{ color: color }}
         data-test="upload-message"
       >

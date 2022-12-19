@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter } from "../lib/WithRouter.js";
 import qs from "query-string";
 import { labelAttr } from "../lib/MetadataRenderer";
 
@@ -9,7 +9,7 @@ class SearchBar extends Component {
   state = {
     field: this.props.field,
     q: this.props.q
-  };
+  };  
 
   fields = ["title", "description", "all"];
 
@@ -43,10 +43,10 @@ class SearchBar extends Component {
       ...this.props.filters
     };
     try {
-      if (window.location.pathname === "/") {
-        window.location.href = `/search?${qs.stringify(parsedObject)}`;
+      if (this.props.location.pathname === "/") {
+        // window.location.href = `/search?${qs.stringify(parsedObject)}`;
       } else {
-        this.props.history.push({
+        this.props.navigate({
           pathname: "/search",
           search: `?${qs.stringify(parsedObject)}`,
           state: parsedObject
@@ -83,7 +83,7 @@ class SearchBar extends Component {
           id="search"
           placeholder="Search by keyword, title, description"
           onChange={this.updateQuery}
-          onKeyPress={this.onKeyPress}
+          onKeyDown={this.onKeyPress}
         />
       </div>
     );
