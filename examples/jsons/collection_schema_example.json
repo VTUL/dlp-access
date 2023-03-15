@@ -1,0 +1,69 @@
+{
+ "id": "84f616e8-cc3f-49b1-8063-5f0a1ea6b8b3",
+ "belongs_to": [
+  "this is a string"
+ ],
+ "bibliographic_citation": "this is a string",
+ "circa": "this is a string",
+ "collection_category": "this is a string",
+ "collectionmap_id": "this is a string",
+ "collectionOptions": {
+  "webFeed": "this is a string",
+  "podcast_links": [
+    "this is a string"
+   ]
+ },
+ "create_date": "this is a string",
+ "createdAt": "2022-02-07T15:10:28.657Z",
+ "creator": [
+  "this is a string"
+ ],
+ "custom_key": "this is a string",
+ "description": [
+   "this is a string"
+ ],
+ "display_date": "this is a string",
+ "end_date": "this is a string",
+ "explicit_content": false,
+ "heirarchy_path": [
+  "this is a string"
+ ],
+ "identifier": "this_is_a_string",
+ "language": [
+  "this is a string"
+ ],
+ "location": [
+    "this is a string"
+ ],
+ "spatial": [
+   "this is a string"
+],
+ "modified_date": "this is a string",
+ "ownerinfo": {
+  "email": "this is a string",
+  "name": "this is a string"
+ },
+ "parent_collection": [
+    "this is a string"
+ ],
+ "provenance": [
+    "this is a string"
+ ],
+ "related_url": [
+  "this is a string"
+ ],
+ "rights_holder": "this is a string",
+ "rights_statement": "this is a string",
+ "source": [
+    "this is a string"
+ ],
+ "start_date": "this is a string",
+ "subject": [
+    "this is a string"
+ ],
+ "thumbnail_path": "this is a string",
+ "title": "this is a string",
+ "updatedAt": "2022-02-07T21:35:04.267Z",
+ "visibility": false,
+ "__typename": "Collection"
+}

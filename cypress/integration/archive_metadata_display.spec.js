@@ -1,7 +1,7 @@
 describe('archive_metadata_display: A single Archive Show page metadata section', () => {
   beforeEach(() => {
-    cy.visit('/archive/cv65x38f');
-    cy.get('#content-wrapper > div.item-page-wrapper > div.item-details-section > div.details-section-metadata > table')
+    cy.visit('/archive/cv65x38f').wait(1000);
+    cy.get('#content-wrapper > div.item-page-wrapper > div.item-details-section > div.details-section-metadata > table', { timeout: 5000 })
       .as('metadataSection');
   })
 

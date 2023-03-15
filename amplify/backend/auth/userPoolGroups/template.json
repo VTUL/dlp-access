@@ -869,5 +869,5 @@
       }
     }
   },
-  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.0.0\",\"stackType\":\"auth-Cognito-UserPool-Groups\",\"metadata\":{}}"
+  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"11.0.1\",\"stackType\":\"auth-Cognito-UserPool-Groups\",\"metadata\":{}}"
 }

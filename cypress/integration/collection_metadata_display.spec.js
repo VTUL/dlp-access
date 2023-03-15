@@ -1,8 +1,8 @@
 describe('collection_metadata_display: A single Collection Show page metadata section', () => {
   beforeEach(() => {
-    cy.visit('/collection/vb765t25demo');
-    cy.get('#content-wrapper')
-      .find('div.details-section-content-grid > table')
+    cy.visit('/collection/vb765t25demo').wait(1000);
+    cy.get('#content-wrapper', {timeout: 5000})
+      .find('div.details-section-content-grid > table', {timeout: 5000})
       .as('metadataSection');
   })
 

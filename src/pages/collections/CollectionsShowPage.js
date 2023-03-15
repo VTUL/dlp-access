@@ -44,7 +44,9 @@ class CollectionsShowPage extends Component {
       order: "ASC",
       limit: 1,
       filter: {
-        collection_category: { eq: process.env.REACT_APP_REP_TYPE },
+        collection_category: {
+          eq: process.env.REACT_APP_REP_TYPE.toLowerCase()
+        },
         visibility: { eq: true },
         custom_key: {
           matchPhrase: customKey

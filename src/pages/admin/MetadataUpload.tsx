@@ -1,9 +1,7 @@
-import { FC, ChangeEvent, useContext, useState } from "react";
-import SiteContext from "./SiteContext";
+import { FC, ChangeEvent, useState } from "react";
 import ContentUpload from "./ContentUpload";
 
 export const MetadataUpload: FC = () => {
-  const siteContext = useContext(SiteContext);
   const [recordType, setRecordType] = useState<String>("collection");
 
   const typeChangeHandler = (event: ChangeEvent<HTMLInputElement>): void => {

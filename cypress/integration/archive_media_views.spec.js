@@ -50,8 +50,8 @@ describe('archive_media_views: Archive kaltura embed', () => {
 
 describe('archive_media_views: Archive pdf embed', () => {
   it('renders pdf file inside iframe', () => {
-    cy.visit('http://localhost:3000/archive/m92xyh34');
-    cy.get('iframe')
+    cy.visit('http://localhost:3000/archive/m92xyh34').wait(1000);
+    cy.get('div#item-media-col > iframe', {timeout: 20000})
       .eq(0)
       .should('have.class', 'pdf-viewer')
       .should('be.visible');

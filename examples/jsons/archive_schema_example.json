@@ -1,0 +1,113 @@
+{
+ "id": "3afbef8d-ed06-418b-be72-c61ec2d958fb",
+ "alternative": ["this is a string"],
+ "archiveOptions": {
+  "audioTranscript": "this is a string",
+  "derivatives": {
+   "downloads": {
+    "lg": "this is a string",
+    "md": "this is a string",
+    "sm": "this is a string"
+   }
+  },
+  "episodeNumber": "this is a string",
+  "seasonNumber": "this is a string",
+  "sourceLink": "this is a string",
+  "sourceText": "this is a string"
+ },
+ "basis_of_record": ["this is a string"],
+ "belongs_to": [
+  "this is a string"
+ ],
+ "bibliographic_citation": "this is a string",
+ "circa": "this is a string",
+ "collection": "this is a string",
+ "conforms_to": ["this is a string"],
+ "contributor": [
+  "this is a string"
+ ],
+ "coverage": ["this is a string"],
+ "createdAt": "2020-06-17T15:28:29.000Z",
+ "create_date": "this is a string",
+ "created": ["this is a string"],
+ "creator": [
+  "this is a string"
+ ],
+ "custom_key": "this is a string",
+ "date": ["this is a string"],
+ "description": [
+    "this is a string"
+ ],
+ "display_date": "this is a string",
+ "end_date": "this is a string",
+ "explicit": false,
+ "extent": "this is a string",
+ "format": [
+  "this is a string"
+ ],
+ "has_format": ["this is a string"],
+ "has_part": ["this is a string"],
+ "has_version": ["this is a string"],
+ "heirarchy_path": [
+  "this is a string"
+ ],
+ "identifier": "this_is_a_string",
+ "is_format_of": ["this is a string"],
+ "is_version_of": ["this is a string"],
+ "item_category": "Default",
+ "language": [
+  "en"
+ ],
+ "license": ["this is a string"],
+ "location": [
+  "this is a string"
+ ],
+ "manifest_file_characterization": {
+  "duration": "this is a string",
+  "name": "this is a string",
+  "size": 11100485,
+  "type": "this is a string"
+ },
+ "manifest_url": "this is a string",
+ "medium": [
+  "this is a string"
+ ],
+ "modified_date": "this is a string",
+ "other_identifier": ["this is a string"],
+ "parent_collection": [
+  "this is a string"
+ ],
+ "provenance": [
+  "this is a string"
+ ],
+ "publisher": ["this is a string"],
+ "reference": [
+  "this is a string"
+ ],
+ "related_url": [
+  "this is a string"
+ ],
+ "repository": [
+  "this is a string"
+ ],
+ "resource_type": [
+  "this is a string"
+ ],
+ "rights_holder": "this is a string",
+ "rights_statement": "this is a string",
+ "source": [
+  "this is a string"
+ ],
+ "start_date": "this is a string",
+ "subject": [
+  "this is a string"
+ ],
+ "tags": [
+  "this is a string"
+ ],
+ "temporal": ["this is a string"],
+ "thumbnail_path": "this is a string",
+ "title": "this is a string",
+ "updatedAt": "2021-01-19T02:27:02.510Z",
+ "visibility": false
+}

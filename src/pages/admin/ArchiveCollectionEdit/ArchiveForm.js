@@ -162,7 +162,7 @@ const ArchiveForm = React.memo(props => {
         });
       }
       if (!allCollections) {
-        const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+        const REP_TYPE = process.env.REACT_APP_REP_TYPE.toLowerCase();
         const allColl = await getAllCollections({
           filter: {
             collection_category: { eq: REP_TYPE }
@@ -557,7 +557,7 @@ const ArchiveForm = React.memo(props => {
         archiveDisplay.push(
           <a
             key="view_custom_key"
-            href={`/archive/${fullArchive.custom_key.split("/").pop()}`}
+            href={`/archive/${fullArchive.custom_key?.split("/")?.pop()}`}
           >
             View Item
           </a>

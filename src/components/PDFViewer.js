@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-const pdfjs = require("pdfjs-dist");
+import { Component } from "react";
+const pdfjs = require("pdfjs-dist/legacy/build/pdf.js");
 
 class PDFViewer extends Component {
   constructor(props) {

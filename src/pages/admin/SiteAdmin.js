@@ -37,10 +37,10 @@ class SiteAdmin extends Component {
       const data = await Auth.currentUserPoolUser();
       const groups = data.signInUserSession.accessToken.payload[
         "cognito:groups"
-      ].map(group => group.toLowerCase());
+      ]?.map(group => group.toLowerCase());
       this.setState({ groups: groups });
       this.setState({ userEmail: data.attributes.email });
-      const repo_type = process.env.REACT_APP_REP_TYPE;
+      const repo_type = process.env.REACT_APP_REP_TYPE.toLowerCase();
       if (groups && groups.indexOf(repo_type) !== -1) {
         this.setAuthorized(true);
       } else {

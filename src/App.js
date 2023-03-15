@@ -99,7 +99,6 @@ class App extends Component {
   }
 
   render() {
-    console.log("siteChanged", this.state.siteChanged);
     if (!this.state.isLoading && this.state.site) {
       this.setStyles();
       const customRoutes = buildRoutes(this.state.site);

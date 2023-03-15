@@ -15,30 +15,30 @@ describe('search_facet: Collapsible search filter field', () => {
   });
 
   it('displays the facet field while hiding the list of facet values', () => {
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(1) > div.facet-listing')
+    cy.get('div#sidebar div.facet-fields')
       .should('not.be.visible');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(1)')
+    cy.get('button#category')
       .invoke('text')
       .should('equal', 'Category');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(2)')
+    cy.get('button#creator')
       .invoke('text')
       .should('equal', 'Creator');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(3)')
+    cy.get('button#date')
       .invoke('text')
       .should('equal', 'Date');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(4)')
+    cy.get('button#format')
       .invoke('text')
       .should('equal', 'Format');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(5)')
+    cy.get('button#language')
       .invoke('text')
       .should('equal', 'Language');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
+    cy.get('button#spatial')
       .invoke('text')
-      .should('equal', 'Medium');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(7)')
+      .should('equal', 'Location');
+    cy.get('button#tags')
       .invoke('text')
       .should('equal', 'Tags');
-    cy.get('[data-cy=filter-collapsibles] > :nth-child(8)')
+    cy.get('button#type')
       .invoke('text')
       .should('equal', 'Type');
   });

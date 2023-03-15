@@ -52,7 +52,7 @@ class ArchivePage extends Component {
       order: "ASC",
       limit: 1,
       filter: {
-        item_category: { eq: process.env.REACT_APP_REP_TYPE },
+        item_category: { eq: process.env.REACT_APP_REP_TYPE.toLowerCase() },
         visibility: { eq: true },
         custom_key: {
           eq: `ark:/53696/${this.props.customKey}`
@@ -70,7 +70,6 @@ class ArchivePage extends Component {
 
       const collectionCustomKey = topLevelParentCollection.custom_key;
       const archiveSchema = this.buildArchiveSchema(item);
-
       this.setState({
         item: item,
         collectionCustomKey: collectionCustomKey,
@@ -115,7 +114,6 @@ class ArchivePage extends Component {
   isJsonURL(url) {
     return url.match(/\.(json)$/) != null;
   }
-
   isObjURL(url) {
     return url.match(/\.(obj|OBJ)$/) != null;
   }
@@ -199,13 +197,7 @@ class ArchivePage extends Component {
     } else if (this.isVideoURL(item.manifest_url)) {
       const track = this.buildTrack(item.manifest_url, item.thumbnail_path);
       tracks.push(track);
-      display = this.mediaElement(
-        item.manifest_url,
-        "video",
-        config,
-        tracks,
-        null
-      );
+      display = this.mediaElement(item.manifest_url, "video", config, tracks);
     } else if (this.isKalturaURL(item.manifest_url)) {
       display = <KalturaPlayer manifest_url={item.manifest_url} />;
     } else if (this.isPdfURL(item.manifest_url)) {

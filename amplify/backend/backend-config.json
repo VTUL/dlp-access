@@ -75,22 +75,6 @@
     }
   },
   "parameters": {
-    "AMPLIFY_api_collectionarchives_OpenSearchInstanceType": {
-      "usedBy": [
-        {
-          "category": "api",
-          "resourceName": "collectionarchives"
-        }
-      ]
-    },
-    "AMPLIFY_function_iawav2658176f3PostConfirmation_GROUP": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "iawav2658176f3PostConfirmation"
-        }
-      ]
-    },
     "AMPLIFY_function_iawav2658176f3PostConfirmation_deploymentBucketName": {
       "usedBy": [
         {

@@ -172,7 +172,7 @@ class BrowseCollectionsForm extends Component {
 
   editSort = (sortField, idx) => {
     return (
-      <section key={`sort_${idx}`}>
+      <section key={`sort_${idx}`} id={`${sortField.field}_sort_section`}>
         <p>Sort Field: {sortField.field}</p>
         <p>Sort Direction: {sortField.direction}</p>
         <div className="deletePageWrapper">

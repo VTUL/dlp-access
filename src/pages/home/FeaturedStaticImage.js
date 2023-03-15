@@ -38,10 +38,6 @@ class FeaturedStaticImage extends Component {
     }
   }
 
-  componentWillUnmount() {
-    this.fileGetter = null;
-  }
-
   render() {
     if (this.props.staticImage && this.state.featuredStatic) {
       return (

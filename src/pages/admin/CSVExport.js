@@ -5,7 +5,7 @@ import { API, graphqlOperation } from "aws-amplify";
 import * as queries from "../../graphql/queries.js";
 import { Checkbox, Button, Form } from "semantic-ui-react";
 
-const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+const REP_TYPE = process.env.REACT_APP_REP_TYPE.toLowerCase();
 
 const GetCollections = `query searchCollections(
   $filter: String

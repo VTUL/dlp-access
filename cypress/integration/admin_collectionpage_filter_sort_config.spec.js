@@ -102,7 +102,7 @@ describe("admin_collectionpage_filter_sort_config: Displays and updates browse c
 
     it("Removes the newly added sort field", () => {
       cy.get("input[value='edit']").parent().click();
-      cy.get("#content-wrapper > div > div > div > form > ul > section:nth-child(4)")
+      cy.get("#content-wrapper > div > div > div > form > ul > section#identifier_sort_section > div.deletePageWrapper > a.deletePage")
         .contains("Delete Sort Field")
         .click();
       cy.contains("Update Filter and Sort Fields").click();

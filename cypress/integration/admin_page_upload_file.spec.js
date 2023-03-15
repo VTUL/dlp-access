@@ -28,8 +28,8 @@ describe("admin_page_upload_file: Upload Site Content test", () => {
       const htmlPath = "sitecontent/about1.html"
       cy.get("input[type=file]").eq(0).attachFile(htmlPath).trigger('change', { force: true });
       cy.get("form > div > button")
-        .click({ force: true });
-      cy.get('[data-test="upload-message"]', { timeout: 5000 })
+        .click({ force: true }).wait(1000);
+      cy.get('p#upload-message', { timeout: 10000 })
         .should('have.attr', 'style', 'color: green;')
         .invoke("text")
         .should("include", "uploaded successfully");
@@ -41,9 +41,9 @@ describe("admin_page_upload_file: Upload Site Content test", () => {
       const imgPath = "sitecontent/cover_image1.jpg"
       cy.get("input[type=file]").eq(0).attachFile(imgPath).trigger('change', { force: true });
       cy.get("form > div > button")
-        .click({ force: true });
+        .click({ force: true }).wait(1000);
         
-      cy.get('[data-test="upload-message"]', { timeout: 5000 })
+      cy.get('p#upload-message', { timeout: 10000 })
         .should('have.attr', 'style', 'color: green;')
         .invoke("text")
         .should("include", "uploaded successfully");

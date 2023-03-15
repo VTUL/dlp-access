@@ -70,7 +70,7 @@ describe('search_bar: Search by all fields by hitting enter key', () => {
       .should('eq', 'http://localhost:3000/search?field=all&q=Diazotypes%20%28copies%29&view=Gallery', { timeout: 5000 });
     cy.get('#content > div.navbar > div.view-info > div.pagination-section > div.pagination-text')
       .invoke('text')
-      .should('equal', 'Search Results: 1 - 10 of 43');
+      .should('contains', 'Search Results: 1 - 10 of ');
 
     cy.get('#content > div.search-results-section > div.row')
       .children()

@@ -105,7 +105,11 @@ class ContentUpload extends Component {
       message = `${this.state.file.name} is uploaded successfully!`;
     }
     return (
-      <p style={{ color: color }} data-test="upload-message">
+      <p
+        style={{ color: color }}
+        id="upload-message"
+        data-test="upload-message"
+      >
         {message}
       </p>
     );

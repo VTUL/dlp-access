@@ -155,7 +155,6 @@ export function cleanHTML(content, type) {
   let cleaned = options
     ? ReactHtmlParser(sanitizeHtml(content, options))
     : ReactHtmlParser(sanitizeHtml(content));
-
   return cleaned;
 }
 
@@ -175,7 +174,7 @@ export function getCategory(item) {
 }
 
 export function arkLinkFormatted(customKey) {
-  return customKey.split("/").pop();
+  return customKey?.split("/")?.pop();
 }
 
 export function titleFormatted(item, category) {
@@ -189,7 +188,6 @@ export function titleFormatted(item, category) {
 }
 
 export function collectionSizeText(collection) {
-  const subCollections = parseInt(collection?.subCollection_total) || 0;
   const totalCollections = collection?.subCollection_total + 1;
   let archives = collection?.archives?.toString() || "0";
   return (

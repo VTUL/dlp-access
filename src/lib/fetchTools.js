@@ -181,7 +181,7 @@ export const fetchSearchResults = async (
   component,
   { filter, sort, limit, nextToken }
 ) => {
-  const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+  const REP_TYPE = process.env.REACT_APP_REP_TYPE.toLowerCase();
   let archiveFilter = {
     item_category: { eq: REP_TYPE },
     visibility: { eq: true }
@@ -413,10 +413,10 @@ export const fetchHeirarchyPathMembers = async collection => {
 };
 
 export const getSite = async () => {
-  const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+  const REP_TYPE = process.env.REACT_APP_REP_TYPE.toLowerCase();
   const apiData = await API.graphql({
     query: queries.siteBySiteId,
-    variables: { siteId: REP_TYPE.toLowerCase(), limit: 1 }
+    variables: { siteId: REP_TYPE, limit: 1 }
   });
   const {
     data: {
@@ -443,7 +443,7 @@ export const getPageContentById = async pageContentId => {
 };
 
 export const getArchiveByIdentifier = async identifier => {
-  const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+  const REP_TYPE = process.env.REACT_APP_REP_TYPE.toLowerCase();
   const apiData = await API.graphql({
     query: queries.archiveByIdentifier,
     variables: {
@@ -464,7 +464,7 @@ export const getArchiveByIdentifier = async identifier => {
 };
 
 export const getCollectionByIdentifier = async identifier => {
-  const REP_TYPE = process.env.REACT_APP_REP_TYPE;
+  const REP_TYPE = process.env.REACT_APP_REP_TYPE.toLowerCase();
   const apiData = await API.graphql({
     query: queries.collectionByIdentifier,
     variables: {

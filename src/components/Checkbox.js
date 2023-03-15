@@ -32,7 +32,7 @@ class Checkbox extends Component {
           )}
           onChange={this.props.onCheckboxChange}
           data-cy="input-filter-checkbox"
-          id={this.props.name}
+          id={this.props.name?.toLowerCase()?.replaceAll(" ", "_")}
           aria-labelledby={`${this.props.name}-label`}
         />
         <label htmlFor={this.props.name} id={`${this.props.name}-label`}>
