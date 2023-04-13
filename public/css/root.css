@@ -58,6 +58,7 @@ html {
   -ms-text-size-adjust: 100%;
   -ms-overflow-style: scrollbar;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  font-size: 1rem !important;
 }
 
 @-ms-viewport {
@@ -187,7 +188,7 @@ sup {
 
 a {
   color: var(--themeHighlightColor);
-  text-decoration: none;
+  text-decoration: none !important;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
@@ -4609,7 +4610,7 @@ input[type="button"].btn-block {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem !important;
 }
 
 .navbar>.container,
@@ -13882,7 +13883,7 @@ figure {
 @media screen and (min-width: 768px) {
   .gateway {
     display: block;
-    padding: 0 50px;
+    padding: 0 50px !important;
     background-color: transparent;
   }
 }
