@@ -20,7 +20,7 @@ jobs:
 
     - name: deploy PR preview with another(new) backend env
       if: contains(github.event.pull_request.labels.*.name, 'newbackendenv')
-      uses: yinlinchen/amplify-preview-actions@master
+      uses: actions/amplify-preview-actions@v1.1
       with:
         branch_name: ${{ steps.setenvname.outputs.setbranchname }}
         amplify_command: deploy
@@ -34,7 +34,7 @@ jobs:
 
     - name: deploy PR preview with current backend env
       if: ${{ !contains(github.event.pull_request.labels.*.name, 'newbackendenv') }}
-      uses: yinlinchen/amplify-preview-actions@master
+      uses: actions/amplify-preview-actions@v1.1
       with:
         branch_name: ${{ steps.setenvname.outputs.setbranchname }}
         amplify_command: deploy
