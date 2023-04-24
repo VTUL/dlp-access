@@ -23,7 +23,7 @@ jobs:
       uses: yinlinchen/amplify-preview-actions@master
       with:
         branch_name: ${{ steps.setenvname.outputs.setbranchname }}
-        amplify_command: deploy --force
+        amplify_command: deploy
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -37,7 +37,7 @@ jobs:
       uses: yinlinchen/amplify-preview-actions@master
       with:
         branch_name: ${{ steps.setenvname.outputs.setbranchname }}
-        amplify_command: deploy --force
+        amplify_command: deploy
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -45,4 +45,3 @@ jobs:
         AmplifyAppId: ${{ secrets.AmplifyAppId }}
         AWS_REGION: 'us-east-1'
         BackendEnvARN: ${{ secrets.BackendEnvARN }}
-
