@@ -17,6 +17,7 @@ import {
 import SocialButtons from "../../components/SocialButtons";
 
 import "../../css/CollectionsShowPage.scss";
+import { NotFound } from "../NotFound";
 
 const TRUNCATION_LENGTH = 600;
 
@@ -34,7 +35,8 @@ class CollectionsShowPage extends Component {
       creator: "",
       updatedAt: "",
       info: {},
-      titleList: []
+      titleList: [],
+      isError: false
     };
     this.onMoreLessClick = this.onMoreLessClick.bind(this);
   }
@@ -66,7 +68,7 @@ class CollectionsShowPage extends Component {
 
       this.setState(
         { collection: collection, collectionCustomKey: collectionCustomKey },
-        function() {
+        function () {
           const topLevelAttributes = [
             "title",
             "description",
@@ -83,6 +85,9 @@ class CollectionsShowPage extends Component {
       });
     } catch (error) {
       console.error(`Error fetching collection: ${customKey}`);
+      this.setState({
+        isError: true
+      });
     }
   }
 
@@ -103,7 +108,7 @@ class CollectionsShowPage extends Component {
 
   getHeadings() {
     let headings = JSON.parse(this.props.site.displayedAttributes);
-    headings = headings.collection.filter(obj => obj.field === "description");
+    headings = headings.collection.filter((obj) => obj.field === "description");
     return headings.length > 0 ? headings[0].label : headings;
   }
 
@@ -138,7 +143,7 @@ class CollectionsShowPage extends Component {
       this.state.collection,
       attributes
     );
-    this.setState(attributeResults, function() {
+    this.setState(attributeResults, function () {
       this.render();
     });
   }
@@ -195,7 +200,7 @@ class CollectionsShowPage extends Component {
       moreLess = (
         <span>
           <button
-            onClick={e => this.onMoreLessClick(section, e)}
+            onClick={(e) => this.onMoreLessClick(section, e)}
             className="more"
             type="button"
             aria-controls="collection-description"
@@ -204,7 +209,7 @@ class CollectionsShowPage extends Component {
             . . .[more]
           </button>
           <button
-            onClick={e => this.onMoreLessClick(section, e)}
+            onClick={(e) => this.onMoreLessClick(section, e)}
             className="less"
             type="button"
             aria-controls="collection-description"
@@ -230,7 +235,7 @@ class CollectionsShowPage extends Component {
     }
     let stateObj = {};
     stateObj[key] = truncated;
-    this.setState(stateObj, function() {
+    this.setState(stateObj, function () {
       this.render();
     });
   }
@@ -244,7 +249,7 @@ class CollectionsShowPage extends Component {
     if (this.state.titleList.length) {
       title +=
         "Collection Details for " +
-        this.state.titleList.map(elem => elem.title).join(", ");
+        this.state.titleList.map((elem) => elem.title).join(", ");
     }
     return title;
   }
@@ -313,6 +318,9 @@ class CollectionsShowPage extends Component {
   }
 
   render() {
+    if (this.state.isError) {
+      return <NotFound />;
+    }
     const options = JSON.parse(this.props.site.siteOptions);
     const viewOption = options.collectionPageSettings
       ? options.collectionPageSettings.viewOption

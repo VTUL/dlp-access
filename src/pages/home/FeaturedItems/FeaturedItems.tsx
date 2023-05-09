@@ -47,7 +47,7 @@ export const FeaturedItems: FC<Props> = ({ featuredItems, site }) => {
     };
   }, [startIndex, endIndex, multiplier]);
 
-  const handleClick = (group) => {
+  const handleClick = (group: number) => {
     let start = (group - 1) * multiplier;
     let end =
       start + multiplier < featuredItems.length

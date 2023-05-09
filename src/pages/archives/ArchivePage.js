@@ -30,6 +30,7 @@ import { DownloadLinks } from "../../components/DownloadLinks";
 import ReactGA from "react-ga4";
 
 import "../../css/ArchivePage.scss";
+import { NotFound } from "../NotFound";
 
 class ArchivePage extends Component {
   constructor(props) {
@@ -43,7 +44,8 @@ class ArchivePage extends Component {
       searchField: "title",
       view: "Gallery",
       info: {},
-      languages: null
+      languages: null,
+      isError: false
     };
   }
 
@@ -78,6 +80,9 @@ class ArchivePage extends Component {
       });
     } catch (error) {
       console.error(`Error fetching item: ${customKey}`);
+      this.setState({
+        isError: true
+      });
     }
   }
 
@@ -87,7 +92,7 @@ class ArchivePage extends Component {
     });
   };
 
-  setPage = page => {
+  setPage = (page) => {
     this.setState({ page: page });
   };
 
@@ -245,7 +250,7 @@ class ArchivePage extends Component {
   findResourceType() {
     if (
       this.state.item.type &&
-      this.state.item.type.find(item => item === "podcast")
+      this.state.item.type.find((item) => item === "podcast")
     ) {
       return "PodcastEpisode";
     } else {
@@ -259,7 +264,7 @@ class ArchivePage extends Component {
     const srcArray = [{ src: src, type: typeString }];
     let podcast = false;
     podcast = this.state.item.type
-      ? this.state.item.type.find(item => item === "podcast")
+      ? this.state.item.type.find((item) => item === "podcast")
       : false;
     return podcast !== "podcast" ? (
       <MediaElement
@@ -309,11 +314,14 @@ class ArchivePage extends Component {
 
   getHeadings() {
     let headings = JSON.parse(this.props.site.displayedAttributes);
-    headings = headings.archive.filter(obj => obj.field === "description");
+    headings = headings.archive.filter((obj) => obj.field === "description");
     return headings.length > 0 ? headings[0].label : headings;
   }
 
   render() {
+    if (this.state.isError) {
+      return <NotFound />;
+    }
     if (
       this.state.languages &&
       this.state.item &&
@@ -399,7 +407,7 @@ class ArchivePage extends Component {
                   <RenderItemsDetailed
                     keyArray={JSON.parse(this.props.site.displayedAttributes)[
                       "archive"
-                    ].filter(e => e.field !== "description")}
+                    ].filter((e) => e.field !== "description")}
                     item={this.state.item}
                     languages={this.state.languages}
                     collectionCustomKey={this.state.collectionCustomKey}

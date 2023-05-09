@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { Storage } from "aws-amplify";
 import { Route, Routes } from "react-router-dom";
-import { ThemeProvider, StyledEngineProvider, createTheme } from '@mui/material/styles';
+import {
+  ThemeProvider,
+  StyledEngineProvider,
+  createTheme
+} from "@mui/material/styles";
 import ScrollToTop from "./lib/ScrollToTop";
 import RouteListener from "./lib/RouteListener";
 import AnalyticsConfig from "./components/AnalyticsConfig";
@@ -14,7 +18,6 @@ import HomePage from "./pages/HomePage";
 import SiteAdmin from "./pages/admin/SiteAdmin";
 import PodcastDeposit from "./pages/admin/PodcastDeposit";
 
-
 import CollectionsListLoader from "./pages/collections/CollectionsListLoader";
 import CollectionsShowPage from "./pages/collections/CollectionsShowPage";
 
@@ -23,6 +26,7 @@ import ArchivePage from "./pages/archives/ArchivePage";
 import PreIngestCheck from "./pages/admin/ingestTools/PreIngestCheck";
 import { getSite } from "./lib/fetchTools";
 import { withRouter } from "./lib/WithRouter";
+import { NotFound } from "./pages/NotFound";
 
 import "./App.scss";
 
@@ -71,7 +75,7 @@ class App extends Component {
     this.setState({ paginationClick: event });
   }
 
-  siteChanged = changed => {
+  siteChanged = (changed) => {
     this.setState({ siteChanged: changed });
   };
 
@@ -85,12 +89,12 @@ class App extends Component {
 
   getCustomKeyFromURL = () => {
     return this.props.location.pathname.split("/").pop();
-  }
+  };
 
   componentDidUpdate() {
     if (this.state.siteChanged) {
       this.loadSite();
-      this.setState({siteChanged: false});
+      this.setState({ siteChanged: false });
     }
   }
 
@@ -101,7 +105,7 @@ class App extends Component {
 
   render() {
     const theme = createTheme();
-    if ( !this.state.isLoading && this.state.site && theme ) {
+    if (!this.state.isLoading && this.state.site && theme) {
       this.setStyles();
       const customRoutes = buildRoutes(this.state.site);
       return (
@@ -176,13 +180,14 @@ class App extends Component {
                   <Route
                     path="/podcastDeposit"
                     exact
-                    element={<PodcastDeposit/>}
+                    element={<PodcastDeposit />}
                   />
                   <Route
                     path="/siteAdmin/pre-ingest-check"
                     exact
-                    element={<PreIngestCheck/>}
+                    element={<PreIngestCheck />}
                   />
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </div>
             </main>
