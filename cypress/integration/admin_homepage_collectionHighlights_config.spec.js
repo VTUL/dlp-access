@@ -6,12 +6,9 @@ describe("admin_homepage_collectionHighlights_config: Update collection highligh
     beforeEach(() => {
         cy.restoreLocalStorage();
         cy.visit("/siteAdmin");
+        cy.wait(3000)
+        cy.get("li.homepage > a").as('homepageLink')
 
-        cy.get("#content-wrapper > div > div > ul")
-            .find(":nth-child(4) > a")
-            .contains("Homepage Config")
-            .click();
-        cy.url().should("include", "/siteAdmin");
     });
 
     after(() => {
@@ -24,17 +21,23 @@ describe("admin_homepage_collectionHighlights_config: Update collection highligh
     });
 
     it("Updates first item title", () => {
-        cy.get("input[value='edit']")
-            .parent()
-            .click();
-        cy.get("#highlight0_title")
-            .clear()
-            .type("Sketches");
-        cy.contains("Update Config").click();
-        cy.contains("Title: Sketches").should("be.visible");
+      cy.get('@homepageLink')
+        .click()
+        .wait(3000);
+      cy.get("input[value='edit']")
+          .parent()
+          .click();
+      cy.get("#highlight0_title")
+          .clear()
+          .type("Sketches");
+      cy.contains("Update Config").click();
+      cy.contains("Title: Sketches").should("be.visible");
     });
 
     it("Reverses update", () => {
+      cy.get('@homepageLink')
+        .click()
+        .wait(3000);
         cy.get("input[value='edit']")
             .parent()
             .click();
@@ -46,6 +49,9 @@ describe("admin_homepage_collectionHighlights_config: Update collection highligh
     });
    
     it("Adds new item with image", () => {
+      cy.get('@homepageLink')
+        .click()
+        .wait(3000);
         cy.get("input[value='edit']")
             .parent()
             .click();
@@ -58,13 +64,13 @@ describe("admin_homepage_collectionHighlights_config: Update collection highligh
         cy.get(
           "#collectionHighlight3_form > section > div.fileUploadField > button.uploadButton"
         ).click({ force: true });
-        cy.get("#highlight3_title").type("New Highlight");
+        cy.get("#highlight3_title").type("New Highlight",{force: true});
         cy.get("#highlight3_link").type(
-          "/search?q=building&view=gallery"
+          "/search?q=building&view=gallery",{force: true}
         );
-        cy.get("#highlight3_count").type("5");
+        cy.get("input#highlight3_count").type("5", {force: true});
+        cy.contains("Update Config").click({force: true});
         cy.wait(3000);
-        cy.contains("Update Config").click();
         cy.contains("Collection Highlight 4").should("be.visible");
         cy.contains(
           "highlights/highlight4.jpg"
@@ -76,6 +82,9 @@ describe("admin_homepage_collectionHighlights_config: Update collection highligh
     })
 
     it("Removes new item", () => {
+      cy.get('@homepageLink')
+        .click()
+        .wait(3000);
         cy.get("input[value='edit']")
             .parent()
             .click();

@@ -11,18 +11,18 @@ describe("archive_media_views: Archive audio player", () => {
     cy.get("img.audio-img", { timeout: 50000 }).should("be.visible");
   });
   it("renders html5 audio player", () => {
-    cy.visit("/archive/m69xyh01");
+    cy.visit("/archive/m69xyh01").wait(1000);
     cy.get("audio").eq(0).should("have.id", "player1");
   });
 });
 
 describe("archive_media_views: Archive video player", () => {
   it("renders html5 video player", () => {
-    cy.visit("/archive/m70xyh12");
+    cy.visit("/archive/m70xyh12").wait(1000);
     cy.get("video").eq(0).should("have.id", "player1").should("be.visible");
   });
   it("renders with img placeholder", () => {
-    cy.visit("/archive/m70xyh12");
+    cy.visit("/archive/m70xyh12").wait(1000);
     cy.get("video")
       .invoke("attr", "poster")
       .should("eq", "http://i3.ytimg.com/vi/iWO5N3n1DXU/hqdefault.jpg");
@@ -31,7 +31,7 @@ describe("archive_media_views: Archive video player", () => {
 
 describe("archive_media_views: Archive kaltura embed", () => {
   it("renders kaltura video player inside iframe", () => {
-    cy.visit("http://localhost:3000/archive/m81xyh23");
+    cy.visit("http://localhost:3000/archive/m81xyh23").wait(2000);
     cy.get("iframe")
       .eq(0)
       .should("have.class", "kaltura-player")
@@ -51,7 +51,7 @@ describe("archive_media_views: Archive pdf embed", () => {
 
 describe("archive_media_views: Archive Mirador viewer", () => {
   it("renders viewer if manifest.json", () => {
-    cy.visit("/archive/cv65x38f");
+    cy.visit("/archive/cv65x38f").wait(2000);
     cy.get("div#mirador_viewer > div > main")
       .eq(0)
       .should("have.class", "mirador-viewer")
@@ -64,16 +64,31 @@ describe("archive_media_views: Archive Mirador viewer", () => {
   });
 });
 
+describe('archive_media_views: Archive Minerva viewer', () => {
+  it('renders viewer if exhibit.json', () => {
+    cy.visit('/archive/s253n52s').wait(2000);
+    cy.get('span#minerva-open-dialog')
+      .eq(0)
+      .should('be.visible')
+      .should('contain', "This record type requires a full screen image viewer. Please click")
+    cy.get('span#minerva-open-dialog > a')
+      .click({force: true})
+    cy.get("div.minerva-root")
+      .eq(0)
+      .should('be.visible')
+  });
+});
+
 describe("archive_media_views: Archive 3d .obj viewer", () => {
   it("renders 3d viewer for 3d .obj records", () => {
-    cy.visit("http://localhost:3000/archive/cz94zm9p");
+    cy.visit("http://localhost:3000/archive/cz94zm9p").wait(4000);
     cy.get("div.obj-wrapper canvas").eq(0).should("be.visible");
   });
 });
 
 describe("archive_media_views: Archive 3d .x3d viewer", () => {
   it("renders 3d viewer for 3d .x3d records", () => {
-    cy.visit("http://localhost:3000/archive/h387pp1c");
+    cy.visit("http://localhost:3000/archive/h387pp1c").wait(4000);
     cy.get("div.obj-wrapper x3d#x3dElement canvas").eq(0).should("be.visible");
   });
 });

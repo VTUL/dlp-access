@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { API, Auth, Storage } from "aws-amplify";
 import * as mutations from "../graphql/mutations";
+import { v4 as uuidv4 } from "uuid";
 
 class FileUploadField extends Component {
   constructor(props) {
@@ -128,18 +129,28 @@ class FileUploadField extends Component {
       };
 
       const userInfo = await Auth.currentUserPoolUser();
+      let newID = uuidv4();
       let historyInfo = {
+        id: newID,
         groups:
           userInfo.signInUserSession.accessToken.payload["cognito:groups"],
         userEmail: userInfo.attributes.email,
         siteID: this.props.siteID,
         event: JSON.stringify(eventInfo)
       };
-      await API.graphql({
-        query: mutations.createHistory,
-        variables: { input: historyInfo },
-        authMode: "AMAZON_COGNITO_USER_POOLS"
-      });
+      try {
+        await API.graphql({
+          query: mutations.createHistory,
+          variables: { 
+            id: newID,
+            input: historyInfo },
+          authMode: "AMAZON_COGNITO_USER_POOLS"
+        });
+      } catch (error) {
+        console.error(error)
+        console.log("error creating history record")
+      }
+      
     } else {
       this.setState({ isUploaded: false });
     }

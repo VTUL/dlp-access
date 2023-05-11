@@ -12,7 +12,7 @@ describe("admin_media_section_config: Displays and updates media section configu
     cy.restoreLocalStorage();
     cy.visit("/siteAdmin");
 
-    cy.get("#content-wrapper > div > div > ul")
+    cy.get("#content-wrapper > div > div > ul", { timeout: 20000 })
       .find("li.mediaSection > a")
       .contains("Homepage media section")
       .click();

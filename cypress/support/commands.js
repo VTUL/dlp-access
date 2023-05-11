@@ -4,7 +4,7 @@ import "cypress-localstorage-commands";
 import { Amplify } from "aws-amplify";
 import config from "../../src/aws-exports";
 const username = "devtest"; 
-const password = Cypress. env("password"); 
+const password = Cypress.env("password"); 
 
 Amplify.configure(config)
 const awsconfig = { 

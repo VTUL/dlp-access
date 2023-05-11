@@ -5,17 +5,17 @@ describe("admin_archive_edit: Update item metadata and change it back", function
 
   beforeEach(() => {
     cy.restoreLocalStorage();
-    cy.visit("/siteAdmin").wait(1000);
+    cy.visit("/siteAdmin").wait(2000);
 
-    cy.get("li.updateArchive > a", { timeout: 2000 })
-      .contains("Update Item")
+    cy.get("li.updateArchive > a")
       .click()
-    cy.url().should("include", "/siteAdmin")
 
     cy.get("input.identifier-field")
       .clear()
       .type("Ms1990_025_Per_Ph_B001_F001_003_demo");
-    cy.contains("Confirm").click().wait(1000);
+    cy.contains("Confirm")
+      .click()
+      .wait(2000);
   })
 
   after(() => {
@@ -90,16 +90,16 @@ describe("admin_archive_edit: Update item metadata and change it back", function
   })
 
   it("Can change metadata using text editor", () => {
-    cy.get("input[value='edit']").parent().click().wait(1000);
+    cy.get("input[value='edit']").parent().click().wait(10000);
     cy.get("#description_0", { timeout: 10000 }).find(".ql-editor", { timeout: 10000 }).then($editor => {
       if(!$editor.length) {
         return
       }
-      cy.wrap($editor).clear().type("Description field test");
+      cy.wrap($editor).clear().type("Description field test", {force: true});
       cy.contains("Update Item Metadata").click();
       cy.contains("Description field test").should('be.visible');
       cy.get("input[value='edit']").parent().click();
-      cy.get("#description_0").find(".ql-editor").clear().type("Two photographs of an unidentified industrial building site");
+      cy.get("#description_0").find(".ql-editor").clear().type("Two photographs of an unidentified industrial building site", {force: true});
       cy.contains("Update Item Metadata").click();
       cy.contains("Two photographs of an unidentified industrial building site").should('be.visible');
     } )

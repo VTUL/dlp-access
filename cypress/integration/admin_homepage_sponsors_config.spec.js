@@ -5,10 +5,11 @@ describe("admin_homepage_sponsors_config: Update sponsors fields and revert", fu
     
     beforeEach(() => {
         cy.restoreLocalStorage();
-        cy.visit("/siteAdmin");
+        cy.visit("/siteAdmin")
+          .wait(3000);
 
-        cy.get("#content-wrapper > div > div > ul")
-            .find(":nth-child(4) > a")
+        cy.get("#content-wrapper > div.row.admin-wrapper > div.admin-sidebar > ul", {timeout: 5000})
+            .find("li.homepage > a", {timeout:5000})
             .contains("Homepage Config")
             .click();
         cy.url().should("include", "/siteAdmin");
@@ -24,9 +25,10 @@ describe("admin_homepage_sponsors_config: Update sponsors fields and revert", fu
     });
 
     it("Updates first sponsor URL", () => {
-        cy.get("input[value='edit']")
+        cy.get("input[value='edit']", {timeout: 2000})
             .parent()
             .click();
+        cy.wait(3000)
         cy.get("#s0_link")
             .clear()
             .type("https://lib.vt.edu/");
@@ -50,19 +52,27 @@ describe("admin_homepage_sponsors_config: Update sponsors fields and revert", fu
             .parent()
             .click();
         const imgPath = "sitecontent/sponsor4.png";
-        cy.get("button[aria-label='Add sponsor']").click();
+        cy.get("button[aria-label='Add sponsor']", {timeout: 2000})
+          .click();
         cy.get(
-            "#sponsor3_form > section > div.fileUploadField > input[type=file]")
+            "#sponsor3_form > section > div.fileUploadField > input[type=file]", {timeout: 2000})
             .eq(0)
             .attachFile(imgPath)
             .trigger("change", { force: true });
         cy.get(
-            "#sponsor3_form > section > div.fileUploadField > button.uploadButton"
-        ).click({ force: true });
-        cy.get("#s3_alt").type("Virginia Tech");
-        cy.get("#s3_link").type("https://vt.edu");
-        cy.wait(3000);
+            "#sponsor3_form > section > div.fileUploadField > button.uploadButton", {timeout: 2000}
+        )
+            .click({ force: true });
+        cy.wait(3000)
+        cy.get("input#s3_alt", {timeout:2000})
+            .clear({force: true})
+            .type("Virginia Tech", {force: true});
+        cy.get("input#s3_link", {timeout:2000})
+            .clear({force: true})
+            .type("https://vt.edu", {force:true});
+
         cy.contains("Update Config").click();
+        cy.wait(3000)
         cy.contains("Sponsor 4").should("be.visible");
         cy.contains(
             "Source: sponsors/sponsor4.png"

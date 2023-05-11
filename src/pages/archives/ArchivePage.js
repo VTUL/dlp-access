@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { API, graphqlOperation } from "aws-amplify";
 import PDFViewer from "../../components/PDFViewer";
 import { KalturaPlayer } from "../../components/KalturaPlayer";
+import { MinervaPlayer } from "../../components/MinervaPlayer";
 import MiradorViewer from "../../components/MiradorViewer";
 import { OBJModel } from "react-3d-viewer";
 import { MediaElement } from "../../components/MediaElement";
@@ -115,15 +116,22 @@ class ArchivePage extends Component {
     return url.match(/\.(pdf)$/) != null;
   }
 
-  isJsonURL(url) {
-    return url.match(/\.(json)$/) != null;
+  isMiradorURL(url) {
+    return url.match(/(\/manifest.json)$/) != null;
   }
+
+  isMinervaURL(url) {
+    return url.match(/(\/exhibit.json)$/) != null;
+  }
+
   isObjURL(url) {
     return url.match(/\.(obj|OBJ)$/) != null;
   }
+
   isMtlUrl(url) {
     return url.match(/\.(mtl)$/) != null;
   }
+
   isX3DUrl(url) {
     return url.match(/\.(x3d|X3D)$/) != null;
   }
@@ -158,8 +166,12 @@ class ArchivePage extends Component {
       document.getElementById("content-wrapper").offsetWidth - 50,
       720
     );
-    if (this.isJsonURL(item.manifest_url)) {
+    if (this.isMiradorURL(item.manifest_url)) {
       display = <MiradorViewer item={item} site={this.props.site} />;
+    } else if (this.isMinervaURL(item.manifest_url)) {
+      display = (
+        <MinervaPlayer item={item} />
+      )
     } else if (this.isImgURL(item.manifest_url)) {
       display = (
         <Thumbnail

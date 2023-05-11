@@ -114,6 +114,7 @@ class App extends Component {
             <RouteListener setPathname={this.setPathname} context={this} />
             <AnalyticsConfig analyticsID={this.state.site.analyticsID} />
             <ScrollToTop paginationClick={this.state.paginationClick} />
+            <div id="fullScreenWrapper">{""}</div>
             <Header
               site={this.state.site}
               location={window.location}
@@ -199,7 +200,7 @@ class App extends Component {
       return (
         <StyledEngineProvider injectFirst>
           <ThemeProvider theme={theme}>
-            <LoadingScreen />;
+            <LoadingScreen />
           </ThemeProvider>
         </StyledEngineProvider>
       );

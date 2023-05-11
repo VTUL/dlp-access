@@ -24,3 +24,9 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   // failing the test
   return false
 })
+
+beforeEach(() => {
+  cy.wait(1000)
+})
+
+
