@@ -186,5 +186,12 @@
         "Collectionmap": {}
       }
     }
+  },
+  "ingest": {
+    "categories": {
+      "auth": {
+        "iawav2658176f3": {}
+      }
+    }
   }
 }

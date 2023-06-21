@@ -24,7 +24,7 @@ import RelatedItems from "../../components/RelatedItems";
 import Citation from "../../components/Citation";
 import { Thumbnail } from "../../components/Thumbnail";
 import MtlElement from "../../components/MtlElement";
-import X3DElement from "../../components/X3DElement";
+import { X3DElement } from "../../components/X3DElement";
 import SocialButtons from "../../components/SocialButtons";
 import { DownloadLinks } from "../../components/DownloadLinks";
 import ReactGA from "react-ga4";
@@ -232,7 +232,7 @@ class ArchivePage extends Component {
     } else if (this.isX3DUrl(item.manifest_url)) {
       display = (
         <div className="obj-wrapper" style={{ width: `${width}px` }}>
-          <X3DElement url={item.manifest_url} frameSize={width} />
+          <X3DElement manifest_url={item.manifest_url} frame_size={width} site_id={this.props.site.siteId} />
         </div>
       );
     } else {
