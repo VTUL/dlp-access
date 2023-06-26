@@ -1,6 +1,6 @@
 import React from "react";
-import * as ReactDOMClient from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import * as ReactDOMClient from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import "./css/index.scss";
 import "./css/colors.scss";
 import App from "./App";
@@ -10,16 +10,17 @@ import { Amplify } from "aws-amplify";
 import config from "./aws-exports";
 
 import "bootstrap/dist/css/bootstrap.css";
+import "semantic-ui-css/semantic.min.css";
 
 Amplify.configure(config);
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
 
 root.render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>, 
+  </BrowserRouter>
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -3,8 +3,6 @@ import { NavLink } from "react-router-dom";
 import { Form } from "semantic-ui-react";
 import { input } from "./FormFields";
 
-import "semantic-ui-css/semantic.min.css";
-
 class CheckboxSelector extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +14,7 @@ class CheckboxSelector extends Component {
   }
 
   valueOptions = () => {
-    return this.props.values.map(val => ({
+    return this.props.values.map((val) => ({
       key: val,
       text: val,
       value: val
@@ -38,7 +36,7 @@ class CheckboxSelector extends Component {
   checkBoxes() {
     let boxes = null;
     if (this.props.values.length) {
-      boxes = this.props.values.map(value => {
+      boxes = this.props.values.map((value) => {
         return input(
           {
             outerClass: "checkbox-inline",

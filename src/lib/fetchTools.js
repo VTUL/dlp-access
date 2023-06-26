@@ -32,7 +32,7 @@ export const getFileContent = async (copyURL, type, component, attr) => {
       copyURL.indexOf("http") === 0 &&
       copyURL.indexOf(Storage._config.AWSS3.bucket) === -1
     ) {
-      if(component) {
+      if (component) {
         stateObj[stateAttr] = copyURL;
         component.setState(stateObj);
       }
@@ -548,6 +548,31 @@ export const getCollectionMap = async (mapIdentifier) => {
     return response.data.getCollectionmap.map_object;
   } catch (error) {
     console.error("Error fetching collection tree map");
+  }
+  return null;
+};
+
+export const getCollectionFromCustomKey = async (customKey) => {
+  const options = {
+    order: "ASC",
+    limit: 1,
+    filter: {
+      collection_category: {
+        eq: process.env.REACT_APP_REP_TYPE.toLowerCase()
+      },
+      visibility: { eq: true },
+      custom_key: {
+        matchPhrase: customKey
+      }
+    }
+  };
+  try {
+    const response = await API.graphql(
+      graphqlOperation(queries.searchCollections, options)
+    );
+    return response.data.searchCollections.items[0];
+  } catch (error) {
+    console.error(`Error fetching collection: ${customKey}`);
   }
   return null;
 };

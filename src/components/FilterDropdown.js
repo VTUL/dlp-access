@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 
-import "semantic-ui-css/semantic.min.css";
-
 class FilterDropdown extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +10,7 @@ class FilterDropdown extends Component {
   }
 
   valueOptions = () => {
-    return this.props.siteFilter.values.map(val => ({
+    return this.props.siteFilter.values.map((val) => ({
       key: val,
       text: val,
       value: val

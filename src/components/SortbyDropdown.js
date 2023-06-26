@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 
-import "semantic-ui-css/semantic.min.css";
-
 class SortbyDropdown extends Component {
   constructor(props) {
     super(props);
@@ -11,7 +9,7 @@ class SortbyDropdown extends Component {
     };
   }
 
-  formatField = field => {
+  formatField = (field) => {
     let name = field === "start_date" ? "Date" : field;
     let capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
     return capitalizedName;
@@ -28,7 +26,7 @@ class SortbyDropdown extends Component {
   };
 
   valueOptions = () => {
-    return this.props.siteSort.map(val => ({
+    return this.props.siteSort.map((val) => ({
       key: `${val.field} ${val.direction}`,
       text: `${this.formatField(val.field)} ${this.formatDirection(
         val.field,

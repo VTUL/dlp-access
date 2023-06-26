@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
 
-import "semantic-ui-css/semantic.min.css";
-
 class ResultsNumberDropdown extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +14,7 @@ class ResultsNumberDropdown extends Component {
       {
         selectedLimit: parseInt(result.value)
       },
-      function() {
+      function () {
         this.props.setLimit(event, result);
       }
     );
