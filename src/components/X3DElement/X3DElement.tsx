@@ -17,11 +17,11 @@ const X3DElement: FC<Props> = ({ manifest_url, frame_size, site_id }) => {
     const styles = document.createElement("link");
     styles.rel = "stylesheet";
     styles.type = "text/css";
-    styles.href = "https://www.x3dom.org/download/x3dom.css";
+    styles.href = "https://unpkg.com/x3dom/x3dom.css";
     document.head.appendChild(styles);
     
     const script = document.createElement("script");
-    script.src = "https://www.x3dom.org/download/x3dom.js";
+    script.src = "https://unpkg.com/x3dom/x3dom.js";
     script.async = true;
     script.onload = () => {setX3dLoaded(true)};
     document.head.appendChild(script);
@@ -63,4 +63,4 @@ const X3DElement: FC<Props> = ({ manifest_url, frame_size, site_id }) => {
     </section>
   );
 };
-export {X3DElement}
+export { X3DElement }

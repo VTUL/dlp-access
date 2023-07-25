@@ -5,7 +5,6 @@ import PDFViewer from "../../components/PDFViewer";
 import { KalturaPlayer } from "../../components/KalturaPlayer";
 import { MinervaPlayer } from "../../components/MinervaPlayer";
 import MiradorViewer from "../../components/MiradorViewer";
-import { OBJModel } from "react-3d-viewer";
 import { MediaElement } from "../../components/MediaElement";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
@@ -23,7 +22,6 @@ import { searchArchives } from "../../graphql/queries";
 import RelatedItems from "../../components/RelatedItems";
 import Citation from "../../components/Citation";
 import { Thumbnail } from "../../components/Thumbnail";
-import MtlElement from "../../components/MtlElement";
 import { X3DElement } from "../../components/X3DElement";
 import SocialButtons from "../../components/SocialButtons";
 import { DownloadLinks } from "../../components/DownloadLinks";
@@ -125,14 +123,6 @@ class ArchivePage extends Component {
     return url.match(/(\/exhibit.json)$/) != null;
   }
 
-  isObjURL(url) {
-    return url.match(/\.(obj|OBJ)$/) != null;
-  }
-
-  isMtlUrl(url) {
-    return url.match(/\.(mtl)$/) != null;
-  }
-
   isX3DUrl(url) {
     return url.match(/\.(x3d|X3D)$/) != null;
   }
@@ -212,22 +202,6 @@ class ArchivePage extends Component {
         <canvas id="pdf-canvas">
           <PDFViewer manifest_url={item.manifest_url} title={item.title} />
         </canvas>
-      );
-    } else if (this.isObjURL(item.manifest_url)) {
-      const texPath = item.manifest_url.substring(
-        0,
-        item.manifest_url.lastIndexOf("/") + 1
-      );
-      display = (
-        <div className="obj-wrapper" style={{ width: `${width}px` }}>
-          <OBJModel src={item.manifest_url} texPath={texPath} />
-        </div>
-      );
-    } else if (this.isMtlUrl(item.manifest_url)) {
-      display = (
-        <div className="obj-wrapper" style={{ width: `${width}px` }}>
-          <MtlElement mtl={item.manifest_url} />
-        </div>
       );
     } else if (this.isX3DUrl(item.manifest_url)) {
       display = (
