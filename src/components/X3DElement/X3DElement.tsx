@@ -12,7 +12,6 @@ const X3DElement: FC<Props> = ({ manifest_url, frame_size, site_id }) => {
   const [x3dLoaded, setX3dLoaded] = useState<boolean>(false);
 
   const url = useSignedLink(manifest_url, "3d", site_id);
-
   if (!x3dLoaded) {
     const styles = document.createElement("link");
     styles.rel = "stylesheet";
@@ -21,44 +20,49 @@ const X3DElement: FC<Props> = ({ manifest_url, frame_size, site_id }) => {
     document.head.appendChild(styles);
     
     const script = document.createElement("script");
-    script.src = "https://unpkg.com/x3dom/x3dom.js";
+    script.src = "https://unpkg.com/x3dom@1.8.2/x3dom.js";
     script.async = true;
     script.onload = () => {setX3dLoaded(true)};
     document.head.appendChild(script);
   }
 
-  if(!url) {
+  if(!url || !x3dLoaded) {
     return null;
   }
   return (
     <section>
       <div className="model-container x3d">
-        <x3d
-          id="x3dElement"
+      <x3d
+  id="x3dElement"
+  is="x3d"
+  width={`${frame_size}px`}
+  height={`${frame_size}px`}
+>
+  <scene is="x3d">
+    <navigationInfo is="x3d" type='"examine" "any"' explorationMode="all"  id="navType" ></navigationInfo>
+    <transform
+      is="x3d" 
+      bboxCenter='0,0,0' 
+      bboxSize='-1,-1,-1' 
+      center='0,0,0' 
+      render='true' 
+      rotation='0,0,0,0' 
+      scale='5,5,5' 
+      scaleOrientation='0,0,1,0' 
+      translation='0,0,0' 
+      visible='true' >
+        <inline
           is="x3d"
-          width={`${frame_size}px`}
-          height={`${frame_size}px`}
-        >
-          <scene is="x3d">
-            <navigationInfo is="x3d" type='"examine" "any"' explorationMode="all"  id="navType" ></navigationInfo>
-            <transform
-              is="x3d" 
-              bboxCenter='0,0,0' 
-              bboxSize='-1,-1,-1' 
-              center='0,0,0' 
-              render='true' 
-              rotation='0,0,0,0' 
-              scale='5,5,5' 
-              scaleOrientation='0,0,1,0' 
-              translation='0,0,0' 
-              visible='true' >
-                <inline
-                  is="x3d"
-                  url={url}
-                ></inline>
-            </transform>
-          </scene>
-        </x3d>
+          url={url}
+          mapDEFToID={null}
+          nameSpaceName={null}
+        ></inline>
+    </transform>
+  </scene>
+</x3d>
+
+
+
       </div>
     </section>
   );
