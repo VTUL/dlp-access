@@ -20,7 +20,8 @@ Archive Template:
 2. Only "title" and "identifier" metadata fields are required. Add other fields as desired.
 3. Save files as .csv with naming convention such as "collection\_metadata.csv" or "archive\_metadata.csv"
 4. Do not use whitespace in filenames. Use "-" or "\_" instead.
-5. Make "identifier" values unique by adding a namespace prefix and numbers/strings.
+5. Make "identifier" values unique by adding a namespace prefix and numbers/strings. <br>
+For example:  If collection category going to South West Virginia Archive "swva."   All identifiers for archives (items) should be prepended with the "collection_category" and the identifier of the collection to which it belongs, with the three values separated by an underscore and everything lowercase. So for this collection it's just swva_fchs_. For example an item in this collection will be swva_fchs_1950.001.001 and then the number could be used in a category other identifier 1950.001.
 6. Format "start\_date" as YYYY/MM/DD.
 7. Most fields support multiple values. Use "||" without quotes to separate.
 8. Refer to [wiki](https://github.com/VTUL/dlp-access/wiki/Metadata) for available metadata fields and usage notes.
