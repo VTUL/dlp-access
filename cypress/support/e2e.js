@@ -25,8 +25,8 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return false
 })
 
-beforeEach(() => {
-  cy.wait(1000)
-})
+// beforeEach(() => {
+//   cy.wait(1000)
+// })
 
 

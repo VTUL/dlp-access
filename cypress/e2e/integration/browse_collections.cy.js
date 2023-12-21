@@ -20,7 +20,7 @@ describe("browse_collections: Browse collections page", () => {
   });
 
   it("renders the first 10 collections by default number of results to be showed", () => {
-    cy.get(".gallery-item").should("have.length", 4);
+    cy.get(".gallery-item").should("have.length", 5);
   });
 
   it("renders the all the collections if increasing the number of results to be showed", () => {
@@ -29,6 +29,6 @@ describe("browse_collections: Browse collections page", () => {
       .click()
       .contains("50")
       .click();
-    cy.get(".gallery-item").should("have.length", 4);
+    cy.get(".gallery-item").should("have.length", 5);
   });
 });
