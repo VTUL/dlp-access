@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\pages",
+    "\\src\\pages\\home",
+    "\\src\\pages\\home\\CollectionHighlights",
+    "\\src\\pages\\home\\FeaturedItems"
+  ],
+  "SelectedNode": "\\src\\pages\\home\\FeaturedItems\\Controls.tsx",
+  "PreviewInSolutionExplorer": false
+}
