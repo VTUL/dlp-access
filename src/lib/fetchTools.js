@@ -418,6 +418,7 @@ export const fetchHeirarchyPathMembers = async (collection) => {
   return retVal;
 };
 
+// TODO: cache this response in browser local storage
 export const getSite = async () => {
   const REP_TYPE = process.env.REACT_APP_REP_TYPE.toLowerCase();
   const apiData = await API.graphql({

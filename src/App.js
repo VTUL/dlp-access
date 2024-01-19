@@ -47,6 +47,7 @@ class App extends Component {
     return pathName;
   }
 
+  // TODO: cache this response in browser local storage
   async loadSite() {
     const site = await getSite();
     this.setState({
