@@ -30,7 +30,7 @@ Rules:
 
 1. Filenames should not contain whitespace. Use "-" or "\_" instead.
 2. "Identifier" field values must be unique.
-3. "Start\_date" must be formatted as YYYY/MM/DD.
+3. "Start\_date" must be formatted as YYYY-MM-DD.
 4. Separate multiple values in a field with "||" without quotes.
 5. Only single values can be added to fields specified as single value.
 6. Follow any special formatting defined on the metadata fields [wiki](https://github.com/VTUL/dlp-access/wiki/Metadata).
