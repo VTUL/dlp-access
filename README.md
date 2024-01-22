@@ -16,9 +16,12 @@ We also have a [Live Demo](https://vtdlp-demo.cloud.lib.vt.edu/) site.
   * [Mirador](https://projectmirador.org/) viewer
   * PDF viewer
   * [x3dom](https://www.x3dom.org/) viewer
+* Submission Information Packet, SIP -The submission information package is provided to the Virginia Tech Digital Library Platform and will be used for the AIP,   
+  Archival Information Package (AIP). The format, requirements, metadata, etc. of the SIP is listed in the link below.   The content provided to the VT-DLP must 
+  meet the requirements as established by the Virginia Tech Digital Library and detailed in the Virginia Tech Digital Library Preservation Plan.
 * Metadata management
   * Collection creation and editing
-  * Archive (Item) creation and editing
+  * Item creation and editing
 * Configurable Home page and menus
   * Cover image
   * Featured items
@@ -173,4 +176,4 @@ If you plan to contribute new features, utility functions or extensions to the c
 To learn more about making a contribution, please see our [Contribution page](CONTRIBUTING.md).
 
 ## The Team
-DLP Access Website is currently maintained by [Yinlin Chen](https://github.com/yinlinchen), [Lee Hunter](https://github.com/whunter), [Tingting Jiang](https://github.com/tingtingjh), and [Andrea Waldren](https://github.com/andreaWaldren).
+DLP Access Website is currently maintained by [Lee Hunter](https://github.com/whunter), Yangkai Lin, and Astha Dhakal.

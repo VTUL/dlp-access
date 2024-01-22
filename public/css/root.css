@@ -5191,7 +5191,7 @@ input[type="button"].btn-block {
 
 .card-img {
   width: 100%;
-  border-radius: calc(2px - 1px);
+  /*border-radius: calc(2px - 1px);*/
 }
 
 .card-img-top {
