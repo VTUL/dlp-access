@@ -8,11 +8,11 @@ Instructions:
 
 1. Use the attached template spreadsheets to add metadata for collections and archives to upload to the repository.
 
-Collection Template:
+Archive Template:
 
 <img src="images/archive_template.png" width="80%"/>
 
-Archive Template:
+Collection Template:
 
 <img src="images/collection_template.png" width="80%"/>
 
@@ -22,7 +22,7 @@ Archive Template:
 4. Do not use whitespace in filenames. Use "-" or "\_" instead.
 5. Make "identifier" values unique by adding a namespace prefix and numbers/strings. <br>
 For example:  If collection category going to South West Virginia Archive "swva."   All identifiers for archives (items) should be prepended with the "collection_category" and the identifier of the collection to which it belongs, with the three values separated by an underscore and everything lowercase. So for this collection it's just swva_fchs_. For example an item in this collection will be swva_fchs_1950.001.001 and then the number could be used in a category other identifier 1950.001.
-6. Format "start\_date" as YYYY/MM/DD.
+6. Format "start\_date" as YYYY-MM-DD.
 7. Most fields support multiple values. Use "||" without quotes to separate.
 8. Refer to [wiki](https://github.com/VTUL/dlp-access/wiki/Metadata) for available metadata fields and usage notes.
 
@@ -42,7 +42,7 @@ Rules:
 3. Archive metadata: archive\_metadata.csv
 4. Digital object filenames: no whitespace, use hyphens or underscores if needed.
 5. Add your name or other identifier to metadata identifiers (e.g., JohnSmith\_T000001) to avoid duplicates.
-6. Format start\_date as YYYY/MM/DD.
+6. Format start\_date as YYYY-MM-DD.
 7. For multiple parent\_collection values, combine into one column separated by "||"
 8. Remove any notes from submitted files, only include metadata field values.
 9. Refer to the metadata fields [wiki](https://github.com/VTUL/dlp-access/wiki/VTDLP-Metadata-Elements) for available fields, data types, and usage guidance: [URL]
