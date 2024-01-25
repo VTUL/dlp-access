@@ -62,6 +62,7 @@
     "slick-carousel": "^1.8.1",
     "typescript": "^5.0.3",
     "uuid": "^9.0.0",
+    "universalviewer": "4.0.22",
     "x3dom": "^1.8.2"
   },
   "lint-staged": {

@@ -10,6 +10,8 @@ import { MediaElement } from "../../components/MediaElement";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
 import SiteTitle from "../../components/SiteTitle";
+import UniversalViewer from "../../components/UniversalViewer";
+
 import {
   RenderItemsDetailed,
   addNewlineInDesc
@@ -32,6 +34,7 @@ import { getDescriptionLabel } from "../../lib/getDescriptionLabel";
 
 import "../../css/ArchivePage.scss";
 import { NotFound } from "../NotFound";
+import AnotherMirador from "./AnotherMirador";
 
 class ArchivePage extends Component {
   constructor(props) {
@@ -315,15 +318,27 @@ class ArchivePage extends Component {
                 <Breadcrumbs category={"Archives"} record={this.state.item} />
               </nav>
             </div>
-            <div className="row">
-              <div
-                className="col-sm-12"
-                id="item-media-col"
-                role="region"
-                aria-label="Item media"
-              >
+            <div className="d-flex flex-column">
+              {/* <div id="item-media-col" role="region" aria-label="Item media">
                 {this.mediaDisplay(this.state.item)}
-              </div>
+              </div> */}
+              {this.isMiradorURL(this.state.item.manifest_url) && (
+                <>
+                  <div role="region" aria-label="Item media">
+                    {/* <MiradorViewer item={this.state.item} site={this.props.site} /> */}
+                    <AnotherMirador
+                      item={this.state.item}
+                      site={this.props.site}
+                    />
+                  </div>
+                  <div role="region" aria-label="Item media" className="pt-4">
+                    <UniversalViewer manifest={this.state.item.manifest_url} />
+                  </div>
+                  <div role="region" aria-label="Item media" className="pt-4">
+                    <UniversalViewer manifest="https://wellcomelibrary.org/iiif/b18035723/manifest" />
+                  </div>
+                </>
+              )}
             </div>
           </div>
           <div
