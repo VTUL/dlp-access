@@ -16,7 +16,7 @@ describe('search_facet: Collapsible search filter field', () => {
 
   it('displays the facet field while hiding the list of facet values', () => {
     cy.get('div#sidebar div.facet-fields')
-      .should('not.be.visible');
+      .should('not.exist');
     cy.get('button#category')
       .invoke('text')
       .should('equal', 'Category');
@@ -45,7 +45,7 @@ describe('search_facet: Collapsible search filter field', () => {
 
   it('displays the list of facet values after the facet field being expanded', () => {
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing')
-        .should('not.be.visible');
+        .should('not.exist');
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6)')
         .click();
     cy.get('[data-cy=filter-collapsibles] > :nth-child(6) > div > div.facet-listing', { timeout: 5000 })

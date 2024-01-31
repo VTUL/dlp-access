@@ -2,7 +2,7 @@ describe('show_all_less_buttons: Search Facet field with more than 5 selectable 
   beforeEach(() => {
     cy.visit('/search');
     cy.get('button#medium')
-      .click().wait(20000);
+      .click().wait(1000);
       
   });
   

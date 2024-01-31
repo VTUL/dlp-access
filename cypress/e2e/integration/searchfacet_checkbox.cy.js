@@ -2,7 +2,7 @@ describe("searchfacet_checkbox: Search facet checkboxes correspond to the facet 
   beforeEach(() => {
     cy.visit("/search");
     cy.get("button#medium").click();
-    cy.wait(20000);
+    cy.wait(1000);
   });
 
   it("allows to select one of the checkboxes", () => {

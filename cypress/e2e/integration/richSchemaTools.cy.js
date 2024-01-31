@@ -1,5 +1,5 @@
-import { buildHeaderSchema } from '../../src/lib/richSchemaTools';
-import { buildRichSchema } from "../../src/lib/richSchemaTools";
+import { buildHeaderSchema, buildRichSchema } from '../../../src/lib/richSchemaTools';
+// import { buildRichSchema } from "../../src/lib/richSchemaTools";
 
 describe("buildHeaderSchema: Create rich schema for about page", () => {
   it('About page schema', () => {
