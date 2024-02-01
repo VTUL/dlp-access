@@ -1,14 +1,14 @@
-import React, { FC, ReactElement, useState } from "react";
-import "../../css/Viewer.scss";
-import MinervaStory from "minerva-browser";
-import { Thumbnail } from "../Thumbnail";
-import { Link, useLocation } from "react-router-dom";
-import Modal from "react-modal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowUpRightFromSquare,
   faXmark
 } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import MinervaStory from "minerva-browser";
+import React, { FC, ReactElement, useState } from "react";
+import Modal from "react-modal";
+import { Link, useLocation } from "react-router-dom";
+import { Thumbnail } from "../Thumbnail";
+import "../../css/Viewer.scss";
 interface MinervaPlayerProps {
   item: Archive;
   site: Site;
