@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "previewdlpdev",
+  "projectName": "dlpdev",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {
