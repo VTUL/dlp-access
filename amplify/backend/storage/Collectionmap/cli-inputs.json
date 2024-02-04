@@ -8,43 +8,6 @@
   ],
   "authAccess": [
     "CREATE_AND_UPDATE",
-    "READ",
-    "DELETE"
-  ],
-  "groupAccess": {
-    "iawa": [
-      "READ"
-    ],
-    "hokies": [
-      "READ"
-    ],
-    "swva": [
-      "READ"
-    ],
-    "podcasts": [
-      "READ"
-    ],
-    "default": [
-      "READ"
-    ],
-    "federated": [
-      "READ"
-    ],
-    "test": [
-      "READ"
-    ],
-    "admin": [
-      "CREATE_AND_UPDATE",
-      "READ",
-      "DELETE"
-    ],
-    "editor": [
-      "CREATE_AND_UPDATE",
-      "READ"
-    ],
-    "siteadmin": [
-      "CREATE_AND_UPDATE",
-      "READ"
-    ]
-  }
+    "READ"
+  ]
 }
