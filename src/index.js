@@ -17,6 +17,7 @@ Amplify.configure(config);
 const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
 
+// connect the app to the DOM target element
 root.render(
   <BrowserRouter>
     <App />
