@@ -1,8 +1,18 @@
+import * as React from 'react'
 export {};
 
 declare global {
   interface Window {
     viewer: any;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      x3d: { children: JSX.Element; id: string; is: string; width: string; height: string; };
+      scene: { children: JSX.Element[]; is: string; };
+      navigationInfo: { is: string; type: string; explorationMode: string; id: string; } 
+      transform: {children: JSX.Element; is: string; bboxCenter: string; bboxSize: string; center: string; render: string; rotation: string; scale: string; scaleOrientation: string; translation: string; visible: string;}
+      inline: { is: string; url: string | null;}
+    }
   }
 
   interface Archive {
