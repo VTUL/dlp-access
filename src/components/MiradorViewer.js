@@ -65,6 +65,8 @@ class MiradorViewer extends Component {
   }
 
   componentDidMount() {
+    console.log("MiradorViewer componentDidMount Mirador:");
+    console.log(Mirador);
     Mirador.viewer(this.miradorConfig());
   }
 
