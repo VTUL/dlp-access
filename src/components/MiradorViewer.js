@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Mirador from "mirador/dist/es/src/index";
+import Mirador from "mirador/dist/mirador.min.js";
 import "../css/Viewer.scss";
 
 class MiradorViewer extends Component {
