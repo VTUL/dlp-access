@@ -33,7 +33,7 @@
     "jquery": "^3.7.1",
     "js-levenshtein": "^1.1.6",
     "minerva-browser": "^3.19.6",
-    "mirador": "whunter/mirador#mui5-react-18",
+    "mirador": "whunter/mirador#mui5-react-18-lee",
     "mocha": "^10.2.0",
     "mochawesome": "^7.1.3",
     "npm-check-updates": "^16.14.14",
@@ -63,6 +63,9 @@
     "typescript": "^4.9.5",
     "uuid": "^9.0.1",
     "x3dom": "^1.8.3"
+  },
+  "overrides": {
+    "react-refresh": "^0.14.0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
