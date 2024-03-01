@@ -55,7 +55,7 @@
     "react-share": "^4.4.1",
     "react-slick": "^0.29.0",
     "reactstrap": "^9.1.8",
-    "sanitize-html": "^2.10.0",
+    "sanitize-html": "^2.12.1",
     "sass": "^1.60.0",
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.4",
