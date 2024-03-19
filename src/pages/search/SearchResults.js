@@ -40,6 +40,16 @@ class SearchResults extends Component {
     this.props.updateFormState("filters", {});
   };
 
+  facetLabel = (key) => {
+    let label = "Filter";
+    if (key in this.props.searchFacets) {
+      label = this.props.searchFacets[key].label;
+    } else if (key === "tags") {
+      label = "Tag";
+    }
+    return label;
+  };
+
   render() {
     const ItemsPaginationDisplay = ({ atBottom }) => {
       return (
@@ -92,7 +102,7 @@ class SearchResults extends Component {
                         <div key={`${idx}_${val}`} role="row">
                           <div role="gridcell" tabIndex="-1">
                             <span className="facet-navbar-name">
-                              {this.props.searchFacets[key].label}
+                              {this.facetLabel(key)}
                             </span>
                             <span className="facet-navbar-arrow">
                               <i className="fas fa-angle-right"></i>
