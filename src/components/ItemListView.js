@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { RenderItems, arkLinkFormatted } from "../lib/MetadataRenderer";
 import { Thumbnail } from "./Thumbnail";
 import "../css/SearchResult.scss";
-import { fetchLanguages } from "../lib/fetchTools";
+import { fetchLanguages, fetchPageCount } from "../lib/fetchTools";
 
 class ItemListView extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class ItemListView extends Component {
 
   componentDidMount() {
     fetchLanguages(this, this.props.site, "abbr");
+    fetchPageCount(this);
   }
 
   render() {
@@ -45,7 +46,12 @@ class ItemListView extends Component {
                 this.props.item.custom_key
               )}`}
             >
-              <h3>{this.props.item.title}</h3>
+              <h3>
+                {this.props.item.title}
+                {this.state.pageCnt && (
+                  <span className="ml-1">({this.state.pageCnt})</span>
+                )}
+              </h3>
             </NavLink>
             <RenderItems
               keyArray={keyArray}

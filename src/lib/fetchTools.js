@@ -2,6 +2,7 @@ import { API, graphqlOperation, Storage } from "aws-amplify";
 import * as queries from "../graphql/queries";
 import { language_codes } from "./language_codes";
 import { available_attributes } from "./available_attributes";
+import { getManifestJSON } from "src/hooks/usePageCount";
 
 export const downloadFile = async (filePath, type = "download") => {
   await getFileContent(filePath, type).then((resp) => {
@@ -180,6 +181,22 @@ export const fetchLanguages = async (component, site, key, callback) => {
         component.loadItems();
       }
     });
+  }
+};
+
+export const fetchPageCount = async (component) => {
+  const { props } = component;
+  if (props.category === "collection" || !"manifest_url" in props.item) return;
+  try {
+    const manifest = await getManifestJSON(props.item.manifest_url);
+    if (manifest && manifest.sequences && manifest.sequences.length > 0) {
+      const pageCnt = manifest.sequences[0].canvases.length;
+      component.setState({ ...component.state, pageCnt });
+    } else {
+      throw new Error("Invalid manifest JSON");
+    }
+  } catch (error) {
+    console.error("Failed to get item page count:", error);
   }
 };
 
