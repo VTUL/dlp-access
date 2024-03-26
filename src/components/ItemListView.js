@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import { NavLink } from "react-router-dom";
-import { RenderItems, arkLinkFormatted } from "../lib/MetadataRenderer";
-import { Thumbnail } from "./Thumbnail";
 import "../css/SearchResult.scss";
 import { fetchLanguages } from "../lib/fetchTools";
+import { RenderItems, arkLinkFormatted } from "../lib/MetadataRenderer";
+import { Thumbnail } from "./Thumbnail";
 
 class ItemListView extends Component {
   constructor(props) {
@@ -17,12 +17,30 @@ class ItemListView extends Component {
     fetchLanguages(this, this.props.site, "abbr");
   }
 
-  render() {
-    const keyArray = [
+  renderPageCount = () => {
+    const archiveOptions = this.props.item?.archiveOptions;
+    if (!archiveOptions) return false;
+    const archiveOptObj = JSON.parse(archiveOptions);
+    return "page_count" in archiveOptObj;
+  };
+
+  getKeyArray = () => {
+    let keyArray = [
       { field: "description", label: "Description" },
       { field: "tags", label: "Tags" },
       { field: "creator", label: "Creator" }
     ];
+    if (this.renderPageCount()) {
+      keyArray.push({
+        field: "page_count",
+        label: "Page(s)"
+      });
+    }
+    return keyArray;
+  };
+
+  render() {
+    const keyArray = this.getKeyArray();
     if (this.state.languages !== null) {
       return (
         <div key={this.props.item.id} className="col-12 collection-entry">

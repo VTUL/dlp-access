@@ -253,7 +253,7 @@ function textFormat(item, attr, languages, collectionCustomKey, site) {
   if (item.collection_category) category = "collection";
   if (Array.isArray(item[attr]) && attr !== "description") {
     return (
-      <div>
+      <div className="archive-item-tags">
         {item[attr].map((value, i) => (
           <span className="list-unstyled" key={i} data-cy="multi-field-span">
             {attr === "is_part_of" && i === 0 ? (
@@ -263,6 +263,7 @@ function textFormat(item, attr, languages, collectionCustomKey, site) {
             ) : (
               listValue(category, attr, value, languages)
             )}
+            {i < item[attr].length - 1 && ","}
           </span>
         ))}
       </div>
@@ -292,6 +293,10 @@ function textFormat(item, attr, languages, collectionCustomKey, site) {
     } else {
       return <MoreLink category={category} item={item} />;
     }
+  } else if (attr === "page_count") {
+    if (!item["archiveOptions"]) return;
+    const { page_count } = JSON.parse(item["archiveOptions"]);
+    return parseInt(page_count) || 0;
   } else {
     return item[attr];
   }
