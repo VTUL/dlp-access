@@ -8,7 +8,7 @@ import { useItemPageCount } from "src/hooks/usePageCount";
 
 const GalleryView = (props) => {
   const itemPageCnt = useItemPageCount(props.item);
-
+  const hasPageCnt = itemPageCnt !== null && parseInt(itemPageCnt) > 1;
   return (
     <div className="col-md-6 col-lg-4 gallery-item">
       <div className="card">
@@ -28,13 +28,13 @@ const GalleryView = (props) => {
           >
             <h3 className="card-title crop-text-3">{props.item.title}</h3>
           </NavLink>
-          <p className="card-text crop-text-2">
+          <p className={`card-text crop-text-${hasPageCnt ? "2" : "3"}`}>
             {cleanHTML(
               props.item?.description?.length ? props.item.description[0] : "",
               "html"
             )}
           </p>
-          {itemPageCnt && parseInt(itemPageCnt) > 1 && (
+          {hasPageCnt && (
             <div className="badge badge-secondary page-count-badge">
               {itemPageCnt} pages
             </div>
