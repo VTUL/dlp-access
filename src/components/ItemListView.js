@@ -48,7 +48,7 @@ class ItemListView extends Component {
             >
               <h3>
                 {this.props.item.title}
-                {this.state.pageCnt && (
+                {this.state.pageCnt && parseInt(this.state.pageCnt) > 1 && (
                   <span className="ml-1">({this.state.pageCnt})</span>
                 )}
               </h3>

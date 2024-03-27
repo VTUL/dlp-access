@@ -79,7 +79,8 @@ div.search-results div.row div#content div.navbar {
   height: 10.5rem;
   border: 1px solid #e2e0e0;
   border-top: none;
-  padding: 1rem;
+  padding: 0.9rem;
+  position: relative;
 }
 
 .crop-text-3 {
@@ -88,6 +89,21 @@ div.search-results div.row div#content div.navbar {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+}
+
+.crop-text-2 {
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.page-count-badge {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 0.9rem;
+  font-size: 0.75rem !important;
 }
 
 .gallery-item .card-body .card-title {

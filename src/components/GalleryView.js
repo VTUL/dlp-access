@@ -26,19 +26,19 @@ const GalleryView = (props) => {
           <NavLink
             to={`/${props.category}/${arkLinkFormatted(props.item.custom_key)}`}
           >
-            <h3 className="card-title crop-text-3">
-              {props.item.title}
-              {itemPageCnt && parseInt(itemPageCnt) > 1 && (
-                <span className="ml-1">({itemPageCnt})</span>
-              )}
-            </h3>
+            <h3 className="card-title crop-text-3">{props.item.title}</h3>
           </NavLink>
-          <p className="card-text crop-text-3">
+          <p className="card-text crop-text-2">
             {cleanHTML(
               props.item?.description?.length ? props.item.description[0] : "",
               "html"
             )}
           </p>
+          {itemPageCnt && parseInt(itemPageCnt) > 1 && (
+            <div className="badge badge-secondary page-count-badge">
+              {itemPageCnt} pages
+            </div>
+          )}
         </div>
       </div>
     </div>
