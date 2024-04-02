@@ -7,6 +7,7 @@
 .featured-items-wrapper .card {
   margin-top: 5px;
   margin-bottom: 5px;
+  border: none;
 }
 
 .featured-items-wrapper .card:hover,
@@ -64,6 +65,8 @@
 .featured-items-indicators {
   text-align: center;
   padding-top: 20px;
+  /* Adding a visibility item until we can fix the functionality of the feature items indicator*/
+  visibility: hidden;
 }
 
 .featured-items-indicators button {
