@@ -40,7 +40,7 @@ class HomePage extends Component {
             site={this.props.site}
           />
           <div className="home-search-wrapper">
-            <SearchBar filters={{}} view="Gallery" field="title" q="" />
+            <SearchBar filters={{}} view="Gallery" field="all" q="" />
           </div>
           <HomeStatement homeStatement={homeStatement} />
           <div className="home-nav-links">

@@ -18,7 +18,7 @@ class SearchLoader extends Component {
       page: 0,
       totalPages: 1,
       filters: {},
-      field: "title",
+      field: "all",
       view: "Gallery",
       q: "",
       languages: null,
@@ -138,7 +138,7 @@ class SearchLoader extends Component {
     }
     return {
       q: searchParams.get("q") || "",
-      field: searchParams.get("field") || "title",
+      field: searchParams.get("field") || "all",
       view: searchParams.get("view") || "Gallery",
       ...restQuery
     };
