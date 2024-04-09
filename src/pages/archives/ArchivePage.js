@@ -42,7 +42,7 @@ class ArchivePage extends Component {
       collectionTitle: "",
       page: 0,
       category: "archive",
-      searchField: "title",
+      searchField: "all",
       view: "Gallery",
       info: {},
       languages: null,
@@ -304,7 +304,7 @@ class ArchivePage extends Component {
           <SearchBar
             category={this.state.category}
             view={this.state.view}
-            searchField={this.state.searchField}
+            field={this.state.searchField}
             setPage={this.setPage}
             updateFormState={this.updateFormState}
           />

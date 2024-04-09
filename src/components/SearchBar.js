@@ -11,7 +11,7 @@ class SearchBar extends Component {
     q: this.props.q
   };
 
-  fields = ["title", "description", "all"];
+  fields = ["all", "description", "title"];
 
   fieldOptions = () => {
     return this.fields.map((field) => (
