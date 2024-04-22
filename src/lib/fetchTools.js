@@ -17,7 +17,13 @@ export const downloadFile = async (filePath, type = "download") => {
   });
 };
 
-export const getFileContent = async (copyURL, type, component, attr) => {
+export const getFileContent = async (
+  copyURL,
+  type,
+  component,
+  attr,
+  allowScripts = false
+) => {
   const stateObj = {};
   const stateAttr = attr || "copy";
   let prefix;
@@ -34,7 +40,13 @@ export const getFileContent = async (copyURL, type, component, attr) => {
     ) {
       if (component) {
         stateObj[stateAttr] = copyURL;
-        component.setState(stateObj);
+        component.setState(stateObj, () => {
+          console.warn(
+            `${
+              component.constructor.name || getFileContent.caller || "Component"
+            } state set in lib/fetchTools.js getFileContent(). We should refactor this.`
+          );
+        });
       }
       return copyURL;
     } else if (
@@ -67,11 +79,17 @@ export const getFileContent = async (copyURL, type, component, attr) => {
         }
         if (component) {
           stateObj[stateAttr] = copyLink;
-          component.setState(stateObj);
-          return copyLink;
-        } else {
-          return copyLink;
+          component.setState(stateObj, () => {
+            console.warn(
+              `${
+                component.constructor.name ||
+                getFileContent.caller ||
+                "Component"
+              } state set in lib/fetchTools.js getFileContent(). We should refactor this.`
+            );
+          });
         }
+        return copyLink;
       } catch (e) {
         console.error(e);
       }
@@ -175,11 +193,21 @@ export const fetchAvailableDisplayedAttributes = async () => {
 export const fetchLanguages = async (component, site, key, callback) => {
   const data = language_codes[key];
   if (data !== null) {
-    component.setState({ languages: data }, function () {
-      if (typeof component.loadItems === "function") {
-        component.loadItems();
+    component.setState(
+      { languages: data },
+      function () {
+        if (typeof component.loadItems === "function") {
+          component.loadItems();
+        }
+      },
+      () => {
+        console.warn(
+          `${
+            component.constructor.name || fetchLanguages.caller || "Component"
+          } state: languages set in lib/fetchTools.js fetchLanguages(). We should refactor this.`
+        );
       }
-    });
+    );
   }
 };
 

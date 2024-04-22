@@ -23,34 +23,28 @@ export const BrowseCollections: FC<Props> = ({ scrollUp, site }) => {
     site?.browseCollections && JSON.parse(site.browseCollections);
 
   const { view, handleSetView } = useView();
-  const [collections, setCollections]:any = useState(null);
+  const [collections, setCollections]: any = useState(null);
   const [pg, setPg] = useState(0);
   const [total, setTotal] = useState(0);
-  const [totalPages,setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [limt, setLimit] = useState(10);
-  const [filtr, setFilter]:any = useState({});
-  const [tokns, setTokns]:any = useState([]);
-  const [sort, setSort]:any = useState({
+  const [filtr, setFilter]: any = useState({});
+  const [tokns, setTokns]: any = useState([]);
+  const [sort, setSort]: any = useState({
     field: "title",
     direction: "asc"
   });
-  
+
   const setCollectionDetails = async () => {
-    const {
-      collections,
-      total,
-      totalPages,
-      page,
-      limit,
-      nextTokens
-    } =  await loadCollections({ pg, filtr, sort, limt, tokns, scrollUp });
+    const { collections, total, totalPages, page, limit, nextTokens } =
+      await loadCollections({ pg, filtr, sort, limt, tokns, scrollUp });
     setCollections(collections);
     setTotal(total);
     setTotalPages(totalPages);
     setPg(page);
     setLimit(limit);
     setTokns(nextTokens);
-  }
+  };
 
   useEffect(() => {
     setCollectionDetails();
@@ -78,16 +72,13 @@ export const BrowseCollections: FC<Props> = ({ scrollUp, site }) => {
 
   const handleResultsNumberDropdown = (e: Event, result: { value: number }) => {
     setLimit(result.value);
-    setPg(0)
+    setPg(0);
   };
 
   return (
     <div>
       <SiteTitle siteTitle={site.siteTitle} pageTitle="Collections" />
       <div className="collection-browse-wrapper">
-        <div className="collection-browse-header">
-          <h1 className="list-type">About Our Collections</h1>
-        </div>
         <div className="container">
           <div className="row justify-content-center">
             <div
@@ -128,7 +119,7 @@ export const BrowseCollections: FC<Props> = ({ scrollUp, site }) => {
                 role="region"
                 aria-label="Browse results"
               >
-                {collections?.map((collection:Collection) => {
+                {collections?.map((collection: Collection) => {
                   if (view === "Gallery") {
                     return (
                       <GalleryView
