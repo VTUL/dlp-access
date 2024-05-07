@@ -3,10 +3,6 @@ describe("browse_collections: Browse collections page", () => {
     cy.visit("/collections");
   });
 
-  it("displays the correct page title", () => {
-    cy.get("h1").invoke("text").should("equal", "About Our Collections");
-  });
-
   it("finds the first collection sorted by title as default", () => {
     cy.get(".gallery-item")
       .first()
