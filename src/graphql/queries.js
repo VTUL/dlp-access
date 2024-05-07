@@ -29,6 +29,7 @@ export const searchObjects = /* GraphQL */ `
         identifier
         is_part_of
         language
+        location
         modified_date
         parent_collection
         provenance
@@ -49,22 +50,6 @@ export const searchObjects = /* GraphQL */ `
           collectionOptions
           explicit_content
           ownerinfo
-          collectionmap {
-            collectionmap_category
-            collection_id
-            create_date
-            id
-            map_object
-            modified_date
-            createdAt
-            updatedAt
-            collectionmapCollectionId
-            __typename
-          }
-          archives {
-            nextToken
-            __typename
-          }
           createdAt
           updatedAt
           collectionCollectionmapId
@@ -98,42 +83,6 @@ export const searchObjects = /* GraphQL */ `
           tags
           temporal
           type
-          collection {
-            bibliographic_citation
-            collection_category
-            collectionmap_id
-            collectionOptions
-            create_date
-            creator
-            custom_key
-            description
-            display_date
-            end_date
-            explicit_content
-            heirarchy_path
-            id
-            identifier
-            is_part_of
-            language
-            modified_date
-            ownerinfo
-            parent_collection
-            provenance
-            relation
-            rights_holder
-            rights
-            source
-            spatial
-            start_date
-            subject
-            thumbnail_path
-            title
-            visibility
-            createdAt
-            updatedAt
-            collectionCollectionmapId
-            __typename
-          }
           createdAt
           updatedAt
           collectionArchivesId
@@ -178,6 +127,7 @@ export const fulltextCollections = /* GraphQL */ `
         identifier
         is_part_of
         language
+        location
         modified_date
         ownerinfo
         parent_collection
@@ -192,22 +142,6 @@ export const fulltextCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        collectionmap {
-          collectionmap_category
-          collection_id
-          create_date
-          id
-          map_object
-          modified_date
-          createdAt
-          updatedAt
-          collectionmapCollectionId
-          __typename
-        }
-        archives {
-          nextToken
-          __typename
-        }
         createdAt
         updatedAt
         collectionCollectionmapId
@@ -265,6 +199,7 @@ export const fulltextArchives = /* GraphQL */ `
         item_category
         language
         license
+        location
         manifest_file_characterization
         manifest_url
         medium
@@ -288,42 +223,6 @@ export const fulltextArchives = /* GraphQL */ `
         title
         type
         visibility
-        collection {
-          bibliographic_citation
-          collection_category
-          collectionmap_id
-          collectionOptions
-          create_date
-          creator
-          custom_key
-          description
-          display_date
-          end_date
-          explicit_content
-          heirarchy_path
-          id
-          identifier
-          is_part_of
-          language
-          modified_date
-          ownerinfo
-          parent_collection
-          provenance
-          relation
-          rights_holder
-          rights
-          source
-          spatial
-          start_date
-          subject
-          thumbnail_path
-          title
-          visibility
-          createdAt
-          updatedAt
-          collectionCollectionmapId
-          __typename
-        }
         createdAt
         updatedAt
         collectionArchivesId
@@ -355,6 +254,7 @@ export const getCollection = /* GraphQL */ `
       identifier
       is_part_of
       language
+      location
       modified_date
       ownerinfo
       parent_collection
@@ -376,108 +276,12 @@ export const getCollection = /* GraphQL */ `
         id
         map_object
         modified_date
-        collection {
-          bibliographic_citation
-          collection_category
-          collectionmap_id
-          collectionOptions
-          create_date
-          creator
-          custom_key
-          description
-          display_date
-          end_date
-          explicit_content
-          heirarchy_path
-          id
-          identifier
-          is_part_of
-          language
-          modified_date
-          ownerinfo
-          parent_collection
-          provenance
-          relation
-          rights_holder
-          rights
-          source
-          spatial
-          start_date
-          subject
-          thumbnail_path
-          title
-          visibility
-          createdAt
-          updatedAt
-          collectionCollectionmapId
-          __typename
-        }
         createdAt
         updatedAt
         collectionmapCollectionId
         __typename
       }
       archives {
-        items {
-          alternative
-          archiveOptions
-          basis_of_record
-          bibliographic_citation
-          conforms_to
-          contributor
-          coverage
-          create_date
-          created
-          creator
-          custom_key
-          date
-          description
-          display_date
-          end_date
-          explicit
-          extent
-          format
-          has_format
-          has_part
-          has_version
-          heirarchy_path
-          id
-          identifier
-          is_format_of
-          is_part_of
-          is_version_of
-          item_category
-          language
-          license
-          manifest_file_characterization
-          manifest_url
-          medium
-          modified_date
-          other_identifier
-          parent_collection
-          provenance
-          publisher
-          references
-          relation
-          repository
-          rights_holder
-          rights
-          source
-          spatial
-          start_date
-          subject
-          tags
-          temporal
-          thumbnail_path
-          title
-          type
-          visibility
-          createdAt
-          updatedAt
-          collectionArchivesId
-          archiveCollectionId
-          __typename
-        }
         nextToken
         __typename
       }
@@ -512,6 +316,7 @@ export const listCollections = /* GraphQL */ `
         identifier
         is_part_of
         language
+        location
         modified_date
         ownerinfo
         parent_collection
@@ -526,22 +331,6 @@ export const listCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        collectionmap {
-          collectionmap_category
-          collection_id
-          create_date
-          id
-          map_object
-          modified_date
-          createdAt
-          updatedAt
-          collectionmapCollectionId
-          __typename
-        }
-        archives {
-          nextToken
-          __typename
-        }
         createdAt
         updatedAt
         collectionCollectionmapId
@@ -584,6 +373,7 @@ export const collectionByIdentifier = /* GraphQL */ `
         identifier
         is_part_of
         language
+        location
         modified_date
         ownerinfo
         parent_collection
@@ -598,22 +388,6 @@ export const collectionByIdentifier = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        collectionmap {
-          collectionmap_category
-          collection_id
-          create_date
-          id
-          map_object
-          modified_date
-          createdAt
-          updatedAt
-          collectionmapCollectionId
-          __typename
-        }
-        archives {
-          nextToken
-          __typename
-        }
         createdAt
         updatedAt
         collectionCollectionmapId
@@ -658,6 +432,7 @@ export const searchCollections = /* GraphQL */ `
         identifier
         is_part_of
         language
+        location
         modified_date
         ownerinfo
         parent_collection
@@ -672,22 +447,6 @@ export const searchCollections = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        collectionmap {
-          collectionmap_category
-          collection_id
-          create_date
-          id
-          map_object
-          modified_date
-          createdAt
-          updatedAt
-          collectionmapCollectionId
-          __typename
-        }
-        archives {
-          nextToken
-          __typename
-        }
         createdAt
         updatedAt
         collectionCollectionmapId
@@ -725,6 +484,7 @@ export const getCollectionmap = /* GraphQL */ `
         identifier
         is_part_of
         language
+        location
         modified_date
         ownerinfo
         parent_collection
@@ -739,22 +499,6 @@ export const getCollectionmap = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        collectionmap {
-          collectionmap_category
-          collection_id
-          create_date
-          id
-          map_object
-          modified_date
-          createdAt
-          updatedAt
-          collectionmapCollectionId
-          __typename
-        }
-        archives {
-          nextToken
-          __typename
-        }
         createdAt
         updatedAt
         collectionCollectionmapId
@@ -781,42 +525,6 @@ export const listCollectionmaps = /* GraphQL */ `
         id
         map_object
         modified_date
-        collection {
-          bibliographic_citation
-          collection_category
-          collectionmap_id
-          collectionOptions
-          create_date
-          creator
-          custom_key
-          description
-          display_date
-          end_date
-          explicit_content
-          heirarchy_path
-          id
-          identifier
-          is_part_of
-          language
-          modified_date
-          ownerinfo
-          parent_collection
-          provenance
-          relation
-          rights_holder
-          rights
-          source
-          spatial
-          start_date
-          subject
-          thumbnail_path
-          title
-          visibility
-          createdAt
-          updatedAt
-          collectionCollectionmapId
-          __typename
-        }
         createdAt
         updatedAt
         collectionmapCollectionId
@@ -873,28 +581,6 @@ export const listPageContents = /* GraphQL */ `
         page_content_category
         id
         content
-        pageContentSiteId {
-          analyticsID
-          assetBasePath
-          browseCollections
-          contact
-          displayedAttributes
-          groups
-          homePage
-          id
-          lang
-          miradorOptions
-          searchPage
-          siteColor
-          siteId
-          siteName
-          siteOptions
-          sitePages
-          siteTitle
-          createdAt
-          updatedAt
-          __typename
-        }
         createdAt
         updatedAt
         pageContentPageContentSiteIdId
@@ -938,6 +624,7 @@ export const getArchive = /* GraphQL */ `
       item_category
       language
       license
+      location
       manifest_file_characterization
       manifest_url
       medium
@@ -978,6 +665,7 @@ export const getArchive = /* GraphQL */ `
         identifier
         is_part_of
         language
+        location
         modified_date
         ownerinfo
         parent_collection
@@ -992,22 +680,6 @@ export const getArchive = /* GraphQL */ `
         thumbnail_path
         title
         visibility
-        collectionmap {
-          collectionmap_category
-          collection_id
-          create_date
-          id
-          map_object
-          modified_date
-          createdAt
-          updatedAt
-          collectionmapCollectionId
-          __typename
-        }
-        archives {
-          nextToken
-          __typename
-        }
         createdAt
         updatedAt
         collectionCollectionmapId
@@ -1059,6 +731,7 @@ export const listArchives = /* GraphQL */ `
         item_category
         language
         license
+        location
         manifest_file_characterization
         manifest_url
         medium
@@ -1082,42 +755,6 @@ export const listArchives = /* GraphQL */ `
         title
         type
         visibility
-        collection {
-          bibliographic_citation
-          collection_category
-          collectionmap_id
-          collectionOptions
-          create_date
-          creator
-          custom_key
-          description
-          display_date
-          end_date
-          explicit_content
-          heirarchy_path
-          id
-          identifier
-          is_part_of
-          language
-          modified_date
-          ownerinfo
-          parent_collection
-          provenance
-          relation
-          rights_holder
-          rights
-          source
-          spatial
-          start_date
-          subject
-          thumbnail_path
-          title
-          visibility
-          createdAt
-          updatedAt
-          collectionCollectionmapId
-          __typename
-        }
         createdAt
         updatedAt
         collectionArchivesId
@@ -1175,6 +812,7 @@ export const archiveByIdentifier = /* GraphQL */ `
         item_category
         language
         license
+        location
         manifest_file_characterization
         manifest_url
         medium
@@ -1198,42 +836,6 @@ export const archiveByIdentifier = /* GraphQL */ `
         title
         type
         visibility
-        collection {
-          bibliographic_citation
-          collection_category
-          collectionmap_id
-          collectionOptions
-          create_date
-          creator
-          custom_key
-          description
-          display_date
-          end_date
-          explicit_content
-          heirarchy_path
-          id
-          identifier
-          is_part_of
-          language
-          modified_date
-          ownerinfo
-          parent_collection
-          provenance
-          relation
-          rights_holder
-          rights
-          source
-          spatial
-          start_date
-          subject
-          thumbnail_path
-          title
-          visibility
-          createdAt
-          updatedAt
-          collectionCollectionmapId
-          __typename
-        }
         createdAt
         updatedAt
         collectionArchivesId
@@ -1293,6 +895,7 @@ export const searchArchives = /* GraphQL */ `
         item_category
         language
         license
+        location
         manifest_file_characterization
         manifest_url
         medium
@@ -1316,42 +919,6 @@ export const searchArchives = /* GraphQL */ `
         title
         type
         visibility
-        collection {
-          bibliographic_citation
-          collection_category
-          collectionmap_id
-          collectionOptions
-          create_date
-          creator
-          custom_key
-          description
-          display_date
-          end_date
-          explicit_content
-          heirarchy_path
-          id
-          identifier
-          is_part_of
-          language
-          modified_date
-          ownerinfo
-          parent_collection
-          provenance
-          relation
-          rights_holder
-          rights
-          source
-          spatial
-          start_date
-          subject
-          thumbnail_path
-          title
-          visibility
-          createdAt
-          updatedAt
-          collectionCollectionmapId
-          __typename
-        }
         createdAt
         updatedAt
         collectionArchivesId

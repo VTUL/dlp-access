@@ -11,6 +11,7 @@ interface Object {
   identifier: String!
   is_part_of: [String!]
   language: [String!]
+  location: [String!]
   modified_date: String
   parent_collection: [String!]
   provenance: [String!]
@@ -29,11 +30,13 @@ interface Object {
 type Collection implements Object
   @model
   @searchable
-  @auth(rules: [
-    { allow: public, operations: [read] },
-    { allow: groups, groups: ["Admin", "Editor"] },
-    { allow: groups, groupsField: "collection_category" }
-  ]){
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groups: ["Admin", "Editor"] }
+      { allow: groups, groupsField: "collection_category" }
+    ]
+  ) {
   bibliographic_citation: [String!]
   collection_category: String!
   collectionmap_id: String
@@ -47,9 +50,11 @@ type Collection implements Object
   explicit_content: Boolean
   heirarchy_path: [String!]
   id: ID!
-  identifier: String! @index(name: "Identifier", queryField: "collectionByIdentifier")
+  identifier: String!
+    @index(name: "Identifier", queryField: "collectionByIdentifier")
   is_part_of: [String!]
   language: [String!]
+  location: [String!]
   modified_date: String
   ownerinfo: AWSJSON
   parent_collection: [String!]
@@ -64,47 +69,53 @@ type Collection implements Object
   thumbnail_path: String
   title: String!
   visibility: Boolean!
-  collectionmap: Collectionmap  @hasOne
-  archives: [Archive]  @hasMany
+  collectionmap: Collectionmap @hasOne
+  archives: [Archive] @hasMany
 }
 
 type Collectionmap
   @model
-  @auth(rules: [
-    { allow: public, operations: [read] },
-    { allow: groups, groups: ["Admin", "Editor"] },
-    { allow: groups, groupsField: "collectionmap_category" }
-  ]){
-    collectionmap_category: String!
-    collection_id: String!
-    create_date: String
-    id: ID!
-    map_object: String!
-    modified_date: String
-    collection: Collection  @hasOne
-  }
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groups: ["Admin", "Editor"] }
+      { allow: groups, groupsField: "collectionmap_category" }
+    ]
+  ) {
+  collectionmap_category: String!
+  collection_id: String!
+  create_date: String
+  id: ID!
+  map_object: String!
+  modified_date: String
+  collection: Collection @hasOne
+}
 
 type PageContent
   @model
-  @auth(rules: [
-    { allow: public, operations: [read] },
-    { allow: groups, groups: ["Admin", "Editor"] },
-    { allow: groups, groupsField: "page_content_category" }
-  ]){
-    page_content_category: String!
-    id: ID!
-    content: String!
-    pageContentSiteId: Site  @hasOne
-  }
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groups: ["Admin", "Editor"] }
+      { allow: groups, groupsField: "page_content_category" }
+    ]
+  ) {
+  page_content_category: String!
+  id: ID!
+  content: String!
+  pageContentSiteId: Site @hasOne
+}
 
 type Archive implements Object
   @model
   @searchable
-  @auth(rules: [
-    { allow: public, operations: [read] },
-    { allow: groups, groups: ["Admin", "Editor"] },
-    { allow: groups, groupsField: "item_category" }
-  ]){
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groups: ["Admin", "Editor"] }
+      { allow: groups, groupsField: "item_category" }
+    ]
+  ) {
   alternative: [String!]
   archiveOptions: AWSJSON
   basis_of_record: [String!]
@@ -128,13 +139,15 @@ type Archive implements Object
   has_version: [String!]
   heirarchy_path: [String!]
   id: ID!
-  identifier: String! @index(name: "Identifier", queryField: "archiveByIdentifier")
+  identifier: String!
+    @index(name: "Identifier", queryField: "archiveByIdentifier")
   is_format_of: [String!]
   is_part_of: [String!]
   is_version_of: [String!]
   item_category: String!
   language: [String!]
   license: [String!]
+  location: [String!]
   manifest_file_characterization: AWSJSON
   manifest_url: String!
   medium: [String!]
@@ -162,13 +175,14 @@ type Archive implements Object
 }
 
 type Embargo
-@model
-@auth(rules: [
-    { allow: public, operations: [read] },
-    { allow: groups, groups: ["Admin", "Editor"] },
-    { allow: groups, groupsField: "groups", operations: [read, create] }
-  ])
-{
+  @model
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groups: ["Admin", "Editor"] }
+      { allow: groups, groupsField: "groups", operations: [read, create] }
+    ]
+  ) {
   id: ID!
   identifier: String!
   start_date: AWSDate @index(name: "start_date_index")
@@ -179,10 +193,12 @@ type Embargo
 
 type Site
   @model
-  @auth(rules: [
-    { allow: public, operations: [read] },
-    { allow: groups, groupsField: "groups" }
-    ]) {
+  @auth(
+    rules: [
+      { allow: public, operations: [read] }
+      { allow: groups, groupsField: "groups" }
+    ]
+  ) {
   analyticsID: String
   assetBasePath: String
   browseCollections: AWSJSON!
@@ -195,7 +211,7 @@ type Site
   miradorOptions: AWSJSON
   searchPage: AWSJSON!
   siteColor: String
-  siteId: String! @index(name: "SiteId", queryField: "siteBySiteId" )
+  siteId: String! @index(name: "SiteId", queryField: "siteBySiteId")
   siteName: String!
   siteOptions: AWSJSON
   sitePages: AWSJSON
@@ -204,10 +220,12 @@ type Site
 
 type History
   @model
-  @auth(rules: [
-    { allow: groups, groups: ["Admin"] },
-    { allow: groups, groupsField: "groups", operations: [read, create] }
-  ]) {
+  @auth(
+    rules: [
+      { allow: groups, groups: ["Admin"] }
+      { allow: groups, groupsField: "groups", operations: [read, create] }
+    ]
+  ) {
   event: AWSJSON!
   groups: [String]!
   id: ID!
@@ -496,4 +514,3 @@ input SearchableStringFilterInput {
   wildcard: String
   regexp: String
 }
-
