@@ -8,7 +8,7 @@ type Props = {
   width?: string;
   height?: string;
   preload?: string;
-  mediaType: "audio" | "video";
+  mediaType: "generic" | "audio" | "video" | "iiif" | "3d_2diiif";
   site: {
     siteId: string;
   };

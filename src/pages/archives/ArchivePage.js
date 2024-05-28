@@ -6,6 +6,7 @@ import { KalturaPlayer } from "../../components/KalturaPlayer";
 import { MinervaPlayer } from "../../components/MinervaPlayer";
 import MiradorViewer from "../../components/MiradorViewer";
 import { OBJModel } from "react-3d-viewer";
+import { ThreeD2DiiifHandler } from "../../components/ThreeD2DiiifHandler";
 import { MediaElement } from "../../components/MediaElement";
 import SearchBar from "../../components/SearchBar";
 import Breadcrumbs from "../../components/Breadcrumbs.js";
@@ -137,6 +138,16 @@ class ArchivePage extends Component {
     return url.match(/\.(x3d|X3D)$/) != null;
   }
 
+  is3D_2DiiifType(item) {
+    try {
+      const options = JSON.parse(item.archiveOptions);
+      const type = options.assets.media_type;
+      return type === "3d_2diiif";
+    } catch (error) {
+      return false;
+    }
+  }
+
   buildArchiveSchema(item) {
     let info = {};
     info["audio"] = item.manifest_url;
@@ -167,7 +178,16 @@ class ArchivePage extends Component {
       document.getElementById("content-wrapper").offsetWidth - 50,
       720
     );
-    if (this.isMiradorURL(item.manifest_url)) {
+    if (this.is3D_2DiiifType(item)) {
+      display = (
+        <ThreeD2DiiifHandler
+          item={item}
+          frameWidth={width}
+          frameHeight={width}
+          site={this.props.site}
+        />
+      );
+    } else if (this.isMiradorURL(item.manifest_url)) {
       display = <MiradorViewer item={item} site={this.props.site} />;
     } else if (this.isMinervaURL(item.manifest_url)) {
       display = <MinervaPlayer item={item} site={this.props.site} />;
@@ -209,9 +229,7 @@ class ArchivePage extends Component {
       display = <KalturaPlayer manifest_url={item.manifest_url} />;
     } else if (this.isPdfURL(item.manifest_url)) {
       display = (
-        <canvas id="pdf-canvas">
-          <PDFViewer manifest_url={item.manifest_url} title={item.title} />
-        </canvas>
+        <PDFViewer manifest_url={item.manifest_url} title={item.title} />
       );
     } else if (this.isObjURL(item.manifest_url)) {
       const texPath = item.manifest_url.substring(
@@ -231,8 +249,15 @@ class ArchivePage extends Component {
       );
     } else if (this.isX3DUrl(item.manifest_url)) {
       display = (
-        <div className="obj-wrapper" style={{ width: `${width}px` }}>
-          <X3DElement url={item.manifest_url} frameSize={width} />
+        <div
+          className="obj-wrapper"
+          style={{ width: `${width}px`, height: "100px" }}
+        >
+          <X3DElement
+            url={item.manifest_url}
+            frameSize={width}
+            frameHeight={100}
+          />
         </div>
       );
     } else {

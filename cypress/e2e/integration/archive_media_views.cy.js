@@ -42,9 +42,9 @@ describe("archive_media_views: Archive kaltura embed", () => {
 describe("archive_media_views: Archive pdf embed", () => {
   it("renders pdf file inside canvas", () => {
     cy.visit("http://localhost:3000/archive/m92xyh34").wait(1000);
-    cy.get("#item-media-col > canvas", { timeout: 20000 })
+    cy.get("#item-media-col > object", { timeout: 20000 })
       .eq(0)
-      .should("have.id", "pdf-canvas")
+      .should("have.id", "pdf-object")
       .should("be.visible");
   });
 });
@@ -64,18 +64,18 @@ describe("archive_media_views: Archive Mirador viewer", () => {
   });
 });
 
-describe('archive_media_views: Archive Minerva viewer', () => {
-  it('renders viewer if exhibit.json', () => {
-    cy.visit('/archive/s253n52s').wait(2000);
-    cy.get('div#minerva-open-dialog')
+describe("archive_media_views: Archive Minerva viewer", () => {
+  it("renders viewer if exhibit.json", () => {
+    cy.visit("/archive/s253n52s").wait(2000);
+    cy.get("div#minerva-open-dialog")
       .eq(0)
-      .should('be.visible')
-      .should('contain', "This record type requires a full screen image viewer.")
-    cy.get('div#minerva-open-dialog > button')
-      .click({force: true})
-    cy.get("div.minerva-root")
-      .eq(0)
-      .should('be.visible')
+      .should("be.visible")
+      .should(
+        "contain",
+        "This record type requires a full screen image viewer."
+      );
+    cy.get("div#minerva-open-dialog > button").click({ force: true });
+    cy.get("div.minerva-root").eq(0).should("be.visible");
   });
 });
 
