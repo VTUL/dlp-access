@@ -1,7 +1,10 @@
 #set( $es_items = [] )
 #foreach( $entry in $context.result.hits.hits )
   #if( !$foreach.hasNext )
-    #set( $nextToken = $entry.sort.get(0) )
+    #set( $sortFieldValue = $util.defaultIfNull($entry.sort.get(0), "NULL_FIELD") )
+    #set( $customKey = $entry.get("_source").get("custom_key") )
+    #set( $tokenString = "${sortFieldValue}::key::$customKey" )
+    #set( $nextToken = $tokenString )
   #end
   $util.qr($es_items.add($entry.get("_source")))
 #end
