@@ -84,6 +84,12 @@ td.collection-detail-value div span.list-unstyled {
   flex-wrap: wrap;
   gap: 0.3em;
 }
+.archive-item-tags.multi {
+  display: block;
+  .list-unstyled {
+    display: block;
+  }
+}
 
 a.more-link {
   margin-left: 10px;
