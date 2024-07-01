@@ -10,7 +10,7 @@ import "../../css/podcastMediaElement.scss";
 
 type Props = {
   src: string | null;
-  mediaType: "audio" | "video";
+  mediaType: "generic" | "audio" | "video" | "iiif" | "3d_2diiif";
   site: {
     siteId: string;
   };

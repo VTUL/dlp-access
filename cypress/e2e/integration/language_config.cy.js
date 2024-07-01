@@ -36,10 +36,7 @@ describe("language_config.spec: Selecting English loads English results", () => 
     cy.get("div.gallery-item > div.card > a").first().click({ force: true });
     cy.wait(2000);
     cy.url().should("include", "/archive/");
-    cy.get(
-      'div.details-section-metadata > table[aria-label="Item Metadata"] tbody',
-      { timeout: 5000 }
-    )
+    cy.get("div.details-section-metadata > table > tbody", { timeout: 5000 })
       .find("tr.language td a", { timeout: 5000 })
       .invoke("text")
       .should("equal", "English");

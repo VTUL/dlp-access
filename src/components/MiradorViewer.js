@@ -59,7 +59,10 @@ class MiradorViewer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.item.manifest_url !== prevProps.item.manifest_url) {
+    if (
+      this.props.item.manifest_url !== prevProps.item.manifest_url ||
+      this.props.hidden !== prevProps.hidden
+    ) {
       Mirador.viewer(this.miradorConfig());
     }
   }
@@ -68,8 +71,21 @@ class MiradorViewer extends Component {
     Mirador.viewer(this.miradorConfig());
   }
 
+  wrapIf3D2D(miradorElement) {
+    const hidden = this.props.hidden ? "hidden" : "";
+    if (this.props.type === "3d_2diiif") {
+      return (
+        <div id="mirador-vis" className={hidden}>
+          {miradorElement}
+        </div>
+      );
+    } else {
+      return miradorElement;
+    }
+  }
+
   render() {
-    return <div id={this.miradorConfig().id}></div>;
+    return this.wrapIf3D2D(<div id={this.miradorConfig().id}></div>);
   }
 }
 

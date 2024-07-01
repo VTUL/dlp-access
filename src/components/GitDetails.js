@@ -3,7 +3,6 @@ import "../css/GitDetails.scss";
 
 const GitDetails = () => {
   const gitCommit = process.env.REACT_APP_GIT_COMMIT;
-  console.log("GitDetails gitCommit", gitCommit);
   if (!gitCommit) {
     return null;
   }
