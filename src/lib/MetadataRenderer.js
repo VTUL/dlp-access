@@ -252,10 +252,11 @@ function textFormat(item, attr, languages, collectionCustomKey, site) {
   let category = "archive";
   if (item.collection_category) category = "collection";
   if (Array.isArray(item[attr]) && attr !== "description") {
+    console.log("textFormat", attr, item[attr]);
     return (
-      <div className="archive-item-tags">
+      <div className="archive-item-tags multi">
         {item[attr].map((value, i) => (
-          <span className="list-unstyled" key={i} data-cy="multi-field-span">
+          <div className="list-unstyled" key={i} data-cy="multi-field-span">
             {attr === "is_part_of" && i === 0 ? (
               <a href={`/collection/${arkLinkFormatted(collectionCustomKey)}`}>
                 {value}
@@ -263,8 +264,7 @@ function textFormat(item, attr, languages, collectionCustomKey, site) {
             ) : (
               listValue(category, attr, value, languages)
             )}
-            {i < item[attr].length - 1 && ","}
-          </span>
+          </div>
         ))}
       </div>
     );
