@@ -186,5 +186,36 @@
         "Collectionmap": {}
       }
     }
+  },
+  "srchtest": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dlpdev-srchtest-d172e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-srchtest-d172e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-srchtest-d172e-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-dlpdev-srchtest-d172e-deployment",
+      "UnauthRoleName": "amplify-dlpdev-srchtest-d172e-unauthRole",
+      "StackName": "amplify-dlpdev-srchtest-d172e",
+      "StackId": "arn:aws:cloudformation:us-east-1:226388486048:stack/amplify-dlpdev-srchtest-d172e/f71d2b70-3c7c-11ef-a412-0e60113ae2bb",
+      "AmplifyAppId": "d2ysrrdhih4bgc"
+    },
+    "categories": {
+      "api": {
+        "collectionarchives": {}
+      },
+      "auth": {
+        "iawav2658176f3": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "iawav2658176f3PostConfirmation": {
+          "deploymentBucketName": "amplify-dlpdev-srchtest-d172e-deployment",
+          "s3Key": "amplify-builds/iawav2658176f3PostConfirmation-634844337947316a6c56-build.zip"
+        }
+      },
+      "storage": {
+        "Collectionmap": {}
+      }
+    }
   }
 }

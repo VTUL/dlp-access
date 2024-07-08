@@ -44,10 +44,7 @@
         "GroupName": "admin",
         "Precedence": 1,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "adminGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["adminGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -99,10 +96,7 @@
         "GroupName": "editor",
         "Precedence": 2,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "editorGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["editorGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -154,10 +148,7 @@
         "GroupName": "siteadmin",
         "Precedence": 3,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "siteadminGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["siteadminGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -209,10 +200,7 @@
         "GroupName": "iawa",
         "Precedence": 4,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "iawaGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["iawaGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -264,10 +252,7 @@
         "GroupName": "hokies",
         "Precedence": 5,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "hokiesGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["hokiesGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -319,10 +304,7 @@
         "GroupName": "swva",
         "Precedence": 6,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "swvaGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["swvaGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -374,10 +356,7 @@
         "GroupName": "podcasts",
         "Precedence": 7,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "podcastsGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["podcastsGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -429,10 +408,7 @@
         "GroupName": "default",
         "Precedence": 8,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "defaultGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["defaultGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -484,10 +460,7 @@
         "GroupName": "federated",
         "Precedence": 9,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "federatedGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["federatedGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -539,10 +512,7 @@
         "GroupName": "test",
         "Precedence": 10,
         "RoleArn": {
-          "Fn::GetAtt": [
-            "testGroupRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["testGroupRole", "Arn"]
         },
         "UserPoolId": {
           "Ref": "authiawav2658176f3UserPoolId"
@@ -615,13 +585,9 @@
             {
               "Effect": "Allow",
               "Principal": {
-                "Service": [
-                  "lambda.amazonaws.com"
-                ]
+                "Service": ["lambda.amazonaws.com"]
               },
-              "Action": [
-                "sts:AssumeRole"
-              ]
+              "Action": ["sts:AssumeRole"]
             }
           ]
         },
@@ -667,9 +633,7 @@
               "Statement": [
                 {
                   "Effect": "Allow",
-                  "Action": [
-                    "iam:PassRole"
-                  ],
+                  "Action": ["iam:PassRole"],
                   "Resource": [
                     {
                       "Ref": "AuthRoleArn"
@@ -687,9 +651,7 @@
     },
     "RoleMapFunction": {
       "Type": "AWS::Lambda::Function",
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ],
+      "DependsOn": ["LambdaExecutionRole"],
       "Properties": {
         "Code": {
           "ZipFile": {
@@ -738,13 +700,10 @@
           }
         },
         "Handler": "index.handler",
-        "Runtime": "nodejs14.x",
+        "Runtime": "nodejs20.x",
         "Timeout": 300,
         "Role": {
-          "Fn::GetAtt": [
-            "LambdaExecutionRole",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["LambdaExecutionRole", "Arn"]
         }
       }
     },
@@ -752,10 +711,7 @@
       "Type": "Custom::LambdaCallout",
       "Properties": {
         "ServiceToken": {
-          "Fn::GetAtt": [
-            "RoleMapFunction",
-            "Arn"
-          ]
+          "Fn::GetAtt": ["RoleMapFunction", "Arn"]
         },
         "AuthRoleArn": {
           "Ref": "AuthRoleArn"
@@ -782,90 +738,58 @@
           "Ref": "env"
         }
       },
-      "DependsOn": [
-        "RoleMapFunction"
-      ]
+      "DependsOn": ["RoleMapFunction"]
     }
   },
   "Outputs": {
     "adminGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "adminGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["adminGroupRole", "Arn"]
       }
     },
     "editorGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "editorGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["editorGroupRole", "Arn"]
       }
     },
     "siteadminGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "siteadminGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["siteadminGroupRole", "Arn"]
       }
     },
     "iawaGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "iawaGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["iawaGroupRole", "Arn"]
       }
     },
     "hokiesGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "hokiesGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["hokiesGroupRole", "Arn"]
       }
     },
     "swvaGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "swvaGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["swvaGroupRole", "Arn"]
       }
     },
     "podcastsGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "podcastsGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["podcastsGroupRole", "Arn"]
       }
     },
     "defaultGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "defaultGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["defaultGroupRole", "Arn"]
       }
     },
     "federatedGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "federatedGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["federatedGroupRole", "Arn"]
       }
     },
     "testGroupRole": {
       "Value": {
-        "Fn::GetAtt": [
-          "testGroupRole",
-          "Arn"
-        ]
+        "Fn::GetAtt": ["testGroupRole", "Arn"]
       }
     }
   },
