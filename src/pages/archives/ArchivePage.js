@@ -118,8 +118,12 @@ class ArchivePage extends Component {
     return url.match(/\.(pdf)$/) != null;
   }
 
-  isMiradorURL(url) {
-    return url.match(/(\/manifest.json)$/) != null;
+  isMiradorURL(url, item = null) {
+    let has_3d = false;
+    if (item) {
+      has_3d = this.is3D_2DiiifType(item);
+    }
+    return !has_3d && url.match(/(\/manifest.json)$/) != null;
   }
 
   isMinervaURL(url) {
@@ -142,7 +146,11 @@ class ArchivePage extends Component {
     try {
       const options = JSON.parse(item.archiveOptions);
       const type = options.assets.media_type;
-      return type === "3d_2diiif";
+      return (
+        type === "3d_2diiif" &&
+        !!options.assets.x3d_config &&
+        !!options.assets.x3d_src_img
+      );
     } catch (error) {
       return false;
     }
@@ -187,7 +195,7 @@ class ArchivePage extends Component {
           site={this.props.site}
         />
       );
-    } else if (this.isMiradorURL(item.manifest_url)) {
+    } else if (this.isMiradorURL(item.manifest_url, item)) {
       display = <MiradorViewer item={item} site={this.props.site} />;
     } else if (this.isMinervaURL(item.manifest_url)) {
       display = <MinervaPlayer item={item} site={this.props.site} />;
