@@ -240,7 +240,7 @@ function listValue(category, attr, value, languages) {
     return (
       <a href={`/search/?${queryString.stringify(parsedObject)}`}>{value}</a>
     );
-  } else if (["source", "relation", "rights"].includes(attr)) {
+  } else if (["source", "relation", "repository", "rights"].includes(attr)) {
     return cleanHTML(value);
   } else {
     return value;
@@ -252,7 +252,6 @@ function textFormat(item, attr, languages, collectionCustomKey, site) {
   let category = "archive";
   if (item.collection_category) category = "collection";
   if (Array.isArray(item[attr]) && attr !== "description") {
-    console.log("textFormat", attr, item[attr]);
     return (
       <div className="archive-item-tags multi">
         {item[attr].map((value, i) => (
