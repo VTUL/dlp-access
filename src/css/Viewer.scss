@@ -7,6 +7,35 @@
   position: relative;
 }
 
+#mirador-vis {
+  height: 100%;
+  width: 100%;
+}
+
+.MuiToolbar-root {
+  background-color: rgb(134, 31, 65) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.MuiSvgIcon-root {
+  color: white;
+}
+
+.mirador-canvas-nav {
+  display: none !important;
+}
+
+.mosaic-root {
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.mosaic-tile {
+  margin: 0 !important;
+}
+
 #minerva-browser {
   position: relative;
   display: block;

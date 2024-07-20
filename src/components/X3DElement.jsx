@@ -38,14 +38,9 @@ class X3DElement extends Component {
 
   render() {
     return (
-      <section>
-        <div className="model-container x3d">
-          <x3d
-            id="x3dElement"
-            is="x3d"
-            width={`${this.props.frameWidth}px`}
-            height={`${this.props.frameHeight}px`}
-          >
+      <section style={{ width: "100%", height: "100%" }}>
+        <div style={{ width: "100%", height: "100%" }}>
+          <x3d id="x3dElement" is="x3d" width="100%" height="100%">
             <scene is="x3d">
               <navigationInfo type="EXAMINE" is="x3d" />
               <inline

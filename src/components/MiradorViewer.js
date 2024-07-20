@@ -7,7 +7,8 @@ class MiradorViewer extends Component {
     super(props);
     this.state = {
       annotationTooltipVisible: false,
-      viewTypeControlVisible: false
+      viewTypeControlVisible: false,
+      thumbnails: []
     };
   }
 
@@ -39,7 +40,7 @@ class MiradorViewer extends Component {
         draggingEnabled: false,
         allowNewWindows: false,
         isWorkspaceAddVisible: false,
-        showZoomControls: true,
+        showZoomControls: false,
         type: "mosaic"
       },
       workspaceControlPanel: {
@@ -86,6 +87,13 @@ class MiradorViewer extends Component {
 
   render() {
     return this.wrapIf3D2D(<div id={this.miradorConfig().id}></div>);
+    // const { thumbnails } = this.state;
+    // return (
+    //   <div>
+    //     {/* <CustomThumbnails thumbnails={thumbnails} onThumbnailClick={this.handleThumbnailClick} /> */}
+    //     {this.wrapIf3D2D(<div id={this.miradorConfig().id}></div>)}
+    //   </div>
+    // );
   }
 }
 

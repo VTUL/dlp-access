@@ -121,11 +121,11 @@ class App extends Component {
               location={window.location}
               path={this.state.path}
             />
-            <main style={{ minHeight: "500px", padding: "1em 1em 0 1em" }}>
+            <main style={{ minHeight: "500px" }}>
               <div className="container p-0">
                 <NavBar site={this.state.site} />
               </div>
-              <div id="content-wrapper" className="container p-0">
+              <div id="content-wrapper">
                 <Routes>
                   {customRoutes}
                   <Route

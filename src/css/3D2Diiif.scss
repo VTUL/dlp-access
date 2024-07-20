@@ -1,85 +1,168 @@
-div#multimedia-section {
+#multimedia-section {
+  background-color: #f7f6f6;
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#options-wrapper {
+  background-color: #861f41;
+  height: 3.2em;
+  width: 100%;
   display: flex;
   flex-direction: row;
-  height: 90vh;
-  .section-border {
-    margin: 2px;
-    border: 1px solid black;
-    padding: 2px;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.3em 0.6em;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+#image-wrapper {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0.1em;
+  background-color: white;
+  overflow: hidden;
+}
+
+#x3d-element-id {
+  position: relative;
+}
+
+.drag-to-rotate-container {
+  position: absolute;
+  bottom: 15em;
+  right: 20em;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.drag-to-rotate-icon {
+  height: 100px;
+  z-index: 10;
+}
+
+#thumbnail-wrapper {
+  height: 8em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+  background-color: #f7f6f6;
+}
+
+.thumbnail-overlay {
+  position: relative;
+  display: inline-block;
+}
+
+.thumbnail-button {
+  position: relative;
+  height: 90%;
+  width: 5em;
+  margin-right: 0.1em;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.thumbnail-image {
+  display: block;
+  width: 5em;
+  height: 90%;
+}
+
+.thumbnail-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.thumbnail-button:hover .thumbnail-text {
+  opacity: 1;
+}
+
+#expand-icon {
+  color: white;
+  height: 50%;
+  width: auto;
+  padding: 0.3em;
+  margin-left: auto;
+  float: right;
+  margin-right: 5px;
+}
+
+.x3d-vis.primary {
+  width: 100%;
+  height: 100%;
+}
+
+.x3d-vis.hidden {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  #multimedia-section {
+    max-width: 100%;
+    height: 100%;
   }
-  div.left-wrapper {
-    display: block;
-    width: 80%;
+
+  #image-wrapper {
+    width: 100%;
+    height: 85%;
     padding: 0;
-    .primary-wrapper {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      margin: 0 2px;
-      overflow: hidden;
-      .x3d-vis.hidden {
-        display: none;
-      }
-      x3d#x3dElement {
-        display: block;
-        margin: 0 auto;
-      }
-    }
   }
-  div.right-wrapper {
-    display: block;
-    width: 20%;
-    border: none;
-    padding: 0;
-    .section-wrapper {
-      display: flex;
-      flex-direction: column;
-      height: 30%;
-    }
-    .map-wrapper.section-wrapper {
-      margin-top: 2px;
-    }
-    .secondary-wrapper {
-      .thumb-wrapper {
-        display: block;
-        height: 100%;
-        .thumb-label {
-          display: block;
-          width: calc(100% - 2px);
-          text-align: center;
-        }
-        button {
-          display: block;
-          width: calc(100% - 2px);
-          height: calc(100% - 19px);
-          border: none;
-          padding: 0;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-          }
-        }
-      }
-    }
-    div.contols-wrapper.section-wrapper.section-border {
-      div.controls table {
-        tr,
-        td {
-          border: 1px solid black;
-          border-collapse: collapse;
-          text-align: center;
-        }
-        tr:first-child {
-          border-bottom: 2px solid black;
-          td span.control-header-label {
-            font-weight: bold;
-          }
-        }
-      }
-    }
-    div.contols-wrapper.section-wrapper.section-border.hidden {
-      display: none;
-    }
+
+  #thumbnail-wrapper {
+    height: 6em;
+  }
+
+  .drag-to-rotate-container {
+    bottom: 10em;
+    right: 15em;
+  }
+
+  .drag-to-rotate-icon {
+    height: 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  #multimedia-section {
+    height: 100%;
+    max-width: 100%;
+  }
+
+  #thumbnail-wrapper {
+    height: 5em;
+  }
+
+  .drag-to-rotate-container {
+    bottom: 3em;
+    right: 3em;
+  }
+
+  .drag-to-rotate-icon {
+    height: 60px;
   }
 }

@@ -101,7 +101,7 @@ class Citation extends Component {
 
     return (
       <div aria-label="Item Citation" className="citation-section">
-        <div className="citation-heading">Cite this Item</div>
+        {/* <div className="citation-heading">Cite this Item</div> */}
         <div className="citation">
           <div aria-label="Citation Suggest Text" className="suggest-text">
             Here is our suggested citation. Please refer to this{" "}

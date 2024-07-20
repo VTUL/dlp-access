@@ -30,6 +30,7 @@ import SocialButtons from "../../components/SocialButtons";
 import { DownloadLinks } from "../../components/DownloadLinks";
 import ReactGA from "react-ga4";
 import { getDescriptionLabel } from "../../lib/getDescriptionLabel";
+import CollapsibleCard from "../../components/CollapsibleCards";
 
 import "../../css/ArchivePage.scss";
 import { NotFound } from "../NotFound";
@@ -49,6 +50,17 @@ class ArchivePage extends Component {
       languages: null,
       isError: false
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.getArchive(this.props.customKey);
+    }
+  }
+
+  componentDidMount() {
+    fetchLanguages(this, this.props.site, "abbr");
+    this.getArchive(this.props.customKey);
   }
 
   async getArchive(customKey) {
@@ -186,6 +198,7 @@ class ArchivePage extends Component {
       document.getElementById("content-wrapper").offsetWidth - 50,
       720
     );
+    console.log("width: ", width);
     if (this.is3D_2DiiifType(item)) {
       display = (
         <ThreeD2DiiifHandler
@@ -289,17 +302,6 @@ class ArchivePage extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props !== prevProps) {
-      this.getArchive(this.props.customKey);
-    }
-  }
-
-  componentDidMount() {
-    fetchLanguages(this, this.props.site, "abbr");
-    this.getArchive(this.props.customKey);
-  }
-
   render() {
     if (this.state.isError) {
       return <NotFound />;
@@ -348,58 +350,42 @@ class ArchivePage extends Component {
                 <Breadcrumbs category={"Archives"} record={this.state.item} />
               </nav>
             </div>
-            <div className="row">
-              <div
-                className="col-sm-12"
-                id="item-media-col"
-                role="region"
-                aria-label="Item media"
-              >
+            <div className="dataContainer">
+              <div id="imageView" role="region" aria-label="Item media">
                 {this.mediaDisplay(this.state.item)}
               </div>
-            </div>
-          </div>
-          <div
-            className="row item-details-section"
-            role="region"
-            aria-label="Item details"
-          >
-            <div className="col-lg-6 details-section-description">
-              {addNewlineInDesc(
-                this.state.item?.description,
-                getDescriptionLabel(
-                  JSON.parse(this.props.site.displayedAttributes),
-                  "archive"
-                )
-              )}
-            </div>
-            <div className="col-lg-6 details-section-metadata">
-              {archiveOptions?.derivatives?.downloads && (
-                <DownloadLinks
-                  title="Download this file"
-                  links={archiveOptions.derivatives.downloads}
-                />
-              )}
-              <SocialButtons
-                buttons={JSON.parse(this.props.site.siteOptions)}
-                url={window.location.href}
-                title={this.state.item.title}
-                media={this.state.item.thumbnail_path}
-              />
-              <Citation item={this.state.item} site={this.props.site} />
-              <table aria-label="Item Metadata">
-                <tbody>
-                  <RenderItemsDetailed
-                    keyArray={JSON.parse(this.props.site.displayedAttributes)[
-                      "archive"
-                    ].filter((e) => e.field !== "description")}
-                    item={this.state.item}
-                    languages={this.state.languages}
-                    collectionCustomKey={this.state.collectionCustomKey}
+
+              <div id="metaDataView">
+                {console.log("archive page props: ", this.state.item)}
+                <div>
+                  <h2>{this.state.item.title}</h2>
+                  <h6>{this.state.item.description[0]}</h6>
+                  <h6>{this.state.item.description[1]}</h6>
+                </div>
+                <div>
+                  <CollapsibleCard
+                    title="About"
+                    marker="about"
+                    data={this.state.item}
+                  />
+                  <CollapsibleCard
+                    title="Copyright"
+                    marker="copyright"
+                    data={this.state.item}
+                  />
+                  <CollapsibleCard
+                    title="Citation"
+                    marker="citation"
+                    data={this.state.item}
                     site={this.props.site}
                   />
-                </tbody>
-              </table>
+                  <CollapsibleCard
+                    title="Location"
+                    marker="location"
+                    data={this.state.item}
+                  />
+                </div>
+              </div>
             </div>
           </div>
           <RelatedItems collection={this.state.item} site={this.props.site} />
