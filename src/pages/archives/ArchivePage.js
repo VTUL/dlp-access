@@ -198,7 +198,6 @@ class ArchivePage extends Component {
       document.getElementById("content-wrapper").offsetWidth - 50,
       720
     );
-    console.log("width: ", width);
     if (this.is3D_2DiiifType(item)) {
       display = (
         <ThreeD2DiiifHandler
@@ -356,7 +355,6 @@ class ArchivePage extends Component {
               </div>
 
               <div id="metaDataView">
-                {console.log("archive page props: ", this.state.item)}
                 <div>
                   <h2>{this.state.item.title}</h2>
                   <h6>{this.state.item.description[0]}</h6>

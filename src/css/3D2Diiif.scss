@@ -34,12 +34,13 @@
 
 #x3d-element-id {
   position: relative;
+  justify-items: center;
 }
 
 .drag-to-rotate-container {
   position: absolute;
-  bottom: 15em;
-  right: 20em;
+  bottom: 5em;
+  right: 10em;
   display: flex;
   align-items: center;
   z-index: 10;
@@ -138,8 +139,8 @@
   }
 
   .drag-to-rotate-container {
-    bottom: 10em;
-    right: 15em;
+    // bottom: 10em;
+    // right: 15em;
   }
 
   .drag-to-rotate-icon {
@@ -158,8 +159,8 @@
   }
 
   .drag-to-rotate-container {
-    bottom: 3em;
-    right: 3em;
+    bottom: 2em;
+    right: 2em;
   }
 
   .drag-to-rotate-icon {

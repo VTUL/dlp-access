@@ -23,6 +23,23 @@
 }
 
 .mirador-canvas-nav {
+  bottom: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  background-color: rgb(134, 31, 65) !important;
+}
+
+.mirador-canvas-nav div {
+  color: black !important;
+  flex-direction: column !important;
+}
+
+.mirador-osd-info {
+  display: none !important;
+}
+
+.mirador-osd-navigation {
   display: none !important;
 }
 

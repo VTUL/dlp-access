@@ -107,51 +107,53 @@ const getMarker = (marker) => {
 };
 
 const getLocationData = (data) => {
+  console.log(data.location);
   return (
-    <div className="map-wrapper section-wrapper">
-      <LeafletThumb location={data.location} title={data.title} />
-    </div>
+    <>
+      {data.location ? (
+        <div className="map-wrapper section-wrapper">
+          <LeafletThumb location={data.location} title={data.title} />
+        </div>
+      ) : (
+        <div className="no-location">Location data not available</div>
+      )}
+    </>
   );
+};
+
+const modifyKey = (key) => {
+  const newKey = key
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+  return newKey;
 };
 
 const getAboutData = (data) => {
   let items = ["description", "rights_holder", "location", "visibility"];
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Key</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        {single_value_headers.map(
-          (key) =>
-            data[key] &&
-            !items.includes(key) && (
-              <tr key={key}>
-                <td>{key}</td>
-                <td>{data[key]}</td>
-              </tr>
-            )
-        )}
-        {multi_value_headers.map(
-          (key) =>
-            data[key] &&
-            !items.includes(key) &&
-            data[key].length > 0 && (
-              <tr key={key}>
-                <td>{key}</td>
-                <td>
-                  {data[key].map((value, index) => (
-                    <div key={index}>{value}</div>
-                  ))}
-                </td>
-              </tr>
-            )
-        )}
-      </tbody>
-    </table>
+    <div>
+      {single_value_headers.map((key) =>
+        data[key] && !items.includes(key) ? (
+          <div style={{ display: "flex", padding: "2px" }}>
+            <h6 style={{ flex: 3 }}>{modifyKey(key)}</h6>
+            <div style={{ flex: 7 }}>{data[key]}</div>
+          </div>
+        ) : null
+      )}
+      {multi_value_headers.map((key) =>
+        data[key] && !items.includes(key) && data[key].length > 0 ? (
+          <div style={{ display: "flex", padding: "4px 2px" }}>
+            <h6 style={{ flex: 3 }}>{modifyKey(key)}</h6>
+            <div style={{ flex: 7 }}>
+              {data[key].map((value, index) => (
+                <div key={index}>{value}</div>
+              ))}
+            </div>
+          </div>
+        ) : null
+      )}
+    </div>
   );
 };
 
@@ -165,7 +167,7 @@ const getCopyrightData = (data) => {
     <div>
       {data[key] && (
         <div style={{ display: "flex" }}>
-          <p key={key} style={{ flex: 3 }}>{`${key} : `}</p>
+          <h6 key={key} style={{ flex: 3 }}>{`${modifyKey(key)} `}</h6>
           <p key={key} style={{ flex: 7 }}>{` ${data[key]}`}</p>
         </div>
       )}

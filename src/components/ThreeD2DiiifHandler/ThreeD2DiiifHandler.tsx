@@ -47,12 +47,16 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
     const x3dElement = document.getElementById("x3d-element-id");
 
     if (x3dElement) {
+      console.log("Attaching event listeners");
       x3dElement.addEventListener("mousedown", handleMouseDown);
       x3dElement.addEventListener("touchstart", handleMouseDown);
+    } else {
+      console.log("x3dElement not found");
     }
 
     return () => {
       if (x3dElement) {
+        console.log("Removing event listeners");
         x3dElement.removeEventListener("mousedown", handleMouseDown);
         x3dElement.removeEventListener("touchstart", handleMouseDown);
       }

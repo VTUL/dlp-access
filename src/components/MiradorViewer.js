@@ -7,8 +7,7 @@ class MiradorViewer extends Component {
     super(props);
     this.state = {
       annotationTooltipVisible: false,
-      viewTypeControlVisible: false,
-      thumbnails: []
+      viewTypeControlVisible: false
     };
   }
 
@@ -40,11 +39,16 @@ class MiradorViewer extends Component {
         draggingEnabled: false,
         allowNewWindows: false,
         isWorkspaceAddVisible: false,
-        showZoomControls: false,
+        showZoomControls: true,
         type: "mosaic"
       },
       workspaceControlPanel: {
         enabled: false
+      },
+      canvasNavigation: {
+        // Set the height and width of canvas thumbnails in the  CanvasNavigation companion window
+        height: 25,
+        width: 25
       }
     };
     if (
@@ -87,13 +91,6 @@ class MiradorViewer extends Component {
 
   render() {
     return this.wrapIf3D2D(<div id={this.miradorConfig().id}></div>);
-    // const { thumbnails } = this.state;
-    // return (
-    //   <div>
-    //     {/* <CustomThumbnails thumbnails={thumbnails} onThumbnailClick={this.handleThumbnailClick} /> */}
-    //     {this.wrapIf3D2D(<div id={this.miradorConfig().id}></div>)}
-    //   </div>
-    // );
   }
 }
 

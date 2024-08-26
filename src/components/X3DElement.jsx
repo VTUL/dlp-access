@@ -5,7 +5,10 @@ class X3DElement extends Component {
   constructor(props) {
     super(props);
     this.x3dLoaded = this.x3dLoaded.bind(this);
+    this.poller = null;
+    this.timer = null;
   }
+
   componentDidMount() {
     this.setState({ url: this.props.url });
 
@@ -39,7 +42,7 @@ class X3DElement extends Component {
   render() {
     return (
       <section style={{ width: "100%", height: "100%" }}>
-        <div style={{ width: "100%", height: "100%" }}>
+        <div style={{ width: "100%", height: "100%", alignItems: "center" }}>
           <x3d id="x3dElement" is="x3d" width="100%" height="100%">
             <scene is="x3d">
               <navigationInfo type="EXAMINE" is="x3d" />

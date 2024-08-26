@@ -17,17 +17,18 @@
 }
 
 .card-content table {
-  width: "100%";
+  width: "80%";
   border-collapse: "collapse";
+  border: none;
 }
 
 .card-content th {
-  border: 1px solid #ddd;
+  border: none;
   padding: 8px;
 }
 
 .card-content td {
-  border: 1px solid #ddd;
+  border: none;
   padding: 8px;
   text-align: left;
   overflow-wrap: break-word; /* Allow text to wrap inside the cell */
@@ -42,6 +43,11 @@
 }
 .map-wrapper.section-wrapper {
   margin-top: 2px;
+}
+
+.no-location {
+  align-items: center;
+  height: autos;
 }
 
 @media (max-width: 600px) {
