@@ -3,61 +3,89 @@ import { getCollectionItems } from "../../../lib/fetchTools";
 
 export const useGetCollectionItems = (id: string) => {
   const [items, setItems] = useState<Archive[] | null>(null);
-  const [total, setTotal] = useState(0);
-  const [nextTokens, setNextTokens] = useState([null]);
-  const [totalPages, setTotalPages] = useState(1);
-  const [limit, setStateLimit] = useState(10);
-  const [page, setPage] = useState(0);
-  const [sort_order, setSort_order] = useState("desc");
-  const currentToken = nextTokens[page];
+  const [paginationState, setPaginationState] = useState({
+    sortOpt: { field: "title", direction: "asc" },
+    page: 0,
+    limit: 10,
+    totalPages: 1,
+    total: 0,
+    nextPageTokens: [null]
+  });
 
-  //Loads collection items based on collection id,
-  //sort order, limit, and page
+  const { sortOpt, page, limit, totalPages, nextPageTokens, total } =
+    paginationState;
+  const currentToken = nextPageTokens[page];
+
+  // Loads collection items based on collection id,
+  // sort order, limit, and page
   useEffect(() => {
     const loadItems = async (collectionID: string) => {
       const response = await getCollectionItems(
         collectionID,
-        sort_order,
+        sortOpt,
         limit,
         currentToken
       );
-      setTotal(response.total);
-      setNextTokens((cur) => {
-        const tokens = [...cur];
-        tokens[page + 1] = response.nextToken;
-        return tokens;
+      setPaginationState((prevState) => {
+        const newNextPageTokens = [...prevState.nextPageTokens];
+        newNextPageTokens[page + 1] = response.nextToken;
+        return {
+          ...prevState,
+          nextPageTokens: newNextPageTokens,
+          totalPages: Math.ceil(response.total / limit),
+          total: parseInt(response.total)
+        };
       });
-      setTotalPages(Math.ceil(response.total / limit));
       setItems(response.items);
     };
     loadItems(id);
-  }, [id, limit, sort_order, page, currentToken]);
+  }, [id, limit, sortOpt, page, currentToken]);
 
   const handleResultsNumberDropdown = useCallback(
     (_: object, result: { value: string }) => {
-      setStateLimit(parseInt(result.value));
+      setPaginationState((prevState) => ({
+        ...prevState,
+        limit: parseInt(result.value),
+        nextPageTokens: [null],
+        page: 0
+      }));
     },
     []
   );
 
   const handleSortOrderDropdown = useCallback(
-    (_: object, result: { value: string }) => {
-      setSort_order(result.value);
+    (sortField: string, sortDirection: string) => {
+      setPaginationState((prevState) => ({
+        ...prevState,
+        sortOpt: {
+          field: sortField,
+          direction: sortDirection
+        },
+        nextPageTokens: [null],
+        page: 0
+      }));
     },
     []
   );
 
   const handlePrevPage = useCallback(() => {
-    setPage(page - 1);
-  }, [page]);
+    setPaginationState((prevState) => ({
+      ...prevState,
+      page: Math.max(prevState.page - 1, 0)
+    }));
+  }, []);
 
   const handleNextPage = useCallback(() => {
-    setPage(page + 1);
-  }, [page]);
+    setPaginationState((prevState) => ({
+      ...prevState,
+      page: Math.min(prevState.page + 1, prevState.totalPages - 1)
+    }));
+  }, []);
 
   return {
     items,
     total,
+    sortOpt,
     totalPages,
     page,
     limit,

@@ -1,10 +1,9 @@
-import { defineConfig } from 'cypress'
+import { defineConfig } from "cypress";
 
+const apiTestOnly = process.env.CYPRESS_API_TEST_ONLY == "true";
 export default defineConfig({
   chromeWebSecurity: false,
   e2e: {
-    // We've imported your old cypress plugins here.
-    // You may want to clean this up later by importing these.
-    baseUrl: 'http://localhost:3000/',
-  },
-})
+    baseUrl: apiTestOnly ? null : "http://localhost:3000"
+  }
+});

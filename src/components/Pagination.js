@@ -45,7 +45,12 @@ class Pagination extends Component {
     const Previous = () => {
       if (this.props.page > 0) {
         return (
-          <Button onClick={this.props.previousPage} aria-live="off">
+          <Button
+            onClick={this.props.previousPage}
+            aria-live="off"
+            aria-label="Previous page button"
+            title="Previous page"
+          >
             <i className="fas fa-angle-double-left"></i> Previous
           </Button>
         );
@@ -56,7 +61,12 @@ class Pagination extends Component {
     const Next = () => {
       if (this.props.page < this.props.totalPages - 1) {
         return (
-          <Button onClick={this.props.nextPage} aria-live="off">
+          <Button
+            onClick={this.props.nextPage}
+            aria-live="off"
+            aria-label="Next page button"
+            title="Next page"
+          >
             Next <i className="fas fa-angle-double-right"></i>
           </Button>
         );

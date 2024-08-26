@@ -1,12 +1,12 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
+import Pagination from "../../../components/Pagination";
 import ResultsNumberDropdown from "../../../components/ResultsNumberDropdown";
 import SortOrderDropdown from "../../../components/SortOrderDropdown";
 import { Thumbnail } from "../../../components/Thumbnail";
-import { Link } from "react-router-dom";
-import { RenderItems, arkLinkFormatted } from "../../../lib/MetadataRenderer";
-import Pagination from "../../../components/Pagination";
-import { useGetCollectionItems } from "./useGetCollectionItems";
 import { language_codes } from "../../../lib/language_codes";
+import { RenderItems, arkLinkFormatted } from "../../../lib/MetadataRenderer";
+import { useGetCollectionItems } from "./useGetCollectionItems";
 
 const languages = language_codes["abbr"];
 
@@ -23,6 +23,7 @@ export const CollectionItems: FC<Props> = ({
   const {
     items,
     total,
+    sortOpt,
     totalPages,
     page,
     limit,
@@ -48,12 +49,31 @@ export const CollectionItems: FC<Props> = ({
           >
             {`Items in Collection (${total})`}
           </h2>
-          <div className="col-auto">
-            <ResultsNumberDropdown setLimit={handleResultsNumberDropdown} />
-            {site.siteId === "podcasts" && (
-              <SortOrderDropdown setSortOrder={handleSortOrderDropdown} />
-            )}
+          <div className="col-auto mr-1">
+            <div className="display-option-container">
+              <ResultsNumberDropdown
+                setLimit={handleResultsNumberDropdown}
+                className="page-cnt-dropdown mr-2"
+              />
+              <SortOrderDropdown
+                sortOpt={sortOpt}
+                setSortOrder={handleSortOrderDropdown}
+              />
+            </div>
           </div>
+        </div>
+        <div aria-live="polite" className="mb-3">
+          <Pagination
+            numResults={items.length}
+            total={total}
+            page={page}
+            limit={limit}
+            previousPage={handlePrevPage}
+            nextPage={handleNextPage}
+            totalPages={totalPages}
+            isSearch={false}
+            atBottom={true}
+          />
         </div>
         <div
           className={

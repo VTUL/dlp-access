@@ -402,3 +402,25 @@ div.collection-item .item-image img {
     width: calc(100% - 182px);
   }
 }
+
+.collection-items-list-wrapper .display-option-container {
+  display: flex;
+  justify-content: flex-end;
+  font-family: "gineso-condensed", sans-serif;
+  font-size: 1.14em;
+}
+
+.collection-items-list-wrapper .sort-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+}
+
+.collection-items-list-wrapper .sort-btn {
+  padding: 11px !important;
+  margin: 0 !important;
+}
+
+.collection-items-list-wrapper .sort-btn .sort-btn-icon {
+  font-size: 0.98rem;
+}

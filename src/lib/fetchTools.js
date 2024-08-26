@@ -520,46 +520,46 @@ export const getCollectionByIdentifier = async (identifier) => {
 
 export const getCollectionItems = async (
   collectionID,
-  sort_order,
+  sortOpt,
   limit,
   nextToken
 ) => {
   const queryGetCollectionItems = `query SearchCollectionItems(
-    $parent_id: String!
-    $limit: Int
-    $sort_order: SearchableSortDirection
-    $nextToken: String
-  ) {
-  searchArchives(
-    filter: {
-      heirarchy_path: { eq: $parent_id },
-      visibility: { eq: true }
-    },
-    sort: {
-      field: identifier
-      direction: $sort_order
-    },
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
-      title
-      thumbnail_path
-      custom_key
-      identifier
-      description
-      tags
-      creator
+      $parent_id: String!
+      $limit: Int
+      $sort: [SearchableArchiveSortInput]
+      $nextToken: String
+    ) {
+    searchArchives(
+      filter: {
+        heirarchy_path: { eq: $parent_id },
+        visibility: { eq: true }
+      },
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        title
+        archiveOptions
+        description
+        start_date
+        thumbnail_path
+        custom_key
+        identifier
+        description
+        tags
+        creator
+      }
+      total
+      nextToken
     }
-    total
-    nextToken
-  }
-}`;
+  }`;
   const items = await API.graphql(
     graphqlOperation(queryGetCollectionItems, {
       parent_id: collectionID,
       limit: limit,
-      sort_order: sort_order,
+      sort: [{ field: sortOpt.field, direction: sortOpt.direction }],
       nextToken: nextToken
     })
   );
