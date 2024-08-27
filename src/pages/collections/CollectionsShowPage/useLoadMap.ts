@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, SyntheticEvent } from "react";
 import {
   getCollectionMap,
   getTopLevelParentForCollection
@@ -6,7 +6,7 @@ import {
 
 export const useLoadMap = (collection: Collection) => {
   const [collectionMap, setCollectionMap] = useState<MapObject | null>(null);
-  const [expanded, setExpanded] = useState<string[]>([]);
+  const [expanded, setExpanded] = useState<string[] | undefined>([]);
 
   //Loads collection map and sorts it by name
   useEffect(() => {
@@ -48,6 +48,7 @@ export const useLoadMap = (collection: Collection) => {
       const map = await getCollectionMap(mapIdentifier);
       if (map) {
         const mapObj = JSON.parse(map);
+        mapObj.label = mapObj.name;
         const sorted = sortMap(mapObj);
         setCollectionMap(sorted);
         setExpanded(collection.heirarchy_path || []);
@@ -56,9 +57,12 @@ export const useLoadMap = (collection: Collection) => {
     loadMap();
   }, [collection]);
 
-  const handleToggle = useCallback((_: object, nodeIds: string[]) => {
-    setExpanded(nodeIds);
-  }, []);
+  const handleToggle = useCallback(
+    (event: SyntheticEvent<Element, Event>, itemIds: string[]) => {
+      setExpanded(itemIds);
+    },
+    []
+  );
 
   return { collectionMap, expanded, handleToggle };
 };
