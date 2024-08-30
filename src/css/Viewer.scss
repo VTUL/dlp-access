@@ -63,6 +63,28 @@
   }
 }
 
+.controls {
+  display: flex;
+  flex-direction: column;
+  // gap: 1px;
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+}
+
+.controls button {
+  padding: 10px 12px;
+  background-color: rgb(134, 31, 65);
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+.controls button:hover {
+  background-color: rgb(166, 94, 118);
+}
+
 nav#vt_nav.hidden {
   display: none;
 }

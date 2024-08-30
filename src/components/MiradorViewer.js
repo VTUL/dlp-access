@@ -44,11 +44,6 @@ class MiradorViewer extends Component {
       },
       workspaceControlPanel: {
         enabled: false
-      },
-      canvasNavigation: {
-        // Set the height and width of canvas thumbnails in the  CanvasNavigation companion window
-        height: 25,
-        width: 25
       }
     };
     if (
