@@ -5,7 +5,11 @@ class X3DElement extends Component {
   constructor(props) {
     super(props);
     this.x3dLoaded = this.x3dLoaded.bind(this);
+    this.poller = null;
+    this.timer = null;
+    this.viewpointRef = React.createRef();
   }
+
   componentDidMount() {
     this.setState({ url: this.props.url });
 
@@ -17,7 +21,30 @@ class X3DElement extends Component {
       document.head.appendChild(script);
     }
     this.x3dLoaded();
+    // this.setNavigationMode("examine");
+    this.zoomFactor = 1.0;
   }
+
+  zoomIn = () => {
+    this.zoomFactor -= 0.1; // Decrease zoom factor to zoom in
+    this.updateViewpointPosition();
+  };
+
+  zoomOut = () => {
+    this.zoomFactor += 0.1; // Increase zoom factor to zoom out
+    this.updateViewpointPosition();
+  };
+
+  updateViewpointPosition = () => {
+    const viewpoint = this.viewpointRef.current;
+    if (viewpoint) {
+      const initialPosition = [0, 0, 10]; // The initial viewpoint position
+      const newPosition = initialPosition.map(
+        (coord) => coord * this.zoomFactor
+      );
+      viewpoint.setAttribute("position", newPosition.join(" "));
+    }
+  };
 
   x3dLoaded = () => {
     const poller = () => {
@@ -38,16 +65,12 @@ class X3DElement extends Component {
 
   render() {
     return (
-      <section>
-        <div className="model-container x3d">
-          <x3d
-            id="x3dElement"
-            is="x3d"
-            width={`${this.props.frameWidth}px`}
-            height={`${this.props.frameHeight}px`}
-          >
+      <section style={{ width: "100%", height: "100%" }}>
+        <div style={{ width: "100%", height: "100%", alignItems: "center" }}>
+          <x3d id="x3dElement" is="x3d" width="100%" height="100%">
             <scene is="x3d">
-              <navigationInfo type="EXAMINE" is="x3d" />
+              <viewpoint ref={this.viewpointRef} position="0 0 10" />
+              <navigationInfo type="examine" id="navType" />
               <inline
                 id="x3dInline"
                 DEF="x3dInline"
@@ -58,6 +81,14 @@ class X3DElement extends Component {
                 onload={this.x3dLoaded}
               />
             </scene>
+            <div className="controls">
+              <button onClick={this.zoomIn} title="Zoom In">
+                <i class="far fa-plus-circle"></i>
+              </button>
+              <button onClick={this.zoomOut} title="Zoom Out">
+                <i class="far fa-minus-circle"></i>
+              </button>
+            </div>
           </x3d>
         </div>
       </section>

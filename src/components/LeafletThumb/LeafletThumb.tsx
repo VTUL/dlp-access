@@ -9,6 +9,7 @@ type Props = {
 };
 
 export const LeafletThumb: FC<Props> = ({ location, title }) => {
+  console.log("map: ", title, location);
   if (!title || location?.length !== 2) return null;
   return (
     <>

@@ -2,6 +2,12 @@
   text-align: center;
 }
 
+#content-wrapper {
+  height: 100%;
+  width: 100%;
+  padding: 0em 1.5em;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -21,6 +27,18 @@
 
 .App-link {
   color: #61dafb;
+}
+
+@media (max-width: 1024px) {
+  #content-wrapper {
+    padding: 0em 1em;
+  }
+}
+
+@media (max-width: 600px) {
+  #content-wrapper {
+    padding: 0.2em;
+  }
 }
 
 @keyframes App-logo-spin {

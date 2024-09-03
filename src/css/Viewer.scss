@@ -7,6 +7,52 @@
   position: relative;
 }
 
+#mirador-vis {
+  height: 100%;
+  width: 100%;
+}
+
+.MuiToolbar-root {
+  background-color: rgb(134, 31, 65) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.MuiSvgIcon-root {
+  color: white;
+}
+
+.mirador-canvas-nav {
+  bottom: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  background-color: rgb(134, 31, 65) !important;
+}
+
+.mirador-canvas-nav div {
+  color: black !important;
+  flex-direction: column !important;
+}
+
+.mirador-osd-info {
+  display: none !important;
+}
+
+.mirador-osd-navigation {
+  display: none !important;
+}
+
+.mosaic-root {
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.mosaic-tile {
+  margin: 0 !important;
+}
+
 #minerva-browser {
   position: relative;
   display: block;
@@ -15,6 +61,28 @@
   .minerva-root .minerva-legend {
     display: none;
   }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  // gap: 1px;
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+}
+
+.controls button {
+  padding: 10px 12px;
+  background-color: rgb(134, 31, 65);
+  cursor: pointer;
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+.controls button:hover {
+  background-color: rgb(166, 94, 118);
 }
 
 nav#vt_nav.hidden {
