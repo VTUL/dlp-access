@@ -1,4 +1,4 @@
-import TreeItem from "@mui/lab/TreeItem";
+import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import { FC } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -8,7 +8,7 @@ type Props = {
 export const CollectionTreeItem: FC<Props> = ({ nodes }) => (
   <TreeItem
     key={nodes.id}
-    nodeId={nodes.id}
+    itemId={nodes.id}
     label={
       <NavLink to={`/collection/${nodes.custom_key}`}>{nodes.name}</NavLink>
     }
