@@ -21,7 +21,6 @@ class X3DElement extends Component {
       document.head.appendChild(script);
     }
     this.x3dLoaded();
-    // this.setNavigationMode("examine");
     this.zoomFactor = 1.0;
   }
 
@@ -102,31 +101,3 @@ class X3DElement extends Component {
   }
 }
 export default X3DElement;
-
-// .icon-wrapper .tooltip {
-//   visibility: hidden;
-//   width: 80px; /* Adjust this as needed */
-//   background-color: black;
-//   color: #fff;
-//   text-align: center;
-//   border-radius: 4px;
-//   padding: 5px 0;
-//   position: absolute;
-//   z-index: 1;
-//   bottom: 125%; /* Position above the icon */
-//   left: 50%;
-//   margin-left: -40px; /* Centers the tooltip */
-//   opacity: 0;
-//   transition: opacity 0.3s;
-// }
-
-// .icon-wrapper .tooltip::after {
-//   content: "";
-//   position: absolute;
-//   top: 100%; /* Arrow at the bottom of the tooltip */
-//   left: 50%;
-//   margin-left: -5px;
-//   border-width: 5px;
-//   border-style: solid;
-//   border-color: black transparent transparent transparent;
-// }
