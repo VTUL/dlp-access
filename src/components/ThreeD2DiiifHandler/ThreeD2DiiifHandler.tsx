@@ -3,7 +3,7 @@ import X3DElement from "src/components/X3DElement";
 import MiradorViewer from "src/components/MiradorViewer";
 import "../../css/3D2Diiif.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExpand } from "@fortawesome/free-solid-svg-icons";
+import { faExpand, faCompress } from "@fortawesome/free-solid-svg-icons";
 import dragToRotateIcon from "../../images/drag_to_rotate.jpg";
 import { LeafletThumb } from "../LeafletThumb";
 
@@ -25,14 +25,17 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
   const [threeD, setThreeD] = useState(
     options.assets.media_type === "3d_2diiif" ? "primary" : "secondary"
   );
+  const [fullScreen, setFullScreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleFullscreen = () => {
     if (containerRef.current) {
       if (document.fullscreenElement) {
+        setFullScreen(false);
         document.exitFullscreen();
       } else {
         containerRef.current.requestFullscreen();
+        setFullScreen(true);
       }
     }
   };
@@ -47,7 +50,6 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
     const x3dElement = document.getElementById("x3d-element-id");
 
     if (x3dElement) {
-      console.log("Attaching event listeners");
       x3dElement.addEventListener("mousedown", handleMouseDown);
       x3dElement.addEventListener("touchstart", handleMouseDown);
     } else {
@@ -170,10 +172,28 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
         className="options-wrapper"
         id="options-wrapper"
         hidden={threeD !== "primary"}
-        onClick={handleFullscreen}
       >
         <h4 style={{ marginBottom: 0 }}>{item.title}</h4>
-        <FontAwesomeIcon icon={faExpand} id="expand-icon" />
+        {fullScreen ? (
+          <div className="icon-wrapper">
+            <FontAwesomeIcon
+              onClick={handleFullscreen}
+              icon={faCompress}
+              id="minimize-icon"
+            />
+            <span className="tooltip">Exit full screen</span>{" "}
+            {/* Tooltip text */}
+          </div>
+        ) : (
+          <div className="icon-wrapper">
+            <FontAwesomeIcon
+              onClick={handleFullscreen}
+              icon={faExpand}
+              id="expand-icon"
+            />
+            <span className="tooltip">Full screen</span> {/* Tooltip text */}
+          </div>
+        )}
       </div>
       <div className="image-wrapper" id="image-wrapper">
         {primarySectionContent()}

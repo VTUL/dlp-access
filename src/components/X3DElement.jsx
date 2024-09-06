@@ -82,12 +82,18 @@ class X3DElement extends Component {
               />
             </scene>
             <div className="controls">
-              <button onClick={this.zoomIn} title="Zoom In">
-                <i class="far fa-plus-circle"></i>
-              </button>
-              <button onClick={this.zoomOut} title="Zoom Out">
-                <i class="far fa-minus-circle"></i>
-              </button>
+              <div className="tooltip-wrapper">
+                <button onClick={this.zoomIn}>
+                  <i className="far fa-plus-circle"></i>
+                </button>
+                <span className="viewer-tooltip">Zoom In</span>
+              </div>
+              <div className="tooltip-wrapper">
+                <button onClick={this.zoomOut}>
+                  <i className="far fa-minus-circle"></i>
+                </button>
+                <span className="viewer-tooltip">Zoom Out</span>
+              </div>
             </div>
           </x3d>
         </div>
@@ -96,3 +102,31 @@ class X3DElement extends Component {
   }
 }
 export default X3DElement;
+
+// .icon-wrapper .tooltip {
+//   visibility: hidden;
+//   width: 80px; /* Adjust this as needed */
+//   background-color: black;
+//   color: #fff;
+//   text-align: center;
+//   border-radius: 4px;
+//   padding: 5px 0;
+//   position: absolute;
+//   z-index: 1;
+//   bottom: 125%; /* Position above the icon */
+//   left: 50%;
+//   margin-left: -40px; /* Centers the tooltip */
+//   opacity: 0;
+//   transition: opacity 0.3s;
+// }
+
+// .icon-wrapper .tooltip::after {
+//   content: "";
+//   position: absolute;
+//   top: 100%; /* Arrow at the bottom of the tooltip */
+//   left: 50%;
+//   margin-left: -5px;
+//   border-width: 5px;
+//   border-style: solid;
+//   border-color: black transparent transparent transparent;
+// }
