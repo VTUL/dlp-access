@@ -39,6 +39,7 @@
     "sharedId": "658176f3",
     "userPoolGroupList": [
       "admin",
+      "editor",
       "siteadmin",
       "iawa",
       "hokies",
@@ -46,8 +47,7 @@
       "podcasts",
       "default",
       "federated",
-      "test",
-      "editor"
+      "test"
     ],
     "triggers": {
       "PostConfirmation": [

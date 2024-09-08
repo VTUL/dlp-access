@@ -93,14 +93,6 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_iawav2658176f3PostConfirmation_GROUP": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "iawav2658176f3PostConfirmation"
-        }
-      ]
-    },
     "AMPLIFY_function_iawav2658176f3PostConfirmation_deploymentBucketName": {
       "usedBy": [
         {
