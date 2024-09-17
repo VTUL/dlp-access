@@ -20,6 +20,7 @@ import CopyrightIcon from "@mui/icons-material/Copyright";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import { LeafletThumb } from "./LeafletThumb";
 import Citation from "../components/Citation";
+import { useNavigate } from "react-router-dom";
 
 import "../css/CollapsibleCards.scss";
 
@@ -122,6 +123,9 @@ const getLocationData = (data) => {
 };
 
 const modifyKey = (key) => {
+  if (key == "display_date") {
+    return "Date";
+  }
   const newKey = key
     .split("_")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -129,77 +133,193 @@ const modifyKey = (key) => {
   return newKey;
 };
 
-const getAboutData = (data) => {
-  let items = ["description", "rights_holder", "location", "visibility"];
-  return (
-    <div>
-      {single_value_headers.map((key) =>
-        data[key] && !items.includes(key) ? (
-          <div style={{ display: "flex", padding: "2px" }}>
-            <h6 style={{ flex: 3 }}>{modifyKey(key)}</h6>
-            <div style={{ flex: 7 }}>{data[key]}</div>
-          </div>
-        ) : null
-      )}
-      {multi_value_headers.map((key) =>
-        data[key] && !items.includes(key) && data[key].length > 0 ? (
-          <div style={{ display: "flex", padding: "4px 2px" }}>
-            <h6 style={{ flex: 3 }}>{modifyKey(key)}</h6>
-            <div style={{ flex: 7 }}>
-              {data[key].map((value, index) => (
-                <div key={index}>{value}</div>
-              ))}
-            </div>
-          </div>
-        ) : null
-      )}
-    </div>
-  );
-};
-
 const getCitationData = (data, site) => {
   return <Citation item={data} site={site} />;
 };
 
 const getCopyrightData = (data) => {
-  let key = "rights_holder";
+  let key1 = "rights_holder";
+  let key2 = "rights";
   return (
-    <div>
-      {data[key] && (
-        <div style={{ display: "flex" }}>
-          <h6 key={key} style={{ flex: 3 }}>{`${modifyKey(key)} `}</h6>
-          <p key={key} style={{ flex: 7 }}>{` ${data[key]}`}</p>
-        </div>
-      )}
-    </div>
+    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <tbody>
+        {data[key1] && (
+          <tr>
+            <td
+              style={{ padding: "4px 2px", verticalAlign: "top", width: "30%" }}
+            >
+              <h6 key={key1}>{`${modifyKey(key1)}`}</h6>
+            </td>
+            <td style={{ padding: "2px", verticalAlign: "top" }}>
+              <div dangerouslySetInnerHTML={{ __html: data[key1] }} />
+            </td>
+          </tr>
+        )}
+        {data[key2] && (
+          <tr>
+            <td
+              style={{ padding: "4px 2px", verticalAlign: "top", width: "30%" }}
+            >
+              <h6 key={key2}>{`${modifyKey(key2)}`}</h6>
+            </td>
+            <td style={{ padding: "2px", verticalAlign: "top" }}>
+              <div dangerouslySetInnerHTML={{ __html: data[key2] }} />
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </table>
   );
 };
 
-const getContent = (marker, data, site) => {
-  switch (marker) {
-    case "location":
-      return getLocationData(data);
-
-    case "about":
-      return getAboutData(data);
-
-    case "copyright":
-      return getCopyrightData(data);
-
-    case "citation":
-      return getCitationData(data, site);
-
-    default:
-      return null;
-  }
-};
-
-export default function CollapsibleCard({ title, marker, data, site }) {
-  const [expanded, setExpanded] = React.useState(false);
+export default function CollapsibleCard({
+  title,
+  marker,
+  data,
+  site,
+  defaultExpand
+}) {
+  const [expanded, setExpanded] = React.useState(defaultExpand);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  const navigate = useNavigate();
+  let facetSearchItems = ["format", "medium", "type", "tags"];
+
+  const renderContent = (key, value, index) => {
+    if (typeof value === "string" && value.startsWith("http")) {
+      return (
+        <div key={index}>
+          <a href={value} target="_blank" rel="noopener noreferrer">
+            {value}
+          </a>
+        </div>
+      );
+    } else if (facetSearchItems.includes(key)) {
+      return (
+        <div key={index}>
+          <a href="/search" rel="noopener noreferrer">
+            {value}
+          </a>
+        </div>
+      );
+    } else if (key == "language") {
+      return (
+        <div key={index}>
+          <a
+            href="https://en.wikipedia.org/wiki/English_language"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            en
+          </a>
+        </div>
+      );
+    } else {
+      return <div key={index}>{value}</div>;
+    }
+  };
+
+  const getAboutData = (data) => {
+    console.log("about: ", data);
+    let items = [
+      "description",
+      "date",
+      "rights",
+      "rights_holder",
+      "start_date",
+      "end_date",
+      "location",
+      "visibility"
+    ];
+
+    return (
+      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+        <tbody>
+          {single_value_headers.map((key) =>
+            data[key] && !items.includes(key) ? (
+              <tr key={key} style={{ padding: "4px 2px" }}>
+                <td
+                  style={{ padding: "2px", verticalAlign: "top", width: "30%" }}
+                >
+                  <h6>{modifyKey(key)}</h6>
+                </td>
+                <td style={{ padding: "2px", verticalAlign: "top" }}>
+                  {data[key] === "string" && data[key].startsWith("http") ? (
+                    <a
+                      href={data[key]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {data[key]}
+                    </a>
+                  ) : (
+                    data[key]
+                  )}
+                </td>
+              </tr>
+            ) : null
+          )}
+          {multi_value_headers.map((key) =>
+            data[key] && !items.includes(key) && data[key].length > 0 ? (
+              <tr key={key} style={{ padding: "4px 2px" }}>
+                <td
+                  style={{ padding: "2px", verticalAlign: "top", width: "30%" }}
+                >
+                  <h6>{modifyKey(key)}</h6>
+                </td>
+                <td style={{ padding: "2px", verticalAlign: "top" }}>
+                  {/* {Array.isArray(data[key]) ? (
+                    data[key].map((value, index) =>
+                      typeof value === "string" && value.startsWith("http") ? (
+                        <div key={index}>
+                          <a href={value} target="_blank" rel="noopener noreferrer">
+                            {value}
+                          </a>
+                        </div>
+                      ) : (
+                        <div key={index}>{value}</div>
+                      )
+                    )
+                  ) : (
+                    data[key]
+                  )} */}
+                  {Array.isArray(data[key])
+                    ? data[key].map((value, index) =>
+                        renderContent(key, value, index)
+                      )
+                    : renderContent(data[key], 0)}
+                </td>
+                <br />
+              </tr>
+            ) : null
+          )}
+        </tbody>
+      </table>
+    );
+  };
+
+  const getContent = (marker, data, site) => {
+    switch (marker) {
+      case "location":
+        return getLocationData(data);
+
+      case "about":
+        return getAboutData(data);
+
+      case "copyright":
+        return getCopyrightData(data);
+
+      case "citation":
+        return getCitationData(data, site);
+
+      default:
+        return null;
+    }
+  };
+
   return (
     <Card sx={{ width: "100%", marginBottom: "1vh" }}>
       <div
