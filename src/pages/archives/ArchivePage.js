@@ -22,14 +22,11 @@ import {
 import { buildRichSchema } from "../../lib/richSchemaTools";
 import { searchArchives } from "../../graphql/queries";
 import RelatedItems from "../../components/RelatedItems";
-import Citation from "../../components/Citation";
 import { Thumbnail } from "../../components/Thumbnail";
 import MtlElement from "../../components/MtlElement";
 import X3DElement from "../../components/X3DElement";
 import SocialButtons from "../../components/SocialButtons";
-import { DownloadLinks } from "../../components/DownloadLinks";
 import ReactGA from "react-ga4";
-import { getDescriptionLabel } from "../../lib/getDescriptionLabel";
 import CollapsibleCard from "../../components/CollapsibleCards";
 
 import "../../css/ArchivePage.scss";
@@ -316,7 +313,6 @@ class ArchivePage extends Component {
         page: window.location.href,
         title: this.state.item.identifier
       });
-      const archiveOptions = JSON.parse(this.state.item.archiveOptions);
       return (
         <div className="item-page-wrapper">
           <SiteTitle
@@ -354,11 +350,15 @@ class ArchivePage extends Component {
                 {this.mediaDisplay(this.state.item)}
               </div>
 
-              <div id="metaDataView">
+              <div id="metaDataView" className="details-section">
                 <div>
                   <h2>{this.state.item.title}</h2>
-                  <h6>{this.state.item.description[0]}</h6>
-                  <h6>{this.state.item.description[1]}</h6>
+                  <div className="item-metadata description">
+                    {addNewlineInDesc(
+                      this?.state?.item?.description,
+                      "Description"
+                    )}
+                  </div>
                 </div>
                 <div>
                   <CollapsibleCard
