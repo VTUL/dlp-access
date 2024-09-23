@@ -31,30 +31,43 @@ const searchArchivesQuery = `
 `;
 
 describe("searchArchives query default sorting", () => {
-  it("Archives sorted by title in asc order by default", () => {
+  it("Archives sorted by 'title' in asc order by default", () => {
     const variables = {
       limit: 5,
-      parent_id: "4172836b-4760-423c-bb4e-c5215e069d76"
+      parent_id: "5335870d-834c-4fcf-8831-c508d525d24e"
     };
     cy.graphqlRequest(searchArchivesQuery, variables).then((res) => {
       expect(res.status).to.eq(200);
       const items = res.body.data.searchArchives.items;
       expect(items).to.exist;
       expect(items).to.have.lengthOf(5);
-      expect(items[0].title).to.eq("Abaeis nicippe ((Cramer, 1779))");
-      expect(items[1].title).to.eq("Abaeis nicippe ((Cramer, 1779))");
-      expect(items[2].title).to.eq("Achalarus lyciades ((Geyer, [1832]))");
-      expect(items[3].title).to.eq("Achalarus lyciades ((Geyer, [1832]))");
-      expect(items[4].title).to.eq("Achalarus lyciades ((Geyer, [1832]))");
+      expect(items[0].title).to.eq('"La Fragua" Housing, Bogotá');
+      expect(items[0].custom_key).to.eq("ark:/53696/0t03jc8x");
+
+      expect(items[1].title).to.eq('"La Fragua" Housing, Bogotá');
+      expect(items[1].custom_key).to.eq("ark:/53696/pp439d2v");
+
+      expect(items[2].title).to.eq('"La Fragua" Housing, Bogotá');
+      expect(items[2].custom_key).to.eq("ark:/53696/zs07c17h");
+
+      expect(items[3].title).to.eq(
+        '"Mixto" Construction, San José, Costa Rica'
+      );
+      expect(items[3].custom_key).to.eq("ark:/53696/9b46ts2m");
+
+      expect(items[4].title).to.eq(
+        "Aceria (steelworks), Paz de Rio, Boyacá Department, Colombia"
+      );
+      expect(items[4].custom_key).to.eq("ark:/53696/9s971p34");
     });
   });
 });
 
-describe("searchArchives query sort by title by desc order", () => {
-  it("Archives sorted by title in desc order", () => {
+describe("searchArchives query sort by 'title' in desc order", () => {
+  it("Archives sorted by 'title' in desc order", () => {
     const variables = {
       limit: 5,
-      parent_id: "4172836b-4760-423c-bb4e-c5215e069d76",
+      parent_id: "5335870d-834c-4fcf-8831-c508d525d24e",
       sort: [
         {
           field: "title",
@@ -67,20 +80,35 @@ describe("searchArchives query sort by title by desc order", () => {
       const items = res.body.data.searchArchives.items;
       expect(items).to.exist;
       expect(items).to.have.lengthOf(5);
-      expect(items[0].title).to.eq("speyeria idalia ((Drury, 1773))");
-      expect(items[1].title).to.eq("moduza (Moore, 1881)");
-      expect(items[2].title).to.eq("hes");
-      expect(items[3].title).to.eq("Zerene cesonia ((Stoll, 1790))");
-      expect(items[4].title).to.eq("Xylocopa virginica ((Linnaeus, 1771))");
+      expect(items[0].title).to.eq(
+        "near Castilla, Tolima Department, Colombia"
+      );
+      expect(items[0].custom_key).to.eq("ark:/53696/3f027g2q");
+
+      expect(items[1].title).to.eq("de Roux & Bermudez, Architects");
+      expect(items[1].custom_key).to.eq("ark:/53696/dw53tj8c");
+
+      expect(items[2].title).to.eq("Yugoslavia - General View");
+      expect(items[2].custom_key).to.eq("ark:/53696/v558mw2v");
+
+      expect(items[3].title).to.eq(
+        "Yoyogi National Gym, Tokyo, by Kenzo Tange"
+      );
+      expect(items[3].custom_key).to.eq("ark:/53696/m7862h44");
+
+      expect(items[4].title).to.eq(
+        "Yoyogi National Gym, Tokyo, by Kenzo Tange"
+      );
+      expect(items[4].custom_key).to.eq("ark:/53696/wr87bc8q");
     });
   });
 });
 
-describe("searchArchives query sort by start_date by asc order", () => {
-  it("Archives sorted by title in desc order", () => {
+describe("searchArchives query sort by 'start_date' in asc order", () => {
+  it("Archives sorted by 'start_date' in desc order", () => {
     const variables = {
       limit: 5,
-      parent_id: "4172836b-4760-423c-bb4e-c5215e069d76",
+      parent_id: "5335870d-834c-4fcf-8831-c508d525d24e",
       sort: [
         {
           field: "start_date",
@@ -93,29 +121,29 @@ describe("searchArchives query sort by start_date by asc order", () => {
       const items = res.body.data.searchArchives.items;
       expect(items).to.exist;
       expect(items).to.have.lengthOf(5);
-      expect(items[0].id).to.eq("5965bd54-6958-4a87-8c3d-024b716bc482");
-      expect(items[0].start_date).to.eq("1874/08/13");
+      expect(items[0].custom_key).to.eq("ark:/53696/5178425k");
+      expect(items[0].start_date).to.eq("1941");
 
-      expect(items[1].id).to.eq("81675218-2bd6-45cb-972a-318b6f076d43");
-      expect(items[1].start_date).to.eq("1876/07/20");
+      expect(items[1].custom_key).to.eq("ark:/53696/3k152j9g");
+      expect(items[1].start_date).to.eq("1951/08/31");
 
-      expect(items[2].id).to.eq("80323649-2160-458a-ab92-4a9596c9e760");
-      expect(items[2].start_date).to.eq("1889/07/03");
+      expect(items[2].custom_key).to.eq("ark:/53696/7s99555j");
+      expect(items[2].start_date).to.eq("1951/08/31");
 
-      expect(items[3].id).to.eq("950254d0-8b29-4d4a-806b-3ec5a837f4ce");
-      expect(items[3].start_date).to.eq("1894/08/02");
+      expect(items[3].custom_key).to.eq("ark:/53696/zw79ss32");
+      expect(items[3].start_date).to.eq("1951/08/31");
 
-      expect(items[4].id).to.eq("559bcb88-14c9-4cc9-a587-a2b5c7b6fd7d");
-      expect(items[4].start_date).to.eq("1895/08/02");
+      expect(items[4].custom_key).to.eq("ark:/53696/7h861j7t");
+      expect(items[4].start_date).to.eq("1952");
     });
   });
 });
 
-describe("searchArchives query sort by start_date by desc order", () => {
+describe("searchArchives query sort by 'start_date' in desc order", () => {
   let nextToken = null;
   const variables = {
     limit: 5,
-    parent_id: "4172836b-4760-423c-bb4e-c5215e069d76",
+    parent_id: "5335870d-834c-4fcf-8831-c508d525d24e",
     sort: [
       {
         field: "start_date",
@@ -123,35 +151,35 @@ describe("searchArchives query sort by start_date by desc order", () => {
       }
     ]
   };
-  it("Archives sorted by title in desc order", () => {
+  it("Archives sorted by 'start_date' in desc order", () => {
     cy.graphqlRequest(searchArchivesQuery, variables).then((res) => {
       expect(res.status).to.eq(200);
       let items = res.body.data.searchArchives.items;
       expect(items).to.exist;
       expect(items).to.have.lengthOf(5);
 
-      expect(items[0].id).to.eq("0e894be0-9a70-456e-bd58-682c9a9943a0");
-      expect(items[0].start_date).to.eq("2019/09/05");
+      expect(items[0].custom_key).to.eq("ark:/53696/0g13pc4h");
+      expect(items[0].start_date).to.eq("1974/09/21");
 
-      expect(items[1].id).to.eq("257c59d2-c2c0-4144-82e1-91e846fe10cf");
-      expect(items[1].start_date).to.eq("2018/08/14");
+      expect(items[1].custom_key).to.eq("ark:/53696/0r93t886");
+      expect(items[1].start_date).to.eq("1974/09/21");
 
-      expect(items[2].id).to.eq("7af4c0f2-5279-4ba8-8062-31f95c50674b");
-      expect(items[2].start_date).to.eq("2018/08/14");
+      expect(items[2].custom_key).to.eq("ark:/53696/0t755908");
+      expect(items[2].start_date).to.eq("1974/09/21");
 
-      expect(items[3].id).to.eq("d858803d-73df-4724-a7ac-c205f266cff4");
-      expect(items[3].start_date).to.eq("2018/08/14");
+      expect(items[3].custom_key).to.eq("ark:/53696/0w77c591");
+      expect(items[3].start_date).to.eq("1974/09/21");
 
-      expect(items[4].id).to.eq("916b1668-ae83-4f81-9ddd-56cc01f9b473");
-      expect(items[4].start_date).to.eq("2018/08/14");
+      expect(items[4].custom_key).to.eq("ark:/53696/1400365w");
+      expect(items[4].start_date).to.eq("1974/09/21");
 
       nextToken = res.body.data.searchArchives.nextToken;
       expect(nextToken).to.exist.to.eq(
-        "1534204800000::key::ark:/53696/ss07hm3g"
+        "148953600000::key::ark:/53696/1400365w"
       );
     });
   });
-  it("Paginate results with nextToken", () => {
+  it("Get next page of results with pagination token", () => {
     variables["nextToken"] = nextToken;
     cy.graphqlRequest(searchArchivesQuery, variables).then((res) => {
       expect(res.status).to.eq(200);
@@ -159,32 +187,32 @@ describe("searchArchives query sort by start_date by desc order", () => {
       expect(items).to.exist;
       expect(items).to.have.lengthOf(5);
 
-      expect(items[0].id).to.eq("d6c01b8c-ab24-4018-bf38-5061203f15c4");
-      expect(items[0].start_date).to.eq("2018/08/13");
+      expect(items[0].custom_key).to.eq("ark:/53696/1k683z9z");
+      expect(items[0].start_date).to.eq("1974/09/21");
 
-      expect(items[1].id).to.eq("e315eefa-6425-447f-99ca-3df0fdecfd1e");
-      expect(items[1].start_date).to.eq("2018/08/13");
+      expect(items[1].custom_key).to.eq("ark:/53696/1r37pq0j");
+      expect(items[1].start_date).to.eq("1974/09/21");
 
-      expect(items[2].id).to.eq("58b724e3-f9bc-418a-bf86-526be1251f33");
-      expect(items[2].start_date).to.eq("2018/08/13");
+      expect(items[2].custom_key).to.eq("ark:/53696/23330w0w");
+      expect(items[2].start_date).to.eq("1974/09/21");
 
-      expect(items[3].id).to.eq("b00a2cf8-f569-4b5c-b1b8-8acec70af9ad");
-      expect(items[3].start_date).to.eq("2018/08/13");
+      expect(items[3].custom_key).to.eq("ark:/53696/2k39k93k");
+      expect(items[3].start_date).to.eq("1974/09/21");
 
-      expect(items[4].id).to.eq("0edc34fa-9899-457b-9cad-2152065038e0");
-      expect(items[4].start_date).to.eq("2018/08/13");
+      expect(items[4].custom_key).to.eq("ark:/53696/2q226d4f");
+      expect(items[4].start_date).to.eq("1974/09/21");
     });
   });
 });
 
-describe("searchArchives query sort by a null field (creator)", () => {
+describe("searchArchives query sort by a nullable field (create_date)", () => {
   let nextToken = null;
   const variables = {
     limit: 5,
-    parent_id: "4172836b-4760-423c-bb4e-c5215e069d76",
+    parent_id: "5335870d-834c-4fcf-8831-c508d525d24e",
     sort: [
       {
-        field: "creator",
+        field: "create_date",
         direction: "asc"
       }
     ],
@@ -197,23 +225,14 @@ describe("searchArchives query sort by a null field (creator)", () => {
       expect(items).to.exist;
       expect(items).to.have.lengthOf(5);
 
-      expect(items[0].id).to.eq("7b52b83a-4509-46cd-84b5-c296f554f3a8");
-      expect(items[0].custom_key).to.eq("ark:/53696/0046p295");
-
-      expect(items[1].id).to.eq("539885c3-bdaf-4b23-8a86-39c2e1615861");
-      expect(items[1].custom_key).to.eq("ark:/53696/0057rw0d");
-
-      expect(items[2].id).to.eq("b251e06e-9015-42f5-97a5-642c1dca2a18");
-      expect(items[2].custom_key).to.eq("ark:/53696/0194fs3t");
-
-      expect(items[3].id).to.eq("f2c08f0b-0171-49b7-9f57-84e002b78bdc");
-      expect(items[3].custom_key).to.eq("ark:/53696/0267d54x");
-
-      expect(items[4].id).to.eq("05878b4f-6cff-4433-b2fb-f050ba0a08fa");
-      expect(items[4].custom_key).to.eq("ark:/53696/0270450w");
+      expect(items[0].custom_key).to.eq("ark:/53696/0000wx1j");
+      expect(items[1].custom_key).to.eq("ark:/53696/0011b16b");
+      expect(items[2].custom_key).to.eq("ark:/53696/0153q61n");
+      expect(items[3].custom_key).to.eq("ark:/53696/0163sb8f");
+      expect(items[4].custom_key).to.eq("ark:/53696/0244qp4c");
 
       nextToken = res.body.data.searchArchives.nextToken;
-      expect(nextToken).to.exist.to.eq("NULL_FIELD::key::ark:/53696/0270450w");
+      expect(nextToken).to.exist.to.eq("NULL_FIELD::key::ark:/53696/0244qp4c");
     });
 
     it("Paginate results with nextToken", () => {
@@ -224,20 +243,11 @@ describe("searchArchives query sort by a null field (creator)", () => {
         expect(items).to.exist;
         expect(items).to.have.lengthOf(5);
 
-        expect(items[0].id).to.eq("96dcdec6-1309-4c49-a58e-019b4479fbbd");
-        expect(items[0].custom_key).to.eq("ark:/53696/0318mv04");
-
-        expect(items[1].id).to.eq("32725f42-dc95-4214-8bbc-ab7a134e379a");
-        expect(items[1].custom_key).to.eq("ark:/53696/0326tc5f");
-
-        expect(items[2].id).to.eq("21dbb27a-e1d6-4428-bf26-62a87560a846");
-        expect(items[2].custom_key).to.eq("ark:/53696/0366j31q");
-
-        expect(items[3].id).to.eq("c7746e9b-3fb8-477f-be54-6b4bdc84a923");
-        expect(items[3].custom_key).to.eq("ark:/53696/0413w83z");
-
-        expect(items[4].id).to.eq("493f1e39-2099-4c74-b889-1cefd5f84f7d");
-        expect(items[4].custom_key).to.eq("ark:/53696/0448df2p");
+        expect(items[0].custom_key).to.eq("ark:/53696/0343q64r");
+        expect(items[1].custom_key).to.eq("ark:/53696/0353qt22");
+        expect(items[2].custom_key).to.eq("ark:/53696/0398419c");
+        expect(items[3].custom_key).to.eq("ark:/53696/0475vn9z");
+        expect(items[4].custom_key).to.eq("ark:/53696/0495531q");
       });
     });
   });
