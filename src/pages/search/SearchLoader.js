@@ -31,7 +31,9 @@ class SearchLoader extends Component {
 
   updateFormState = (name, val) => {
     if (this.state.page > 0) {
-      this.setPage(0);
+      this.setState({
+        page: 0
+      });
     }
     if (name === "sort") {
       this.setState(
