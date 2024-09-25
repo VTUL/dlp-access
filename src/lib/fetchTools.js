@@ -270,7 +270,7 @@ export const fetchSearchResults = async (
           andArray.push({ [key]: { eq: value } });
         });
       }
-      filters["and"] = andArray;
+      filters["or"] = andArray;
     } else {
       filters[key] = { eq: filter[key] };
     }
