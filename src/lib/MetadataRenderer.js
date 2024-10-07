@@ -198,7 +198,9 @@ export function addNewlineInDesc(content, headings) {
   if (content) {
     content = content.map((item, index) => (
       <React.Fragment key={`section${index}`}>
-        {headings[index] !== undefined || headings[index] !== " " ? (
+        {headings[index] !== undefined &&
+        headings[index].length > 0 &&
+        headings[index] !== " " ? (
           <h2 className="introduction">{headings[index]}</h2>
         ) : (
           <></>

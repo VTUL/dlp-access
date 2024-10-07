@@ -23,15 +23,20 @@
 }
 
 .mirador-canvas-nav {
-  bottom: 0 !important;
-  right: 0 !important;
+  bottom: 17px !important;
+  right: 5px !important;
   width: auto !important;
   height: auto !important;
   background-color: rgb(134, 31, 65) !important;
+  a:hover,
+  button:hover,
+  button > *,
+  button:hover > * {
+    text-decoration: none;
+  }
 }
 
 .mirador-canvas-nav div {
-  color: black !important;
   flex-direction: column !important;
 }
 
@@ -73,16 +78,12 @@
 
 .controls button {
   padding: 10px 12px;
-  background-color: rgb(134, 31, 65);
+  background-color: var(--hokieMaroon);
   cursor: pointer;
   border: none;
   color: white;
   font-size: 18px;
   position: relative;
-}
-
-.controls button:hover {
-  background-color: rgb(166, 94, 118);
 }
 
 .tooltip-wrapper {
@@ -117,7 +118,6 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  // margin-bottom: -6px;
   border-width: 5px;
   border-style: solid;
   border-color: black transparent transparent transparent;

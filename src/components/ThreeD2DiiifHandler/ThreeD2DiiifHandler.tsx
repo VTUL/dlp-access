@@ -47,7 +47,7 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
       setShowImage(false);
     };
 
-    const x3dElement = document.getElementById("x3d-element-id");
+    const x3dElement = document.getElementById("x3d-element-wrapper");
 
     if (x3dElement) {
       x3dElement.addEventListener("mousedown", handleMouseDown);
@@ -102,7 +102,7 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
         <>
           <div
             className={`x3d-vis ${threeD === "primary" ? "primary" : "hidden"}`}
-            id="x3d-element-id"
+            id="x3d-element-wrapper"
           >
             <X3DElement
               url={options.assets.x3d_config}

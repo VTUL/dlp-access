@@ -6,7 +6,6 @@
 
 .item-image-section {
   margin-top: 40px;
-  background-color: #f7f6f6;
   padding: 0.5em;
 }
 
@@ -37,13 +36,26 @@ div.item-image-section img.item-img {
 }
 
 #metaDataView {
-  margin: 0.5vh 1vh;
   padding: 0 1vh;
-  flex: 3;
   height: auto;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
+  h2,
+  h6,
+  p,
+  a {
+    font-family: "gineso-condensed", sans-serif;
+  }
+  p,
+  a {
+    font-size: 1rem;
+  }
+  a,
+  a:visited {
+    color: var(--hokieOrange);
+  }
+  a:hover {
+    color: var(--hokieMaroon);
+  }
 }
 
 @media (min-width: 576px) {

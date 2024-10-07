@@ -345,12 +345,20 @@ class ArchivePage extends Component {
                 <Breadcrumbs category={"Archives"} record={this.state.item} />
               </nav>
             </div>
-            <div className="dataContainer">
-              <div id="imageView" role="region" aria-label="Item media">
+            <div id="dataContainer" className="row">
+              <div
+                id="item-media-col"
+                className="col-sm-12 col-md-12 col-lg-8"
+                role="region"
+                aria-label="Item media"
+              >
                 {this.mediaDisplay(this.state.item)}
               </div>
 
-              <div id="metaDataView" className="details-section">
+              <div
+                id="metaDataView"
+                className="item-details-section col-sm-12 col-md-12 col-lg-4"
+              >
                 <div>
                   <h2>{this.state.item.title}</h2>
                   <div className="item-metadata description">
