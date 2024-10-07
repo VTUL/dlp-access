@@ -249,5 +249,30 @@
         "Collectionmap": {}
       }
     }
+  },
+  "backndtest": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-dlpdev-backndtest-209e1-authRole",
+      "UnauthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-backndtest-209e1-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-backndtest-209e1-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-dlpdev-backndtest-209e1-deployment",
+      "UnauthRoleName": "amplify-dlpdev-backndtest-209e1-unauthRole",
+      "StackName": "amplify-dlpdev-backndtest-209e1",
+      "StackId": "arn:aws:cloudformation:us-east-1:226388486048:stack/amplify-dlpdev-backndtest-209e1/d907ff00-84bd-11ef-92b3-0affeb8ec175",
+      "AmplifyAppId": "d2ysrrdhih4bgc"
+    },
+    "categories": {
+      "api": {
+        "collectionarchives": {}
+      },
+      "auth": {
+        "iawav2658176f3": {},
+        "userPoolGroups": {}
+      },
+      "function": {
+        "iawav2658176f3PostConfirmation": {}
+      }
+    }
   }
 }
