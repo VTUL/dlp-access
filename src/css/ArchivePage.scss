@@ -36,7 +36,7 @@ div.item-image-section img.item-img {
 }
 
 #metaDataView {
-  padding: 0 1vh;
+  padding: 1rem 1vh;
   height: auto;
   justify-content: flex-start;
   h2,
@@ -185,8 +185,7 @@ div.minerva-image-wrapper #minerva-open-dialog button:hover,
 
   #metaDataView {
     width: 100%; /* Full width for metadata view on smaller screens */
-    margin: 0.2em 0;
-    padding: 0;
+    padding: 1em;
     flex: none;
   }
 
