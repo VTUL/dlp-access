@@ -23,7 +23,7 @@ export default function PageContentCreateForm(props) {
   } = props;
   const initialValues = {
     page_content_category: "",
-    content: ""
+    content: "",
   };
   const [page_content_category, setPage_content_category] = React.useState(
     initialValues.page_content_category
@@ -37,7 +37,7 @@ export default function PageContentCreateForm(props) {
   };
   const validations = {
     page_content_category: [{ type: "Required" }],
-    content: [{ type: "Required" }]
+    content: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -66,7 +66,7 @@ export default function PageContentCreateForm(props) {
         event.preventDefault();
         let modelFields = {
           page_content_category,
-          content
+          content,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -100,9 +100,9 @@ export default function PageContentCreateForm(props) {
             query: createPageContent.replaceAll("__typename", ""),
             variables: {
               input: {
-                ...modelFields
-              }
-            }
+                ...modelFields,
+              },
+            },
           });
           if (onSuccess) {
             onSuccess(modelFields);
@@ -130,7 +130,7 @@ export default function PageContentCreateForm(props) {
           if (onChange) {
             const modelFields = {
               page_content_category: value,
-              content
+              content,
             };
             const result = onChange(modelFields);
             value = result?.page_content_category ?? value;
@@ -157,7 +157,7 @@ export default function PageContentCreateForm(props) {
           if (onChange) {
             const modelFields = {
               page_content_category,
-              content: value
+              content: value,
             };
             const result = onChange(modelFields);
             value = result?.content ?? value;

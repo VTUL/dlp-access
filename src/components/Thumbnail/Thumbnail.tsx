@@ -2,6 +2,8 @@ import { FC } from "react";
 import "../../css/Thumbnail.scss";
 import { useSignedLink } from "../../hooks/useSignedLink";
 
+const THUMBNAIL_FALLBACK = "/images/fallback_thumbnail.jpg";
+
 type Props = {
   item: Collection | Archive;
   site: Site;
@@ -24,9 +26,7 @@ export const Thumbnail: FC<Props> = ({
     "image",
     site?.siteId
   );
-  if (!image) {
-    return null;
-  }
+
   return (
     <div className="image-container">
       {category && (
@@ -34,7 +34,11 @@ export const Thumbnail: FC<Props> = ({
           <p>{category === "collection" ? "Collection" : "Item"}</p>
         </div>
       )}
-      <img className={className} src={image} alt={altText ? item.title : ""} />
+      <img
+        className={className}
+        src={image || THUMBNAIL_FALLBACK}
+        alt={altText ? item.title : ""}
+      />
     </div>
   );
 };

@@ -17,7 +17,7 @@ import {
   Text,
   TextAreaField,
   TextField,
-  useTheme
+  useTheme,
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { API } from "aws-amplify";
@@ -35,15 +35,15 @@ function ArrayField({
   lengthLimit,
   getBadgeText,
   runValidationTasks,
-  errorMessage
+  errorMessage,
 }) {
   const labelElement = <Text>{label}</Text>;
   const {
     tokens: {
       components: {
-        fieldmessages: { error: errorStyles }
-      }
-    }
+        fieldmessages: { error: errorStyles },
+      },
+    },
   } = useTheme();
   const [selectedBadgeIndex, setSelectedBadgeIndex] = React.useState();
   const [isEditing, setIsEditing] = React.useState();
@@ -89,7 +89,8 @@ function ArrayField({
                   alignItems: "center",
                   marginRight: 3,
                   marginTop: 3,
-                  backgroundColor: index === selectedBadgeIndex ? "#B8CEF9" : ""
+                  backgroundColor:
+                    index === selectedBadgeIndex ? "#B8CEF9" : "",
                 }}
                 onClick={() => {
                   setSelectedBadgeIndex(index);
@@ -103,14 +104,14 @@ function ArrayField({
                     cursor: "pointer",
                     paddingLeft: 3,
                     width: 20,
-                    height: 20
+                    height: 20,
                   }}
                   viewBox={{ width: 20, height: 20 }}
                   paths={[
                     {
                       d: "M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z",
-                      stroke: "black"
-                    }
+                      stroke: "black",
+                    },
                   ]}
                   ariaLabel="button"
                   onClick={(event) => {
@@ -203,7 +204,7 @@ export default function SiteCreateForm(props) {
     siteName: "",
     siteOptions: "",
     sitePages: "",
-    siteTitle: ""
+    siteTitle: "",
   };
   const [analyticsID, setAnalyticsID] = React.useState(
     initialValues.analyticsID
@@ -275,7 +276,7 @@ export default function SiteCreateForm(props) {
     siteName: [{ type: "Required" }],
     siteOptions: [{ type: "JSON" }],
     sitePages: [{ type: "JSON" }],
-    siteTitle: [{ type: "Required" }]
+    siteTitle: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -318,7 +319,7 @@ export default function SiteCreateForm(props) {
           siteName,
           siteOptions,
           sitePages,
-          siteTitle
+          siteTitle,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -352,9 +353,9 @@ export default function SiteCreateForm(props) {
             query: createSite.replaceAll("__typename", ""),
             variables: {
               input: {
-                ...modelFields
-              }
-            }
+                ...modelFields,
+              },
+            },
           });
           if (onSuccess) {
             onSuccess(modelFields);
@@ -396,7 +397,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.analyticsID ?? value;
@@ -435,7 +436,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.assetBasePath ?? value;
@@ -473,7 +474,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.browseCollections ?? value;
@@ -510,7 +511,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             values = result?.contact ?? values;
@@ -573,7 +574,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.displayedAttributes ?? value;
@@ -610,7 +611,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             values = result?.groups ?? values;
@@ -673,7 +674,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.homePage ?? value;
@@ -712,7 +713,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.lang ?? value;
@@ -750,7 +751,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.miradorOptions ?? value;
@@ -788,7 +789,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.searchPage ?? value;
@@ -827,7 +828,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.siteColor ?? value;
@@ -866,7 +867,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.siteId ?? value;
@@ -905,7 +906,7 @@ export default function SiteCreateForm(props) {
               siteName: value,
               siteOptions,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.siteName ?? value;
@@ -943,7 +944,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions: value,
               sitePages,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.siteOptions ?? value;
@@ -981,7 +982,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages: value,
-              siteTitle
+              siteTitle,
             };
             const result = onChange(modelFields);
             value = result?.sitePages ?? value;
@@ -1020,7 +1021,7 @@ export default function SiteCreateForm(props) {
               siteName,
               siteOptions,
               sitePages,
-              siteTitle: value
+              siteTitle: value,
             };
             const result = onChange(modelFields);
             value = result?.siteTitle ?? value;

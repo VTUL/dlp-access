@@ -208,6 +208,7 @@ export default function CollectionCreateForm(props) {
     modified_date: "",
     ownerinfo: "",
     parent_collection: [],
+    parent_collection_identifer: [],
     provenance: [],
     relation: [],
     rights_holder: [],
@@ -261,6 +262,8 @@ export default function CollectionCreateForm(props) {
   const [parent_collection, setParent_collection] = React.useState(
     initialValues.parent_collection
   );
+  const [parent_collection_identifer, setParent_collection_identifer] =
+    React.useState(initialValues.parent_collection_identifer);
   const [provenance, setProvenance] = React.useState(initialValues.provenance);
   const [relation, setRelation] = React.useState(initialValues.relation);
   const [rights_holder, setRights_holder] = React.useState(
@@ -306,6 +309,8 @@ export default function CollectionCreateForm(props) {
     setOwnerinfo(initialValues.ownerinfo);
     setParent_collection(initialValues.parent_collection);
     setCurrentParent_collectionValue("");
+    setParent_collection_identifer(initialValues.parent_collection_identifer);
+    setCurrentParent_collection_identiferValue("");
     setProvenance(initialValues.provenance);
     setCurrentProvenanceValue("");
     setRelation(initialValues.relation);
@@ -352,6 +357,11 @@ export default function CollectionCreateForm(props) {
   const [currentParent_collectionValue, setCurrentParent_collectionValue] =
     React.useState("");
   const parent_collectionRef = React.createRef();
+  const [
+    currentParent_collection_identiferValue,
+    setCurrentParent_collection_identiferValue
+  ] = React.useState("");
+  const parent_collection_identiferRef = React.createRef();
   const [currentProvenanceValue, setCurrentProvenanceValue] =
     React.useState("");
   const provenanceRef = React.createRef();
@@ -388,6 +398,7 @@ export default function CollectionCreateForm(props) {
     modified_date: [],
     ownerinfo: [{ type: "JSON" }],
     parent_collection: [{ type: "Required" }],
+    parent_collection_identifer: [{ type: "Required" }],
     provenance: [{ type: "Required" }],
     relation: [{ type: "Required" }],
     rights_holder: [{ type: "Required" }],
@@ -445,6 +456,7 @@ export default function CollectionCreateForm(props) {
           modified_date,
           ownerinfo,
           parent_collection,
+          parent_collection_identifer,
           provenance,
           relation,
           rights_holder,
@@ -533,6 +545,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -619,6 +632,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -674,6 +688,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -726,6 +741,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -781,6 +797,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -830,6 +847,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -908,6 +926,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -957,6 +976,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1033,6 +1053,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1113,6 +1134,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1166,6 +1188,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1215,6 +1238,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1295,6 +1319,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1344,6 +1369,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1420,6 +1446,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1494,6 +1521,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1572,6 +1600,7 @@ export default function CollectionCreateForm(props) {
               modified_date: value,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1624,6 +1653,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo: value,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1673,6 +1703,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection: values,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -1755,6 +1786,90 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer: values,
+              provenance,
+              relation,
+              rights_holder,
+              rights,
+              source,
+              spatial,
+              start_date,
+              subject,
+              thumbnail_path,
+              title,
+              visibility
+            };
+            const result = onChange(modelFields);
+            values = result?.parent_collection_identifer ?? values;
+          }
+          setParent_collection_identifer(values);
+          setCurrentParent_collection_identiferValue("");
+        }}
+        currentFieldValue={currentParent_collection_identiferValue}
+        label={"Parent collection identifer"}
+        items={parent_collection_identifer}
+        hasError={errors?.parent_collection_identifer?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks(
+            "parent_collection_identifer",
+            currentParent_collection_identiferValue
+          )
+        }
+        errorMessage={errors?.parent_collection_identifer?.errorMessage}
+        setFieldValue={setCurrentParent_collection_identiferValue}
+        inputFieldRef={parent_collection_identiferRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Parent collection identifer"
+          isRequired={true}
+          isReadOnly={false}
+          value={currentParent_collection_identiferValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.parent_collection_identifer?.hasError) {
+              runValidationTasks("parent_collection_identifer", value);
+            }
+            setCurrentParent_collection_identiferValue(value);
+          }}
+          onBlur={() =>
+            runValidationTasks(
+              "parent_collection_identifer",
+              currentParent_collection_identiferValue
+            )
+          }
+          errorMessage={errors.parent_collection_identifer?.errorMessage}
+          hasError={errors.parent_collection_identifer?.hasError}
+          ref={parent_collection_identiferRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "parent_collection_identifer")}
+        ></TextField>
+      </ArrayField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              bibliographic_citation,
+              collection_category,
+              collectionmap_id,
+              collectionOptions,
+              create_date,
+              creator,
+              custom_key,
+              description,
+              display_date,
+              end_date,
+              explicit_content,
+              heirarchy_path,
+              identifier,
+              is_part_of,
+              language,
+              location,
+              modified_date,
+              ownerinfo,
+              parent_collection,
+              parent_collection_identifer,
               provenance: values,
               relation,
               rights_holder,
@@ -1831,6 +1946,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation: values,
               rights_holder,
@@ -1905,6 +2021,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder: values,
@@ -1981,6 +2098,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -2055,6 +2173,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -2129,6 +2248,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -2207,6 +2327,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -2256,6 +2377,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -2334,6 +2456,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -2387,6 +2510,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,
@@ -2440,6 +2564,7 @@ export default function CollectionCreateForm(props) {
               modified_date,
               ownerinfo,
               parent_collection,
+              parent_collection_identifer,
               provenance,
               relation,
               rights_holder,

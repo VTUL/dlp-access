@@ -49,6 +49,7 @@ export declare type CollectionUpdateFormInputValues = {
   modified_date?: string;
   ownerinfo?: string;
   parent_collection?: string[];
+  parent_collection_identifer?: string[];
   provenance?: string[];
   relation?: string[];
   rights_holder?: string[];
@@ -81,6 +82,7 @@ export declare type CollectionUpdateFormValidationValues = {
   modified_date?: ValidationFunction<string>;
   ownerinfo?: ValidationFunction<string>;
   parent_collection?: ValidationFunction<string>;
+  parent_collection_identifer?: ValidationFunction<string>;
   provenance?: ValidationFunction<string>;
   relation?: ValidationFunction<string>;
   rights_holder?: ValidationFunction<string>;
@@ -116,6 +118,7 @@ export declare type CollectionUpdateFormOverridesProps = {
   modified_date?: PrimitiveOverrideProps<TextFieldProps>;
   ownerinfo?: PrimitiveOverrideProps<TextAreaFieldProps>;
   parent_collection?: PrimitiveOverrideProps<TextFieldProps>;
+  parent_collection_identifer?: PrimitiveOverrideProps<TextFieldProps>;
   provenance?: PrimitiveOverrideProps<TextFieldProps>;
   relation?: PrimitiveOverrideProps<TextFieldProps>;
   rights_holder?: PrimitiveOverrideProps<TextFieldProps>;

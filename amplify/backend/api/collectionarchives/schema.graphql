@@ -14,6 +14,7 @@ interface Object {
   location: [String!]
   modified_date: String
   parent_collection: [String!]
+  parent_collection_identifer: [String!]
   provenance: [String!]
   relation: [String!]
   rights_holder: [String!]
@@ -58,6 +59,7 @@ type Collection implements Object
   modified_date: String
   ownerinfo: AWSJSON
   parent_collection: [String!]
+  parent_collection_identifer: [String!]
   provenance: [String!]
   relation: [String!]
   rights_holder: [String!]
@@ -130,6 +132,7 @@ type Archive implements Object
   date: [String!]
   description: [String!]
   display_date: [String!]
+  download_link:[String!]
   end_date: String
   explicit: Boolean
   extent: [String!]
@@ -149,11 +152,12 @@ type Archive implements Object
   license: [String!]
   location: [String!]
   manifest_file_characterization: AWSJSON
-  manifest_url: String!
+  manifest_url: String
   medium: [String!]
   modified_date: String
   other_identifier: [String!]
   parent_collection: [String!]
+  parent_collection_identifer: [String!]
   provenance: [String!]
   publisher: [String!]
   references: [String!]

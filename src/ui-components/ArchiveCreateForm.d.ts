@@ -44,6 +44,7 @@ export declare type ArchiveCreateFormInputValues = {
   date?: string[];
   description?: string[];
   display_date?: string[];
+  download_link?: string[];
   end_date?: string;
   explicit?: boolean;
   extent?: string[];
@@ -66,6 +67,7 @@ export declare type ArchiveCreateFormInputValues = {
   modified_date?: string;
   other_identifier?: string[];
   parent_collection?: string[];
+  parent_collection_identifer?: string[];
   provenance?: string[];
   publisher?: string[];
   references?: string[];
@@ -99,6 +101,7 @@ export declare type ArchiveCreateFormValidationValues = {
   date?: ValidationFunction<string>;
   description?: ValidationFunction<string>;
   display_date?: ValidationFunction<string>;
+  download_link?: ValidationFunction<string>;
   end_date?: ValidationFunction<string>;
   explicit?: ValidationFunction<boolean>;
   extent?: ValidationFunction<string>;
@@ -121,6 +124,7 @@ export declare type ArchiveCreateFormValidationValues = {
   modified_date?: ValidationFunction<string>;
   other_identifier?: ValidationFunction<string>;
   parent_collection?: ValidationFunction<string>;
+  parent_collection_identifer?: ValidationFunction<string>;
   provenance?: ValidationFunction<string>;
   publisher?: ValidationFunction<string>;
   references?: ValidationFunction<string>;
@@ -157,6 +161,7 @@ export declare type ArchiveCreateFormOverridesProps = {
   date?: PrimitiveOverrideProps<TextFieldProps>;
   description?: PrimitiveOverrideProps<TextFieldProps>;
   display_date?: PrimitiveOverrideProps<TextFieldProps>;
+  download_link?: PrimitiveOverrideProps<TextFieldProps>;
   end_date?: PrimitiveOverrideProps<TextFieldProps>;
   explicit?: PrimitiveOverrideProps<SwitchFieldProps>;
   extent?: PrimitiveOverrideProps<TextFieldProps>;
@@ -179,6 +184,7 @@ export declare type ArchiveCreateFormOverridesProps = {
   modified_date?: PrimitiveOverrideProps<TextFieldProps>;
   other_identifier?: PrimitiveOverrideProps<TextFieldProps>;
   parent_collection?: PrimitiveOverrideProps<TextFieldProps>;
+  parent_collection_identifer?: PrimitiveOverrideProps<TextFieldProps>;
   provenance?: PrimitiveOverrideProps<TextFieldProps>;
   publisher?: PrimitiveOverrideProps<TextFieldProps>;
   references?: PrimitiveOverrideProps<TextFieldProps>;

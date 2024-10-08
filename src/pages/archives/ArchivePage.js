@@ -154,9 +154,8 @@ class ArchivePage extends Component {
   is3D_2DiiifType(item) {
     try {
       const options = JSON.parse(item.archiveOptions);
-      const type = options.assets.media_type;
       return (
-        type === "3d_2diiif" &&
+        item.format.indexOf("model/x3d") !== -1 &&
         !!options.assets.x3d_config &&
         !!options.assets.x3d_src_img
       );
@@ -348,7 +347,7 @@ class ArchivePage extends Component {
             <div id="dataContainer" className="row">
               <div
                 id="item-media-col"
-                className="col-sm-12 col-md-12 col-lg-8"
+                className="item-media-section col-sm-12 col-md-12 col-lg-8"
                 role="region"
                 aria-label="Item media"
               >

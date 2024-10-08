@@ -32,6 +32,7 @@ export const searchObjects = /* GraphQL */ `
         location
         modified_date
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -63,6 +64,7 @@ export const searchObjects = /* GraphQL */ `
           coverage
           created
           date
+          download_link
           explicit
           extent
           format
@@ -131,6 +133,7 @@ export const fulltextCollections = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -183,6 +186,7 @@ export const fulltextArchives = /* GraphQL */ `
         date
         description
         display_date
+        download_link
         end_date
         explicit
         extent
@@ -206,6 +210,7 @@ export const fulltextArchives = /* GraphQL */ `
         modified_date
         other_identifier
         parent_collection
+        parent_collection_identifer
         provenance
         publisher
         references
@@ -258,6 +263,7 @@ export const getCollection = /* GraphQL */ `
       modified_date
       ownerinfo
       parent_collection
+      parent_collection_identifer
       provenance
       relation
       rights_holder
@@ -320,6 +326,7 @@ export const listCollections = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -377,6 +384,7 @@ export const collectionByIdentifier = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -436,6 +444,7 @@ export const searchCollections = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -488,6 +497,7 @@ export const getCollectionmap = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -608,6 +618,7 @@ export const getArchive = /* GraphQL */ `
       date
       description
       display_date
+      download_link
       end_date
       explicit
       extent
@@ -631,6 +642,7 @@ export const getArchive = /* GraphQL */ `
       modified_date
       other_identifier
       parent_collection
+      parent_collection_identifer
       provenance
       publisher
       references
@@ -669,6 +681,7 @@ export const getArchive = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -715,6 +728,7 @@ export const listArchives = /* GraphQL */ `
         date
         description
         display_date
+        download_link
         end_date
         explicit
         extent
@@ -738,6 +752,7 @@ export const listArchives = /* GraphQL */ `
         modified_date
         other_identifier
         parent_collection
+        parent_collection_identifer
         provenance
         publisher
         references
@@ -796,6 +811,7 @@ export const archiveByIdentifier = /* GraphQL */ `
         date
         description
         display_date
+        download_link
         end_date
         explicit
         extent
@@ -819,6 +835,7 @@ export const archiveByIdentifier = /* GraphQL */ `
         modified_date
         other_identifier
         parent_collection
+        parent_collection_identifer
         provenance
         publisher
         references
@@ -879,6 +896,7 @@ export const searchArchives = /* GraphQL */ `
         date
         description
         display_date
+        download_link
         end_date
         explicit
         extent
@@ -902,6 +920,7 @@ export const searchArchives = /* GraphQL */ `
         modified_date
         other_identifier
         parent_collection
+        parent_collection_identifer
         provenance
         publisher
         references
