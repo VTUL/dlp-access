@@ -58,7 +58,6 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
 
     return () => {
       if (x3dElement) {
-        console.log("Removing event listeners");
         x3dElement.removeEventListener("mousedown", handleMouseDown);
         x3dElement.removeEventListener("touchstart", handleMouseDown);
       }

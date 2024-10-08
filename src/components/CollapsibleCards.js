@@ -108,7 +108,6 @@ const getMarker = (marker) => {
 };
 
 const getLocationData = (data) => {
-  console.log(data.location);
   return (
     <>
       {data.location ? (
@@ -123,7 +122,7 @@ const getLocationData = (data) => {
 };
 
 const modifyKey = (key) => {
-  if (key == "display_date") {
+  if (key === "display_date") {
     return "Date";
   }
   const newKey = key
@@ -223,7 +222,6 @@ export default function CollapsibleCard({
   };
 
   const getAboutData = (data) => {
-    console.log("about: ", data);
     let items = [
       "description",
       "date",

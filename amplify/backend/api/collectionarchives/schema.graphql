@@ -130,6 +130,7 @@ type Archive implements Object
   date: [String!]
   description: [String!]
   display_date: [String!]
+  download_link:[String!]
   end_date: String
   explicit: Boolean
   extent: [String!]
@@ -149,7 +150,7 @@ type Archive implements Object
   license: [String!]
   location: [String!]
   manifest_file_characterization: AWSJSON
-  manifest_url: String!
+  manifest_url: String
   medium: [String!]
   modified_date: String
   other_identifier: [String!]

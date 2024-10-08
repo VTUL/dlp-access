@@ -348,7 +348,7 @@ class ArchivePage extends Component {
             <div id="dataContainer" className="row">
               <div
                 id="item-media-col"
-                className="col-sm-12 col-md-12 col-lg-8"
+                className="item-media-section col-sm-12 col-md-12 col-lg-8"
                 role="region"
                 aria-label="Item media"
               >

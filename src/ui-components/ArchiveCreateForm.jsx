@@ -203,6 +203,7 @@ export default function ArchiveCreateForm(props) {
     date: [],
     description: [],
     display_date: [],
+    download_link: [],
     end_date: "",
     explicit: false,
     extent: [],
@@ -274,6 +275,9 @@ export default function ArchiveCreateForm(props) {
   );
   const [display_date, setDisplay_date] = React.useState(
     initialValues.display_date
+  );
+  const [download_link, setDownload_link] = React.useState(
+    initialValues.download_link
   );
   const [end_date, setEnd_date] = React.useState(initialValues.end_date);
   const [explicit, setExplicit] = React.useState(initialValues.explicit);
@@ -364,6 +368,8 @@ export default function ArchiveCreateForm(props) {
     setCurrentDescriptionValue("");
     setDisplay_date(initialValues.display_date);
     setCurrentDisplay_dateValue("");
+    setDownload_link(initialValues.download_link);
+    setCurrentDownload_linkValue("");
     setEnd_date(initialValues.end_date);
     setExplicit(initialValues.explicit);
     setExtent(initialValues.extent);
@@ -466,6 +472,9 @@ export default function ArchiveCreateForm(props) {
   const [currentDisplay_dateValue, setCurrentDisplay_dateValue] =
     React.useState("");
   const display_dateRef = React.createRef();
+  const [currentDownload_linkValue, setCurrentDownload_linkValue] =
+    React.useState("");
+  const download_linkRef = React.createRef();
   const [currentExtentValue, setCurrentExtentValue] = React.useState("");
   const extentRef = React.createRef();
   const [currentFormatValue, setCurrentFormatValue] = React.useState("");
@@ -549,6 +558,7 @@ export default function ArchiveCreateForm(props) {
     date: [{ type: "Required" }],
     description: [{ type: "Required" }],
     display_date: [{ type: "Required" }],
+    download_link: [{ type: "Required" }],
     end_date: [],
     explicit: [],
     extent: [{ type: "Required" }],
@@ -566,7 +576,7 @@ export default function ArchiveCreateForm(props) {
     license: [{ type: "Required" }],
     location: [{ type: "Required" }],
     manifest_file_characterization: [{ type: "JSON" }],
-    manifest_url: [{ type: "Required" }],
+    manifest_url: [],
     medium: [{ type: "Required" }],
     modified_date: [],
     other_identifier: [{ type: "Required" }],
@@ -629,6 +639,7 @@ export default function ArchiveCreateForm(props) {
           date,
           description,
           display_date,
+          download_link,
           end_date,
           explicit,
           extent,
@@ -740,6 +751,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -842,6 +854,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -914,6 +927,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1016,6 +1030,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1121,6 +1136,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1220,6 +1236,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1319,6 +1336,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1420,6 +1438,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1492,6 +1511,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1589,6 +1609,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1690,6 +1711,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1762,6 +1784,7 @@ export default function ArchiveCreateForm(props) {
               date: values,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1859,6 +1882,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description: values,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -1958,6 +1982,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date: values,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -2038,6 +2063,106 @@ export default function ArchiveCreateForm(props) {
           {...getOverrideProps(overrides, "display_date")}
         ></TextField>
       </ArrayField>
+      <ArrayField
+        onChange={async (items) => {
+          let values = items;
+          if (onChange) {
+            const modelFields = {
+              alternative,
+              archiveOptions,
+              basis_of_record,
+              bibliographic_citation,
+              conforms_to,
+              contributor,
+              coverage,
+              create_date,
+              created,
+              creator,
+              custom_key,
+              date,
+              description,
+              display_date,
+              download_link: values,
+              end_date,
+              explicit,
+              extent,
+              format,
+              has_format,
+              has_part,
+              has_version,
+              heirarchy_path,
+              identifier,
+              is_format_of,
+              is_part_of,
+              is_version_of,
+              item_category,
+              language,
+              license,
+              location,
+              manifest_file_characterization,
+              manifest_url,
+              medium,
+              modified_date,
+              other_identifier,
+              parent_collection,
+              provenance,
+              publisher,
+              references,
+              relation,
+              repository,
+              rights_holder,
+              rights,
+              source,
+              spatial,
+              start_date,
+              subject,
+              tags,
+              temporal,
+              thumbnail_path,
+              title,
+              type,
+              visibility
+            };
+            const result = onChange(modelFields);
+            values = result?.download_link ?? values;
+          }
+          setDownload_link(values);
+          setCurrentDownload_linkValue("");
+        }}
+        currentFieldValue={currentDownload_linkValue}
+        label={"Download link"}
+        items={download_link}
+        hasError={errors?.download_link?.hasError}
+        runValidationTasks={async () =>
+          await runValidationTasks("download_link", currentDownload_linkValue)
+        }
+        errorMessage={errors?.download_link?.errorMessage}
+        setFieldValue={setCurrentDownload_linkValue}
+        inputFieldRef={download_linkRef}
+        defaultFieldValue={""}
+      >
+        <TextField
+          label="Download link"
+          isRequired={true}
+          isReadOnly={false}
+          value={currentDownload_linkValue}
+          onChange={(e) => {
+            let { value } = e.target;
+            if (errors.download_link?.hasError) {
+              runValidationTasks("download_link", value);
+            }
+            setCurrentDownload_linkValue(value);
+          }}
+          onBlur={() =>
+            runValidationTasks("download_link", currentDownload_linkValue)
+          }
+          errorMessage={errors.download_link?.errorMessage}
+          hasError={errors.download_link?.hasError}
+          ref={download_linkRef}
+          labelHidden={true}
+          {...getOverrideProps(overrides, "download_link")}
+        ></TextField>
+      </ArrayField>
       <TextField
         label="End date"
         isRequired={false}
@@ -2061,6 +2186,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date: value,
               explicit,
               extent,
@@ -2137,6 +2263,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit: value,
               extent,
@@ -2209,6 +2336,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent: values,
@@ -2306,6 +2434,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -2403,6 +2532,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -2502,6 +2632,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -2599,6 +2730,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -2698,6 +2830,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -2801,6 +2934,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -2873,6 +3007,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -2972,6 +3107,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3071,6 +3207,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3174,6 +3311,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3246,6 +3384,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3343,6 +3482,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3440,6 +3580,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3540,6 +3681,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3600,7 +3742,7 @@ export default function ArchiveCreateForm(props) {
       ></TextAreaField>
       <TextField
         label="Manifest url"
-        isRequired={true}
+        isRequired={false}
         isReadOnly={false}
         value={manifest_url}
         onChange={(e) => {
@@ -3621,6 +3763,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3693,6 +3836,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3794,6 +3938,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3866,6 +4011,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -3968,6 +4114,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4073,6 +4220,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4172,6 +4320,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4269,6 +4418,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4368,6 +4518,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4465,6 +4616,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4564,6 +4716,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4663,6 +4816,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4760,6 +4914,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4857,6 +5012,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -4958,6 +5114,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -5030,6 +5187,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -5127,6 +5285,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -5224,6 +5383,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -5325,6 +5485,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -5401,6 +5562,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -5473,6 +5635,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,
@@ -5574,6 +5737,7 @@ export default function ArchiveCreateForm(props) {
               date,
               description,
               display_date,
+              download_link,
               end_date,
               explicit,
               extent,

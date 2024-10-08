@@ -44,6 +44,7 @@ export declare type ArchiveCreateFormInputValues = {
   date?: string[];
   description?: string[];
   display_date?: string[];
+  download_link?: string[];
   end_date?: string;
   explicit?: boolean;
   extent?: string[];
@@ -99,6 +100,7 @@ export declare type ArchiveCreateFormValidationValues = {
   date?: ValidationFunction<string>;
   description?: ValidationFunction<string>;
   display_date?: ValidationFunction<string>;
+  download_link?: ValidationFunction<string>;
   end_date?: ValidationFunction<string>;
   explicit?: ValidationFunction<boolean>;
   extent?: ValidationFunction<string>;
@@ -157,6 +159,7 @@ export declare type ArchiveCreateFormOverridesProps = {
   date?: PrimitiveOverrideProps<TextFieldProps>;
   description?: PrimitiveOverrideProps<TextFieldProps>;
   display_date?: PrimitiveOverrideProps<TextFieldProps>;
+  download_link?: PrimitiveOverrideProps<TextFieldProps>;
   end_date?: PrimitiveOverrideProps<TextFieldProps>;
   explicit?: PrimitiveOverrideProps<SwitchFieldProps>;
   extent?: PrimitiveOverrideProps<TextFieldProps>;
