@@ -119,17 +119,19 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
               </div>
             )}
           </div>
-          <div
-            style={{ height: height, width: width }}
-            hidden={threeD === "primary"}
-          >
-            <MiradorViewer
-              item={item}
-              site={site}
-              type="3d_2diiif"
+          {item.manifest_url && (
+            <div
+              style={{ height: height, width: width }}
               hidden={threeD === "primary"}
-            />
-          </div>
+            >
+              <MiradorViewer
+                item={item}
+                site={site}
+                type="3d_2diiif"
+                hidden={threeD === "primary"}
+              />
+            </div>
+          )}
         </>
       );
     } catch (e) {
@@ -197,9 +199,11 @@ export const ThreeD2DiiifHandler: FC<Props> = ({ item, site }) => {
       <div className="image-wrapper" id="image-wrapper">
         {primarySectionContent()}
       </div>
-      <div className="thumbnail-wrapper" id="thumbnail-wrapper">
-        {secondarySectionContent()}
-      </div>
+      {item.manifest_url && (
+        <div className="thumbnail-wrapper" id="thumbnail-wrapper">
+          {secondarySectionContent()}
+        </div>
+      )}
     </div>
   );
 };

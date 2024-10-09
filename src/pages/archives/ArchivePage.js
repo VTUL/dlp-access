@@ -154,9 +154,8 @@ class ArchivePage extends Component {
   is3D_2DiiifType(item) {
     try {
       const options = JSON.parse(item.archiveOptions);
-      const type = options.assets.media_type;
       return (
-        type === "3d_2diiif" &&
+        item.format.indexOf("model/x3d") !== -1 &&
         !!options.assets.x3d_config &&
         !!options.assets.x3d_src_img
       );
