@@ -28,7 +28,7 @@ export default function EmbargoUpdateForm(props) {
     start_date: "",
     end_date: "",
     note: "",
-    record_type: ""
+    record_type: "",
   };
   const [identifier, setIdentifier] = React.useState(initialValues.identifier);
   const [start_date, setStart_date] = React.useState(initialValues.start_date);
@@ -56,7 +56,7 @@ export default function EmbargoUpdateForm(props) {
         ? (
             await API.graphql({
               query: getEmbargo.replaceAll("__typename", ""),
-              variables: { id: idProp }
+              variables: { id: idProp },
             })
           )?.data?.getEmbargo
         : embargoModelProp;
@@ -70,7 +70,7 @@ export default function EmbargoUpdateForm(props) {
     start_date: [],
     end_date: [],
     note: [],
-    record_type: [{ type: "Required" }]
+    record_type: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -102,7 +102,7 @@ export default function EmbargoUpdateForm(props) {
           start_date: start_date ?? null,
           end_date: end_date ?? null,
           note: note ?? null,
-          record_type
+          record_type,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -137,9 +137,9 @@ export default function EmbargoUpdateForm(props) {
             variables: {
               input: {
                 id: embargoRecord.id,
-                ...modelFields
-              }
-            }
+                ...modelFields,
+              },
+            },
           });
           if (onSuccess) {
             onSuccess(modelFields);
@@ -167,7 +167,7 @@ export default function EmbargoUpdateForm(props) {
               start_date,
               end_date,
               note,
-              record_type
+              record_type,
             };
             const result = onChange(modelFields);
             value = result?.identifier ?? value;
@@ -196,7 +196,7 @@ export default function EmbargoUpdateForm(props) {
               start_date: value,
               end_date,
               note,
-              record_type
+              record_type,
             };
             const result = onChange(modelFields);
             value = result?.start_date ?? value;
@@ -225,7 +225,7 @@ export default function EmbargoUpdateForm(props) {
               start_date,
               end_date: value,
               note,
-              record_type
+              record_type,
             };
             const result = onChange(modelFields);
             value = result?.end_date ?? value;
@@ -253,7 +253,7 @@ export default function EmbargoUpdateForm(props) {
               start_date,
               end_date,
               note: value,
-              record_type
+              record_type,
             };
             const result = onChange(modelFields);
             value = result?.note ?? value;
@@ -281,7 +281,7 @@ export default function EmbargoUpdateForm(props) {
               start_date,
               end_date,
               note,
-              record_type: value
+              record_type: value,
             };
             const result = onChange(modelFields);
             value = result?.record_type ?? value;

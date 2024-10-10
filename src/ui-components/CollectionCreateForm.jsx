@@ -18,7 +18,7 @@ import {
   Text,
   TextAreaField,
   TextField,
-  useTheme
+  useTheme,
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { API } from "aws-amplify";
@@ -36,15 +36,15 @@ function ArrayField({
   lengthLimit,
   getBadgeText,
   runValidationTasks,
-  errorMessage
+  errorMessage,
 }) {
   const labelElement = <Text>{label}</Text>;
   const {
     tokens: {
       components: {
-        fieldmessages: { error: errorStyles }
-      }
-    }
+        fieldmessages: { error: errorStyles },
+      },
+    },
   } = useTheme();
   const [selectedBadgeIndex, setSelectedBadgeIndex] = React.useState();
   const [isEditing, setIsEditing] = React.useState();
@@ -90,7 +90,8 @@ function ArrayField({
                   alignItems: "center",
                   marginRight: 3,
                   marginTop: 3,
-                  backgroundColor: index === selectedBadgeIndex ? "#B8CEF9" : ""
+                  backgroundColor:
+                    index === selectedBadgeIndex ? "#B8CEF9" : "",
                 }}
                 onClick={() => {
                   setSelectedBadgeIndex(index);
@@ -104,14 +105,14 @@ function ArrayField({
                     cursor: "pointer",
                     paddingLeft: 3,
                     width: 20,
-                    height: 20
+                    height: 20,
                   }}
                   viewBox={{ width: 20, height: 20 }}
                   paths={[
                     {
                       d: "M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z",
-                      stroke: "black"
-                    }
+                      stroke: "black",
+                    },
                   ]}
                   ariaLabel="button"
                   onClick={(event) => {
@@ -218,7 +219,7 @@ export default function CollectionCreateForm(props) {
     subject: [],
     thumbnail_path: "",
     title: "",
-    visibility: false
+    visibility: false,
   };
   const [bibliographic_citation, setBibliographic_citation] = React.useState(
     initialValues.bibliographic_citation
@@ -328,7 +329,7 @@ export default function CollectionCreateForm(props) {
   };
   const [
     currentBibliographic_citationValue,
-    setCurrentBibliographic_citationValue
+    setCurrentBibliographic_citationValue,
   ] = React.useState("");
   const bibliographic_citationRef = React.createRef();
   const [currentCreatorValue, setCurrentCreatorValue] = React.useState("");
@@ -398,7 +399,7 @@ export default function CollectionCreateForm(props) {
     subject: [{ type: "Required" }],
     thumbnail_path: [],
     title: [{ type: "Required" }],
-    visibility: [{ type: "Required" }]
+    visibility: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -455,7 +456,7 @@ export default function CollectionCreateForm(props) {
           subject,
           thumbnail_path,
           title,
-          visibility
+          visibility,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -489,9 +490,9 @@ export default function CollectionCreateForm(props) {
             query: createCollection.replaceAll("__typename", ""),
             variables: {
               input: {
-                ...modelFields
-              }
-            }
+                ...modelFields,
+              },
+            },
           });
           if (onSuccess) {
             onSuccess(modelFields);
@@ -543,7 +544,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.bibliographic_citation ?? values;
@@ -629,7 +630,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.collection_category ?? value;
@@ -684,7 +685,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.collectionmap_id ?? value;
@@ -736,7 +737,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.collectionOptions ?? value;
@@ -791,7 +792,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.create_date ?? value;
@@ -840,7 +841,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.creator ?? values;
@@ -918,7 +919,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.custom_key ?? value;
@@ -967,7 +968,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.description ?? values;
@@ -1043,7 +1044,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.display_date ?? values;
@@ -1123,7 +1124,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.end_date ?? value;
@@ -1176,7 +1177,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.explicit_content ?? value;
@@ -1225,7 +1226,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.heirarchy_path ?? values;
@@ -1305,7 +1306,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.identifier ?? value;
@@ -1354,7 +1355,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.is_part_of ?? values;
@@ -1430,7 +1431,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.language ?? values;
@@ -1504,7 +1505,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.location ?? values;
@@ -1582,7 +1583,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.modified_date ?? value;
@@ -1634,7 +1635,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.ownerinfo ?? value;
@@ -1683,7 +1684,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.parent_collection ?? values;
@@ -1765,7 +1766,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.provenance ?? values;
@@ -1841,7 +1842,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.relation ?? values;
@@ -1915,7 +1916,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.rights_holder ?? values;
@@ -1991,7 +1992,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.rights ?? values;
@@ -2065,7 +2066,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.source ?? values;
@@ -2139,7 +2140,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.spatial ?? values;
@@ -2217,7 +2218,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.start_date ?? value;
@@ -2266,7 +2267,7 @@ export default function CollectionCreateForm(props) {
               subject: values,
               thumbnail_path,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.subject ?? values;
@@ -2344,7 +2345,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path: value,
               title,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.thumbnail_path ?? value;
@@ -2397,7 +2398,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title: value,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -2450,7 +2451,7 @@ export default function CollectionCreateForm(props) {
               subject,
               thumbnail_path,
               title,
-              visibility: value
+              visibility: value,
             };
             const result = onChange(modelFields);
             value = result?.visibility ?? value;

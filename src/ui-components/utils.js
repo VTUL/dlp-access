@@ -56,7 +56,7 @@ export const useStateMutationAction = (initialState) => {
         UI_CHANNEL,
         {
           event: ACTION_STATE_MUTATION_STARTED,
-          data: { prevState, newState }
+          data: { prevState, newState },
         },
         EVENT_ACTION_CORE_STATE_MUTATION,
         AMPLIFY_SYMBOL
@@ -66,7 +66,7 @@ export const useStateMutationAction = (initialState) => {
         UI_CHANNEL,
         {
           event: ACTION_STATE_MUTATION_FINISHED,
-          data: { prevState, newState }
+          data: { prevState, newState },
         },
         EVENT_ACTION_CORE_STATE_MUTATION,
         AMPLIFY_SYMBOL
@@ -106,7 +106,7 @@ export const useNavigateAction = (options) => {
       UI_CHANNEL,
       {
         event: ACTION_NAVIGATE_STARTED,
-        data: options
+        data: options,
       },
       EVENT_ACTION_CORE_NAVIGATE,
       AMPLIFY_SYMBOL
@@ -116,7 +116,7 @@ export const useNavigateAction = (options) => {
       UI_CHANNEL,
       {
         event: ACTION_NAVIGATE_FINISHED,
-        data: options
+        data: options,
       },
       EVENT_ACTION_CORE_NAVIGATE,
       AMPLIFY_SYMBOL
@@ -134,7 +134,7 @@ export const findChildOverrides = (overrides, elementHierarchy) => {
   return Object.assign(
     {},
     ...Array.from(filteredOverrides, ([k, v]) => ({
-      [k.replace(elementHierarchy, "")]: v
+      [k.replace(elementHierarchy, "")]: v,
     }))
   );
 };
@@ -152,14 +152,14 @@ export function getOverridesFromVariants(variants, props) {
   const variantValueKeys = [
     ...new Set(
       variants.flatMap((variant) => Object.keys(variant.variantValues))
-    )
+    ),
   ];
   const variantValuesFromProps = Object.keys(props)
     .filter((i) => variantValueKeys.includes(i) && props[i])
     .reduce((acc, key) => {
       return {
         ...acc,
-        [key]: props[key]
+        [key]: props[key],
       };
     }, {});
   const matchedVariants = variants.filter(({ variantValues }) => {
@@ -192,13 +192,13 @@ export const mergeVariantsAndOverrides = (variants, overrides) => {
   const merged = Object.fromEntries(
     sharedKeys.map((sharedKey) => [
       sharedKey,
-      { ...variants[sharedKey], ...overrides[sharedKey] }
+      { ...variants[sharedKey], ...overrides[sharedKey] },
     ])
   );
   return {
     ...variants,
     ...overrides,
-    ...merged
+    ...merged,
   };
 };
 export const isErrorWithMessage = (error) => {
@@ -257,12 +257,12 @@ export const useTypeCastFields = ({ fields, modelName, schema }) => {
 export const useDataStoreCreateAction = ({
   model,
   fields: initialFields,
-  schema
+  schema,
 }) => {
   const fields = useTypeCastFields({
     fields: initialFields,
     modelName: model.name,
-    schema
+    schema,
   });
   return async () => {
     try {
@@ -270,7 +270,7 @@ export const useDataStoreCreateAction = ({
         UI_CHANNEL,
         {
           event: ACTION_DATASTORE_CREATE_STARTED,
-          data: { fields }
+          data: { fields },
         },
         EVENT_ACTION_DATASTORE_CREATE,
         AMPLIFY_SYMBOL
@@ -280,7 +280,7 @@ export const useDataStoreCreateAction = ({
         UI_CHANNEL,
         {
           event: ACTION_DATASTORE_CREATE_FINISHED,
-          data: { fields, item }
+          data: { fields, item },
         },
         EVENT_ACTION_DATASTORE_CREATE,
         AMPLIFY_SYMBOL
@@ -292,8 +292,8 @@ export const useDataStoreCreateAction = ({
           event: ACTION_DATASTORE_CREATE_FINISHED,
           data: {
             fields,
-            errorMessage: getErrorMessage(error)
-          }
+            errorMessage: getErrorMessage(error),
+          },
         },
         EVENT_ACTION_DATASTORE_CREATE,
         AMPLIFY_SYMBOL
@@ -305,12 +305,12 @@ export const useDataStoreUpdateAction = ({
   fields: initialFields,
   id,
   model,
-  schema
+  schema,
 }) => {
   const fields = useTypeCastFields({
     fields: initialFields,
     modelName: model.name,
-    schema
+    schema,
   });
   return async () => {
     try {
@@ -318,7 +318,7 @@ export const useDataStoreUpdateAction = ({
         UI_CHANNEL,
         {
           event: ACTION_DATASTORE_UPDATE_STARTED,
-          data: { fields, id }
+          data: { fields, id },
         },
         EVENT_ACTION_DATASTORE_UPDATE,
         AMPLIFY_SYMBOL
@@ -336,7 +336,7 @@ export const useDataStoreUpdateAction = ({
         UI_CHANNEL,
         {
           event: ACTION_DATASTORE_UPDATE_FINISHED,
-          data: { fields, id, item }
+          data: { fields, id, item },
         },
         EVENT_ACTION_DATASTORE_UPDATE,
         AMPLIFY_SYMBOL
@@ -349,8 +349,8 @@ export const useDataStoreUpdateAction = ({
           data: {
             fields,
             id,
-            errorMessage: getErrorMessage(error)
-          }
+            errorMessage: getErrorMessage(error),
+          },
         },
         EVENT_ACTION_DATASTORE_UPDATE,
         AMPLIFY_SYMBOL
@@ -366,7 +366,7 @@ export const useDataStoreDeleteAction =
         UI_CHANNEL,
         {
           event: ACTION_DATASTORE_DELETE_STARTED,
-          data: { id }
+          data: { id },
         },
         EVENT_ACTION_DATASTORE_DELETE,
         AMPLIFY_SYMBOL
@@ -376,7 +376,7 @@ export const useDataStoreDeleteAction =
         UI_CHANNEL,
         {
           event: ACTION_DATASTORE_DELETE_FINISHED,
-          data: { id }
+          data: { id },
         },
         EVENT_ACTION_DATASTORE_DELETE,
         AMPLIFY_SYMBOL
@@ -386,7 +386,7 @@ export const useDataStoreDeleteAction =
         UI_CHANNEL,
         {
           event: ACTION_DATASTORE_DELETE_FINISHED,
-          data: { id, errorMessage: getErrorMessage(error) }
+          data: { id, errorMessage: getErrorMessage(error) },
         },
         EVENT_ACTION_DATASTORE_DELETE,
         AMPLIFY_SYMBOL
@@ -399,7 +399,7 @@ export const createDataStorePredicate = (predicateObject) => {
     or: groupOr,
     field,
     operator,
-    operand
+    operand,
   } = predicateObject;
   if (Array.isArray(groupAnd)) {
     const predicates = groupAnd.map((condition) =>
@@ -426,7 +426,7 @@ export const useDataStoreCollection = ({ model, criteria, pagination }) => {
   const [result, setResult] = React.useState({
     items: [],
     isLoading: false,
-    error: undefined
+    error: undefined,
   });
   const fetch = () => {
     setResult({ isLoading: true, items: [] });
@@ -460,7 +460,7 @@ export const useDataStoreItem = ({ model, id }) => {
   return {
     error,
     item,
-    isLoading
+    isLoading,
   };
 };
 export function useDataStoreBinding(props) {
@@ -474,7 +474,7 @@ export const useAuthSignOutAction = (options) => async () => {
       UI_CHANNEL,
       {
         event: ACTION_AUTH_SIGNOUT_STARTED,
-        data: { options }
+        data: { options },
       },
       EVENT_ACTION_AUTH_SIGNOUT,
       AMPLIFY_SYMBOL
@@ -484,7 +484,7 @@ export const useAuthSignOutAction = (options) => async () => {
       UI_CHANNEL,
       {
         event: ACTION_AUTH_SIGNOUT_FINISHED,
-        data: { options }
+        data: { options },
       },
       EVENT_ACTION_AUTH_SIGNOUT,
       AMPLIFY_SYMBOL
@@ -494,7 +494,7 @@ export const useAuthSignOutAction = (options) => async () => {
       UI_CHANNEL,
       {
         event: ACTION_AUTH_SIGNOUT_FINISHED,
-        data: { options, errorMessage: getErrorMessage(error) }
+        data: { options, errorMessage: getErrorMessage(error) },
       },
       EVENT_ACTION_AUTH_SIGNOUT,
       AMPLIFY_SYMBOL
@@ -507,11 +507,11 @@ export const validateField = (value, validations) => {
       if (validation.type === "Required") {
         return {
           hasError: true,
-          errorMessage: validation.validationMessage || "The value is required"
+          errorMessage: validation.validationMessage || "The value is required",
         };
       } else {
         return {
-          hasError: false
+          hasError: false,
         };
       }
     }
@@ -535,35 +535,35 @@ const checkValidation = (value, validation) => {
           hasError: !(value.length <= validation.numValues[0]),
           errorMessage:
             validation.validationMessage ||
-            `The value must be shorter than ${validation.numValues[0]} characters`
+            `The value must be shorter than ${validation.numValues[0]} characters`,
         };
       case "GreaterThanChar":
         return {
           hasError: !(value.length > validation.numValues[0]),
           errorMessage:
             validation.validationMessage ||
-            `The value must be longer than ${validation.numValues[0]} characters`
+            `The value must be longer than ${validation.numValues[0]} characters`,
         };
       case "LessThanNum":
         return {
           hasError: !(value < validation.numValues[0]),
           errorMessage:
             validation.validationMessage ||
-            `The value must be less than ${validation.numValues[0]}`
+            `The value must be less than ${validation.numValues[0]}`,
         };
       case "GreaterThanNum":
         return {
           hasError: !(value > validation.numValues[0]),
           errorMessage:
             validation.validationMessage ||
-            `The value must be greater than ${validation.numValues[0]}`
+            `The value must be greater than ${validation.numValues[0]}`,
         };
       case "EqualTo":
         return {
           hasError: !validation.numValues.some((el) => el === value),
           errorMessage:
             validation.validationMessage ||
-            `The value must be equal to ${validation.numValues.join(" or ")}`
+            `The value must be equal to ${validation.numValues.join(" or ")}`,
         };
       default:
     }
@@ -574,28 +574,28 @@ const checkValidation = (value, validation) => {
           hasError: !validation.strValues.some((el) => value.startsWith(el)),
           errorMessage:
             validation.validationMessage ||
-            `The value must start with ${validation.strValues.join(", ")}`
+            `The value must start with ${validation.strValues.join(", ")}`,
         };
       case "EndWith":
         return {
           hasError: !validation.strValues.some((el) => value.endsWith(el)),
           errorMessage:
             validation.validationMessage ||
-            `The value must end with ${validation.strValues.join(", ")}`
+            `The value must end with ${validation.strValues.join(", ")}`,
         };
       case "Contains":
         return {
           hasError: !validation.strValues.some((el) => value.includes(el)),
           errorMessage:
             validation.validationMessage ||
-            `The value must contain ${validation.strValues.join(", ")}`
+            `The value must contain ${validation.strValues.join(", ")}`,
         };
       case "NotContains":
         return {
           hasError: !validation.strValues.every((el) => !value.includes(el)),
           errorMessage:
             validation.validationMessage ||
-            `The value must not contain ${validation.strValues.join(", ")}`
+            `The value must not contain ${validation.strValues.join(", ")}`,
         };
       case "BeAfter":
         return {
@@ -605,7 +605,7 @@ const checkValidation = (value, validation) => {
           ),
           errorMessage:
             validation.validationMessage ||
-            `The value must be after ${validation.strValues[0]}`
+            `The value must be after ${validation.strValues[0]}`,
         };
       case "BeBefore":
         return {
@@ -615,7 +615,7 @@ const checkValidation = (value, validation) => {
           ),
           errorMessage:
             validation.validationMessage ||
-            `The value must be before ${validation.strValues[0]}`
+            `The value must be before ${validation.strValues[0]}`,
         };
     }
   }
@@ -627,7 +627,7 @@ const checkValidation = (value, validation) => {
         hasError: !EMAIL_ADDRESS_REGEX.test(value),
         errorMessage:
           validation.validationMessage ||
-          "The value must be a valid email address"
+          "The value must be a valid email address",
       };
     case "JSON":
       let isInvalidJSON = false;
@@ -640,7 +640,7 @@ const checkValidation = (value, validation) => {
         hasError: isInvalidJSON,
         errorMessage:
           validation.validationMessage ||
-          "The value must be in a correct JSON format"
+          "The value must be in a correct JSON format",
       };
     case "IpAddress":
       const IPV_4 =
@@ -651,7 +651,7 @@ const checkValidation = (value, validation) => {
         hasError: !(IPV_4.test(value) || IPV_6.test(value)),
         errorMessage:
           validation.validationMessage ||
-          "The value must be an IPv4 or IPv6 address"
+          "The value must be an IPv4 or IPv6 address",
       };
     case "URL":
       let isInvalidUrl = false;
@@ -664,7 +664,7 @@ const checkValidation = (value, validation) => {
         hasError: isInvalidUrl,
         errorMessage:
           validation.validationMessage ||
-          "The value must be a valid URL that begins with a schema (i.e. http:// or mailto:)"
+          "The value must be a valid URL that begins with a schema (i.e. http:// or mailto:)",
       };
     case "Phone":
       const PHONE = /^\+?\d[\d\s-]+$/;
@@ -672,24 +672,24 @@ const checkValidation = (value, validation) => {
         hasError: !PHONE.test(value),
         errorMessage:
           validation.validationMessage ||
-          "The value must be a valid phone number"
+          "The value must be a valid phone number",
       };
     default:
   }
 };
 const monthToShortMon = {
-  1: "Jan",
-  2: "Feb",
-  3: "Mar",
-  4: "Apr",
-  5: "May",
-  6: "Jun",
-  7: "Jul",
-  8: "Aug",
-  9: "Sep",
-  10: "Oct",
-  11: "Nov",
-  12: "Dec"
+  "1": "Jan",
+  "2": "Feb",
+  "3": "Mar",
+  "4": "Apr",
+  "5": "May",
+  "6": "Jun",
+  "7": "Jul",
+  "8": "Aug",
+  "9": "Sep",
+  "10": "Oct",
+  "11": "Nov",
+  "12": "Dec",
 };
 const invalidDateStr = "Invalid Date";
 export function formatDate(date, dateFormat) {

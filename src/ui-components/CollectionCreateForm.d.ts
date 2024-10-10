@@ -5,148 +5,128 @@
  **************************************************************************/
 
 import * as React from "react";
-import {
-  GridProps,
-  SwitchFieldProps,
-  TextAreaFieldProps,
-  TextFieldProps
-} from "@aws-amplify/ui-react";
+import { GridProps, SwitchFieldProps, TextAreaFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
 export declare type EscapeHatchProps = {
-  [elementHierarchy: string]: Record<string, unknown>;
+    [elementHierarchy: string]: Record<string, unknown>;
 } | null;
 export declare type VariantValues = {
-  [key: string]: string;
+    [key: string]: string;
 };
 export declare type Variant = {
-  variantValues: VariantValues;
-  overrides: EscapeHatchProps;
+    variantValues: VariantValues;
+    overrides: EscapeHatchProps;
 };
 export declare type ValidationResponse = {
-  hasError: boolean;
-  errorMessage?: string;
+    hasError: boolean;
+    errorMessage?: string;
 };
-export declare type ValidationFunction<T> = (
-  value: T,
-  validationResponse: ValidationResponse
-) => ValidationResponse | Promise<ValidationResponse>;
+export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
 export declare type CollectionCreateFormInputValues = {
-  bibliographic_citation?: string[];
-  collection_category?: string;
-  collectionmap_id?: string;
-  collectionOptions?: string;
-  create_date?: string;
-  creator?: string[];
-  custom_key?: string;
-  description?: string[];
-  display_date?: string[];
-  end_date?: string;
-  explicit_content?: boolean;
-  heirarchy_path?: string[];
-  identifier?: string;
-  is_part_of?: string[];
-  language?: string[];
-  location?: string[];
-  modified_date?: string;
-  ownerinfo?: string;
-  parent_collection?: string[];
-  provenance?: string[];
-  relation?: string[];
-  rights_holder?: string[];
-  rights?: string[];
-  source?: string[];
-  spatial?: string[];
-  start_date?: string;
-  subject?: string[];
-  thumbnail_path?: string;
-  title?: string;
-  visibility?: boolean;
+    bibliographic_citation?: string[];
+    collection_category?: string;
+    collectionmap_id?: string;
+    collectionOptions?: string;
+    create_date?: string;
+    creator?: string[];
+    custom_key?: string;
+    description?: string[];
+    display_date?: string[];
+    end_date?: string;
+    explicit_content?: boolean;
+    heirarchy_path?: string[];
+    identifier?: string;
+    is_part_of?: string[];
+    language?: string[];
+    location?: string[];
+    modified_date?: string;
+    ownerinfo?: string;
+    parent_collection?: string[];
+    provenance?: string[];
+    relation?: string[];
+    rights_holder?: string[];
+    rights?: string[];
+    source?: string[];
+    spatial?: string[];
+    start_date?: string;
+    subject?: string[];
+    thumbnail_path?: string;
+    title?: string;
+    visibility?: boolean;
 };
 export declare type CollectionCreateFormValidationValues = {
-  bibliographic_citation?: ValidationFunction<string>;
-  collection_category?: ValidationFunction<string>;
-  collectionmap_id?: ValidationFunction<string>;
-  collectionOptions?: ValidationFunction<string>;
-  create_date?: ValidationFunction<string>;
-  creator?: ValidationFunction<string>;
-  custom_key?: ValidationFunction<string>;
-  description?: ValidationFunction<string>;
-  display_date?: ValidationFunction<string>;
-  end_date?: ValidationFunction<string>;
-  explicit_content?: ValidationFunction<boolean>;
-  heirarchy_path?: ValidationFunction<string>;
-  identifier?: ValidationFunction<string>;
-  is_part_of?: ValidationFunction<string>;
-  language?: ValidationFunction<string>;
-  location?: ValidationFunction<string>;
-  modified_date?: ValidationFunction<string>;
-  ownerinfo?: ValidationFunction<string>;
-  parent_collection?: ValidationFunction<string>;
-  provenance?: ValidationFunction<string>;
-  relation?: ValidationFunction<string>;
-  rights_holder?: ValidationFunction<string>;
-  rights?: ValidationFunction<string>;
-  source?: ValidationFunction<string>;
-  spatial?: ValidationFunction<string>;
-  start_date?: ValidationFunction<string>;
-  subject?: ValidationFunction<string>;
-  thumbnail_path?: ValidationFunction<string>;
-  title?: ValidationFunction<string>;
-  visibility?: ValidationFunction<boolean>;
+    bibliographic_citation?: ValidationFunction<string>;
+    collection_category?: ValidationFunction<string>;
+    collectionmap_id?: ValidationFunction<string>;
+    collectionOptions?: ValidationFunction<string>;
+    create_date?: ValidationFunction<string>;
+    creator?: ValidationFunction<string>;
+    custom_key?: ValidationFunction<string>;
+    description?: ValidationFunction<string>;
+    display_date?: ValidationFunction<string>;
+    end_date?: ValidationFunction<string>;
+    explicit_content?: ValidationFunction<boolean>;
+    heirarchy_path?: ValidationFunction<string>;
+    identifier?: ValidationFunction<string>;
+    is_part_of?: ValidationFunction<string>;
+    language?: ValidationFunction<string>;
+    location?: ValidationFunction<string>;
+    modified_date?: ValidationFunction<string>;
+    ownerinfo?: ValidationFunction<string>;
+    parent_collection?: ValidationFunction<string>;
+    provenance?: ValidationFunction<string>;
+    relation?: ValidationFunction<string>;
+    rights_holder?: ValidationFunction<string>;
+    rights?: ValidationFunction<string>;
+    source?: ValidationFunction<string>;
+    spatial?: ValidationFunction<string>;
+    start_date?: ValidationFunction<string>;
+    subject?: ValidationFunction<string>;
+    thumbnail_path?: ValidationFunction<string>;
+    title?: ValidationFunction<string>;
+    visibility?: ValidationFunction<boolean>;
 };
-export declare type PrimitiveOverrideProps<T> = Partial<T> &
-  React.DOMAttributes<HTMLDivElement>;
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type CollectionCreateFormOverridesProps = {
-  CollectionCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
-  bibliographic_citation?: PrimitiveOverrideProps<TextFieldProps>;
-  collection_category?: PrimitiveOverrideProps<TextFieldProps>;
-  collectionmap_id?: PrimitiveOverrideProps<TextFieldProps>;
-  collectionOptions?: PrimitiveOverrideProps<TextAreaFieldProps>;
-  create_date?: PrimitiveOverrideProps<TextFieldProps>;
-  creator?: PrimitiveOverrideProps<TextFieldProps>;
-  custom_key?: PrimitiveOverrideProps<TextFieldProps>;
-  description?: PrimitiveOverrideProps<TextFieldProps>;
-  display_date?: PrimitiveOverrideProps<TextFieldProps>;
-  end_date?: PrimitiveOverrideProps<TextFieldProps>;
-  explicit_content?: PrimitiveOverrideProps<SwitchFieldProps>;
-  heirarchy_path?: PrimitiveOverrideProps<TextFieldProps>;
-  identifier?: PrimitiveOverrideProps<TextFieldProps>;
-  is_part_of?: PrimitiveOverrideProps<TextFieldProps>;
-  language?: PrimitiveOverrideProps<TextFieldProps>;
-  location?: PrimitiveOverrideProps<TextFieldProps>;
-  modified_date?: PrimitiveOverrideProps<TextFieldProps>;
-  ownerinfo?: PrimitiveOverrideProps<TextAreaFieldProps>;
-  parent_collection?: PrimitiveOverrideProps<TextFieldProps>;
-  provenance?: PrimitiveOverrideProps<TextFieldProps>;
-  relation?: PrimitiveOverrideProps<TextFieldProps>;
-  rights_holder?: PrimitiveOverrideProps<TextFieldProps>;
-  rights?: PrimitiveOverrideProps<TextFieldProps>;
-  source?: PrimitiveOverrideProps<TextFieldProps>;
-  spatial?: PrimitiveOverrideProps<TextFieldProps>;
-  start_date?: PrimitiveOverrideProps<TextFieldProps>;
-  subject?: PrimitiveOverrideProps<TextFieldProps>;
-  thumbnail_path?: PrimitiveOverrideProps<TextFieldProps>;
-  title?: PrimitiveOverrideProps<TextFieldProps>;
-  visibility?: PrimitiveOverrideProps<SwitchFieldProps>;
+    CollectionCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    bibliographic_citation?: PrimitiveOverrideProps<TextFieldProps>;
+    collection_category?: PrimitiveOverrideProps<TextFieldProps>;
+    collectionmap_id?: PrimitiveOverrideProps<TextFieldProps>;
+    collectionOptions?: PrimitiveOverrideProps<TextAreaFieldProps>;
+    create_date?: PrimitiveOverrideProps<TextFieldProps>;
+    creator?: PrimitiveOverrideProps<TextFieldProps>;
+    custom_key?: PrimitiveOverrideProps<TextFieldProps>;
+    description?: PrimitiveOverrideProps<TextFieldProps>;
+    display_date?: PrimitiveOverrideProps<TextFieldProps>;
+    end_date?: PrimitiveOverrideProps<TextFieldProps>;
+    explicit_content?: PrimitiveOverrideProps<SwitchFieldProps>;
+    heirarchy_path?: PrimitiveOverrideProps<TextFieldProps>;
+    identifier?: PrimitiveOverrideProps<TextFieldProps>;
+    is_part_of?: PrimitiveOverrideProps<TextFieldProps>;
+    language?: PrimitiveOverrideProps<TextFieldProps>;
+    location?: PrimitiveOverrideProps<TextFieldProps>;
+    modified_date?: PrimitiveOverrideProps<TextFieldProps>;
+    ownerinfo?: PrimitiveOverrideProps<TextAreaFieldProps>;
+    parent_collection?: PrimitiveOverrideProps<TextFieldProps>;
+    provenance?: PrimitiveOverrideProps<TextFieldProps>;
+    relation?: PrimitiveOverrideProps<TextFieldProps>;
+    rights_holder?: PrimitiveOverrideProps<TextFieldProps>;
+    rights?: PrimitiveOverrideProps<TextFieldProps>;
+    source?: PrimitiveOverrideProps<TextFieldProps>;
+    spatial?: PrimitiveOverrideProps<TextFieldProps>;
+    start_date?: PrimitiveOverrideProps<TextFieldProps>;
+    subject?: PrimitiveOverrideProps<TextFieldProps>;
+    thumbnail_path?: PrimitiveOverrideProps<TextFieldProps>;
+    title?: PrimitiveOverrideProps<TextFieldProps>;
+    visibility?: PrimitiveOverrideProps<SwitchFieldProps>;
 } & EscapeHatchProps;
-export declare type CollectionCreateFormProps = React.PropsWithChildren<
-  {
+export declare type CollectionCreateFormProps = React.PropsWithChildren<{
     overrides?: CollectionCreateFormOverridesProps | undefined | null;
-  } & {
+} & {
     clearOnSuccess?: boolean;
-    onSubmit?: (
-      fields: CollectionCreateFormInputValues
-    ) => CollectionCreateFormInputValues;
+    onSubmit?: (fields: CollectionCreateFormInputValues) => CollectionCreateFormInputValues;
     onSuccess?: (fields: CollectionCreateFormInputValues) => void;
-    onError?: (
-      fields: CollectionCreateFormInputValues,
-      errorMessage: string
-    ) => void;
-    onChange?: (
-      fields: CollectionCreateFormInputValues
-    ) => CollectionCreateFormInputValues;
+    onError?: (fields: CollectionCreateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: CollectionCreateFormInputValues) => CollectionCreateFormInputValues;
     onValidate?: CollectionCreateFormValidationValues;
-  } & React.CSSProperties
->;
-export default function CollectionCreateForm(
-  props: CollectionCreateFormProps
-): React.ReactElement;
+} & React.CSSProperties>;
+export default function CollectionCreateForm(props: CollectionCreateFormProps): React.ReactElement;

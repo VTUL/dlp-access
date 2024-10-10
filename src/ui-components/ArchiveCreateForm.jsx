@@ -18,7 +18,7 @@ import {
   Text,
   TextAreaField,
   TextField,
-  useTheme
+  useTheme,
 } from "@aws-amplify/ui-react";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { API } from "aws-amplify";
@@ -36,15 +36,15 @@ function ArrayField({
   lengthLimit,
   getBadgeText,
   runValidationTasks,
-  errorMessage
+  errorMessage,
 }) {
   const labelElement = <Text>{label}</Text>;
   const {
     tokens: {
       components: {
-        fieldmessages: { error: errorStyles }
-      }
-    }
+        fieldmessages: { error: errorStyles },
+      },
+    },
   } = useTheme();
   const [selectedBadgeIndex, setSelectedBadgeIndex] = React.useState();
   const [isEditing, setIsEditing] = React.useState();
@@ -90,7 +90,8 @@ function ArrayField({
                   alignItems: "center",
                   marginRight: 3,
                   marginTop: 3,
-                  backgroundColor: index === selectedBadgeIndex ? "#B8CEF9" : ""
+                  backgroundColor:
+                    index === selectedBadgeIndex ? "#B8CEF9" : "",
                 }}
                 onClick={() => {
                   setSelectedBadgeIndex(index);
@@ -104,14 +105,14 @@ function ArrayField({
                     cursor: "pointer",
                     paddingLeft: 3,
                     width: 20,
-                    height: 20
+                    height: 20,
                   }}
                   viewBox={{ width: 20, height: 20 }}
                   paths={[
                     {
                       d: "M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z",
-                      stroke: "black"
-                    }
+                      stroke: "black",
+                    },
                   ]}
                   ariaLabel="button"
                   onClick={(event) => {
@@ -242,7 +243,7 @@ export default function ArchiveCreateForm(props) {
     thumbnail_path: "",
     title: "",
     type: [],
-    visibility: false
+    visibility: false,
   };
   const [alternative, setAlternative] = React.useState(
     initialValues.alternative
@@ -449,7 +450,7 @@ export default function ArchiveCreateForm(props) {
   const basis_of_recordRef = React.createRef();
   const [
     currentBibliographic_citationValue,
-    setCurrentBibliographic_citationValue
+    setCurrentBibliographic_citationValue,
   ] = React.useState("");
   const bibliographic_citationRef = React.createRef();
   const [currentConforms_toValue, setCurrentConforms_toValue] =
@@ -597,7 +598,7 @@ export default function ArchiveCreateForm(props) {
     thumbnail_path: [],
     title: [{ type: "Required" }],
     type: [{ type: "Required" }],
-    visibility: [{ type: "Required" }]
+    visibility: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -678,7 +679,7 @@ export default function ArchiveCreateForm(props) {
           thumbnail_path,
           title,
           type,
-          visibility
+          visibility,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -712,9 +713,9 @@ export default function ArchiveCreateForm(props) {
             query: createArchive.replaceAll("__typename", ""),
             variables: {
               input: {
-                ...modelFields
-              }
-            }
+                ...modelFields,
+              },
+            },
           });
           if (onSuccess) {
             onSuccess(modelFields);
@@ -790,7 +791,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.alternative ?? values;
@@ -893,7 +894,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.archiveOptions ?? value;
@@ -966,7 +967,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.basis_of_record ?? values;
@@ -1069,7 +1070,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.bibliographic_citation ?? values;
@@ -1175,7 +1176,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.conforms_to ?? values;
@@ -1275,7 +1276,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.contributor ?? values;
@@ -1375,7 +1376,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.coverage ?? values;
@@ -1477,7 +1478,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.create_date ?? value;
@@ -1550,7 +1551,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.created ?? values;
@@ -1648,7 +1649,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.creator ?? values;
@@ -1750,7 +1751,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.custom_key ?? value;
@@ -1823,7 +1824,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.date ?? values;
@@ -1921,7 +1922,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.description ?? values;
@@ -2021,7 +2022,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.display_date ?? values;
@@ -2121,7 +2122,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.download_link ?? values;
@@ -2225,7 +2226,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.end_date ?? value;
@@ -2302,7 +2303,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.explicit ?? value;
@@ -2375,7 +2376,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.extent ?? values;
@@ -2473,7 +2474,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.format ?? values;
@@ -2571,7 +2572,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.has_format ?? values;
@@ -2671,7 +2672,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.has_part ?? values;
@@ -2769,7 +2770,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.has_version ?? values;
@@ -2869,7 +2870,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.heirarchy_path ?? values;
@@ -2973,7 +2974,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.identifier ?? value;
@@ -3046,7 +3047,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.is_format_of ?? values;
@@ -3146,7 +3147,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.is_part_of ?? values;
@@ -3246,7 +3247,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.is_version_of ?? values;
@@ -3350,7 +3351,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.item_category ?? value;
@@ -3423,7 +3424,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.language ?? values;
@@ -3521,7 +3522,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.license ?? values;
@@ -3619,7 +3620,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.location ?? values;
@@ -3720,7 +3721,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.manifest_file_characterization ?? value;
@@ -3802,7 +3803,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.manifest_url ?? value;
@@ -3875,7 +3876,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.medium ?? values;
@@ -3977,7 +3978,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.modified_date ?? value;
@@ -4050,7 +4051,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.other_identifier ?? values;
@@ -4153,7 +4154,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.parent_collection ?? values;
@@ -4259,7 +4260,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.provenance ?? values;
@@ -4359,7 +4360,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.publisher ?? values;
@@ -4457,7 +4458,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.references ?? values;
@@ -4557,7 +4558,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.relation ?? values;
@@ -4655,7 +4656,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.repository ?? values;
@@ -4755,7 +4756,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.rights_holder ?? values;
@@ -4855,7 +4856,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.rights ?? values;
@@ -4953,7 +4954,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.source ?? values;
@@ -5051,7 +5052,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.spatial ?? values;
@@ -5153,7 +5154,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.start_date ?? value;
@@ -5226,7 +5227,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.subject ?? values;
@@ -5324,7 +5325,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.tags ?? values;
@@ -5422,7 +5423,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.temporal ?? values;
@@ -5524,7 +5525,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path: value,
               title,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.thumbnail_path ?? value;
@@ -5601,7 +5602,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title: value,
               type,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -5674,7 +5675,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type: values,
-              visibility
+              visibility,
             };
             const result = onChange(modelFields);
             values = result?.type ?? values;
@@ -5776,7 +5777,7 @@ export default function ArchiveCreateForm(props) {
               thumbnail_path,
               title,
               type,
-              visibility: value
+              visibility: value,
             };
             const result = onChange(modelFields);
             value = result?.visibility ?? value;

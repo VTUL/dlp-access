@@ -26,7 +26,7 @@ export default function CollectionmapCreateForm(props) {
     collection_id: "",
     create_date: "",
     map_object: "",
-    modified_date: ""
+    modified_date: "",
   };
   const [collectionmap_category, setCollectionmap_category] = React.useState(
     initialValues.collectionmap_category
@@ -55,7 +55,7 @@ export default function CollectionmapCreateForm(props) {
     collection_id: [{ type: "Required" }],
     create_date: [],
     map_object: [{ type: "Required" }],
-    modified_date: []
+    modified_date: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -87,7 +87,7 @@ export default function CollectionmapCreateForm(props) {
           collection_id,
           create_date,
           map_object,
-          modified_date
+          modified_date,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -121,9 +121,9 @@ export default function CollectionmapCreateForm(props) {
             query: createCollectionmap.replaceAll("__typename", ""),
             variables: {
               input: {
-                ...modelFields
-              }
-            }
+                ...modelFields,
+              },
+            },
           });
           if (onSuccess) {
             onSuccess(modelFields);
@@ -154,7 +154,7 @@ export default function CollectionmapCreateForm(props) {
               collection_id,
               create_date,
               map_object,
-              modified_date
+              modified_date,
             };
             const result = onChange(modelFields);
             value = result?.collectionmap_category ?? value;
@@ -184,7 +184,7 @@ export default function CollectionmapCreateForm(props) {
               collection_id: value,
               create_date,
               map_object,
-              modified_date
+              modified_date,
             };
             const result = onChange(modelFields);
             value = result?.collection_id ?? value;
@@ -212,7 +212,7 @@ export default function CollectionmapCreateForm(props) {
               collection_id,
               create_date: value,
               map_object,
-              modified_date
+              modified_date,
             };
             const result = onChange(modelFields);
             value = result?.create_date ?? value;
@@ -240,7 +240,7 @@ export default function CollectionmapCreateForm(props) {
               collection_id,
               create_date,
               map_object: value,
-              modified_date
+              modified_date,
             };
             const result = onChange(modelFields);
             value = result?.map_object ?? value;
@@ -268,7 +268,7 @@ export default function CollectionmapCreateForm(props) {
               collection_id,
               create_date,
               map_object,
-              modified_date: value
+              modified_date: value,
             };
             const result = onChange(modelFields);
             value = result?.modified_date ?? value;
