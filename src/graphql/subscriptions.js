@@ -471,6 +471,7 @@ export const onCreateArchive = /* GraphQL */ `
       date
       description
       display_date
+      download_link
       end_date
       explicit
       extent
@@ -573,6 +574,7 @@ export const onUpdateArchive = /* GraphQL */ `
       date
       description
       display_date
+      download_link
       end_date
       explicit
       extent
@@ -675,6 +677,7 @@ export const onDeleteArchive = /* GraphQL */ `
       date
       description
       display_date
+      download_link
       end_date
       explicit
       extent

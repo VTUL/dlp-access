@@ -63,6 +63,7 @@ export const searchObjects = /* GraphQL */ `
           coverage
           created
           date
+          download_link
           explicit
           extent
           format
@@ -183,6 +184,7 @@ export const fulltextArchives = /* GraphQL */ `
         date
         description
         display_date
+        download_link
         end_date
         explicit
         extent
@@ -608,6 +610,7 @@ export const getArchive = /* GraphQL */ `
       date
       description
       display_date
+      download_link
       end_date
       explicit
       extent
@@ -715,6 +718,7 @@ export const listArchives = /* GraphQL */ `
         date
         description
         display_date
+        download_link
         end_date
         explicit
         extent
@@ -796,6 +800,7 @@ export const archiveByIdentifier = /* GraphQL */ `
         date
         description
         display_date
+        download_link
         end_date
         explicit
         extent
@@ -879,6 +884,7 @@ export const searchArchives = /* GraphQL */ `
         date
         description
         display_date
+        download_link
         end_date
         explicit
         extent
