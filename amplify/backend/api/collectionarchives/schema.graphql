@@ -1,4 +1,4 @@
-interface Object {
+interface GenericRecord {
   bibliographic_citation: [String!]
   create_date: String
   creator: [String!]
@@ -27,7 +27,7 @@ interface Object {
   visibility: Boolean!
 }
 
-type Collection implements Object
+type Collection implements GenericRecord
   @model
   @searchable
   @auth(
@@ -106,7 +106,7 @@ type PageContent
   pageContentSiteId: Site @hasOne
 }
 
-type Archive implements Object
+type Archive implements GenericRecord
   @model
   @searchable
   @auth(
@@ -235,13 +235,13 @@ type History
 }
 
 type Query {
-  searchObjects(
+  searchGenericRecords(
     allFields: String
-    sort: SearchableObjectSortInput
-    filter: SearchableObjectFilterInput
+    sort: SearchableGenericRecordSortInput
+    filter: SearchableGenericRecordFilterInput
     limit: Int
     nextToken: String
-  ): SearchableObjectConnection
+  ): SearchableGenericRecordConnection
   fulltextCollections(
     allFields: String
     filter: SearchableCollectionFilterInput
@@ -258,13 +258,13 @@ type Query {
   ): SearchableArchiveConnection
 }
 
-type SearchableObjectConnection {
-  items: [Object]
+type SearchableGenericRecordConnection {
+  items: [GenericRecord]
   nextToken: String
   total: Int
 }
 
-input SearchableObjectFilterInput {
+input SearchableGenericRecordFilterInput {
   id: SearchableIDFilterInput
   title: SearchableStringFilterInput
   identifier: SearchableStringFilterInput
@@ -293,9 +293,9 @@ input SearchableObjectFilterInput {
   modified_date: SearchableStringFilterInput
   collection_category: SearchableStringFilterInput
   item_category: SearchableStringFilterInput
-  and: [SearchableObjectFilterInput]
-  or: [SearchableObjectFilterInput]
-  not: SearchableObjectFilterInput
+  and: [SearchableGenericRecordFilterInput]
+  or: [SearchableGenericRecordFilterInput]
+  not: SearchableGenericRecordFilterInput
 }
 
 input SearchableBooleanFilterInput {
@@ -303,12 +303,12 @@ input SearchableBooleanFilterInput {
   ne: Boolean
 }
 
-input SearchableObjectSortInput {
-  field: SearchableObjectSortableFields
+input SearchableGenericRecordSortInput {
+  field: SearchableGenericRecordSortableFields
   direction: SearchableSortDirection
 }
 
-enum SearchableObjectSortableFields {
+enum SearchableGenericRecordSortableFields {
   id
   title
   identifier

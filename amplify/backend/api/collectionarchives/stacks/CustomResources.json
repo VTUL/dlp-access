@@ -27,7 +27,7 @@
     }
   },
   "Resources": {
-    "QuerySearchObjectResolver": {
+    "QuerySearchGenericRecordResolver": {
       "Type": "AWS::AppSync::Resolver",
       "Properties": {
         "ApiId": {
@@ -35,10 +35,10 @@
         },
         "DataSourceName": "OpenSearchDataSource",
         "TypeName": "Query",
-        "FieldName": "searchObjects",
+        "FieldName": "searchGenericRecords",
         "RequestMappingTemplateS3Location": {
           "Fn::Sub": [
-            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.searchObjects.req.vtl",
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.searchGenericRecords.req.vtl",
             {
               "S3DeploymentBucket": {
                 "Ref": "S3DeploymentBucket"
@@ -51,7 +51,7 @@
         },
         "ResponseMappingTemplateS3Location": {
           "Fn::Sub": [
-            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.searchObjects.res.vtl",
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.searchGenericRecords.res.vtl",
             {
               "S3DeploymentBucket": {
                 "Ref": "S3DeploymentBucket"

@@ -1,15 +1,15 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const searchObjects = /* GraphQL */ `
-  query SearchObjects(
+export const searchGenericRecords = /* GraphQL */ `
+  query SearchGenericRecords(
     $allFields: String
-    $sort: SearchableObjectSortInput
-    $filter: SearchableObjectFilterInput
+    $sort: SearchableGenericRecordSortInput
+    $filter: SearchableGenericRecordFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    searchObjects(
+    searchGenericRecords(
       allFields: $allFields
       sort: $sort
       filter: $filter
