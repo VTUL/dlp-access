@@ -17,39 +17,38 @@ export const searchGenericRecords = /* GraphQL */ `
       nextToken: $nextToken
     ) {
       items {
-        bibliographic_citation
-        create_date
-        creator
-        custom_key
-        description
-        display_date
-        end_date
-        heirarchy_path
-        id
-        identifier
-        is_part_of
-        language
-        location
-        modified_date
-        parent_collection
-        provenance
-        relation
-        rights_holder
-        rights
-        source
-        spatial
-        start_date
-        subject
-        thumbnail_path
-        title
-        visibility
-
         ... on Collection {
+          bibliographic_citation
           collection_category
           collectionmap_id
           collectionOptions
+          create_date
+          creator
+          custom_key
+          description
+          display_date
+          end_date
           explicit_content
+          heirarchy_path
+          id
+          identifier
+          is_part_of
+          language
+          location
+          modified_date
           ownerinfo
+          parent_collection
+          provenance
+          relation
+          rights_holder
+          rights
+          source
+          spatial
+          start_date
+          subject
+          thumbnail_path
+          title
+          visibility
           createdAt
           updatedAt
           collectionCollectionmapId
@@ -58,32 +57,58 @@ export const searchGenericRecords = /* GraphQL */ `
           alternative
           archiveOptions
           basis_of_record
+          bibliographic_citation
           conforms_to
           contributor
           coverage
+          create_date
           created
+          creator
+          custom_key
           date
+          description
+          display_date
           download_link
+          end_date
           explicit
           extent
           format
           has_format
           has_part
           has_version
+          heirarchy_path
+          id
+          identifier
           is_format_of
+          is_part_of
           is_version_of
           item_category
+          language
           license
+          location
           manifest_file_characterization
           manifest_url
           medium
+          modified_date
           other_identifier
+          parent_collection
+          provenance
           publisher
           references
+          relation
           repository
+          rights_holder
+          rights
+          source
+          spatial
+          start_date
+          subject
           tags
           temporal
+          thumbnail_path
+          title
           type
+          visibility
           createdAt
           updatedAt
           collectionArchivesId

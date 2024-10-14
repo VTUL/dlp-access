@@ -187,37 +187,6 @@
       }
     }
   },
-  "srchtest": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-dlpdev-srchtest-d172e-authRole",
-      "UnauthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-srchtest-d172e-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-srchtest-d172e-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-dlpdev-srchtest-d172e-deployment",
-      "UnauthRoleName": "amplify-dlpdev-srchtest-d172e-unauthRole",
-      "StackName": "amplify-dlpdev-srchtest-d172e",
-      "StackId": "arn:aws:cloudformation:us-east-1:226388486048:stack/amplify-dlpdev-srchtest-d172e/f71d2b70-3c7c-11ef-a412-0e60113ae2bb",
-      "AmplifyAppId": "d2ysrrdhih4bgc"
-    },
-    "categories": {
-      "api": {
-        "collectionarchives": {}
-      },
-      "auth": {
-        "iawav2658176f3": {},
-        "userPoolGroups": {}
-      },
-      "function": {
-        "iawav2658176f3PostConfirmation": {
-          "deploymentBucketName": "amplify-dlpdev-srchtest-d172e-deployment",
-          "s3Key": "amplify-builds/iawav2658176f3PostConfirmation-634844337947316a6c56-build.zip"
-        }
-      },
-      "storage": {
-        "Collectionmap": {}
-      }
-    }
-  },
   "preview": {
     "awscloudformation": {
       "AuthRoleName": "amplify-dlpdev-preview-89a17-authRole",
@@ -250,41 +219,16 @@
       }
     }
   },
-  "backndtest": {
+  "genrec": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-dlpdev-backndtest-209e1-authRole",
-      "UnauthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-backndtest-209e1-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-backndtest-209e1-authRole",
+      "AuthRoleName": "amplify-dlpdev-genrec-35401-authRole",
+      "UnauthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-genrec-35401-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-genrec-35401-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-dlpdev-backndtest-209e1-deployment",
-      "UnauthRoleName": "amplify-dlpdev-backndtest-209e1-unauthRole",
-      "StackName": "amplify-dlpdev-backndtest-209e1",
-      "StackId": "arn:aws:cloudformation:us-east-1:226388486048:stack/amplify-dlpdev-backndtest-209e1/d907ff00-84bd-11ef-92b3-0affeb8ec175",
-      "AmplifyAppId": "d2ysrrdhih4bgc"
-    },
-    "categories": {
-      "api": {
-        "collectionarchives": {}
-      },
-      "auth": {
-        "iawav2658176f3": {},
-        "userPoolGroups": {}
-      },
-      "function": {
-        "iawav2658176f3PostConfirmation": {}
-      }
-    }
-  },
-  "interface": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-dlpdev-interface-0317f-authRole",
-      "UnauthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-interface-0317f-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::226388486048:role/amplify-dlpdev-interface-0317f-authRole",
-      "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-dlpdev-interface-0317f-deployment",
-      "UnauthRoleName": "amplify-dlpdev-interface-0317f-unauthRole",
-      "StackName": "amplify-dlpdev-interface-0317f",
-      "StackId": "arn:aws:cloudformation:us-east-1:226388486048:stack/amplify-dlpdev-interface-0317f/62f01a90-872f-11ef-a730-0e7fb13c7371",
+      "DeploymentBucketName": "amplify-dlpdev-genrec-35401-deployment",
+      "UnauthRoleName": "amplify-dlpdev-genrec-35401-unauthRole",
+      "StackName": "amplify-dlpdev-genrec-35401",
+      "StackId": "arn:aws:cloudformation:us-east-1:226388486048:stack/amplify-dlpdev-genrec-35401/9a582330-8a57-11ef-bb63-0e83b1741497",
       "AmplifyAppId": "d2ysrrdhih4bgc"
     },
     "categories": {
@@ -297,7 +241,7 @@
       },
       "function": {
         "iawav2658176f3PostConfirmation": {
-          "deploymentBucketName": "amplify-dlpdev-interface-0317f-deployment",
+          "deploymentBucketName": "amplify-dlpdev-genrec-35401-deployment",
           "s3Key": "amplify-builds/iawav2658176f3PostConfirmation-634844337947316a6c56-build.zip"
         }
       },

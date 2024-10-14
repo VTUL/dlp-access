@@ -1,3 +1,5 @@
+union GenericRecordType = Collection | Archive
+
 interface GenericRecord {
   bibliographic_citation: [String!]
   create_date: String
@@ -259,7 +261,7 @@ type Query {
 }
 
 type SearchableGenericRecordConnection {
-  items: [GenericRecord]
+  items: [GenericRecordType]
   nextToken: String
   total: Int
 }
