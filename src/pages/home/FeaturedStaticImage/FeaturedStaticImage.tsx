@@ -31,9 +31,10 @@ export const FeaturedStaticImage: FC<Props> = ({ staticImage, site }) => {
       <div id="home-site-title-wrapper">
         <h1
           style={{
-            fontFamily: staticImage?.titleFont || "crimson-text, serif",
+            fontFamily:
+              staticImage?.titleFont || "gineso-condensed, sans-serif",
             textTransform: staticImage?.textStyle || "uppercase",
-            fontSize: staticImage?.titleSize || "40px",
+            fontSize: staticImage?.titleSize || "40px"
           }}
         >
           {site?.siteName || ""}
