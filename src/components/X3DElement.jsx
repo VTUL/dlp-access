@@ -22,7 +22,7 @@ class X3DElement extends Component {
       script.async = true;
       document.head.appendChild(script);
     }
-    // this.x3dLoaded();
+    this.x3dLoaded();
     this.zoomFactor = 1.0;
   }
 
@@ -48,13 +48,15 @@ class X3DElement extends Component {
   };
 
   x3dLoaded = () => {
+    let hasRun = false;
     const poller = () => {
       this.timer = setTimeout(() => {
         const loaded = document.querySelector("inline").getAttribute("load");
-        if (loaded) {
+        if (loaded && !hasRun) {
           let x3dElement = document.getElementById("x3dElement");
           window.setTimeout(() => {
             x3dElement?.runtime?.showAll();
+            hasRun = true;
           }, 1000);
         } else {
           poller();
