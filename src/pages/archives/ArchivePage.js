@@ -155,9 +155,7 @@ class ArchivePage extends Component {
     try {
       const options = JSON.parse(item.archiveOptions);
       return (
-        item.format.indexOf("model/x3d") !== -1 &&
-        !!options.assets.x3d_config &&
-        !!options.assets.x3d_src_img
+        item.format.indexOf("model/x3d") !== -1 && !!options.assets.x3d_config
       );
     } catch (error) {
       return false;

@@ -16,11 +16,13 @@ class X3DElement extends Component {
     if (!document.getElementById("x3domScript")) {
       const script = document.createElement("script");
       script.id = "x3domScript";
-      script.src = "https://img.cloud.lib.vt.edu/scripts/x3dom_1.8.4-dev.js";
+      //https://d21nnzi4oh5qvs.cloudfront.net/federated/3d/x3dom-1.8.3/x3dom.js
+      script.src =
+        "https://d21nnzi4oh5qvs.cloudfront.net/federated/3d/x3dom-1.8.3/x3dom.js";
       script.async = true;
       document.head.appendChild(script);
     }
-    this.x3dLoaded();
+    // this.x3dLoaded();
     this.zoomFactor = 1.0;
   }
 
