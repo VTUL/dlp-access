@@ -7,6 +7,7 @@
     "@aws-amplify/ui-react": "^5.3.3",
     "@babylonjs/core": "^7.34.4",
     "@babylonjs/loaders": "^7.34.4",
+    "@babylonjs/materials": "^7.37.0",
     "@blueprintjs/core": "^4.17.8",
     "@blueprintjs/icons": "^4.14.5",
     "@emotion/react": "^11.10.6",

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { registerBuiltInLoaders } from "@babylonjs/loaders/dynamic";
 import * as BABYLON from "@babylonjs/core";
+import { GridMaterial } from "@babylonjs/materials/";
 import "../css/_3dViewer.scss";
 
 const BabylonElement = (props) => {
@@ -35,8 +36,28 @@ const BabylonElement = (props) => {
   };
 
   const createScene = async (canvas, engine, modelURL) => {
+    const AXES_LENGTH = 10;
     const scene = new BABYLON.Scene(engine);
-    scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+    scene.environmentTexture = BABYLON.CubeTexture.CreateFromPrefilteredData(
+      props.env,
+      scene
+    );
+    const ground = BABYLON.MeshBuilder.CreateGround(
+      "ground",
+      { width: AXES_LENGTH, height: AXES_LENGTH, updatable: false },
+      scene
+    );
+    const grid = new GridMaterial("grid", scene);
+    grid.backFaceCulling = false;
+    grid.mainColor = BABYLON.Color3.White();
+    grid.lineColor = BABYLON.Color3.White();
+    grid.opacity = 0.25;
+
+    ground.material = grid;
+    ground.alwaysSelectAsActiveMesh = true;
+    ground.isPickable = false;
+
+    // scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
     const model = await loadModel(scene, modelURL);
     const modelDimensions = model.ellipsoid;
     const modelMaxSize = Math.max(
@@ -44,29 +65,30 @@ const BabylonElement = (props) => {
       modelDimensions._y,
       modelDimensions._z
     );
+    console.log(modelDimensions);
+    model.position = new BABYLON.Vector3(0, modelDimensions._y, 0);
     const camera = new BABYLON.ArcRotateCamera(
       "camera",
       0,
-      0,
+      modelDimensions._y,
       4,
-      new BABYLON.Vector3(0, 0, 0),
+      new BABYLON.Vector3(0, modelDimensions._y, 0),
       scene
     );
-    camera.setPosition(new BABYLON.Vector3(0, 0, modelMaxSize * 2));
-    camera.setTarget(BABYLON.Vector3.Zero());
+    camera.setPosition(
+      new BABYLON.Vector3(0, modelDimensions._y, modelMaxSize * 2)
+    );
+    camera.setTarget(
+      new BABYLON.Vector3(0, modelDimensions._y, modelMaxSize * 2)
+    );
+    camera.wheelPrecision = 100;
     camera.lowerRadiusLimit = modelMaxSize;
     camera.upperRadiusLimit = modelMaxSize * 10;
     camera.attachControl(canvas, true);
-    camera.speed = 0.1;
     camera.minZ = 0.1;
-    //temporary light to light the entire scene
-    const light0 = new BABYLON.HemisphericLight(
-      "HemiLight",
-      new BABYLON.Vector3(0, 1, 0),
-      scene
-    );
 
     engine.runRenderLoop(function () {
+      camera.setTarget(model.position);
       scene.render();
     });
   };
