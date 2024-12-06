@@ -2,11 +2,12 @@
 .vscode/
 
 # dependencies
-/node_modules
+node_modules
 /.pnp
 .pnp.js
-amplify/logs/
 sync.sh
+amplify
+src/ui-components
 
 # testing
 /coverage
