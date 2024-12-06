@@ -27,6 +27,7 @@ export const createCollection = /* GraphQL */ `
       modified_date
       ownerinfo
       parent_collection
+      parent_collection_identifer
       provenance
       relation
       rights_holder
@@ -87,6 +88,7 @@ export const updateCollection = /* GraphQL */ `
       modified_date
       ownerinfo
       parent_collection
+      parent_collection_identifer
       provenance
       relation
       rights_holder
@@ -147,6 +149,7 @@ export const deleteCollection = /* GraphQL */ `
       modified_date
       ownerinfo
       parent_collection
+      parent_collection_identifer
       provenance
       relation
       rights_holder
@@ -214,6 +217,7 @@ export const createCollectionmap = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -270,6 +274,7 @@ export const updateCollectionmap = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -326,6 +331,7 @@ export const deleteCollectionmap = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -483,6 +489,7 @@ export const createArchive = /* GraphQL */ `
       date
       description
       display_date
+      download_link
       end_date
       explicit
       extent
@@ -506,6 +513,7 @@ export const createArchive = /* GraphQL */ `
       modified_date
       other_identifier
       parent_collection
+      parent_collection_identifer
       provenance
       publisher
       references
@@ -544,6 +552,7 @@ export const createArchive = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -588,6 +597,7 @@ export const updateArchive = /* GraphQL */ `
       date
       description
       display_date
+      download_link
       end_date
       explicit
       extent
@@ -611,6 +621,7 @@ export const updateArchive = /* GraphQL */ `
       modified_date
       other_identifier
       parent_collection
+      parent_collection_identifer
       provenance
       publisher
       references
@@ -649,6 +660,7 @@ export const updateArchive = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
@@ -693,6 +705,7 @@ export const deleteArchive = /* GraphQL */ `
       date
       description
       display_date
+      download_link
       end_date
       explicit
       extent
@@ -716,6 +729,7 @@ export const deleteArchive = /* GraphQL */ `
       modified_date
       other_identifier
       parent_collection
+      parent_collection_identifer
       provenance
       publisher
       references
@@ -754,6 +768,7 @@ export const deleteArchive = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
+        parent_collection_identifer
         provenance
         relation
         rights_holder
