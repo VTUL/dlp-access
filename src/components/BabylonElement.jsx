@@ -57,7 +57,7 @@ const BabylonElement = (props) => {
     ground.alwaysSelectAsActiveMesh = true;
     ground.isPickable = false;
 
-    // scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
+    // scene.clearColor = new BABYLON.Color4(0,0,0,1);
     const model = await loadModel(scene, modelURL);
     const modelDimensions = model.ellipsoid;
     const modelMaxSize = Math.max(
@@ -65,13 +65,13 @@ const BabylonElement = (props) => {
       modelDimensions._y,
       modelDimensions._z
     );
-    console.log(modelDimensions);
+
     model.position = new BABYLON.Vector3(0, modelDimensions._y, 0);
     const camera = new BABYLON.ArcRotateCamera(
       "camera",
       0,
       modelDimensions._y,
-      4,
+      modelMaxSize * 2,
       new BABYLON.Vector3(0, modelDimensions._y, 0),
       scene
     );
