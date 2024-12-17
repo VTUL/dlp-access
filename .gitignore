@@ -6,7 +6,7 @@ node_modules
 /.pnp
 .pnp.js
 sync.sh
-amplify
+amplify/
 src/ui-components
 
 # testing
@@ -49,3 +49,5 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
+!amplify/team-provider-info.json

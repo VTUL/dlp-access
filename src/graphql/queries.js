@@ -240,6 +240,355 @@ export const fulltextArchives = /* GraphQL */ `
     }
   }
 `;
+export const getArchive = /* GraphQL */ `
+  query GetArchive($id: ID!) {
+    getArchive(id: $id) {
+      alternative
+      archiveOptions
+      basis_of_record
+      bibliographic_citation
+      conforms_to
+      contributor
+      coverage
+      create_date
+      created
+      creator
+      custom_key
+      date
+      description
+      display_date
+      download_link
+      end_date
+      explicit
+      extent
+      format
+      has_format
+      has_part
+      has_version
+      heirarchy_path
+      id
+      identifier
+      is_format_of
+      is_part_of
+      is_version_of
+      item_category
+      language
+      license
+      location
+      manifest_file_characterization
+      manifest_url
+      medium
+      modified_date
+      other_identifier
+      parent_collection
+      parent_collection_identifier
+      provenance
+      publisher
+      references
+      relation
+      repository
+      rights_holder
+      rights
+      source
+      spatial
+      start_date
+      subject
+      tags
+      temporal
+      thumbnail_path
+      title
+      type
+      visibility
+      collection {
+        bibliographic_citation
+        collection_category
+        collectionmap_id
+        collectionOptions
+        create_date
+        creator
+        custom_key
+        description
+        display_date
+        end_date
+        explicit_content
+        heirarchy_path
+        id
+        identifier
+        is_part_of
+        language
+        location
+        modified_date
+        ownerinfo
+        parent_collection
+        parent_collection_identifier
+        provenance
+        relation
+        rights_holder
+        rights
+        source
+        spatial
+        start_date
+        subject
+        thumbnail_path
+        title
+        visibility
+        createdAt
+        updatedAt
+        collectionCollectionmapId
+        __typename
+      }
+      createdAt
+      updatedAt
+      collectionArchivesId
+      archiveCollectionId
+      __typename
+    }
+  }
+`;
+export const listArchives = /* GraphQL */ `
+  query ListArchives(
+    $filter: ModelArchiveFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listArchives(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        alternative
+        archiveOptions
+        basis_of_record
+        bibliographic_citation
+        conforms_to
+        contributor
+        coverage
+        create_date
+        created
+        creator
+        custom_key
+        date
+        description
+        display_date
+        download_link
+        end_date
+        explicit
+        extent
+        format
+        has_format
+        has_part
+        has_version
+        heirarchy_path
+        id
+        identifier
+        is_format_of
+        is_part_of
+        is_version_of
+        item_category
+        language
+        license
+        location
+        manifest_file_characterization
+        manifest_url
+        medium
+        modified_date
+        other_identifier
+        parent_collection
+        parent_collection_identifier
+        provenance
+        publisher
+        references
+        relation
+        repository
+        rights_holder
+        rights
+        source
+        spatial
+        start_date
+        subject
+        tags
+        temporal
+        thumbnail_path
+        title
+        type
+        visibility
+        createdAt
+        updatedAt
+        collectionArchivesId
+        archiveCollectionId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const archiveByIdentifier = /* GraphQL */ `
+  query ArchiveByIdentifier(
+    $identifier: String!
+    $sortDirection: ModelSortDirection
+    $filter: ModelArchiveFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    archiveByIdentifier(
+      identifier: $identifier
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        alternative
+        archiveOptions
+        basis_of_record
+        bibliographic_citation
+        conforms_to
+        contributor
+        coverage
+        create_date
+        created
+        creator
+        custom_key
+        date
+        description
+        display_date
+        download_link
+        end_date
+        explicit
+        extent
+        format
+        has_format
+        has_part
+        has_version
+        heirarchy_path
+        id
+        identifier
+        is_format_of
+        is_part_of
+        is_version_of
+        item_category
+        language
+        license
+        location
+        manifest_file_characterization
+        manifest_url
+        medium
+        modified_date
+        other_identifier
+        parent_collection
+        parent_collection_identifier
+        provenance
+        publisher
+        references
+        relation
+        repository
+        rights_holder
+        rights
+        source
+        spatial
+        start_date
+        subject
+        tags
+        temporal
+        thumbnail_path
+        title
+        type
+        visibility
+        createdAt
+        updatedAt
+        collectionArchivesId
+        archiveCollectionId
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const searchArchives = /* GraphQL */ `
+  query SearchArchives(
+    $filter: SearchableArchiveFilterInput
+    $sort: [SearchableArchiveSortInput]
+    $limit: Int
+    $nextToken: String
+    $from: Int
+    $aggregates: [SearchableArchiveAggregationInput]
+  ) {
+    searchArchives(
+      filter: $filter
+      sort: $sort
+      limit: $limit
+      nextToken: $nextToken
+      from: $from
+      aggregates: $aggregates
+    ) {
+      items {
+        alternative
+        archiveOptions
+        basis_of_record
+        bibliographic_citation
+        conforms_to
+        contributor
+        coverage
+        create_date
+        created
+        creator
+        custom_key
+        date
+        description
+        display_date
+        download_link
+        end_date
+        explicit
+        extent
+        format
+        has_format
+        has_part
+        has_version
+        heirarchy_path
+        id
+        identifier
+        is_format_of
+        is_part_of
+        is_version_of
+        item_category
+        language
+        license
+        location
+        manifest_file_characterization
+        manifest_url
+        medium
+        modified_date
+        other_identifier
+        parent_collection
+        parent_collection_identifier
+        provenance
+        publisher
+        references
+        relation
+        repository
+        rights_holder
+        rights
+        source
+        spatial
+        start_date
+        subject
+        tags
+        temporal
+        thumbnail_path
+        title
+        type
+        visibility
+        createdAt
+        updatedAt
+        collectionArchivesId
+        archiveCollectionId
+        __typename
+      }
+      nextToken
+      total
+      __typename
+    }
+  }
+`;
 export const getCollection = /* GraphQL */ `
   query GetCollection($id: ID!) {
     getCollection(id: $id) {
@@ -597,355 +946,6 @@ export const listPageContents = /* GraphQL */ `
         __typename
       }
       nextToken
-      __typename
-    }
-  }
-`;
-export const getArchive = /* GraphQL */ `
-  query GetArchive($id: ID!) {
-    getArchive(id: $id) {
-      alternative
-      archiveOptions
-      basis_of_record
-      bibliographic_citation
-      conforms_to
-      contributor
-      coverage
-      create_date
-      created
-      creator
-      custom_key
-      date
-      description
-      display_date
-      download_link
-      end_date
-      explicit
-      extent
-      format
-      has_format
-      has_part
-      has_version
-      heirarchy_path
-      id
-      identifier
-      is_format_of
-      is_part_of
-      is_version_of
-      item_category
-      language
-      license
-      location
-      manifest_file_characterization
-      manifest_url
-      medium
-      modified_date
-      other_identifier
-      parent_collection
-      parent_collection_identifier
-      provenance
-      publisher
-      references
-      relation
-      repository
-      rights_holder
-      rights
-      source
-      spatial
-      start_date
-      subject
-      tags
-      temporal
-      thumbnail_path
-      title
-      type
-      visibility
-      collection {
-        bibliographic_citation
-        collection_category
-        collectionmap_id
-        collectionOptions
-        create_date
-        creator
-        custom_key
-        description
-        display_date
-        end_date
-        explicit_content
-        heirarchy_path
-        id
-        identifier
-        is_part_of
-        language
-        location
-        modified_date
-        ownerinfo
-        parent_collection
-        parent_collection_identifier
-        provenance
-        relation
-        rights_holder
-        rights
-        source
-        spatial
-        start_date
-        subject
-        thumbnail_path
-        title
-        visibility
-        createdAt
-        updatedAt
-        collectionCollectionmapId
-        __typename
-      }
-      createdAt
-      updatedAt
-      collectionArchivesId
-      archiveCollectionId
-      __typename
-    }
-  }
-`;
-export const listArchives = /* GraphQL */ `
-  query ListArchives(
-    $filter: ModelArchiveFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listArchives(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        alternative
-        archiveOptions
-        basis_of_record
-        bibliographic_citation
-        conforms_to
-        contributor
-        coverage
-        create_date
-        created
-        creator
-        custom_key
-        date
-        description
-        display_date
-        download_link
-        end_date
-        explicit
-        extent
-        format
-        has_format
-        has_part
-        has_version
-        heirarchy_path
-        id
-        identifier
-        is_format_of
-        is_part_of
-        is_version_of
-        item_category
-        language
-        license
-        location
-        manifest_file_characterization
-        manifest_url
-        medium
-        modified_date
-        other_identifier
-        parent_collection
-        parent_collection_identifier
-        provenance
-        publisher
-        references
-        relation
-        repository
-        rights_holder
-        rights
-        source
-        spatial
-        start_date
-        subject
-        tags
-        temporal
-        thumbnail_path
-        title
-        type
-        visibility
-        createdAt
-        updatedAt
-        collectionArchivesId
-        archiveCollectionId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const archiveByIdentifier = /* GraphQL */ `
-  query ArchiveByIdentifier(
-    $identifier: String!
-    $sortDirection: ModelSortDirection
-    $filter: ModelArchiveFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    archiveByIdentifier(
-      identifier: $identifier
-      sortDirection: $sortDirection
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        alternative
-        archiveOptions
-        basis_of_record
-        bibliographic_citation
-        conforms_to
-        contributor
-        coverage
-        create_date
-        created
-        creator
-        custom_key
-        date
-        description
-        display_date
-        download_link
-        end_date
-        explicit
-        extent
-        format
-        has_format
-        has_part
-        has_version
-        heirarchy_path
-        id
-        identifier
-        is_format_of
-        is_part_of
-        is_version_of
-        item_category
-        language
-        license
-        location
-        manifest_file_characterization
-        manifest_url
-        medium
-        modified_date
-        other_identifier
-        parent_collection
-        parent_collection_identifier
-        provenance
-        publisher
-        references
-        relation
-        repository
-        rights_holder
-        rights
-        source
-        spatial
-        start_date
-        subject
-        tags
-        temporal
-        thumbnail_path
-        title
-        type
-        visibility
-        createdAt
-        updatedAt
-        collectionArchivesId
-        archiveCollectionId
-        __typename
-      }
-      nextToken
-      __typename
-    }
-  }
-`;
-export const searchArchives = /* GraphQL */ `
-  query SearchArchives(
-    $filter: SearchableArchiveFilterInput
-    $sort: [SearchableArchiveSortInput]
-    $limit: Int
-    $nextToken: String
-    $from: Int
-    $aggregates: [SearchableArchiveAggregationInput]
-  ) {
-    searchArchives(
-      filter: $filter
-      sort: $sort
-      limit: $limit
-      nextToken: $nextToken
-      from: $from
-      aggregates: $aggregates
-    ) {
-      items {
-        alternative
-        archiveOptions
-        basis_of_record
-        bibliographic_citation
-        conforms_to
-        contributor
-        coverage
-        create_date
-        created
-        creator
-        custom_key
-        date
-        description
-        display_date
-        download_link
-        end_date
-        explicit
-        extent
-        format
-        has_format
-        has_part
-        has_version
-        heirarchy_path
-        id
-        identifier
-        is_format_of
-        is_part_of
-        is_version_of
-        item_category
-        language
-        license
-        location
-        manifest_file_characterization
-        manifest_url
-        medium
-        modified_date
-        other_identifier
-        parent_collection
-        parent_collection_identifier
-        provenance
-        publisher
-        references
-        relation
-        repository
-        rights_holder
-        rights
-        source
-        spatial
-        start_date
-        subject
-        tags
-        temporal
-        thumbnail_path
-        title
-        type
-        visibility
-        createdAt
-        updatedAt
-        collectionArchivesId
-        archiveCollectionId
-        __typename
-      }
-      nextToken
-      total
       __typename
     }
   }
