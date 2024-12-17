@@ -26,7 +26,7 @@ export const onCreateCollection = /* GraphQL */ `
       modified_date
       ownerinfo
       parent_collection
-      parent_collection_identifer
+      parent_collection_identifier
       provenance
       relation
       rights_holder
@@ -86,7 +86,7 @@ export const onUpdateCollection = /* GraphQL */ `
       modified_date
       ownerinfo
       parent_collection
-      parent_collection_identifer
+      parent_collection_identifier
       provenance
       relation
       rights_holder
@@ -146,7 +146,7 @@ export const onDeleteCollection = /* GraphQL */ `
       modified_date
       ownerinfo
       parent_collection
-      parent_collection_identifer
+      parent_collection_identifier
       provenance
       relation
       rights_holder
@@ -213,7 +213,7 @@ export const onCreateCollectionmap = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
-        parent_collection_identifer
+        parent_collection_identifier
         provenance
         relation
         rights_holder
@@ -269,7 +269,7 @@ export const onUpdateCollectionmap = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
-        parent_collection_identifer
+        parent_collection_identifier
         provenance
         relation
         rights_holder
@@ -325,7 +325,7 @@ export const onDeleteCollectionmap = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
-        parent_collection_identifer
+        parent_collection_identifier
         provenance
         relation
         rights_holder
@@ -501,7 +501,7 @@ export const onCreateArchive = /* GraphQL */ `
       modified_date
       other_identifier
       parent_collection
-      parent_collection_identifer
+      parent_collection_identifier
       provenance
       publisher
       references
@@ -540,7 +540,7 @@ export const onCreateArchive = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
-        parent_collection_identifer
+        parent_collection_identifier
         provenance
         relation
         rights_holder
@@ -606,7 +606,7 @@ export const onUpdateArchive = /* GraphQL */ `
       modified_date
       other_identifier
       parent_collection
-      parent_collection_identifer
+      parent_collection_identifier
       provenance
       publisher
       references
@@ -645,7 +645,7 @@ export const onUpdateArchive = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
-        parent_collection_identifer
+        parent_collection_identifier
         provenance
         relation
         rights_holder
@@ -711,7 +711,7 @@ export const onDeleteArchive = /* GraphQL */ `
       modified_date
       other_identifier
       parent_collection
-      parent_collection_identifer
+      parent_collection_identifier
       provenance
       publisher
       references
@@ -750,7 +750,7 @@ export const onDeleteArchive = /* GraphQL */ `
         modified_date
         ownerinfo
         parent_collection
-        parent_collection_identifer
+        parent_collection_identifier
         provenance
         relation
         rights_holder
