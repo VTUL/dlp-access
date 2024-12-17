@@ -191,7 +191,10 @@ export default function CollapsibleCard({
     } else if (facetSearchItems.includes(key)) {
       return (
         <div key={index}>
-          <a href="/search" rel="noopener noreferrer">
+          <a
+            href={`/search?q=&field=all&view=Gallery&${key}=${value}`}
+            rel="noopener noreferrer"
+          >
             {value}
           </a>
         </div>
@@ -282,7 +285,6 @@ export default function CollapsibleCard({
                       )
                     : renderContent(data[key], 0)}
                 </td>
-                <br />
               </tr>
             ) : null
           )}

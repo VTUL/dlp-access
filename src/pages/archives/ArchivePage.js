@@ -31,6 +31,7 @@ import CollapsibleCard from "../../components/CollapsibleCards";
 
 import "../../css/ArchivePage.scss";
 import { NotFound } from "../NotFound";
+import BabylonElement from "src/components/BabylonElement";
 
 class ArchivePage extends Component {
   constructor(props) {
@@ -108,7 +109,13 @@ class ArchivePage extends Component {
   };
 
   isImgURL(url) {
-    return url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+    let match = false;
+    try {
+      match = url.match(/\.(jpeg|jpg|gif|png)$/) != null;
+    } catch (error) {
+      console.log("probs not an img");
+    }
+    return match;
   }
 
   isAudioURL(url) {
@@ -132,11 +139,23 @@ class ArchivePage extends Component {
     if (item) {
       has_3d = this.is3D_2DiiifType(item);
     }
-    return !has_3d && url.match(/(\/manifest.json)$/) != null;
+    let match = false;
+    try {
+      match = url.match(/(\/manifest.json)$/) != null;
+    } catch (error) {
+      return false;
+    }
+    return !has_3d && match;
   }
 
   isMinervaURL(url) {
-    return url.match(/(\/exhibit.json)$/) != null;
+    let match = false;
+    try {
+      match = url.match(/(\/exhibit.json)$/) != null;
+    } catch (error) {
+      return false;
+    }
+    return match;
   }
 
   isObjURL(url) {
@@ -150,6 +169,9 @@ class ArchivePage extends Component {
   isX3DUrl(url) {
     return url.match(/\.(x3d|X3D)$/) != null;
   }
+  isGLTFUrl(url) {
+    return url.match(/\.(gltf|GLTF|glb|GLB)$/) != null;
+  }
 
   is3D_2DiiifType(item) {
     try {
@@ -162,6 +184,21 @@ class ArchivePage extends Component {
     } catch (error) {
       return false;
     }
+  }
+
+  isGLTFType(item) {
+    let match = false;
+    try {
+      const options = JSON.parse(item.archiveOptions);
+      const type = options.assets.media_type;
+      match =
+        type === "3d-model/gltf" &&
+        !!options.assets.gltf_config &&
+        !!options.assets.env_config;
+    } catch (error) {
+      return false;
+    }
+    return match;
   }
 
   buildArchiveSchema(item) {
@@ -194,7 +231,24 @@ class ArchivePage extends Component {
       document.getElementById("content-wrapper").offsetWidth - 50,
       720
     );
-    if (this.is3D_2DiiifType(item)) {
+
+    if (this.isGLTFType(item)) {
+      let options = {};
+      try {
+        options = JSON.parse(item.archiveOptions);
+      } catch (error) {
+        display = null;
+      }
+      // options.assets.env_config
+      display = (
+        <div className="image-wrapper" id="image-wrapper">
+          <BabylonElement
+            model={options.assets.gltf_config}
+            env={options.assets.env_config}
+          />
+        </div>
+      );
+    } else if (this.is3D_2DiiifType(item)) {
       display = (
         <ThreeD2DiiifHandler
           item={item}
