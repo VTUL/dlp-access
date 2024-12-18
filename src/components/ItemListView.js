@@ -27,6 +27,10 @@ class ItemListView extends Component {
   getKeyArray = () => {
     let keyArray = [
       { field: "description", label: "Description" },
+      {
+        field: "format",
+        label: `Format${this.props.item?.format?.length > 1 ? "s" : ""}`
+      },
       { field: "tags", label: "Tags" },
       { field: "creator", label: "Creator" }
     ];

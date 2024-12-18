@@ -81,6 +81,28 @@ div.search-results div.row div#content div.navbar {
   border-top: none;
   padding: 0.9rem;
   position: relative;
+  div.right-half {
+    width: 50%;
+  }
+  div.format-section {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    text-align: right;
+    span.label-left {
+      display: inline-block;
+      margin-right: 0.25rem;
+      vertical-align: top;
+    }
+    span.value-right {
+      display: inline-block;
+    }
+    a.card-text {
+      display: block;
+      color: var(--hokieOrange);
+      margin-bottom: 0;
+    }
+  }
 }
 
 @mixin crop-text($max-lines) {
@@ -109,6 +131,7 @@ div.search-results div.row div#content div.navbar {
 .gallery-item .card-body .card-title {
   font-family: "gineso-condensed", sans-serif;
   font-size: 1.1rem;
+  margin-bottom: 0.25rem;
 }
 
 .gallery-item .card-body .card-text {
