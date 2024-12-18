@@ -6,6 +6,39 @@ import { cleanHTML } from "../lib/MetadataRenderer";
 import "../css/SearchResult.scss";
 
 const GalleryView = (props) => {
+  const formatsForItems = (item) => {
+    let formats = [];
+    if (item?.format) {
+      item.format.forEach((format) => {
+        formats.push(
+          <NavLink
+            to={`/search?q=&field=all&view=Gallery&format=${format}`}
+            key={format}
+            className="card-text"
+          >
+            {format}
+          </NavLink>
+        );
+      });
+    }
+    // if(!formats.length) {
+    //   formats = formatsByManifestURL(item.manifest_url)
+    // }
+    return formats;
+  };
+
+  const formatsByManifestURL = (manifestURL) => {
+    let format = null;
+    if (manifestURL) {
+      if (manifestURL.endsWith("manifest.json")) {
+        format = <p className="card-text">2D Image (tiled)</p>;
+      } else if (manifestURL.endsWith(".pdf")) {
+        format = <p className="card-text">document/pdf</p>;
+      }
+    }
+    return format;
+  };
+
   const getPageCount = () => {
     if (props.item?.archiveOptions) {
       const { page_count } = JSON.parse(props.item.archiveOptions);
@@ -15,7 +48,6 @@ const GalleryView = (props) => {
   };
 
   const itemPageCnt = getPageCount();
-
   return (
     <div className="col-md-6 col-lg-4 gallery-item">
       <div className="card">
@@ -41,6 +73,14 @@ const GalleryView = (props) => {
               "html"
             )}
           </p>
+          {props.item?.format?.length && (
+            <div className="format-section right-half">
+              <span className="label-left">{`Format${
+                props.item.format?.length > 1 ? "s" : ""
+              }:`}</span>
+              <span className="value-right">{formatsForItems(props.item)}</span>
+            </div>
+          )}
           {itemPageCnt > 0 && (
             <div className="badge badge-secondary page-count-badge">
               {itemPageCnt} page(s)

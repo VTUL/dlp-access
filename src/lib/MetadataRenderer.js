@@ -217,6 +217,7 @@ export function addNewlineInDesc(content, headings) {
 function listValue(category, attr, value, languages) {
   const LinkedFields = [
     "creator",
+    "format",
     "is_part_of",
     "language",
     "medium",
