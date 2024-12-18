@@ -73,14 +73,17 @@ const GalleryView = (props) => {
               "html"
             )}
           </p>
-          {props.item?.format?.length && (
-            <div className="format-section right-half">
-              <span className="label-left">{`Format${
-                props.item.format?.length > 1 ? "s" : ""
-              }:`}</span>
-              <span className="value-right">{formatsForItems(props.item)}</span>
-            </div>
-          )}
+          {props.item.item_category !== "iawa" &&
+            props.item?.format?.length && (
+              <div className="format-section right-half">
+                <span className="label-left">{`Format${
+                  props.item.format?.length > 1 ? "s" : ""
+                }:`}</span>
+                <span className="value-right">
+                  {formatsForItems(props.item)}
+                </span>
+              </div>
+            )}
           {itemPageCnt > 0 && (
             <div className="badge badge-secondary page-count-badge">
               {itemPageCnt} page(s)
