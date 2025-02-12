@@ -245,7 +245,6 @@ export const onCreateCollection = /* GraphQL */ `
         modified_date
         createdAt
         updatedAt
-        collectionmapCollectionId
         __typename
       }
       archives {
@@ -305,7 +304,6 @@ export const onUpdateCollection = /* GraphQL */ `
         modified_date
         createdAt
         updatedAt
-        collectionmapCollectionId
         __typename
       }
       archives {
@@ -365,7 +363,6 @@ export const onDeleteCollection = /* GraphQL */ `
         modified_date
         createdAt
         updatedAt
-        collectionmapCollectionId
         __typename
       }
       archives {
@@ -390,47 +387,8 @@ export const onCreateCollectionmap = /* GraphQL */ `
       id
       map_object
       modified_date
-      collection {
-        bibliographic_citation
-        collection_category
-        collectionmap_id
-        collectionOptions
-        create_date
-        creator
-        custom_key
-        description
-        display_date
-        end_date
-        explicit_content
-        heirarchy_path
-        id
-        identifier
-        is_part_of
-        language
-        location
-        modified_date
-        ownerinfo
-        parent_collection
-        parent_collection_identifier
-        provenance
-        relation
-        rights_holder
-        rights
-        source
-        spatial
-        start_date
-        subject
-        thumbnail_path
-        title
-        visibility
-        createdAt
-        updatedAt
-        collectionCollectionmapId
-        __typename
-      }
       createdAt
       updatedAt
-      collectionmapCollectionId
       __typename
     }
   }
@@ -446,47 +404,8 @@ export const onUpdateCollectionmap = /* GraphQL */ `
       id
       map_object
       modified_date
-      collection {
-        bibliographic_citation
-        collection_category
-        collectionmap_id
-        collectionOptions
-        create_date
-        creator
-        custom_key
-        description
-        display_date
-        end_date
-        explicit_content
-        heirarchy_path
-        id
-        identifier
-        is_part_of
-        language
-        location
-        modified_date
-        ownerinfo
-        parent_collection
-        parent_collection_identifier
-        provenance
-        relation
-        rights_holder
-        rights
-        source
-        spatial
-        start_date
-        subject
-        thumbnail_path
-        title
-        visibility
-        createdAt
-        updatedAt
-        collectionCollectionmapId
-        __typename
-      }
       createdAt
       updatedAt
-      collectionmapCollectionId
       __typename
     }
   }
@@ -502,47 +421,8 @@ export const onDeleteCollectionmap = /* GraphQL */ `
       id
       map_object
       modified_date
-      collection {
-        bibliographic_citation
-        collection_category
-        collectionmap_id
-        collectionOptions
-        create_date
-        creator
-        custom_key
-        description
-        display_date
-        end_date
-        explicit_content
-        heirarchy_path
-        id
-        identifier
-        is_part_of
-        language
-        location
-        modified_date
-        ownerinfo
-        parent_collection
-        parent_collection_identifier
-        provenance
-        relation
-        rights_holder
-        rights
-        source
-        spatial
-        start_date
-        subject
-        thumbnail_path
-        title
-        visibility
-        createdAt
-        updatedAt
-        collectionCollectionmapId
-        __typename
-      }
       createdAt
       updatedAt
-      collectionmapCollectionId
       __typename
     }
   }
